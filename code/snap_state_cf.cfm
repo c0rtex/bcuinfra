@@ -13,7 +13,13 @@
 	}
 
 </script> 
-
+<cfif IsDefined('URL.sc_partner_id') AND URL.sc_partner_id NEQ ''>
+    <cfset SESSION.sc_partner_id = URL.sc_partner_id>
+<cfelseif IsDefined ('SESSION.sc_partner_id')>
+<!--- do nothing --->
+<cfelse>
+        <cfset SESSION.sc_partner_id = 0>
+</cfif>
 
 	
 	<!--- 
@@ -97,14 +103,17 @@ Espanol    = Espa�ol
 		<cfelse>
 		<cfset showSNAPStoreLink = 1>
 	</cfif>
-	
+	<script type="text/javascript">
+		var partnerID = "<cfoutput>#SESSION.partner_id#</cfoutput>";
+		console.log(partnerID);
+	</script>
 	<table cellpadding="0" cellspacing="0" border="0" class="snapTable">
 		<tr class="noprint">
 			<td colspan="4" style="padding-bottom:8px;">
 				<table cellpadding="0" cellspacing="0" width="100%">
 						<tr>
 							<td><span>
-								<cf_sessionPassVars href="snap.cfm?partner_id=#session.partner_id#" prev_id="#session.partner_id#" partner_id="#session.partner_id#" org_id="#session.org_id#" class="snapLink">
+								<cf_sessionPassVars href="snap.cfm?partner_id=#session.partner_id#&sc_partner_id=#SESSION.sc_partner_id#" prev_id="#session.partner_id#" partner_id="#session.partner_id#" org_id="#session.org_id#" class="snapLink">
 									<cf_displayImage code="#img_back_button_gif#" hspace="0" vspace="0" border="0">
 								</cf_sessionPassVars>
 								</span></td>
@@ -121,7 +130,7 @@ Espanol    = Espa�ol
 					<div id="snap_right_col">
 						
 						<cfif listFindNoCase("PR", qState.state_id) GT 0>
-							<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77 >
+							<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
                             	<div style="padding:6px 12px 8px; background-color: ##d7d7d7; width: 284px; margin-bottom:16px; margin-top:4px; float: left; clear:both" class="noprint">              
                             <cfelse>
                             	<div style="background: none repeat scroll 0 0 ##FEF4DC; border-radius: 10px 10px 10px 10px; display: block; margin-bottom: 10px; padding: 10px 0 10px 10px;">
@@ -159,7 +168,7 @@ Espanol    = Espa�ol
 							</div>
 							<div style="clear:both"></div>
 						</cfif>
-						<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+						<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 							<div style="padding:6px 12px 8px; background-color: ##d7d7d7;  margin-bottom:16px; margin-top:4px;" class="noprint">
                         <cfelse>
         					<div id="web_resources">                
@@ -170,7 +179,7 @@ Espanol    = Espa�ol
 								</tr>
 								<cfloop query="forms_online">
 									<tr>
-                                    	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                    	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 										<td class="text1" valign="top">
                                         <cfelse>
                                         <td class="text1fact" valign="top">
@@ -181,12 +190,12 @@ Espanol    = Espa�ol
 												</a>
 											</div>		
 										</td>
-                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 										<td class="snapLegend" valign="top">
                                         <cfelse>
                                         <td class="text1fact" valign="top">
                                         </cfif>
-                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 											<div class="online_app">
                                         <cfelse>
                                         	<div>
@@ -201,7 +210,7 @@ Espanol    = Espa�ol
 										<cfset web_url = "http://www.fns.usda.gov/FSP/faqs.htm">
 									</cfif--->
 									<tr>
-                                    	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                    	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 										<td class="text1" valign="top">
                                         <cfelse>
                                         <td class="text1fact" valign="top">
@@ -212,7 +221,7 @@ Espanol    = Espa�ol
 												</a>
 											</div>
 										</td>
-                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 										<td class="snapLegend" valign="middle"><a href="#web_url#" target="#web_url#" class="snapLink">#program_website#</a></td>
                                         <cfelse>
                                         <td class="text1fact" valign="top"><a href="#web_url#" target="#web_url#" class="snapLink">#program_website#</a></td>
@@ -222,7 +231,7 @@ Espanol    = Espa�ol
 								<!--- MH Bug 5400 --->
 								<cfif showSNAPStoreLink eq 1>
 									<tr>
-                                    	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                    	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 										<td class="text1" valign="top">
                                         <cfelse>
                                         <td class="text1fact" valign="top">
@@ -233,21 +242,21 @@ Espanol    = Espa�ol
 												</a>
 											</div>
 										</td>
-                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 										<td class="snapLegend" valign="top"><a href="#find_stores_url#" target="#find_stores_url#" class="snapLink">#find_stores#</a></td>
                                         <cfelse>
                                         <td class="text1fact" valign="top"><a href="#find_stores_url#" target="#find_stores_url#" class="snapLink">#find_stores#</a></td>
                                         </cfif>
 									</tr>
 								</cfif>
-								<cfset moreprograms_url = "frmwelcome2.cfm?partner_id=#session.partner_id#&subset_id=62">
+								<cfset moreprograms_url = "frmwelcome2.cfm?partner_id=#session.partner_id#&subset_id=62&sc_partner_id=#session.sc_partner_id#">
 								<!--- MH: Bug 5477 Redirected SNAP subset to point to 62 instead of 3--->
 								<cfset sub_id = 62>
 								<cfset prtner_id = session.partner_id>
                                 <cfif find_out_link EQ 1 AND NOT listFindNoCase("PR", qState.state_id) GT 0>
 									<tr>
 										<cfif session.org_id eq '' or session.org_id lt 1 >
-                                        	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                        	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 											<td class="text1" valign="top">
 											<cfelse>
                                             <td class="text1fact" valign="top">
@@ -258,7 +267,7 @@ Espanol    = Espa�ol
 													</cf_sessionPassVars>
 												</div>
 											</td>
-                                            <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                            <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 											<td class="snapLegend" valign="top"><cf_sessionPassVars href="#moreprograms_url#" partner_id="#prtner_id#" org_id="#session.org_id#" subset_id="#sub_id#" prev_id="0" class="snapLink">#find_out#</cf_sessionPassVars></td>
                                             <cfelse>
                                             <td class="text1fact" valign="top"><cf_sessionPassVars href="#moreprograms_url#" partner_id="#prtner_id#" org_id="#session.org_id#" subset_id="#sub_id#" prev_id="0" class="snapLink">#find_out#</cf_sessionPassVars></td>
@@ -268,7 +277,7 @@ Espanol    = Espa�ol
 								</cfif>
 							</table>
 						</div>
-                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 						<div class="snapRightCol noprint">
                          <cfelse>
         					<div id="application_forms">                
@@ -297,7 +306,7 @@ Espanol    = Espa�ol
 										<cfif findnocase('English', tag_name) EQ 0 AND findnocase('Spanish', tag_name) EQ 0 AND doBreak EQ 0 and doBreakOverride EQ 0>
 											<cfset doBreak = 1>
 											<tr>
-												<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+												<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
                                                 <td colspan="2" class="text1"><hr size="1" noshade="noshade" /></td>
                                                 <cfelse>
                                                 <td colspan="2" class="text1fact"><hr size="1" noshade="noshade" /></td>
@@ -306,7 +315,7 @@ Espanol    = Espa�ol
 										</cfif>
 										<tr>
 											<cfset name = replacenocase(tag_name, 'Application', '')>
-                                            <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                                            <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 											<td class="text1" valign="top" width="24"><a href="form_redirect.cfm?id=#form_id#&tgtPartner=#session.partner_id#&tgtorg_id=#session.org_id#&tgt=/forms/#string#" class="img_apply_gif" target="#tag_name#">
                                             <cfelse>
                                             <td class="text1fact" valign="top" width="24"><div class="pdf_img"><a class="snapLink" href="form_redirect.cfm?id=#form_id#&tgtPartner=#session.partner_id#&tgtorg_id=#session.org_id#&tgt=/forms/#string#" class="img_apply_gif" target="#tag_name#">
@@ -319,7 +328,7 @@ Espanol    = Espa�ol
 													<cf_displayImage code="#img_apply_gif#" hspace="0" vspace="0" class="snap_icon">
 												</cfif>
 												</a></div></td>
-											<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  ><td class="snapLegend" valign="top"><cfelse><td class="text1fact" valign="top"></cfif><a href="form_redirect.cfm?id=#form_id#&tgtPartner=#session.partner_id#&tgtorg_id=#session.org_id#&tgt=/forms/#string#" class="snapLink" target="#tag_name#">#name#</a>
+											<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77><td class="snapLegend" valign="top"><cfelse><td class="text1fact" valign="top"></cfif><a href="form_redirect.cfm?id=#form_id#&tgtPartner=#session.partner_id#&tgtorg_id=#session.org_id#&tgt=/forms/#string#" class="snapLink" target="#tag_name#">#name#</a>
 												<cfif formtype_id IS 4>
 													<cf_displayImage code="img_pencil_gif" hspace="0" vspace="0">
 												</cfif></td>
@@ -335,13 +344,13 @@ Espanol    = Espa�ol
 						<cfparam name="foodStampLegend" default="0">
 						<cfparam name="fillableLegend" default="0">
 						<cfif forms.recordcount IS NOT 0 and 1 eq 1 AND call_state IS 1 AND NOT listFindNoCase("PR", qState.state_id) GT 0>
-                        	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                        	<cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 							<div style="padding:0px 12px; background-color: ##d7d7d7; width: 284px;" class="noprint"> <strong>#call_your_state#</strong> </div>
                             <cfelse>
                             <div class="appforms noprint" style="padding-bottom:10px;"><strong>#call_your_state#</strong></div> 
                             </cfif>
 						</cfif>
-                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77  >
+                        <cfif session.partner_id neq 0 AND SESSION.partner_id NEQ 77>
 						<div style="padding:12px; background-color: ##d7d7d7; width: 284px;" class="noprint">
                         <cfelse>
                         <div class="appforms noprint" style="margin-bottom:15px;padding-bottom:10px;"> 
