@@ -1,0 +1,36 @@
+<!--- Remember to escape double quotes with "" and # with ##  --->
+<cfset mytext = "<p><FONT COLOR=""##012A5C""><i><b>BenefitsCheckUp a Helpful Resource for Retirement</b></i></FONT></p><p><table style=""font-size:1.0em;"" border=""0"" cellpadding=""0"" cellspacing=""0""><tr><td valign=""top""><b>NCOA Media Contact:</b></td><td>&nbsp;</td><td valign=""top"">Ken Schwartz<BR /><a href=""mailto:ken.schwartz@ncoa.org"">ken.schwartz@ncoa.org</a><BR />Tel: (202) 600-3131</td></tr></table></p><p><b>Washington, DC - December 27, 2010</b> - In January, the first wave of baby boomers will start the New Year by reaching a series of significant milestones.  This generation will begin turning 65, and as a result of entering into the age of retirement, will start to become eligible for various benefits, including Medicare.  It is helpful for this aging population to learn about important benefits programs that may be available to them at this stage in their lives, regardless of whether or not they plan to retire anytime soon. </p><p>Baby boomers can use BenefitsCheckUp, a free online screening service of the National Council on Aging (NCOA), to learn about Medicare Prescription Drug Coverage, as well as to get information for over 2,000 federal, state, and local benefits programs for which they may be eligible.</p>
+<p>""In this day and age where retirement doesn't come cheap or easy, it helps to have a resource like BenefitsCheckUp to serve as a guide for programs that may provide help during these years,"" said Stuart Spector, senior vice president at NCOA. ""Signing up for the appropriate benefits in a timely fashion can result in a happier retirement.""</p>
+<p>As the first wave of baby boomers come of age and become eligible for Medicare at the beginning of next year, it's a good time to use BenefitsCheckUp to find out about available prescription drug benefits, including Medicare Part D, and if they qualify for the Low-Income Subsidy (Extra Help).  Using the online service, baby boomers can also discover whether they are eligible for additional benefits that help pay for healthcare, energy bills, food, and other household costs.  It is as simple as completing an online questionnaire at www.benefitscheckup.org.</p>
+<p><b>About NCOA</b><BR /><i>The National Council on Aging is a nonprofit service and advocacy organization headquartered in Washington, DC. NCOA is a national voice for older Americans - especially those who are vulnerable and disadvantaged - and the community organizations that serve them. It brings together nonprofit organizations, businesses, and government to develop creative solutions that improve the lives of all older adults. NCOA works with thousands of organizations across the country to help seniors find jobs and benefits, improve their health, live independently, and remain active in their communities. For more information, please visit <a href=""http://www.ncoa.org"" target=""_blank"">www.NCOA.org</a>.</i></p>
+<p><b>About BenefitsCheckUp</b><BR /><i>Developed and maintained by the National Council on Aging (NCOA), BenefitsCheckUp is the nation's most comprehensive Web-based service to screen for benefits programs for seniors with limited income and resources. It includes almost 2,000 public and private benefits programs from all 50 states and the District of Columbia. Since 2001, more than 2.6 million people have used the service, identifying benefits valued at more than $9.3 billion.  For more information, visit <a href=http://www.benefitscheckup.org>www.benefitscheckup.org</a>. </i></p>">
+
+<cfset mytitle="New Year Brings New Status to Baby Boomers ">
+
+<cfoutput>#mytitle#<br />#mytext#</cfoutput>
+
+<!---<cfset mytext = "<p>Media Contact: Connie Hofmann (chofmann@aboutscp.com)<BR>Tel:  610-687-5495</p><p><b>Washington, DC - May 7, 2010</b> - In recognition of Older Americans Month, the National Council on Aging (NCOA) invites seniors nationwide to take advantage of free online screenings for benefits programs through its BenefitsCheckUp program.</p> <p>BenefitsCheckUp is the nation's most comprehensive Web-based service to screen seniors with limited income and resources for benefits programs.  By visiting www.benefitscheckup.org, seniors can search through more than 2,000 federal, state, and local benefits programs to find help with the cost of health care, prescription drugs, food, housing, utility bills, and more. In addition, local and state agencies across the country provide free screenings and support for seniors using BenefitsCheckUp.  Many agencies are using Older Americans Month as an opportunity to extend and promote outreach of this valuable service.</p><p>""In recognition of Older Americans Month, the Administration on Aging is calling for older Americans to <i>Age Strong! Live Long!</i>,"" said Stuart Spector, senior vice president at NCOA. ""BenefitsCheckUp is designed to help vulnerable older adults improve their opportunities to age strong by providing information on and access to thousands of benefits programs in one, comprehensive, easy-to-access format.""</p><p><b>Two Thousand Programs Strong</b><BR>It's important for seniors to check their eligibility for various benefits programs, as eligibility requirements frequently change.  BenefitsCheckUp continually makes updates to account for these changes, making it quick and easy for seniors to access updated information, eligibility rules and application forms.  Seniors should use BenefitsCheckUp as a resource to check their eligibility for 2,000 federal, state, and local programs that can help with utilities, food, housing, and other basic needs. Enrollment forms for most programs are provided as part of BenefitsCheckUp's interactive screening process.  Since 2001, more than 2.4 million people have used the service, identifying benefits valued at more than $8.3 billion.</p><p align=""center"">**********</p><p><b>About NCOA</b><BR>
+The National Council on Aging is a nonprofit service and advocacy organization headquartered in Washington, DC. NCOA is a national voice for older Americans - especially those who are vulnerable and disadvantaged - and the community organizations that serve them. It brings together nonprofit organizations, businesses, and government to develop creative solutions that improve the lives of all older adults. NCOA works with thousands of organizations across the country to help seniors find jobs and benefits, improve their health, live independently and remain active in their communities. For more information, please visit <a href=""http://www.ncoa.org"" onclick=""window.open(this.href, '_blank', 'toolbar=no,location=no,directories=no,resizable=yes,scrollbars=yes,width=700,height=500'); return false;"">www.ncoa.org</a>.</p><p align=""center"">## ## ##</p>">--->
+
+<!---cfquery name="insertNews" datasource="#application.dbSrc#">
+
+INSERT INTO [BCU].[dbo].[bcu_news]
+           ([date_added]
+           ,[archived]
+           ,[news]
+           ,[title]
+           ,[date_updated]
+           ,[active])
+     VALUES
+           (now()
+           ,0
+           ,'#mytext#'
+           ,'#mytitle#'
+           ,now()
+           ,1)
+</cfquery---->
+<cfquery name="updateNews" datasource="#application.dbSrc#">
+	Update bcu_news
+	Set news = '#mytext#'
+    where news_id = 71
+</cfquery>

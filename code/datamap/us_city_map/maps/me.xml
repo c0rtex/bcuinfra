@@ -1,0 +1,130 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Androscoggin</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Aroostook</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Cumberland</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Franklin</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Hancock</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>Kennebec</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>Knox</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Lincoln</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>9</id>
+ <name>Oxford</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>10</id>
+ <name>Penobscot</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>11</id>
+ <name>Piscaataquis</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>12</id>
+ <name>Sagadahoc</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>13</id>
+ <name>Somerset</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>14</id>
+ <name>Waldo</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>15</id>
+ <name>Washington</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>16</id>
+ <name>York</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

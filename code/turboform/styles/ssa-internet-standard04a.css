@@ -1,0 +1,432 @@
+/* Social Security Administration              */
+/* Generic Internet Style Sheet                */
+/* Compatible with all CSS-enabled user agents */
+/* ----- XHTML Elements ----- */
+
+a.bar:active {
+	color: #FFFF80;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.errorlink {
+	background: #FFFFFF;
+	color: #CC3333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	font-weight: bold;
+	line-height: normal;
+	text-align: left;
+	text-decoration: underline;
+	vertical-align: baseline;
+}
+
+a.errorlink:visited {
+	background: #FFFFFF;
+	color: #CC3333;
+	font-weight: bold;
+}
+
+a.errorlink:hover {
+	background: #FFFFAA;
+	color: #CC3333;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.menu{
+	background-color: #333366;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	width: 100%;
+}
+
+a.menu:link {
+	background: #333366;
+	border: 3px outset;
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.menu:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #333366;
+	border: 3px outset;
+	color: #FFFFFF;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.menu:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #000000;
+	border: 3px inset;
+	border-color: #D7D7FF #CCCCFF #CCCCFF;
+	color: #FFFFCC;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.menu:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #333366;
+	border: 3px outset;
+	border-color: #D8CAFF #CCCCFF #CCCCFF;
+	color: #FFFFFF;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.navbar {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.navbar:link {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+}
+
+a.navbar:visited {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+}
+
+a.navbar:hover {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.navbar:active {
+	color: #FFFF80;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.skipnav {
+	color: #CC3333;
+	cursor: crosshair;
+	font-size: .1em;
+	text-decoration: none;
+}
+
+a.skipnav:hover {
+	border: none;
+	color: #FFFFFF;
+	cursor: crosshair;
+	font-size: .8em;
+	text-decoration: none;
+}
+
+a.skipnav:active {
+	border: none;
+	color: #FFFFFF;
+	cursor: crosshair;
+	font-size: .8em;
+	text-decoration: none;
+}
+
+body {
+	background-attachment: scroll;
+	background-color: #FFFFFF; /* White */
+	background-repeat: no-repeat;
+	color: #000000; /* Black */
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px 0px 0px 0px;
+}
+
+input {
+  font-family: Arial, Helvetica, sans-serif;
+	color: #333333;
+  font-weight: normal;
+}
+
+input.addanother {
+	background-color: #CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	font-weight: bold;
+}
+
+input.back {
+	background: #CCCCCC;
+	color: #333333;
+	font-weight: normal;
+}
+
+input.continue {
+	background: #CCCCCC;
+	color: #333333;
+	font-weight: bold;
+}
+
+input.delete {
+  float: left;
+}
+
+input.edit {
+	font-family: "Courier New", sans-serif;
+}
+
+input.editbutton {
+	background: #CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	font-weight: bold;
+}
+
+input.plain {
+	background: #CCCCCC;
+	color: #333333;
+	font-weight: normal;
+}
+
+input.reset {
+	background-color: #CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	font-weight: bold;
+}
+
+input.topbar {
+	background-color: #CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+input.topbaractive {
+	background-color: #CC3333;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+select {
+	font-family: "Courier New", sans-serif;
+}
+
+td.main{
+	padding: 0px 0px 0px 0px;
+	text-align: left;
+}
+
+td.nav{
+	padding: 0px 0px 0px 0px;
+}
+
+textarea {
+	font-family: "Courier New", sans-serif;
+}
+
+/* ----- Custom Classes ----- */
+.activetab {
+	background: #CC3333;
+	border-bottom-color: #CC3333;
+	border-left-color: #EEEEEE;
+	border-right-color: #EEEEEE;
+	border-style: solid solid solid solid;
+	border-top-color: #EEEEEE;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.alert {
+	color: #CC3333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.critical {
+	background-image: url(../images/warning.gif);
+	background-repeat: no-repeat;
+	padding-left: 55px;
+	display : list-item;
+	list-style-type : none;
+	height: 42px;
+  margin-bottom: 30px;
+}
+
+.grouplabel {
+	border-bottom: 1px solid;
+	display: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	margin-top: 15px;
+	text-align: left;
+}
+
+.headerfooter {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 75%;
+	font-weight: normal;
+}
+
+.hide {
+	position: absolute;
+  left: 0px;
+  top: -100px;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+.instructions {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	font-weight: normal;
+}
+
+.label {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.labelsmaller {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.labelsmaller2 {
+	font-family: Verdana, Georgia, Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	font-weight: normal;
+	text-align: left;
+}
+
+.labelsmallerright {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	font-weight: bold;
+	text-align: right;
+}
+
+.labelsmallerindent {
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	FONT-SIZE: 90%;
+	FONT-WEIGHT: bold;
+	TEXT-INDENT: 15pt;
+}
+
+.noanchor {
+	color: #000000;
+	cursor: text;
+	text-decoration: none;
+}
+
+.nonselectabletab {
+	background: #999999;
+	border-bottom-color: #999999;
+	border-left-color: #EEEEEE;
+	border-right-color: #EEEEEE;
+	border-style: solid solid solid solid;
+	border-top-color: #EEEEEE;
+	color: #eeeeee;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.pagetitlepreface {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: normal;
+}
+
+.propagated {
+	background-color: #FBFBFB;
+	border-style: none;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+}
+
+.propagatederror {
+	color: #CC3333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	font-weight: bold;
+}
+
+.pushedmenu {
+	background: #FFFFFF;
+	border: inset;
+	border-color: #D7D7FF #CCCCFF #CCCCFF;
+	border-width: 2px 2px 0px;
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.reentrynumber {
+	background-color: #FBFBFB;
+	font-family: Georgia,"Times New Roman", Times, serif;
+	font-size: 200%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.rowbackgrnd {
+	background-color: #E4E4F2;
+}
+
+.rowbackgrnd2 {
+	background-color: #EEEEEE;
+}
+
+.tabbackgrnd {
+	background-color: #333366;
+}
+
+.warning {
+	color: #000000;
+	font-family: Verdana, Georgia, Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	font-weight: bold;
+	text-align: left;
+}
+.redasterisk { 
+font-size: 110%; 
+font-weight : bold; 
+color: #cc3333; 
+} 

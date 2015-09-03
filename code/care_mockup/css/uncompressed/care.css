@@ -1,0 +1,863 @@
+/*+clearfix {*/
+DIV#left_panel:after, DIV#right_panel:after, DIV.appforms TABLE TBODY TR TD.text1fact:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	font-size: 0;
+}
+DIV#left_panel, DIV#right_panel, DIV.appforms TABLE TBODY TR TD.text1fact
+{
+	display: inline-block;
+}
+DIV#left_panel, DIV#right_panel, DIV.appforms TABLE TBODY TR TD.text1fact
+{
+/*\*/
+	display: block;
+/**/
+	-height: 1px;
+}
+/*+}*/
+BODY
+{
+	background: #E1DAE7;
+	color: #333;
+	padding: 2px 0 40px;
+	font: 12px Arial;
+}
+.container_12
+{
+	background: #FFF;
+	margin-bottom: 20px;
+	border: 1px solid #896AA1;
+}
+H1
+{
+	color: #6B4589;
+	font: bold 30px Verdana;
+	padding: 0px 0px 20px 25px;
+}
+H3
+{
+	margin: 15px 0px 15px 15px;
+	font: bold 16px sans-serif;
+}
+H3.front_page
+{
+	margin: 25px 0px;
+	font: bold 16px sans-serif;
+}
+H4
+{
+	font: bold 24px sans-serif;
+	margin: 0px;
+}
+HR
+{
+	color: #ABABAB;
+}
+P.header_note
+{
+	font: bold 16px sans-serif;
+}
+P.report_header, P.report_header A, A.report_header
+{
+	font: bold 16px sans-serif;
+}
+P.question_text
+{
+	font: 14px sans-serif;
+}
+P#popupTitle
+{
+	margin: 0px 0px 10px;
+}
+DIV#tabs_div
+{
+	border-bottom: 1px solid #896AA1;
+	padding: 0px 0px 15px;
+	margin: 0px;
+	width: 756px;
+}
+UL#tabs
+{
+	margin: 0px 0px -9px 20px;
+	list-style: none;
+}
+UL#tabs LI
+{
+	display: inline;
+	background: #FFFFFF;
+	padding: 0px;
+	margin: 0px 2px 0px 0px;
+}
+A
+{
+	font: 12px sans-serif;
+}
+UL#tabs LI A
+{
+	text-decoration: none;
+	color: #6B4589;
+	font: 14px Verdana;
+}
+/*left tab active*/
+UL#tabs LI.left_tab.active A:link, UL#tabs LI.left_tab.active A:visited
+{
+	font: bold 14px Verdana;
+	background: url(../../care_images/tab_left.GIF) no-repeat 5px 1px;
+	padding: 10px 21px 7px 25px;
+	z-index: 500;
+}
+UL#tabs LI.left_tab.active A:hover
+{
+	font: bold 14px Verdana;
+	background: url(../../care_images/tab_left.GIF) no-repeat 5px -54px;
+	padding: 10px 21px 7px 25px;
+	z-index: 500;
+}
+/*left tab inactive*/
+UL#tabs LI.left_tab.inactive A:link, UL#tabs LI.left_tab.inactive A:visited
+{
+	font: normal 14px Verdana;
+	background: url(../../care_images/tab_left.GIF) no-repeat 5px -54px;
+	padding: 10px 28px 7px 25px;
+	z-index: 500;
+}
+UL#tabs LI.left_tab.inactive A:hover
+{
+	font: normal 14px Verdana;
+	background: url(../../care_images/tab_left.GIF) no-repeat 5px 1px;
+	padding: 10px 28px 7px 25px;
+	z-index: 500;
+}
+/*right tab active*/
+UL#tabs LI.right_tab.active A:link, UL#tabs LI.right_tab.active A:visited
+{
+	font: bold 14px Verdana;
+	background: url(../../care_images/tab_right.GIF) no-repeat 0px -54px;
+	padding: 10px 10px 6px 7px;
+	z-index: 700;
+	border-bottom: 1px solid #FFFFFF;
+}
+UL#tabs LI.right_tab.active A:hover
+{
+	font: bold 14px Verdana;
+	background: url(../../care_images/tab_right.GIF) no-repeat 0px 1px;
+	padding: 10px 10px 6px 7px;
+	z-index: 500;
+	border-bottom: 1px solid #896AA1;
+}
+/*right tab inactive*/
+UL#tabs LI.right_tab.inactive A:link, UL#tabs LI.right_tab.inactive A:visited
+{
+	font: 14px Verdana;
+	background: url(../../care_images/tab_right.GIF) no-repeat 0px 1px;
+	padding: 10px 40px 6px 15px;
+	z-index: 500;
+	border-bottom: 1px solid #896AA1;
+}
+UL#tabs LI.right_tab.inactive A:hover
+{
+	font: 14px Verdana;
+	background: url(../../care_images/tab_right.GIF) no-repeat 0px -54px;
+	padding: 10px 60px 6px 15px;
+	z-index: 500;
+}
+DIV#visit_care
+{
+	padding: 25px 0px 0px 35px;
+}
+DIV#logo
+{
+}
+DIV#bottom_border
+{
+	border-bottom: 1px solid #896AA1;
+	width: 756px;
+	margin-left: 0px;
+	margin: -15px 0px 0px;
+}
+DIV#main_body
+{
+	padding: 0px 0px 0px 25px;
+}
+DIV#alt_body
+{
+	padding: 15px 0px 0px 25px;
+}
+H2
+{
+	color: #F15C22;
+	font: bold 20px Verdana;
+}
+DIV#main_body P, DIV#alt_body P
+{
+	font: 14px sans-serif;
+}
+DIV#main_body UL LI
+{
+	font: 14px sans-serif;
+	padding: 0px 0px 5px;
+	margin: 0px 0px 0px 10px;
+	z-index: 700;
+}
+DIV#body_image IMG
+{
+	padding: 0px 5px 5px 0px;
+	margin: -15px 0px 0px;
+}
+IMG#get_started
+{
+	padding: 0px 0px 3px;
+}
+DIV#panel_container
+{
+	background: #FEFBEB;
+	margin: 0px;
+	width: 756px;
+}
+/*[clearfix]*/DIV#left_panel
+{
+	background: #FDF5CD;
+	color: #333333;
+	height: 250px;
+}
+P.subhead
+{
+	padding: 0px 0px 15px 25px;
+	font: 14px Arial;
+	margin: -20px 0px 0px;
+}
+UL.simple_list
+{
+	padding: 5px 20px 20px;
+}
+UL.simple_list LI
+{
+	padding: 0px 0px 10px;
+}
+DIV#left_panel H3
+{
+	padding: 0px 25px;
+	color: #F47D4E;
+	font: bold 18px Arial;
+}
+DIV#right_panel H3
+{
+	padding: 0px 25px;
+	color: #F47D4E;
+	font: bold 18px Arial;
+}
+/*[clearfix]*/DIV#right_panel
+{
+	background: #FEFBEB;
+	height: 250px;
+}
+DIV#footer_container
+{
+	background: #896AA1;
+	margin: 0px;
+	width: 756px;
+	color: #FFFFFF;
+	font: 12px Verdana;
+}
+UL#footer_links A
+{
+	color: #FFF;
+	text-decoration: none;
+}
+UL#footer_links
+{
+	list-style: none;
+	padding: 10px 0px 0px 15px;
+	margin: 0px 0px 10px;
+}
+UL#footer_links LI
+{
+	display: inline;
+	padding: 0px 5px 0px 0px;
+	margin: 0px;
+}
+UL#footer_copyright
+{
+	list-style: none;
+	padding: 0px;
+	margin: 0px 0px 10px;
+}
+UL#footer_copyright LI
+{
+	display: inline;
+	margin: 0px;
+	padding: 0px 10px 0px 0px;
+}
+.small_6B4589
+{
+	color: #6B4589;
+	font: 12px Verdana;
+}
+DIV#subfooter_container
+{
+	margin: 0px auto;
+	width: 756px;
+	padding: 0px 0px 20px;
+}
+P#subfooter_trademark
+{
+	padding: 10px 0px 0px 170px;
+	margin: 0px;
+}
+P#subfooter_copyright
+{
+	padding: 0px 0px 0px 200px;
+}
+DIV.container_12 TABLE TR TD TABLE
+{
+	/*[disabled]margin:15px 0px 0px 15px;*/
+	/*[disabled]width:85%;*/
+}
+DIV.container_12 TABLE
+{
+	/*[disabled]margin:0px 0px 0px -70px;*/
+	/*[disabled]width:95%;*/
+}
+DIV.container_12 TABLE TBODY TR TD
+{
+	padding: 0px 0px 2px;
+}
+DIV.container_12 TABLE TBODY TR TD SELECT
+{
+	margin: 5px 0px;
+	border: 1px solid #CCCCCC;
+}
+SELECT#selDrugNm
+{
+	width: 250px;
+	margin: 0px 0px 0px 10px;
+}
+TABLE#medication_table TR TD
+{
+	padding: 0px 10px 10px;
+}
+SELECT#avlDrugNm
+{
+	width: 250px;
+	/*[empty]border:;*/
+	margin: 0px 0px 0px 10px;
+}
+DIV.container_12 TABLE TBODY TR TD INPUT
+{
+	margin: 0px 5px 0px 0px;
+}
+TD FONT A
+{
+	font: 12px Arial;
+}
+TD FONT
+{
+	/*[disabled]font:1em Arial;*/
+}
+DIV.container_12 TABLE TBODY TR TD.printtd
+{
+	/*[disabled]padding:0px 30px 30px;*/
+}
+DIV.container_12>TABLE
+{
+	/*[disabled]padding:0px;*/
+	/*[disabled]margin:0px;*/
+}
+DIV.container_12 TABLE TBODY TR TD TABLE TBODY TR TD TABLE
+{
+	/*[disabled]margin:0px;*/
+	/*[disabled]width:525px;*/
+}
+DIV.appforms
+{
+	/*[disabled]margin:30px 0px 25px 40px;*/
+}
+DIV.appformsOuter
+{
+	/*[disabled]background:#FEFCEE;*/
+	/*[disabled]padding:0px 1px 1px;*/
+	/*[disabled]margin:0px auto 25px;*/
+	/*[disabled]border:1px solid #CCCCCC;*/
+	/*[disabled]width:525px;*/
+}
+DIV.appformsOuter A
+{
+	/*[disabled]font:bold 13px sans-serif;*/
+	/*[disabled]text-decoration:none;*/
+}
+DIV.screeningText
+{
+	/*[disabled]width:500px;*/
+	/*[disabled]margin:0px auto;*/
+}
+.strong_class_header
+{
+	font: bold 24px Arial;
+}
+.strong_class
+{
+	/*[disabled]font:bold 14px sans-serif;*/
+	font-size: 18px;
+}
+DIV#extra_padding
+{
+	margin: 25px 0px 0px;
+}
+DIV.container_12 TABLE
+{
+	margin: 0px auto;
+	width: 675px;
+}
+A#popupLink321
+{
+	font: 11px sans-serif;
+}
+A#popupLink103
+{
+	font: 11px sans-serif;
+}
+A#popupLink102
+{
+	font: 11px sans-serif;
+}
+A#popupLink119
+{
+	font: 11px sans-serif;
+}
+A#popupLink104
+{
+	font: 11px sans-serif;
+}
+A#popupLink333
+{
+	font: 14px sans-serif;
+}
+A#popupLink121
+{
+	font: 11px sans-serif;
+}
+A#popupLink169
+{
+	font: 14px sans-serif;
+}
+A#popupLink101
+{
+	font: 11px sans-serif;
+}
+A#popupLink170
+{
+	font: 14px sans-serif;
+}
+A#popupLink171
+{
+	font: 14px sans-serif;
+}
+A#popupLink179
+{
+	font: 14px sans-serif;
+}
+A#popupLink173
+{
+	font: 14px sans-serif;
+}
+A#popupLink175
+{
+	font: 14px sans-serif;
+}
+A#popupLink289
+{
+	font: 14px sans-serif;
+}
+A#popupLink286
+{
+	font: 14px sans-serif;
+}
+A#popupLink106
+{
+	font: 11px sans-serif;
+}
+A#popupLink114
+{
+	font: 11px sans-serif;
+}
+A#popupLink168
+{
+	font: 11px sans-serif;
+}
+A#liheap_link
+{
+	font: 14px sans-serif;
+}
+A#popupLink118
+{
+	font: 11px sans-serif;
+}
+A
+{
+	font: 14px sans-serif;
+}
+A#popupLink179_1
+{
+	font: 14px sans-serif;
+}
+A#popupLink172
+{
+	font: 14px sans-serif;
+}
+A#popupLink366
+{
+	font: 14px sans-serif;
+}
+A#popupLink365
+{
+	font: 14px sans-serif;
+}
+A#popupLink367
+{
+	font: 14px sans-serif;
+}
+A#popupLink110
+{
+	font: 11px sans-serif;
+}
+A#popupLink327
+{
+	font: 11px sans-serif;
+}
+A#popupLink328
+{
+	font: 11px sans-serif;
+}
+A#popupLink325
+{
+	font: 11px sans-serif;
+}
+A#popupLink301
+{
+	font: 14px sans-serif;
+}
+A#popupLink291
+{
+	font: 14px sans-serif;
+}
+A#popupLink292
+{
+	font: 14px sans-serif;
+}
+A#popupLink293
+{
+	font: 14px sans-serif;
+}
+A#popupLink294
+{
+	font: 14px sans-serif;
+}
+A#popupLink295
+{
+	font: 14px sans-serif;
+}
+A#popupLink296
+{
+	font: 14px sans-serif;
+}
+A#popupLink297
+{
+	font: 14px sans-serif;
+}
+A#popupLink298
+{
+	font: 14px sans-serif;
+}
+A#popupLink299
+{
+	font: 14px sans-serif;
+}
+A#popupLink240
+{
+	font: 15px sans-serif;
+}
+A#popupLink363
+{
+	font: 14px sans-serif;
+}
+A#popupLink360
+{
+	font: 14px sans-serif;
+}
+.align_left
+{
+	text-align: left;
+}
+.box_color
+{
+	background: #C7BAD2;
+	width: 350px;
+}
+.box_color_dark
+{
+	background: #E1DAE7;
+	width: 350px;
+}
+.income_grid_header
+{
+	font: 14px sans-serif;
+}
+TABLE#report_table
+{
+	margin: 0px auto;
+	font: normal 18px sans-serif;
+	color: #333333;
+	width: 700px;
+}
+TABLE#report_table A
+{
+	font: bold 16px sans-serif;
+	padding: 0px 0px 0px 2px;
+}
+TABLE#generic_drug_info
+{
+	margin: 0px;
+	font: normal 18px sans-serif;
+	color: #333333;
+	text-align: left;
+}
+TABLE#fact_sheet_buttons
+{
+	margin: 0px 35px;
+}
+TABLE#fact_sheet_buttons TR TD
+{
+	font: 16px sans-serif;
+	padding: 0px;
+}
+TABLE#fact_sheet_footer TBODY TR TD A IMG
+{
+	margin: 0px;
+}
+DIV.screeningText UL
+{
+	list-style: disc;
+	margin: 5px 0px;
+	/*[disabled]float:left;*/
+	/*[disabled]clear:both;*/
+	position: relative;
+	/*[disabled]width:100%;*/
+	padding: 5px 0px;
+}
+DIV.screeningText UL LI
+{
+	/*[disabled]clear:both;*/
+	/*[disabled]float:left;*/
+}
+TABLE#fact_sheet_buttons TR TD IMG
+{
+	font: 14px sans-serif;
+	margin: 0px !important;
+	float: left;
+	vertical-align: top;
+	padding: 0px;
+}
+DIV.appforms TABLE
+{
+	width: 260px;
+	margin: 0px;
+}
+IMG.snap_icon2
+{
+	margin: 0px -41px -7px 0px !important;
+	display: block;
+	clear: both;
+	border-bottom: 13px solid #E8E8E8;
+}
+TABLE#fact_sheet_footer
+{
+	width: 315px;
+	/*[empty]border:;*/
+}
+H1.screeningh1
+{
+	color: #333333;
+	font: bold 26px Arial;
+	padding: 8px 0px 2px;
+	margin: 20px 0px 5px;
+}
+.screeninghr
+{
+	border-bottom: 1px solid #333333;
+	height: 2px;
+	padding: 0px;
+	width: 100%;
+	margin: 0px 0px 5px;
+}
+H2.screeningh2
+{
+	color: #333333;
+	font: bold 20px sans-serif;
+	padding: 0px;
+}
+DIV.appformsouter
+{
+	float: right;
+	margin: 0px;
+	padding: 4px 0px 8px 16px;
+	width: 256px;
+	display: block;
+}
+DIV.appforms
+{
+	padding: 8px 8px 0px;
+	font: 12px sans-serif;
+	border: 1px solid #CCC;
+	background: #E8E8E8;
+	width: 260px;
+	float: right;
+	margin: 0px 0px 0px 9px;
+	clear: both;
+}
+DIV.factSheetH2
+{
+	font: bold 20px sans-serif;
+	color: #333333;
+	margin: 4px 0px 8px;
+}
+DIV.entry_point
+{
+	/*[disabled]font:16px sans-serif;*/
+	color: #333333;
+	width: 400px;
+}
+DIV.screeningtext
+{
+	font: 14px sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+DIV.screeningtext STRONG
+{
+	font: bold 18px sans-serif;
+}
+DIV.screeningText DIV TABLE
+{
+	/*[disabled]width:400px;*/
+	/*[disabled]float:left;*/
+	clear: both;
+}
+DIV#long_term_care, DIV#long_term_care A
+{
+	font: 14px sans-serif;
+}
+DIV.question_number
+{
+	padding: 0px 20px 0px 0px;
+	margin: 0px 0px 0px 5px;
+}
+TABLE#frmquestions_table
+{
+	margin: 0px;
+	clear: both;
+}
+DIV#frmquestions_td
+{
+	width: 616px;
+}
+DIV#submit_button
+{
+	margin: 0px 35px 0px 0px;
+	clear: both;
+}
+DIV.frmquestions_checkboxes
+{
+	width: 580px;
+}
+INPUT#typeDrugNm
+{
+	width: 245px;
+}
+UL.materials_list
+{
+	margin: 0px 0px 0px -25px !important;
+	list-style: none;
+}
+DIV.appforms TABLE TBODY TR TD.text1fact A
+{
+	margin: 0px 0px 0px 2px !important;
+	/*[disabled]float:left;*/
+	display: block;
+}
+/*[clearfix]*/DIV.appforms TABLE TBODY TR TD.text1fact
+{
+	padding: 0px !important;
+	margin: 0px !important;
+}
+DIV.link_padding
+{
+	margin: 2px 2px 0px 10px !important;
+	clear: both;
+	float: left;
+}
+DIV.application_link_padding
+{
+	margin: 0px 0px 8px 10px !important;
+	float: left;
+	padding: 0px !important;
+	clear: both;
+	/*[disabled]height:28px;*/
+	width: 235px;
+}
+DIV.program_link_padding
+{
+	margin: 0px 0px 8px 10px !important;
+	float: left;
+	padding: 0px !important;
+	clear: both;
+	/*[disabled]height:28px;*/
+	width: 235px;
+}
+DIV.application_image
+{
+	padding: 0px 5px 0px 0px !important;
+	margin: 0px;
+	clear: both;
+	float: left;
+	width: 25px;
+	/*[disabled]height:35px;*/
+}
+/*Report Form CSS*/
+.question_number
+{
+	font: bold 16px sans-serif;
+}
+SELECT
+{
+	float: left;
+	margin: 5px 0px 0px;
+}
+SELECT#select_esi_client
+{
+	margin: 5px 0px 0px -35px;
+}
+SELECT#month
+{
+	margin: 5px 0px 0px -70px;
+}
+SELECT#year
+{
+	margin: 5px 0px 0px -285px;
+}
+FORM#esiForm TABLE TBODY TR TD IMG
+{
+	margin: 0px 0px 0px -35px;
+}
+TABLE TBODY TR TD INPUT
+{
+	margin: 0px 10px 0px 0px;
+}
+FORM#formwelcome TABLE TBODY TR TD
+{
+	padding: 5px 0px 0px;
+}

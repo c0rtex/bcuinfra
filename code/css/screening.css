@@ -1,0 +1,73 @@
+.screeningh1
+{
+	color: #012156;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 26px;
+/*font-weight: bold;*/
+	letter-spacing: -0.05em;
+	margin: 0px 0px 15px;
+	padding: 0 0 2px;
+/*width: 200px;*/
+}
+.screeningh2
+{
+	color: #012156;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0px 0px 24px;
+	margin: 15px 0px 0px;
+	letter-spacing: -0.03em;
+}
+.screeninghr
+{
+	border-bottom: 1px solid #012156;
+	margin: 2px 0px 5px;
+	width: 100%;
+	height: 2px;
+	padding: 0px;
+	line-height: 2px;
+}
+.screeningClear
+{
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+}
+.screeningText
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+.appformsOuter
+{
+	margin: 0px;
+	width: 256px;
+	float: right;
+	padding: 4px 0px 8px 16px;
+}
+.appforms
+{
+	font-size: 12px;
+	background-color: #E8E8E8;
+	padding: 8px 8px 0px;
+	border: 1px solid #CCC;
+	width: 225px;
+	margin: 0px 0px 0px 10px;
+}
+.appforms UL, .appforms LI
+{
+	margin-left: 8px;
+	padding: 0px 0px 4px;
+}
+.screeningText B, .screeningText .epName
+{
+	color: #012156;
+}
+.text1fact
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0px 0px 12px;
+	padding: 0px;
+}

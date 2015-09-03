@@ -1,0 +1,7 @@
+<root> 
+		<p name="Boise" link="javascript:showOffices('locator_city.cfm?city=Boise&state=id&program_id=579');" type="font1" x="-84" y="106" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Coeur d'Alene" link="javascript:showOffices('locator_city.cfm?city=Coeur+d+Alene&state=id&program_id=579');" type="font1" x="-101" y="-117" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Idaho Falls" link="javascript:showOffices('locator_city.cfm?city=Idaho+Falls&state=id&program_id=579');" type="font1" x="86" y="106" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Pocatello" link="javascript:showOffices('locator_city.cfm?city=Pocatello&state=id&program_id=579');" type="font1" x="72" y="138" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Twin Falls" link="javascript:showOffices('locator_city.cfm?city=Twin+Falls&state=id&program_id=579');" type="font1" x="-19" y="155" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	</root>

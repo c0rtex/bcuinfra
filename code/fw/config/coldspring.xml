@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+	<!-- Application Beans -->
+	<bean id="userDAO" class="fw.model.user.userDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="userGateway" class="fw.model.user.userGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean> 
+	<bean id="userService" class="fw.model.user.userService">
+		<property name="userDAO"><ref bean="userDAO" /></property>
+		<property name="userGateway"><ref bean="userGateway" /></property>
+		<property name="addressService"><ref bean="addressService" /></property>
+		<property name="roleService"><ref bean="roleService" /></property>
+	</bean>
+	
+	<bean id="addressDAO" class="fw.model.address.addressDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="addressGateway" class="fw.model.address.addressGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>
+	<bean id="addressService" class="fw.model.address.addressService">
+		<property name="addressDAO"><ref bean="addressDAO" /></property>
+		<property name="addressGateway"><ref bean="addressGateway" /></property>
+	</bean>
+
+	<bean id="roleDAO" class="fw.model.user.role.roleDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="roleGateway" class="fw.model.user.role.roleGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>
+	<bean id="roleService" class="fw.model.user.role.roleService">
+		<property name="roleDAO"><ref bean="roleDAO" /></property>
+		<property name="roleGateway"><ref bean="roleGateway" /></property>
+	</bean>
+	
+	
+	<bean id="programDAO" class="fw.model.program.programDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="programGateway" class="fw.model.program.programGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean> 
+	<bean id="programServiceTarget" class="fw.model.program.programService">
+		<property name="programDAO"><ref bean="programDAO" /></property>
+		<property name="programGateway"><ref bean="programGateway" /></property>
+		<property name="programCategoryService"><ref bean="programCategoryService" /></property>
+		<property name="displayService"><ref bean="displayService" /></property>
+	</bean>
+	
+	<bean id="programService" class="coldspring.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<ref bean="programServiceTarget" />
+		</property>
+	</bean>
+	
+	<bean id="programCategoryDAO" class="fw.model.program.programCategory.programCategoryDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="programCategoryGateway" class="fw.model.program.programCategory.programCategoryGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean> 
+	<bean id="programCategoryService" class="fw.model.program.programcategory.programCategoryService">
+		<property name="programCategoryDAO"><ref bean="programCategoryDAO" /></property>
+		<property name="programCategoryGateway"><ref bean="programCategoryGateway" /></property>
+	</bean>
+	
+	<bean id="displayDAO" class="fw.model.display.displayDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="displayGateway" class="fw.model.display.displayGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>
+	<bean id="displayService" class="fw.model.display.displayService">
+		<property name="displayDAO"><ref bean="displayDAO" /></property>
+		<property name="displayGateway"><ref bean="displayGateway" /></property>
+		<property name="displaylanguageService"><ref bean="displaylanguageService" /></property>
+		<property name="displaygroupService"><ref bean="displaygroupService" /></property>
+	</bean>
+	
+	<bean id="displaylanguageDAO" class="fw.model.display.displaylanguage.displaylanguageDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="displaylanguageGateway" class="fw.model.display.displaylanguage.displaylanguageGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>
+	<bean id="displaylanguageService" class="fw.model.display.displaylanguage.displaylanguageService">
+		<property name="displaylanguageDAO"><ref bean="displaylanguageDAO" /></property>
+		<property name="displaylanguageGateway"><ref bean="displaylanguageGateway" /></property>
+	</bean>
+	
+	<bean id="displaygroupDAO" class="fw.model.display.displaygroup.displaygroupDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="displaygroupGateway" class="fw.model.display.displaygroup.displaygroupGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>
+	<bean id="displaygroupService" class="fw.model.display.displaygroup.displaygroupService">
+		<property name="displaygroupDAO"><ref bean="displaygroupDAO" /></property>
+		<property name="displaygroupGateway"><ref bean="displaygroupGateway" /></property>
+	</bean>
+	
+	
+	<bean id="subsetDAO" class="fw.model.subset.subsetDAO">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>  
+	<bean id="subsetGateway" class="fw.model.subset.subsetGateway">
+		<constructor-arg name="dsn"><value>${dsn}</value></constructor-arg>
+	</bean>
+	<bean id="subsetService" class="fw.model.subset.subsetService">
+		<property name="subsetDAO"><ref bean="subsetDAO" /></property>
+		<property name="subsetGateway"><ref bean="subsetGateway" /></property>
+		<property name="displayService"><ref bean="displayService" /></property>
+	</bean>
+	<!-- Logging service for http requests 
+	<bean id="loggingService" class="fw.model.util.loggingService" />
+	<bean id="loggingAdvice" class="fw.model.advice.loggingAroundAdvice">
+		<property name="loggingService">
+			<ref bean="loggingService" />
+         </property>
+	</bean>
+	<bean id="loggingAdvisor" class="coldspring.aop.support.NamedMethodPointcutAdvisor">
+		<property name="advice">
+			<ref bean="loggingAdvice" />
+		</property>
+		<property name="mappedNames">
+			<value>*</value>
+		</property>
+	</bean> -->
+	
+	<!-- Logging service for remote requests (AMF or web services) 
+	<bean id="loggingService_Remote" class="fw.model.util.loggingService">
+		<property name="file"><value>fw_remote</value></property>
+	</bean>
+	<bean id="loggingAdvice_Remote" class="fw.model.advice.loggingAroundAdvice">
+		<property name="loggingService">
+			<ref bean="loggingService_Remote" />
+         </property>
+	</bean>
+	<bean id="loggingAdvisor_Remote" class="coldspring.aop.support.NamedMethodPointcutAdvisor">
+		<property name="advice">
+			<ref bean="loggingAdvice_Remote" />
+		</property>
+		<property name="mappedNames">
+			<value>*</value>
+		</property>
+	</bean> -->
+	
+	<bean id="programService_Remote" class="coldspring.aop.framework.RemoteFactoryBean">
+		<property name="target">
+			<ref bean="programServiceTarget" />
+		</property>
+		<property name="serviceName">
+			<value>remoteProgramService</value>
+		</property>
+		<property name="relativePath">
+			<value>/fw/model/program/</value>
+		</property>
+		<property name="remoteMethodNames">
+			<value>*</value>
+		</property>
+		<property name="beanFactoryName">
+			<value>serviceFactory</value>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,44 @@
+
+	
+.container1 {
+		margin: 0 auto 0;   /* align for good browsers */
+		text-align: left; /* counter the body center */
+		width: 770px;
+		padding: 8px;
+	}
+	
+.container2 {
+
+font-family: verdana, arial, helvetica, sans-serif;
+	font-size: .9em; 
+
+		padding: 8px;
+margin: 8px;
+
+}
+	
+
+.icon {
+float: left;
+margin: 0px 0px 0px 0px;
+padding: 0px;
+	}
+	
+#icon1 {
+float: left;
+width: 31px;
+	}
+	
+/* hide from MacIE \*/
+* html #icon1 {
+	margin-right: -3px;
+	}
+* html .apply {
+	margin-left: 31px;
+	}
+/* end hide */
+
+* html .apply2 {
+	margin-left: 31px;
+	}
+/* end hide */

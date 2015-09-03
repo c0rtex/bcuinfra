@@ -1,0 +1,66 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Fairfield</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Hartford</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Litchfield</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Middlesex</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>New Haven</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>New London</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>Tolland</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Windham</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

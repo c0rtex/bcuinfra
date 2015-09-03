@@ -1,0 +1,218 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Aleutians East</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Aleutians West</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Anchorage</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Bethel</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Bristol Bay</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>Dillingham</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>Fairbanks North Star</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Haines</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>9</id>
+ <name>Juneau</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>10</id>
+ <name>Kenai Peninsula</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>11</id>
+ <name>Ketchikan Gateway</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>12</id>
+ <name>Kodiak Island</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>13</id>
+ <name>Lake and Peninsula</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>14</id>
+ <name>Matanuska-Susitna</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>15</id>
+ <name>Nome</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>16</id>
+ <name>North Slope</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>17</id>
+ <name>North West Arctic</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>18</id>
+ <name>Prince of Wales Outer Ketchikan</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>19</id>
+ <name>Sitka</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>20</id>
+ <name>Skagway Yakutat Angoon</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>21</id>
+ <name>Southeast Fairbanks</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>22</id>
+ <name>Valdez Cordova</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>23</id>
+ <name>Wade Hampton</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>24</id>
+ <name>Wrangell Petersburg</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>25</id>
+ <name>Yukon-Koyukuk</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>26</id>
+ <name>Denali</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>27</id>
+ <name>Yakutat</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

@@ -1,0 +1,266 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Bernalillo</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Catron</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Chaves</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Cibola</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Colfax</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>Curry</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>DeBaca</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Dona Ana</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>9</id>
+ <name>Eddy</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>10</id>
+ <name>Grant</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>11</id>
+ <name>Guadalupe</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>12</id>
+ <name>Harding</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>13</id>
+ <name>Hidalgo</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>14</id>
+ <name>Lea</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>15</id>
+ <name>Lincoln</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>16</id>
+ <name>Los Alamos</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>17</id>
+ <name>Luna</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>18</id>
+ <name>McKinley</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>19</id>
+ <name>Mora</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>20</id>
+ <name>Otero</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>21</id>
+ <name>Quay</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>22</id>
+ <name>Rio Arriba</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>23</id>
+ <name>Roosevelt</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>24</id>
+ <name>San Juan</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>25</id>
+ <name>San Miguel</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>26</id>
+ <name>Sandoval</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>27</id>
+ <name>Santa Fe</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>28</id>
+ <name>Sierra</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>29</id>
+ <name>Socorro</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>30</id>
+ <name>Taos</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>31</id>
+ <name>Torrance</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>32</id>
+ <name>Union</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>33</id>
+ <name>Valencia</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

@@ -1,0 +1,153 @@
+BODY
+{
+	margin: 0in;
+	width: 100%;
+	float: none;
+	color: #000000;
+}
+A:link, A:visited, A
+{
+	color: #781351;
+	text-decoration: none;
+}
+TABLE
+{
+	page-break-before: auto;
+	page-break-inside: avoid;
+}
+A.snapLink
+{
+	display: none;
+}
+DIV.search
+{
+	display: none;
+}
+DIV.entry_point A
+{
+	display: none;
+}
+A#viewMore
+{
+	display: none;
+}
+A#viewPrevious
+{
+	display: none;
+}
+DIV#language_office_map
+{
+	clear: both;
+	width: 100%;
+	float: left;
+}
+DIV#offices
+{
+	clear: both;
+	width: 100%;
+	float: left;
+}
+.pagebreak
+{
+	page-break-before: always;
+}
+.printtd
+{
+	width: 640px;
+	padding: 0px;
+}
+.noprint
+{
+	display: none;
+}
+.asof1
+{
+	display: none;
+}
+IMG
+{
+	border: 0px solid #000000;
+}
+.bcu
+{
+	display: none;
+}
+.footer
+{
+	display: none;
+}
+.footer1
+{
+	display: none;
+}
+.footer2
+{
+	display: none;
+}
+#globalnav
+{
+	display: none;
+}
+.noprint
+{
+	display: none;
+}
+.smalllink
+{
+	font-size: 0.65em;
+}
+.appformsOuter
+{
+	margin: 0px;
+	width: 264px;
+	float: right;
+	padding: 6px 0px 8px 8px;
+}
+.appforms
+{
+	font-size: 14px;
+	background-color: #C8C8C8;
+	padding: 16px 16px 0px;
+	border: 2px solid #B0B0B0;
+}
+.appforms UL, .appforms LI
+{
+	margin-left: 8px;
+	padding: 0px 0px 4px;
+}
+.container1
+{
+	width: 100%;
+}
+.contentTable
+{
+	width: 100%;
+}
+/*adding style for print headers on fact sheets...*/
+.factSheetH2
+{
+	font-size: 18px;
+	color: #012A5C;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	letter-spacing: -0.05em;
+}
+#snapLink, #zip_code_search, #flash_map
+{
+	display: none;
+}
+#officeCol
+{
+	padding: 0px; 
+	width: 95%;
+}
+#offices
+{
+	padding: 8px; 
+	width: 1000px; 
+	float:left;
+}
+

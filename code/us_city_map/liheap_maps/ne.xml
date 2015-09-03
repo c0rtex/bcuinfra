@@ -1,0 +1,746 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Adams</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Antelope</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Arthur</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Banner</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Blaine</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>Boone</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>Box Butte</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Boyd</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>9</id>
+ <name>Brown</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>10</id>
+ <name>Buffalo</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>11</id>
+ <name>Burt</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>12</id>
+ <name>Butler</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>13</id>
+ <name>Cass</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>14</id>
+ <name>Cedar</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>15</id>
+ <name>Chase</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>16</id>
+ <name>Cherry</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>17</id>
+ <name>Cheyenne</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>18</id>
+ <name>Clay</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>19</id>
+ <name>Colfax</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>20</id>
+ <name>Cuming</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>21</id>
+ <name>Custer</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>22</id>
+ <name>Dakota</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>23</id>
+ <name>Dawes</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>24</id>
+ <name>Dawson</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>25</id>
+ <name>Deuel</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>26</id>
+ <name>Dixon</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>27</id>
+ <name>Dodge</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>28</id>
+ <name>Douglas</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>29</id>
+ <name>Dundy</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>30</id>
+ <name>Fillmore</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>31</id>
+ <name>Franklin</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>32</id>
+ <name>Frontier</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>33</id>
+ <name>Furnas</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>34</id>
+ <name>Gage</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>35</id>
+ <name>Garden</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>36</id>
+ <name>Garfield</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>37</id>
+ <name>Gosper</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>38</id>
+ <name>Grant</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>39</id>
+ <name>Greeley</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>40</id>
+ <name>Hall</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>41</id>
+ <name>Hamilton</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>42</id>
+ <name>Harlan</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>43</id>
+ <name>Hayes</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>44</id>
+ <name>Hitchcock</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>45</id>
+ <name>Holt</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>46</id>
+ <name>Hooker</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>47</id>
+ <name>Howard</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>48</id>
+ <name>Jefferson</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>49</id>
+ <name>Johnson</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>50</id>
+ <name>Kearney</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>51</id>
+ <name>Keith</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>52</id>
+ <name>Keya Paha</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>53</id>
+ <name>Kimball</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>54</id>
+ <name>Knox</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>55</id>
+ <name>Lancaster</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>56</id>
+ <name>Lincoln</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>57</id>
+ <name>Logan</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>58</id>
+ <name>Loup</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>59</id>
+ <name>Madison</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>60</id>
+ <name>McPherson</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>61</id>
+ <name>Merrick</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>62</id>
+ <name>Morrill</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>63</id>
+ <name>Nance</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>64</id>
+ <name>Nemaha</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>65</id>
+ <name>Nuckolls</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>66</id>
+ <name>Otoe</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>67</id>
+ <name>Pawnee</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>68</id>
+ <name>Perkins</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>69</id>
+ <name>Phelps</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>70</id>
+ <name>Pierce</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>71</id>
+ <name>Platte</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>72</id>
+ <name>Polk</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>73</id>
+ <name>Red Willow</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>74</id>
+ <name>Richardson</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>75</id>
+ <name>Rock</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>76</id>
+ <name>Saline</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>77</id>
+ <name>Sarpy</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>78</id>
+ <name>Saunders</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>79</id>
+ <name>Scotts Bluff</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>80</id>
+ <name>Seward</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>81</id>
+ <name>Sheridan</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>82</id>
+ <name>Sherman</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>83</id>
+ <name>Sioux</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>84</id>
+ <name>Stanton</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>85</id>
+ <name>Thayer</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>86</id>
+ <name>Thomas</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>87</id>
+ <name>Thurston</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>88</id>
+ <name>Valley</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>89</id>
+ <name>Washington</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>90</id>
+ <name>Wayne</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>91</id>
+ <name>Webster</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>92</id>
+ <name>Wheeler</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>93</id>
+ <name>York</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

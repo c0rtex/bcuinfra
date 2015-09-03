@@ -1,0 +1,2232 @@
+﻿ 
+		<!-- These values need to be placed elsewhere in the screening -->
+		
+		<!-- END OBSOLESCENT -->
+	
+ 
+	<!-- Initialize session.screening structure -->
+	
+ 
+	<!-- The two variables below should be phased out along with all basic session-scope answerfields -->
+	
+		<!--cfoutput action="get" app="#isApplication#" state_id="#sqState#" subset_id="#session.subset_id#" partner_id="#session.partner_id#" var="qaire"-->
+		<HTML><HEAD><script type="text/javascript" src="CFIDE/scripts/cfform.js"></script>
+<script type="text/javascript" src="CFIDE/scripts/masks.js"></script>
+ 
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ 
+<head>
+<title>BenefitsCheckUp for NCOA's Economic Security Initiative</title>
+<meta name="description" content="BenefitsCheckUp screenings help seniors with limited income find programs to help pay for prescription drugs, energy assistance, food stamps, Alzheimer's care and more.">
+<meta name="keywords" content="benefit programs, prescription drug assistance, energy assistance, food stamps, tax relief, Medicare Part D, housing assistance, in-home services, nutrition, transportation, educational assistance, employment and volunteer Services."> 
+ 
+<link rel=stylesheet href="css/esi.css" type="text/css" media="screen" />
+ 
+<link rel=stylesheet href="css/plmenu.css" type="text/css" media="screen" />
+ 
+<link rel=stylesheet href="css/screening.css" type="text/css" />
+ 
+<!--[if IE]>
+<link rel=stylesheet href="css/plmenuie.css" type="text/css" media="screen" />
+<![endif]-->
+ 
+ 
+<link rel=stylesheet href="css/print_pl.css" type="text/css" media="print">
+ 
+<script language="JavaScript" src="ValidationFunctions.js"></script>
+<script language="JavaScript" src="js/bcu.js"></script>
+<script language="JavaScript" src="js/jquery.js"></script>
+<script language="JavaScript" src="include/zipcheck.js"></script>
+<script language="JavaScript" src="include/ziplist.js"></script>
+ 
+ 
+ 
+ 
+<script language="JavaScript"> 
+ 
+ 
+ 
+ 
+ 
+	function highlight_off(item) {
+	var tag = item + "h";
+	if (document.getElementById(tag)) {
+		var oetag = document.getElementById(tag);
+		oetag.id = item;
+		}
+	}
+ 
+	function highlight(item) {
+	if (document.getElementById(item)) {
+		var oetag = document.getElementById(item);
+		oetag.id = item + "h";
+		}
+	}
+ 
+	function fixpopups() {
+		var tag = "privacy";
+		if (document.getElementById(tag)) {
+			var oetag = document.getElementById(tag);
+			oetag.href = "javascript:help2('/privacy.cfm')";
+		}
+		
+		var tag2 = "terms";
+		if (document.getElementById(tag2)) {
+			var oetag2 = document.getElementById(tag2);
+			oetag2.href = "javascript:help2('/terms.cfm')";
+		}
+	}
+	
+	
+ 
+ 
+</script>
+ 
+ 
+ 
+<script type="text/javascript"> 
+<!--
+    _CF_checkesiForm = function(_CF_this)
+    {
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+ 
+ 
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                { _CF_this[_CF_FirstErrorField].focus(); }
+ 
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+</head>
+ 
+<body onLoad="fixpopups();">
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000"></div> 
+ 
+<div class="print">
+ 
+ 
+	<div class="mainCol">
+ 
+	
+	<div class="container1" id="container">
+	
+	
+		<div class="topheader">
+		
+			
+			
+			<div class="bculogo" style="margin-top:0px;">
+				<a href="http://bcuqa.benefitscheckup.org/index.cfm?partner_id=77" onClick="this.href='http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=0&client_id=NULL&user_id=NULL&test_id=0&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Findex%2Ecfm%3Fpartner%5Fid%3D77';"><img src="img/partners/bculogo.gif" alt="BenefitsCheckUp"></a> 
+			</div>
+ 
+			
+ 
+			<div class="logo" style="margin-top: 25; margin-right: 30;">
+				<a href="http://www.ncoa.org/enhancing-economic-security/economic-security" target="60"><img src="img/partners/economicsecurity/logo.gif" border="0" alt="NCOA's Economic Security Initiative - A Holistic Approach to Helping Older Adults in Need"></a>
+			</div>
+			
+	
+		</div>
+		
+		
+ 
+		<div class="clear"></div>
+		
+		
+ 
+ 
+	
+		<div class="topmenu">
+			<div class="noprint"> 
+	<ul id="globalnav">
+		<li> <a href="http://bcuqa.benefitscheckup.org/index.cfm?gohome=true&partner_id=77" onClick="this.href='http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=0&client_id=NULL&user_id=NULL&test_id=0&gohome=true&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Findex%2Ecfm%3Fgohome%3Dtrue%26partner%5Fid%3D77';">Home</a></li>
+		
+        	<li>
+            	<a href="http://bcuqa.benefitscheckup.org/esi_demo/esi_start.html" onClick="this.href='http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=0&client_id=NULL&user_id=NULL&test_id=0&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Fesi%5Fdemo%2Fesi%5Fstart%2Ehtml';"> EconomicCheckUp </a> 
+        <li> <a href="http://bcuqa.benefitscheckup.org/moreprograms.cfm?partner_id=77" onClick="this.href='http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=0&client_id=NULL&user_id=NULL&test_id=0&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Fmoreprograms%2Ecfm%3Fpartner%5Fid%3D77';"> BenefitsCheckUp </a></li>
+ 
+		
+		<li> <a href="http://bcuqa.benefitscheckup.org/extrahelp.cfm?partner_id=77" onClick="this.href='http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=0&client_id=NULL&user_id=NULL&test_id=0&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Fextrahelp%2Ecfm%3Fpartner%5Fid%3D77';">Apply for Extra Help</a></li>
+		 
+			<li> <a href="http://bcuqa.benefitscheckup.org/apply.cfm?partner_id=77" onClick="this.href='http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=0&client_id=NULL&user_id=NULL&test_id=0&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Fapply%2Ecfm%3Fpartner%5Fid%3D77';" target="_top">Find Applications</a></li>
+		
+		
+		
+		
+		
+		
+	</ul>
+	
+	</div>
+		</div>
+		
+		
+		
+		<div class="clear"></div>		
+	
+ 
+	<table cellpadding="0" cellspacing="0" border="0" class="table1">
+		<tr>
+		
+		
+		<td valign="top" class="contentcol2"><a href="http://bcuqa.benefitscheckup.org/dispatch.cfm?cfid=34362&cftoken=33874139&source_id=1&prev_id=0&org_id=0&partner_id=77&subset_id=63&language_id=EN&access_id=1&client_id=NULL&user_id=NULL&test_id=0&bcu_url=http%3A%2F%2Fbcuqa%2Ebenefitscheckup%2Eorg%2Ffrmwelcome2%2Ecfm%3Fpartner%5Fid%3D77%26subset%5Fid%3D63" title="For browsers utilizing a screen reader, please click here"></a><a href="#skipnav" title="Skip navigational links"></a>
+		<table cellpadding="0" cellspacing="0" align="center" border="0">
+		<tr>
+			<td align="center" valign="top" colspan="3"><img src="images/pixel.gif" width="1" height="5" border="0" alt=""></td>
+		</tr>
+		<tr>
+			<td align="center" valign="top" colspan="3"><font face="Arial" size="4"><b></b></font></td>
+		</tr>
+		
+		</table>
+		
+		
+ 
+	<script language="JavaScript" type="text/javascript" src="include/popup.js"></script>
+	<style type="text/css"> 
+.defPopup {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 250px;
+	height: auto;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 9pt;
+	z-index: 2;
+	padding: 10px 10px 10px 10px;
+	background: #eee;
+	border: #666;
+	border-width: 1px;
+	border-style: dashed;
+	text-align: left;
+}
+ 
+.defPopupTitle {
+	font-weight: bold;
+	font-size: 13pt;
+	margin-bottom: -7px;
+	text-align: left;
+}
+ 
+.defPopupClose {
+	font-size: 8pt;
+	float: right;
+	text-align: right;
+}
+ 
+a.defPopupCloseLink:hover {
+	background: pink;
+}
+ 
+.defPopupShadow {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1px;
+	font-size: 0;
+	width: 250;
+	height: 250;
+	background: gray;
+	z-index: 1;
+	opacity: .3;
+	filter: alpha(opacity=30);
+}
+</style>
+	<div id="popupLayer" class="defPopup">
+		<p id="popupClose" class="defPopupClose"></p>
+		<p id="popupTitle" class="defPopupTitle"></p>
+		<p id="popupBody"></p>
+	</div>
+	<div id="shadowLayer" class="defPopupShadow"></div>
+	<script language="JavaScript">
+		addEvent(document.getElementById('shadowLayer'), 'click', hidePopup, false);
+	</script>
+	<table width="100%" border="0" align="center" cellpadding="12" cellspacing="2">
+		<tr>
+			<td bgcolor="#ffffff" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">  
+            <img src="http://bcuqa.benefitscheckup.org/img/image_subheader-5min.jpg" alt="5 Minute Clinic">
+            <form name="esiForm" id="esiForm" action="esi_questions.cfm?cfid=34362&cftoken=33874139" method="post" onsubmit="return _CF_checkesiForm(this)"> 
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr style="font-weight: bold; font-size: 14pt;">
+			<td align="left" valign="top">
+            	 </td>
+			<td>&nbsp;&nbsp;&nbsp;</td>
+            
+        </tr>
+	</table>
+	
+	<p style="font-weight: bold; font-size: 11pt;">  </p>
+	
+	
+	<TABLE valign="top" border="0">
+		
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_client').style.display == 'none') document.getElementById('esi_client').style.display = ''; else document.getElementById('esi_client').style.display = 'none'; return false;">
+                            1. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                For whom are you completing this questionnaire? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_client" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 721: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=721&action=edit" target="dc">esi_client</a><br>
+	<b>answerfields:</b>&nbsp; 6527: esi_client; 6604: esi_other_specify </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<table border="0" cellspacing="2">
+					
+					<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+						<td> 
+				<select id="select_esi_client" name="esi_client" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;" onChange="var objrow = document.getElementById('tr_esi_other_specify'); if (this.selectedIndex == this.options.length - 1) objrow.style.display = ''; else {this.form.esi_other_specify.value = ''; objrow.style.display = 'none';}">
+					<option value="">- Select -</option>
+				
+					<option value="1353-self"> Self </option>
+                
+					<option value="2345-spouse"> Spouse </option>
+                
+					<option value="1354-mother"> Mother </option>
+                
+					<option value="1355-father"> Father </option>
+                
+					<option value="1358-client"> Client </option>
+                
+					<option value="1360-other"> Other </option>
+                
+				</select>
+			</td>
+						
+					<tr id="tr_esi_other_specify" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black; display: none;">
+						<td><img src="images/pixel.gif" width="1" height="5" border="0" alt="" title=""><br> If "Other," please specify: &nbsp; 
+			
+			<input type="text" name="esi_other_specify" value="" maxlength="64" size="32">
+		<img src="images/pixel.gif" width="1" height="1" border="0" alt="" title="" onLoad="var objitem = document.getElementById('select_esi_client'); var objtr = document.getElementById('tr_esi_other_specify'); if (objitem.selectedIndex == objitem.options.length - 1) objtr.style.display = ''; else {objitem.form.esi_other_specify.value = ''; objtr.style.display = 'none';}"></td>
+						
+					</tr>
+				</table>
+			
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_zip').style.display == 'none') document.getElementById('esi_zip').style.display = ''; else document.getElementById('esi_zip').style.display = 'none'; return false;">
+                            2. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Enter your zip code: 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_zip" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 722: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=722&action=edit" target="dc">esi_zip</a><br>
+	<b>answerfields:</b>&nbsp; 6536: esi_zip </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			<input type="text" name="esi_zip" value="" size="6" maxlength="5">
+            <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_birth').style.display == 'none') document.getElementById('esi_birth').style.display = ''; else document.getElementById('esi_birth').style.display = 'none'; return false;">
+                            3. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Please enter your month and year of birth. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_birth" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 723: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=723&action=edit" target="dc">esi_birth</a><br>
+	<b>answerfields:</b>&nbsp; 6603: esi_birth_month; 6605: esi_birth_year </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<table border="0" cellspacing="2">
+					<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+                    
+						<td><table border="0" cellpadding="0" cellspacing="0"><tr><td> 
+			<select name="esi_birth_month" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+				<option value="">-- month --
+			
+				<option value="1"> Jan 
+				<option value="2"> Feb 
+				<option value="3"> Mar 
+				<option value="4"> Apr 
+				<option value="5"> May 
+				<option value="6"> Jun 
+				<option value="7"> Jul 
+				<option value="8"> Aug 
+				<option value="9"> Sep 
+				<option value="10"> Oct 
+				<option value="11"> Nov 
+				<option value="12"> Dec 
+			</select>
+		</td></tr>
+						<tr style="font-size: 9pt;"><td> </td></tr></table></td>
+						
+						<td><table border="0" cellpadding="0" cellspacing="0"><tr><td> 
+			<select name="esi_birth_year" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+				<option value="">-- year --
+			
+				<option value="1900">1900 
+				<option value="1901">1901 
+				<option value="1902">1902 
+				<option value="1903">1903 
+				<option value="1904">1904 
+				<option value="1905">1905 
+				<option value="1906">1906 
+				<option value="1907">1907 
+				<option value="1908">1908 
+				<option value="1909">1909 
+				<option value="1910">1910 
+				<option value="1911">1911 
+				<option value="1912">1912 
+				<option value="1913">1913 
+				<option value="1914">1914 
+				<option value="1915">1915 
+				<option value="1916">1916 
+				<option value="1917">1917 
+				<option value="1918">1918 
+				<option value="1919">1919 
+				<option value="1920">1920 
+				<option value="1921">1921 
+				<option value="1922">1922 
+				<option value="1923">1923 
+				<option value="1924">1924 
+				<option value="1925">1925 
+				<option value="1926">1926 
+				<option value="1927">1927 
+				<option value="1928">1928 
+				<option value="1929">1929 
+				<option value="1930">1930 
+				<option value="1931">1931 
+				<option value="1932">1932 
+				<option value="1933">1933 
+				<option value="1934">1934 
+				<option value="1935">1935 
+				<option value="1936">1936 
+				<option value="1937">1937 
+				<option value="1938">1938 
+				<option value="1939">1939 
+				<option value="1940">1940 
+				<option value="1941">1941 
+				<option value="1942">1942 
+				<option value="1943">1943 
+				<option value="1944">1944 
+				<option value="1945">1945 
+				<option value="1946">1946 
+				<option value="1947">1947 
+				<option value="1948">1948 
+				<option value="1949">1949 
+				<option value="1950">1950 
+				<option value="1951">1951 
+				<option value="1952">1952 
+				<option value="1953">1953 
+				<option value="1954">1954 
+				<option value="1955">1955 
+				<option value="1956">1956 
+				<option value="1957">1957 
+				<option value="1958">1958 
+				<option value="1959">1959 
+				<option value="1960">1960 
+				<option value="1961">1961 
+				<option value="1962">1962 
+				<option value="1963">1963 
+				<option value="1964">1964 
+				<option value="1965">1965 
+				<option value="1966">1966 
+				<option value="1967">1967 
+				<option value="1968">1968 
+				<option value="1969">1969 
+				<option value="1970">1970 
+				<option value="1971">1971 
+				<option value="1972">1972 
+				<option value="1973">1973 
+				<option value="1974">1974 
+				<option value="1975">1975 
+				<option value="1976">1976 
+				<option value="1977">1977 
+				<option value="1978">1978 
+				<option value="1979">1979 
+				<option value="1980">1980 
+				<option value="1981">1981 
+				<option value="1982">1982 
+				<option value="1983">1983 
+				<option value="1984">1984 
+				<option value="1985">1985 
+				<option value="1986">1986 
+				<option value="1987">1987 
+				<option value="1988">1988 
+				<option value="1989">1989 
+				<option value="1990">1990 
+				<option value="1991">1991 
+				<option value="1992">1992 
+				<option value="1993">1993 
+				<option value="1994">1994 
+				<option value="1995">1995 
+				<option value="1996">1996 
+				<option value="1997">1997 
+				<option value="1998">1998 
+				<option value="1999">1999 
+				<option value="2000">2000 
+				<option value="2001">2001 
+				<option value="2002">2002 
+				<option value="2003">2003 
+				<option value="2004">2004 
+				<option value="2005">2005 
+				<option value="2006">2006 
+				<option value="2007">2007 
+				<option value="2008">2008 
+				<option value="2009">2009 
+				<option value="2010">2010 
+			</select>
+		</td></tr>
+						<tr style="font-size: 9pt;"><td> </td></tr></table></td>
+						
+					</tr>
+				</table>
+			
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_marital').style.display == 'none') document.getElementById('esi_marital').style.display = ''; else document.getElementById('esi_marital').style.display = 'none'; return false;">
+                            4. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                What is your marital status? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_marital" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 724: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=724&action=edit" target="dc">esi_marital</a><br>
+	<b>answerfields:</b>&nbsp; 6534: esi_marital </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_marital" name="esi_marital" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="1361-married_living_sep"> Married Living Separately </option>
+                
+					<option value="4-married"> Married </option>
+                
+					<option value="5-divorced"> Divorced </option>
+                
+					<option value="6-single"> Single </option>
+                
+					<option value="7-widowed"> Widowed </option>
+                
+					<option value="2477-esi_living_with_partner"> Living With Partner </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_gender').style.display == 'none') document.getElementById('esi_gender').style.display = ''; else document.getElementById('esi_gender').style.display = 'none'; return false;">
+                            5. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                What is your gender? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_gender" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 725: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=725&action=edit" target="dc">esi_gender</a><br>
+	<b>answerfields:</b>&nbsp; 6537: esi_gender </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_gender" name="esi_gender" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="3-female"> Female </option>
+                
+					<option value="2-male"> Male </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_race').style.display == 'none') document.getElementById('esi_race').style.display = ''; else document.getElementById('esi_race').style.display = 'none'; return false;">
+                            6. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                What is your race/ethnicity? (optional) 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_race" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 726: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=726&action=edit" target="dc">esi_race</a><br>
+	<b>answerfields:</b>&nbsp; 6612: esi_ethnicity </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_ethnicity" name="esi_ethnicity" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="2513-esi_asianpacificislander"> Asian Pacific Islander </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="img/esi_header_income.jpg" width="747" height="66" alt="" title="" border="0" /><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_basicneeds').style.display == 'none') document.getElementById('esi_basicneeds').style.display = ''; else document.getElementById('esi_basicneeds').style.display = 'none'; return false;">
+                            7. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                How challenging is it for you to provide for your basic needs on a monthly basis? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_basicneeds" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 727: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=727&action=edit" target="dc">esi_basicneeds</a><br>
+	<b>answerfields:</b>&nbsp; 6591: esi_basicneeds </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_basicneeds" name="esi_basicneeds" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="2495-esi_notachallenge"> Not a challenge </option>
+                
+					<option value="2499-esi_canbeachallenge"> Can be a challenge </option>
+                
+					<option value="2496-esi_isachallenge"> Is a challenge every month </option>
+                
+					<option value="2497-esi_ineedassistance"> Every month I need assistance </option>
+                
+					<option value="2498-esi_cannotmeetobligations"> Cannot meet obligations even with assistance </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_grossmonthlyincome_question').style.display == 'none') document.getElementById('esi_grossmonthlyincome_question').style.display = ''; else document.getElementById('esi_grossmonthlyincome_question').style.display = 'none'; return false;">
+                            8. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                What is the gross total monthly income for you and your spouse/partner, if applicable, from all sources before taxes and other deductions? Include income from Social Security, VA compensation/pension, dividends, interest, private pensions, retirement benefits, work, rental income, unemployment compensation, etc. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_grossmonthlyincome_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 728: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=728&action=edit" target="dc">esi_grossmonthlyincome_question</a><br>
+	<b>answerfields:</b>&nbsp; 6544: esi_grossmonthlyincome </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_grossmonthlyincome" name="esi_grossmonthlyincome" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_totalassets_question').style.display == 'none') document.getElementById('esi_totalassets_question').style.display = ''; else document.getElementById('esi_totalassets_question').style.display = 'none'; return false;">
+                            9. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Please enter your total value of assets (excluding the value of your home). 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_totalassets_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 729: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=729&action=edit" target="dc">esi_totalassets_question</a><br>
+	<b>answerfields:</b>&nbsp; 6545: esi_totalassets </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_totalassets" name="esi_totalassets" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_incomesupport_question').style.display == 'none') document.getElementById('esi_incomesupport_question').style.display = ''; else document.getElementById('esi_incomesupport_question').style.display = 'none'; return false;">
+                            10. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Including yourself, how many people in your household does your income support? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_incomesupport_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 730: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=730&action=edit" target="dc">esi_incomesupport_question</a><br>
+	<b>answerfields:</b>&nbsp; 6546: esi_incomesupport </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			
+			<input type="text" name="esi_incomesupport" value="" maxlength="2" size="3">
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_depandants_question').style.display == 'none') document.getElementById('esi_depandants_question').style.display = ''; else document.getElementById('esi_depandants_question').style.display = 'none'; return false;">
+                            11. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Do you have any dependants? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_depandants_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 731: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=731&action=edit" target="dc">esi_depandants_question</a><br>
+	<b>answerfields:</b>&nbsp; 6547: esi_dependants </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+                	<div style="">
+					<input id="radio_yes_esi_dependants" type="radio" name="esi_dependants" value="y"> Yes
+					&nbsp; <input id="radio_no_esi_dependants" type="radio" name="esi_dependants" value="n"> No
+					</div>
+                <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_type_dependents').style.display == 'none') document.getElementById('esi_type_dependents').style.display = ''; else document.getElementById('esi_type_dependents').style.display = 'none'; return false;">
+                            12. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                If yes, what type of dependent(s) do you support? (select all that apply) 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_type_dependents" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 756: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=756&action=edit" target="dc">esi_type_dependents</a><br>
+	<b>answerfields:</b>&nbsp; 6606: esi_dependspouse; 6607: esi_dependpartner; 6608: esi_dependadultchild; 6609: esi_dependgrandchild; 6610: esi_dependotherrelative; 6611: esi_dependfriend </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_dependspouse" id="esi_dependspouse" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Spouse <br />
+						 
+			 
+			<input type="checkbox" name="esi_dependpartner" id="esi_dependpartner" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Partner <br />
+						 
+			 
+			<input type="checkbox" name="esi_dependadultchild" id="esi_dependadultchild" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Adult Child <br />
+						 
+			 
+			<input type="checkbox" name="esi_dependgrandchild" id="esi_dependgrandchild" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Grandchild <br />
+						 
+			 
+			<input type="checkbox" name="esi_dependotherrelative" id="esi_dependotherrelative" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Other Relative <br />
+						 
+			 
+			<input type="checkbox" name="esi_dependfriend" id="esi_dependfriend" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Friend <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_receive_publicbenefits').style.display == 'none') document.getElementById('esi_receive_publicbenefits').style.display = ''; else document.getElementById('esi_receive_publicbenefits').style.display = 'none'; return false;">
+                            13. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Do you receive public benefits? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_receive_publicbenefits" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 757: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=757&action=edit" target="dc">esi_receive_publicbenefits</a><br>
+	<b>answerfields:</b>&nbsp; 6594: esi_receivepublicbenefits </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_receivepublicbenefits" type="radio" name="esi_receivepublicbenefits" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_receivepublicbenefits" type="radio" name="esi_receivepublicbenefits" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_currentvaluebenefits').style.display == 'none') document.getElementById('esi_currentvaluebenefits').style.display = ''; else document.getElementById('esi_currentvaluebenefits').style.display = 'none'; return false;">
+                            14. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                If yes, what is the current value of benefits? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_currentvaluebenefits" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 758: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=758&action=edit" target="dc">esi_currentvaluebenefits</a><br>
+	<b>answerfields:</b>&nbsp; 6595: esi_currentvaluebenefits </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_currentvaluebenefits" name="esi_currentvaluebenefits" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="../img/esi_header_employment.jpg" alt=" Employment Header "  height="66" ><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_employmentsituation_question').style.display == 'none') document.getElementById('esi_employmentsituation_question').style.display = ''; else document.getElementById('esi_employmentsituation_question').style.display = 'none'; return false;">
+                            15. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Please select your current work status. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_employmentsituation_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 732: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=732&action=edit" target="dc">esi_employmentsituation_question</a><br>
+	<b>answerfields:</b>&nbsp; 6548: esi_employmentsituation_list </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_employmentsituation_list" name="esi_employmentsituation_list" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="2482-esi_employmentsituation_retired"> Retired </option>
+                
+					<option value="2483-esi_employmentsituation_employed"> Employed </option>
+                
+					<option value="2484-esi_employmentsituation_seeking"> Unemployed </option>
+                
+					<option value="2485-esi_employmentsituation_underemp"> Underemployed </option>
+                
+					<option value="2486-esi_employmentsituation_none"> None of the above </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_seekingemployment_question').style.display == 'none') document.getElementById('esi_seekingemployment_question').style.display = ''; else document.getElementById('esi_seekingemployment_question').style.display = 'none'; return false;">
+                            16. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                If you are seeking employment, please check all that apply. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_seekingemployment_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 733: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=733&action=edit" target="dc">esi_seekingemployment_question</a><br>
+	<b>answerfields:</b>&nbsp; 6549: esi_seekingemployment_usehelp; 6550: esi_seekingemployment_refresher; 6600: esi_seekingemployment_skillsassessment </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_seekingemployment_usehelp" id="esi_seekingemployment_usehelp" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I could use help with the job search. <br />
+						 
+			 
+			<input type="checkbox" name="esi_seekingemployment_refresher" id="esi_seekingemployment_refresher" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I could benefit from an online employment skill refresher course. <br />
+						 
+			 
+			<input type="checkbox" name="esi_seekingemployment_skillsassessment" id="esi_seekingemployment_skillsassessment" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I'm interested in assessing my current skills
+to identify employment opportunities. <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="../img/esi_header_debt.jpg" alt=" Debt Header "  height="66" ><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_nonhousingdebt_question').style.display == 'none') document.getElementById('esi_nonhousingdebt_question').style.display = ''; else document.getElementById('esi_nonhousingdebt_question').style.display = 'none'; return false;">
+                            17. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Do you have any non-housing debt (credit cards, car loan, personal loan, etc.)? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_nonhousingdebt_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 734: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=734&action=edit" target="dc">esi_nonhousingdebt_question</a><br>
+	<b>answerfields:</b>&nbsp; 6551: esi_nonhousingdebt </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_nonhousingdebt" type="radio" name="esi_nonhousingdebt" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_nonhousingdebt" type="radio" name="esi_nonhousingdebt" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_debtestimate_question').style.display == 'none') document.getElementById('esi_debtestimate_question').style.display = ''; else document.getElementById('esi_debtestimate_question').style.display = 'none'; return false;">
+                            18. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                If Yes, please estimate the total amount of debt: 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_debtestimate_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 735: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=735&action=edit" target="dc">esi_debtestimate_question</a><br>
+	<b>answerfields:</b>&nbsp; 6552: esi_debtestimate </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_debtestimate" name="esi_debtestimate" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_debtscenarios_question').style.display == 'none') document.getElementById('esi_debtscenarios_question').style.display = ''; else document.getElementById('esi_debtscenarios_question').style.display = 'none'; return false;">
+                            19. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Which of these scenarios best describes your situation? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_debtscenarios_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 736: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=736&action=edit" target="dc">esi_debtscenarios_question</a><br>
+	<b>answerfields:</b>&nbsp; 6553: esi_debtscenarios_creditlimit; 6554: esi_debtscenarios_minimum; 6555: esi_debtscenarios_creditors; 6556: esi_debtscenarios_bankruptcy; 6596: esi_debtscenarios_gettingharder; 6597: esi_debtscenarios_notapplicable </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_debtscenarios_creditlimit" id="esi_debtscenarios_creditlimit" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Are you near or at the limit of your lines of credit? <br />
+						 
+			 
+			<input type="checkbox" name="esi_debtscenarios_minimum" id="esi_debtscenarios_minimum" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Can you only make the minimum payments on your credit cards? <br />
+						 
+			 
+			<input type="checkbox" name="esi_debtscenarios_creditors" id="esi_debtscenarios_creditors" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Are you receiving calls from creditors about overdue bills? <br />
+						 
+			 
+			<input type="checkbox" name="esi_debtscenarios_bankruptcy" id="esi_debtscenarios_bankruptcy" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Are you considering bankruptcy? <br />
+						 
+			 
+			<input type="checkbox" name="esi_debtscenarios_gettingharder" id="esi_debtscenarios_gettingharder" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Is it getting harder to keep up with paperwork, bills and payments? <br />
+						 
+			 
+			<input type="checkbox" name="esi_debtscenarios_notapplicable" id="esi_debtscenarios_notapplicable" value="y"
+			 checked="checked" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> None of the Above <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_helpbalancing_question').style.display == 'none') document.getElementById('esi_helpbalancing_question').style.display = ''; else document.getElementById('esi_helpbalancing_question').style.display = 'none'; return false;">
+                            20. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Would you like help in balancing your budget, lowering costs, reducing debt, applying for senior help programs, and/or staying on top of your finances? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_helpbalancing_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 737: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=737&action=edit" target="dc">esi_helpbalancing_question</a><br>
+	<b>answerfields:</b>&nbsp; 6557: esi_helpbalancing </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_helpbalancing" type="radio" name="esi_helpbalancing" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_helpbalancing" type="radio" name="esi_helpbalancing" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="../img/esi_header_housing.jpg" alt=" Housing Header "  height="66" ><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_housingtype_queston').style.display == 'none') document.getElementById('esi_housingtype_queston').style.display = ''; else document.getElementById('esi_housingtype_queston').style.display = 'none'; return false;">
+                            21. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                In what type of housing do you live? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_housingtype_queston" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 738: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=738&action=edit" target="dc">esi_housingtype_queston</a><br>
+	<b>answerfields:</b>&nbsp; 6558: esi_housingtype </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_housingtype" name="esi_housingtype" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="2487-esi_housingtype_own"> Own Home </option>
+                
+					<option value="2488-esi_housingtype_rent"> Rent Dwelling </option>
+                
+					<option value="2489-esi_housingtype_liveothers"> Live w/ Others </option>
+                
+					<option value="2490-esi_housingtype_subsidized"> Subsidized Housing </option>
+                
+					<option value="2491-esi_housingtype_homeless"> Homeless/Shelter </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_estimatedvalue_question').style.display == 'none') document.getElementById('esi_estimatedvalue_question').style.display = ''; else document.getElementById('esi_estimatedvalue_question').style.display = 'none'; return false;">
+                            22. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                <strong>If you are not a homeowner, skip the next 4 questions regarding home ownership.</strong> <br>What is the estimated value of your house? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_estimatedvalue_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 739: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=739&action=edit" target="dc">esi_estimatedvalue_question</a><br>
+	<b>answerfields:</b>&nbsp; 6559: esi_estimatedvalue </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_estimatedvalue" name="esi_estimatedvalue" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_totaldebthouse_question').style.display == 'none') document.getElementById('esi_totaldebthouse_question').style.display = ''; else document.getElementById('esi_totaldebthouse_question').style.display = 'none'; return false;">
+                            23. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                What is the total outstanding debt on your house (mortgage/other home loans)? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_totaldebthouse_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 740: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=740&action=edit" target="dc">esi_totaldebthouse_question</a><br>
+	<b>answerfields:</b>&nbsp; 6560: esi_totaldebthouse </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_totaldebthouse" name="esi_totaldebthouse" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_homeinsurance_question').style.display == 'none') document.getElementById('esi_homeinsurance_question').style.display = ''; else document.getElementById('esi_homeinsurance_question').style.display = 'none'; return false;">
+                            24. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Do you have homeowner's insurance? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_homeinsurance_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 741: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=741&action=edit" target="dc">esi_homeinsurance_question</a><br>
+	<b>answerfields:</b>&nbsp; 6561: esi_homeinsurance </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_homeinsurance" type="radio" name="esi_homeinsurance" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_homeinsurance" type="radio" name="esi_homeinsurance" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_housingsituation_question').style.display == 'none') document.getElementById('esi_housingsituation_question').style.display = ''; else document.getElementById('esi_housingsituation_question').style.display = 'none'; return false;">
+                            25. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Please check all of the items below that describe your situation. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_housingsituation_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 742: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=742&action=edit" target="dc">esi_housingsituation_question</a><br>
+	<b>answerfields:</b>&nbsp; 6562: esi_housingsituation_mortgagepaidoff; 6563: esi_housingsituation_underwater; 6564: esi_housingsituation_someequity; 6565: esi_housingsituation_foreclosure; 6598: esi_housingsituation_reversemortgage; 6599: esi_housingsituation__notapplicable </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_housingsituation_mortgagepaidoff" id="esi_housingsituation_mortgagepaidoff" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> My mortgage is paid off, but I have trouble with the utility, property tax, and/or homeowner's insurance payments. <br />
+						 
+			 
+			<input type="checkbox" name="esi_housingsituation_underwater" id="esi_housingsituation_underwater" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> My mortgage exceeds the current value of my home. <br />
+						 
+			 
+			<input type="checkbox" name="esi_housingsituation_someequity" id="esi_housingsituation_someequity" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> My mortgage exceeds the current value of my home. <br />
+						 
+			 
+			<input type="checkbox" name="esi_housingsituation_foreclosure" id="esi_housingsituation_foreclosure" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I am facing foreclosure. <br />
+						 
+			 
+			<input type="checkbox" name="esi_housingsituation_reversemortgage" id="esi_housingsituation_reversemortgage" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I have a reverse mortgage and am behind on my utility, property tax, and/or homeowner's insurance payments. <br />
+						 
+			 
+			<input type="checkbox" name="esi_housingsituation__notapplicable" id="esi_housingsituation__notapplicable" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> None of the Above <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_rent_question').style.display == 'none') document.getElementById('esi_rent_question').style.display = ''; else document.getElementById('esi_rent_question').style.display = 'none'; return false;">
+                            26. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                <strong>If you are not renting, skip to next question.</strong> <br>
+If you are renting, which of these scenarios best describes your situation? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_rent_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 743: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=743&action=edit" target="dc">esi_rent_question</a><br>
+	<b>answerfields:</b>&nbsp; 6567: esi_rent_behind; 6566: esi_rent_difficultypaying; 6568: esi_rent_eviction; 6601: esi_rent_noneoftheabove </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_rent_behind" id="esi_rent_behind" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I am behind on my rent. <br />
+						 
+			 
+			<input type="checkbox" name="esi_rent_difficultypaying" id="esi_rent_difficultypaying" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I am able to pay my rent, but am having difficulty paying my other expenses. <br />
+						 
+			 
+			<input type="checkbox" name="esi_rent_eviction" id="esi_rent_eviction" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> I am behind on my rent and facing eviction. <br />
+						 
+			 
+			<input type="checkbox" name="esi_rent_noneoftheabove" id="esi_rent_noneoftheabove" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> None of the Above <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_outofpocket_question').style.display == 'none') document.getElementById('esi_outofpocket_question').style.display = ''; else document.getElementById('esi_outofpocket_question').style.display = 'none'; return false;">
+                            27. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                What are your household's monthly, out of pocket, costs for heating fuel, gas, electricity, water, telephone, property taxes, homeowner's insurance, and rent or mortgage payments? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_outofpocket_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 744: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=744&action=edit" target="dc">esi_outofpocket_question</a><br>
+	<b>answerfields:</b>&nbsp; 6569: esi_outofpocket </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_outofpocket" name="esi_outofpocket" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="../img/esi_header_mobility.jpg" alt=" Mobility Header "  height="66" ><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_mobililty_question').style.display == 'none') document.getElementById('esi_mobililty_question').style.display = ''; else document.getElementById('esi_mobililty_question').style.display = 'none'; return false;">
+                            28. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Please select which best describes your mobility. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_mobililty_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 745: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=745&action=edit" target="dc">esi_mobililty_question</a><br>
+	<b>answerfields:</b>&nbsp; 6570: esi_mobility_owncar; 6571: esi_mobility_useavailable; 6572: esi_mobility_limited; 6573: esi_mobility_unreliable; 6574: esi_mobility_notransportation </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_mobility_owncar" id="esi_mobility_owncar" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Own automobile or have transportation readily available. <br />
+						 
+			 
+			<input type="checkbox" name="esi_mobility_useavailable" id="esi_mobility_useavailable" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Use available transportation to meet basic needs with or without subsidies. <br />
+						 
+			 
+			<input type="checkbox" name="esi_mobility_limited" id="esi_mobility_limited" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Limited transportation depending on subsidies to access transportation. <br />
+						 
+			 
+			<input type="checkbox" name="esi_mobility_unreliable" id="esi_mobility_unreliable" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Transportation unreliable and/or unaffordable. <br />
+						 
+			 
+			<input type="checkbox" name="esi_mobility_notransportation" id="esi_mobility_notransportation" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> No personal transportation or access to public transportation. <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="../img/esi_header_food.jpg" alt=" Food "  height="66" ><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_meals_question').style.display == 'none') document.getElementById('esi_meals_question').style.display = ''; else document.getElementById('esi_meals_question').style.display = 'none'; return false;">
+                            29. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Please select which best describes your access and type of meals. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_meals_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 746: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=746&action=edit" target="dc">esi_meals_question</a><br>
+	<b>answerfields:</b>&nbsp; 6575: esi_meals_balanced; 6576: esi_meals_withassistance; 6577: esi_meals_relyonassistance; 6578: esi_meals_inadequate; 6579: esi_meals_nofood </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_meals_balanced" id="esi_meals_balanced" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Well balanced meals with or without assistance. <br />
+						 
+			 
+			<input type="checkbox" name="esi_meals_withassistance" id="esi_meals_withassistance" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Daily well-balanced meals with social and/or community assistance. <br />
+						 
+			 
+			<input type="checkbox" name="esi_meals_relyonassistance" id="esi_meals_relyonassistance" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Rely on community/social assistance for basic nutritional needs. <br />
+						 
+			 
+			<input type="checkbox" name="esi_meals_inadequate" id="esi_meals_inadequate" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Food inadequate for nutritional needs. <br />
+						 
+			 
+			<input type="checkbox" name="esi_meals_nofood" id="esi_meals_nofood" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> No food and at risk for malnutrition. <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   <tr valign="middle" align="left" ><td colspan=5><img src="../img/esi_header_health.jpg" alt=" Health "  height="66" ><br><br></td></tr>
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_ratehealth_question').style.display == 'none') document.getElementById('esi_ratehealth_question').style.display = ''; else document.getElementById('esi_ratehealth_question').style.display = 'none'; return false;">
+                            30. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                How would you rate your health? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_ratehealth_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 747: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=747&action=edit" target="dc">esi_ratehealth_question</a><br>
+	<b>answerfields:</b>&nbsp; 6580: esi_ratehealth </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+				<select id="select_esi_ratehealth" name="esi_ratehealth" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<option value="">- Select -</option>
+				
+					<option value="2511-esi_ratehealth_excellent"> Excellent - No diagnosed chronic illnesses, active and mobile </option>
+                
+					<option value="2512-esi_ratehealth_verygood"> Very Good – No diagnosed chronic illnesses, minor difficulty with mobility and activity </option>
+                
+					<option value="2492-esi_ratehealth_good"> Good – Diagnosed chronic condition, but manageable condition </option>
+                
+					<option value="2493-esi_ratehealth_fair"> Fair - More than one diagnosed chronic illness, difficult to manage </option>
+                
+					<option value="2494-esi_ratehealth_poor"> Poor - More than one diagnosed chronic illness, constant impediment to daily life </option>
+                
+				</select>
+			<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_healthmonthly_question').style.display == 'none') document.getElementById('esi_healthmonthly_question').style.display = ''; else document.getElementById('esi_healthmonthly_question').style.display = 'none'; return false;">
+                            31. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                How much money do you spend monthly on medical expenses that are not covered by health insurance? For example, include your out-of-pocket costs for prescription drugs, doctor's fees, co-payments, transportation to doctor's visits, home health attendant's fees, health insurance premiums and annual deductibles, and medical equipment. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_healthmonthly_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 748: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=748&action=edit" target="dc">esi_healthmonthly_question</a><br>
+	<b>answerfields:</b>&nbsp; 6581: esi_healthmonthly </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> 
+			$ <input type="text" id="esi_healthmonthly" name="esi_healthmonthly" value="" maxlength="64" size="32"> 
+		<br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_healthchronic_question').style.display == 'none') document.getElementById('esi_healthchronic_question').style.display = ''; else document.getElementById('esi_healthchronic_question').style.display = 'none'; return false;">
+                            32. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Do you have a chronic condition and/or disease? Examples of chronic conditions include illnesses
+which last at least 30 days, frailty, and/or functional impairment. 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_healthchronic_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 749: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=749&action=edit" target="dc">esi_healthchronic_question</a><br>
+	<b>answerfields:</b>&nbsp; 6582: esi_healthchronic </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_healthchronic" type="radio" name="esi_healthchronic" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_healthchronic" type="radio" name="esi_healthchronic" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_healthdisability_question').style.display == 'none') document.getElementById('esi_healthdisability_question').style.display = ''; else document.getElementById('esi_healthdisability_question').style.display = 'none'; return false;">
+                            33. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Do you have a medically documented disability that
+substantially reduces or eliminates one's ability to support or care for oneself or one's family? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_healthdisability_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 750: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=750&action=edit" target="dc">esi_healthdisability_question</a><br>
+	<b>answerfields:</b>&nbsp; 6583: esi_healthdisability </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_healthdisability" type="radio" name="esi_healthdisability" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_healthdisability" type="radio" name="esi_healthdisability" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_enrolledmedicare_question').style.display == 'none') document.getElementById('esi_enrolledmedicare_question').style.display = ''; else document.getElementById('esi_enrolledmedicare_question').style.display = 'none'; return false;">
+                            34. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Are you enrolled in Medicare? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_enrolledmedicare_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 751: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=751&action=edit" target="dc">esi_enrolledmedicare_question</a><br>
+	<b>answerfields:</b>&nbsp; 6584: esi_enrolledmedicare </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_enrolledmedicare" type="radio" name="esi_enrolledmedicare" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_enrolledmedicare" type="radio" name="esi_enrolledmedicare" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_medicaresupplement_question').style.display == 'none') document.getElementById('esi_medicaresupplement_question').style.display = ''; else document.getElementById('esi_medicaresupplement_question').style.display = 'none'; return false;">
+                            35. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                If you are enrolled in Medicare, are you also enrolled in any of the following supplemental plans? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_medicaresupplement_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 752: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=752&action=edit" target="dc">esi_medicaresupplement_question</a><br>
+	<b>answerfields:</b>&nbsp; 6585: esi_medicaresupplement_medigap; 6586: esi_medicaresupplement_medicareadvantage; 6587: esi_medicaresupplement_employer </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>  
+			 
+			<input type="checkbox" name="esi_medicaresupplement_medigap" id="esi_medicaresupplement_medigap" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Medigap <br />
+						 
+			 
+			<input type="checkbox" name="esi_medicaresupplement_medicareadvantage" id="esi_medicaresupplement_medicareadvantage" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Medicare Advantage <br />
+						 
+			 
+			<input type="checkbox" name="esi_medicaresupplement_employer" id="esi_medicaresupplement_employer" value="y"
+			 style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;"> Employer sponsor retirement health insurance <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	  <tr valign="top" align="left" ><td colspan=5>&nbsp;</td></tr>
+	   
+                    <tr valign="top" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;"><td width=30>&nbsp;</td>
+                        <td valign="top" align="right" width="35">
+                            <b>
+                                <a href="#" onClick="if (document.getElementById('esi_counselor_question').style.display == 'none') document.getElementById('esi_counselor_question').style.display = ''; else document.getElementById('esi_counselor_question').style.display = 'none'; return false;">
+                            36. 
+                            </a>
+                            </b>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td valign="top" colspan="2">
+                                Are you interested in meeting with a health insurance counselor
+to discuss ways to cut down on your out of pocket medical expenses? 
+                       
+	       </td>
+                    </tr>
+                    <tr id="" style="display: none;">
+                        <td colspan="2"></td><td width=25>&nbsp;</td>
+                        <td colspan="2" style="font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black; background: #ccFFcc;"> </td>
+                    </tr>
+	  <tr id="esi_counselor_question" style="display: none; font-family: verdana, arial, helvetica, sans-serif; font-size: 9pt; color: black;">
+					<td colspan="2"></td>
+					<td colspan="2"> 
+	<b>question:</b>&nbsp; 753: <a href="http://data.benefitscheckup.org/question/questionview.cfm?id=753&action=edit" target="dc">esi_counselor_question</a><br>
+	<b>answerfields:</b>&nbsp; 6588: esi_counselor </td>
+				</tr> 
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="2"></td>
+		
+		
+			<td width="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td> <input id="radio_no_esi_counselor" type="radio" name="esi_counselor" value="n">
+                    Yes &nbsp;<input id="radio_yes_esi_counselor" type="radio" name="esi_counselor" value="y">
+                    No <br />
+						
+		</td>
+	</tr>
+	<tr style="font-family: verdana, arial, helvetica, sans-serif; font-size: 11pt; color: black;">
+		<td colspan="4">&nbsp;</td>
+	</tr>
+ 
+	</TABLE>
+	<input type="hidden" name="pgno" value="1">
+ 
+<input type="hidden" name="qno" value="36">
+ 
+<input type="hidden" name="aflist" value="o-esi_client,s-esi_other_specify,s-esi_zip,n-esi_birth_month,n-esi_birth_year,o-esi_marital,o-esi_gender,o-esi_ethnicity,o-esi_ethnicity,o-esi_basicneeds,n-esi_grossmonthlyincome,n-esi_totalassets,s-esi_incomesupport,y-esi_dependants,c-esi_dependspouse,c-esi_dependpartner,c-esi_dependadultchild,c-esi_dependgrandchild,c-esi_dependotherrelative,c-esi_dependfriend,y-esi_receivepublicbenefits,n-esi_currentvaluebenefits,n-esi_currentvaluebenefits,o-esi_employmentsituation_list,c-esi_seekingemployment_usehelp,c-esi_seekingemployment_refresher,c-esi_seekingemployment_skillsassessment,c-esi_seekingemployment_usehelp,c-esi_seekingemployment_refresher,c-esi_seekingemployment_skillsassessment,y-esi_nonhousingdebt,n-esi_debtestimate,c-esi_debtscenarios_creditlimit,c-esi_debtscenarios_minimum,c-esi_debtscenarios_creditors,c-esi_debtscenarios_bankruptcy,c-esi_debtscenarios_gettingharder,c-esi_debtscenarios_notapplicable,y-esi_helpbalancing,y-esi_helpbalancing,o-esi_housingtype,n-esi_estimatedvalue,n-esi_totaldebthouse,y-esi_homeinsurance,c-esi_housingsituation_mortgagepaidoff,c-esi_housingsituation_underwater,c-esi_housingsituation_someequity,c-esi_housingsituation_foreclosure,c-esi_housingsituation_reversemortgage,c-esi_housingsituation__notapplicable,c-esi_rent_behind,c-esi_rent_difficultypaying,c-esi_rent_eviction,c-esi_rent_noneoftheabove,n-esi_outofpocket,n-esi_outofpocket,c-esi_mobility_owncar,c-esi_mobility_useavailable,c-esi_mobility_limited,c-esi_mobility_unreliable,c-esi_mobility_notransportation,c-esi_mobility_owncar,c-esi_mobility_useavailable,c-esi_mobility_limited,c-esi_mobility_unreliable,c-esi_mobility_notransportation,c-esi_meals_balanced,c-esi_meals_withassistance,c-esi_meals_relyonassistance,c-esi_meals_inadequate,c-esi_meals_nofood,c-esi_meals_balanced,c-esi_meals_withassistance,c-esi_meals_relyonassistance,c-esi_meals_inadequate,c-esi_meals_nofood,o-esi_ratehealth,n-esi_healthmonthly,y-esi_healthchronic,y-esi_healthdisability,y-esi_enrolledmedicare,c-esi_medicaresupplement_medigap,c-esi_medicaresupplement_medicareadvantage,c-esi_medicaresupplement_employer,y-esi_counselor"> 
+							<input type="submit" value="View Results">
+						
+						<input type="hidden" name="page" value="20">
+						
+						
+							<input type="hidden" name="continue" value="2">
+						
+					</form>
+ 
+			<br>
+		
+			</td>
+		</tr>
+	</table>
+	
+<script language="JavaScript"> 
+<!--
+function openComment() {
+    url = "http://beta.benefitscheckup.org/cso/contact/form.jsp?src=bcudev";
+    window.open(url, "comment", "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width=640,height=420");
+}
+// -->
+</script>
+</td>
+</table> 
+	<div class="footer"><div class="container2"><div class="footer1">&copy; 2010 <a href="http://www.ncoa.org" class="footerlink" target="ncoa">National Council on Aging.</a> All rights reserved.</div>
+	<div class="footer2">
+	
+	
+	 <a id="link_to_us" href="javascript:linkToUs('/link_to_us.cfm')" class="footerlink">Link to Us</a> / <a id="privacy" class="footerlink" href="privacy.cfm">Privacy Policy</a> / <a class="footerlink" id="terms" href="termsofuse.cfm">Terms of Use</a> / <a class="footerlink" href="mailto:comments@benefitscheckup.org">Feedback</a> / <a href="http://oeqa.benefitscheckup.org/oe?partner_id=77"  class="footerlink">Partner Login<img src="http://bcuqa.benefitscheckup.org/img/partners/arrow.gif" alt="Arrow" title="Arrow" style="margin:-4px 2px;" /></a>
+		
+	</div></div>
+	</div>
+ 
+</div>
+ 
+<!-- Piwik -->
+ 
+<!-- End Piwik Tag --> 
+ 
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-2674020-5");
+pageTracker._setDomainName(".benefitscheckup.org");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+ 
+ 
+</body>
+</html>
+

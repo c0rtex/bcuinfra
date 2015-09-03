@@ -1,0 +1,17 @@
+<root> 
+		<p name="Daytona Beach" link="javascript:showOffices('locator_city.cfm?city=Daytona+Beach&state=fl&program_id=579');" type="font1" x="147" y="-80" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Jacksonville" link="javascript:showOffices('locator_city.cfm?city=Jacksonville&state=fl&program_id=579');" type="font1" x="114" y="-149" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Lakeland" link="javascript:showOffices('locator_city.cfm?city=Lakeland&state=fl&program_id=579');" type="font1" x="100" y="-10" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Miami" link="javascript:showOffices('locator_city.cfm?city=Miami&state=fl&program_id=579');" type="font1" x="200" y="116" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Orlando" link="javascript:showOffices('locator_city.cfm?city=Orlando&state=fl&program_id=579');" type="font1" x="129" y="-39" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Sarasota" link="javascript:showOffices('locator_city.cfm?city=Sarasota&state=fl&program_id=579');" type="font1" x="70" y="33" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Tampa" link="javascript:showOffices('locator_city.cfm?city=Tampa&state=fl&program_id=579');" type="font1" x="70" y="-6" x_h="-8.8" y_h="12.9" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Boynton Beach" link="javascript:showOffices('locator_city.cfm?city=Boynton+Beach&state=fl&program_id=579');" type="font1" x="204" y="72" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Fort Myers" link="javascript:showOffices('locator_city.cfm?city=Fort+Myers&state=fl&program_id=579');" type="font1" x="111" y="74" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Gainesville" link="javascript:showOffices('locator_city.cfm?city=Gainesville&state=fl&program_id=579');" type="font1" x="77" y="-109" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Melbourne" link="javascript:showOffices('locator_city.cfm?city=Melbourne&state=fl&program_id=579');" type="font1" x="170" y="-16" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Ocala" link="javascript:showOffices('locator_city.cfm?city=Ocala&state=fl&program_id=579');" type="font1" x="88" y="-81" x_h="-45.8" y_h="-4.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Pensacola" link="javascript:showOffices('locator_city.cfm?city=Pensacola&state=fl&program_id=579');" type="font1" x="-185" y="-161" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Port Saint Lucie" link="javascript:showOffices('locator_city.cfm?city=Port+St+Lucie&state=fl&program_id=579');" type="font1" x="193" y="32" x_h="-20.8" y_h="-10.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Tallahassee" link="javascript:showOffices('locator_city.cfm?city=Tallahassee&state=fl&program_id=579');" type="font1" x="-27" y="-154" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	</root>

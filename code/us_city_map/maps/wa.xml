@@ -1,0 +1,392 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Adams</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame>_blank</target_frame>
+</county>
+<county>
+ <id>2</id>
+ <name>Asotin</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>3</id>
+ <name>Benton</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>4</id>
+ <name>Chelan</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>5</id>
+ <name>Clallam</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>6</id>
+ <name>Clark</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>7</id>
+ <name>Columbia</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>8</id>
+ <name>Cowlitz</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>9</id>
+ <name>Douglas</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>10</id>
+ <name>Ferry</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>11</id>
+ <name>Franklin</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>12</id>
+ <name>Garfield</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>13</id>
+ <name>Grant</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>14</id>
+ <name>Grays Harbor</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>15</id>
+ <name>Island</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>16</id>
+ <name>Jefferson</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>17</id>
+ <name>King</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>18</id>
+ <name>Kitsap</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>19</id>
+ <name>Kittitas</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>20</id>
+ <name>Klickitat</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>21</id>
+ <name>Lewis</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>22</id>
+ <name>Lincoln</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>23</id>
+ <name>Mason</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>24</id>
+ <name>Okanogan</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>25</id>
+ <name>Pacific</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>26</id>
+ <name>Pend Oreille</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>27</id>
+ <name>Pierce</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>28</id>
+ <name>San Juan</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>29</id>
+ <name>Skagit</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>30</id>
+ <name>Skamania</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>31</id>
+ <name>Snohomish</name>
+ <URL></URL>
+ <popup>Any text information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>32</id>
+ <name>Spokane</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>33</id>
+ <name>Stevens</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>34</id>
+ <name>Thurston</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>35</id>
+ <name>Wahkiakum</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>36</id>
+ <name>Walla Walla</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>37</id>
+ <name>Whatcom</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>38</id>
+ <name>Whitman</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+<county>
+ <id>39</id>
+ <name>Yakima</name>
+ <URL></URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+ <image></image>
+ <target_frame></target_frame>
+</county>
+</map>

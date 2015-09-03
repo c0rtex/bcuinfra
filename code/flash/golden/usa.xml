@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<usa>
+<config>
+  <background_color>ffffff</background_color>
+  <button_back_text>BACK</button_back_text>
+  <sound>on</sound>
+  <button_back_javascript>javascript:alert("back");</button_back_javascript>
+  <visible_state>0</visible_state>  
+</config>
+
+<map>
+<state>
+ <id>1</id>
+ <name>Alabama</name>
+ <map>maps/al.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/al.xml</xml>
+ <image></image>
+ <xml_points>maps/al_data.xml</xml_points>
+ <url>javascript:alert("ok");</url> 
+ 
+</state>
+<state>
+ <id>2</id>
+ <name>Alaska</name>
+ <map>maps/ak.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ak.xml</xml>
+ <image></image>
+ <xml_points>maps/ak_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>3</id>
+ <name>Arizona</name>
+ <map>maps/az.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/az.xml</xml>
+ <image></image>
+ <xml_points>maps/az_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>4</id>
+ <name>Arkansas</name>
+ <map>maps/ar.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ar.xml</xml>
+ <image></image>
+ <xml_points>maps/ar_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>5</id>
+ <name>California</name>
+ <map>maps/ca.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ca.xml</xml>
+ <image></image>
+ <xml_points>maps/ca_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>6</id>
+ <name>Colorado</name>
+ <map>maps/co.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/co.xml</xml>
+ <image></image>
+ <xml_points>maps/co_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>7</id>
+ <name>Connecticut</name>
+ <map>maps/ct.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ct.xml</xml>
+ <image></image>
+ <xml_points>maps/ct_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>8</id>
+ <name>Delaware</name>
+ <map>maps/de.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/de.xml</xml>
+ <image></image>
+ <xml_points>maps/de_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>9</id>
+ <name>District of Columbia</name>
+ <map>maps/dc.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/dc.xml</xml>
+ <image></image>
+ <xml_points>maps/dc_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>10</id>
+ <name>Florida</name>
+ <map>maps/fl.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/fl.xml</xml>
+ <image></image>
+ <xml_points>maps/fl_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>11</id>
+ <name>Georgia</name>
+ <map>maps/ga.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ga.xml</xml>
+ <image></image>
+ <xml_points>maps/ga_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>12</id>
+ <name>Hawaii</name>
+ <map>maps/hi.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/hi.xml</xml>
+ <image></image>
+ <xml_points>maps/hi_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>13</id>
+ <name>Idaho</name>
+ <map>maps/id.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/id.xml</xml>
+ <image></image>
+ <xml_points>maps/id_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>14</id>
+ <name>Illinois</name>
+ <map>maps/il.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/il.xml</xml>
+ <image></image>
+ <xml_points>maps/il_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>15</id>
+ <name>Indiana</name>
+ <map>maps/in.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/in.xml</xml>
+ <image></image>
+ <xml_points>maps/in_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>16</id>
+ <name>Iowa</name>
+ <map>maps/ia.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ia.xml</xml>
+ <image></image>
+ <xml_points>maps/ia_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>17</id>
+ <name>Kansas</name>
+ <map>maps/ks.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ks.xml</xml>
+ <image></image>
+ <xml_points>maps/ks_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>18</id>
+ <name>Kentucky</name>
+ <map>maps/ky.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ky.xml</xml>
+ <image></image>
+ <xml_points>maps/ky_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>19</id>
+ <name>Louisiana</name>
+ <map>maps/la.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/la.xml</xml>
+ <image></image>
+ <xml_points>maps/la_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>20</id>
+ <name>Maine</name>
+ <map>maps/me.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/me.xml</xml>
+ <image></image>
+ <xml_points>maps/me_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>21</id>
+ <name>Maryland</name>
+ <map>maps/md.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/md.xml</xml>
+ <image></image>
+ <xml_points>maps/md_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>22</id>
+ <name>Massachusetts</name>
+ <map>maps/ma.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ma.xml</xml>
+ <image></image>
+ <xml_points>maps/ma_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>23</id>
+ <name>Michigan</name>
+ <map>maps/mi.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/mi.xml</xml>
+ <image></image>
+ <xml_points>maps/mi_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>24</id>
+ <name>Minnesota</name>
+ <map>maps/mn.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/mn.xml</xml>
+ <image></image>
+ <xml_points>maps/mn_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>25</id>
+ <name>Mississippi</name>
+ <map>maps/ms.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ms.xml</xml>
+ <image></image>
+ <xml_points>maps/ms_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>26</id>
+ <name>Missouri</name>
+ <map>maps/mo.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/mo.xml</xml>
+ <image></image>
+ <xml_points>maps/mo_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>27</id>
+ <name>Montana</name>
+ <map>maps/mt.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/mt.xml</xml>
+ <image></image>
+ <xml_points>maps/mt_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>28</id>
+ <name>Nebraska</name>
+ <map>maps/ne.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ne.xml</xml>
+ <image></image>
+ <xml_points>maps/ne_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>29</id>
+ <name>Nevada</name>
+ <map>maps/nv.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/nv.xml</xml>
+ <image></image>
+ <xml_points>maps/nv_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>30</id>
+ <name>New Hampshire</name>
+ <map>maps/nh.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/nh.xml</xml>
+ <image></image>
+ <xml_points>maps/nh_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>31</id>
+ <name>New Jersey</name>
+ <map>maps/nj.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/nj.xml</xml>
+ <image></image>
+ <xml_points>maps/nj_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>32</id>
+ <name>New Mexico</name>
+ <map>maps/nm.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/nm.xml</xml>
+ <image></image>
+ <xml_points>maps/nm_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>33</id>
+ <name>New York</name>
+ <map>maps/ny.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ny.xml</xml>
+ <image></image>
+ <xml_points>maps/ny_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>34</id>
+ <name>North Carolina</name>
+ <map>maps/nc.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/nc.xml</xml>
+ <image></image>
+ <xml_points>maps/nc_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>35</id>
+ <name>North Dakota</name>
+ <map>maps/nd.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/nd.xml</xml>
+ <image></image>
+ <xml_points>maps/nd_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>36</id>
+ <name>Ohio</name>
+ <map>maps/oh.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/oh.xml</xml>
+ <image></image>
+ <xml_points>maps/oh_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>37</id>
+ <name>Oklahoma</name>
+ <map>maps/ok.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ok.xml</xml>
+ <image></image>
+ <xml_points>maps/ok_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>38</id>
+ <name>Oregon</name>
+ <map>maps/or.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/or.xml</xml>
+ <image></image>
+ <xml_points>maps/or_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>39</id>
+ <name>Pennsylvania</name>
+ <map>maps/pa.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/pa.xml</xml>
+ <image></image>
+ <xml_points>maps/pa_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>40</id>
+ <name>Rhode Island</name>
+ <map>maps/ri.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ri.xml</xml>
+ <image></image>
+ <xml_points>maps/ri_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>41</id>
+ <name>South Carolina</name>
+ <map>maps/sc.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/sc.xml</xml>
+ <image></image>
+ <xml_points>maps/sc_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>42</id>
+ <name>South Dakota</name>
+ <map>maps/sd.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/sd.xml</xml>
+ <image></image>
+ <xml_points>maps/sd_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>43</id>
+ <name>Tennessee</name>
+ <map>maps/tn.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/tn.xml</xml>
+ <image></image>
+ <xml_points>maps/tn_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>44</id>
+ <name>Texas</name>
+ <map>maps/tx.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/tx.xml</xml>
+ <image></image>
+ <xml_points>maps/tx_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>45</id>
+ <name>Utah</name>
+ <map>maps/ut.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/ut.xml</xml>
+ <image></image>
+ <xml_points>maps/ut_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>46</id>
+ <name>Vermont</name>
+ <map>maps/vt.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/vt.xml</xml>
+ <image></image>
+ <xml_points>maps/vt_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>47</id>
+ <name>Virginia</name>
+ <map>maps/va.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/va.xml</xml>
+ <image></image>
+ <xml_points>maps/va_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>48</id>
+ <name>Washington</name>
+ <map>maps/wa.swf</map>
+ <info>Click on state 
+ to view map of state</info>
+ <color>9998BA</color>
+ <color2>ff0000</color2>
+ <xml>maps/wa.xml</xml>
+ <image>photo.jpg</image>
+ <xml_points>maps/wa_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>49</id>
+ <name>West Virginia</name>
+ <map>maps/wv.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/wv.xml</xml>
+ <image></image>
+ <xml_points>maps/wv_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>50</id>
+ <name>Wisconsin</name>
+ <map>maps/wi.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/wi.xml</xml>
+ <image></image>
+ <xml_points>maps/wi_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>51</id>
+ <name>Wyoming</name>
+ <map>maps/wy.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/wy.xml</xml>
+ <image></image>
+ <xml_points>maps/wy_data.xml</xml_points>
+ <url></url>
+</state>
+<state>
+ <id>52</id>
+ <name>Puerto Rico</name>
+ <map>maps/pr.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/pr.xml</xml>
+ <image></image>
+ <xml_points>maps/pr_data.xml</xml_points>
+ <url>http://www.google.com</url>
+</state>
+<state>
+ <id>53</id>
+ <name>Virgin Islands</name>
+ <map>maps/vi.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/vi.xml</xml>
+ <image></image>
+ <xml_points>maps/vi_data.xml</xml_points>
+ <url></url>
+</state>
+<state visible_state='0'>
+ <id>53</id>
+ <name>Guam</name>
+ <map>maps/gu.swf</map>
+ <info></info>
+ <color>7798BA</color>
+ <color2>366CA3</color2>
+ <xml>maps/gu.xml</xml>
+ <image></image>
+ <xml_points>maps/gu_data.xml</xml_points>
+ <url></url>
+</state>
+</map>
+</usa>

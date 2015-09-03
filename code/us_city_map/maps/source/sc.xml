@@ -1,0 +1,371 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Abbeville</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Aiken</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Allendale</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Anderson</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Bamberg</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>Barnwell</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>Beaufort</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Berkeley</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>9</id>
+ <name>Calhoun</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>10</id>
+ <name>Charleston</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+
+<county>
+ <id>11</id>
+ <name>Cherokee</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>12</id>
+ <name>Chester</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>13</id>
+ <name>Chesterfield</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>14</id>
+ <name>Clarendon</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>15</id>
+ <name>Colleton</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>16</id>
+ <name>Darlington</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>17</id>
+ <name>Dillon</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>18</id>
+ <name>Dorchester</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>19</id>
+ <name>Edgefield</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>20</id>
+ <name>Fairfield</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>21</id>
+ <name>Florence</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>22</id>
+ <name>Georgetown</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>23</id>
+ <name>Greenville</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>24</id>
+ <name>Greenwood</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>25</id>
+ <name>Hampton</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>26</id>
+ <name>Horry</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>27</id>
+ <name>Jasper</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>28</id>
+ <name>Kershaw</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>29</id>
+ <name>Lancaster</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>30</id>
+ <name>Laurens</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>31</id>
+ <name>Lee</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>32</id>
+ <name>Lexington</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>33</id>
+ <name>Marion</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>34</id>
+ <name>Marlboro</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>35</id>
+ <name>McCormick</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>36</id>
+ <name>Newberry</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>37</id>
+ <name>Oconee</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>38</id>
+ <name>Orangeburg</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>39</id>
+ <name>Pickens</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>40</id>
+ <name>Richland</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>41</id>
+ <name>Saluda</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>42</id>
+ <name>Spartanburg</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>43</id>
+ <name>Sumter</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>44</id>
+ <name>Union</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>45</id>
+ <name>Williamsburg</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>46</id>
+ <name>York</name>
+ <URL>#</URL>
+ <popup>Any text &lt;BR&gt;information</popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

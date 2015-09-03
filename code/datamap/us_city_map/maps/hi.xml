@@ -1,0 +1,42 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Hawaii</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Honolulu</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Kalawao</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Kauai</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Maui</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

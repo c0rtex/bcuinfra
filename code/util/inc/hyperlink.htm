@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--- 
+	Application: CF_Activedit
+	Name: hyperlink.cfm
+	Function: Hyperlink tool window
+	Author: Matt Finn
+	Company: ActivSoftware
+	Version: 5
+ ---><html>
+<head>
+	<title>Hyperlink</title>
+</head>
+<style type="text/css">
+	TD.Styled   {font-family:Tahoma,verdana,arial; font-size:8pt; background:white;}
+	A {
+		color : 1d039e;
+		text-decoration : none;
+		font-family:Verdana,arial; font-size:10pt;
+	}
+	A:Hover {
+		text-decoration : underline;
+		font-family:Verdana,arial; font-size:10pt;
+	}
+</style>
+<script language="JavaScript">	
+	function initialize() {
+		var hyperlink=window.opener.ae_getSelectedHyperlink(window.opener.ae_hot);
+		if(hyperlink!=null) {
+			document.getElementById('oHref').value=hyperlink.href;
+			document.getElementById('oTarget').value=hyperlink.target;
+			document.getElementById('oStyle').value=hyperlink.style.cssText;
+			document.getElementById('oClass').value=hyperlink.className;
+			document.getElementById('oTitle').innerHTML="Update Hyperlink";
+			document.getElementById('oInsert').innerHTML="Update Link";
+			linktype='update';
+		} else {
+			var range=window.opener.ae_bs_range(window.opener.aeObjects[window.opener.ae_hot]);
+			if(range.compareEndPoints) {
+				if(range.compareEndPoints("StartToEnd",range)==0) { // New Link
+					linktype="new";
+					document.getElementById('oHref').focus();
+				} else {
+					linktype="update";
+				}
+			} else {
+				if(range.focusNode==range.anchorNode&&range.focusOffset==range.anchorOffset) {
+					linktype="new";
+					document.getElementById('oHref').focus();
+				} else {
+					linktype="update";
+				}
+			}
+		}
+		if(linktype=='update') {
+			document.getElementById('unlink').style.display='block';
+			document.getElementById('oHref').style.width="85%";
+		}
+	}
+
+	function linkit() {
+		window.opener.ae_hyperlink(window.opener.ae_hot,
+			document.getElementById('oHref').value,
+			document.getElementById('oTarget').value,
+			document.getElementById('oStyle').value,
+			document.getElementById('oClass').value,
+			document.getElementById('oName').value);
+		window.close();
+	}
+	
+	function unlink() {
+		document.getElementById('oHref').value="";
+		update();
+	}
+
+	function update() {
+		if(linktype=='update') {
+			if(document.getElementById('oHref').value=='') {
+				document.getElementById('oInsert').innerHTML="Unlink";
+			} else {
+				document.getElementById('oInsert').innerHTML="Update Link";
+			}
+		}
+	}
+</script>
+<body onload="initialize()" topmargin="0" leftmargin="0" rightmargin="0">
+<center><div style="font:bold 10pt Verdana,Arial;background-color:#f5f5f5;padding:4px;margin-bottom:5px;border-bottom:1px solid silver;" id="oTitle">Insert Hyperlink</div>
+<table cellpadding="1" width="90%" cellspacing="2" border="0">
+<tr>
+	<td class="styled">
+		<span style="font-size:10pt">HREF:</span>
+	</td>
+	<td colspan="3">
+		<input type="text" id="oHref"  onkeydown="update();" onchange="update();" style="width:100%;float:left;" value="http://">
+		<div id="unlink" style="display:none;float:left"><a href="javascript:unlink();"><img src="images/unlink.gif" hspace="3" border="0" style="float:left;"></a></div>
+	</td>
+</tr>
+<tr>
+	<td class="styled">
+		<span style="font-size:10pt">Target:</span>
+	</td>
+	<td colspan="3">
+		<input type="text" id="oTarget" style="width:100%;" value="">
+	</td>
+</tr>
+<tr>
+	<td class="styled">
+		<span style="font-size:10pt">Style:</span>
+	</td>
+	<td colspan="3">
+		<input type="text" id="oStyle" style="width:100%;" value="">
+	</td>
+</tr>
+<tr>
+	<td class="styled">
+		<span style="font-size:10pt">Class:</span>
+	</td>
+	<td width="50%">
+		<input type="text" id="oClass" style="width:95%;" value="">
+	</td>
+	<td class="styled">
+		<span style="font-size:10pt">Name:</span>
+	</td>
+	<td width="50%">
+		<input type="text" id="oName" style="width:95%;" value="">
+	</td>
+</tr>
+</table>
+<br>		
+<div style="background-Color:#f5f5f5;padding:4px;border-top:1px solid silver;">
+			<a href="javascript:linkit()"><img src="images/down.gif" border="0" alt="Insert Hyperlink" align="absmiddle"></a>&nbsp;<A href="javascript:linkit()"><b><span id="oInsert">Insert Link</span></b></a>
+			&nbsp;&nbsp;&nbsp;
+			<a href="javascript:window.close()"><img src="images/delete.gif" alt="Close this window" border="0" align="absmiddle"></a>&nbsp;<A href="javascript:window.close()"><b>Cancel</b></a>
+</div>			
+		</center>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<root> 
+		<p name="Minneapolis" link="javascript:showOffices('locator_city.cfm?city=Minneapolis&state=mn&program_id=579');" type="font1" x="5" y="93" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Duluth" link="javascript:showOffices('locator_city.cfm?city=Duluth&state=mn&program_id=579');" type="font1" x="57" y="-22" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Rochester" link="javascript:showOffices('locator_city.cfm?city=Rochester&state=mn&program_id=579');" type="font1" x="48" y="158" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	</root>

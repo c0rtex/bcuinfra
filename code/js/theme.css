@@ -1,0 +1,9 @@
+#ak_modal_div {
+	text-align:center;
+	padding-top:0px;
+	position: absolute;
+	z-index:1000;
+	display:none;
+}
+
+

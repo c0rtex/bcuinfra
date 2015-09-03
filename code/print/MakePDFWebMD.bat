@@ -1,0 +1,1 @@
+d:\htmldoc\htmldoc -f d:\wwwroot\bcudev\pdf\%1.pdf --book --footer c.1 --header .t. --portrait --size letter --right .75in --format pdf --titlefile d:\wwwroot\bcudev\pdf\WEBMDCover.html --toclevels 5 --firstpage toc d:\wwwroot\bcudev\pdf\%1.cfm

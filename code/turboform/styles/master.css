@@ -1,0 +1,442 @@
+a:visited 
+{
+	color: #00018C;
+}
+
+a:hover 
+{
+	color: #C60000;
+	text-decoration: underline;
+}
+
+a:active 
+{
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+a.bar 
+{
+	background: #333366;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: normal;
+	text-align: left;
+	text-decoration: none;
+	vertical-align: baseline;
+}
+
+a.bar:visited 
+{
+	background: #333366;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+a.bar:hover 
+{
+	background: #333366;
+	color: #FFFFAA;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.bar:active 
+{
+	color: #FFFF80;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.bluebar 
+{
+	background: #333366;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+	font-weight: bold;
+	line-height: normal;
+	text-align: left;
+	text-decoration: none;
+	vertical-align: baseline;
+}
+
+a.bluebar:visited 
+{
+	background: #333366;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+a.bluebar:hover 
+{
+	background: #333366;
+	color: #FFFFAA;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.bluebar:active 
+{
+	color: #FFFF80;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.blueskipnav 
+{
+	color: #333366;
+	font-size: 1%;
+}
+
+a.blueskipnav:visited 
+{
+	color: #333366;
+	font-size: 1%;
+}
+
+a.blueskipnav:hover 
+{
+	color: #FFFFAA;
+	font-size: 80%;
+}
+
+a.blueskipnav:active 
+{
+	color: #FFFFAA;
+	font-size: 80%;
+}
+
+a.grayskipnav 
+{
+	color: #EEEEEE;
+	font-size: 1%;
+}
+
+a.grayskipnav:visited 
+{
+	color: #EEEEEE;
+	font-size: 1%;
+}
+
+a.grayskipnav:hover 
+{
+	color: #0000FF;
+	font-size: 80%;
+	text-decoration: underline;
+}
+
+a.grayskipnav:active
+{
+	color: #0000FF;
+	font-size: 80%;
+}
+
+a.redskipnav
+{
+ 	font-family: sans-serif;
+	color: #CC3333;
+	font-size: 1%;
+}
+
+a.redskipnav:visited
+{
+	color: #CC3333;
+	font-size: 1%;
+}
+
+a.redskipnav:hover
+{
+	color: #FFFFAA;
+	font-size: 80%;
+}
+
+a.redskipnav:active
+{
+	color: #FFFFAA;
+	font-size: 80%;
+}
+
+a.whiteskipnav
+{
+	color: #FFFFFF;
+	font-size: 1%;
+}
+
+a.whiteskipnav:visited
+{
+	color: #FFFFFF;
+	font-size: 1%;
+}
+
+a.whiteskipnav:hover
+{
+	color: #0000FF;
+	font-size: 80%;
+	text-decoration: underline;
+}
+
+a.whiteskipnav:active
+{
+	color: #0000FF;
+	font-size: 80%;
+}
+
+body 
+{
+	background-color: #FFFFFF;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+}
+
+h1 
+{
+	font-size: 130%;
+	line-height: normal;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+
+h2 
+{
+	font-size: 115%;
+	font-weight: normal;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+
+h3 
+{
+	font-size: 105%;
+	font-weight: bold;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+
+h4 
+{
+	font-size: 100%;
+	font-style: italic;
+	font-weight: normal;
+	margin-bottom: 2px;
+}
+
+hr.gray-hr 
+{
+	color: #EEEEEE;
+	height: 2px;
+	margin-bottom: 0px;
+}
+
+td 
+{
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: top;
+}
+
+.blackborder-td 
+{
+	border: 1px #000000 solid;
+}
+
+.blueborder-td 
+{
+	border: 1px #333366 solid;
+}
+
+.blueruled2-td 
+{
+	border-bottom: 2px none #333366;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.blueruled-td {
+	border-bottom: 1px none #333366;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.eightypercent {
+	font-size: 80%;
+}
+
+.fiftypercent {
+	font-size: 50%;
+}
+
+.fortypercent {
+	font-size: 40%;
+}
+
+.grayborder-td {
+	border: 1px #EEEEEE solid;
+}
+
+.graycellblueruled2-td {
+	background-color: #EEEEEE;
+	border-bottom: 2px none #333366;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.graycellblueruled-td {
+	background-color: #EEEEEE;
+	border-bottom: 1px none #333366;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.graycellredruled2-td {
+	background-color: #EEEEEE;
+	border-bottom: 2px none #CC3333;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.graycellredruled-td {
+	background-color: #EEEEEE;
+	border-bottom: 1px none #CC3333;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.grayruled2-td {
+	border-bottom: 2px none #EEEEEE;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.grayruled3-td {
+	border-bottom: 3px none #EEEEEE;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.grayruled-td {
+	border-bottom: 1px none #EEEEEE;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.greycell {
+	background-color: #EEEEEE;
+}
+
+.hundredfiveypercent {
+	font-size: 105%;
+}
+
+.linkbar {
+	background-color: #333366;
+	color: #FFFFFF;
+	vertical-align: middle;
+}
+
+.linkbarsmall {
+	background-color: #333366;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	margin-top: 0px;
+	padding-top: 0px;
+	vertical-align: top;
+}
+
+.ninetypercent {
+	font-size: 90%;
+}
+
+.pagebar {
+	background-color: #CC3333;
+	vertical-align: bottom;
+}
+
+.redborder-td {
+	border: 1px #CC3333 solid;
+}
+
+.redruled2-td {
+	border-bottom: 2px none #CC3333;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.redruled-td {
+	border-bottom: 1px none #CC3333;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.seventypercent {
+	font-size: 70%;
+}
+
+.sixtypercent {
+	font-size: 60%;
+}
+
+.sstop {
+	background-color: #CC3333;
+	color: #FFFFFF;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 18px;
+	letter-spacing: -1px;
+	padding-bottom: 1px;
+	vertical-align: bottom;
+}
+
+.titletext {
+	background:url(../images/redstarback.gif) #CC3333;
+	color: #FFFFFF;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 32px;
+	font-weight: normal;
+	letter-spacing: -1px;
+	vertical-align: bottom;	
+}
+
+.whiteruled2-td {
+	background-color: #EEEEEE;
+	border-bottom: 2px none #FFFFFF;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+
+.whiteruled-td {
+	background-color: #EEEEEE;
+	border-bottom: 1px none #FFFFFF;
+	border-left: 0px;
+	border-right: 0px;
+	border-style: solid;
+	border-top: 0px;
+}
+

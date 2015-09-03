@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>Font Picker</title>
+<script language="javascript">
+	var defaultFonts=['Arial','Comic Sans MS','Courier New','Helvetica','Tahoma','Times New Roman','Verdana'];
+	var defaultSizes=[8,9,10,11,12,13,14,18,24,36,48,64,72,96];
+	var initialfontname;
+	var initialfontsize;
+	var colorwin;
+	var selectedcolor=null;
+	
+	function init() {
+		initialfontname=window.opener.ae_current_font;
+		var sel=document.getElementById('fontname');
+		var sample=document.getElementById('sample');
+		
+		var i=0;
+		var found=false;
+		for(f in defaultFonts) {
+			sel.options[i++]=new Option(defaultFonts[f],defaultFonts[f]);
+			if(defaultFonts[f].toLowerCase()==initialfontname.toLowerCase()) {
+				found=true;
+				sel.options.selectedIndex=sel.options.length-1;
+			}
+		}
+		if(!found) {
+			sel.options[sel.options.length]=new Option(initialfontname,initialfontname);
+			sel.options.selectedIndex=sel.options.length-1;
+		}
+		
+		initialfontsize=window.opener.ae_current_fontsize;
+		found=false;
+		sel=document.getElementById('fontsize');
+		i=0;
+		for(f in defaultSizes) {
+			sel.options[i++]=new Option(defaultSizes[f],defaultSizes[f]);
+		}
+		
+		if(typeof(sample.contentDocument)=='undefined')
+			sample.contentDocument=sample.contentWindow.document;
+		sample.contentDocument.designMode='on';
+		setTimeout("sample();", 100)
+		
+	}
+
+	function sample() {
+		var sel=window.opener.ae_bs_sel(window.opener.aeObjects[window.opener.ae_hot]);
+		if(sel.createRange)
+			sel=sel.createRange().text;
+		var sample=document.getElementById('sample');
+		sample.contentDocument.body.innerHTML=sel;
+		sample.contentDocument.body.style.marginLeft="5px";
+		sample.contentDocument.body.style.marginTop="5px";
+		sample.contentDocument.body.style.fontFamily=initialfontname;
+		sample.contentDocument.body.style.fontSize=initialfontsize+'pt';
+	}
+		
+	function editFontname() {
+		var sel=document.getElementById('fontname');
+		var fontname=sel.options[sel.selectedIndex].value;
+		document.getElementById('sample').contentDocument.body.style.fontFamily=fontname;
+	}
+
+	function editFontsize() {
+		var sel=document.getElementById('fontsize');
+		var fontsize=sel.options[sel.selectedIndex].value;
+		document.getElementById('sample').contentDocument.body.style.fontSize=fontsize+'pt';
+	}
+	
+	function selectFont() {
+		var sel=document.getElementById('fontname');
+		var styles={};
+		var changed=false;
+
+		if(sel.selectedIndex!=-1) {
+			var fontname=sel.options[sel.selectedIndex].value;
+			styles['fontFamily']=fontname;
+			if(fontname!=initialfontname) {
+				changed=true;
+			}
+		}
+		sel=document.getElementById('fontsize');
+		if(sel.selectedIndex!=-1) {
+			var fontsize=sel.options[sel.selectedIndex].value;
+			styles['fontSize']=fontsize+'pt';
+			if(fontsize!=initialfontsize) {
+				changed=true;
+			}
+		}
+		if(selectedcolor!=null) {
+			changed=true;
+			styles['color']=selectedcolor;
+		}
+		if(changed) {
+			window.opener.ae_setStyles(window.opener.ae_hot, styles);
+		}
+		
+		parent.close();
+	}
+	
+	function open_colorwin() {
+		colorwin = window.open("color.html" ,"colorwin","scrollbars=auto,width=300,height=350, resizable=yes",true);
+		colorwin.focus();
+	}
+	
+	function selectColor(color) {
+		document.getElementById('colordiv').style.backgroundColor=color;
+		selectedcolor=color;
+		document.getElementById('sample').contentDocument.body.style.color=color;
+		
+	}
+
+	window.onload=init;
+
+</script>
+</head>
+<body style="font-family:Arial;">
+	<table border="0" width="250">
+		<tr>
+			<td>
+				<label for="fontsel" style="font-size:9pt;">Font Family</label><br>
+					<select id="fontname" size="8" style="height:100px;width:150px;" onchange="editFontname();" onkeyup="editFontname();" onmouseup="editFontname();">
+				</select>
+			</td>
+			<td>
+				<label for="fontsel" style="font-size:9pt;">Font Size</label><br>
+					<select id="fontsize" size="8" style="height:100px;width:100px;" onchange="editFontsize();" onkeyup="editFontsize();" onmouseup="editFontsize();">
+				</select>
+			</td>
+			<td valign="top">
+				<span style="font-size:9pt;">Color:</span><br>
+				<div style="height:40; width:60; padding:0px 0px 0px 0px; border:1px solid silver;" id="colordiv" onmousedown="open_colorwin();"></div></td>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<iframe id="sample" style="height:80px; width:320px; padding:0px 0px 0px 0px; border:1px solid silver;">Sample</iframe>
+			</td>
+		</tr>		
+		<tr>
+			<td colspan="3">
+			
+				<div align="center" style="height:100%;font-family:Arial, Helvetica;background-color:#f5f5f5;padding:4px;border-top:1px solid silver;">
+			<a href="javascript:selectFont()"><img src="images/down.gif" alt="OK" border="0" align="absmiddle"></a>&nbsp;<a href="javascript:selectFont()"><b>OK</b></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:parent.close()"><img src="images/delete.gif" alt="Close this window" border="0" align="absmiddle"></a>&nbsp;<A href="javascript:parent.close()"><B>Cancel</b></a>
+			</div>
+			
+			</td>
+		</tr>		
+	</table>
+
+
+
+
+</body>
+</html>

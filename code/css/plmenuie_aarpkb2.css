@@ -1,0 +1,61 @@
+/* CSS Document */
+
+.topmenu {
+	margin: 0px 20px;
+}
+
+#globalnav {
+	margin: 0px 0px;
+	padding: 14px 0px 0px 0px;
+	list-style: none;
+	background: #FFF url(../img/partners/aarpkb/plmenu3.gif) repeat-x bottom left;
+	float:left;
+	width:922px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px; 
+
+}
+
+#globalnav li {
+	float: left;
+	margin: 0 4px 0 0;
+}
+
+#globalnav a {
+	float: left;
+	display: block;
+	margin: 0px;
+	padding: 4px 12px 6px 12px;
+	color: #0072bc;
+	text-decoration: none;
+	border: 1px solid #0072bc;
+	border-bottom: none;
+	background: #FFF url(../img/partners/aarpkb/plmenu4.gif) repeat-x bottom left;	
+
+
+}
+
+#globalnav a:hover {
+	padding-bottom: 6px;
+	background: #FFF url(../img/partners/aarpkb/plmenu5.gif) repeat-x bottom left;	
+}
+
+#on a {
+	font-weight:bold;
+	background: #FFF url(../img/partners/aarpkb/plmenu1.gif) repeat-x bottom left;
+}
+
+
+.plimage {
+	margin-left: 16px; 
+	margin-bottom:14px;
+}
+
+.gnFix {
+	margin-left: 20px;
+}
+
+
+div.box-content2b {
+	/*height: 374px;*/
+}

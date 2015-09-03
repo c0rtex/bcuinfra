@@ -1,0 +1,163 @@
+/* link classes */
+a.nl:link { color : #000066; font-weight: bold; text-decoration: none; font-size: 9pt; }
+a.nl:visited { color : #000066; font-weight: bold; text-decoration: none; font-size: 9pt; }
+a.nl:hover { color : #990000; font-weight: bold; text-decoration: none; font-size: 9pt; }
+a.selected:link { color : #cc6600; font-weight: bold; text-decoration: none; font-size: 9pt; }
+a.selected:visited { color : #cc6600; font-weight: bold; text-decoration: none; font-size: 9pt; }
+a.selected:hover { color : #990000; font-weight: bold; text-decoration: none; font-size: 9pt; }
+a.condition:link { color : #CC3300; font-size: 9pt; }
+a.condition:visited { color : #cc6600; font-size: 9pt; }
+a.condition:hover { color : #CC3300; font-size: 9pt; }
+a:link { color : #006699; }
+a:visited { color : #666666; }
+a:hover { color : #ff6600; }
+
+.fpo 	{ font-size : 9pt; color : #FF0000; font-weight: bold; }
+
+
+/* homepage classes */
+.in1 { color : #cc6633; font-weight : bold; }
+.in2 { color : #cc6600; }
+.in3 { color : #006699; }
+.in4 { color : #FFFFCC; }
+.in5 { color : #663399; }
+.arrow 
+	{ color : #FF9900; font-weight: bold; vertical-align: top; text-align: right; }
+.topdate 
+	{ font-size : 8pt; color : #FFFFFF; font-weight: bold; }
+
+/* navigation classes */
+.selected #highlights
+	{ color: #cc6600; font-weight: bold; }
+.nav1, #username 
+	{ font-size: 10pt; font-weight: bold; color: #000099; }		
+.nav2 
+	{ font-size: 9pt; }
+.youarein1 
+	{ font-size: 9pt; font-weight: bold; color: #000099}
+.hnavselected  
+	{ font-size: 11pt; font-weight: bold; color: #cc6600}
+
+	
+	
+/*Body Text Classes*/	
+
+.body8
+        { font-family : Arial, Helvetica, sans-serif; font-size : 8pt; color : #000000; }		
+.body8bold
+        { font-family : Arial, Helvetica, sans-serif; font-weight: bold; font-size : 8pt; color : #000000; }			
+.body9
+        { font-family : Arial, Helvetica, sans-serif; font-size : 9pt; color : #000000; }
+.body9bold
+        { font-family : Arial, Helvetica, sans-serif; font-weight: bold; font-size : 9pt; color : #000000; }		
+.body10
+        { font-family : Arial, Helvetica, sans-serif; font-size : 10pt; color : #000000; }	
+.body10bold
+        { font-family : Arial, Helvetica, sans-serif; font-weight: bold; font-size : 10pt; color : #000000; }	
+.body11bold
+        { font-size : 11pt; font-weight : bold; }	
+.body12bold
+        { font-family : Arial, Helvetica, sans-serif; font-weight: bold; font-size : 12pt; color : #000000; }	
+
+.orange-hd
+        { font-family : Arial, Helvetica, sans-serif; font-weight: bold; font-size : 12pt; color : #CC6600; }	 		
+				
+	
+/*Parenting and Pregnancy Text Classes*/	
+
+.preg8
+	{ font-family : Arial, Helvetica, sans-serif; color:#333366; font-size: 8pt; }
+.preg8bold
+	{ font-family : Arial, Helvetica, sans-serif; color:#333366; font-size: 8pt; font-weight: bold; }	
+.preg9
+	{ font-family : Arial, Helvetica, sans-serif; color:#333366; font-size: 9pt; }
+.preg9bold
+	{ font-family : Arial, Helvetica, sans-serif; color:#333366; font-size: 9pt; font-weight: bold; }	
+	
+	
+	
+/*Women, Men, and Lifestyle Text Classes*/	
+
+.wml8
+	{ font-family : Arial, Helvetica, sans-serif; color:#336666; font-size: 8pt; }
+.wml8bold
+	{ font-family : Arial, Helvetica, sans-serif; color:#336666; font-size: 8pt; font-weight: bold; }	
+.wml9
+	{ font-family : Arial, Helvetica, sans-serif; color:#336666; font-size: 9pt; }
+.wml9bold
+	{ font-family : Arial, Helvetica, sans-serif; color:#336666; font-size: 9pt; font-weight: bold; }				
+	
+	
+	
+/*Diet nd Nutrition Text Classes*/	
+
+.dn8
+	{ font-family : Arial, Helvetica, sans-serif; color:#663333; font-size: 8pt; }
+.dn8bold
+	{ font-family : Arial, Helvetica, sans-serif; color:#663333; font-size: 8pt; font-weight: bold; }	
+.dn9
+	{ font-family : Arial, Helvetica, sans-serif; color:#663333; font-size: 9pt; }
+.dn9bold
+	{ font-family : Arial, Helvetica, sans-serif; color:#663333; font-size: 9pt; font-weight: bold; }			
+	
+	
+	
+/* text classes */
+
+.person-date
+        {font-family : Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 8pt; color : White; }
+.join	
+	    { font-family : Arial, Helvetica, sans-serif; font-size : 8pt; color : White}	
+.join-bold	
+	    { font-weight : bold; font-family : Arial, Helvetica, sans-serif; font-size : 8pt; color : White}				
+.update		
+	    { font-weight : bold; font-family : Arial, Helvetica, sans-serif; font-size : 9pt; color : Gray; }	
+.home-bar
+	    { font-weight : bold; font-family : Arial, Helvetica, sans-serif; font-size : 10pt; color : White; }			
+.article-title 
+        { font-weight : bold; font-family : Arial, Helvetica, sans-serif; font-size : 12pt; color : #660000; }
+.article-byline2
+        { font-family : Arial, Helvetica, sans-serif; font-size : 10pt; color : #666666; }			
+.article-byline 
+        { font-family : Arial, Helvetica, sans-serif; font-style: italic; font-size : 10pt; color : #999999; }
+.article-bgsublink
+        { background-color : #000066;}
+.article-bgsublink-title
+        { background-color : #006699; color : #ffffff}
+.disabled
+	{ font-weight : bold; color : #666666; }
+.small-headline  
+	{ font-weight : bold; color : #CC6666;}
+.imagetext, .adam_topic_links, .credits, #update, #date
+	{ font-size : 8.5pt; }
+.small-black-headline, .boldlink, h4  
+	{ font-weight : bold; }
+.headline, .noanchor-headline, adam_title, h2  
+	{ font-size : 12pt;	font-weight : bold;	font-family: Arial, Helvetica, sans-serif; }
+.white  
+	{ color : #FFFFFF; }
+.exception 
+	{ color : #990000 }
+H1, .category-header  
+	{ font-size : 14pt; font-weight : bold; }
+H3  
+	{ font-size : 11pt; font-weight : bold; }
+DIV.abs 
+	{ POSITION: absolute; bgcolor: gray }
+TD.forms  
+	{ font-family : default; }
+BODY
+	{ margin-left : 0}
+
+BODY, STRONG, TD, P, UL, BR, .normal, .subchannel1, .toxic  
+	{ font-family : Arial, Helvetica, sans-serif; font-size : 10pt; color: #000000;}
+
+SPAN.AdIndicatorText
+{
+	font-family	: helvetica, sans-serif;
+	font-size	: 8pt;
+	color		: black;
+}
+
+/*  chat transcripts */
+.livegray {font-size:8pt; color:#999999;}

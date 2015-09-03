@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Option EMPTY>
+<!ATTLIST Option 
+	type CDATA #REQUIRED
+	id CDATA #REQUIRED
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	helpcode CDATA "">
+<!ELEMENT Answerfield (#PCDATA|Option)*>
+<!ATTLIST Answerfield 
+	type CDATA #REQUIRED
+	id CDATA #REQUIRED
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED>
+<!ELEMENT Question (Answerfield)*>
+<!ATTLIST Question 
+	code CDATA #REQUIRED
+	DisplaySort CDATA #REQUIRED
+	helpcode CDATA #REQUIRED
+	required CDATA #REQUIRED
+	fieldtype CDATA #REQUIRED
+	controltype CDATA #REQUIRED
+	helptext CDATA #REQUIRED
+	questiontext CDATA #REQUIRED
+	category CDATA #REQUIRED>
+<!ELEMENT Questions (Question)+>
+<!ELEMENT Questionnaire (Questions)>
+]>

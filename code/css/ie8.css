@@ -1,0 +1,139 @@
+DIV.branding_wrap
+{
+	float: left;
+	clear: both;
+	margin: -112px 0px -20px !important;
+	position: relative;
+	z-index: 1;
+}
+IMG#home_page_banner
+{
+	margin: -131px 0px -25px -29px !important;
+	width: 1000px !important;
+}
+DIV.branding_wrap IMG
+{
+	margin-top: 15px;
+}
+DIV#popupLayer
+{
+	z-index: 1000;
+	margin-top: -260px !important;
+}
+DIV#shadowLayer
+{
+	display: none;
+}
+DIV#dynamic-content TABLE:first-child
+{
+	margin: 10px 0px 0px !important;
+	width: 90% !important;
+}
+DIV#dynamic-content TABLE
+{
+	margin: 10px 0px 0px -130px !important;
+	width: 90% !important;
+}
+DIV#dynamic-content TABLE#fact_sheet_table
+{
+	margin: 10px 0px 0px 35px !important;
+	width: 90% !important;
+}
+DIV#optional_question
+{
+	font-weight: bold;
+	margin-bottom: -35px;
+	text-align: center;
+	margin-left: -300px !important;
+}
+DIV#report_table H1
+{
+	margin: 35px 0px 10px !important;
+}
+DIV#report_table TABLE
+{
+	margin: 0px !important;
+}
+DIV#medication_table
+{
+	width: 400px !important;
+	margin-left: 0px !important;
+}
+DIV#snap_left_col
+{
+	margin-left: 0px !important;
+}
+DIV#medications_container
+{
+	margin-left: 280px !important;
+}
+DIV#dynamic-content TABLE.snapTable
+{
+	margin-left: 40px !important;
+}
+#frmwelcome2
+{
+	margin-left: 40px !important;
+}
+#frmquestions
+{
+	margin-left: 130px !important;
+}
+#income_grid
+{
+	margin-left: 120px !important;
+}
+#asset_grid
+{
+	margin-left: 20px !important;
+}
+#monthly_income
+{
+	padding-bottom: 25px;
+	margin-left: -95px !important;
+	font-weight: bold;
+	font-size: 18px;
+}
+#your_medications
+{
+	padding-bottom: 25px;
+	margin-left: -95px !important;
+	font-weight: bold;
+	font-size: 18px;
+}
+#household_assets
+{
+	padding-bottom: 25px;
+	margin-left: 8px !important;
+	font-weight: bold;
+	font-size: 18px;
+}
+DIV#frmOptionalQuestions
+{
+	margin: 25px 0px 0px 175px !important;
+	width: 95% !important;
+	float: left;
+	position: relative;
+}
+#language_country_map
+{
+	margin-left: -10px !important;
+}
+#formThird
+{
+	margin: 0 0 0 22px !important;
+}
+DIV.app_forms
+{
+	width: 330px !important;
+}
+DIV.screeningText
+{
+	width: 800px !important;
+	font: 16px sans-serif !important;
+	margin-left: 0px !important;
+}
+DIV#more_options
+{
+	margin: 0px 0px 0px 0px !important;
+}

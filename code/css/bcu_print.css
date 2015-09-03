@@ -1,0 +1,97 @@
+H2, H2.snapH2, .factSheetH2 {
+    color: #012A5C;
+    font-family: sans-serif !important;
+    font-size: 28px !important;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+    margin: 0;
+    padding: 0;
+}
+DIV#snap_right_col,.noprint, DIV#tagline, DIV#footer, .ncoaBranding, #primary-nav, #menu-top-menu, DIV#print_button_fact, DIV#results_button_fact
+{
+	display: none;
+}
+DIV#page 
+{
+	border-color: black;
+	border-width: 0px;
+	border-style: solid;
+}
+BODY
+{
+	font-size: 24px !important;
+	margin-left: 25px !important;
+	margin-right: 25px !important;
+}
+DIV#dynamic-content, .snapTable
+{
+	border-color: black;
+	border-width: 0px;
+	border-style: solid;
+	width: 100%;
+	font-size: 24px !important;	
+}
+DIV#page-main
+{
+	border: 0px;
+	width: 100%;
+	
+}
+.fixed_width #page {
+    border: 0px solid #999999;
+}
+IMG.mainlogo-img
+{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	width: 597px;
+}
+DIV#snap_left_col, UL, LI, OL LI, P, DIV#more_options, P.text1, P.text1 STRONG, FONT, I
+{
+	font-size: 24px !important;
+}
+TABLE TR TD A, UL LI {
+    font-size: 16px !important;
+    text-decoration: none;
+    color: #000000;
+}
+H1.snapH1, H1 {
+    clear: both;
+    color: #012A5C !important;
+    float: left;
+    font-family: Garamond,Georgia,Times,serif !important;
+    font-size: 48px !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    padding: 0 !important;
+}
+.specialtext {
+    color: #012A5C !important;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px !important;
+    font-size: 18px !important;
+}
+#snapLink, #zip_code_search, #flash_map
+{
+	display: none;
+}
+#officeCol
+{
+	padding: 0px; 
+	width: 95% !important;
+}
+#offices
+{
+	padding: 8px; 
+	width: 1000px !important; 
+	float:left;
+	font-size: 16px;
+}
+#frmDetails, .entry_point
+{
+	font-size: 18px !important;
+}

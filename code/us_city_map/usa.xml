@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<usa>
+<config>
+  <background_color>ffffff</background_color>
+  <button_back_text>BACK</button_back_text>
+  <sound>off</sound>
+  <button_back_javascript>javascript:hideOffices();</button_back_javascript>
+</config>
+
+<map>
+<state>
+ <id>1</id>
+ <name>Alabama</name>
+ <URL>/cf/flash/us_city_map/maps/al.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=AL</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/al_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+
+<state>
+ <id>2</id>
+ <name>Alaska</name>
+ <URL>/cf/flash/us_city_map/maps/ak.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=AK</xml> 
+ <image></image> <xml_points>/cf/us_city_map/maps/ak_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+ 
+</state>
+<state>
+ <id>3</id>
+ <name>Arizona</name>
+ <URL>/cf/flash/us_city_map/maps/az.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=AZ</xml>  
+ <image></image> <xml_points>/cf/us_city_map/maps/az_data.xml</xml_points>
+</state>
+<state>
+ <id>4</id>
+ <name>Arkansas</name>
+ <URL>/cf/flash/us_city_map/maps/ar.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=AR</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ar_data.xml</xml_points>
+</state>
+<state>
+ <id>5</id>
+ <name>California</name>
+ <URL>/cf/flash/us_city_map/maps/ca.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=CA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ca_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>6</id>
+ <name>Colorado</name>
+ <URL>/cf/flash/us_city_map/maps/co.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=CO</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/co_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>7</id>
+ <name>Connecticut</name>
+ <URL>/cf/flash/us_city_map/maps/ct.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=CT</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ct_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>8</id>
+ <name>Delaware</name>
+ <URL>/cf/flash/us_city_map/maps/de.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=DE</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/de_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>9</id>
+ <name>District of Columbia</name>
+ <URL>/cf/flash/us_city_map/maps/dc.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=DC</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/dc_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>10</id>
+ <name>Florida</name>
+ <URL>/cf/flash/us_city_map/maps/fl.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=FL</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/fl_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>11</id>
+ <name>Georgia</name>
+ <URL>/cf/flash/us_city_map/maps/ga.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=GA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ga_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>12</id>
+ <name>Hawaii</name>
+ <URL>/cf/flash/us_city_map/maps/hi.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=HI</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/hi_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>13</id>
+ <name>Idaho</name>
+ <URL>/cf/flash/us_city_map/maps/id.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=ID</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/id_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>14</id>
+ <name>Illinois</name>
+ <URL>/cf/flash/us_city_map/maps/il.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=IL</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/il_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>15</id>
+ <name>Indiana</name>
+ <URL>/cf/flash/us_city_map/maps/in.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=IN</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/in_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>16</id>
+ <name>Iowa</name>
+ <URL>/cf/flash/us_city_map/maps/ia.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=IA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ia_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>17</id>
+ <name>Kansas</name>
+ <URL>/cf/flash/us_city_map/maps/ks.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=KS</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ks_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>18</id>
+ <name>Kentucky</name>
+ <URL>/cf/flash/us_city_map/maps/ky.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=KY</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ky_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>19</id>
+ <name>Louisiana</name>
+ <URL>/cf/flash/us_city_map/maps/la.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=LA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/la_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>20</id>
+ <name>Maine</name>
+ <URL>/cf/flash/us_city_map/maps/me.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=ME</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/me_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>21</id>
+ <name>Maryland</name>
+ <URL>/cf/flash/us_city_map/maps/md.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MD</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/md_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>22</id>
+ <name>Massachusetts</name>
+ <URL>/cf/flash/us_city_map/maps/ma.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ma_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>23</id>
+ <name>Michigan</name>
+ <URL>/cf/flash/us_city_map/maps/mi.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MI</xml> 
+ <image></image> <xml_points>/cf/us_city_map/maps/mi_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>24</id>
+ <name>Minnesota</name>
+ <URL>/cf/flash/us_city_map/maps/mn.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MN</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/mn_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>25</id>
+ <name>Mississippi</name>
+ <URL>/cf/flash/us_city_map/maps/ms.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MS</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ms_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>26</id>
+ <name>Missouri</name>
+ <URL>/cf/flash/us_city_map/maps/mo.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MO</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/mo_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>27</id>
+ <name>Montana</name>
+ <URL>/cf/flash/us_city_map/maps/mt.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=MT</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/mt_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>28</id>
+ <name>Nebraska</name>
+ <URL>/cf/flash/us_city_map/maps/ne.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NE</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ne_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>29</id>
+ <name>Nevada</name>
+ <URL>/cf/flash/us_city_map/maps/nv.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NV</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/nv_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>30</id>
+ <name>New Hampshire</name>
+ <URL>/cf/flash/us_city_map/maps/nh.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NH</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/nh_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>31</id>
+ <name>New Jersey</name>
+ <URL>/cf/flash/us_city_map/maps/nj.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NJ</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/nj_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>32</id>
+ <name>New Mexico</name>
+ <URL>/cf/flash/us_city_map/maps/nm.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NM</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/nm_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>33</id>
+ <name>New York</name>
+ <URL>/cf/flash/us_city_map/maps/ny.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NY</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ny_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>34</id>
+ <name>North Carolina</name>
+ <URL>/cf/flash/us_city_map/maps/nc.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=NC</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/nc_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>35</id>
+ <name>North Dakota</name>
+ <URL>/cf/flash/us_city_map/maps/nd.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=ND</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/nd_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>36</id>
+ <name>Ohio</name>
+ <URL>/cf/flash/us_city_map/maps/oh.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=OH</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/oh_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>37</id>
+ <name>Oklahoma</name>
+ <URL>/cf/flash/us_city_map/maps/ok.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=OK</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ok_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>38</id>
+ <name>Oregon</name>
+ <URL>/cf/flash/us_city_map/maps/or.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=OR</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/or_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>39</id>
+ <name>Pennsylvania</name>
+ <URL>/cf/flash/us_city_map/maps/pa.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=PA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/pa_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>40</id>
+ <name>Rhode Island</name>
+ <URL>/cf/flash/us_city_map/maps/ri.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=RI</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ri_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>41</id>
+ <name>South Carolina</name>
+ <URL>/cf/flash/us_city_map/maps/sc.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=SC</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/sc_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>42</id>
+ <name>South Dakota</name>
+ <URL>/cf/flash/us_city_map/maps/sd.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=SD</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/sd_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>43</id>
+ <name>Tennessee</name>
+ <URL>/cf/flash/us_city_map/maps/tn.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=TN</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/tn_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>44</id>
+ <name>Texas</name>
+ <URL>/cf/flash/us_city_map/maps/tx.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=TX</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/tx_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>45</id>
+ <name>Utah</name>
+ <URL>/cf/flash/us_city_map/maps/ut.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=UT</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/ut_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>46</id>
+ <name>Vermont</name>
+ <URL>/cf/flash/us_city_map/maps/vt.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=VT</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/vt_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>47</id>
+ <name>Virginia</name>
+ <URL>/cf/flash/us_city_map/maps/va.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=VA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/va_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>48</id>
+ <name>Washington</name>
+ <URL>/cf/flash/us_city_map/maps/wa.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=WA</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/wa_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>49</id>
+ <name>West Virginia</name>
+ <URL>/cf/flash/us_city_map/maps/wv.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=WV</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/wv_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>50</id>
+ <name>Wisconsin</name>
+ <URL>/cf/flash/us_city_map/maps/wi.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=WI</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/wi_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>51</id>
+ <name>Wyoming</name>
+ <URL>/cf/flash/us_city_map/maps/wy.swf</URL>
+ <info></info>
+ <color>DAA869</color>
+ <color2>8a6b44</color2> <xml>/cf/us_city_map/counties.cfm?state=WY</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/wy_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>52</id>
+ <name>&nbsp;</name>
+ <URL></URL>
+ <info></info>
+ <color>FFFFFF</color>
+ <color2>FFFFFF</color2> <xml>/cf/us_city_map/scounties.cfm?state=PR</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/pr_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>53</id>
+ <name>&nbsp;</name>
+ <URL></URL>
+ <info></info>
+ <color>FFFFFF</color>
+ <color2>FFFFFF</color2> <xml>/cf/us_city_map/counties.cfm?state=VI</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/vi_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+<state>
+ <id>54</id>
+ <name>&nbsp;</name>
+ <URL></URL>
+ <info></info>
+ <color>FFFFFF</color>
+ <color2>FFFFFF</color2> <xml>/cf/us_city_map/counties.cfm?state=GU</xml>
+ <image></image> <xml_points>/cf/us_city_map/maps/gu_data.xml</xml_points>
+ <url>javascript:stateText();</url>  
+</state>
+</map>
+</usa>

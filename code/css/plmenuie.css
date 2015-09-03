@@ -1,0 +1,215 @@
+/*CSS Document*/
+.topmenu
+{
+	margin: 0px;
+}
+#globalnav
+{
+	margin: 0;
+	padding: 8px 0 0 26px;
+	list-style: none;
+	background: #FFF url(../img/plmenu3.gif) repeat-x bottom left;
+	float: left;
+	width: 759px;
+}
+#globalnav LI
+{
+	float: left;
+	margin: 0 4px 0 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 1em;
+}
+#globalnav A
+{
+	float: left;
+	display: block;
+	margin: 0px;
+	padding: 4px 12px 6px;
+	color: #002155;
+	text-decoration: none;
+	border: 1px solid #042155;
+	border-bottom: none;
+	background: #FFF url(../img/plmenu4.gif) repeat-x bottom left;
+}
+#globalnav A:hover
+{
+	padding-bottom: 6px;
+	background: #FFF url(../img/plmenu5.gif) repeat-x bottom left;
+}
+#on A
+{
+	font-weight: bold;
+	background: #FFF url(../img/plmenu1.gif) repeat-x bottom left;
+}
+.divider
+{
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+.plimage
+{
+	margin-left: 16px;
+	margin-bottom: 8px;
+}
+IMG#expenses
+{
+	margin: 0px 0px 0px 60px !important;
+}
+DIV#chart_legend
+{
+	margin: 10px 0px 0px -60px !important;
+}
+DIV#status P
+{
+	padding: 0px;
+	margin: -30px 0px 30px 25px;
+	width: 700px;
+}
+DIV#recommendations DIV.recommendation_detail H3
+{
+	/*[disabled]font:bold 19px sans-serif;*/
+	/*[disabled]padding:0px;*/
+	/*[disabled]margin:10px 0px;*/
+	/*[disabled]position:relative;*/
+	/*[disabled]float:left;*/
+	/*[disabled]clear:both;*/
+	/*[disabled]width:100%;*/
+}
+DIV.screeningText UL
+{
+	margin: 10px 0px 15px 50px;
+}
+A.img_apply_gif
+{
+	width: 24px !important;
+	padding: 0px 15px 0px 0px;
+}
+DIV.online_app
+{
+	width: 225px;
+}
+UL#grantees_list
+{
+	margin-bottom: -20px !important;
+}
+P.grantees_callout
+{
+	margin: 0px auto 0px 16px;
+	width: 700px !important;
+}
+.grantees_h1
+{
+	margin: 0px 0px 15px 15px !important;
+}
+DIV#logo1
+{
+	margin-top: 30px !important;
+}
+DIV#logo2
+{
+	margin-top: -4px;
+}
+DIV#logo3 IMG
+{
+	margin-top: 10px;
+	height: 100px;
+}
+DIV#logo4
+{
+	margin-top: -33px !important;
+}
+DIV#logo5
+{
+	margin-top: 13px;
+}
+DIV#logo6
+{
+	margin-top: -76px;
+}
+DIV#logo7
+{
+	margin-top: 0px !important;
+}
+DIV#logo8
+{
+	margin-top: -19px;
+}
+DIV#logo9
+{
+	margin-top: 15px;
+}
+DIV#logo10
+{
+	margin-top: 30px;
+}
+DIV#logo12
+{
+	margin-top: -25px;
+}
+DIV#logo13
+{
+	margin-top: -23px !important;
+}
+DIV#logo14
+{
+	margin-top: 11px !important;
+}
+DIV#logo15
+{
+	margin-top: 63px;
+}
+DIV#logo16
+{
+	margin-top: 11px;
+}
+DIV#logo17
+{
+	margin-top: 38px !important;
+}
+DIV#logo18
+{
+	margin-top: -59px !important;
+}
+DIV#logo19
+{
+	margin-top: 0px;
+}
+DIV#logo20
+{
+	margin-top: 3px !important;
+}
+/*DIV#fit_container
+{
+	padding: 0px !important;
+	margin: 0px !important;
+}*/
+DIV#taxReliefContainer
+{
+	width: 275px !important;
+}
+DIV#statePrograms
+{
+	padding: 25px;
+}
+UL#taxRelief_ul
+{
+	margin: 0px 0px 0px 5px !important;
+}
+DIV#content
+{
+	margin: 25px 0 0;
+}
+DIV#taxReliefMap
+{
+	margin: 0px 0px 0px -20px;
+}
+
+DIV#starburst {
+    margin:-60px 450px 0 -200px !important;
+}
+.taxreliefheader
+{
+	margin-bottom: -30px !important;
+}
+

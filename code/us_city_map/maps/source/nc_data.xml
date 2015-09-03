@@ -1,0 +1,9 @@
+<root> 
+		<p name="Charlotte" link="javascript:showOffices('locator_city.cfm?city=Charlotte&state=nc&program_id=579');" type="font1" x="-52" y="0" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Winston-Salem" link="javascript:showOffices('locator_city.cfm?city=Winston-Salem&state=nc&program_id=579');" type="font1" x="-20" y="-61" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Raleigh" link="javascript:showOffices('locator_city.cfm?city=Raleigh&state=nc&program_id=579');" type="font1" x="67" y="-46" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Asheville" link="javascript:showOffices('locator_city.cfm?city=Asheville&state=nc&program_id=579');" type="font1" x="-146" y="-31" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Fayetteville" link="javascript:showOffices('locator_city.cfm?city=Fayetteville&state=nc&program_id=579');" type="font1" x="60" y="8" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Wilmington" link="javascript:showOffices('locator_city.cfm?city=Wilmington&state=nc&program_id=579');" type="font1" x="108" y="63" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Wilson" link="javascript:showOffices('locator_city.cfm?city=Wilson&state=nc&program_id=579');" type="font1" x="112" y="-33" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	</root>

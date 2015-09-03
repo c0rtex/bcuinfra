@@ -1,0 +1,6 @@
+*.benefitscheckup.org
+qala.benefitscheckup.org
+bcuqa.benefitscheckup.org
+localhost
+
+PR, VI, GU

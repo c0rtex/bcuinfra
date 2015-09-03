@@ -1,0 +1,134 @@
+body
+	{
+	margin: 0;
+	padding: 0;
+	text-align: center; 
+	background-color: #FFF2C8;
+	}
+
+.outerBox
+	{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;	
+	margin-top: 20px;
+	padding: 0px;
+	text-align: left;
+	width:95%;				/* <-- use this to tie width to viewport size */
+	}
+
+.alignRight
+	{
+	float:right;
+	}
+.upperPanel, .inputForm
+	{
+	background-color: #F9F1EE;
+}
+	
+.lowerPanel
+	{
+	background-color: #FFFFFF;
+	margin:0px;
+	padding: 0px;
+}
+
+.legacyHeaderTextBold {   
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  padding-bottom:8px;
+}
+
+#clientHeader
+	{
+	background-image:url(../images/logo.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+	margin:0px 15px;
+	padding: 5px 80px;
+	}
+	
+#clientHeader h1
+	{
+	color:#EE934D;
+	font-weight: bold;
+	font-size: 2em;
+	font-family: helvetica, geneva, arial, sans-serif;
+	margin: 5px 5px;
+	}
+#clientHeader p
+	{
+	color:#065540;
+	font-size: 1em;
+	font-family: arial, helvetica, sans-serif;
+	}
+
+
+.tlc
+	{
+	background-image:url(../images/tlc.jpg);
+	}
+
+.trc
+	{
+	background-image:url(../images/trc.jpg);
+	}
+	
+.blc
+	{
+	background-image:url(../images/blc.jpg);
+	}
+
+.brc
+	{
+	background-image:url(../images/brc.jpg);
+	}
+
+.mlc
+	{
+	background-image:url(../images/mlc.jpg);
+	}
+
+.mrc
+	{
+	background-image:url(../images/mrc.jpg);
+	}
+
+.navLeftC {
+	background-repeat:no-repeat;
+	background-image:url(../images/ncoa/navLeft.gif);
+	float:left;
+	font-size:24px;
+	height:30px;
+	width:11px;
+	vertical-align: top;
+}
+.navRightC {
+	background-repeat:no-repeat;
+	background-image:url(../images/ncoa/navRight.gif);
+	float:right;
+	font-size:24px;
+	height:30px;
+	width:11px;
+	vertical-align: top;
+}
+.navULwrapperC {
+	background-image:url(../images/ncoa/navBottom.gif);
+	background-repeat: repeat-x;
+	background-position: 50% 100%;
+	height:30px;
+}
+.navULwrapperC .active a {
+	background-color: #052C6A;
+}
+.navULwrapperC a {
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.navULwrapperC a:hover {
+	color: #9EB5D4;
+}
+.navULwrapperC .active a:hover {
+	color: #FFFFFF;
+}

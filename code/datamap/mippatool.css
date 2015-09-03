@@ -1,0 +1,297 @@
+/*CSS Document*/
+BODY
+{
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	background: #799E8C;
+	margin: 0;
+/*it's good practice to zero the margin and padding of the body element to account for differing browser defaults*/
+	padding: 0;
+	text-align: center;
+/*this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector*/
+	color: #000000;
+}
+IMG
+{
+	-ms-interpolation-mode: bicubic;
+}
+/*Fixes bad image resizing in IE
+Tips for Elastic layouts
+1. Since the elastic layouts overall sizing is based on the user's default fonts size, they are more unpredictable. Used correctly, they are also more accessible for those that need larger fonts size since the line length remains proportionate.
+2. Sizing of divs in this layout are based on the 100% font size in the body element. If you decrease the text size overall by using a font-size: 80% on the body element or the #container, remember that the entire layout will downsize proportionately. You may want to increase the widths of the various divs to compensate for this.
+3. If font sizing is changed in differing amounts on each div instead of on the overall design (ie: #sidebar1 is given a 70% font size and #mainContent is given an 85% font size), this will proportionately change each of the divs overall size. You may want to adjust based on your final font sizing.
+*/
+.mippatool #container
+{
+	width: 960px;
+/*this width will create a container that will fit in an 800px browser window if text is left at browser default font sizes*/
+	background: #FFFFFF;
+	margin: 0 auto;
+/*the auto margins (in conjunction with a width) center the page*/
+	border: 1px solid #012156;
+	text-align: left;
+/*this overrides the text-align: center on the body element.*/
+}
+.mippatool #header
+{
+	background: #FFF;
+	border-bottom: 4px solid #012156;
+	padding: 10px 0px 10px 20px;
+/*this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding.*/
+}
+.mippatool #header .logo
+{
+	float: left;
+}
+.mippatool #header .title
+{
+	float: right;
+}
+.mippatool #header H1
+{
+	margin: 0;
+/*zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse*/
+	padding: 10px 0;
+/*using padding instead of margin will allow you to keep the element away from the edges of the div*/
+}
+.mippatool #programSel
+{
+	width: 398px;
+	font-size: 14px;
+}
+.mippatool #dataSel
+{
+	margin-top: 6px;
+	width: 398px;
+	font-size: 14px;
+}
+.mippatool #mainContent
+{
+	padding: 2px;
+/*remember that padding is the space inside the div box and margin is the space outside the div box*/
+	background: #FFFFFF;
+}
+.mippatool #footer
+{
+	padding: 0 10px;
+/*this padding matches the left alignment of the elements in the divs that appear above it.*/
+	background: #012156;
+	color: #FFF;
+	text-align: center;
+	border-top: 1px solid #012156;
+}
+.mippatool #footer P
+{
+	margin: 0;
+/*zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs*/
+	padding: 10px 0;
+/*padding on this element will create space, just as the the margin would have, without the margin collapse issue*/
+}
+.mippatool .columnTitle
+{
+	background-color: #012156;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 4px;
+	text-align: center;
+	position: relative;
+}
+.mippatool .columnTitle .corner
+{
+	position: absolute;
+	top: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	z-index: 2;
+}
+.mippatool .columnTitle .left
+{
+	left: 0;
+}
+.mippatool .columnTitle .right
+{
+	right: 0;
+}
+.mippatool .columnTitle A
+{
+	color: #FFF;
+	margin-top: 8px;
+	font-weight: normal;
+}
+.mippatool .secondary
+{
+	margin-top: 4px;
+	padding: 8px 4px;
+	text-align: left;
+	font-size: 12px;
+}
+.mippatool .eligibility
+{
+	margin-top: 4px;
+}
+.mippatool .zip
+{
+	margin-top: 4px;
+	border-bottom: 1px solid #012156;
+}
+.mippatool .clearBoth
+{
+	clear: both;
+	line-height: 0;
+}
+.mippatool H1.mippaH1
+{
+	color: #012156;
+	font-family: georgia, "times new roman", times, serif;
+	font-style: normal;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	margin: 12px 0;
+	padding: 0;
+}
+.mippatool .progDataForm
+{
+	font-size: 14px;
+	padding: 6px 4px 15px;
+	color: #FF6600;
+	font-weight: bold;
+}
+.mippatool .progDataForm FORM
+{
+	padding: 0;
+	margin: 0;
+}
+.mippatool #bcuStack
+{
+	margin: 0 auto;
+	text-align: center;
+}
+.mippatool .columnContent
+{
+	font-size: 12px;
+	padding: 4px;
+	border-left: 1px solid #012156;
+	border-right: 1px solid #012156;
+	border-bottom: 1px solid #012156;
+}
+.mippatool #jQueryUITabs1
+{
+	width: 534px;
+}
+.mippatool #jQueryUITabs1 .tabTitle
+{
+	color: #FF9900;
+	font-weight: bold;
+	float: left;
+	position: relative;
+	top: 6px;
+	padding-left: 6px;
+}
+.mippatool #jQueryUITabs1-0
+{
+	overflow: hidden !important;
+	position: relative;
+	height: 400px;
+}
+.mippatool #jQueryUITabs1-1
+{
+	overflow: hidden !important;
+	position: relative;
+	height: 400px;
+}
+.mippatool #stateTotals
+{
+	position: absolute;
+	text-align: left;
+	z-index: 9999;
+	width: 110px;
+	height: 54px;
+	padding: 6px;
+	bottom: 54px;
+	right: 60px;
+	border: 1px dotted #000;
+}
+.mippatool .mapContainer
+{
+	position: absolute;
+	left: 0px;
+	top: 18px;
+}
+.mippatool .instructions
+{
+	position: relative;
+	z-index: 999;
+	width: 490px;
+	border: 1px solid #012156;
+	margin: 0 auto;
+	padding: 6px;
+	background-color: #F7F7F7;
+	top: 60px;
+}
+.mippatool .instructions .steps
+{
+	font-size: 20px;
+	color: #FF6600;
+	font-weight: bold;
+	text-align: center;
+}
+.mippatool .dataElTitle
+{
+	padding-top: 0;
+	margin-top: 0;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	position: relative;
+	top: -12px;
+	z-index: 999;
+}
+.mippatool .dataA
+{
+	position: relative;
+	text-align: center;
+	top: -16px;
+	z-index: 9999;
+}
+.mippatool #dataInfo
+{
+	padding: 8px;
+	margin-top: 4px;
+	text-align: left;
+	font-size: 10px;
+	color: #666;
+}
+.mippatool #rankingsCont
+{
+	position: relative;
+	top: -30px;
+}
+.mippatool .rankingsTableHeader TD
+{
+	padding: 4px 0px;
+	font-weight: bold;
+	background-color: #CCC;
+	border: 1px solid #000000;
+}
+.mippatool #rankingsTableRight TD, #rankingsTableLeft TD
+{
+	padding: 3px;
+	text-align: center;
+	border-bottom: 1px solid #000000;
+}
+.mippatool .rankingsTableHeader TD #stateLeft, .mippatool .rankingsTableHeader TD #leftNum, .mippatool .rankingsTableHeader TD #stateRight, .mippatool .rankingsTableHeader TD #rightNum
+{
+	position: relative;
+}
+.mippatool .rankingsTableHeader TD #stateLeft .rankArrows, .mippatool .rankingsTableHeader TD #leftNum .rankArrows, .mippatool .rankingsTableHeader TD #stateRight .rankArrows, .mippatool .rankingsTableHeader TD #rightNum .rankArrows
+{
+	position: absolute;
+	top: -1px;
+	right: -2px;
+}
+.mippatool #homeLongDesc
+{
+	text-align: left;
+	font-size: 13px;
+}

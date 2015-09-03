@@ -1,0 +1,116 @@
+body {
+margin: 0in;
+}
+
+
+table {
+page-break-before: auto;
+page-break-inside: avoid;
+}
+
+.pagebreak {
+page-break-before: always;
+}
+
+.printtd {
+width: 640px;
+padding:0px;
+}
+
+.noprint { 
+display: none; 
+}
+
+.bculogo {
+float:left;
+display:inline;
+width: 342px;
+margin: 0px;
+padding:0px 0px 0px 8px;
+}
+
+
+.asof1 {
+	padding: 16px 0px 0px 0px;
+	}
+
+.asofh2 {
+	display:inline;
+	font-size: 1.1em; 
+	color: #000; 
+	font-family: georgia, "times new roman", times, serif;
+	padding: 0px 0px 0px 0px;
+	}
+
+.clear 
+{
+clear: both;
+}
+
+
+img {
+border: 0px;
+}
+
+.bcu {
+display:none;
+}
+
+.footer {
+display:none;	
+}
+	
+.footer1 {
+display:none;		
+}
+
+.footer2 {
+display:none;		
+}
+
+#globalnav {
+display:none;		
+}
+
+.noprint {
+display:none;		
+}
+
+.smalllink {
+font-size:.65em;
+}
+
+.appformsOuter {
+	margin: 0px;
+	width:264px; 
+	float:right; 
+	padding: 6px 0px 8px 8px;
+}
+
+.appforms {
+	font-size: 14px;
+	background-color: #c8c8c8;
+	padding: 16px 16px 0px 16px;
+	border: 2px solid #b0b0b0;
+	
+}
+
+.appforms ul, .appforms li {
+	margin-left: 8px;
+	padding: 0px 0px 4px 0px;
+}
+
+/* adding style for print headers on fact sheets... */
+
+.factSheetH2 {
+	font-size: 18px; 
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	letter-spacing:-0.05em;
+}
+.text1fact{
+	font-size:14px;	
+}

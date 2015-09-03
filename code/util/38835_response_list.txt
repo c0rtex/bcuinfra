@@ -1,0 +1,21 @@
+<Screening>
+  <Answer AnswerField="marital_stat" AnswerValue="2" />
+  <Answer AnswerField="gender" AnswerValue="2" />
+  <Answer AnswerField="zip" AnswerValue="10002" />
+  <Answer AnswerField="hh_depend" AnswerValue="2" />
+  <Answer AnswerField="citizen" AnswerValue="1" />
+  <Answer AnswerField="Disabled" AnswerValue="2" />
+  <Answer AnswerField="client" AnswerValue="7" />
+  <Answer AnswerField="state" AnswerValue="ny" />
+  <Answer AnswerField="pri_resident" AnswerValue="1" />
+  <Answer AnswerField="lis_apply" AnswerValue="2" />
+  <Answer AnswerField="s_asset_other_a" AnswerValue="$1000.00" />
+  <Answer AnswerField="Blind" AnswerValue="2" />
+  <Answer AnswerField="dob_month" AnswerValue="1" />
+  <Answer AnswerField="dob_year" AnswerValue="1930" />
+  <Answer AnswerField="s_sp_income_earned" AnswerValue="$100.00" />
+  <Answer AnswerField="s_sp_income_other_nw" AnswerValue="$100.00" />
+  <Answer AnswerField="no_hh_members" AnswerValue="2" />
+  <Answer AnswerField="medicare_receive" AnswerValue="1" />
+  <Answer AnswerField="lis_undeemed" AnswerValue="2" />
+</Screening>

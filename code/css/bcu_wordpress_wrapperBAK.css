@@ -1,0 +1,694 @@
+DIV.branding_wrap
+{
+	clear: both;
+	float: left;
+	margin: -92px 0 -20px;
+	z-index: 1;
+}
+#tagline
+{
+	float: left;
+	font-family: Garamond, Georgia, Times, serif;
+	font-size: 1.27em !important;
+	line-height: 1.2;
+	margin: 40px 0 0 455px;
+	width: 398px;
+}
+TABLE TR TD A
+{
+	font-size: 16px !important;
+}
+.button, INPUT[type="submit"], INPUT[type="button"], .submit, #print_button_fact
+{
+	margin-bottom: 35px !important;
+	float: right;
+	font: bold 1em sans-serif;
+	cursor: pointer;
+}
+TABLE TBODY TR TD INPUT[type="checkbox"], TABLE TBODY TR TD INPUT[type="radio"]
+{
+	background-color: transparent;
+	border: none;
+}
+.defPopup
+{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 250px;
+	height: auto;
+	font-family: sans-serif;
+	font-size: 9pt;
+	z-index: 2;
+	padding: 10px;
+	background: #EEE;
+	border: 1px solid #666;
+	border-width: 1px;
+	border-style: dashed;
+	text-align: left;
+}
+.defPopupTitle
+{
+	font-weight: bold !important;
+	font-size: 13pt !important;
+	margin-bottom: 7px !important;
+	text-align: left;
+}
+.defPopupClose
+{
+	font-size: 8pt;
+	float: right;
+	text-align: right;
+}
+A.defPopupCloseLink:hover
+{
+	background: #FFC0CB;
+}
+.defPopupShadow
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1px;
+	font-size: 0;
+	width: 250;
+	height: 250;
+	background: #808080;
+	z-index: 1;
+	opacity: .3;
+	filter: alpha(opacity=30);
+}
+P#popupClose
+{
+	margin: 0px 0px 15px;
+	float: right;
+	width: 200px;
+}
+H3
+{
+	font-family: Garamond, Georgia, Times, serif;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 1.2em;
+	margin: 12px 0;
+	padding: 0;
+	border-bottom: 0px solid #000000;
+}
+#selDrugNm
+{
+	width: 400px;
+	font-family: sans-serif;
+	font-size: 8pt;
+	background-color: #FFFFFF !important;
+}
+.h1, .h2
+{
+	color: #012A5C;
+	font-family: Garamond, Georgia, Times, serif;
+	font-style: normal;
+	font-weight: bold;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+.text1, P, TD.text1
+{
+	font-size: 16px !important;
+	/*[disabled]padding-bottom:15px;*/
+	margin: 0px 25px !important;
+	text-align: left;
+	font-family: sans-serif;
+	float: left;
+}
+.screeningText
+{
+	font-size: 14px;
+}
+INPUT[type="text"], SELECT
+{
+	font-size: 100% !important;
+	padding: 2px !important;
+	background-color: #E4E4E4 !important;
+	border: 1px solid #999999 !important;
+}
+A.img_apply_gif
+{
+	width: 24px !important;
+	margin-right: -3px !important;
+	padding-right: 0px !important;
+	/*[empty]border:;*/
+}
+DIV#snap_left_col
+{
+	float: left;
+	/*[disabled]border:1px solid #000000;*/
+	width: 950px !important;
+	text-align: left !important;
+	margin-left: 10px;
+}
+DIV#snap_right_col
+{
+	width: 375px;
+	/*[disabled]background-color:#D0D9D6;*/
+	margin-left: 10px;
+}
+H1.snapH1, H1
+{
+	font-size: 36px !important;
+	/*[disabled]letter-spacing:-0.02em;*/
+	color: #012A5C !important;
+	font-family: Garamond, Georgia, Times, serif !important;
+	font-style: normal !important;
+	font-weight: bold !important;
+	padding: 0px !important;
+	width: 1000px !important;
+	float: left;
+	clear: both;
+}
+H1#screeningH1
+{
+	margin-top: 20px !important;
+	width: 500px !important;
+}
+DIV#snap_left_col H1
+{
+	width: 925px !important;
+}
+DIV#snap_left_col UL
+{
+	list-style: disc;
+	padding: 20px 0px;
+	margin-left: 40px;
+	font-size: 16px !important;
+}
+H2.snapH2, .factSheetH2
+{
+	font-size: 20px !important;
+	color: #012A5C;
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	letter-spacing: -0.05em;
+	float: left;
+	clear: both;
+	width: 100%;
+}
+DIV#snap_right_col DIV.noprint TABLE
+{
+	margin-left: 0px !important;
+}
+TABLE TBODY TR TD.text1
+{
+	padding: 0px !important;
+	margin: 0px !important;
+}
+DIV#drug_buttons
+{
+	clear: both;
+}
+DIV#i_take_this
+{
+	float: left;
+	width: 200px;
+	margin-left: 50px;
+}
+DIV#i_dont_take_this
+{
+	clear: right;
+	width: 330px;
+	margin-left: -187px;
+}
+DIV#not_in_list
+{
+	clear: both;
+	width: 237px;
+	float: left;
+	margin-left: 55px;
+	margin-bottom: -30px;
+	margin-top: -25px;
+}
+DIV#backtoresults_buttons INPUT
+{
+	clear: both;
+	float: left;
+}
+DIV#back_buttons
+{
+	padding: 15px 0px 0px;
+}
+DIV#back_buttons
+{
+	clear: both;
+	width: 900px;
+	margin: 0px 0px 100px;
+}
+.text1fact
+{
+	vertical-align: top;
+	width: 150px !important;
+	padding: 0 0 3px;
+}
+.appforms
+{
+	background-color: #D0D9D6;
+	width: 340px !important;
+	border: 0px solid #000000;
+	margin-left: 10px;
+}
+DIV.pdf_img
+{
+	margin-right: -10px;
+}
+DIV.appforms TABLE
+{
+	margin-left: 0px !important;
+}
+TABLE TBODY TR TD.box_color
+{
+	background-color: #E4E8E7;
+	padding: 10px !important;
+}
+TABLE TBODY TR TD.box_color INPUT
+{
+	background-color: #FFFFFF !important;
+}
+TABLE TBODY TR TD.box_color_dark
+{
+	background-color: #D0D9D6;
+	padding: 10px !important;
+}
+INPUT#typeDrugNm
+{
+	background-color: #D0D9D6;
+}
+SELECT#avlDrugNm
+{
+	width: 400px !important;
+	background-color: #FFFFFF !important;
+}
+DIV#medication_text
+{
+	width: 800px;
+}
+A.snapLink:hover, A.snapLink:active, A.snapLink:visited, A.snapLink:link
+{
+	color: #4B4E80;
+	text-decoration: underline;
+	font-size: 14px !important;
+}
+DIV#medication_table
+{
+	width: 400px !important;
+	margin-left: -40px;
+}
+DIV#medications_container
+{
+	margin-left: -40px;
+}
+UL
+{
+	font-size: 1em !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+H2
+{
+	font-size: 14px !important;
+	font-weight: bold;
+	font-family: Garamond, Georgia, Times, serif;
+}
+H2.screeningh2
+{
+	/*[disabled]color:#012156;*/
+	font-family: Garamond, Georgia, Times, serif;
+	font-size: 28px !important;
+	font-weight: bold;
+	/*[disabled]padding:0px 0px 24px;*/
+	/*[disabled]margin:15px 0px 0px;*/
+	letter-spacing: -0.03em;
+	clear: both !important;
+}
+DIV#dynamic-content TABLE
+{
+	margin: 10px 0px 0px 20px;
+	width: 90% !important;
+	float: left;
+}
+DIV#img_apply_gif
+{
+	margin-right: -12px;
+}
+DIV#officeCol
+{
+	float: right;
+}
+TABLE#dealing_health
+{
+	background-color: #EEEEEE;
+    border: 5px solid #333333;
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+}
+DIV#dynamic-content TABLE#dealing_health
+{
+	margin: 0px 0px 0px 150px;
+	width: 65% !important;
+}
+DIV.screeningText
+{
+	width: 815px !important;
+	font: 16px sans-serif !important;
+}
+DIV#snap_right_col DIV.noprint
+{
+	background: #D0D9D6 !important;
+	width: 340px !important;
+	margin-left: 10px !important;
+}
+P.snapLegend2
+{
+	font-size: 12px;
+}
+DIV#go_button
+{
+	margin-top: 3px;
+	position: relative;
+	float: left;
+	margin-left: 15px;
+}
+DIV#print_buttons INPUT
+{
+	font: bold 1em sans-serif !important;
+	float: left;
+}
+DIV#print_buttons
+{
+	float: right;
+	clear: both;
+	/*[disabled]width:1000px;*/
+	margin-right: 50px;
+	margin-bottom: -60px;
+}
+DIV#print_buttons_recommend
+{
+	float: right;
+	clear: both;
+	/*[disabled]width:1000px;*/
+	margin-right: 50px;
+	margin-top: -60px;
+}
+DIV#view_results
+{
+	float: left;
+	clear: both;
+	width: 1000px;
+	margin: 0 0 -35px;
+	padding: 0px;
+}
+DIV#view_results INPUT
+{
+	float: right;
+	margin-right: 125px;
+}
+DIV#results_button
+{
+	width: 200px !important;
+	margin: 0px -65px 0px 0px;
+	/*[disabled]padding-top:12px;*/
+	float: right;
+}
+DIV#print_button
+{
+	float: right;
+	margin: 0 0px;
+}
+DIV#results_button_fact
+{
+	width: 200px !important;
+	margin: 30px 0px 0px -20px;
+	/*[disabled]padding-top:12px;*/
+	float: right;
+}
+DIV#print_button_fact
+{
+	float: right;
+	margin: 30px 30px 0 0px;
+}
+.screeninghr
+{
+	display: none;
+}
+DIV#language_country_map
+{
+	width: 1000px;
+	margin-left: -30px;
+	clear: both;
+	float: left;
+}
+H1#locatorTitle
+{
+	width: 900px !important;
+	text-align: left !important;
+	clear: both;
+	float: left;
+	margin-left: 25px !important;
+	margin-bottom: 25px !important;
+}
+H1#medicaidLocatorTitle
+{
+	width: 900px !important;
+	text-align: left !important;
+	clear: both;
+	float: left;
+	margin-bottom: 25px !important;
+}
+DIV.search
+{
+	width: 410px !important;
+	margin-left: 60px !important;
+	margin-top: 25px !important;
+}
+DIV#flash_map
+{
+	margin-left: 50px;
+	float: left;
+}
+INPUT#search_button
+{
+    margin-right: -10px !important;
+    margin-top: -3px;
+    margin-left: 5px !important;
+}
+DIV#optional_question
+{
+	font-weight: bold;
+	margin-bottom: -35px;
+	text-align: center;
+}
+DIV#frmOptionalQuestions
+{
+	margin: 25px 0px 0px 100px !important;
+}
+DIV#answers_text
+{
+	width: 800px !important;
+}
+DIV#report_table
+{
+	margin: 35px 0px 0px 35px !important;
+}
+DIV#results_overview
+{
+	width: 600px !important;
+	margin-top: -45px;
+}
+TABLE#questionsthird
+{
+	margin: 35px 0px 0px 50px !important;
+}
+TABLE#income_grid, TABLE#asset_grid
+{
+	margin: 15px 0px 0px !important;
+}
+DIV#monthly_income
+{
+	margin: 0px 0px 15px;
+}
+TABLE#income_grid_sub
+{
+	margin: 0px 0px 0px 20px !important;
+}
+DIV#footer_menu
+{
+	margin-left: 100px;
+}
+DIV#ncoa_link
+{
+	margin-left: -75px !important;
+}
+DIV#copyright
+{
+	margin-left: -75px !important;
+}
+DIV#page
+{
+	margin: -9px auto 5px !important;
+}
+DIV.app_image
+{
+	margin: -3px -15px 0 0 !important;
+	padding: 0 0 3px !important;
+}
+HR
+{
+	border-bottom-style: solid;
+}
+P.report_header
+{
+	margin: 35px 0px 0px 35px;
+}
+A.report_header
+{
+	font-size: 18px !important;
+}
+TABLE#frmquestions_table
+{
+	margin: 25px !important;
+}
+DIV#optional_questions
+{
+	margin: 0px 0px 0px -145px !important;
+	width: 400px;
+}
+DIV#optional_questions TABLE
+{
+	background-color: #F0F0F0;
+	padding: 5px;
+}
+DIV#optional_questions TABLE TR:first-child TD
+{
+	padding: 15px;
+	text-align: center;
+	font-size: 18px;
+	background-color: #C8C6C6 !important;
+	margin-bottom: 10px;
+}
+DIV#optional_questions TABLE TR TD
+{
+	padding: 10px !important;
+	text-align: left;
+	margin-top: 10px;
+	background-color: #F0F0F0;
+}
+DIV#optional_questions INPUT, DIV#optional_questions SELECT
+{
+	background-color: #FFFFFF !important;
+}
+DIV#assembled_results
+{
+	margin: 0px 0px 0px -5px !important;
+}
+DIV#assembled_results P:first-child
+{
+	text-align: center;
+	padding-bottom: 10px;
+}
+DIV#dynamic-content TABLE TBODY TR TD
+{
+	padding-top: 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-family: sans-serif !important;
+	font-size: 16px;
+}
+DIV#more_options
+{
+	margin: 0px 0px 0px 25px !important;
+}
+FONT
+{
+	font-family: sans-serif !important;
+	font-size: 16px;
+}
+STRONG
+{
+	font-weight: bold;
+	font-size: inherit;
+}
+.snapLegend2
+{
+	font-size: 14px !important;
+}
+DIV#previous_links
+{
+	text-align: center;
+}
+.question_number
+{
+	font-weight: bold;
+	padding-right: 15px;
+}
+#long_term_care, #long_term_care A, #long_term_care STRONG
+{
+	font-size: 12px !important;
+}
+#flash_map
+{
+	margin-top: -35px;
+}
+#return_to_results
+{
+	float: left;
+    margin-left: 400px;
+}
+.border_bottom
+{
+	border-bottom: 1px solid #000000;
+	margin-bottom: 15px;
+	 margin-top: 25px;
+}
+#esi_start
+{
+	margin: 20px 10px;
+}
+#esi_table
+{
+  	clear: both;
+    float: left;
+    margin: 0 100px;
+    width: 800px;
+}
+#esi_table2
+{
+  	clear: both;
+    float: left;
+    margin: 0 150px;
+    width: 650px;
+}
+#zip_code_search
+{
+	float: left;
+	clear: both;
+	width: 1000px;
+	padding: 10px 0px;
+	margin-left: -90px;
+}
+#view_results_btn 
+{
+	margin-top: 400px !important;
+    width: 145px;
+}
+#link_image
+{
+	float: left;
+    margin-right: 15px;
+    margin-top: -3px;
+    width: 15px !important;
+}
+UL#change_answers
+{
+	clear: both;
+}

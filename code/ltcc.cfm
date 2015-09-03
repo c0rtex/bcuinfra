@@ -1,0 +1,2 @@
+<cf_sessionPassVars var="redirectURL" href="#application.transferType#://#application.serverPath#/before_you_start.cfm" source_id="1" subset_id="2" extralist="preserve=true">
+<cflocation url="#redirectURL#" AddToken="No">

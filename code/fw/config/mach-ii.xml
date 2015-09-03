@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC "-//Mach-II//DTD Mach-II Configuration 1.6.0//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_6_0.dtd" >
+
+<mach-ii version="1.6">
+	<!-- INCLUDES -->
+	<includes>
+		<!-- 
+			ADDED BELOW WILL USE THIS IF IT GROWS OUT OF HAND
+		<include file="./mach-ii_coldspringProperty.xml" /> -->
+	</includes>
+	
+	<modules>
+		<!-- FRAMEWORK DASHBOARD CAN BE USED TO RESET FRAMEWORK CONFIG -->
+		<module name="dashboard" file="/MachIIDashboard/config/mach-ii_dashboard.xml">
+			<mach-ii>
+				<properties>
+					<property name="password" value="11demo11" />
+				</properties>
+			</mach-ii>
+		</module>
+	</modules>
+	
+	<!-- PROPERTIES -->
+	<properties>
+		<!-- APP ROOT THIS WILL NEED T CHANGE IF YOU USE A DIFFERENT FOLDER -->
+		<property name="applicationRoot" value="/fw" />
+		<!-- DEFAULT EVENT DO NOT CHANGE -->
+		<property name="defaultEvent" value="home" />
+		<!-- DEFAULT ACTION EVENT DO NOT CHANGE -->
+		<property name="eventParameter" value="event" />
+		<!-- FORMS HAVE PRECEDENCE OVER URL SCOPES -->
+		<property name="parameterPrecedence" value="form" />
+		<property name="maxEvents" value="10" />
+		<!-- DO NOT CHANGE -->
+		<property name="exceptionEvent" value="exception" />
+		
+		
+		<!-- SITE REALTED -->
+		<property name="dsn" value="BCU_QA" />
+		<property name="css" value="includes/css/styles.css" />
+		<property name="js" value="includes/js/jquery.js" />
+		<!-- COLDSPRING -->
+		<property name="coldSpringProperty" type="MachII.properties.ColdSpringProperty">
+			<parameters>
+				<parameter name="beanFactoryPropertyName" value="serviceFactory" />
+				<parameter name="configFile" value="config/coldspring.xml"/>
+				<parameter name="configFilePathIsRelative" value="true" />
+				<parameter name="resolveMachiiDependencies" value="true" />
+				<parameter name="placeFactoryInApplicationScope" value="true" />
+			</parameters>
+		</property>
+		
+		
+		
+		<!-- LOGGIN PROPERTIES WILL USE THESE LATER
+		<property name="Logging" type="MachII.logging.LoggingProperty">
+			<parameters>
+				<parameter name="loggingEnabled" value="true"/>
+				<parameter name="CFLog">
+					<struct>
+						<key name="type" value="MachII.logging.loggers.CFLog.Logger" />
+						<key name="loggingEnabled" value="true" />
+						<key name="loggingLevel" value="warn" />
+						<key name="logFile" value="machiilog" />
+					</struct>
+				</parameter>
+				<parameter name="MachIILog">
+					<struct>
+						<key name="type" value="MachII.logging.loggers.MachIILog.Logger" />
+						<key name="loggingEnabled" value="true" />
+						<key name="loggingLevel" value="debug" />
+					</struct>
+				</parameter>
+			</parameters>
+		</property> -->
+		
+		<!-- CACHING SETTINGS WILL USE THIS LATER
+		<property name="Caching" type="MachII.caching.CachingProperty">
+			<parameters>
+				<parameter name="cachingEnabled" value="true"/>
+				<parameter name="defaultCacheName" value="defaultCache" />
+				<parameter name="defaultCache">
+					<struct>
+						<key name="type" value="MachII.caching.strategies.TimeSpanCache" />
+						<key name="scope" value="application" />
+						<key name="cacheFor" value="10" />
+						<key name="cacheUnit" value="minute" />
+					</struct>
+				</parameter>
+				<parameter name="LRUCache">
+					<struct>
+						<key name="type" value="MachII.caching.strategies.LRUCache" />
+						<key name="scope" value="application" />
+						<key name="size" value="5" />
+					</struct>
+				</parameter>
+			</parameters> 
+		</property>  -->
+	</properties>
+
+	<!-- LISTENERS -->
+	<listeners>
+		<listener name="userListener" type="fw.listeners.userListener" />
+		<listener name="roleListener" type="fw.listeners.roleListener" />
+		<listener name="programListener" type="fw.listeners.programListener" />
+		<listener name="programCategoryListener" type="fw.listeners.programCategoryListener" />
+		<listener name="displayListener" type="fw.listeners.displayListener" />
+		<listener name="subsetListener" type="fw.listeners.subsetListener" />
+		<!-- FAKE LISTNER FOR REFERENCE
+		<listener name="screeningListener" type="fw.listeners.screenings.screeningListener">
+			<parameters>
+				<parameter name="partner_id" value="0" />
+			</parameters>
+		</listener>
+		-->
+	</listeners>
+	
+	<!-- MESSAGE SUBSCRIBERS -->
+	<message-subscribers>
+		<!-- see the messagePublisher event handler below for an example of what would call this -->
+		<!--
+		<message name="needStuff" multithreaded="true" waitForThreads="true" timeout="10">
+			<subscribe listener="listener1" method="method1" resultArg="stuff1" />
+			<subscribe listener="listener2" method="method2" resultArg="stuff2" />
+		</message>
+		-->
+	</message-subscribers>
+	
+	<!-- EVENT-FILTERS -->
+	<event-filters>
+		<!-- FILTER FIRES WHERE NEEDED TO CHECK FOR LOGGED IN USER THIS CAN ALSO BE A PLUGIN THAT FIRES ALL THE TIME... -->
+		<event-filter name="security" type="fw.filters.security" />
+		<!-- FAKE EVENT FILTER FOR REFERENCE ONLY
+		<event-filter name="buildScreening" type="fw.model.screening.screening">
+			<parameters>
+				<parameter name="partner_is" value="0" />
+			</parameters>
+		</event-filter>
+		-->
+	</event-filters>
+
+	<!-- PLUGINS -->
+	<plugins>
+		<!-- FAKE PLUGIN FOR REFERENCE ONLY
+		<plugin name="screeningPlugin" type="fw.plugins.screening">
+			<parameters>
+				<parameter name="partner_id" value="0" />
+			</parameters>
+		</plugin>
+		-->
+	</plugins>
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+		<!-- DEFAULT EVENT IF NOT EVENT THIS GETS CALLED -->
+		<event-handler event="home" access="public">
+			<!-- <notify listener="SomeListener" method="doSomething" resultArg="resultOfSomething" />  -->
+			<execute subroutine="publicLayout" />
+		</event-handler>
+		<!-- ABOUT PAGE NOT NEEDED BUT ADDED ANYWAY -->
+		<event-handler event="aboutus" access="public">
+			<view-page name="aboutus" contentArg="content" />
+			<execute subroutine="publicLayout" />
+		</event-handler>
+		
+		<!-- ADMIN SECTION -->
+		<!-- LOGIN SCREEN DOES NOT REQUIRE A PASSWORD -->
+		<event-handler event="admin.login" access="public">
+			<view-page name="admin.login" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<!-- HANDLES THE LOGIN PROCESS -->
+		<event-handler event="admin.authenticate" access="public">
+			<notify listener="userListener" method="processLogin" />
+		</event-handler>
+		<!-- NOT BEING USED RIGHT NOW GOES STRAIGHT TO LIST ADMIN.HOME 
+		<event-handler event="admin.loginSuccess" access="public">
+		</event-handler>-->
+		<!-- NOT BEING USED RIGHT NOW GOES STRAIGHT TO LIST ADMIN.LOGIN 
+		<event-handler event="admin.loginFailure" access="public">
+			<redirect event="admin.login" persistArgs="true" />
+		</event-handler>-->
+		
+		
+		<event-handler event="admin.home" access="public">
+			<filter name="security" />
+			<view-page name="admin.home" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<!-- BEGIN USER SECTION -->
+		<event-handler event="admin.editUser" access="public">
+			<filter name="security" />
+			<notify listener="userListener" method="getUser" resultArg="user" />
+			<notify listener="roleListener" method="getRoles" resultArg="roles" />
+			<view-page name="admin.userForm" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<event-handler event="admin.createUser" access="public">
+			<filter name="security" />
+			<notify listener="userListener" method="getUser" resultArg="user" />
+			<notify listener="roleListener" method="getRoles" resultArg="roles" />
+			<view-page name="admin.userForm" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<event-handler event="admin.processUserEdit" access="public">
+			<filter name="security" />
+			<event-bean name="user" type="fw.model.user.user" />
+			<event-bean name="address" type="fw.model.address.address" />
+			<notify listener="userListener" method="saveUser" />
+			<redirect event="admin.listUsers" persistArgs="true" />
+		</event-handler>
+		<event-handler event="admin.listUsers" access="public">
+			<!--<filter name="security" />-->
+			<notify listener="userListener" method="getUsers" resultArg="users" />
+			<view-page name="admin.listUsers" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<!-- / END USER SECION -->
+		<!-- BEGIN PROGRAM SECTION -->
+		<event-handler event="admin.listPrograms" access="public">
+			<filter name="security" />
+			<notify listener="programListener" method="getPrograms" resultArg="programs" />
+			<view-page name="admin.listPrograms" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<event-handler event="admin.editProgram" access="public">
+			<filter name="security" />
+			<notify listener="programListener" method="getProgram" resultArg="program" />
+			<view-page name="admin.programForm" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<!-- BEGIN SUBSET SECTION -->
+		<event-handler event="admin.listSubsets" access="public">
+			<filter name="security" />
+			<notify listener="subsetListener" method="getSubsets" resultArg="subsets" />
+			<view-page name="admin.listSubsets" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<event-handler event="admin.editSubset" access="public">
+			<filter name="security" />
+			<notify listener="subsetListener" method="getSubset" resultArg="subset" />
+			<view-page name="admin.subsetForm" contentArg="content" />
+			<execute subroutine="adminLayout" />
+		</event-handler>
+		<!-- / USER SECTION -->
+		<!-- sample event handler that uses caching and the default cache (data cached for 1 hour in application scope) -->
+		<!--
+		<event-handler event="useCache" access="public">
+			<cache>
+				<notify listener="SomeListener" method="getDataForCache" resultArg="cachedData" />
+			</cache>
+		</event-handler>
+		-->
+		
+		<!-- sample event handler that uses message/subscriber listener notification -->
+		<!--
+		<event-handler event="messagePublisher" access="public">
+			<publish message="needStuff" />
+		</event-handler>
+		-->
+	
+		<event-handler event="exception" access="private">
+			<view-page name="exception" contentArg="content" />
+			<execute subroutine="publicLayout" />
+		</event-handler>
+		
+		<!-- TEST EVENT ONLY -->
+		<event-handler event="test" access="public">
+			<view-page name="testPage" contentArg="content" />
+			<execute subroutine="publicLayout" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- SUBROUTINES -->
+	<subroutines>
+		<subroutine name="publicLayout">
+			<view-page name="navigation" contentArg="nav" />
+			<view-page name="errorMsg" contentArg="errorMsg" />
+			<view-page name="default" />
+		</subroutine>
+		<subroutine name="adminLayout">
+			<view-page name="navigation" contentArg="nav" />
+			<view-page name="errorMsg" contentArg="errorMsg" />
+			<view-page name="default" />
+		</subroutine>
+	</subroutines>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+	
+		<!-- DEFAULT BASE LAYOUT -->
+		<page-view name="default" page="/views/defaultLayout.cfm" />
+		
+		<!-- PUBLIC VIEWS NO PASSWORD REQUIRED -->
+		<page-view name="errorMsg" page="/views/home.cfm" />
+		
+		<!-- SHARED VIEWS BOTH PUBLIC AND ADMIN -->
+		<page-view name="navigation" page="/views/navigation.cfm" />
+		<page-view name="aboutus" page="/views/aboutus.cfm" />
+		
+		<!-- ADMIN ONLY HOWEVER LOGIN AND SUCH DONT REQUIRE A PASSWORD -->
+		<page-view name="admin.home" page="/views/admin/home.cfm" />
+		<page-view name="admin.login" page="/views/admin/login.cfm" />
+		<page-view name="admin.navigation" page="/views/admin/navigation.cfm" />
+		<page-view name="admin.userForm" page="/views/admin/userForm.cfm" />
+		<page-view name="admin.listUsers" page="/views/admin/listusers.cfm" />
+		<page-view name="admin.programForm" page="/views/admin/programForm.cfm" />
+		<page-view name="admin.listPrograms" page="/views/admin/listPrograms.cfm" />
+		<page-view name="admin.subsetForm" page="/views/admin/subsetForm.cfm" />
+		<page-view name="admin.listSubsets" page="/views/admin/listSubsets.cfm" />
+		
+		<!-- DEFAULT EXPETION VIEW -->
+		<page-view name="exception" page="/views/exception.cfm" />
+		
+		<!-- TEST VIEW ONLY -->
+		<page-view name="testPage" page="/views/testpage.cfm" />
+	</page-views>
+	
+</mach-ii>

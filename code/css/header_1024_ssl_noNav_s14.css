@@ -1,0 +1,180 @@
+/*
+Header
+------  */
+
+#header {
+	position: relative;
+	text-align: left;
+	height: 90px;
+	z-index: 2; /* should go on container*/
+}
+
+#satellites ul, #satellites li {
+	margin: 0px;
+	padding: 0px;
+}
+
+#satellites {
+	margin: 0px 0px 0px 20px;
+}
+
+#satellites ul {
+	list-style-type: none;
+}
+
+#satellites li {
+	float: left;
+}
+
+#satellites li a {
+	display: block;
+	height: 42px;
+	background-image: url(../images/hat_bg.gif);
+}
+
+#satellites li a span {
+	display: none;
+}
+
+li#dotOrg a {
+	width: 96px;
+}
+
+li#dotOrg a:hover, li#dotOrg a.current {
+	background-position: 0px -42px;
+}
+
+li#magazine a {
+	width: 128px;
+	background-position: -96px 0px;
+}
+
+li#magazine a:hover {
+	background-position: -96px -42px;
+}
+
+li#bulletin a {
+	width: 100px;
+	background-position: -224px 0px;
+}
+
+li#bulletin a:hover, li#bulletin a.current {
+	background-position: -224px -42px;
+}
+
+li#segunda a {
+	width: 154px;
+	background-position: -323px 0px;
+}
+
+li#segunda a:hover {
+	background-position: -323px -42px;
+}
+
+li#tv a {
+	width: 36px;
+	background-position: -477px 0px;
+}
+
+li#tv a:hover {
+	background-position: -477px -42px;
+}
+
+li#benefits a {
+	width: 130px;
+	background-position: -513px 0px;
+}
+
+li#benefits a:hover {
+	background-position: -513px -42px;
+}
+
+li#foundation a {
+	width: 116px;
+	background-position: -643px 0px;
+}
+
+li#foundation a:hover {
+	background-position: -643px -42px;
+}
+
+li#research a {
+	width: 71px;
+	background-position: -759px 0px;
+}
+
+li#research a:hover {
+	background-position: -759px -42px;
+}
+
+li#dwf a {
+	width: 94px;
+	background-position: -830px 0px;
+}
+
+li#dwf a:hover {
+	background-position: -830px -42px;
+}
+
+#logoLockup {
+	position: absolute;
+	left: 20px;
+	top: 57px;
+}
+
+#logoLockup img {
+	border: none;
+}
+
+
+
+/*
+Footer
+------  */
+#footer {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#fTopLinks {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#fTopLinks a {
+	padding: 0px 7px;
+}
+
+#fBottomLinks {
+	font-size: 12px;
+	padding: 8px 0px;
+}
+
+#fBottomLinks a {
+	padding: 0px 7px;
+}
+
+#fCopyright {
+	font-size: 11px;
+	margin-top: 20px;
+	color: #666666;
+}
+
+#fCopyright a, #fCopyright a:visited {
+	color: #666666;
+}
+
+.agnDesignation {
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	margin-left: 3px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#agnLogo {
+	vertical-align: -35%;
+	margin-left: 1px;
+	border-style: none;
+}

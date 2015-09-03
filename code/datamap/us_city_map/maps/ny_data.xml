@@ -1,0 +1,10 @@
+<root>
+	<p name="Binghamton" link="" type="font1" x="0" y="65" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Syracuse" link="" type="font1" x="-26" y="-16" x_h="-9.8" y_h="11.9" info="" frame="" img="" symbol="arrow1" />
+	<p name="Rochester" link="" type="font1" x="-116" y="-33" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="New York" link="" type="font1" x="116" y="171" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Niagara Falls" link="" type="font1" x="-204" y="-28" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Buffalo" link="" type="font1" x="-191" y="-3" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Albany" link="" type="font1" x="125" y="9" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Utica" link="" type="font1" x="31" y="-23" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+</root>

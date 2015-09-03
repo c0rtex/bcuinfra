@@ -1,0 +1,96 @@
+/* CSS Document */
+
+.topmenu {
+	margin: 0px;
+}
+
+.topmenu2 {
+	padding-top:0px;
+	margin: 0px;
+	float:left;
+	width:508px;	
+	vertical-align:bottom;	
+}
+
+h1.wrapper_bcu_text_logo {
+	text-align:left; 
+	font-size:2.4em; 
+	height:45px;
+	color:#E77B19;
+	font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	letter-spacing:-0.04em;
+	padding:0;
+	line-height:normal;
+	margin:0px;
+}
+
+#globalnav {
+	margin: 0px 0px;
+	padding: 14px 0px 0px 0px;
+	list-style: none;
+	background: #FFF url(../img/partners/caring/plmenu3.gif) repeat-x bottom left;
+	float:left;
+	width:922px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px; 
+
+}
+
+#globalnav2 {
+	margin: 0px 0px;
+	list-style: none;
+	background: #FFF url(../img/partners/caring/plmenu3.gif) repeat-x bottom left;
+	float:left;
+	width:508px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px; 
+
+}
+
+#menuAd {
+	color:#68B039;
+	font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+	font-size:.9em;
+	padding-bottom:8px;
+	width:242px;
+	float:left;
+	background: #FFF url(../img/partners/caring/plmenu3.gif) repeat-x bottom left;
+	vertical-align:bottom
+}
+
+#globalnav li {
+	float: left;
+	margin: 0 4px 0 0;
+}
+
+#globalnav a {
+	float: left;
+	display: block;
+	margin: 0px;
+	padding: 4px 12px 6px 12px;
+	color: #665a10;
+	text-decoration: none;
+	border: 1px solid #e9e5ce;
+	border-bottom: none;
+	background: #FFF url(../img/partners/caring/plmenu4.gif) repeat-x bottom left;	
+
+
+}
+
+#globalnav a:hover {
+	padding-bottom: 6px;
+	background: #FFF url(../img/partners/caring/plmenu5.gif) repeat-x bottom left;	
+}
+
+#on a {
+	font-weight:bold;
+	background: #FFF url(../img/partners/caring/plmenu1.gif) repeat-x bottom left;
+}
+
+
+.plimage {
+	margin-left: 16px; 
+	margin-bottom:14px;
+}

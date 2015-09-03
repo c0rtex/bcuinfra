@@ -1,0 +1,86 @@
+body {
+	background-color:#FEF2C8;
+	}
+.aboveDivider
+	{
+	background-image:url(../images/fivePeople.jpg);
+	background-position:top left;
+	background-repeat:no-repeat;
+	margin:0 0 0 25px;
+	height:275px;
+	}
+.aboveDividerText
+	{
+	color:#EF944E;
+	font-size: 4.75em;
+	font-family: helvetica, geneva, arial, sans-serif;
+	margin: 0px 0px 0px 60px;
+	padding-top:5px;
+	}
+
+.inputForm
+	{
+	width:22em;
+	float:right;
+	position:relative;
+	left:0px;
+	z-index:99;
+	margin-top:-6.5em;
+	margin-right:15px;
+}
+.inputForm h3,.inputForm h4,.inputForm p
+	{
+	color:#000000;
+	font-family: arial, helvetica, sans-serif;
+	text-align:left;
+	padding:0px;
+	margin: .5em;
+	}
+.inputForm h3
+	{
+	font-size: 1.1em;
+	font-weight: normal;
+}
+.inputForm h4
+	{
+	font-size: 1em;
+	font-weight: normal;
+}
+.inputForm p
+	{
+	font-size: .75em;
+	}
+.inputSubmit
+	{
+	padding: 15px 35%;
+}
+
+.divider
+	{
+	background-color: #EF944E;
+	height:25px;
+	color:#FFFFFF;
+	margin:0px;
+	padding:0px 15px;
+	position:relative;
+	left:0px;
+	text-align:right;
+	}
+
+.mainContent
+	{
+	color:#185E4E;
+	margin: 0px 25px 25px 25px;
+	padding:20px;
+	}
+.mainContent p
+	{
+	font-size: 1.1em;
+	}
+#workshopLogin
+	{
+	float:right;
+	margin-top:10px;
+	margin-right:25px;
+}
+

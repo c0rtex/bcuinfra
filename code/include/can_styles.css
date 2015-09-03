@@ -1,0 +1,114 @@
+/*
+TITLE  : NCOA BenefitsCheckUp Disaster Recovery Slash Styles - SCREEN MEDIA
+AUTHOR : JACOB ROSENFELD
+UPDATED: 20060313
+MODIFIED: Bill Shunn
+*/
+
+body {
+background-color: #aad5aa;
+background-image: url(../can/img/bk_fade.jpg);
+background-repeat: repeat-x;
+}
+
+/* ----[ primary links ]-----------------------------------  */
+a:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #0a50ff;
+	text-decoration: underline;
+}
+a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #0a50ff;
+	text-decoration: underline;
+}
+a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #0a50ff;
+	text-decoration: underline;
+}
+
+/* ----[ fonts ]-----------------------------------  */
+
+.Black-b1-bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+	line-height:14pt;
+	text-decoration: none;
+}
+.Black-b2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 11pt;
+	text-decoration: none;
+}
+.Black-b2-bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.Black-b3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 11pt;
+	text-decoration: none;
+}
+
+/* ----[ pseudo classes ]-----------------------------------  */
+a.minilink1:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: underline;
+}
+a.minilink1:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: underline;
+}
+a.minilink1:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: underline;
+}
+a.mainlink2:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #0a50ff;
+	text-decoration: underline;
+}
+a.mainlink2:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #0a50ff;
+	text-decoration: underline;
+}
+a.mainlink2:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #0a50ff;
+	text-decoration: underline;
+}
+

@@ -1,0 +1,506 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Adams</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>Alamosa</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Arapahoe</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>4</id>
+ <name>Archuleta</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>5</id>
+ <name>Baca</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>6</id>
+ <name>Bent</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>7</id>
+ <name>Boulder</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>8</id>
+ <name>Chaffee</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>9</id>
+ <name>Cheyenne</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>10</id>
+ <name>Clear Creek</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>11</id>
+ <name>Conejos</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>12</id>
+ <name>Costilla</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>13</id>
+ <name>Crowley</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>14</id>
+ <name>Custer</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>15</id>
+ <name>Delta</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>16</id>
+ <name>Denver</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>17</id>
+ <name>Dolores</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>18</id>
+ <name>Douglas</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>19</id>
+ <name>Eagle</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>20</id>
+ <name>El Paso</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>21</id>
+ <name>Elbert</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>22</id>
+ <name>Fremont</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>23</id>
+ <name>Garfield</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>24</id>
+ <name>Gilpin</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>25</id>
+ <name>Grand</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>26</id>
+ <name>Gunnison</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>27</id>
+ <name>Hinsdale</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>28</id>
+ <name>Huerfano</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>29</id>
+ <name>Jackson</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>30</id>
+ <name>Jefferson</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>31</id>
+ <name>Kiowa</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>32</id>
+ <name>Kit Carson</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>33</id>
+ <name>La Plata</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>34</id>
+ <name>Lake</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>35</id>
+ <name>Larimer</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>36</id>
+ <name>Las Animas</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>37</id>
+ <name>Lincoln</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>38</id>
+ <name>Logan</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>39</id>
+ <name>Mesa</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>40</id>
+ <name>Mineral</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>41</id>
+ <name>Moffat</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>42</id>
+ <name>Montezuma</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>43</id>
+ <name>Montrose</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>44</id>
+ <name>Morgan</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>45</id>
+ <name>Otero</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>46</id>
+ <name>Ouray</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>47</id>
+ <name>Park</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>48</id>
+ <name>Phillips</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>49</id>
+ <name>Pitkin</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>50</id>
+ <name>Prowers</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>51</id>
+ <name>Pueblo</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>52</id>
+ <name>Rio Blanco</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>53</id>
+ <name>Rio Grande</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>54</id>
+ <name>Routt</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>55</id>
+ <name>Saguache</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>56</id>
+ <name>San Juan</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>57</id>
+ <name>San Miguel</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>58</id>
+ <name>Sedgwick</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>59</id>
+ <name>Summit</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>60</id>
+ <name>Teller</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>61</id>
+ <name>Washington</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>62</id>
+ <name>Weld</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>63</id>
+ <name>Yuma</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>

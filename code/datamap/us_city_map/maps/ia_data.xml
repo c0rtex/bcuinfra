@@ -1,0 +1,10 @@
+<root>
+	<p name="Council Bluffs" link="" type="font1" x="-193" y="68" x_h="-66.8" y_h="-9.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Davenport" link="" type="font1" x="216" y="35" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Ames" link="" type="font1" x="-18" y="-8" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Ankeny" link="" type="font1" x="-19" y="22" x_h="-0.8" y_h="-7.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Des Moines" link="" type="font1" x="-18" y="34" x_h="0.2" y_h="1.9" info="" frame="" img="" symbol="arrow1" />
+	<p name="Iowa City" link="" type="font1" x="141" y="27" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Sioux City" link="" type="font1" x="-231" y="-55" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	<p name="Waterloo" link="" type="font1" x="80" y="-54" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+</root>

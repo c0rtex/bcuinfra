@@ -1,0 +1,172 @@
+BODY HTML {
+	FONT-SIZE: 1em; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+INPUT {
+	FONT-SIZE: 0.8em
+}
+.hp_buttontext {
+	PADDING-LEFT: 25px; FONT-SIZE: 0.8em; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+P {
+	FONT-SIZE:  COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.small {
+	FONT-SIZE: 0.7em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+B {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.status {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.blue {
+	COLOR: #467fb7; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.white {
+	COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H1 {
+	FONT-SIZE: 1.3em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H2 {
+	FONT-SIZE: 1.2em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H3 {
+	FONT-SIZE: 1.1em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.redhighlight {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.dynamicformdefault {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.asterix {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.3em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.alert {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.1em; COLOR: #000000; LINE-HEIGHT: 1.1em; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.redsmall {
+	FONT-WEIGHT: normal; FONT-SIZE: 0.7em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.red {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.1em; COLOR: #89180e; LINE-HEIGHT: 1.1em; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.drugname {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.1em; COLOR: #3d79b4; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+B.dim {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.1em; COLOR: #999999; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+P.dim {
+	FONT-WEIGHT: normal; FONT-SIZE: 0.8em; COLOR: #999999; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.dimsmall {
+	FONT-WEIGHT: normal; FONT-SIZE: 0.7em; COLOR: #999999; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.emailreminders {
+	FONT-SIZE: 0.8em; COLOR: #3d7bb6; LINE-HEIGHT: 1.2em; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.footer {
+	FONT-SIZE: 0.8em; COLOR: #999999; LINE-HEIGHT: 1.2em; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+A:link {
+	 COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A:active {
+	 COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A:visited {
+	 COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A:hover {
+	 COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+
+
+
+A.searchbyletter:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.searchbyletter:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.searchbyletter:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.searchbyletter:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 0.8em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.email_rem:link {
+	FONT-SIZE: 0.8em; COLOR: #3d7bb6; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.email_rem:active {
+	FONT-SIZE: 0.8em; COLOR: #3d7bb6; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.email_rem:visited {
+	FONT-SIZE: 0.8em; COLOR: #3d7bb6; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.email_rem:hover {
+	FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.main:link {
+	FONT-SIZE: 0.8em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.main:active {
+	FONT-SIZE: 0.8em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.main:visited {
+	FONT-SIZE: 0.8em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.main:hover {
+	FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.mainparagraph:link {
+	COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.mainparagraph:active {
+	COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.mainparagraph:visited {
+	COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.mainparagraph:hover {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.moreinfo:link {
+	COLOR: #467fb7; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.moreinfo:active {
+	COLOR: #467fb7; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.moreinfo:visited {
+	COLOR: #467fb7; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.moreinfo:hover {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.secnav:link {
+	FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.secnav:active {
+	FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.secnav:visited {
+	FONT-SIZE: 0.8em; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.secnav:hover {
+	FONT-SIZE: 0.8em; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.formdescription:link {
+	FONT-WEIGHT: bold; COLOR: #336699; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.formdescription:active {
+	FONT-WEIGHT: bold; COLOR: #336699; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.formdescription:visited {
+	FONT-WEIGHT: bold; COLOR: #336699; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.formdescription:hover {
+	FONT-WEIGHT: bold; COLOR: #89180e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}

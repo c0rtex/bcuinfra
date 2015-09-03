@@ -1,0 +1,4 @@
+<root> 
+		<p name="Providence" link="javascript:showOffices('locator_city.cfm?city=Providence&state=ri&program_id=579');" type="font1" x="14" y="-117" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Warwick" link="javascript:showOffices('locator_city.cfm?city=Warwick&state=ri&program_id=579');" type="font1" x="14" y="-48" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+	</root>

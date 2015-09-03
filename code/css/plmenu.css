@@ -1,0 +1,68 @@
+/*CSS Document*/
+.topmenu
+{
+	margin: 0px;
+}
+#globalnav
+{
+	margin: 0;
+	padding: 8px 0 0 10px;
+	list-style: none;
+	background: #FFF url(../img/plmenu3.gif) repeat-x bottom left;
+	float: left;
+	width: 775px;
+/*TEST*/
+	/*[disabled]border-bottom:1px solid #000000;*/
+}
+#globalnav LI
+{
+	float: left;
+	margin: 0 4px 0 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#globalnav A
+{
+	float: left;
+	display: block;
+	margin: 0px;
+	padding: 4px 12px 6px;
+	color: #002155;
+	text-decoration: none;
+	border: 1px solid #042155;
+	border-bottom: none;
+	background: #FFF url(../img/plmenu4.gif) repeat-x bottom left;
+}
+#globalnav A:hover
+{
+	padding-bottom: 6px;
+	background: #FFF url(../img/plmenu5.gif) repeat-x bottom left;
+}
+#on A
+{
+	font-weight: bold;
+	background: #FFF url(../img/plmenu1.gif) repeat-x bottom left;
+}
+.divider
+{
+	height: 0px;
+	margin: 20px;
+	padding: 0px;
+}
+DIV.box-content2 P.text2
+{
+	height: 76px;
+	padding: 0px;
+	margin: 0px;
+}
+DIV.box-contentesi P.text2
+{
+	height: 45px;
+	padding: 15px 15px 15px 0;
+	margin: 0px;
+}
+.plimage
+{
+	margin-left: 16px;
+	margin-bottom: 20px;
+}

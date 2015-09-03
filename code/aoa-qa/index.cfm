@@ -1,0 +1,2 @@
+<cf_sessionPassVars var="redirectURL" href="https://bcuqa.benefitscheckup.org/before_you_start.cfm" partner_id="12" subset_id="14" extralist="preserve=true">
+<cflocation url="#redirectURL#" AddToken="No">

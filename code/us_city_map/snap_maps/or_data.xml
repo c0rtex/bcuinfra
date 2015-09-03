@@ -1,0 +1,2 @@
+<root><p name="Portland" link="javascript:showOffices('snap_locator_county.cfm?county_id=41051');" type="font1" x="-122" y="-121" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /><p name="Salem" link="javascript:showOffices('snap_locator_county.cfm?county_id=41047');" type="font1" x="-146" y="-74" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /><p name="Eugene" link="javascript:showOffices('snap_locator_county.cfm?county_id=41039');" type="font1" x="-160" y="7" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
+		</root>

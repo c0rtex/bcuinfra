@@ -1,0 +1,291 @@
+<html>
+<head>
+	<title>Color Picker</title>
+	<!--[if lt IE 7.]>
+		<script defer type="text/javascript" src="pngfix.js"></script>
+	<![endif]-->
+	<script>
+		function Offset(x, y) {
+			this.x=x;
+			this.y=y;
+		}
+		function HSB(h,s,b) {
+			this.h=h;
+			this.s=s;
+			this.b=b;	
+		}
+		function RGB(r,g,b) {
+			this.r=r;
+			this.g=g;
+			this.b=b;	
+		}
+
+		var hsb=new HSB(0,0,0);
+		var rgb=new RGB(0,0,0);
+		var hex='#000000';
+		var hue_down=false;
+		var sb_down=false;
+		var off;
+		var sbOffset=new Offset(0,0);
+		var hueOffset=new Offset(0,0);
+		
+		function rgb2hex(r,g,b)
+		{
+			var hs='0123456789ABCDEF';
+			return '#'+hs.charAt((r>>4)&0xf)+hs.charAt(r&0xf)+
+				hs.charAt((g>>4)&0xf)+hs.charAt(g&0xf)+
+				hs.charAt((b>>4)&0xf)+hs.charAt(b&0xf);
+		}
+				
+		function hsb2rgb(hue, sat, bri) {
+		    var red, grn, blu, i, f, p, q, t;
+		    hue%=360;
+		    if(bri==0) {return({r:0, g:0, b:0});}
+		    sat/=100;
+		    bri/=100;
+		    hue/=60;
+		    i = Math.floor(hue);
+		    f = hue-i;
+		    p = bri*(1-sat);
+		    q = bri*(1-(sat*f));
+		    t = bri*(1-(sat*(1-f)));
+		    if (i==0) {red=bri; grn=t; blu=p;}
+		    else if (i==1) {red=q; grn=bri; blu=p;}
+		    else if (i==2) {red=p; grn=bri; blu=t;}
+		    else if (i==3) {red=p; grn=q; blu=bri;}
+		    else if (i==4) {red=t; grn=p; blu=bri;}
+		    else if (i==5) {red=bri; grn=p; blu=q;}
+		    red = Math.floor(red*255);
+		    grn = Math.floor(grn*255);
+		    blu = Math.floor(blu*255);
+		    return ({r:red, g:grn, b:blu});
+		}
+		//
+		function rgb2hsb(red, grn, blu) {
+		    var x, f, i, hue, sat, bri;
+		    red/=255;
+		    grn/=255;
+		    blu/=255;
+		    x = Math.min(Math.min(red, grn), blu);
+		    bri = Math.max(Math.max(red, grn), blu);
+		    if (x==bri){
+		        return({h:0, s:0, b:bri*100});
+		    }
+		    f = (red == x) ? grn-blu : ((grn == x) ? blu-red : red-grn);
+		    i = (red == x) ? 3 : ((grn == x) ? 5 : 1);
+		    hue = Math.floor((i-f/(bri-x))*60)%360;
+		    sat = Math.floor(((bri-x)/bri)*100);
+		    bri = Math.floor(bri*100);
+		    return({h:hue, s:sat, b:bri});
+		}
+
+		function getOffset(node) {
+			var x=0,y=0;
+			do {
+				x=x+node.offsetLeft;
+				y=y+node.offsetTop;
+				node=node.offsetParent;
+			} while(node!=null);
+			return new Offset(x,y);
+		}
+		
+		function sbDown(event) {
+			if(typeof(event)=="undefined") event=window.event;
+			sb_down=true;
+			off=getOffset(document.getElementById('sbdiv'));
+			
+			sbMove(event);
+			if(window.captureEvents)
+				window.captureEvents(Event.MouseMove | Event.MouseUp);
+			window.onmousemove=sbMove;
+			window.onmouseup=sbUp;
+			return false;
+		}
+		function sbMove(event) {
+			if(typeof(event)=="undefined") event=window.event;
+			if(!sb_down) return;
+			var s=(event.clientX-off.x)/2;
+			var b=(200-event.clientY+off.y)/2;
+			if(s>100) s=100;
+			if(s<0) s=0;
+			if(b>100) b=100;
+			if(b<0) b=0;
+			setHSB(hsb.h, s, b);
+			update();
+			return false;
+		}
+		function sbUp(event) {
+			if(typeof(event)=="undefined") event=window.event;
+			sb_down=false;
+			if(window.releaseEvents)
+				window.releaseEvents(Event.MouseMove | Event.MouseUp);
+			return false;
+		}
+		function hueDown(event) {
+			if(typeof(event)=="undefined") event=window.event;
+			hue_down=true;
+			off=getOffset(document.getElementById('huediv'));
+			hueMove(event);
+			if(window.captureEvents)
+				window.captureEvents(Event.MouseMove | Event.MouseUp);
+			window.onmousemove=hueMove;
+			window.onmouseup=hueUp;
+			return false;
+		}
+		function hueMove(event) {
+			if(typeof(event)=="undefined") event=window.event;
+			if(!hue_down) return;
+			var h=(200-event.clientY+off.y)*360/200;
+			if(h>360) h=360;
+			if(h<0) h=0;
+			setHSB(h, hsb.s, hsb.b);
+			return false;
+		}
+		function hueUp(event) {
+			if(typeof(event)=="undefined") event=window.event;
+			hue_down=false;
+			if(window.releaseEvents)
+				window.releaseEvents(Event.MouseMove | Event.MouseUp);
+			return false;
+		}
+		function setRGB(r,g,b) {
+			rgb={r:r,g:g,b:b};
+			hsb=rgb2hsb(r,g,b);
+			hex=rgb2hex(r,g,b);
+			update();
+		}
+		function setHSB(h,s,b) {
+			hsb={h:h,s:s,b:b};
+			rgb=hsb2rgb(h,s,b);
+			hex=rgb2hex(rgb.r,rgb.g,rgb.b);
+			update();
+		}
+		function editHSB() {
+			var h=parseInt(document.getElementById("hue").value);
+			var s=parseInt(document.getElementById("sat").value);
+			var b=parseInt(document.getElementById("bri").value);
+			if(isNaN(h)||isNaN(s)||isNaN(b)||h<0||h>360||s<0||s>100||b<0||b>100) {
+				return;
+			}
+			setHSB(h, s, b);
+		}
+		
+		function editRGB() {
+			var r=parseInt(document.getElementById("red").value);
+			var g=parseInt(document.getElementById("green").value);
+			var b=parseInt(document.getElementById("blue").value);
+			
+			if(isNaN(r)||isNaN(g)||isNaN(b)||r<0||r>255||g<0||g>255||b<0||b>255) {
+				return;
+			}
+			setRGB(r, g, b);
+		}
+		
+		function editHex() {
+			var hex=document.getElementById("hex").value;
+			if(hex.charAt(0)=='#') hex=hex.substring(1);
+			if(hex.length!=6) return;
+			var r=parseInt(hex.substring(0,2),16);
+			var g=parseInt(hex.substring(2,4),16);
+			var b=parseInt(hex.substring(4,6),16);
+			
+			if(isNaN(r)||isNaN(g)||isNaN(b)||r<0||r>255||g<0||g>255||b<0||b>255) {
+				return;
+			}
+			setRGB(r, g, b);
+		}
+		
+		function update() {
+			var base=hsb2rgb(hsb.h, 100, 100);
+			document.getElementById("sbdiv").style.backgroundColor=rgb2hex(base.r, base.g,base.b);
+			document.getElementById("colordiv").style.backgroundColor=rgb2hex(rgb.r, rgb.g,rgb.b);
+			
+			document.getElementById("red").value=rgb.r;
+			document.getElementById("green").value=rgb.g;
+			document.getElementById("blue").value=rgb.b;
+
+			document.getElementById("hue").value=hsb.h;
+			document.getElementById("sat").value=hsb.s;
+			document.getElementById("bri").value=hsb.b;
+			
+			document.getElementById("hex").value=hex;
+			
+			
+			
+		}
+		
+		function pickColor() {
+			window.opener.selectColor(hex);
+			parent.close();
+		}
+		
+		window.onload=update;
+	</script>
+</head>
+<body style="font-family: Arial, Helvetica;">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td style="width:200px;">
+				<div style="background-color: #00FF00;border:1px solid silver; width:200px;height:200px;cursor:default;" 
+						onmousedown="return sbDown(event);"
+						onmousemove="return sbMove(event);"
+						onmouseup="return sbUp(event);" id="sbdiv">
+					<img src="images/sboverlay.png" height="200" width="200" />
+				</div>
+			</td>
+			<td style="width:10px;">&nbsp;</td>
+			<td>
+				<div style="width:15px;height:200px;cursor:default;border:1px solid silver;" onmousedown="return hueDown(event);"
+						onmousemove="return hueMove(event);"
+						onmouseup="return hueUp(event);" id="huediv">
+					<img src="images/hue.png" width="15" height="200"/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table width="100%">
+					<tr>
+						<td>
+							<table cellspacing="0" cellpadding="0" border="0" width="140">
+								<tr>
+									<td><label for="hue">H</label></td><td><input type="text" id="hue" style="width:30px;" onchange="editHSB();" onkeyup="editHSB();"></td>
+									<td><label for="red">R</label></td><td><input type="text" id="red" style="width:30px;" onchange="editRGB();" onkeyup="editRGB();"></td>
+								</tr>
+								<tr>
+									<td><label for="sat">S</label></td><td><input type="text" id="sat" style="width:30px;" onchange="editHSB();" onkeyup="editHSB();"></td>
+									<td><label for="green">G</label></td><td><input type="text" id="green" style="width:30px;" onchange="editRGB();" onkeyup="editRGB();"></td>
+								</tr>
+								<tr>
+									<td><label for="bri">B</label></td><td><input type="text" id="bri" style="width:30px;" onchange="editHSB();" onkeyup="editHSB();"></td>
+									<td><label for="blue">B</label></td><td><input type="text" id="blue" style="width:30px;" onchange="editRGB();" onkeyup="editRGB();"></td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<table cellspacing="0" cellpadding="0" border="0" width="140">
+								<tr>
+									<td>
+										<div style="width:80px;height:35px;background-color:#FFFFFF;border:1px solid #CCCCCC" id="colordiv"></div>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="text" id="hex" style="width:80px;" onchange="editHex();" onkeyup="editHex();"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+			<div align="center" style="height:100%;font-family:Arial, Helvetica;background-color:#f5f5f5;padding:4px;border-top:1px solid silver;">
+			<a href="javascript:pickColor();"><img src="images/down.gif" alt="OK" border="0" align="absmiddle"></a>&nbsp;<a href="javascript:pickColor()"><b>OK</b></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:parent.close()"><img src="images/delete.gif" alt="Close this window" border="0" align="absmiddle"></a>&nbsp;<A href="javascript:parent.close()"><B>Cancel</b></a>
+			</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<root> 
+		<p name="Anchorage" link="javascript:showOffices('locator_city.cfm?city=Anchorage&state=ak&program_id=579');" type="font1" x="11" y="24" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
+		<p name="Fairbanks" link="javascript:showOffices('locator_city.cfm?city=Fairbanks&state=ak&program_id=579');" type="font1" x="36" y="-51" x_h="-46.8" y_h="-14.1" info="" frame="" img="" symbol="arrow1" />
+		<p name="Juneau" link="javascript:showOffices('locator_city.cfm?city=Juneau&state=ak&program_id=579');" type="font1" x="162" y="77" x_h="0.2" y_h="-0.1"
+info="" frame="" img="" symbol="arrow1" />
+</root>

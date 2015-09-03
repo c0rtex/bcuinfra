@@ -1,0 +1,1 @@
+<cflocation url="/medicaid_locator.cfm" addtoken="no">

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Ria Tester</title>
+    </head>
+    <script language="javascript" type="text/javascript">
+    if (typeof XMLHttpRequest == "undefined")
+  	XMLHttpRequest = function () {
+    	try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); }
+      		catch (e) {}
+    	try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); }
+      		catch (e) {}
+    	try { return new ActiveXObject("Microsoft.XMLHTTP"); }
+      		catch (e) {}
+    	//Microsoft.XMLHTTP points to Msxml2.XMLHTTP and is redundant
+    	throw new Error("This browser does not support XMLHttpRequest.");
+    };
+
+
+    function getData()
+    {
+      xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState==4)
+        {
+          Response(xmlhttp.responseXML.xml)   
+        };
+      };
+      xmlhttp.open("HEAD","https://www.humanservices-t.state.pa.us/siteminderagent/forms/login.fcc",true);
+      xmlhttp.send(null);
+
+
+    }        
+
+    function Response(response)
+    {
+      document.write(response);
+    }
+    </script>
+    
+    <body>
+        <form>
+             <input name="btnSub" type="button" value="Get HEader" onclick="javascript:getData()">  
+             
+        </form>
+    </body>
+</html>

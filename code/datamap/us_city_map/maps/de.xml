@@ -1,0 +1,26 @@
+<map>  
+<county>
+ <id>1</id>
+ <name>Kent</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>2</id>
+ <name>New Castle</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+<county>
+ <id>3</id>
+ <name>Sussex</name>
+ <URL>#</URL>
+ <popup></popup>
+ <color1>7798BA</color1>
+ <color2>366CA3</color2>
+</county>
+</map>
