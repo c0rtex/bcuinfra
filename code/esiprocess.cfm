@@ -182,7 +182,7 @@
 					                    <div id="pressroom" class="span2 sites">
 					<h2>Press Room:</h2>
 						<ul>
-							<li><a target="_blank" href="http://ncoa.org/press-room/">Overview</a></li>
+							<li><a target="_blank" href="http://ncoa.org/news/">Overview</a></li>
 							<li><a target="_blank" href="http://ncoa.org/press-room/press-release/">Press Releases</a></li>
 							<li><a target="_blank" href="http://ncoa.org/press-room/news.html">News</a></li>
 							<li><a target="_blank" href="http://ncoa.org/press-room/fact-sheets/">Fact Sheets</a></li>
@@ -194,7 +194,6 @@
 						<ul>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/">Overview</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/our-impact/">Our Impact</a></li>
-							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/locations.html">Locations</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/leadership/">Leadership</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/funders/">Funders</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/annual-report.html">Annual Report</a></li>
@@ -221,7 +220,6 @@
 	<li class="youtube"><a target="_blank" href="http://www.youtube.com/ncoaging">NCOA on YouTube</a></li>
 	<li class="linkedin"><a target="_blank" href="https://www.linkedin.com/company/216832">NCOA on LinkedIn</a></li>
 	<li class="cr"><a target="_blank" href="http://www.ncoacrossroads.org">Crossroads Community for Professionals in Aging</a></li>
-	<li class="rss"><a target="_blank" href="http://www.ncoa.org/system/rss/channel.jsp?feedID=277156535">RSS</a></li>					
 						</ul>
                 	</div>
 
