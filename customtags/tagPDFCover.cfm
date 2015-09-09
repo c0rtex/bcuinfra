@@ -107,7 +107,7 @@ Select partner_code from tbl_partner where partner_id = #session.partner_id#
 <cfif IsDefined('partnerfolder') AND session.partnerPDFLogoFlag eq 1 and partnerfolder NEQ "">
 	<cfif session.partner_id eq 22 and session.subset_id eq 70>
 		<br /><br /><br /><br /><br /><br /><BR />
-<cfelseif session.partner_id eq 77 and session.partnerPDFLogoFlag>
+<cfelseif (session.partner_id eq 77 or session.partner_id eq 136) and session.partnerPDFLogoFlag>
 <center><IMG src="https://#application.serverPath#/cf/img/partners/#partnerfolder#/logo.png" border="0" ALT="Logo"></center><br /><br /><br /><br /><br />
   	<cfelseif session.partner_id eq 47 and session.partnerPDFLogoFlag eq 1>
 		<center><IMG src="https://#application.serverPath#/cf/images/logo_print_humanarc.jpg" width="375" height="110" border="0" ALT="Human Arc"></center>
