@@ -78,7 +78,7 @@
                             <li><a href="/privacy-policy">Privacy Policy</a></li>
                             <li><a href="/termsofuse">Terms of Use</a></li>
                             <li><a href="mailto:comments@benefitscheckup.org">Feedback</a></li>
-                            <li><a href="http://oeqa.benefitscheckup.org/oe" target="_blank">Partner Login</a></li>
+                            <li><a href="http://oe.benefitscheckup.org/oe" target="_blank">Partner Login</a></li>
                         </ul>
                     </div>
                     <div class="sites" id="other">
