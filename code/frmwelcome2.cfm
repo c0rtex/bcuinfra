@@ -1,4 +1,4 @@
-<!--- Initialize and load any session variable value passed into this page --->
+<!--- Initialize and load any of the session variable values passed into this page --->
 <cf_sessionLoadVars>
 <cfif IsDefined('URL.subset_id') AND URL.subset_id NEQ ''>
 	<cfset SESSION.subset_id = URL.subset_id>
