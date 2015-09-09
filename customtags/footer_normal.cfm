@@ -78,7 +78,7 @@
                             <li><a href="/privacy-policy">Privacy Policy</a></li>
                             <li><a href="/termsofuse">Terms of Use</a></li>
                             <li><a href="mailto:comments@benefitscheckup.org">Feedback</a></li>
-                            <li><a href="http://oe.benefitscheckup.org/oe" target="_blank">Partner Login</a></li>
+                            <li><a href="http://oeqa.benefitscheckup.org/oe" target="_blank">Partner Login</a></li>
                         </ul>
                     </div>
                     <div class="sites" id="other">
@@ -97,8 +97,8 @@
                     <div class="sites" id="pressroom">
                     <h2>Press Room:</h2>
                         <ul>
-<li><a href="http://ncoa.org/press-room/" target="_blank">Overview</a></li>
-<li><a href="http://ncoa.org/press-room/press-release/" target="_blank">Press Releases</a></li>
+<li><a target="_blank" href="http://ncoa.org/news/">Overview</a></li>
+<li><a target="_blank" href="http://ncoa.org/press-room/press-release/">Press Releases</a></li>
 <li><a href="http://ncoa.org/press-room/news.html" target="_blank">News</a></li>
 <li><a href="http://ncoa.org/press-room/fact-sheets/" target="_blank">Fact Sheets</a></li>
 <li><a href="http://www.ncoa.org/press-room/thought-leader/" target="_blank">Thought Leaders</a></li>
@@ -109,7 +109,6 @@
                         <ul>
 <li><a href="http://www.ncoa.org/about-ncoa/" target="_blank">Overview</a></li>
 <li><a href="http://www.ncoa.org/about-ncoa/our-impact/" target="_blank">Our Impact</a></li>
-<li><a href="http://www.ncoa.org/about-ncoa/locations.html" target="_blank">Locations</a></li>
 <li><a href="http://www.ncoa.org/about-ncoa/leadership/" target="_blank">Leadership</a></li>
 <li><a href="http://www.ncoa.org/about-ncoa/funders/" target="_blank">Funders</a></li>
 <li><a href="http://www.ncoa.org/about-ncoa/annual-report.html" target="_blank">Annual Report</a></li>
@@ -125,7 +124,6 @@
 <li class="youtube"><a href="http://www.youtube.com/ncoaging" target="_blank">NCOA on Youtube</a></li>
     <li class="linkedin"><a target="_blank" href="https://www.linkedin.com/company/216832">NCOA on LinkedIn</a></li>
 <li class="cr"><a href="http://www.ncoacrossroads.org" target="_blank">Crossroads Community for Professionals in Aging</a></li>
-<li class="rss"><a href="#">RSS</a></li>
                         </ul>
                     </div>
                 </div>
