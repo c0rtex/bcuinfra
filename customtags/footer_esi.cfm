@@ -22,7 +22,7 @@
 							<li><a href="/esi-termsofuse/">Terms of Use</a></li>
 							<li><a href="https://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
 							<li><a href="mailto:economiccheckup@ncoa.org">Contact Us</a></li>
-							<li><a target =_blank href="https://oeqa.benefitscheckup.org/oe/?partner_id=77">Partner Login</a></li>
+							<li><a target =_blank href="https://oe.benefitscheckup.org/oe/?partner_id=77">Partner Login</a></li>
 						</ul>
 				</div>
                 <div id="other" class="span2 sites">
