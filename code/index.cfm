@@ -3,6 +3,16 @@
 <cf_sessionLoadVars redirect="#evaluate("not #gohome#")#">
 <cf_cacheWrapperQuery query="wrapper" partner_id="#session.partner_id#">
 
+<cfif IsDefined('URL.sc_partner_id') AND URL.sc_partner_id NEQ ''>
+	<cfset SESSION.sc_partner_id = URL.sc_partner_id>
+<cfelseif IsDefined ('SESSION.sc_partner_id')>
+<!--- do nothing --->
+<cfelse>
+	<cfset SESSION.sc_partner_id = 0>
+</cfif>
+
+
+<cfif session.partner_id neq 80 or session.partner_id eq 80><!--- temp override for care.com was without the eq; adding the eq as a hack for removing care.com quickly:--->
 <!--- Reroute inactive PLs to consumer home --->
 <cfoutput>
 	<CFQUERY datasource="#APPLICATION.dbSrc#" NAME="stat">
@@ -13,7 +23,8 @@
     	<cflocation url="/index.php">
         <cfabort>
     </cfif>
-    </cfoutput>
+</cfoutput>
+</cfif>
 
 <!--- Set guts --->
 <cfparam name="link" default="">
