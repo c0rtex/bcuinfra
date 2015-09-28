@@ -143,6 +143,39 @@ $(function() {
 
 <body class="js">
 
+
+<script>
+	
+dataLayer = [{
+	
+'partner_id': '85',
+'partner_name': 'Colorado Coalition for Senior Economic Security',
+'subset_id': '0',
+'state': '',
+
+}];
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+//Copy the code below and paste it onto every page of your website. Place it immediately after the opening <body> tag.
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHJ4LQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PHJ4LQ');</script>
+<!-- End Google Tag Manager -->
+
+</script>
+
 <div id="wrapper">
 	<div id="ada508">  
 		<strong>Shortcut Navigation:</strong> 
@@ -408,5 +441,9 @@ pageTracker3._trackPageview();
 } catch(err) {}
 
 </script>
+
+
+
+
 </body>
 </html>
