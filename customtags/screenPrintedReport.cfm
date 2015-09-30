@@ -379,7 +379,7 @@
 	<cfif attributes.coverpage>
 		<cffile action="WRITE" file="#session.strPDFPath##attributes.pdfname#.html" output="#pdfcoverstr#">
 	</cfif>
-	<cfset strOutData = #replacenocase(strOutData,'<img src="https://','<img src="http://','ALL')#>
+	<cfset strOutData = #replacenocase(strOutData,'<img src="http://','<img src="http://','ALL')#>
 	<cffile action="WRITE" file="#session.strPDFPath##attributes.pdfname#.cfm" output="#strOutData#">
 
 	<cfif attributes.fileformat eq 'pdf'>
