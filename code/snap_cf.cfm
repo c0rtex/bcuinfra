@@ -1,11 +1,4 @@
-<div id="content">
-	<div id="inner-content" class="row-fluid">
-		<div id="main" class="span12" role="main">
-                    
-                    <!-- START CONTENT -->
-                    
 <script src="js/AC_RunActiveContent.js" type="text/javascript"></script>
-
 <cfif IsDefined('URL.partner_id')>
 	<cfset SESSION.partner_id = URL.partner_id>
 </cfif>
@@ -26,13 +19,8 @@
 	<cfset SESSION.partner_id = 0>
 </cfif>
 
-<cfset stateCode='AL'> <!---TODO, Lynna Cekova, Bug 8835; use this list in listing # of seniors per state below in the comment rather than just state name--->
-		<cfquery name="getStateInfo" datasource="#application.dbSrc#">
-			select state_id, snap_seniors from state_snap
-			where year = '#year(now())#'
-		</cfquery>
 
-<!---<cfoutput query='getStateInfo'> TODO <br/> #getStateInfo.snap_seniors#</cfoutput> --->
+
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -106,7 +94,7 @@ case "Arizona":
   state_switch="AZ"; 
   map_state_id = "st3"; break;
 case "Arkansas":
-  state_switch="AK";
+  state_switch="AR";
   map_state_id = "st4"; break;
 case "California":
   state_switch="CA"; 
@@ -154,7 +142,7 @@ case "Louisiana":
   state_switch="LA"; 
   map_state_id = "st19"; break;
 case "Maine":
-  state_switch="MA"; 
+  state_switch="ME"; 
   map_state_id = "st20"; break;
 case "Maryland":
   state_switch="MD"; 
@@ -262,8 +250,6 @@ default:
   state_switch='';               
 }
 
-//console.log ("map state id" + map_state_id);
-
 
 for (var i=1;i<=54;i++){
 the_state_id = "st"+i;
@@ -279,26 +265,180 @@ map.stateHighlightOn(map_state_id);
 });
 </script>
 
-<div class="row-fluid" id="intro">
+<!Lynna Cekova, Bug 8835; use this list in listing # of seniors per state below in the comment rather than just state name--->
+		<cfquery name="getStateInfo" datasource="#application.dbSrc#">
+select s.state_name, ssn.state_id, ssn.snap_seniors from state_snap ssn, state s
+where ssn.year = '#year(now())#' and ssn.state_id = s.state_id
 
-	<div class="span12">                 
-        <h1 class="indexh1"<cfif session.partner_id NEQ 89 and session.partner_id neq 90> align="center"<cfelse> style="text-align:center;"</cfif>>Welcome to the SNAP Map</h1>
-        
-         <p>The Supplemental Nutrition Assistance Program (SNAP) (the new name for the
-        federal Food Stamp Program) helps low-income individuals and families buy the
-        food they need for good health. Although SNAP is the national name, your state may use a different name.
-        </p>
-        <p>Use this map to learn more about SNAP and find application forms to apply for this benefit.</p>
-	</div>
-</div>
-<div class="row-fluid" id="map-form">
-<div class="span6"><cfif session.partner_id EQ 0 OR session.partner_id EQ 77><p><cfif IsDefined('SESSION.partner_id') AND (SESSION.partner_id EQ 0 OR session.partner_id EQ 77)> </cfif><strong>Start your search</strong>, <em>click</em> on your state <strong>OR</strong> select your state.
-		<cfelse><p></cfif> </div>
-<!--- Lynna Cekova: removed after replacing SNAP map with HTML5   <cfif IsDefined('SESSION.partner_id') AND (SESSION.partner_id NEQ 0 OR session.partner_id EQ 77)>align="center"</cfif> --->
-<div class="span6">
+		</cfquery>
+
+<!---<cfoutput query='getStateInfo'> <br/>#getStateInfo.state_id#< #getStateInfo.snap_seniors#</cfoutput>--->
+ 
+<cfloop query="getStateInfo"> 
+<!---
+    <cfoutput> 
+TESTTHIS
+#getStateInfo.state_name#
+#getStateInfo.state_id#< #getStateInfo.snap_seniors#<
+
+    </cfoutput> 
+--->
+
+<script type="text/javascript">
+$(document).ready(function(){
+switch ("<cfoutput>#getStateInfo.state_id#</cfoutput>")
+{
+case "AL":
+  map_state_id = "st1"; break;
+case "AK":
+  map_state_id = "st2"; break;
+case "AZ":
+  map_state_id = "st3"; break;
+case "AR":
+  map_state_id = "st4"; break;
+case "CA":
+  map_state_id = "st5"; break;
+case "CO":
+  map_state_id = "st6"; break;
+case "CT":
+  map_state_id = "st7"; break;
+case "DE":
+  map_state_id = "st8"; break;
+case "DC":
+  map_state_id = "st9"; break;
+case "FL":
+  map_state_id = "st10"; break;
+case "GA":
+  map_state_id = "st11"; break;
+case "HI":
+  map_state_id = "st12"; break;
+case "ID":
+  map_state_id = "st13"; break;
+case "IL":
+  map_state_id = "st14"; break;
+case "IN":
+  map_state_id = "st15"; break;
+case "IA":
+  map_state_id = "st16"; break;
+case "KS":
+  map_state_id = "st17"; break;
+case "KY":
+  map_state_id = "st18"; break;
+case "LA": 
+  map_state_id = "st19"; break;
+case "ME":
+  map_state_id = "st20"; break;
+case "MD":
+  map_state_id = "st21"; break;
+case "MA": 
+  map_state_id = "st22"; break;
+case "MI":
+  map_state_id = "st23"; break;
+case "MN":
+  map_state_id = "st24"; break;
+case "MS":
+  map_state_id = "st25"; break;
+case "MO":
+  map_state_id = "st26"; break;
+case "MT":
+  map_state_id = "st27"; break;
+case "NE": 
+  map_state_id = "st28"; break;
+case "NV":
+  map_state_id = "st29"; break;
+case "NH":
+  map_state_id = "st30"; break;
+case "NJ":
+  map_state_id = "st31"; break;
+case "NM":
+  map_state_id = "st32"; break;
+case "NY":
+ map_state_id = "st33"; break;
+case "NC":
+  map_state_id = "st34"; break;
+case "ND": 
+  map_state_id = "st35"; break;
+case "OH":
+  map_state_id = "st36"; break;
+case "OK":
+  map_state_id = "st37"; break;
+case "OR":
+  map_state_id = "st38"; break;
+case "PA":
+  map_state_id = "st39"; break;
+case "RI":
+  map_state_id = "st40"; break;
+case "SC": 
+  map_state_id = "st41"; break;
+case "SD":
+  map_state_id = "st42"; break;
+case "TN":
+  map_state_id = "st43"; break;
+case "TX":
+  map_state_id = "st44"; break;
+case "UT":
+  map_state_id = "st45"; break;
+case "VT":
+  map_state_id = "st46"; break;
+case "VA":
+  map_state_id = "st47"; break;
+case "WA":
+  map_state_id = "st48"; break;
+case "WV":
+  map_state_id = "st49"; break;
+case "WI":
+  map_state_id = "st50"; break;
+case "WY":
+  map_state_id = "st51"; break;    
+case "VI":
+  map_state_id = "st53"; break;
+case "PR":
+  map_state_id = "st52"; break;
+case "GU":
+  map_state_id = "st54"; break;
+default:
+  map_state_id = "none"; break;
+}
+
+//console.log ("<br>map state id" + map_state_id);
+
+//console.log (" state id: <cfoutput>#getStateInfo.state_id#</cfoutput>")
+map.setComment(map_state_id, "In <cfoutput>#getStateInfo.state_name#</cfoutput>, over <cfoutput>#NumberFormat(getStateInfo.snap_seniors, ",")#</cfoutput> seniors are using SNAP to stretch their grocery budget. Are you?"); 
+
+var stateComment = map.fetchStateAttr(map_state_id, 'comment');
+
+//console.log("map state comment: " + stateComment);
+
+
+
+});
+</script>
+</cfloop>
+
+
+
+
+
+<h1 class="indexh1"<cfif session.partner_id NEQ 89 and session.partner_id neq 90> align="center"<cfelse> style="text-align:center;"</cfif>>Welcome to the SNAP Map</h1>
+
+ <p style="line-height:1.3em;">The Supplemental Nutrition Assistance Program (SNAP) (the new name for the
+federal Food Stamp Program) helps low-income individuals and families buy the
+food they need for good health. Although SNAP is the national name, your state may use a different name.
+</p>
+<p style="line-height:1.3em;">Use this map to learn more about SNAP and find application forms to apply for this benefit.</p>
+<!---p style="line-height:1.3em;"><font color="red"><strong>Hurricane Sandy Relief:</strong></font> The federal government is working with your state to expand the SNAP program to offer food assistance after Hurricane Sandy.  You may get additional SNAP benefits to help replace food you lost and buy hot food with your EBT card, depending on where you live. In some areas, you may be able to apply and get SNAP benefits quickly, even if you were not able to get help from the program in the past.  To find out what SNAP benefits are available to you, get more information <a href="http://www.fns.usda.gov/disasters/response/pdf/Hurricane_Sandy.pdf" target="_blank">here</a>.</p--->
+<!---<p class="text1"><cf_displayText group="site" code="site_snap_home_intro"></p>--->
+<!---<cf_sessionPassVars action="snap_state.cfm" method="post" partner_id="#session.partner_id#">--->
 <form action="snap_state.cfm?partner_id=<cfoutput>#session.partner_id#</cfoutput>" method="post">
+<center>
 <cfoutput><cfif IsDefined("url.partner_id")><cfset SESSION.partner_id = #url.partner_id#></cfif></cfoutput>
-<select id="state" name="state">
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="700">
+	<tr>
+    <td><cfif session.partner_id EQ 0 OR session.partner_id EQ 77><p<cfif IsDefined('SESSION.partner_id') AND (SESSION.partner_id EQ 0 OR session.partner_id EQ 77)> </cfif><strong>Start your search</strong>, <em>click</em> on your state <strong>OR</strong> select your state.
+		<cfelse><p></cfif> </td>
+<!--- Lynna Cekova: removed after replacing SNAP map with HTML5   <cfif IsDefined('SESSION.partner_id') AND (SESSION.partner_id NEQ 0 OR session.partner_id EQ 77)>align="center"</cfif> --->
+
+<td style="width:450px;">    <select id="state" name="state">
 <option value="">--- Select Your State ---</option>
 <option value="Alaska">AK - Alaska</option>
 <option value="Alabama">AL - Alabama</option>
@@ -358,25 +498,27 @@ map.stateHighlightOn(map_state_id);
 
 
 	<input id="go_button_submit" type="submit" value="GO" />
-</form>
-	</div>
-</div><!-- end form row -->
-<div class="row-fluid" id="map">
-	<div class="span12">
+
+</td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="700">
+<tr><td>
 <!-- start Fla-shop.com HTML5 Map -->
-	<div id='map-container' class=""></div>
+	<div id='container'></div>
 	<link href="/cf/usa_locator/map.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="/cf/usa_locator/raphael-min.js"></script>
 	<script type="text/javascript" src="/cf/usa_locator/settings.js"></script>
 	<script type="text/javascript" src="/cf/usa_locator/map.js"></script>
 	<script>
 	var map = new FlaMap(map_cfg);
-	map.draw('map-container');
+	map.draw('container');
 	</script>
 <!-- end HTML5 Map -->
 
-	</div>
-   </div><!-- end map row -->
-		</div> <!-- end #main -->
-	</div> <!-- end #inner-content -->
-</div> <!-- end #content -->
+
+
+</td></tr>
+
+</table>
+</form>
+</center>

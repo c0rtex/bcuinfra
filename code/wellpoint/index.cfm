@@ -1,4 +1,9 @@
 <!doctype html>
+	
+
+<cflocation url="/">
+
+
 <html dir="ltr" lang="en-US" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:addthis="http://www.addthis.com/help/api-spec" >
 
 <head>
