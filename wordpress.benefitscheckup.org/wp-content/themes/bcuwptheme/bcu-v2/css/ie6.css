@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* CSS Document */
+ #content a.go-button{display:inline;text-align:right;}
+.row input, .row select{width:140px;}
+
+.questionHolder strong{margin-left: -16px !important;}
+#page{overflow: hidden;}
+div.questionBar .helpTip{right: 66px !important;}
+#footer .sub-wrapper .sites{overflow: hidden;}
+#footer .sub-wrapper #other {width: 150px; border: 1px #CBE4ED solid;}
+#footer .sub-wrapper #pressroom {width: 110px; border: 1px #CBE4ED solid;}
+#footer .sub-wrapper #about {width: 100px; border: 1px #CBE4ED solid;}
+#footer .sub-wrapper #f-stay-connected {width: 140px; border: 1px #CBE4ED solid;}

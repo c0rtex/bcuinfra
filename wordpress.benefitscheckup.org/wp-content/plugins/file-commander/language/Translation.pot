@@ -1,0 +1,217 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: File Commander Plugin for WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-04 11:09+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dennis Hoppe\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: t;t:2c,1\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../options_page.php:1
+msgid "Required user level"
+msgstr ""
+
+#: ../options_page.php:3
+msgid "User level"
+msgstr ""
+
+#: ../options_page.php:5
+msgid "This is the minimum securitiy level a user has to have to use the file commander."
+msgstr ""
+
+#: ../options_page.php:9
+msgid "Enable functions"
+msgstr ""
+
+#: ../options_page.php:12
+msgid "User can create folders."
+msgstr ""
+
+#: ../options_page.php:17
+msgid "User can rename folders."
+msgstr ""
+
+#: ../options_page.php:22
+msgid "User can delete folders."
+msgstr ""
+
+#: ../options_page.php:27
+msgid "User can upload files."
+msgstr ""
+
+#: ../options_page.php:32
+msgid "User can download files."
+msgstr ""
+
+#: ../options_page.php:37
+msgid "User can rename files."
+msgstr ""
+
+#: ../options_page.php:42
+msgid "User can delete files."
+msgstr ""
+
+#: ../options_page.php:47
+msgid "User can see the modification time of files."
+msgstr ""
+
+#: ../options_page.php:52
+msgid "User can see the file size."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:68
+#: ../wp-plugin-file-commander.php:87
+msgid "File Commander Options"
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:69
+#: ../wp-plugin-file-commander.php:277
+#: ../wp-plugin-file-commander.php:278
+#: ../wp-plugin-file-commander.php:297
+msgid "File Commander"
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:159
+msgid "The new folder was created successfully."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:165
+msgid "Could not create the new folder."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:178
+msgid "The folder was renamed successfully."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:183
+msgid "Could not rename the folder."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:195
+#, php-format
+msgid "The folder \"%s\" was deleted successfully."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:200
+#, php-format
+msgid "Could not delete the folder \"%s\"."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:218
+msgid "Could not copy all files successfully."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:223
+msgid "All files uploaded."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:247
+msgid "The file was renamed successfully."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:252
+msgid "Could not rename the file."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:264
+#, php-format
+msgid "The file \"%s\" was deleted successfully."
+msgstr ""
+
+#: ../wp-plugin-file-commander.php:269
+#, php-format
+msgid "Could not delete the file \"%s\"."
+msgstr ""
+
+#: ../interface.php:16
+msgid "Are you sure you want to delete this folder?"
+msgstr ""
+
+#: ../interface.php:17
+msgid "Are you sure you want to delete this file?"
+msgstr ""
+
+#: ../interface.php:31
+msgid "You are here"
+msgstr ""
+
+#: ../interface.php:36
+msgid "&uArr; Upward"
+msgstr ""
+
+#: ../interface.php:41
+msgid "Folders"
+msgstr ""
+
+#: ../interface.php:48
+#: ../interface.php:63
+#: ../interface.php:99
+#: ../interface.php:116
+msgid "Rename"
+msgstr ""
+
+#: ../interface.php:50
+#: ../interface.php:101
+msgid "Delete"
+msgstr ""
+
+#: ../interface.php:52
+#: ../interface.php:103
+msgid "View in Browser"
+msgstr ""
+
+#: ../interface.php:61
+msgid "New name for this folder"
+msgstr ""
+
+#: ../interface.php:70
+msgid "Create folder"
+msgstr ""
+
+#: ../interface.php:74
+msgid "Name of the new folder"
+msgstr ""
+
+#: ../interface.php:76
+msgid "Create"
+msgstr ""
+
+#: ../interface.php:82
+msgid "Files"
+msgstr ""
+
+#: ../interface.php:95
+msgctxt "Dateformat for the file modification time."
+msgid "F d Y H:i:s"
+msgstr ""
+
+#: ../interface.php:105
+msgid "Download"
+msgstr ""
+
+#: ../interface.php:114
+msgid "New name for this file"
+msgstr ""
+
+#: ../interface.php:123
+msgid "Upload file"
+msgstr ""
+
+#: ../interface.php:128
+msgid "Please choose a file"
+msgstr ""
+
+#: ../interface.php:131
+msgid "All already existing files will be overwritten!"
+msgstr ""
+
+#: ../interface.php:132
+msgid "Upload"
+msgstr ""
+

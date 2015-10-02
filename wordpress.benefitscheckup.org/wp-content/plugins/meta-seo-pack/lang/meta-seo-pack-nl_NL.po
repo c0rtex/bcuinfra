@@ -1,0 +1,750 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Meta SEO Pack v2.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/meta-seo-pack\n"
+"POT-Creation-Date: 2009-09-05 17:04+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Rene - WordPressPluginGuide.com <info@wppg.me>\n"
+"Language-Team: WordPressPluginGuide.com <info@wppg.me>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: admin/canonical.php:2
+msgid "Canonical URLs:"
+msgstr "Canonieke URLs:"
+
+#: admin/canonical.php:6
+msgid "Add <code>&lt;link rel=&quot;canonical&quot;&gt;</code> tag"
+msgstr "Voeg <code>&lt;link rel=&quot;canonical&quot;&gt;</code> tag toe"
+
+#: admin/description.php:2
+msgid "Meta Description tag:"
+msgstr "Meta Description tag:"
+
+#: admin/description.php:6
+msgid "Add <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+msgstr "Voeg <code>&lt;meta name=&quot;description&quot;&gt;</code> tag toe"
+
+#: admin/description.php:13
+#: admin/keywords.php:23
+#: admin/nofollow.php:13
+#: admin/robots.php:31
+#: admin/title.php:23
+msgid "Home Page:"
+msgstr "Startpagina:"
+
+#: admin/description.php:17
+msgid "Home page description"
+msgstr "Startpagina omschrijving"
+
+#: admin/description.php:20
+msgid "You can use <code>%blog_name%</code> as a placeholder for Blog Name, and <code>%blog_desc%</code> for Blog Description (Tagline)."
+msgstr "Je kunt <code>%blog_name%</code> gebruiken als een aanduiding voor de Blog Naam, en <code>%blog_desc%</code> voor Blog Omschrijving (Tagline)."
+
+#: admin/description.php:24
+#: admin/keywords.php:34
+#: admin/nofollow.php:24
+#: admin/robots.php:42
+#: admin/title.php:35
+msgid "Posts:"
+msgstr "Berichten:"
+
+#: admin/description.php:28
+msgid "Generate description from post"
+msgstr "Genereer omschrijving van bericht"
+
+#: admin/description.php:31
+msgid "Generate value for <code>&lt;meta name=&quot;description&quot;&gt;</code> tag from post excerpt (if entered) or post content"
+msgstr "Genereer <code>&lt;meta name=&quot;description&quot;&gt;</code> tag van bericht samenvatting (wanneer toegevoegd) of van de inhoud van het bericht"
+
+#: admin/description.php:35
+#: admin/keywords.php:56
+#: admin/nofollow.php:46
+#: admin/robots.php:53
+#: admin/title.php:47
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#: admin/description.php:39
+msgid "Generate description from page"
+msgstr "Genereer omschrijving van pagina"
+
+#: admin/description.php:42
+msgid "Generate value for <code>&lt;meta name=&quot;description&quot;&gt;</code> tag from page content"
+msgstr "Genereer <code>&lt;meta name=&quot;description&quot;&gt;</code> tag van pagina inhoud"
+
+#: admin/description.php:46
+#: admin/keywords.php:67
+#: admin/nofollow.php:57
+#: admin/robots.php:64
+#: admin/title.php:59
+msgid "Attachments:"
+msgstr "Bijlagen:"
+
+#: admin/description.php:50
+msgid "Use attachment description"
+msgstr "Gebruik bijlage omschrijving"
+
+#: admin/description.php:53
+msgid "Use attachment description as value for <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+msgstr "Gebruik bijlage omschrijving als waarde voor de <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+
+#: admin/description.php:57
+#: admin/keywords.php:77
+#: admin/nofollow.php:68
+#: admin/robots.php:75
+#: admin/title.php:71
+msgid "Categories:"
+msgstr "Categorieën:"
+
+#: admin/description.php:61
+msgid "Use category description"
+msgstr "Gebruik categorie omschrijving"
+
+#: admin/description.php:64
+msgid "Use category description as value for <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+msgstr "Gebruik categorie omschrijving als waarde voor de <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+
+#: admin/description.php:68
+#: admin/keywords.php:89
+#: admin/nofollow.php:88
+#: admin/robots.php:86
+#: admin/title.php:83
+msgid "Tags:"
+msgstr "Tags:"
+
+#: admin/description.php:72
+msgid "Use tag description"
+msgstr "Gebruik tag omschrijving"
+
+#: admin/description.php:75
+msgid "Use tag description as value for <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+msgstr "Gebruik de tag omschrijving als waarde voor de <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+
+#: admin/description.php:79
+#: admin/keywords.php:101
+#: admin/nofollow.php:108
+#: admin/robots.php:97
+#: admin/title.php:95
+msgid "Custom Taxonomies:"
+msgstr "Aangepaste Taxonomieën:"
+
+#: admin/description.php:83
+msgid "Use taxonomy item description"
+msgstr "Gebruik de taxonomie object beschrijving"
+
+#: admin/description.php:86
+msgid "Use taxonomy item description as value for <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+msgstr "Gebruik de taxonomie object beschrijving als waarde voor de <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+
+#: admin/description.php:90
+#: admin/keywords.php:123
+#: admin/nofollow.php:119
+#: admin/robots.php:108
+#: admin/title.php:107
+msgid "Archive for Day/Month/Year:"
+msgstr "Archief voor Dag/Maand/Jaar:"
+
+#: admin/description.php:97
+#: admin/description.php:108
+#: admin/description.php:119
+#: admin/keywords.php:63
+#: admin/keywords.php:73
+#: admin/keywords.php:130
+#: admin/keywords.php:164
+#: admin/keywords.php:175
+#: admin/nofollow.php:20
+#: admin/nofollow.php:64
+#: admin/nofollow.php:115
+#: admin/nofollow.php:138
+#: admin/nofollow.php:149
+#: admin/nofollow.php:160
+#: admin/nofollow.php:171
+#: admin/robots.php:49
+#: admin/robots.php:60
+#: admin/robots.php:148
+msgid "No extra configuration here (yet)."
+msgstr "(nog) geen extra instellingen hier."
+
+#: admin/description.php:101
+#: admin/keywords.php:133
+#: admin/nofollow.php:131
+#: admin/robots.php:119
+#: admin/title.php:119
+msgid "Author Posts:"
+msgstr "Auteur berichten:"
+
+#: admin/description.php:112
+#: admin/keywords.php:145
+#: admin/nofollow.php:142
+#: admin/robots.php:130
+#: admin/title.php:131
+msgid "Search Results:"
+msgstr "Zoekresultaten:"
+
+#: admin/description.php:123
+#: admin/keywords.php:157
+#: admin/nofollow.php:153
+#: admin/robots.php:141
+#: admin/title.php:156
+msgid "Subpages for multipage Archives/Posts/Pages:"
+msgstr "Subpagina's voor meervoudige Archieven/Berichten/Pagina's:"
+
+#: admin/description.php:127
+msgid "Multi-paged description format"
+msgstr "Formaat beschrijving meerdere pagina's"
+
+#: admin/description.php:131
+msgid "Subsequent pages of post archives and post/page content should have different descriptions in order to avoid duplicated description problem. Use <code>%description%</code> as a placeholder for generated description, and <code>%n%</code> for page number."
+msgstr "Opeenvolgende pagina's van de bericht archieven en van de bericht/pagina inhoud moeten verschillende beschrijvingen hebben om dubbele beschrijvingen te voorkomen. Gebruik <code>%description%</code> als aanduiding voor een gegenereerde beschrijving, en <code>%n%</code> voor paginanummer."
+
+#: admin/description.php:135
+#: admin/keywords.php:168
+#: admin/nofollow.php:164
+#: admin/robots.php:152
+#: admin/title.php:168
+msgid "Subpages for multipage comments:"
+msgstr "Subpagina voor reacties op meerdere pagina's:"
+
+#: admin/description.php:139
+msgid "Multi-paged description format for comments"
+msgstr "Beschrijvingsformaat voor reacties op meerdere pagina's"
+
+#: admin/description.php:143
+msgid "Similar to option above, but for comment pages. Use <code>%description%</code> and <code>%n%</code> here too."
+msgstr "Net als de optie hierboven, maar voor reactie pagina's. Gebruik hier ook <code>%description%</code> en <code>%n%</code>."
+
+#: admin/keywords.php:2
+msgid "Meta Keywords tag:"
+msgstr "Meta Keywords tag:"
+
+#: admin/keywords.php:6
+msgid "Add <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag"
+msgstr "Voeg de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag toe"
+
+#: admin/keywords.php:15
+msgid "Default keywords"
+msgstr "Standaard trefwoorden"
+
+#: admin/keywords.php:19
+msgid "Separate keywords with commas (e.g. <code>key1,key2,key3</code>)."
+msgstr "Verdeel trefwoorden met comma's (bijv. <code>trefwoord1,trefwoord2,trefwoord3</code>)."
+
+#: admin/keywords.php:19
+msgid "These keywords will be used everywhere. You can enable options below to add additional tags to the list."
+msgstr "Deze trefwoorden zullen overal gebruikt worden. U kunt onderstaande opties activeren om extra tags toe te voegen aan de lijst."
+
+#: admin/keywords.php:30
+msgid "Meta SEO Pack uses default keywords for Home Page"
+msgstr "Meta SEO Pack maakt gebruik van standaard trefwoorden voor de startpagina"
+
+#: admin/keywords.php:38
+msgid "Add post tags"
+msgstr "Berichten tags toevoegen"
+
+#: admin/keywords.php:42
+msgid "Check this to add post's tags to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Post."
+msgstr "Selecteer dit om tags van berichten toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor dat bericht."
+
+#: admin/keywords.php:48
+msgid "Add post categories"
+msgstr "Toevoegen bericht categorieën"
+
+#: admin/keywords.php:52
+msgid "Check this to add post's categories (and parent categories too) to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Post."
+msgstr "Selecteer dit om categorieën van berichten (en ook hoofdcategorieën) toe te voegen aan de  <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor dat bericht."
+
+#: admin/keywords.php:81
+msgid "Add category name"
+msgstr "Toevoegen categorie naam"
+
+#: admin/keywords.php:85
+msgid "Check this to add category name (and parent categories too) to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Category page."
+msgstr "Selecteer dit om een categorie naam (en ook hoofdcategorieën) toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor die categorie pagina."
+
+#: admin/keywords.php:93
+msgid "Add tag name"
+msgstr "Toevoegen tag naam"
+
+#: admin/keywords.php:97
+msgid "Check this to add tag name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Tag page."
+msgstr "Selecteer dit om een tag naam toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor die tag pagina."
+
+#: admin/keywords.php:105
+msgid "Add taxonomy name"
+msgstr "Voeg taxonomie naam toe"
+
+#: admin/keywords.php:109
+msgid "Check this to add taxonomy name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Taxonomy page (custom taxonomies only)."
+msgstr "Selecteer dit om een taxonomie naam toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor die taxonomie pagina (alleen aangepaste taxonomieën)."
+
+#: admin/keywords.php:115
+msgid "Add taxonomy term name"
+msgstr "Voeg taxonomie omschrijving toe"
+
+#: admin/keywords.php:119
+msgid "Check this to add taxonomy term name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Taxonomy page (custom taxonomies only)."
+msgstr "Selecteer dit om de taxonomie term naam toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor die Taxonomie pagina (alleen aangepaste taxonomieën)."
+
+#: admin/keywords.php:137
+msgid "Add author's display name"
+msgstr "Voeg de schermnaam van de auteur toe"
+
+#: admin/keywords.php:141
+msgid "Check this to add author's display name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Author page."
+msgstr "Selecteer dit om de schermnaam van de auteur toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor de desbetreffende auteur pagina."
+
+#: admin/keywords.php:149
+msgid "Add search query"
+msgstr "Toevoegen zoekopdracht"
+
+#: admin/keywords.php:153
+msgid "Check this to add search query to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Search page."
+msgstr "Selecteer dit om een zoekopdracht toe te voegen aan de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag voor de desbetreffende zoek pagina."
+
+#: admin/nofollow.php:2
+msgid "Nofollow Links:"
+msgstr "Nofollow Links:"
+
+#: admin/nofollow.php:6
+msgid "Add <code>rel=&quot;nofollow&quot;</code> attribute to links"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> attribuut toe aan links"
+
+#: admin/nofollow.php:28
+msgid "Add to comments links"
+msgstr "Voeg links aan reacties toe"
+
+#: admin/nofollow.php:31
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading directly to comments"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links welke direct leiden aan reacties"
+
+#: admin/nofollow.php:37
+msgid "Add to \"Read More...\" links"
+msgstr "Voeg aan \"Lees Meer...\" links toe"
+
+#: admin/nofollow.php:40
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to \"Read More...\" links"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan \"Lees Meer...\" links"
+
+#: admin/nofollow.php:41
+msgid "<b>Note:</b> it will be added only when you display whole posts on your main page and archive pages, and use <code>&lt;!--more--&gt;</code> tag somewhere in post content to show initial fragment only."
+msgstr "<b>Opmerking:</b> het zal alleen toegevoegd worden wanneer je complete berichten weergeeft op de hoofdpagina en de archief pagina's, en gebruik de <code>&lt;!--more--&gt;</code> tag ergens in je bericht om een fragment te laten zien."
+
+#: admin/nofollow.php:42
+msgid "<b>Note 2:</b> when your Theme shows excerpts only on main page and archive pages, and you want to add <code>rel=&quot;nofollow&quot;</code> to &quot;Read More...&quot; links, you need to edit your theme manually."
+msgstr "<b>Opmerking 2:</b> wanneer je template alleen fragmenten laat zien op de hoofd- en archiefpagina's moet je de template handmatig bewerken wanneer je <code>rel=&quot;nofollow&quot;</code> wil toevoegen aan &quot;Lees Meer`...&quot; links."
+
+#: admin/nofollow.php:50
+msgid "Add to Pages links"
+msgstr "Toevoegen aan Pagina links"
+
+#: admin/nofollow.php:53
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading to Pages (both from Theme and Pages Widget; not recommended)"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links welke leiden naar pagina's  (zowel voor template en pagina widget; niet aanbevolen)"
+
+#: admin/nofollow.php:72
+msgid "Add to Categories links from Theme"
+msgstr "Voeg toe aan categorie links van de template"
+
+#: admin/nofollow.php:75
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading to Categories from Theme (not recommended)"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links die leiden tot categorieën van de template (niet aanbevolen)"
+
+#: admin/nofollow.php:81
+msgid "Add to Categories links from Widget"
+msgstr "Voeg toe aan Categorie links van Widget"
+
+#: admin/nofollow.php:84
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading to Categories from Categories Widget (not recommended)"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links die leiden tot categorieën van de categorieën widget (niet aanbevolen)"
+
+#: admin/nofollow.php:92
+msgid "Add to Tags links from Theme"
+msgstr "Voeg toe aan Tag links van de template"
+
+#: admin/nofollow.php:95
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading to Tags from Theme"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links die leiden tot template tags"
+
+#: admin/nofollow.php:101
+msgid "Add to Tags links from Widget"
+msgstr "Voeg toe aan Tags links van Widget"
+
+#: admin/nofollow.php:104
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading to Tags from Tag Cloud Widget"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links die leiden tot tags van de Tag Cloud Widget"
+
+#: admin/nofollow.php:123
+msgid "Add to Archive links from Widget"
+msgstr "Voeg toe aan archief links van de widget"
+
+#: admin/nofollow.php:126
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to links leading to Day/Month/Year Archive pages from Archives Widget"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan links die leiden tot dag/maand/jaar archief pagina's van de Archief Widget"
+
+#: admin/nofollow.php:127
+msgid "<b>Note:</b> this does not add <code>rel=&quot;nofollow&quot;</code> to links in the Calendar Widget (this is not supported by WordPress yet)."
+msgstr "<b>Opmerking:</b> dit voegt niet de <code>rel=&quot;nofollow&quot;</code> tag aan links in de Kalender Widget (Dit wordt momenteel nog niet ondersteund door WordPress)."
+
+#: admin/nofollow.php:175
+msgid "Links to Admin section:"
+msgstr "Links naar de beheerders sectie:"
+
+#: admin/nofollow.php:179
+msgid "Add to Admin links"
+msgstr "Toevoegen aan beheerder links"
+
+#: admin/nofollow.php:182
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to Register/Login/Logout/Site Admin links"
+msgstr "Voeg de <code>rel=&quot;nofollow&quot;</code> tag toe aan Aanmelden/Inloggen/Uitloggen/Website Beheerder links"
+
+#: admin/nofollow.php:186
+msgid "Blogroll:"
+msgstr "Blogrol:"
+
+#: admin/nofollow.php:190
+msgid "Add to Blogroll links"
+msgstr "Toevoegen aan blogrol links"
+
+#: admin/nofollow.php:193
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to Blogroll links"
+msgstr "Voeg <code>rel=&quot;nofollow&quot;</code> toe aan Blogrol links"
+
+#: admin/other.php:2
+msgid "Other:"
+msgstr "Andere:"
+
+#: admin/other.php:6
+msgid "Add link to Meta SEO Pack"
+msgstr "Link toevoegen aan Meta SEO Pack"
+
+#: admin/other.php:9
+msgid "If you think that this plugin is great, you can give me a credit by checking this option.<br />You can also post information about Meta SEO Pack somewhere on your blog."
+msgstr "Wanneer je van mening bent dat deze plugin van grote waarde voor je is kun je mij waarderen door deze optie te selecteren. <br/>Je kunt ook informatie over Meta SEO Pack ergens op je blog plaatsen."
+
+#: admin/robots.php:2
+msgid "Meta Robots tag:"
+msgstr "Meta Robots tag:"
+
+#: admin/robots.php:6
+msgid "Add <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag"
+msgstr "Voeg <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag toe"
+
+#: admin/robots.php:15
+msgid "Do not allow to use description from DMOZ (ODP)"
+msgstr "Gebruik niet de beschrijving van DMOZ (ODP)"
+
+#: admin/robots.php:18
+msgid "Do not allow search engines to use description from DMOZ (ODP) as page description (supported by Google, Yahoo! and Bing)"
+msgstr "Laat de zoekmachines niet de beschrijvingen gebruiken van DMOZ (ODP) als pagina omschrijving (ondersteund door Google, Yahoo! en Bing)"
+
+#: admin/robots.php:24
+msgid "Do not allow to use description from Yahoo! Directory"
+msgstr "Gebruik niet de beschrijving van de Yahoo! directory"
+
+#: admin/robots.php:27
+msgid "Do not allow search engines to use description from Yahoo! Directory as page description (supported by Yahoo! only)"
+msgstr "Laat de zoekmachines niet de beschrijvingen gebruiken van de Yahoo! directory als pagina omschrijving (ondersteund door Google, Yahoo! en Bing)"
+
+#: admin/robots.php:35
+msgid "Do not index subpages of Front Page"
+msgstr "Indexeer geen subpagina's van de voorpagina"
+
+#: admin/robots.php:38
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for subpages of Front Page (not recommended)"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor subpagina's van de voorpagina (niet aanbevolen)"
+
+#: admin/robots.php:68
+msgid "Do not index attachments"
+msgstr "Indexeer geen bijlagen"
+
+#: admin/robots.php:71
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for attachment pages (not recommended)"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor bijlage pagina's (niet aanbevolen)"
+
+#: admin/robots.php:79
+msgid "Do not index categories"
+msgstr "Indexeer geen categorieën"
+
+#: admin/robots.php:82
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for category pages (not recommended)"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor categorie pagina's (niet aanbevolen)"
+
+#: admin/robots.php:90
+msgid "Do not index tags"
+msgstr "Indexeer geen tags"
+
+#: admin/robots.php:93
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for tag pages"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor tag pagina's"
+
+#: admin/robots.php:101
+msgid "Do not index custom taxonomies"
+msgstr "Indexeer geen aangepaste taxonomieën"
+
+#: admin/robots.php:104
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for custom taxonomy pages"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor aangepaste taxonomie pagina's"
+
+#: admin/robots.php:112
+msgid "Do not index day/month/year archives"
+msgstr "Indexeer geen dag/maand/jaar archieven"
+
+#: admin/robots.php:115
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for day/month/year archive page"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor dag/maand/jaar pagina"
+
+#: admin/robots.php:123
+msgid "Do not index author posts page"
+msgstr "Indexeer niet de berichtenpagina van de auteur"
+
+#: admin/robots.php:126
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for author posts page"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor berichten pagina van een auteur"
+
+#: admin/robots.php:134
+msgid "Do not index search results"
+msgstr "Indexeer geen zoekresultaten"
+
+#: admin/robots.php:137
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for search results page"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor zoekresultaten pagina"
+
+#: admin/robots.php:156
+msgid "Do not index subpages of multipage comments"
+msgstr "Indexeer geen subpagina's van reacties op meervoudige pagina's"
+
+#: admin/robots.php:159
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag for subpages of multipage comments (not recommended)"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag voor reacties op meervoudige pagina's (niet aanbevolen)"
+
+#: admin/robots.php:163
+msgid "Feeds (RSS, Atom, etc.):"
+msgstr "Feeds (RSS, Atom, enz.):"
+
+#: admin/robots.php:167
+msgid "Do not index feeds"
+msgstr "Indexeer geen feeds"
+
+#: admin/robots.php:170
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag and send as value of <code>X-Robots-Tag</code> HTTP Header for feeds (RSS, Atom, etc.)"
+msgstr "Voeg <code>noindex,follow</code> toe aan de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag en gebruik deze als waarde voor de <code>X-Robots-Tag</code> HTTP Header voor feeds (RSS, Atom, enz.)"
+
+#: admin/title.php:2
+msgid "Title rewriting:"
+msgstr "Herschrijven titel:"
+
+#: admin/title.php:6
+msgid "Rewrite <code>&lt;title&gt;</code> tag"
+msgstr "Herschrijf <code>&lt;title&gt;</code> tag"
+
+#: admin/title.php:15
+msgid "Title separator"
+msgstr "Scheidingsteken titel"
+
+#: admin/title.php:19
+msgid "Meta SEO Pack will change <code>|</code> in formats to given character (by default <code>&amp;laquo;</code>)"
+msgstr "Meta SEO Pack zal <code>|</code> veranderen in de opmaak tot bepaalde karakters (standaard <code>&amp;laquo;</code>)"
+
+#: admin/title.php:27
+msgid "Title format for Home Page"
+msgstr "Titel opmaak voor de startpagina"
+
+#: admin/title.php:39
+msgid "Title format for Posts"
+msgstr "Titel opmaak voor berichten"
+
+#: admin/title.php:51
+msgid "Title format for Pages"
+msgstr "Titel opmaak voor pagina's"
+
+#: admin/title.php:63
+msgid "Title format for Attachments"
+msgstr "Titel opmaak voor bijlagen"
+
+#: admin/title.php:75
+msgid "Title format for Categories"
+msgstr "Titel beschrijving voor categorieën"
+
+#: admin/title.php:87
+msgid "Title format for Tags"
+msgstr "Titel opmaak voor tags"
+
+#: admin/title.php:99
+msgid "Title format for Custom Taxonomies"
+msgstr "Titel opmaak voor aangepaste taxonomieën"
+
+#: admin/title.php:111
+msgid "Title format for Archives for Day/Month/Year"
+msgstr "Titel opmaak voor dag/maand/jaar archieven"
+
+#: admin/title.php:123
+msgid "Title format for Author Posts"
+msgstr "Titel opmaak voor auteur berichten"
+
+#: admin/title.php:135
+msgid "Title format for Search Results"
+msgstr "Titel opmaak voor zoek resultaten"
+
+#: admin/title.php:143
+msgid "Other pages:"
+msgstr "Andere pagina's:"
+
+#: admin/title.php:147
+msgid "Title format for other pages"
+msgstr "Titel opmaak voor andere pagina's"
+
+#: admin/title.php:151
+msgid "This title format will be used for pages which are not supported by Meta SEO Pack directly - usually ones added by plugins."
+msgstr "Deze titel opmaak zal gebruikt worden voor pagina's welke niet direct worden ondersteund door Meta SEO Pack - meestal deze welke toegevoegd worden door plugins."
+
+#: admin/title.php:152
+msgid "Note: please do not add <code>|</code> before last element - WordPress will add it automatically."
+msgstr "Opmerking: voeg niet <code>|</code> toe voor het  laatste element - WordPress zal deze automatisch toevoegen."
+
+#: admin/title.php:160
+msgid "Title format for Subpages for multipage Archives/Posts/Pages"
+msgstr "Titel opmaak voor subpagina's voor meervoudige archieven/berichten pagina's"
+
+#: admin/title.php:172
+msgid "Title format for Subpages for multipage comments"
+msgstr "Titel opmaak voor subpagina's voor meervoudige pagina reacties"
+
+#: meta-seo-pack.php:175
+#: meta-seo-pack.php:176
+#: meta-seo-pack.php:1264
+msgid "Title Rewriting"
+msgstr "Herschrijven Titel"
+
+#: meta-seo-pack.php:177
+#: meta-seo-pack.php:178
+#: meta-seo-pack.php:1269
+msgid "Meta Keywords"
+msgstr "Meta Keywords"
+
+#: meta-seo-pack.php:179
+#: meta-seo-pack.php:180
+#: meta-seo-pack.php:1274
+msgid "Meta Description"
+msgstr "Meta Description"
+
+#: meta-seo-pack.php:181
+#: meta-seo-pack.php:182
+#: meta-seo-pack.php:1279
+msgid "Meta Robots"
+msgstr "Meta Robots"
+
+#: meta-seo-pack.php:183
+#: meta-seo-pack.php:184
+#: meta-seo-pack.php:1284
+msgid "Canonical URLs"
+msgstr "Canonieke URLs"
+
+#: meta-seo-pack.php:185
+#: meta-seo-pack.php:1289
+msgid "Nofollow links"
+msgstr "Nofollow links"
+
+#: meta-seo-pack.php:186
+msgid "Nofollow Links"
+msgstr "Nofollow Links"
+
+#: meta-seo-pack.php:189
+#: meta-seo-pack.php:190
+#: meta-seo-pack.php:1299
+msgid "Other Settings"
+msgstr "Andere Instellingen"
+
+#: meta-seo-pack.php:1001
+msgid "Meta Description:"
+msgstr "Meta Description:"
+
+#: meta-seo-pack.php:1005
+msgid "Text entered above will be used as a value for the <code>&lt;meta name=&quot;description&quot;&gt;</code> tag."
+msgstr "De hierboven opgegeven tekst zal worden gebruikt als een waarde voor de <code>&lt;meta name=&quot;description&quot;&gt;</code> tag."
+
+#: meta-seo-pack.php:1010
+msgid "Meta Keywords:"
+msgstr "Meta Keywords:"
+
+#: meta-seo-pack.php:1014
+msgid "Text entered above will be used as a value for the <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag. Separate keywords with commas (e.g. <code>key1,key2,key3</code>)."
+msgstr "De hierboven opgegeven tekst zal worden gebruikt als een waarde voor de <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag. Scheid trefwoorden met komma's (bijv. <code>trefwoord1,trefwoord2,trefwoord3</code>)."
+
+#: meta-seo-pack.php:1019
+msgid "Meta Robots:"
+msgstr "Meta Robots:"
+
+#: meta-seo-pack.php:1023
+msgid "Text entered above will be used as a value for the <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag. It will override default <code>noindex,follow</code> settings. Meta SEO Pack will add <code>noodp</code> and <code>noydir</code> if you checked to use them."
+msgstr "De hierboven opgegeven tekst zal worden gebruikt als een waarde voor de <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag. Het zal preveleren boven de standaard <code>noindex,follow</code> instellingen. Meta SEO Pack zal <code>noodp</code> en <code>noydir</code> toevoegen als je deze geselecteerd hebt."
+
+#: meta-seo-pack.php:1090
+msgid "%categories% | Categories | %blog_name%"
+msgstr "%categories% | Categorieën | %blog_name%"
+
+#: meta-seo-pack.php:1091
+msgid "%tag% | Tags | %blog_name%"
+msgstr "%tag% | Tags | %blog_name%"
+
+#: meta-seo-pack.php:1093
+msgid "Archive for %date% | %blog_name%"
+msgstr "Archief voor %date% | %blog_name%"
+
+#: meta-seo-pack.php:1094
+msgid "%author_name% | Authors | %blog_name%"
+msgstr "%author_name% | Auteurs | %blog_name%"
+
+#: meta-seo-pack.php:1095
+msgid "Search results for %search% | %blog_name%"
+msgstr "Zoek resultaten voor %search% | %blog_name%"
+
+#: meta-seo-pack.php:1097
+msgid "%title% - Page %n%"
+msgstr "%title% - Pagina %n%"
+
+#: meta-seo-pack.php:1098
+msgid "%title% - Comments Page %n%"
+msgstr "%title% - Reacties Pagina %n%"
+
+#: meta-seo-pack.php:1127
+msgid "%description% - page %n%"
+msgstr "%description% - pagina %n%"
+
+#: meta-seo-pack.php:1128
+msgid "%description% - comments page %n%"
+msgstr "%description% - reactie pagina %n%"
+
+#: meta-seo-pack.php:1232
+msgid "Configuration has been saved."
+msgstr "Configuratie is opgeslagen."
+
+#: meta-seo-pack.php:1254
+msgid "Save settings"
+msgstr "Instellingen opslaan"
+
+#. Plugin Name of an extension
+msgid "Meta SEO Pack"
+msgstr "Meta SEO Pack"
+
+#. Plugin URI of an extension
+msgid "http://www.poradnik-webmastera.com/projekty/meta_seo_pack/"
+msgstr "http://www.poradnik-webmastera.com/projekty/meta_seo_pack/"
+
+#. Description of an extension
+msgid "Fine tune your WordPress blog for SEO: title rewriting, meta descriptions, tags, robots, canonical links and more.  Out-of-the-box settings are a good starting point for blogs."
+msgstr "Instellen van je WordPress blog voor SEO: titel herschrijven, meta-beschrijvingen, tags, robots, canonieke links en meer. Standaard instellingen zijn een goed uitgangspunt voor blogs."
+
+#. Author of an extension
+msgid "Daniel Fruyski"
+msgstr "Daniel Fruyski"
+
+#. Author URI of an extension
+msgid "http://www.poradnik-webmastera.com/"
+msgstr "http://www.poradnik-webmastera.com/"
+

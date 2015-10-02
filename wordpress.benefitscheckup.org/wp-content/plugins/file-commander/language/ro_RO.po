@@ -1,0 +1,220 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: File Commander Plugin for WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-24 13:37+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dennis Hoppe\n"
+"Language-Team: Anunturi Jibo <contact@jibo.ro>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: t;t:2c,1\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: ROMANIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../options_page.php:1
+msgid "Required user level"
+msgstr "Nivel utilizator necesar"
+
+#: ../options_page.php:3
+msgid "User level"
+msgstr "Nivel utilizator"
+
+#: ../options_page.php:5
+msgid "This is the minimum securitiy level a user has to have to use the file commander."
+msgstr "Acesta este nivelul de securitate minim pe care trebuie sa-l aibe un utilizator pentru a folosi File Commander."
+
+#: ../options_page.php:9
+msgid "Enable functions"
+msgstr "Activeaza functiile"
+
+#: ../options_page.php:12
+msgid "User can create folders."
+msgstr "Utilizatorul poate creea foldere."
+
+#: ../options_page.php:17
+msgid "User can rename folders."
+msgstr "Utilizatorul poate redenumi foldere."
+
+#: ../options_page.php:22
+msgid "User can delete folders."
+msgstr "Utilizatorul poate sterge foldere."
+
+#: ../options_page.php:27
+msgid "User can upload files."
+msgstr "Utilizatorul poate incarca fisiere."
+
+#: ../options_page.php:32
+msgid "User can download files."
+msgstr "Utilizatorul poate descarca fisiere."
+
+#: ../options_page.php:37
+msgid "User can rename files."
+msgstr "Utilizatorul poate redenumi fisiere."
+
+#: ../options_page.php:42
+msgid "User can delete files."
+msgstr "Utilizatorul poate sterge fisiere."
+
+#: ../options_page.php:47
+msgid "User can see the modification time of files."
+msgstr "Utilizatorul poate vedea data modificarii fisierelor."
+
+#: ../options_page.php:52
+msgid "User can see the file size."
+msgstr "Utilizatorul poate vedea marimea fisierelor."
+
+#: ../wp-plugin-file-commander.php:68
+#: ../wp-plugin-file-commander.php:87
+msgid "File Commander Options"
+msgstr "Optiuni File Commander"
+
+#: ../wp-plugin-file-commander.php:69
+#: ../wp-plugin-file-commander.php:277
+#: ../wp-plugin-file-commander.php:278
+#: ../wp-plugin-file-commander.php:297
+msgid "File Commander"
+msgstr "File Commander"
+
+#: ../wp-plugin-file-commander.php:159
+msgid "The new folder was created successfully."
+msgstr "Noul folder a fost creeat cu succes."
+
+#: ../wp-plugin-file-commander.php:165
+msgid "Could not create the new folder."
+msgstr "Nu am putut creea noul folder."
+
+#: ../wp-plugin-file-commander.php:178
+msgid "The folder was renamed successfully."
+msgstr "Folder-ul a fost redenumit cu succes."
+
+#: ../wp-plugin-file-commander.php:183
+msgid "Could not rename the folder."
+msgstr "Nu am putut redenumi folder-ul."
+
+#: ../wp-plugin-file-commander.php:195
+#, php-format
+msgid "The folder \"%s\" was deleted successfully."
+msgstr "Folder-ul \"%s\" a fost sters cu succes."
+
+#: ../wp-plugin-file-commander.php:200
+#, php-format
+msgid "Could not delete the folder \"%s\"."
+msgstr "Nu am putut sterge folder-ul  \"%s\"."
+
+#: ../wp-plugin-file-commander.php:218
+msgid "Could not copy all files successfully."
+msgstr "Nu am putut copia fisierele."
+
+#: ../wp-plugin-file-commander.php:223
+msgid "All files uploaded."
+msgstr "Toate fisierele au fost incarcate."
+
+#: ../wp-plugin-file-commander.php:247
+msgid "The file was renamed successfully."
+msgstr "Fisierul a fost redenumit cu succes."
+
+#: ../wp-plugin-file-commander.php:252
+msgid "Could not rename the file."
+msgstr "Nu am putut redenumi fisierul."
+
+#: ../wp-plugin-file-commander.php:264
+#, php-format
+msgid "The file \"%s\" was deleted successfully."
+msgstr "Fisierul \"%s\" a fost sters cu succes."
+
+#: ../wp-plugin-file-commander.php:269
+#, php-format
+msgid "Could not delete the file \"%s\"."
+msgstr "Nu am putut sterge fisierul \"%s\"."
+
+#: ../interface.php:16
+msgid "Are you sure you want to delete this folder?"
+msgstr "Esti sigur ca doresti sa stergi acest folder?"
+
+#: ../interface.php:17
+msgid "Are you sure you want to delete this file?"
+msgstr "Esti sigur ca doresti sa stergi acest fisier?"
+
+#: ../interface.php:31
+msgid "You are here"
+msgstr "Te afli aici"
+
+#: ../interface.php:36
+msgid "&uArr; Upward"
+msgstr "&uArr; In sus"
+
+#: ../interface.php:41
+msgid "Folders"
+msgstr "Foldere"
+
+#: ../interface.php:48
+#: ../interface.php:63
+#: ../interface.php:99
+#: ../interface.php:116
+msgid "Rename"
+msgstr "Redenumeste"
+
+#: ../interface.php:50
+#: ../interface.php:101
+msgid "Delete"
+msgstr "Sterge"
+
+#: ../interface.php:52
+#: ../interface.php:103
+msgid "View in Browser"
+msgstr "Vezi in Browser"
+
+#: ../interface.php:61
+msgid "New name for this folder"
+msgstr "Nume nou pentru acest folder"
+
+#: ../interface.php:70
+msgid "Create folder"
+msgstr "Creeaza folder"
+
+#: ../interface.php:74
+msgid "Name of the new folder"
+msgstr "Numele noului folder"
+
+#: ../interface.php:76
+msgid "Create"
+msgstr "Creeaza"
+
+#: ../interface.php:82
+msgid "Files"
+msgstr "Fisiere"
+
+#: ../interface.php:95
+msgctxt "Dateformat for the file modification time."
+msgid "F d Y H:i:s"
+msgstr "F d Y H:i:s"
+
+#: ../interface.php:105
+msgid "Download"
+msgstr "Descarca"
+
+#: ../interface.php:114
+msgid "New name for this file"
+msgstr "Nume nou pentru acest fisier"
+
+#: ../interface.php:123
+msgid "Upload file"
+msgstr "Incarca fisier"
+
+#: ../interface.php:128
+msgid "Please choose a file"
+msgstr "Te rog sa alegi un fisier"
+
+#: ../interface.php:131
+msgid "All already existing files will be overwritten!"
+msgstr "Toate fisierele deja existente vor fi inlocuite!"
+
+#: ../interface.php:132
+msgid "Upload"
+msgstr "Incarca"
+
