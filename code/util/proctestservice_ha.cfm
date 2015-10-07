@@ -18,7 +18,7 @@
 <cfelse>
 	<cfinvoke method="doScreening" 
 	returnvariable="responseFromService" 
-	webservice="https://www.benefitscheckup.org/util/remotescreening_2_1.cfc?wsdl" >
+	webservice="https://#CGI.server_name#/util/remotescreening_2_1.cfc?wsdl" >
 		<cfset number = int(rand() * 1000)>
 		<cfinvokeargument name="partner_id" value="#form.partner_id#">
 		<cfinvokeargument name="partner_screening_id" value="ABC#number#">
