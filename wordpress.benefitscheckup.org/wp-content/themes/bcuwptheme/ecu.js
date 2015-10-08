@@ -1,6 +1,23 @@
 $(document).ready(function() {
 console.log ("this script works at all");
 
+if ( $(window).width() <= 700) {      
+$("#getStartedESIButton").prependTo($("#content"));
+
+$("#logo.statistics").hide();
+ $("#main-nav").hide(); 
+
+} 
+
+else {
+$("#esiMenuToggleButton").hide();
+}
+
+
+$("#esiMenuToggleButton").click(function(){
+ $("#main-nav").toggle(); 
+})
+
 $("#esi_incomesupport").keydown(function (e) { //alow numeric input only
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||

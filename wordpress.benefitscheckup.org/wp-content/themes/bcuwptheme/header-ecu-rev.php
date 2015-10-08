@@ -29,7 +29,7 @@
 		
 
 
-  	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+  	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" >
   	<link rel="canonical" href="<?php echo get_page_link($page_id); ?>"  >
   	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   	   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,6 +61,16 @@ jQuery(document).ready(function($){
     }
   });
 });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+if ( $(window).width() <= 700) {      
+$("#logo.statistics").hide();
+
+} 
+})
 </script>
             <!-- move into mqc.js? only if it's used in the mqc files and not the ecu files -->
             <script src="<?php echo get_template_directory_uri(); ?>/application.js"></script>
@@ -111,6 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     	</div>
      </div>
      
+    <button id="esiMenuToggleButton" class="btn">Menu <i class="icon-remove"></i> </button>
      <div class="container navbar" id="main-nav">
             <div class="navbar-inner">           
              <div class="container" >
@@ -122,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <!--<a class="brand" href="#">Project name</a>-->
        
       		
-             <!--<div id="homenavcollapse" class="nav-collapse collapse">-->
+             <!-- <div id="homenavcollapse" class="nav-collapse collapse"> -->
 		<div id="main-nav" class="navbar row-fluid">
                 <ul id="home-nav nav" role="navigation" >
                 <?php // insert wp_menu_nav here  ?>
@@ -131,11 +142,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		    		<li><a href="/esi-find-help" <?php if (is_page("esi-find-help")) echo "class='current'"; ?>>Resources</a></li>
                     <li><a href="/esi-about" <?php if (is_page("esi-about")) echo "class='current'"; ?>>About Us</a></li>				
                     <li><a href="/esi-news" <?php if (is_page("esi-news")) echo "class='current'"; ?>>News</a></li>
-                    <li><a href="http://www.ncoa.org/donate" class="" target="_blank">Donate</a></li>
+                    <li><a href="http://www.ncoa.org/Donate" class="" target="_blank">Donate</a></li>
                 </ul>
                 </div>	
             </div>
      </div>
      </div>
+
      
      <div class="container">     
