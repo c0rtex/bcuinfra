@@ -1,18 +1,14 @@
 $(document).ready(function() {
 console.log ("this script works at all");
 
-if ( $(window).width() <= 700) {      
-$("#getStartedESIButton").prependTo($("#content"));
+responsiveMenu();
 
-$("#logo.statistics").hide();
- $("#main-nav").hide(); 
 
-} 
 
-else {
-$("#esiMenuToggleButton").hide();
-}
 
+//$( window ).resize(function() {
+ //  responsiveMenu ();
+//});
 
 $("#esiMenuToggleButton").click(function(){
  $("#main-nav").toggle(); 
@@ -332,6 +328,34 @@ $("#flot-placeholder").append('<img src="'+imgCanvas+'"/>');
        	popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
        	popupWin.document.close();
  	}
+
+
+function responsiveMenu (){
+
+if ( $(window).width() <= 700) {      
+
+$("#esiMenuToggleButton").css("display", "block");
+$("#getStartedESIButton").appendTo($("h2.feature"));
+$("#top-bar").css("margin-top", "30px");
+$("#getStartedESIButtonImg").css("margin-top", "25px");
+$("#getStartedESIButtonImg").css("margin-bottom", "25px");
+
+$("#logo.statistics").hide();
+ $("#main-nav").hide(); 
+
+} 
+
+else {
+$("#esiMenuToggleButton").css("display", "none");
+$("#esiMenuToggleButton").hide();
+$("#logo.statistics").show();
+ $("#main-nav").show(); 
+$("#top-bar").css("margin-top", "0px");
+$("#getStartedESIButtonImg").css("margin-top", "0px");
+$("#getStartedESIButtonImg").css("margin-top", "0px");
+}
+
+}
 
 
 

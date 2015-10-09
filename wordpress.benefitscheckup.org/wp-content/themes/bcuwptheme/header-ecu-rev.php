@@ -103,6 +103,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 
+    <button id="esiMenuToggleButton" class="btn"><span class="menuButtonESIText">Menu</span> </i> </button>
   	<div class="container" id="top-bar">
     	<div class="row">
     		<div id="top-logo" class="span12">
@@ -121,7 +122,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     	</div>
      </div>
      
-    <button id="esiMenuToggleButton" class="btn">Menu <i class="icon-remove"></i> </button>
      <div class="container navbar" id="main-nav">
             <div class="navbar-inner">           
              <div class="container" >

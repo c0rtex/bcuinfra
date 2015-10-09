@@ -533,24 +533,33 @@ padding-left: 10px;
 
 #esiMenuToggleButton
 {
+   display: none;
     padding: 0;
-    margin: 0;
-    background: #7ac243;
-    width: 200px;
-    height: 200px;
+    margin-bottom: 10px;
+    background: #f1601b;
+    width: 50px;
+    height: 50px;
     border: 0px;
     border-radius: 0px;
-    -webkit-transform: rotate(60deg);
-    -khtml-transform: rotate(60deg);
-    -moz-transform: rotate(60deg);
-    -ms-transform: rotate(60deg);
-    -o-transform: rotate(60deg);
-    transform: rotate(60deg);
     filter: progid:DXImageTransform.Microsoft.Matrix( M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
     zoom: 1;
-    top: -140px;
-    left: -100px;
+    top: 20;
+    left: 0px;
     float: none;
     position: absolute;
     z-index: 10;
+}
+
+.menuButtonESIText {
+position: absolute;
+zoom: 1;
+margin-left: -20px;
+padding-bottom: 15px;
+bottom: 0;
+    font-family: calibri,Helvetica,sans-serif;
+    cursor: pointer;
+color: #ffffff;
+font-size: 1.1em;
+
+
 }
