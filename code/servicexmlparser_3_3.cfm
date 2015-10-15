@@ -8,6 +8,8 @@
 <cfparam name="program_xml" default="">
 <cfparam name="request.debug" type="boolean"  default="false">
 <cfset request.debug = "false">
+<!-- set AEP subset to 72 for open enrollment 86 otherwise -->
+<cfset application.AEP_subset = 72>
 <cfset application.chicagovars = structnew()>
 <!-- default test parameter xml string -->
 <cfif testresponse and not isdefined('response_list')>
@@ -158,7 +160,7 @@ order by question_code, answerfield
 	</cfif>
 	<cfset request.next_subset_id = 85>
 	<cfif response_set.mqc_medicare_enroll_disability_yes eq 'y' or response_set.mqc_medicare_enroll_age_65 eq 'y'>
-		<cfset request.next_subset_id = 86>
+		<cfset request.next_subset_id = application.AEP_subset>
 	<cfelseif response_set.mqc_medicare_enroll_within_1_year_yes  eq 'y' or response_set.mqc_medicare_enroll_disability_no eq 'y'>
 		<cfset request.next_subset_id = 75>
 	<cfelseif response_set.mqc_medicare_enroll_within_1_year_no  eq 'y' >
