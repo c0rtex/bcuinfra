@@ -165,7 +165,7 @@ display: none;
 <div class="topheader">
 
 	<div class="bculogo">
-		<img title="BenefitsCheckUp" alt="BenefitsCheckUp" src="/cf/img/bculogo.gif">
+		<img title="BenefitsCheckUp" alt="BenefitsCheckUp" src="/cf/img/bcu.png">
 	</div>
 	
 	<div class="asof1">
