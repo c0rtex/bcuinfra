@@ -53,7 +53,7 @@
 <p>
 <form action="pl.cfm" method="post">
 <select name="filter" size="1">
-	<option value="all" <cfif filter IS "">SELECTED</cfif>>All</option>
+	<option value="all" <cfif filter IS "">SELECTED</cfif>>ACTIVE</option>
 	<option value="sponsor" <cfif filter IS "sponsor">SELECTED</cfif>>Sponsor</option>
 	<option value="nonsponsor" <cfif filter IS "nonsponsor">SELECTED</cfif>>Non Sponsor</option>		
 	<option value="demo" <cfif filter IS "demo">SELECTED</cfif>>Demo</option>			
