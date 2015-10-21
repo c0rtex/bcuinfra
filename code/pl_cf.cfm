@@ -12,27 +12,27 @@
 
 <cfswitch expression="#filter#">
 	<cfcase value="all">
-        <cfset qFilter = "WHERE wrapper_deployment_status = 3">
+        <cfset qFilter = "AND wrapper_deployment_status = 3">
 	<!---	<cfset qFilter = ""> Changed to the above because we only want active not all--->
 	</cfcase>
 	
 	<cfcase value="sponsor">
-		<cfset qFilter = "WHERE wrapper_deployment_status = 3 AND partnertype_id = 1">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND partnertype_id = 1">	
 	</cfcase>
 
 	<cfcase value="nonsponsor">
-		<cfset qFilter = "WHERE wrapper_deployment_status = 3 AND partnertype_id = 3">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND partnertype_id = 3">	
 	</cfcase>
 
 	<cfcase value="organization">
-		<cfset qFilter = "WHERE wrapper_deployment_status = 3 AND partnertype_id = 5">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND partnertype_id = 5">	
 	</cfcase>
 
 	<cfcase value="Demo">
-		<cfset qFilter = "WHERE wrapper_deployment_status = 3 AND demo = 1">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND demo = 1">	
 	</cfcase>
         <cfcase value="inactive">
-        <cfset qFilter = "WHERE wrapper_deployment_status = 0">
+        <cfset qFilter = "AND wrapper_deployment_status = 0">
         </cfcase>
 </cfswitch>
 
@@ -47,6 +47,7 @@
 	SELECT *
 	FROM wrapper w
 	LEFT JOIN tbl_partner t ON t.wrapper_id = w.wrapper_id
+        WHERE NOT (wrapper_code = 'bcu')
 	#qFilter#
 	ORDER BY partner_name
 </cfquery>
