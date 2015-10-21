@@ -6,9 +6,9 @@ responsiveMenu();
 
 
 
-//$( window ).resize(function() {
- //  responsiveMenu ();
-//});
+$(window).resize(function() {
+   responsiveMenu ();
+});
 
 $("#esiMenuToggleButton").click(function(){
  $("#main-nav").toggle(); 
