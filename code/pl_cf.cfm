@@ -48,7 +48,7 @@
 	FROM wrapper w
 	LEFT JOIN tbl_partner t ON t.wrapper_id = w.wrapper_id
         LEFT JOIN partnertype pt ON t.partnertype_id = pt.partnertype_id
-        WHERE NOT (wrapper_code = 'bcu') AND NOT (pt.code = 'nopl') AND NOT (pt.code = 'batch')
+        WHERE NOT (wrapper_code = 'bcu') AND NOT (pt.code = 'nonpl') AND NOT (pt.code = 'batch') AND NOT (t.partner_id = '66')
 	#qFilter#
 	ORDER BY partner_name
 </cfquery>
