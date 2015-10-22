@@ -1,0 +1,690 @@
+// Makes all the CSS3 mixins available....
+@import "compass/css3"; 
+
+// Makes all the Float mixins available
+@import "compass/utilities/general/float";
+
+// Makes all the Clearfix mixins available
+@import "compass/utilities/general/clearfix";
+
+// HTML5 and personal resets.
+@import "partials/reset";
+
+// My custom mixins as well as blueprint configuration
+@import "partials/base";
+
+// Import custom fonts
+@include font-import;
+
+/*	Primary Stylesheet						     
+	Author: Tito Bottitta + Upstatement			 */ 
+
+
+/*	Stylesheet for How-Tos, Learn Mores,
+	and other articles */
+
+
+/* !============================================= */
+
+/* ! Layout			   			  				  */ 
+
+/* !============================================= */
+
+.main-article {
+	width: 960px;
+	margin: auto;
+	}
+
+.article-container {
+	margin-top: 140px;
+	@extend .inset-box-full;
+	}
+
+.article-body {
+	@include shadow-box;
+	width: 960px;
+	margin: -75px auto 50px; 
+	padding: 45px 40px 55px 40px;
+	}
+
+.article-body-col-group {
+	@include ui-grid-lr(21.5%, 72.5%);
+	}
+
+
+
+
+/* !============================================= */
+
+/* ! Typography		   			  				  */ 
+
+/* !============================================= */
+
+
+/* !== Headlines ===================================== */ 
+
+.article-hdr-h1 {
+	font: normal 700 41px $museo-sans;
+	color: #000;
+	letter-spacing: -1px;
+	}
+
+.article-h1-subheader {
+	font: normal 300 18px/160% $museo-sans;
+	.strong, strong, b {
+		font-weight: 300;	
+		}
+	}
+
+.article-h1, .article-text > h1, .article-text > h1 strong {
+	font: normal 700 31px/110% $museo-sans;
+	color: #000;
+	}
+
+.article-h2, .article-text > h2, .article-text > h2 strong {
+	font: normal 700 22px $museo-sans;
+	color: $orange;
+	}
+ 
+.article-h3, .article-text > h3, .article-text > h3 strong {
+	font: normal 700 16px/130% $museo-sans;
+	color: #000;
+	}
+
+
+.article-body {
+	
+	.article-h1 {
+		margin-bottom: 30px;
+		}
+
+	.article-h2 {
+		margin-bottom: 16px;
+		}
+
+	.article-h3,
+	.article-h4 {
+		margin-bottom: 10px;
+		}
+	
+	} /* /.article-body */
+
+.article-text {
+	h1, h2, h3, h4 {
+		/*@extend .article-h3;*/
+		/*Dont know why this is here but it's killing-out the styles set above */
+		}
+	h3 {
+		@extend .article-h3;
+	}
+	
+	p {
+		@include text-large;
+		margin-bottom: 16px;
+		color: #222; 
+		.ie6 &,
+		.ie7 &,
+		.ie8 & {
+			font-weight: 500;
+			}
+		}
+	
+	ul, ol {
+		padding: 0 120px 0 22px;
+		margin-top: 12px;
+		color: $grey-blue;
+		font-size: 12px;
+		
+		&:not(:last-child) {
+			margin-bottom: 32px;
+			}
+
+		.ui-pattern-small-art & {
+			padding-right: 0;
+			}
+		
+		}
+		
+	ul {
+		list-style: disc outside;
+		
+		ul {
+			list-style-type: circle;
+			padding-right: 0;
+			}
+		}
+	
+	.alpha-list {
+		list-style-type: lower-alpha;
+		}
+
+	ol {
+		list-style: decimal outside;
+		}
+	
+	ol > li {
+		font-weight: 700;
+		}
+	
+	li {
+		margin: 8px;
+		@include text-large;
+		}
+
+	> a,
+	p > a {
+		@extend .link-underline;
+		}
+	
+	strong, b {
+		color: #000;
+		font-size: 15px;
+		}
+	
+		table.table {
+			@extend .table-lined;
+			
+			
+			th {
+				background-color: $grey-blue;
+				font-size: 12px;
+				color: #fff;
+				padding: 7px 10px 8px;
+				}
+			
+			td:not(:last-child) {
+				border-right: 1px dotted $light-gray;
+				}
+			
+			tr:nth-child(2n+1) {
+				background-color: $white-smoke;
+				}
+			}
+	
+	table.checklist {
+		td.first,
+		td:first-child {
+			width: 50px;			
+			&:after {
+			display: block;
+			height: 25px;
+			width: 25px;
+			border: 1px solid $light-gray;
+			content:"\0020";
+			}
+		}
+
+	}
+
+	.img-link {
+		border-bottom: 0;
+		}
+	
+	.alignright {
+		@include float-right;
+		margin: 0 0 0 20px;
+		}
+
+	.alignleft {
+		@include float-left;
+		margin: 0 20px 0 0;
+		}
+	
+	blockquote {
+		@include float-right;
+		width: 40%;
+		padding: 16px 18px 22px;
+		border: 1px solid $light-gray;
+		margin: 5px -85px 35px 35px;
+		background-color: $gray-blue;
+		color:$whitesmoke;
+		@include border-radius(6px);
+		> p { 
+			font: normal 700 16px/150% $museo-slab;
+			color: $whitesmoke;
+			text-align: center;
+			margin-bottom: 0;
+			}
+		}
+
+	.orange {
+		color: $orange;
+		}
+	
+	.black {
+		color: #000;
+		}
+
+	.book-dl,
+	.book-dl-small,
+	.pdf-dl,
+	.pdf-dl-small {
+		display: block;
+		text-align: center;
+		font-size: 12px;
+		font-weight: 700;
+		border-bottom: 0;
+		margin-top: 16px;
+		margin-bottom: 16px;
+		line-height: 145%;
+		> img {
+			display: block;
+			margin: auto;
+			}
+		}
+
+	.book-dl {
+		width: 230px;	
+		}
+
+	.pdf-dl {
+		width: 150px;
+		> img {
+			margin-bottom: 6px;
+			}
+		}
+	
+	.pdf-dl-small {
+		width: 100px;
+		> img {
+			margin-bottom: 6px;
+			width: 61px;
+			height: 74px;			
+			}
+		}
+	
+	.book-dl-small {
+		width: 200px;
+		> img {
+			width: 176px;
+			height: 196px;
+			}
+		}
+
+	
+	} /* end .article-text */
+
+
+
+/* !============================================= */
+
+/* ! Objects		   			  				  */ 
+
+/* !============================================= */
+
+
+/* Breadcrumbs */
+
+.article-breadcrumb {
+	margin-bottom: 20px;
+	}
+
+.article-bc-item {
+	display: inline-block;
+	color: $med-gray;
+	margin-right: 7px;
+
+	> a {
+		@include trans;
+		display: inline-block;
+		color: $med-gray;
+		}
+
+	> a:hover {
+		color: $grey-blue;
+		}
+		
+	&:not(:last-child):after {
+		content: '\203A';
+		margin-left: 8px;
+		}
+
+	.ie6 &:after,
+	.ie7 &:after,
+	.ie8 &:after,
+	.ie9 &:after {
+		content: '\203A';
+		margin-left: 8px;		
+		}
+	
+	.ie6 &.last:after,
+	.ie7 &.last:after,
+	.ie8 &.last:after,
+	.ie9 &.last:after {
+		content: '\0020';
+		margin-left: 0;
+		}	
+	
+	}
+
+
+/* Article/Subheader/Dog Tags */
+
+.subheader-tag {
+	@extend .dog-tag;
+	margin-right: 4px;
+	position: relative;
+	top: -2px;
+	display: inline-block;
+	}	
+
+
+	
+	
+/* Article body fixed nav */
+
+.article-body-nav {
+	margin-bottom: 16px;
+	}
+
+.article-body-nav-item {
+	display: block;
+	
+	> a {
+		display: block;
+		font: normal 500 13px $museo-sans;
+		color: $blue-grey;
+		position: relative;
+		padding: 10px;
+		border-bottom: 1px solid $almost-white;
+		}
+	
+	> a:hover {
+		text-decoration: underline;
+		}
+
+	&.item-active {
+	
+		> a {
+			color: #fff;
+			font-weight: 700;
+			background-color: $orange;
+			border-bottom-color: $orange;
+			}
+		
+		> a:hover {
+			text-decoration: none;
+			}
+		
+		}
+	
+	&.item-active > a:after {
+		@extend .triangles;
+		border-left: 18px solid transparent; 
+		border-right: 18px solid transparent;
+		border-bottom: 18px solid $orange;
+		top: 9px;
+		right: -27px;
+		@include rotate(90deg);
+		}
+	
+	.ie &.item-active > a:after,
+	.ie7 &.item-active > a:after,
+	.ie8 &.item-active > a:after,
+	.ie9 &.item-active > a:after {
+		display: none;
+		}
+	
+	}
+
+.not-found-nav-col {
+	display: none !important;
+	}
+
+.article-page-hdr-share {
+	@include float-right;
+	width: 65px;
+	.addthis-txt {
+		display: none;		
+		}
+	}
+
+.article-body-nav-share {
+	margin-left: 10px;
+	.addthis-txt {
+		color: $med-gray;
+		font-size: 12px;
+		display: block;
+		float: left;
+		margin: 1px 6px 0 0;
+		}
+	}
+
+
+/* !============================================= */
+
+/* ! Article Patterns & UI Blocks  				  */ 
+
+/* !============================================= */
+
+
+.ui-article-block {
+	&:not(:last-child) {
+		border-bottom: 1px solid $light-gray;
+		padding: 0 0 75px 0;
+		margin: 0 0 30px 0;
+		}
+	
+	.ie6 &,
+	.ie7 &,
+	.ie8 &,
+	.ie9 & {
+		border-bottom: 1px solid $light-gray;
+		padding: 0 0 75px 0;
+		margin: 0 0 30px 0;	
+		}
+
+	.ie6 &.last,
+	.ie7 &.last,
+	.ie8 &.last,
+	.ie9 &.last {
+		border-bottom: 0;
+		padding: 0;
+		margin: 0;	
+		}
+	
+	}
+
+.ui-pattern-how-to {
+
+	}
+
+.ui-pattern-small-art {
+	@include ui-grid-lr(40%, 57%);
+
+	&:not(:last-child) {
+		border-bottom: 1px solid $almost-white;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		}
+
+	.ie6 &,
+	.ie7 &,
+	.ie8 &,
+	.ie9 & {
+		border-bottom: 1px solid $almost-white;
+		padding-bottom: 20px;
+		margin-bottom: 20px;		
+		}
+
+	.ie6 &.last,
+	.ie7 &.last,
+	.ie8 &.last,
+	.ie9 &.last {
+		border-bottom: 0;
+		padding-bottom: 0;
+		margin-bottom: 0;		
+		}
+
+
+	.article-text {
+		margin-top: 6px;
+		}
+	}
+
+.article-small-art-container {
+		
+	}
+
+.article-small-img {
+	@extend .placeholder;
+	display: block;
+	width: 100%;
+	height: 170px;
+	margin: 0;
+	background-color: $text-black;
+	}
+
+.article-how-to-btn-col {
+	@include float-right;
+	margin: 4px 0 0 30px;
+	}
+
+.article-how-to-btn {
+	@include button;
+	padding: 9px 20px;
+	}
+
+.ui-pattern-art-caption {
+	@include ui-grid-lr(69%, 28%);
+	margin-top: 26px;
+	
+	&:not(:last-child) {
+		margin-bottom: 26px;
+		}
+
+	.article-caption-col {
+		@extend .article-caption;
+		margin-top: 6px;
+		}
+	
+	}
+
+.article-caption {
+	@include text;
+	color: $grey-blue;
+	
+	p {
+		@include text;
+		color: $grey-blue;
+		margin-bottom: 9px;
+		}
+	
+	strong, b {
+		color: #000;
+		}
+	
+	}
+
+.article-large-img,
+.article-large-video {
+	@extend .placeholder;
+	display: block;
+	width: 100%;
+	height: 245px;
+	margin: 0;
+	background-color: $text-black;
+	}
+
+.ui-pattern-simple-text {
+	@extend .article-text;
+	
+	&:not(:last-child) {
+		margin-bottom: 16px;
+		}
+	
+	}
+
+
+
+/* !============================================= */
+
+/* ! Page-Specific Stuff		  				  */ 
+
+/* !============================================= */
+	
+
+/* Article Headers	 */
+	
+.article-page-hdr {
+	@include ui-grid-lr(75%, 20%);
+	margin-bottom: 70px;
+
+	.article-hdr-h1 {
+		margin-bottom: 20px;
+		}
+
+	}
+
+.article-hgroup {	
+	@include pie-clearfix;
+	
+	.article-h1-subheader {
+		@extend .imageblock-content;
+		position: relative;
+		top: 3px;
+		}
+
+	}
+
+.article-page-icon-container {
+	@include float-left;
+	display: block;
+	margin-right: 16px;
+	width: 90px;
+	height: 90px;
+	> img {
+		max-width: 100%;
+		height: 100%;	
+		}
+	}
+
+.article-hdr-action-col {
+	margin-top: 8px;
+	}
+	
+.article-hdr-action-btn {
+	@include button;
+	font-weight: 700;
+	padding: 9px 20px 10px;
+	display: none;
+	}
+
+.article-hdr-action-text {
+	width: 200px;
+	}	
+	
+.article-hdr-print-btn {
+	@include float-right;
+	}
+	
+	
+/* !============================================= */
+
+/* ! Excel Embed	   			  				  */ 
+
+/* !============================================= */	
+
+@import "partials/excel";
+
+
+
+
+
+
+
+
+
+
+
+
+/* !============================================= */
+
+/* ! Print Styles							     */
+/*	Inline to avoid required HTTP connection     */
+
+/* !============================================= */
+ 
+@import "partials/print";
+
+

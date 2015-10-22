@@ -1,0 +1,889 @@
+/* Multi-Shadow */
+
+// Example Usage
+//@include multi-shadow(rgba(0,0,0,.35) 0 2px 3px 0 inset, rgba(255,255,255,.5) 0 1px 2px);
+
+// Actual Mixin. For Compass versions prior to v.11,
+// when the box-shadow syntax changed to do this for you
+
+@mixin multi-shadow($shadow-1, $shadow-2: false, $shadow-3: false, $shadow-4: false, $shadow-5: false, $shadow-6: false, $shadow-7: false, $shadow-8: false, $shadow-9: false) {
+  $full: $shadow-1;
+  @if $shadow-2 {
+    $full: $full + "," + $shadow-2;
+  }
+  @if $shadow-3 {
+    $full: $full + "," + $shadow-3;
+  }
+  @if $shadow-4 {
+    $full: $full + "," + $shadow-4;
+  }
+  @if $shadow-5 {
+    $full: $full + "," + $shadow-5;
+  }
+  @if $shadow-6 {
+    $full: $full + "," + $shadow-6;
+  }
+  @if $shadow-7 {
+    $full: $full + "," + $shadow-7;
+  }
+  @if $shadow-8 {
+    $full: $full + "," + $shadow-8;
+  }
+  @if $shadow-9 {
+    $full: $full + "," + $shadow-9;
+  }
+    
+  -moz-box-shadow: $full;
+  -webkit-box-shadow: $full;
+  -o-box-shadow: $full;
+  box-shadow: $full;
+}
+
+
+/* Type */
+
+
+@mixin font($font, $weight, $style) {
+	$font: $museo-sans !default;
+	$style: normal !default;
+
+	font-family: $font;
+	font-weight: $weight;
+	font-style: $style;
+	}
+
+@mixin text-large {
+	font: normal 300 16px/140% $museo-sans;
+	}
+
+@mixin text {
+	font: normal 300 13px/140% $museo-sans;
+	}
+
+@mixin text-small {
+	font: normal 300 11px/140% $museo-sans;
+	}
+
+@mixin text-graphic-large {
+	font: normal 300 16px/140% $museo-sans;
+	}
+
+@mixin text-graphic-med {
+	font: normal 300 13px/140% $museo-sans;
+	}
+
+@mixin text-graphic {
+	font: normal 300 13px/140% $museo-sans;
+	}
+
+@mixin text-graphic-small {
+	font: normal 300 11px/140% $museo-sans;
+	}
+
+@mixin note-vars {
+	font-weight: normal !important;
+	color: $beige;
+	text-align: left;
+
+	h1, h2, h3, h4, h5 {
+		font-weight: normal !important;
+		}
+	}
+
+@mixin note {
+	font: normal 18px/120% $nymph;
+	@include note-vars;
+
+	> p,
+	&-p {
+		margin-bottom: 16px;
+		}
+	}
+
+@mixin note-small {
+	font: normal 18px/120% $nymph;
+	@include note-vars;
+
+	> p,
+	&-p {
+		margin-bottom: 16px;
+		}
+	}
+
+@mixin note-large {
+	font: normal 32px/120% $nymph;
+	@include note-vars;
+	
+	> p,
+	&-p {
+		margin-bottom: 10px;
+		}
+	}
+
+@mixin source {
+	// Bug testing
+	font-family: inherit;
+	}
+
+@mixin label {
+	font: normal 700 14px $museo-sans;
+	color: $text-black;
+	}
+
+@mixin label-light {
+	font-weight: 300;
+	}
+
+@mixin label-small {
+	font: normal 300 12px $museo-sans;
+	color: $text-black;
+	}
+
+@mixin dog-tag {
+	@include trans;
+	display: inline-block;
+	font: normal 700 12px $museo-sans;
+	padding: 4px 5px;
+	color: #fff;
+	background-color: $grey-blue;
+	@include border-radius(2px);
+	}
+
+/* Misc */
+
+@mixin inset-border {
+	border-top: 1px solid $light-gray;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: none;
+	}
+
+@mixin outset-border {
+	border-bottom: 1px solid $light-gray;
+	border-left: 1px solid #fff;
+	border-top: 1px solid #fff;
+	border-right: none;
+	}
+
+@mixin shadow-box {
+	padding: 25px;
+	background-color: #fff;
+	@include box-shadow(rgba(0, 0, 0, .15), 0.5px, 0.5px, 6px, 1px);
+	}
+
+@mixin note-box {
+	border: 1px solid $note-yellow-dark;
+	background-color: $note-yellow;
+	}
+
+@mixin inset {
+	@include bg(white-25);
+	border-top: 1px solid $light-gray;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+	}
+
+@mixin inset-box {
+	@include inset;
+	@include border-radius(6px);
+	padding: 30px 40px;	
+	}
+
+@mixin i-circle {
+	@include trans(.2s);
+	font: italic 700 10px Georgia, Times, Times New Roman, serif;
+	background-color: #ccc;
+	color: #fff;
+	text-align: center;
+	height: 15px;
+	width: 15px;
+	padding: 2px 0;
+	display: inline-block;
+	@include box-sizing(border-box);
+	@include border-radius(100px);
+	content: 'i';
+	
+	&:hover {
+		background-color: $med-gray;
+		}
+	
+	}
+
+@mixin info-box {
+	display: inline-block;
+	position: relative;
+	&:hover {
+		cursor: help;
+		}
+
+	&:after {
+		@include i-circle;
+		position: absolute;
+		right: -20px;
+		bottom: 2px;
+		}
+
+	&:hover:after {
+		background-color: $med-gray;
+		}	
+	}
+
+@mixin info-box-before {
+	position: relative;
+	padding-left: 20px;
+	&:hover {
+		cursor: help;
+		}
+		
+	&:after {
+		@include i-circle;
+		position: absolute;
+		left: 0px;
+		bottom: 2px;
+		}
+
+	&:hover:after {
+		background-color: $med-gray;
+		}	
+	}
+
+
+@mixin border-image($bi) {
+	-moz-border-image:#{$bi};
+	-webkit-border-image:#{$bi};
+	border-image:#{$bi};
+	}
+
+@mixin bg($bg-type) {
+	background:transparent url(../_images/bg-#{$bg-type}.png) repeat 0 0;
+	}
+
+$t: .2s !default; /* Transition: Time */
+$trans-function: ease-in !default; /* Transition: Type */
+$trans-property: all !default;
+
+@mixin trans($t,$trans-property,$trans-function) {
+	@include single-transition(#{$trans-property}, #{$t}, #{$trans-function}, false);
+	}
+
+/* Sprites */
+
+@mixin sprite {
+	background: transparent url(../_images/sprite.png) no-repeat 0 0;
+	display: block;
+	}
+
+@mixin glass-box {
+	@include pie-clearfix;
+	@include bg(white_75);
+	padding: 15px;
+	}
+
+/* Spacers */
+
+$spacer: 50px;
+$spacer-small: round($spacer/5);
+$spacer-med: round($spacer/2);
+$spacer-large: round($spacer*1.5);
+$spacer-xlarge: round($spacer*3.5);
+$spacer-xxlarge: round($spacer*5.5);
+
+
+$spacer-top: inherit !default;
+$spacer-bottom: inherit !default;
+
+@mixin spacer($spacer-top, $spacer-bottom) {
+	margin-top: $spacer-top;
+	margin-bottom: $spacer-bottom;
+	}
+
+
+
+/* Buttons */
+
+@mixin btn-basics-reg {
+	@include trans;
+	padding: 6px 20px 7px;
+	display: inline-block;
+	position: relative;
+	}
+
+@mixin button	 {
+	@include btn-basics-reg;
+	font: normal 500 12px $museo-sans;
+	letter-spacing: -.03em;
+	text-align: center;
+	color: #fff;
+	background-color:$link;
+	@include border-radius(100px);
+	
+	&:hover {
+		@include trans(.1s);
+		cursor: pointer;
+		background-color:$link_hover;
+		text-decoration: none;
+		}
+	}
+
+@mixin btn-inset {
+	@include inset;
+	@include bg(white-50);
+	@include btn-basics-reg;
+	@include border-radius(100px);
+	}
+
+@mixin btn-inset-reverse {
+	@include trans;
+	background-color: rgba(255, 255, 255, .2);
+	border-top: 1px solid rgba(255, 255, 255, .1);
+	border-right: 1px solid rgba(255, 255, 255, .1);
+	border-bottom: 1px solid rgba(255, 255, 255, .25);
+	border-left: 1px solid rgba(255, 255, 255, .1);
+	@include border-radius(100px);
+	@include box-shadow(#000, 0, -1px, 0);
+	}
+
+// Formerly btn-blue-grad
+@mixin btn-dark {
+	@include btn-basics-reg;
+	font: normal 500 12px $museo-sans;
+	color: #fff;
+	text-align: center;
+	background-color: $link;
+	@include border-radius(100px);
+	@include linear-gradient(color_stops(#447fc1 0%, #205a9b 100%));
+	@include box-shadow(rgba(255, 255, 255, 1) 0 1px 0 0);
+	border: 1px solid #447fc1;
+	@include opacity(.9);
+	
+		&:hover {
+			background-color: $link-hover;
+			@include opacity(1);
+			}	
+	}
+
+@mixin btn-dark-big {
+	@include btn-dark;
+	font-size: 18px;
+	padding: 13px 0;
+	display: block;
+	@include border-radius(25px);
+	@include multi-shadow(rgba(255, 255, 255, 1) 0 1px 0 0, rgba(255,255,255,.4) 0 1px 0 0 inset);
+
+		.arrow-right-large {
+			background-position: -145px -16px;
+			}
+	}
+
+@mixin btn-light-flat {
+	@include btn-basics-reg;
+	font: normal 500 12px $museo-sans;
+	text-align: center;
+	color: $text-black;
+	border: 1px solid #bbb;
+	background-color: #fff;
+	@include border-radius(100px);
+	@include transition-duration(.2s);
+	@include transition-timing-function(ease-in);
+	@include transition-property('opacity, color, border-color');
+	@include opacity(.9);
+	
+	&:hover {
+		cursor: pointer;
+		text-decoration: none;
+		border-color: #888;
+		@include opacity(1);
+		}
+
+	&:active {
+		cursor: pointer;
+		text-decoration: none;
+		border-color: #aaa;
+		@include opacity(1);
+		}
+	
+	}
+
+@mixin btn-light-flat-small {
+	@include btn-light-flat;
+	padding: 4px;
+	}
+	
+@mixin btn-light-grad {
+	@include linear-gradient(color_stops(#fff 0%, #fff 60%, #e2e3e4 95%, #e2e3e4 100%));
+	@include box-shadow(rgba(255, 255, 255, 1), 0, 1px, 0, 0);
+
+	&:active {
+		@include linear-gradient(color_stops(#e2e3e4 0%, #e2e3e4 5%, #fff 40%, #fff 100%));		
+		@include multi-shadow (rgba(255, 255, 255, 1) 0 1px 0 0, rgba(0, 0, 0, .1) 0 1px 3px 1px inset);
+		}
+	}
+
+@mixin btn-light	 {
+	@include btn-light-flat;
+	background:#fff url(../_images/btn-large-white.gif) repeat-x 50% 100%;
+	@include btn-light-grad;
+
+	&:active {
+		background-position: 50% 0%;
+		}
+
+	}
+
+@mixin btn-light-active {
+	@include btn-light;
+	cursor: pointer;
+	text-decoration: none;
+	border-color: #aaa;
+	@include multi-shadow (rgba(255, 255, 255, 1) 0 1px 0 0, rgba(0, 0, 0, .1) 0 1px 3px 1px inset);
+	@include opacity(1);
+	@include linear-gradient(color_stops(#e2e3e4 0%, #e2e3e4 5%, #fff 40%, #fff 100%));
+	background-position: 50% 0%;
+	
+	&:hover {
+		border-color: #888;
+		}	
+
+	&:active {
+		color: $text-black;
+		@include multi-shadow (rgba(255, 255, 255, 1) 0 1px 0 0, rgba(0, 0, 0, .2) 0 1px 3px 1px inset);
+		}
+
+	}
+
+@mixin btn-light-small {
+	@include btn-light;
+	font-size: 11px;
+	padding: 4px 12px;
+	}
+
+// Used in slide footers
+@mixin btn-big {
+	font: normal 100 18px $museo-sans;
+	color: $grey-blue;
+	text-align: center;
+	background-color: #fff;
+	padding: 13px 0;
+	display: block;
+	@include border-radius(60px);
+	@include opacity(.8);
+	@include trans(.3s);
+	
+		&:hover {
+			@include opacity(1);
+			//color: $orange;
+			@include box-shadow(rgba(0,0,0,.1), 0, 0, 10px);
+			}
+	}
+
+@mixin prev-next-mini {
+
+	a.prev, .prev,
+	a.next, .next {
+		@include trans(.2s);
+		display: block;
+		height: 19px;
+		width: 20px;
+		background-color: #fff;
+		@include text-graphic-small;
+		@include border-radius(100px);
+		@include opacity(.85);		
+		
+		&:hover {
+			@include opacity(1);
+			cursor: pointer;
+			}
+		
+		}
+
+	.prev-text, 
+	.next-text {
+		}
+
+	.tooltip-dark {
+		width: 45px;
+		margin-top: 25px;
+		margin-left: -13px;
+		text-align: center;
+		&:before,
+		&:after {
+			left: 17px;
+			}
+		}
+	
+	a.prev, .prev {
+		}
+	
+	a.next, .next {
+		margin-left: 6px;	
+		}
+	
+	.prev-arrow, .next-arrow {
+		@include sprite;
+		height: 10px;
+		width: 8px;
+		margin: 0 auto;
+		position: relative;
+		top: 5px;
+		}
+	
+	.prev-arrow {
+		background-position: -244px 0;
+		margin-right: 6px;
+		}
+	
+	.next-arrow {
+		background-position: -261px 0;
+		margin-left: 6px;
+		}
+	
+	.prev.disabled,
+	.next.disabled,
+	.prev.disabled:hover,
+	.next.disabled:hover {
+		background-color:$med_gray;
+		cursor: default;
+		}
+
+	}
+
+@mixin arrow-styles {
+	font-weight: 700;
+	font-size: 15px;
+	margin-left: 6px;
+	position: absolute;
+	top: 4px;
+	right: 16px;
+	display: inline-block;
+	}
+
+
+/* ============================================= */
+
+/*	Grids							             */
+
+/* ============================================= */
+
+/* Grid-2 vars */
+
+$width-1: auto !default; 
+$width-2: auto !default; 
+$margin-r: 0 !default; 
+
+@mixin ui-grid-2($width-1,$width-2,$margin-r) {
+	@include pie-clearfix;
+
+	> .col-1,
+	> .col.first {
+		width: $width-1 - ($margin-r/2);
+		@include float-left;
+		margin-right: $margin-r;
+		}
+
+	> .col-2,	
+	> .col.second {
+		width: $width-2 - ($margin-r/2);
+		@include float-left;
+		margin-right: 0;
+		}
+	}
+
+@mixin ui-grid-rl($width-1,$width-2,$margin-r) {
+	@include pie-clearfix;
+
+	> .col-1,	
+	> .col.first {
+		width: $width-1 - ($margin-r/2);
+		@include float-right;
+		}
+	
+	> .col-2,
+	> .col.second {
+		width: $width-2 - ($margin-r/2);
+		@include float-left;
+		margin-right: 0;
+		}
+	}
+
+@mixin ui-grid-lr($width-1,$width-2,$margin-r) {
+	@include pie-clearfix;
+
+	> .col-1,	
+	> .col.first {
+		width: $width-1 - ($margin-r/2);
+		@include float-left;
+		}
+
+	> .col-2,	
+	> .col.second {
+		width: $width-2 - ($margin-r/2);
+		@include float-right;
+		margin-right: 0;
+		}
+	}
+
+/* Grid-3 vars */
+
+$width3-1: 33.333333% !default; 
+$width3-2: 33.333333% !default; 
+$width3-3: 33.333333% !default; 
+$margin3-r: 3.5% !default; 
+	
+@mixin ui-grid-3($width3-1,$width3-2,$width3-3,$margin3-r)  {
+	@include pie-clearfix;
+
+	> .col-1,
+	> .col.first {
+		width: $width3-1 - ($margin3-r/3);
+		@include float-left;
+		margin-right: $margin3-r/2;
+		}
+
+	> .col-2,	
+	> .col.second {
+		width: $width3-2 - ($margin3-r/3);
+		@include float-left;
+		margin-right: $margin3-r/2;
+		}
+
+	> .col-3,
+	> .col.last {
+		width: $width3-3 - ($margin3-r/3);
+		@include float-left;
+		margin-right: 0;		
+		}
+	}
+
+
+/* Grid-4 vars */
+
+$width4-1: 25% !default; 
+$width4-2: 25% !default; 
+$width4-3: 25% !default; 
+$width4-4: 25% !default; 
+$margin4-r: 8% !default; 
+
+@mixin ui-grid-4 {
+
+	@include pie-clearfix;
+
+	> .col-1,
+	> .col.first {
+		width: $width4-1 - ($margin4-r/4);
+		@include float-left;
+		margin-right: $margin3-r/3;
+		}
+
+	> .col-2,	
+	> .col.second {
+		width: $width4-2 - ($margin4-r/4);
+		@include float-left;
+		margin-right: $margin3-r/3;
+		}
+
+	> .col-3,
+	> .col.third {
+		width: $width4-3 - ($margin4-r/4);
+		@include float-left;
+		margin-right: $margin3-r/3;
+		}
+
+	> .col-4,
+	> .col.last {
+		width: $width4-4 - ($margin4-r/4);
+		@include float-left;
+		margin-right: 0;	
+		}
+	}
+
+
+/* Grid-5 vars */
+
+$width5-1: 20% !default; 
+$width5-2: 20% !default; 
+$width5-3: 20% !default; 
+$width5-4: 20% !default; 
+$width5-5: 20% !default; 
+$margin5-r: 8% !default; 
+
+@mixin ui-grid-5 {
+
+	@include pie-clearfix;
+
+	> .col-1,
+	> .col.first {
+		width: $width5-1 - ($margin5-r/5);
+		@include float-left;
+		margin-right: $margin3-r/4;
+		}
+
+	> .col-2,	
+	> .col.second {
+		width: $width5-2 - ($margin5-r/5);
+		@include float-left;
+		margin-right: $margin3-r/4;
+		}
+
+	> .col-3,
+	> .col.third {
+		width: $width5-3 - ($margin5-r/5);
+		@include float-left;
+		margin-right: $margin3-r/4;
+		}
+
+	> .col-4,
+	> .col.fourth {
+		width: $width5-4 - ($margin5-r/5);
+		@include float-left;
+		margin-right: $margin3-r/4;
+		}
+
+	> .col-5,
+	> .col.last {
+		width: $width5-5 - ($margin5-r/5);
+		@include float-left;
+		margin-right: 0;	
+		}
+	}
+
+@mixin ui-grid-70-30 {
+
+	@include pie-clearfix;
+	
+	> .col,
+	> .col-1,
+	> .col.first,
+	> .col:first-child {
+		width: 70%;
+		@include float-left;
+		}
+	
+	> .col-2,
+	> .col.last,
+	> .col:nth-child(2) {
+		width: 30%;
+		@include float-left;
+		margin-right: 0;
+		}
+	
+	}
+
+
+@mixin col-width-full($columns) {
+	width: #{$columns} * $blueprint-grid-width + (#{$columns} * $blueprint-grid-margin);
+	}
+
+
+
+/* ============================================= */
+
+/*	Misc							             */
+
+/* ============================================= */
+
+
+/* Clearfix */
+
+/* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+
+.clearfix:after { clear: both; }
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+
+/* Image Blocks */
+
+.imageblock {
+	@extend clearfix;
+	}
+
+.imageblock-image {
+	float: left;
+	margin: 0 10px 0 0;	
+	}
+
+.imageblock-image-right {
+	float: right;
+	margin: 0 0 0 10px;
+	}
+
+.imageblock-content {
+	display: table-cell;
+	vertical-align: top;
+	width: 1000em;
+	}
+	
+.ie6 .imageblock-content,
+.ie7 .imageblock-content {
+	display: block;
+	width: auto;
+	zoom: 1;
+	}
+
+
+
+/* ============================================= */
+
+/*	Paul English's HTML5 helper classes          */
+
+/* ============================================= */
+
+// Image replacement
+@mixin ir { 
+	display: block; 
+	text-indent: -999em; 
+	overflow: hidden; 
+	background-repeat: no-repeat; 
+	text-align: left; 
+	direction: ltr; 
+	}
+
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+@mixin hidden { 
+	display: none; 
+	visibility: hidden; } 
+
+/* Hide only visually, but have it available for screenreaders 
+   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
+@mixin visuallyhidden { 
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px); }
+
+/* Hide visually and from screenreaders, but maintain layout */
+@mixin invisible { 
+	visibility: hidden; 
+	}
+
+	
+	
+/* ============================================= */
+
+/*	Custom Fonts					             */
+
+/* ============================================= */
+
+@mixin font-import {
+
+	@font-face {
+	    font-family: 'Nymph';
+	    src: url('../_fonts/nymphshandwritingnew-webfont.eot?') format('eot'),
+	         url('../_fonts/nymphshandwritingnew-webfont.woff') format('woff'),
+	         url('../_fonts/nymphshandwritingnew-webfont.ttf') format('truetype'),
+	         url('../_fonts/nymphshandwritingnew-webfont.svg#webfontGs6DkCHE') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+	    }
+
+	}
+	
+/* ============================================= */
+
+/*	Responsive  					             */
+
+/* ============================================= */

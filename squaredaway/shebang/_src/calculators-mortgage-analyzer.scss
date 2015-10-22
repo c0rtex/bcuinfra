@@ -1,0 +1,204 @@
+// Makes all the CSS3 mixins available
+@import "compass/css3";
+
+// Makes all the Float mixins available
+@import "compass/utilities/general/float";
+
+// Makes all the Clearfix mixins available
+@import "compass/utilities/general/clearfix";
+
+// HTML5 and personal resets.
+@import "partials/reset";
+
+// My custom mixins as well as blueprint configuration
+@import "partials/base";
+
+// My custom mixins as well as blueprint configuration
+@import "partials/mort-refi";
+
+// Import custom fonts
+@include font-import;
+
+
+/*	Primary Stylesheet						     
+	Author: Tito Bottitta + Upstatement			 */ 
+
+
+
+/* !============================================= */
+
+/* ! Mortgage Analyzer 				      		  */
+
+/* !============================================= */
+
+
+/* ! Form & Inputs ========================== */	
+
+.home-value-input-group,
+.mtg-amt-input-group {
+	width: 155px;
+	}
+	
+	
+/* ! Page Specific Styles ========================== */
+
+/* ! Compare Table  */
+
+#ma-compare-table {
+
+	.mtg-payment-th,
+	.mtg-payment-th-at {
+		text-align: center;
+		}
+	
+	.mtg-type-th {
+		width: 180px;
+		}
+
+	.mtg-int-th {
+		width: 120px;
+		}
+
+	.own-owe-th {
+		width: 415px;
+		}
+	
+	.supporting-th {
+		color: $med-gray;
+		display: inline-block;
+		&:after {
+			bottom: 0px;
+			}
+		.tooltip {
+			width: 425px;
+			margin-left: -205px;
+			&:before {
+				left: 300px;			
+				}
+			&:after {
+				left: 302px;
+				}
+			}
+		}
+
+	.mtg-type-select,
+	.mtg-int-data {
+		padding-top: 7px;
+		padding-bottom: 0;
+		}
+	
+	.mtg-int-data {
+		.pct {
+			top: 17px;
+			right: 30px;
+			}
+		}
+	
+	.mtg-type-data {
+		font-weight: 700;
+		font-size: 15px;
+		width: 160px;
+		padding-top: 12px;
+		}
+	
+	.mtg-payment-data,
+	.mtg-payment-data-at {
+		width: 100px;
+		text-align: center;
+	
+		.slash {
+			margin: 0 4px 0 6px;
+			color: $light-gray;
+			font-weight: 100;
+			}
+		}
+
+	.mtg-group-30_fixed {
+		td {
+			padding-bottom: 10px;
+			}
+		.mtg-type-data {
+			padding-top: 14px;
+			}
+		}
+	
+	/* Mortgage Select */
+	
+	.mtg-compare-select {
+		font: normal 700 15px $museo-sans;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		padding-left: 10px;
+		@extend .select-inputs;
+		@include input-gray;
+		margin-top: 0;
+		}
+	
+	.ma-adjustable-group {
+		td {
+			border-bottom: 0;
+			padding-bottom: 0;
+			}
+		}
+	
+	
+	/* 	What You Own vs. What You Owe Bar */
+	
+	.own-owe-data {
+		.tooltip-dark {
+			margin: 24px 0 0 0;
+			padding: 5px 8px;
+			font-size: 11px;
+			@include border-radius(5px);
+			}
+		}
+	
+	.own-bar,
+	.owe-bar {
+		@include trans;
+		height: 22px;
+		color: #fff;
+		display: block;
+		float: left;
+		font-size: 12px;
+		font-weight: 500;
+		overflow: hidden;		
+		}
+	
+	.own-bar {
+		width: 50%;
+		background-color: $green-dark;
+		}
+	
+	.owe-bar {
+		width: 50%;
+		background-color: $orange-dark;
+		}
+	
+	.owe-own-fig {
+		display: block;
+		margin: 2px 6px 0;
+		min-width: 100px;
+		}
+
+	.ma-adjustable-after-group .rates-jump {
+		padding-top: 5px;
+		& .info-box:after {
+			bottom: 5px;
+			}
+		}
+
+	} /* end ma-compare-table */	
+.note-analyzer {
+	p {
+		position: relative;
+		left: -188px;
+		width: 200px;
+		-webkit-transform:rotate(-10deg);
+	}
+	.note-arrow {
+		position: relative;
+		left: -214px;
+		top: -18px;
+	}
+}

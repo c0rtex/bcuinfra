@@ -1,0 +1,248 @@
+
+.excel-upload-output table {
+	display:block;
+	
+	border-color:transparent !important;
+	margin-bottom:30px;
+}
+
+.excel-upload-sample {
+	background-color:white;
+	padding:40px;
+}	
+
+.excel-upload-output {
+	display:none;
+
+	.excel-calc-input {
+		border-radius:5px;
+		background-color:white;
+		padding:7px;
+		font-family: $museo-sans;
+		font-weight:100 !important;
+		font-size:18px;
+		margin:0px !important;
+		padding-left:5px !important;
+		border:1px solid rgba(34, 34, 34, .08) !important;
+		&:focus {
+			outline:none;
+			background-color:#F4761F;
+			
+		}
+	}
+	
+.excel-upload-output table tr td a:link {
+	color:#1D78AF;
+	}
+
+	.excel-output-header-marker {
+		@extend .article-h1;
+		td {
+			padding-bottom:15px;
+			padding-top:30px;
+			border-top:1px solid #dddddd;
+		}
+	}
+	
+	.excel-output-header-small, .excel-output-header-small input {
+		font:normal 700 18px $museo-sans;
+		
+	}
+	
+	.excel-output-total td {
+		font-size:16px;
+		font-weight:300;
+		padding-top:6px;
+		padding-bottom:30px;
+		&:first-child {
+			padding-left:13px;
+		}
+	}
+	
+	.excel-output-billboard-container table td {
+		border-right:1px solid #CCC;
+		padding-right:20px;
+		padding-left:20px;
+		&:last-child {
+			border-right:0px;
+		}
+	}
+	
+	.excel-output-billboard-big, 
+	.excel-output-billboard-big input,
+	.excel-output-billboard-big strong,
+	.excel-output-billboard-large, 
+	.excel-output-billboard-large input,
+	.excel-output-billboard-large strong
+	{
+		@include text-large;
+		text-align:center;
+		color: rgb(175, 78, 49);
+		font-weight:700;
+		font-size:32px;
+	}
+	
+	.excel-output-billboard-small, .excel-output-billboard-small input {
+		text-align:center;
+		@include text-large;
+	}
+	
+	.excel-output-input-header, .excel-output-input-header .content, .excel-output-input-header td {
+		font-size:18px;
+		padding-bottom:0px;
+		padding-top:14px;
+		margin-bottom:-8px;
+		font-weight:700;
+	}
+	
+	.excel-output-header-column, .excel-output-header-column input {
+		font:normal 300 14px $museo-sans;
+		text-transform:uppercase;
+		td {
+			text-align:left;
+			vertical-align:bottom;
+		}
+		input {
+			padding:0px !important;	
+		}
+	}
+
+	
+	.excel-output-header-orange, .excel-output-header-orange input {
+		font: normal 700 22px $museo-sans;
+		color:$orange;
+		.content {
+			margin-bottom:12px;
+		}
+	}
+
+	
+	.excel-calc-label-small {
+		text-align:left; padding-right:10px;
+	}
+	
+	tr td.align-left, .excel-calc-label-small.align-left {
+		text-align:left;
+	}
+	
+	.gap.before-marker {
+		td {
+			padding-bottom:50px;
+		}	
+	}
+	
+	.excel-output-text {
+		@include text-large;
+		margin-bottom: 16px;
+		color: #222;
+	}
+	
+	.excel-output-text-oversize {
+		@include text-large;
+		font-size:18px;
+		line-height:150%;
+		margin-bottom: 16px;
+		color: #222;
+		.content {
+			margin-bottom:12px;
+		}
+	}
+
+	
+
+	.excel-output-header {
+		font-size: 22px;
+		font-weight: 300;
+		td {
+			padding-top:20px;
+			padding-bottom:5px;
+			padding-left:8px;
+		}
+		td:first-child {
+			padding-left:8px;
+		}
+		&:first-child td{
+			padding-top:0px;
+		}
+	}
+	
+	.excel-ouput-input-light, .excel-output-input-light td {
+		font-weight:300;
+		color:#666;
+		font-size:18px;
+		input {
+			color:#666;
+			font-size:18px;
+			position:relative;
+			top:-4px;
+		}
+		td {
+			padding-bottom:0px;
+		}
+	}
+	
+	tr[class*="input"] {
+		background-color:hsla(210,7%,94%,1);
+		padding:10px;
+		border-radius:8px;
+		border-color:transparent;
+		&.excel-output-input-gap {
+			border-top:1px dashed rgb(180, 180, 180);
+			td {
+				padding:0px;
+				height:0px;
+			}
+		}
+		&.open-group td {
+			padding-top:18px;
+		}
+		&.close-group td {
+			padding-bottom:20px;
+		}
+		&.open-group td:first-child{
+			@include border-top-left-radius(8px);
+		}
+		&.open-group td:last-child{
+			@include border-top-right-radius(8px);
+		}
+		&.close-group td:first-child {
+			@include border-bottom-left-radius(8px);
+		}
+		&.close-group td:last-child {
+			@include border-bottom-right-radius(8px);
+		}
+		td:first-child {
+			font-weight:bold;
+			font-size:14px;
+			padding-left:15px;
+		}
+		td:last-child {
+			padding-right:15px;
+		}
+		&.excel-output-result td:first-child {
+			font-weight:normal;
+		}
+	}
+	tr td {
+		padding-bottom:5px;
+		padding-top:5px;
+	}
+	
+	.excel-output-results-small .excel-calc-result,
+	.excel-output-result-small .excel-calc-result {
+		color:$text-black;
+		font-size:18px;
+		padding-top:2px;
+		 
+	}
+	
+	.excel-calc-result {
+		background:transparent;
+		color:hsla(14,56%,44%,1);
+		font-size:25px;
+		font-family: $museo-sans;
+		font-weight:500;	
+		text-align:left;
+		padding-top:8px;
+	}
+}

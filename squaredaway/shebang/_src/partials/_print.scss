@@ -1,0 +1,403 @@
+@media print {
+
+
+/* !============================================= */
+
+/* ! Universal		   			  				  */ 
+
+/* !============================================= */
+
+* { 
+	background: transparent !important; 
+  	color: #444 !important; 
+  	text-shadow: none !important; 
+  	}
+
+a, a:visited { 
+  	color: #444 !important; 
+  	}
+ 
+a:after { 
+  	content: " (" attr(href) ")"; 
+  	} 
+
+abbr:after { 
+  	content: " (" attr(title) ")"; 
+  	}
+
+/* Don't show links for images */
+.ir a,
+.subheader-tag,
+.img-link,
+.global-ftr-info-txt a,
+.header-logo-small,
+.treatment-title,
+.todo-link a {
+	&:after { 
+		content: ""; 
+		}
+  	}
+ 
+pre, blockquote { 
+	border: 1px solid #999; 
+  	page-break-inside: avoid;
+  	}
+
+thead { 
+  	display: table-header-group; 
+  	} /* css-discuss.incutio.com/wiki/Printing_Tables */ 
+
+tr, img { 
+  	page-break-inside: avoid; 
+  	}
+
+@page { 
+  	margin: 1.7cm 1cm;
+	height: 10in !important;  	
+  	}
+
+p, h2, h3 { 
+  	orphans: 3; 
+  	widows: 3; 
+  	}
+
+h2, h3{ 
+  	page-break-after: avoid; 
+  	}
+  	
+
+/* !============================================= */
+
+/* ! Squared Away Specfic						  */ 
+
+/* !============================================= */
+
+$page-width: 7.5in !important;
+
+body {
+	margin: auto;
+	}
+
+body,
+.article-page-hdr,
+.article-container, 
+.article-body,
+.hdr-logo-container,
+.global-ftr {
+	width: $page-width;
+	}
+
+/* Remove floats from these elements */
+.article-content-col,
+.article-large-art-container,
+.article-med-art-container,
+.article-small-art-container,
+.article-caption-col,
+.article-text {
+	float: none !important;
+	width: auto !important;
+	}
+
+/* Add more comfortable spacing around these images */
+.article-large-img,
+.article-med-img,
+.article-small-img {
+	margin-bottom: 12px !important;
+	}
+
+/* Clean up the global footer */
+.global-ftr {
+	margin: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	}
+
+.global-ftr-info {
+	width: 100% !important;	
+	text-align: center;
+	}
+
+.global-ftr-info-txt {
+	width: 300px !important;
+	margin: auto;
+	}
+
+/* Don't show these page elements */
+.global-nav,
+.article-breadcrumb,
+.article-body-nav-col,
+.square-tease-strip,
+.global-ftr-logo-container,
+.global-ftr-links,
+.print-btn,
+.pdf-dl,
+.subheader-tag,
+.wp-edit-link {
+	display: none !important;
+	}
+
+
+/* !============================================= */
+
+/* ! Articles		   			  				  */ 
+
+/* !============================================= */
+
+/* Show the Squared Away logo, and put it on a simple black background */
+
+#global-hdr .hdr-logo-container {
+	//background-color: $grey-blue-dark !important;
+	//height: 50px !important;
+	//padding: 10px !important;
+	text-align: center !important;
+	//background-image: url(../_images/sqa-logo-dark-reg.png) !important;
+	//background-repeat: no-repeat !important;
+	//background-position: 50% 50% !important;
+	height: 35px !important;
+	&:after {
+		content: url(../_images/sqa-logo-print.png);
+		}
+	> .img-link {
+		display: none !important;
+		}
+	}
+
+.article-page-hdr-share {
+	display: none !important;
+	}
+
+/* Clean up article body */
+.article-page-hdr {
+	margin-bottom: 55px !important;
+	}
+
+.article-container .article-body {
+	@include box-shadow(#fff 0 0 0 0);
+	-moz-box-shadow: 0 0 0 0 #fff !important;
+	-webkit-box-shadow: 0 0 0 0 #fff !important;
+	-o-box-shadow: 0 0 0 0 #fff !important;
+	box-shadow: 0 0 0 0 #fff !important;
+	}
+
+.article-container, 
+.article-body  {
+	margin: 0 !important;
+	padding: 0 !important;
+	border-top: 0 !important;
+	}
+
+.article-hgroup {
+	width: 100% !important;	
+	}
+
+#site-container .article-text,
+#site-container .article-caption-col {
+	li, p, & {
+		font-size: 13pt !important;
+		line-height: 170% !important;
+		}
+	}
+
+.ui-article-block {
+	margin-bottom: 0 !important;
+	&:not(:last-child) {
+		border-bottom: 0 !important;
+		}
+	}
+
+blockquote {
+	margin-right: 0 !important;
+	}
+
+/* !============================================= */
+
+/* ! Action Plans	   			  				  */ 
+
+/* !============================================= */
+
+/* Set these elements to the overall page width */
+.treatment-header-mini,
+.frame-container {
+	width: $page-width;
+	}
+
+/* Don't show these page elements */
+.prev-next-mini,
+.header-logo-small > img,
+.action-progress,
+.action-explainer,
+.remind-container,
+.todo-link,
+.todo-back-btn,
+.todo-print-btn,
+.footer-nav {
+	display: none !important;
+	}
+
+.frame-page {
+	padding-top: 0 !important;
+	}
+ 
+.treatment-header-mini {
+	margin: auto !important;
+	padding: 0 !important;
+	position: relative  !important;
+	right: 0 !important;
+	left: 20px !important;
+	top: 0 !important;
+	.treatment-title-col {
+		float: right !important;
+		}
+	.treatment-title {
+		text-align: right !important;
+		}
+	}
+	
+
+.header-logo-small {
+	width: 160px !important;
+	margin: auto !important;
+	&:before {
+		content: url(../_images/sqa-logo-print.png);
+		}
+	}
+
+.todo-header {
+	margin-bottom: 10px !important;
+	}
+
+.todo-section {
+	margin-bottom: 20px !important;
+	}
+
+.todo-container {
+	@include box-shadow(#fff 0 0 0 0);
+	-moz-box-shadow: 0 0 0 0 #fff !important;
+	-webkit-box-shadow: 0 0 0 0 #fff !important;
+	-o-box-shadow: 0 0 0 0 #fff !important;
+	box-shadow: 0 0 0 0 #fff !important;
+	}
+
+
+/* !============================================= */
+
+/* ! Getting Squared Away	   			  				  */ 
+
+/* !============================================= */
+
+/* Set these elements to the overall page width */
+.treatment-header-mini,
+.frame-container,
+.gsa-results-description,
+.listing-square-group {
+	width: $page-width;
+	}
+
+/* Don't show these page elements */
+.frame-title-container,
+.gsa-title,
+.gsa-selection-container,
+.gsa-results-description-link,
+.square-tease-label,
+.h1.page-h,
+.gsa-bottom-container,
+.footer-nav {
+	display: none !important;
+	}
+
+.frame-page {
+	padding-top: 0 !important;
+	}
+ 
+.treatment-header-mini {
+	margin: auto !important;
+	padding: 0 !important;
+	position: relative  !important;
+	right: 0 !important;
+	left: 20px !important;
+	top: 0 !important;
+	.treatment-title-col {
+		float: right !important;
+		}
+	.treatment-title {
+		text-align: right !important;
+		}
+	}
+
+.gsa-results-description h3 {
+	font-size: 14px !important;
+	padding-bottom:5px !important
+}
+
+.gsa-results-description p {
+	font-size: 12px !important;
+	padding-bottom:5px !important
+}
+
+.square-tease {
+	@include box-shadow(#fff 0 0 0 0);
+	-moz-box-shadow: 0 0 0 0 #fff !important;
+	-webkit-box-shadow: 0 0 0 0 #fff !important;
+	-o-box-shadow: 0 0 0 0 #fff !important;
+	box-shadow: 0 0 0 0 #fff !important;
+	height:130px !important;
+	margin: 0px !important;
+	padding: 10px !important;
+	overflow:visible !important;
+	position:relative;
+	display:block !important;
+	
+	}
+.square-tease:visited:after, .square-tease:link:visited:after {
+	content:'<img src="/wp-content/themes/shebang/_images/check.png" />';
+}
+	
+.square-tease:after {
+	content: '';
+	position:absolute;
+	border:1px #000 solid;
+	z-index:9999;
+	height:10px;
+	width:10px;
+	bottom:0px;
+	display:block;
+	left:100px;
+	 
+}
+
+
+a.square-tease:visited, a.square-tease:link:visited {
+	background-image:url(../_images/check.png);
+}
+	
+.gsa-results-container {
+	padding-bottom:10px !important;
+	margin-bottom:15px !important;
+}
+
+.square-tease-img {
+	width:50px !important;
+	height:50px !important;
+}
+
+.square-tease-h {
+	font-size:14px !important;
+}
+
+.listing-group {
+	padding-bottom:5px !important;
+	margin-bottom:5px !important;
+}
+
+.gsa-results-container > .col-2, .gsa-results-container > .col.second {
+	float:none;
+	display:block;
+}
+
+.global-ftr {
+	padding:0px !important;
+}
+
+
+
+} /* end @media print */
