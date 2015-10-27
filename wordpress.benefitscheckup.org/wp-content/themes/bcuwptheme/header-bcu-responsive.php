@@ -153,7 +153,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
              <?php if (is_page('getsnap')) {?><div class="span7 statistics" id="logo" ><p style="font-size: 0.75em;"><img src="/cf/img/partners/seniorhunger/logo.gif" title="NCOA's Senior SNAP Initiative, in partnership with the Walmart Foundation" alt="NCOA's Senior SNAP Initiative, in partnership with the Walmart Foundation" align="right">We have helped more than <strong>1 million people</strong>
              find over <strong>$1.1 billion</strong> in SNAP benefits.</p>
-                 </div><?php } else { ?><div class="span5 statistics" id="logo" ><p><?php $header_callout = $wpdb->get_row('SELECT post_content FROM wp_benefitscheckup.wp_posts WHERE ID = 2185'); 
+                 </div><?php } else { ?><div class="span5 statistics" id="logo" ><p><?php $header_callout = $wpdb->get_row('SELECT post_content FROM wp_posts WHERE ID = 2185'); 
              	echo $header_callout->post_content;?></p>
                  </div>  
              <?php } ?>
