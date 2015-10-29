@@ -1,0 +1,70 @@
+<?php
+	echo '<script type="text/javascript" src="'.get_bloginfo('template_url').'/js/shebang-ssa.js"></script>';
+	echo '<script type="text/javascript" src="'.get_bloginfo('template_url').'/js/planner-target-target.js?r='.rand(0, 500).'"></script>';
+
+	include_once('fields-target.php');
+
+?>
+
+<section class="congrats-box interactive-box">
+	<div class="congrats-container interactive-container">
+
+		<section class="col-1 results-container">
+
+			<article class="summary-box target-income-container">
+				<h3 class="how-header">Estimated Retirement Income</h3>
+				<p class="target-income-text"><strong class="target-income-money"><span class="dollar">$</span><span class="ls-value round-to-10" data-field="target_ret_estimate" id="target_ret_estimate">4,500</span></strong> / month</p>
+			</article> <!-- .target-income-box-->
+
+			<article class="how-container">
+				<h4 class="how-overline"><?php echo get_editable_title(3975) ?> &hellip;</h4>
+				<ul class="how-list summary-box">
+					<li class="how-item control-your-spending ls-boolean-display" data-field="effect-spendless-amt">
+						<h3 class="how-header">Control Your Spending</h3>
+						<p class="how-text">Save <span class="money-number">$<span class="ls-value round-to-10" data-field="effect-spendless-amt">100</span></span> more each month</p>
+					</li>
+					<li class="how-item work-longer">
+						<?php
+						echo '<h3 class="how-header">'.get_editable_furniture(513).'</h3>';
+
+
+						?>
+						<p class="how-text">Retire at age <span data-field="retirement_age" class="ls-value">66</span></p>
+					</li>
+					<li class="how-item use-your-house">
+						<h3 class="how-header">Use Your House</h3>
+						<?php
+						echo '<p class="how-text ls-boolean-display" data-field="downsize-house">'.get_editable_furniture(509).'</p>';
+						echo '<p class="how-text ls-boolean-display" data-field="reverse-mortgage">'.get_editable_furniture(511).'</p>';
+
+						?>
+
+					</li>
+
+					<li class="how-item estimated-savings">
+						<h3 class="how-header">$<span class="ls-value" data-field="savings_at_retirement" >100,000</span></h3>
+						<p class="how-text"><?= get_editable_furniture(4596) ?></p>
+
+					</li>
+				</ul> <!-- /.how-list -->
+			</article> <!-- /.how-container -->
+
+			<div class="action-btn-container">
+				<a href="#" class="print-btn trigger-print"><span class="printer-icon"></span>Print</a>
+				<a class="make-plan-btn" href="<?php $np = get_next_slide(); echo $np->permalink ?>">Go to Action Plan<span class="make-plan-arrow">&rsaquo;</span></a>
+			</div> <!-- /.action-btn-container -->
+
+		</section> <!-- /.results-container -->
+
+		<section id="short-output" class="col-2 output">
+			<h2 class="graph-header">Retirement Income</h2>
+				<?php
+					include('graph-target-congratulations.php');
+				?>
+				<small class="estimate-note">
+					<?php echo get_editable_furniture(259); ?>
+				</small>
+		</section> <!-- /.col-2 .output -->
+
+	</div> <!-- /.congrats-container .interactive-container -->
+</section> <!-- /.congrats-box .interactive-box -->

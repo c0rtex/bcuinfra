@@ -43,7 +43,7 @@
 	<cfinvoke method="logAffinityClick" 
 	returnvariable="responseFromService" 
 	timeout = 5
-	webservice="https://www.benefitscheckup.org/util/affinity.cfc?wsdl" >
+	webservice="https://#application.serverPath#/util/affinity.cfc?wsdl" >
 	<cfinvokeargument name="internal_flag" value="1">
 	<cfinvokeargument name="partner_id" value="14">
 	<cfinvokeargument name="partner_session_id" value="#arguments.partner_session_id#">
@@ -135,7 +135,7 @@
         <cfinvoke method="logAffinityClick" 
 	returnvariable="responseFromService" 
 	timeout = 5
-	webservice="https://www.benefitscheckup.org/util/affinity.cfc?wsdl" >
+	webservice="https://#application.serverPath#/util/affinity.cfc?wsdl" >
 	<cfinvokeargument name="internal_flag" value="1">
 	<cfinvokeargument name="partner_id" value="14">
 	<cfinvokeargument name="partner_session_id" value="#arguments.partner_session_id#">
@@ -1189,7 +1189,7 @@ order by section_code, sort_order
 	<cfloop query="queryContent">
     		<cfset x = x + 1>
 		<cfquery name="querySAFS" datasource="wp_benefitscheckup">
-		select post_title, post_content from <cfoutput>wp_benefitscheckup.#wp_db_version#</cfoutput>
+		select post_title, post_content from <cfoutput>bcu_wp.#wp_db_version#</cfoutput>
 		where ID=<cfqueryparam cfsqltype="cf_sql_integer" value="#post_id#" maxlength="4">
         	</cfquery>
 		<cfif queryContent.state_id eq 'ak'>
@@ -1417,7 +1417,7 @@ order by prq.sort
         <cfargument name="post_id" type="numeric" required="yes"  >
         <cfset queryAFS = QueryNew("post_title, post_content")>
         <cfquery name="querySAFS" datasource="wp_benefitscheckup">
-		select post_title, post_content from wp_benefitscheckup.wp_posts_v3_1
+		select post_title, post_content from bcu_wp.wp_posts_v3_1
 		where ID=<cfqueryparam cfsqltype="cf_sql_integer" value="#post_id#" maxlength="4">
 
         </cfquery>
@@ -1428,7 +1428,7 @@ order by prq.sort
         <cfargument name="post_code" type="string" required="yes"  >
         <cfset queryAFS = QueryNew("post_title, post_content")>
         <cfquery name="querySAFS" datasource="wp_benefitscheckup">
-		select post_title, post_content from wp_benefitscheckup.wp_posts_v3_1
+		select post_title, post_content from bcu_wp.wp_posts_v3_1
 		where post_code like '#post_code#'
 		</cfquery>
         <cfreturn  querySAFS>
@@ -1609,7 +1609,7 @@ SELECT
         	<cfargument name="screening_id" type="numeric" required="yes"   >
 		<cfset htmlDoc = "">
 		<!--- Set the URL address. --->
-		<cfset urlAddress="https://www.benefitscheckup.org/show_summary.php?screeningID=#screening_id#">
+		<cfset urlAddress="https://#application.serverPath#/show_summary.php?screeningID=#screening_id#">
 		<cfhttp url="#urladdress#" method="GET" resolveurl="Yes" throwOnError="No"/>
 
 		<cfset htmlDoc = "<ul>" & CFHTTP.FileContent & "</ul>">
@@ -1637,7 +1637,7 @@ SELECT
 			<cfset p_id = querySHIP.program_id>
 		</cfif>
 		<!--- Set the URL address. --->
-		<cfset urlAddress="https://www.benefitscheckup.org/cf/util/showep.cfm?program_id=#p_id#&zip=#getStateCountyData.zipcode#">
+		<cfset urlAddress="https://#application.serverPath#/cf/util/showep.cfm?program_id=#p_id#&zip=#getStateCountyData.zipcode#">
 		<cfhttp url="#urladdress#" method="GET" resolveurl="Yes" throwOnError="No"/>
 
 		<cfset htmlDoc = CFHTTP.FileContent & "</div>">

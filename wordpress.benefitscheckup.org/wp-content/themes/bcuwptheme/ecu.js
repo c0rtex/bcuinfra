@@ -1,14 +1,14 @@
 $(document).ready(function() {
 console.log ("this script works at all");
 
-responsiveMenu();
+//responsiveMenu();
 
 
 
 
-//$( window ).resize(function() {
- //  responsiveMenu ();
-//});
+$(window).resize(function() {
+   //responsiveMenu ();
+});
 
 $("#esiMenuToggleButton").click(function(){
  $("#main-nav").toggle(); 

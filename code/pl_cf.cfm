@@ -12,24 +12,28 @@
 
 <cfswitch expression="#filter#">
 	<cfcase value="all">
-		<cfset qFilter = "">
+        <cfset qFilter = "AND wrapper_deployment_status = 3">
+	<!---	<cfset qFilter = ""> Changed to the above because we only want active not all--->
 	</cfcase>
 	
 	<cfcase value="sponsor">
-		<cfset qFilter = "AND partnertype_id = 1">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND t.partnertype_id = 1">	
 	</cfcase>
 
 	<cfcase value="nonsponsor">
-		<cfset qFilter = "AND partnertype_id = 3">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND t.partnertype_id = 3">	
 	</cfcase>
 
 	<cfcase value="organization">
-		<cfset qFilter = "AND partnertype_id = 5">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND t.partnertype_id = 5">	
 	</cfcase>
 
 	<cfcase value="Demo">
-		<cfset qFilter = "AND demo = 1">	
+		<cfset qFilter = "AND wrapper_deployment_status = 3 AND demo = 1">	
 	</cfcase>
+        <cfcase value="inactive">
+        <cfset qFilter = "AND wrapper_deployment_status = 0">
+        </cfcase>
 </cfswitch>
 
 <cfloop query="parents">
@@ -43,7 +47,8 @@
 	SELECT *
 	FROM wrapper w
 	LEFT JOIN tbl_partner t ON t.wrapper_id = w.wrapper_id
-	WHERE wrapper_deployment_status = 3
+        LEFT JOIN partnertype pt ON t.partnertype_id = pt.partnertype_id
+        WHERE NOT (wrapper_code = 'bcu') AND NOT (pt.code = 'nonpl') AND NOT (pt.code = 'batch') AND NOT (t.partner_id = '66')
 	#qFilter#
 	ORDER BY partner_name
 </cfquery>
@@ -53,13 +58,14 @@
 <p>
 <form action="pl.cfm" method="post">
 <select name="filter" size="1">
-	<option value="all" <cfif filter IS "">SELECTED</cfif>>All</option>
+	<option value="all" <cfif filter IS "">SELECTED</cfif>>Active</option>
 	<option value="sponsor" <cfif filter IS "sponsor">SELECTED</cfif>>Sponsor</option>
 	<option value="nonsponsor" <cfif filter IS "nonsponsor">SELECTED</cfif>>Non Sponsor</option>		
 	<option value="demo" <cfif filter IS "demo">SELECTED</cfif>>Demo</option>			
 	<cfoutput query="parents" group="partner_name">
 	<option value="#partner_id#" <cfif filter IS partner_id>SELECTED</cfif>>#partner_name#</option>		
 	</cfoutput>
+	<option value="inactive" <cfif filter IS "inactive">SELECTED</cfif>>Inactive</option>			
 </select> <input type="submit" value="Filter" />
 </form>
 </p>

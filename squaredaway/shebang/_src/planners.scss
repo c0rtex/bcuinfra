@@ -1,0 +1,24 @@
+// Makes all the CSS3 mixins available
+@import "compass/css3";
+
+// Makes all the Float mixins available
+@import "compass/utilities/general/float";
+
+// Makes all the Clearfix mixins available
+@import "compass/utilities/general/clearfix";
+
+// HTML5 and personal resets.
+@import "partials/reset";
+
+// My custom mixins as well as blueprint configuration
+@import "partials/base";
+
+// Import custom fonts
+@include font-import;
+
+// Import Treatment-specific styles for Squared Away
+@import "partials/planners";
+
+
+/*	Primary Stylesheet						     
+	Author: Tito Bottitta + Upstatement			 */ 

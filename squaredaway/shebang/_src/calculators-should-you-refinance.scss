@@ -1,0 +1,278 @@
+// Makes all the CSS3 mixins available 
+@import "compass/css3";
+
+// Makes all the Float mixins available
+@import "compass/utilities/general/float";
+
+// Makes all the Clearfix mixins available
+@import "compass/utilities/general/clearfix";
+
+// HTML5 and personal resets.
+@import "partials/reset";
+
+// My custom mixins as well as blueprint configuration
+@import "partials/base";
+
+// My custom mixins as well as blueprint configuration
+@import "partials/mort-refi";
+
+// Import custom fonts
+@include font-import;
+
+
+/*	Primary Stylesheet						     
+	Author: Tito Bottitta + Upstatement			 */ 
+	
+
+/* !============================================= */
+
+/* ! Should You Refinance 				      	  */
+
+/* !============================================= */
+
+.why-refi-select-group {
+	display: block;
+	width: 640px;
+	}
+
+.why-refi-select {
+	@extend .select-input-large;
+	font-weight: 700;
+	background-position: 98% 55%;
+	margin-bottom: 0;
+	}
+
+.mtg-left-input-group,
+.home-val-input-group {
+	width: 140px;
+	}
+
+.cash-input-group {
+	width: 200px;
+	}
+
+#cash-input {
+	margin-bottom: 6px;
+	}
+
+.max-cash {
+	color: $med-gray;
+	display: inline-block;
+	}
+
+.yrs-left-input-group {
+	width: 80px;
+	text-align: center;
+	}
+
+.row-hidden {
+	display: none;
+	}	
+
+/*! Table */
+
+#refi-compare-table {
+	
+	.mtg-compare-th {
+		width: 28%;
+		}
+
+	.mtg-type-th {
+		width: 275px;
+		}
+
+	.mtg-int-th {
+		width: 120px;
+		}
+
+	.mtg-payment-th {
+		width: 110px;
+		}
+
+	.mtg-payment-at-th {
+		text-align: left;
+		padding-left: 30px;
+		}
+	
+	.form-field-med-pct .pct {
+		right: 43px;
+		top: 23px;
+		}
+
+	.form-field-med-dollar .dollar {
+		left: 20px;
+		top: 23px;
+		}
+
+	.mtg-compare-data {
+		font-weight: 700;
+		font-size: 15px;
+		padding-top: 21px;
+		}
+	
+	.mtg-int-input {
+		width: 90px;
+		}
+	
+	.mtg-payment-current {
+		width: 110px;
+		}
+
+	.mtg-payment-data,
+	.mtg-payment-data-at,
+	.dif-data {
+		padding-top: 17px;
+		@extend .money-number-med;
+		}
+
+	.mtg-payment-data {
+		color: #444;
+		}
+
+	.mtg-payment-data-at,
+	.dif-data {
+		background-color: #fafafa;
+		}
+		
+	.mtg-payment-data-at {
+		border-left: 1px dotted $light-gray;
+		padding-left: 30px;
+		}
+
+	.dif-less-or-more {
+		font-size: 11px;
+		position: relative;
+		top: -2px;
+		text-transform: uppercase;
+		font-weight: 700;
+		}
+	
+	.refi-mtg-group-adjusted {
+		.mtg-payment-data {
+			color: #444;
+			}
+		.rates-jump,
+		.mtg-int-data {
+			padding-top: 4px;
+			}
+		.less {
+			color: $green;
+			}
+		}
+
+	} /* /#refi-compare-table */
+	
+/* Compare Explainer */
+
+.compare-overview {
+	margin-bottom: 24px;
+	}
+
+.what-if-h {
+	font-size: 14px;
+	font-weight: 700;
+	color: $med-gray;
+	margin: 0 0 8px 10px;
+	}
+
+.what-if-list {
+	@include pie-clearfix;
+	}
+
+.what-if-title-data {
+	@include pie-clearfix;
+	padding: 10px;
+	
+	&:not(:last-child) {
+		border-bottom: 1px dotted $light-gray;
+		}
+	}
+
+.what-if-title,
+.what-if-data {
+	@include float-left;
+	}
+
+.what-if-title {
+	font-size: 15px;
+	font-weight: 700;
+	color: #000;
+	width: 28%;
+	clear: both;
+	}
+
+.what-if-data {
+	width: 72%;
+	}
+
+.what-if-sublist {
+	padding-left: 20px;
+	}
+
+.what-if-subitem {
+	color: $med-gray;
+	list-style: disc outside;
+	&:not(:last-child) {
+		margin-bottom: 8px;
+		}
+	> p {
+		color: #444;
+		}
+	}
+
+.mo-payment-gt-lt,
+.amount-owed-gt-lt {
+	color: $green-dark;
+	&.more {
+		color: $orange;	
+		}
+	}
+
+.same-pct-show {
+	@extend .strong;
+	}
+
+.cash-out-data {
+	.i-circle {
+		top: -2px;
+		}
+	.tooltip {
+		width: 300px;
+		margin-left: -32px;
+		margin-top: 14px;
+		}
+	> p {
+		margin-bottom: 8px;
+		}
+	}
+
+.cash-out-checkbox-group {
+	display: block;
+	}
+
+.cash-out-checkbox {
+	font-size: 13px;
+	top: -4px;
+	position: relative;
+	}	
+	 
+.note-refi {
+	margin-left:109px;
+	margin-top:-72px;
+	p {
+		position: relative;
+		left: -171px;
+		width: 166px;
+		-webkit-transform:rotate(-10deg);
+	}
+	.note-arrow {
+		position: relative;
+		left: -214px;
+		top: -32px;
+		span {
+			-webkit-transform: rotate(42deg);
+		}
+	}
+}
+	
+	
