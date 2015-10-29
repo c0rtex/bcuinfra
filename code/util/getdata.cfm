@@ -56,7 +56,7 @@ select * from answerfield where answerfield like '%hsa%'
 
 	select  sa.response as agency_id, s.client_id as vendor_id from screening s, screening_answerfield sa where 
 	sa.screening_id = s.screening_id 
-	and
+ d	and
 	end_datetime > '2010-01-01' and s.partner_id = 76   and sa.answerfield_id = 6271 
 	group by agency_id
 	
