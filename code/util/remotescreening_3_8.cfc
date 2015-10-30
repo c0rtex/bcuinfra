@@ -1413,10 +1413,10 @@ order by prq.sort
     </cffunction>
 
     <cffunction access="remote" name="getWPPost" output="false" returntype="query"  hint="Gets Post Content from the NCOA WP DB"  >
-        <!-- pass arguments -->
+        <!-- pass arguments ...removed db prefix -->
         <cfargument name="post_id" type="numeric" required="yes"  >
         <cfset queryAFS = QueryNew("post_title, post_content")>
-        <cfquery name="querySAFS" datasource="wp_benefitscheckup">
+        <cfquery  name="querySAFS" datasource="wp_benefitscheckup" >
 		select post_title, post_content from wp_posts_v3_1
 		where ID=<cfqueryparam cfsqltype="cf_sql_integer" value="#post_id#" maxlength="4">
 
