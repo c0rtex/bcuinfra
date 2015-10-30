@@ -9,7 +9,7 @@
         <cfset application.response_list = arguments.response_list >
 	<cfparam name="REQUEST.PRG_LIST" default="">
 	
-        <!-- evaluate stuff -->
+        <!-- evaluate stuff extra -->
         <cfset org_id = "">
         <cfset client_id = "">
         <cfset program_list = "">
