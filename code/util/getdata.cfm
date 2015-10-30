@@ -1,206 +1,48 @@
-
-
-<cfquery name="results10"  datasource="#application.dbsrc#">				 
-select screening_id, subset_id from screening where screening_id in (
-7511980,7512089,7512244,7512247,7512322,7512463,7512729,7515079,7515398,7518325,7518433,7525789
-)
+<cfquery name="results10"  datasource="#APPLICATION.dbSrc#">				 
+update rule set rule_text = '(1 eq 0)' where rule_id = 2428
 </cfquery>
-<cfdump var="#results10#"><cfabort>
-<cfquery name="results10"  datasource="#application.dbsrc#">				 
-select * from click
-order by screening_id
-desc
-limit 10
-
+<cfquery name="results10"  datasource="#APPLICATION.dbSrc#">				 
+select * from rule where rule_id = 2428
 </cfquery>
-<cfdump var="#results10#"><cfabort>
-<cfquery name="results10"  datasource="wp_benefitscheckup">	
-			 
-select * from wp_2_posts where id  in (
-2632,
-2691,
-2694,
-2697,
-2702,
-3684,
-2708,
-2711,
-2714,
-3685,
-3686,
-3687,
-3688,
-3689,
-2757,
-2760,
-3690,
-3691,
-2769,
-2772,
-3696,
-2778,
-2782,
-2786,
-2790,
-2793,
-2799,
-3175,
-3195,
-3467,
-3469,
-3471,
-3473,
-10706,
-10708,
-10712,
-10714,
-10722,
-11109,
-11113,
-11115,
-11942,
-11944,
-12076,
-12471,
-12471,
-12473,
-12473,
-12475,
-12475,
-12477,
-12477,
-12479,
-12481,
-12481,
-12483,
-12483,
-12485,
-12485,
-12487,
-12487,
-12489,
-12489,
-12491,
-12491,
-12493,
-12493,
-12495,
-12495,
-12497,
-12497,
-12499,
-12499,
-12501,
-12501,
-12503,
-12503,
-12505,
-12505,
-12507,
-12507,
-12509,
-12509,
-12511,
-12511,
-12513,
-12515,
-12515,
-12517,
-12517,
-12519,
-12519,
-12521,
-12521,
-12523,
-12523,
-12525,
-12525,
-12527,
-12527,
-12529,
-12529,
-12531,
-12531,
-12533,
-12533,
-12535,
-12535,
-12537,
-12539,
-12539,
-12541,
-12541,
-12543,
-12543,
-12545,
-12545,
-12547,
-12547,
-12549,
-12549,
-12551,
-12551,
-12553,
-12553,
-12555,
-12555,
-12557,
-12557,
-12559,
-12561,
-12561,
-12565,
-12569,
-12573,
-12573,
-12755,
-12794,
-12794,
-13545,
-13547,
-13549,
-13551,
-13661,
-13663,
-13665,
-13667,
-13669,
-13671,
-13673,
-13675,
-13677,
-13766,
-13792,
-13807,
-13843,
-13864,
-13976,
-13982,
-13987,
-14045,
-14047,
-14051,
-14054,
-14207,
-14223,
-14368,
-14372,
-14374,
-14377,
-14379,
-3484,
-3403,
-13698,
-12360,14120,135333,13570,13572,13574,13587,13589,13353,13413,13867
-) 
-
-</cfquery>
-11583
 <cfdump var="#results10#">
 
+<cfquery name="results10"  datasource="wp_benefitscheckup">
+update  wp_posts_v3_1 set 
+post_content = 'The Health Insurance Marketplace Open Enrollment Period - your opportunity to shop, compare, and change your health insurance plans online, through the Health Insurance Marketplace - begins on November 1, 2015 and ends January 31, 2016. You can use the Marketplace to shop for a quality health insurance plan, whether you are interested in a private plan (a plan that is not funded by the government), Medicaid, or the Children\'s Health Insurance Program (CHIP). Even if you already have a Marketplace health insurance plan, the Marketplace can help you to shop for a new plan. <a href="https://www.healthcare.gov/">Visit the Health Insurance Marketplace</a>.'
+where id = 15221
+</cfquery>
+
+<cfquery name="results10"  datasource="wp_benefitscheckup">
+update  wp_posts_v3_1 set 
+post_content = 'The Health Insurance Marketplace helps people without health coverage find and enroll in a plan. If you don\'t have coverage through a job, Medicare, Medicaid, the Children\'s Health Insurance Program (CHIP), or another source, the Marketplace can help you find and enroll in a plan that fits your budget and meets your needs. <a href="https://www.healthcare.gov/">Visit the Health Insurance Marketplace</a>. <strong>Note</strong>: You can enroll in a Marketplace plan during the <a href="https://www.healthcare.gov/marketplace-deadlines/">Health Insurance Marketplace Open Enrollment Period</a>.'
+where id = 15344
+</cfquery>
+<cfquery name="results10"  datasource="wp_benefitscheckup">
+update  wp_posts_v3_1 set 
+post_content = 'The Health Insurance Marketplace Open Enrollment Period - your opportunity to shop, compare, and change your health insurance plans online, through the Health Insurance Marketplace - begins on November 1, 2015 and ends January 31, 2016. You can use the Marketplace to shop for a quality health insurance plan, whether you are interested in a private plan (a plan that is not funded by the government), Medicaid, or the Children\'s Health Insurance Program (CHIP). Even if you already have a Marketplace health insurance plan, the Marketplace can help you to shop for a new plan. <a href="https://www.healthcare.gov/">Visit the Health Insurance Marketplace</a>.'
+where id = 15221
+</cfquery>
+
+<cfquery name="results10"  datasource="wp_benefitscheckup">
+update  wp_posts_v3_1 set 
+post_content = 'Based on what you told us, you should know that if you are currently enrolled in a Health Insurance Marketplace plan and you receive tax credits to help pay for your monthly premiums, you will lose your tax credits when you are eligible for Medicare even if you don\'t enroll in Medicare. The sole exception to losing tax credits applies to people who must pay a premium for Medicare Part A. For more information, go to the <a href="https://www.healthcare.gov/">Health Insurance Marketplace</a> or call: 1-800-318-2596 (TTY: 1-855-889-4325).'
+where id = 15325
+</cfquery>
 <cfquery name="results10"  datasource="#APPLICATION.dbSrc#">				 
 select * from subset_content;
 </cfquery>
+
+
+
+<cfquery name="results10"  datasource="wp_benefitscheckup">	
+			 
+select * from wp_posts_v3_1
+where id in (15325, 15221,15344)
+
+</cfquery>
+
+<cfdump var="#results10#"><cfabort>
+
 <cfdump var="#results10#"><cfabort>
 <cfquery name="results10"  datasource="#application.dbsrc#">				 
 update answerfield set answerfieldtype_id = 6 where answerfield_id = 7324
@@ -214,7 +56,7 @@ select * from answerfield where answerfield like '%hsa%'
 
 	select  sa.response as agency_id, s.client_id as vendor_id from screening s, screening_answerfield sa where 
 	sa.screening_id = s.screening_id 
-	and
+ d	and
 	end_datetime > '2010-01-01' and s.partner_id = 76   and sa.answerfield_id = 6271 
 	group by agency_id
 	
