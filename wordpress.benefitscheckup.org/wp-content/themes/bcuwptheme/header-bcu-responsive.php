@@ -37,7 +37,8 @@
   	<![endif]-->
   	
 		  
-		<?php //wp_head(); ?>
+        <title><?php bloginfo('title'); ?></title>
+		<?php wp_head(); ?>
 		
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>-->
 				  <?php //add most of this to enqueue during clean-up ?>
@@ -79,7 +80,6 @@ dataLayer = [{
 }];
 </script>
 	
-        <title><?php bloginfo('title'); ?></title>
 
 		
 		<?php

@@ -154,8 +154,18 @@ Breadcrumb hack for Safari
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=PT+Sans&v1" rel="stylesheet" type="text/css">
+<cfif SESSION.subset_id eq 62>
+
+<title>Find Food Assistance Programs in Your State | BenefitsCheckUp</title>
+<cfelseif listlast(cgi.script_name,"/") EQ "extrahelp.cfm">
+<title>
+Get Extra Help with Your Medicare Rx Bills
+</title>
+<cfelse>
+
 <title>BenefitsCheckUp.org</title>
 
+</cfif>
 	<script src="/cf/ValidationFunctions.js"></script>
 	<script src="/cf/scripts.js"></script>
 	<script src="/cf/textResize.js"></script>
