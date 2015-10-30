@@ -1189,7 +1189,7 @@ order by section_code, sort_order
 	<cfloop query="queryContent">
     		<cfset x = x + 1>
 		<cfquery name="querySAFS" datasource="wp_benefitscheckup">
-		select post_title, post_content from <cfoutput>bcu_wp.#wp_db_version#</cfoutput>
+		select post_title, post_content from <cfoutput>#wp_db_version#</cfoutput>
 		where ID=<cfqueryparam cfsqltype="cf_sql_integer" value="#post_id#" maxlength="4">
         	</cfquery>
 		<cfif queryContent.state_id eq 'ak'>
