@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <!--<a class="brand" href="#">Project name</a>-->
        
       		
-             <!-- <div id="homenavcollapse" class="nav-collapse collapse"> -->
+    <div id="homenavcollapse" class="nav-collapse collapse">
 		<div id="main-nav" class="navbar row-fluid">
                 <ul id="home-nav nav" role="navigation" >
                 <?php // insert wp_menu_nav here  ?>
@@ -144,8 +144,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <li><a href="/esi-news" <?php if (is_page("esi-news")) echo "class='current'"; ?>>News</a></li>
                     <li><a href="http://www.ncoa.org/Donate" class="" target="_blank">Donate</a></li>
                 </ul>
-                </div>	
+                </div>
             </div>
+        </div>
      </div>
      </div>
 
