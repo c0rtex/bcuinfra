@@ -7,7 +7,7 @@ console.log ("this script works at all");
 
 
 $(window).resize(function() {
-   //responsiveMenu ();
+   responsiveMenu ();
 });
 
 $("#esiMenuToggleButton").click(function(){
