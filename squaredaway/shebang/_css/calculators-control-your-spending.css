@@ -7547,7 +7547,7 @@ h4, .h4, .text-head {
   color: #464d56; }
 
 .spending-table td + td {
-  width: 88%; }
+  width: 75%; }
 
 /* !== 3.1 Action Plan ========================== */
 .todo-move tr:first-child .checkbox-input {

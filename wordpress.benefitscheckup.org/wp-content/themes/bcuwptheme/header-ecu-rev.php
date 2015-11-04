@@ -37,9 +37,9 @@
   	     <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   	     <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   	<![endif]-->
-  	
+  	<title><?php bloginfo('title'); ?></title>
 		<?php wp_head(); ?>
-        <title>EconomicCheckUp | Money Management for Seniors</title>
+
 <!--- Lynna Cekova: <title> after wp_head because otherwise the title is automatic from WP --->
 		
 		<?php //add most of this to enqueue during clean-up ?>
