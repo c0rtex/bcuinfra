@@ -553,7 +553,7 @@ padding-left: 10px;
 .menuButtonESIText {
 position: absolute;
 zoom: 1;
-margin-left: -20px;
+margin-left: 5px;
 _:-ms-fullscreen, :root .ie11up { margin-left:5px; }
 _:-ms-lang(x), .ie10up { margin-left:5px; }
 
