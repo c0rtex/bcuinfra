@@ -64,10 +64,9 @@ jQuery(document).ready(function($){
 </script>
 
 <script type="text/javascript">
-	var isIE11 = navigator.userAgent.test(/Trident.*rv[ :]*11\./);
-	if(isIE11)
+	if(!(window.ActiveXObject) && "ActiveXObject" in window)
 	{
-		document.getElementById('esiMenuToggleButton').style.marginLeft = "5px";
+		document.getElementById("esiMenuToggleButton").style.marginLeft = "5px";
 	}
 </script>
 
