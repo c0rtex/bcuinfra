@@ -13,13 +13,13 @@
             	<div id="bcu" class="span2 sites">
 					<h2>EconomicCheckUp:</h2>
 						<ul>
-							<li><a href="http://qa.economiccheckup.org/esi-questions">My CheckUp</a></li>
-							<li><a href="http://qa.economiccheckup.org/esi-find-help">Resources</a></li>
-							<li><a href="http://qa.economiccheckup.org/esi-about">About Us</a></li>
-							<li><a href="http://qa.economiccheckup.org/esi-news">News</a></li>
-							<li><a href="http://www.ncoa.org/Donate" target="_blank">Donate</a></li>
-							<li><a href="/http://qa.economiccheckup.orgesi-privacy-policy/">Privacy Policy</a></li>
-							<li><a href="http://qa.economiccheckup.org/esi-termsofuse/">Terms of Use</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-questions">My CheckUp</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-find-help">Resources</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-about">About Us</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-news">News</a></li>
+							<li><a href="https://www.ncoa.org/Donate" target="_blank">Donate</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-termsofuse/">Terms of Use</a></li>
 							<li><a href="https://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
 							<li><a href="mailto:economiccheckup@ncoa.org">Contact Us</a></li>
 							<li><a target =_blank href="https://oe.benefitscheckup.org/oe/?partner_id=77">Partner Login</a></li>
