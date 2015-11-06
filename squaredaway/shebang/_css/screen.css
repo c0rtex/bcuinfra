@@ -2382,7 +2382,7 @@ input.btn-dark {
   display: block;
   height: 14px;
   width: 10px;
-  position: relative;
+  position: initial;
   top: 4px; }
 
 .arrow-left-large {

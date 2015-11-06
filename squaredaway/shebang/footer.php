@@ -13,16 +13,16 @@
             	<div id="bcu" class="span2">
 					<h2>EconomicCheckUp:</h2>
 						<ul>
-							<li><a href="https://redesign.benefitscheckup.org/esi-questions">My CheckUp</a></li>
-							<li><a href="https://redesign.benefitscheckup.org/esi-find-help">Resources</a></li>
-							<li><a href="https://redesign.benefitscheckup.org/esi-about">About Us</a></li>
-							<li><a href="https://redesign.benefitscheckup.org/esi-news">News</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-questions">My CheckUp</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-find-help">Resources</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-about">About Us</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-news">News</a></li>
 							<li><a href="http://www.ncoa.org/Donate" target="_blank">Donate</a></li>
-							<li><a href="https://redesign.benefitscheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
-							<li><a href="https://redesign.benefitscheckup.org/esi-termsofuse/">Terms of Use</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
+							<li><a href="https://qa.economiccheckup.org/esi-termsofuse/">Terms of Use</a></li>
 							<li><a href="https://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
 							<li><a href="mailto:economiccheckup@ncoa.org">Contact Us</a></li>
-							<li><a target =_blank href="https://oeqa.benefitscheckup.org/?partner_id=77">Partner Login</a></li>
+							<li><a target =_blank href="https://oeqa.economiccheckup.org/?partner_id=77">Partner Login</a></li>
 						</ul>
 				</div>
                 <div id="other" class="span2 sites">
@@ -30,7 +30,7 @@
 						<ul>
 
 <li><a target=_blank href="http://NCOA.org/">NCOA.org</a></li>
-<li><a target=_blank href="http://www.benefitscheckup.org/">BenefitsCheckUp&reg;</a></li>
+<li><a target=_blank href="http://www.economiccheckup.org/">BenefitsCheckUp&reg;</a></li>
 
 <li><a target=_blank href="http://www.mymedicarematters.org/">My Medicare Matters&reg;</a></li>
 
@@ -117,7 +117,7 @@
     <script type="text/javascript" src="/wp-content/themes/shebang/bootstrap/js/bootstrap.js"></script>
     <!-- <script type="text/javascript" src="/wp-content/themes/shebang/bootstrap/js/bootstrap-tooltip.js"></script> -->
     <script type="text/javascript" src="/wp-content/themes/shebang/bootstrap/js/application.js"></script>
-	<script type="text/javascript" src="https://redesign.benefitscheckup.org/CFIDE/scripts/cfform.js"></script>
+	<script type="text/javascript" src="https://qa.economiccheckup.org/CFIDE/scripts/cfform.js"></script>
 	<!-- REM - New links included from the SA header -->	 
 	<script type="text/javascript" src="http://use.typekit.com/kun2gxu.js"></script> 
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script> 
@@ -143,7 +143,7 @@
     <script type="text/javascript">
       	var _gaq = _gaq || [];
 	  	_gaq.push(['_setAccount', 'UA-2674020-9']);
-	  	_gaq.push(['_setDomainName', 'benefitscheckup.org']);
+	  	_gaq.push(['_setDomainName', 'economiccheckup.org']);
 	  	_gaq.push(['_trackPageview']);
 	
 	  	(function() {
