@@ -1,0 +1,52 @@
+
+
+
+/*Text-size widget is javascript based. Hide in case javascript is disabled - depending on your layout, you may want to use visible or display*/
+#text-size {visibility: hidden; display: none;}
+
+#text-size {}
+
+#text-size a {padding-left: 0px; text-decoration: none; color: #000;}
+
+/*Establishes the varied font-sizes*/
+#text-size a.ts_small {font-size: .8em;}
+#text-size a.ts_medium {font-size: 1.1em;}
+#text-size a.ts_large {font-size: 1.4em;}
+
+/*Indicates Active font-size for this stylesheet*/
+#text-size a.ts_small {font-weight: bold; color: #19357D; text-decoration: underline;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

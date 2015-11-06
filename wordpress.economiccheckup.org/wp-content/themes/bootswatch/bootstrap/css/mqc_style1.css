@@ -1,0 +1,240 @@
+/*
+
+*/
+HTML, BODY
+{
+	margin-left: auto;
+	margin-right: auto;
+	/*max-width: 940px;*/
+	/font-family: "Franklin Gothic Medium" sans-serif;
+	
+    //font-family: "Roboto";
+    font-family: arial, sans-serif;
+    //font-family: "Trebuchet MS", arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    src: local("Roboto Regular"), local("Roboto-Regular"), url("http://themes.googleusercontent.com/static/fonts/roboto/v9/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff") format("woff");
+
+ 
+}
+@font-face {
+    //font-family: "Roboto";
+    font-family: "Trebuchet MS", arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    //src: local("Roboto Regular"), local("Roboto-Regular"), url("http://themes.googleusercontent.com/static/fonts/roboto/v9/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff") format("woff");
+}
+ 
+/*.navbar {
+position: fixed;
+
+}*/
+.navbar-inverse .navbar-inner
+{
+	background: #F4F1EA;
+	border: none;
+	-moz-box-shadow: 2px 2px 2px #ccc;
+	-webkit-box-shadow: 2px 2px 2px #ccc;
+	box-shadow: 2px 2px 2px #CCC;
+}
+.navbar-inverse .nav > LI > A
+{
+	/*color: #1F419B !important;*/
+}
+.navbar-inverse .brand, .navbar-inverse .nav > LI > A
+{
+	/*color: #00656C;*/
+}
+.navbar-inverse .brand, .navbar-inverse .nav > LI > A:hover
+{
+	/*color: #FDEBC0;
+color: white;*/
+}
+/*h2 {
+margin-top: 15px;
+margin-bottom: 15px;
+color: white;
+//border-bottom: 2px solid #1f419b;
+//text-transform: uppercase;
+//font-weight: 200;
+//letter-spacing: -0.75px;
+background: lightgrey;
+}
+legend {
+border-bottom: none;
+}*/
+A
+{
+	color: #404F77;
+	text-decoration: none;
+}
+/*.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
+//color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+//background-color: #F4F1EA;
+}*/
+#header
+{
+	height: 100px;
+}
+.body-header-wrapper
+{
+}
+/*.sidebar-nav {
+position: fixed;
+width: 240px;
+border: 1px solid #e5e5e5;
+border: 1px solid;
+padding: 3;
+background-color: #fff;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+-moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+
+.header-description {
+//font-size: 18px;
+//color: #ED1C24;
+font-style: italic;
+letter-spacing: 1px;
+}
+
+.body-header {
+//background: white;
+width: 100%;
+}
+.body-header {
+z-index: -99999;
+position: f;
+background: white;
+width: 100%;
+
+}
+
+.body-header.affix {
+position: fixed;
+top: 0;
+width: 100%;
+}
+
+.body-header.detached {
+position:static;
+top:;
+}
+
+.body-header > .body-header-inner {
+border-left: 0;
+border-right: 0;
+border-radius: 0;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+-o-border-radius: 0;
+}
+
+.affix {
+position: fixed;
+top: 20px;
+left: 0px;
+}
+
+added moneil 10/1*/
+DIV#header
+{
+	border-bottom: 1px solid #CCCCCC;
+	background: url(https://esidtc.benefitscheckup.org/cf/bootswatch/bootstrap/img/ncoa_header_top.png) no-repeat -80px 0px;
+	margin: 0;
+	padding-bottom: 25px;
+}
+DIV#header_logo
+{
+	padding: 30px 0 0 30px;
+}
+DIV#footer_div
+{
+	border-top: 1px solid #CCCCCC;
+	width: 100%;
+	margin: 15px 0 0 -1px;
+	padding: 25px 0 0;
+	border-right: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+}
+UL#footer_links LI
+{
+	display: inline;
+	padding: 0 5px 0 0;
+}
+DIV#footer_logo
+{
+	float: left;
+	position: relative;
+}
+UL#footer_links LI A
+{
+	color: #000000;
+}
+UL#footer_links
+{
+	float: right;
+	clear: both;
+}
+UL#footer_links LI A:hover
+{
+	color: #B1CAD8;
+}
+.footer_divider
+{
+	color: #B7D4E4;
+	font-size: 18px;
+}
+DIV#footer_right
+{
+	float: right;
+	position: relative;
+}
+UL#socialnetwork_links LI
+{
+	display: inline-block;
+	padding: 0;
+	margin: 0 0 0 -7px;
+	list-style: none;
+	position: relative;
+	top: 0;
+}
+#facebook_link
+{
+	//background: url(../img/social_icons.png) 0 0;
+	left: 0;
+	width: 46px;
+}
+#twitter_link
+{
+	//background: url(../img/social_icons.png) -43px 0;
+	left: 0;
+	width: 46px;
+}
+#pinterest_link
+{
+	//background: url(../img/social_icons.png) -86px 0;
+	left: 0;
+	width: 46px;
+}
+#socialnetwork_link
+{
+	//background: url(../img/social_icons.png) -129px 0;
+	left: 0;
+	width: 46px;
+}
+#socialnetwork_links LI, #socialnetwork_links A
+{
+	height: 44px;
+	display: block;
+}
+UL#socialnetwork_links
+{
+	float: right;
+	clear: both;
+}

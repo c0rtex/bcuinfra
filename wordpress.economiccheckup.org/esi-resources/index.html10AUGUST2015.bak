@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/wp-content/themes/assets/ico/favicon.png">
+
+    <title>EconomicCheckUp Social Media Portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/wp-content/themes/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/wp-content/themes/assets/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHJ4LQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PHJ4LQ');</script>
+<!-- End Google Tag Manager -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+          <img class="logo" src="/wp-content/themes/assets/images/logo.png"/>
+        </div>
+        <div class="col-md-5">
+          <h1>Social Media Portal</h1>
+          <p>NCOA is a trusted source to help older adults find ways to find benefits, save money, cut expenses, and achieve greater economic security. Join us by promoting NCOA's EconomicCheckUp<sup>&#174;</sup> on your website or social media today!</p>
+        </div>
+      </div>
+
+        <div class="col-md-12 orange"></div>
+
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>EconomicCheckUp<sup>&#174;</sup> Ads</h2>
+              <hr/>
+              <h3>Standard Ads (336x280)</h3>
+              <div class="row">
+                <div class="item col-md-6">
+                  <img src="/wp-content/uploads/2014/01/ect_336x280_1.jpg" />
+                  <p>Please use this embed code</p>
+                  <textarea class="embed large_rect"><a href="https://www.economiccheckup.org/" target="_blank"><img src="https://www.benefitscheckup.org/wp-content/uploads/2014/01/ect_336x280_1.jpg" /></a></textarea>
+                  <p>Or link to this url</p>
+                  <textarea class="embed large_rect">https://www.economiccheckup.org/</textarea>
+                </div>
+                <div class="item col-md-6">
+                  <img src="/wp-content/uploads/2014/01/ect_336x280_2.jpg" />
+                  <p>Please use this embed code</p>
+                  <textarea class="embed large_rect"><a href="https://www.economiccheckup.org/" target="_blank"><img src="https://www.benefitscheckup.org/wp-content/uploads/2014/01/ect_336x280_2.jpg" /></a></textarea>
+                  <p>Or link to this url</p>
+                  <textarea class="embed large_rect">https://www.economiccheckup.org/</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Online Badges (300x100)</h3>
+              <div class="row">
+                <div class="item col-md-6">
+                  <img src="/wp-content/uploads/2014/01/ect_300x100_1.jpg" />
+                  <p>Please use this embed code</p>
+                  <textarea class="embed small_banner"><a href="https://www.economiccheckup.org/" target="_blank"><img src="https://www.benefitscheckup.org/wp-content/uploads/2014/01/ect_300x100_1.jpg" /></a></textarea>
+                  <p>Or link to this url</p>
+                  <textarea class="embed small_banner">https://www.economiccheckup.org/</textarea>
+                </div>
+                <div class="item col-md-6">
+                  <img src="/wp-content/uploads/2014/01/ect_300x100_2.jpg" />
+                  <p>Please use this embed code</p>
+                  <textarea class="embed small_banner"><a href="https://www.economiccheckup.org/" target="_blank"><img src="https://www.benefitscheckup.org/wp-content/uploads/2014/01/ect_300x100_2.jpg" /></a></textarea>
+                  <p>Or link to this url</p>
+                  <textarea class="embed small_banner">https://www.economiccheckup.org/</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/wp-content/themes/assets/js/bootstrap.min.js"></script>
+    <!-- ESI Tracking Code QA -->
+    <script src="/wp-content/themes/bcuwptheme/esi_tracking.js"></script>
+  </body>
+</html>

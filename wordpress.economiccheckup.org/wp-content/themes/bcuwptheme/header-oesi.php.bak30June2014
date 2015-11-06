@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+  <head>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <title>EconomicCheckUp</title>
+        <?php
+			/* 
+			 * 	Add this to support sites with sites with threaded comments enabled.
+			 */
+			if ( is_singular() && get_option( 'thread_comments' ) )
+				wp_enqueue_script( 'comment-reply' );
+		
+				//wp_head();
+				wp_get_archives('type=monthly&format=link');
+		?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="language" content="en-US" />
+        <meta name="lang" content="en" />
+        <meta name="description" content="EconomicCheckUp helps you find benefit programs that can help pay for medications, health care, food, utilities and more. All from a reliable and trusted source." />
+        <meta name="keywords" content="benefit programs, prescription drug assistance, Medicare Part D, extra help, low income subsidy, LIS, Medicare Savings Programs, QMB, SLMB, QI, nutrition, food stamps, SNAP, supplemental nutrition assistance program,  energy assistance, LIHEAP, tax relief, reverse mortgage, foreclosure counseling, housing assistance, in-home services, transportation, educational assistance, employment and volunteer services." />
+        <meta name="Copyright" content="Copyright NCOA 2013" />
+        <meta name="google-site-verification" content="" />
+        
+        <link rel="apple-touch-icon" href="wp-content/themes/bcuwptheme/images/custom_icon.png"/>
+        <script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>
+				<script type='text/javascript' src='/cf/js/infinite-rotator.js'></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
+        <script src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap-tooltip.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/js/scrolltofixed.js"></script>
+        <script src="/wp-content/themes/bootswatch/bootstrap/js/application.js"></script>
+        <!--<script src="/wp-content/themes/bootswatch/bootstrap/js/pdfobject.js"></script>-->
+				<script type="text/javascript" src="https://redesign.benefitscheckup.org/CFIDE/scripts/cfform.js"></script>
+	 
+				<link rel="stylesheet" href="/cf/bootswatch/css/font-awesome.css">
+        <link href="/cf/bootswatch/bootstrap/css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans&v1" rel="stylesheet">		
+        <link href="/cf/bootswatch/bootstrap/css/bootstrap_esi.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="all" href="/wp-content/themes/bcuwptheme/style-oesi.css"/>
+        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="wp-content/themes/bcuwptheme/css/ie6.css" /><![endif]-->
+        <!--[if IE 8]><link rel="stylesheet" type="text/css" href="wp-content/themes/bcuwptheme/css/ie8.css" /><![endif]-->
+        <link href="/cf/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+				<link href="/cf/bootstrap/css/pongos.css" rel="stylesheet">
+           
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="/wp-content/themes/bootswatch/bootstrap/js/html5shiv.js"></script>
+        <![endif]-->
+        
+        <script type="text/javascript">
+            /*
+            CSS Browser Selector v0.4.0 (Nov 02, 2010)
+            Rafael Lima (http://rafael.adm.br)
+            http://rafael.adm.br/css_browser_selector
+            License: http://creativecommons.org/licenses/by/2.5/
+            Contributors: http://rafael.adm.br/css_browser_selector#contributors
+            */
+            function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+        </script>
+
+    
+      
+	</head>
+	<body data-spy="scroll" data-target=".sidebar-nav">
+		<script>
+			$(document).ready(function() {
+console.log ("this script works at all");
+				<?php 
+				// Scroll to the first alert if the submitted form had errors
+				if(isset($_GET['badresponselist'])) {
+					echo '$(".alert-danger")[0].scrollIntoView(true);';
+				}
+				?>
+
+		  	var body_headers = $('.body-header');              
+				body_headers.each(function(i) {
+				var body_header = $(body_headers[i]);
+				var next = body_headers[i + 1];
+	
+				body_header.scrollToFixed({
+					marginTop: $('.navbar').outerHeight(true) ,
+					limit: function() {
+						var limit = 0;
+						if (next) {
+							limit = $(next).offset().top + $(this).outerHeight(true);
+						} 
+					return limit;
+					},
+					zIndex: 999
+				});
+			}); 
+					
+		  //hide questions first
+			// Own home
+			$('#cf_esi_estimatedvalue').hide();
+			//$('#cf_esi_totaldebthouse').prev().hide();
+			$('#cf_esi_totaldebthouse').hide();
+			$('#label_esi_housingsituation').hide();
+			$('#tr_esi_housingsituation').hide();
+			$('#tr_esi_homeinsurance').hide();
+			// Rent
+			$('#tr_esi_rent').hide();
+			$('#label_esi_rent').hide();	
+		
+			//but show the previously selected type
+			var var_select_esi_housing_type = $("#select_esi_housingtype :selected").val();
+			change_housing_type(var_select_esi_housing_type);
+
+			//show the additional field for q1 if "Other" is selected
+			var var_select_esi_client= $("#select_esi_client :selected").val();
+			if (var_select_esi_client == '1360-other'){
+				$("#tr_esi_other_specify").show();
+			}
+
+	    $("#select_esi_housingtype").change(function(){
+      	change_housing_type(this.value);
+		  });
+
+			function change_housing_type (housing_type){
+			  if(housing_type == '2488-esi_housingtype_rent')
+				{
+					//show rent questions and hide homeowner questions
+					$('#tr_esi_rent').show();
+					$('#label_esi_rent').show();
+					$('#cf_esi_estimatedvalue').hide();
+					//$('#tr_esi_totaldebthouse').prev().hide();
+					$('#cf_esi_totaldebthouse').hide();
+					$('#tr_esi_housingsituation').hide();
+					$('#label_esi_housingsituation').hide();
+					$('#tr_esi_homeinsurance').hide();
+				}
+			  else if(housing_type == '2487-esi_housingtype_own')
+				{
+					//hide rent questions and show homeowner questions
+					$('#tr_esi_rent').hide();
+					$('#label_esi_rent').hide();
+					$('#cf_esi_estimatedvalue').show();
+					//$('#tr_esi_totaldebthouse').prev().show();
+					$('#cf_esi_totaldebthouse').show();
+					$('#tr_esi_housingsituation').show();
+					$('#label_esi_housingsituation').show();
+					$('#tr_esi_homeinsurance').show();
+				}
+			  else 
+				{
+					//hide rent questions and hide homeowner questions
+					$('#tr_esi_rent').hide();
+					$('#label_esi_rent').hide();
+					//$('#tr_esi_totaldebthouse').prev().hide();
+					$('#cf_esi_estimatedvalue').hide();
+					$('#cf_esi_totaldebthouse').hide();
+					$('#tr_esi_housingsituation').hide();
+					$('#label_esi_housingsituation').hide();
+					$('#tr_esi_homeinsurance').hide();
+				}
+			}
+			
+			//hide the Spouse and Joint fields when the person is not married and upon page load
+			var var_esi_marital = $("#select_esi_marital :selected").val();
+			if (var_esi_marital !== '4-married'){
+
+			  $("div[id^=\'sp_\']").hide();
+			  $("div[id^=\'s_sp_\']").hide();
+			}
+			//hide the Spouse and Joint fields when the person is not married and show them when married
+			$("#select_esi_marital").on("change", function(){ 
+		  	if ($(this).val() == "4-married") { //check the selected option etc.
+		    	//console.log("Married");
+					$("div[id^='sp_']").show();
+					$("div[id^='s_sp_']").show();
+				} else {
+		    	$("div[id^='sp_']").hide();
+					$("div[id^='s_sp_']").hide();
+		    	}
+			});
+			
+			var validated = 1;
+			
+			// Properly validate the entered ZIP code and link it to a state
+			$('#esi_zip').keyup(function() {
+console.log("keyup5");
+				console.log ($('#esi_zip').val().length); 
+				if ($(this).val().length == 5) {
+console.log("5");
+        	var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test($(this).val());
+					if(!isValidZip){
+						//alert('You must enter a valid ZIP code containing all numbers. Please try again');
+if ($('#invalidZipLetters').length == 0){
+                $('#esi_zip').before('<div id="invalidZipLetters" class="alert alert-danger"><i class="icon-warning-sign"></i> You must enter a valid ZIP code containing all numbers. Please try again.</div>');
+}
+						$(this).val('');
+						return false
+					};
+          
+          var myVal = $(this).val();
+          jQuery.ajax({
+          	url: '/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
+            datatype:'json',
+            data: 'zipcode='+myVal, 
+            cache:false,
+            success: function(StateId){
+            	var newcode = eval('('+StateId+')');                  
+//console.log("invliad zip length "+$('#invalidZip').length);
+              if(!newcode || StateId == 'false'){
+              	stcode = '';
+                stname = '';
+if ($('#invalidZip').length == 0){
+                $('#esi_zip').before('<div id="invalidZip" class="alert alert-danger"><i class="icon-warning-sign"></i> This is an invalid ZIP code.  Please try again.</div>');
+}
+                $('#zyxzip_zip_abbrev').val('??');
+								$('#zyxzip_zip_abbrev').css('color','black');
+								$('#zyxzip_zip_abbrev').css('background','#ffcccc');
+                return false;
+              } else {
+                if ($('#invalidZip').length != 0){
+                $('#invalidZip').remove();
+}
+                if ($('#invalidZipNumbers').length != 0){
+                $('#invalidZipNumbers').remove();
+}
+                if ($('#invalidZipLetters').length != 0){
+                $('#invalidZipLetters').remove();
+}
+              	stcode = newcode.DATA[0][0];
+                stname = newcode.DATA[0][1];
+                $('#zyxzip_zip_abbrev').val(stcode);
+                $('#zyxzip_zip_abbrev').css('color','black');
+                if (stcode == 'NY'){
+                	$('#zyxzip_zip_abbrev').css('background','#ccffcc');
+                } else {
+                	$('#zyxzip_zip_abbrev').css('background','#ccccff');
+                }
+              };                 
+            }
+          });
+				} else {
+					stcode = '';
+					$('#zyxzip_zip_abbrev').val('n/a');
+					$('#zyxzip_zip_abbrev').css('color','#666666');
+					$('#zyxzip_zip_abbrev').css('background','#dddddd');
+				}
+			});
+			
+			$('#esi_zip').blur(function() {
+				var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test($(this).val());
+				if(!isValidZip){
+					//alert('You must enter a valid ZIP code containing all 5 numbers. Please try again');
+
+                $('#esi_zip').before('<div id="invalidZipNumbers" class="alert alert-danger"><i class="icon-warning-sign"></i> You must enter a valid ZIP code containing all 5 numbers. Please try again.</div>');
+					$(this).val('');
+					return false
+				};
+				
+				jQuery.ajax({
+        	url: '/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
+          datatype:'json',
+          data: 'zipcode='+$(this).val()+'&state_id=NY', 
+          cache:false,
+          success: function(StateId){
+          	var newcode = eval('('+StateId+')');
+            if(!newcode && stname != ''){
+            	if (1 ==1) {
+              	if ($('#esi_zip').val().length == 5) {
+                	$('#zyxzip_zip_abbrev').val(stcode);
+                  $('#zyxzip_zip_abbrev').css('color','black');
+	                
+	                	$('#zyxzip_zip_abbrev').css('background','#ccccff');
+	              
+								} else {
+									stcode = '';
+									$('#zyxzip_zip_abbrev').val('n/a');
+									$('#zyxzip_zip_abbrev').css('color','#666666');
+									$('#zyxzip_zip_abbrev').css('background','#dddddd');
+                }
+              };
+            };
+          },
+error: function(){
+console.log ("Ajax error for the zip validation.");
+}
+        });
+			});
+			
+			// Define the function to validate the form on submission
+			function validateForm( inputs ) {
+				// Clear out all previous alerts
+				$('.alert').remove();
+				var validated = 1;
+				
+				// Begin to check which fields need to filled in
+				jQuery.each( inputs, function( i, val ) {
+					if( $( "#" + i ).val() == '') {
+			  		$( "#" + i ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>' + val + '</strong> must not be left blank</div>');
+			  		validated = 0;
+			  	};
+				});
+			}
+			
+			// Start the validation on form submission
+			$('#esiForm').submit(function() {
+				// Create an array of input IDs and their names for fields that cannot be blank
+				var inputs = { "select_esi_client": "Form Completion", "esi_zip": "Zip Code", "esi_birth_month": "Birth Month", "esi_birth_year": "Birth Year", "select_esi_marital": "Marital Status", "select_esi_basicneeds": "Basic Needs", "esi_incomesupport": "Income Dependents", "select_esi_housingtype": "Housing Type", "select_esi_ratehealth": "Rate Health" };
+			
+				validateForm( inputs );
+				
+				// Validate specific input parameters
+				if( $('#esi_zip').val().length != 5 ) {
+					$( "#esi_zip" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>Zip Code</strong> must be 5 digits</div>');
+			  	validated = 0;
+				}
+				if( $('#zyxzip_zip_abbrev').val() == '??') {
+					$( "#esi_zip" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>Zip Code</strong> is not valid</div>');
+					validated = 0;
+				}
+				if( $( "#esi_incomesupport" ).val() != '' && !$.isNumeric( $('#esi_incomesupport').val() ) ) {
+					$( "#esi_incomesupport" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>Income Dependents</strong> must be numeric</div>');
+			  	validated = 0;
+				}
+				
+				// Validate benefits checkboxes and money inputs
+				var inputs = { "receive_msp": "receive_msp_amount", "receive_lis": "receive_lis_amount", "fdstmp_receive": "receive_snap_amount", "liheap_receive": "receive_liheap_amount", "med_receive": "receive_medicaid_amount", "receive_propertytax": "receive_property_tax_amount" };
+				
+				jQuery.each( inputs, function( i, input ) {
+					if( $( "#" + i ).is(':checked') && $('#' + input).val() == '') {
+			  		$( "#" + input ).parents(':eq(3)').before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> A value must be entered.</div>');
+			  		validated = 0;
+			  	};
+				});
+			
+				if(validated == 0) {
+					// Do not submission if the form fails validation
+					$(".alert-danger")[0].scrollIntoView(true);
+					$("#basics .well").prepend('<div class="alert alert-danger"><i class="icon-warning-sign"></i> We\'re sorry, but some responses are missing or were completed incorrectly. Please correct the problems where indicated below.</div>');
+					return false;	
+				}	
+			});
+		});
+		</script>
+		
+		<div class="container-fluid">
+            <div id="header" class="row-fluid" style="height:0px;">
+            	<div class="span12"><a href="http://www.ncoa.org" target="_blank"><img id="topbar" alt="National Council on Aging" title="National Council on Aging" src="/wp-content/themes/bcuwptheme/images/logos/ncoa_top.png"></a><BR></div>
+         	</div>
+            <div id="header" class="row-fluid">
+                <div class="span5" >
+                	<a href="http://redesign.benefitscheckup.org/esi-home" class="block">                  <img src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp" id="logo"/></a><br><BR>
+              	</div>
+               	<div class="span7 statistics" id="logo" ><br>Since 2010, we’ve helped thousands of older adults find work, budget their money, and save on daily expenses.
+                </div>
+            </div><!--end header -->
+            <?php 
+			$_home = '';
+			if ($_SERVER['REQUEST_URI']=='/esi-home/'){$_home = 'current_tab';}
+			$_spq = '';
+			if ($_SERVER['REQUEST_URI']=='/esi-questions/'){$_spq = 'current_tab';}
+			$_help = '';
+			if ($_SERVER['REQUEST_URI']=='/esi-find-help/'){$_help = 'current_tab';}
+			$_about = '';
+			if ($_SERVER['REQUEST_URI']=='/esi-about/'){$_about = 'current_tab';}
+			$_news = '';
+			if ($_SERVER['REQUEST_URI']=='/esi-news/'){$_news = 'current_tab';}
+			
+		?>
+
+            <div id="main-nav" class="navbar row-fluid">
+                <ul id="home-nav" class="row-fluid">
+                    <li id="esi-home" class="span2"><a class="<?php echo $_home; ?>" href="/esi-home">Home</a></li>
+                    <li id="esi-spq" class="span2"><a href="/esi-questions" class="<?php echo $_spq; ?>">Get&nbsp;Started</a></li>
+		    <li id="esi-help" class="span2"><a href="/esi-find-help" class="<?php echo $_help; ?>">Find&nbsp;Help</a></li>
+                    <li id="esi-about" class="span2"><a href="/esi-about" class="<?php echo $_about; ?>">About Us</a></li>				
+                    <li id="esi-news" class="span2"><a href="/esi-news" class="<?php echo $_news; ?>">News</a></li>
+                    <li id="esi-donate" class="span2"><a href="https://secure3.convio.net/ncoa/site/SPageServer?pagename=donationform" class="" target="_blank">Donate</a></li>
+                </ul>	
+            </div>
+            <div class="content row-fluid">
+            	<div class="row-fluid" id="outercontainer">
+			<?php
+				if ($_SERVER['REQUEST_URI'] == '/esi-home/'){
+					echo "<div id='page' class='subpage layout-default'><div id='content' class='span12 main-content featured'>
+<h2 class='feature'>Am I Making the Most of My Money?</h2>
+<img src='/wp-content/uploads/2013/08/BCU-images_251x217_top.png' title='Women Smiling' alt='Women Smiling' class='alignright moveup'><h3>It’s easy to find out.</h3>
+<p>Answer a few simple questions and learn how you can better manage your budget, save money, and set financial goals. It’s free, confidential, and from a trusted source--the nonprofit National Council on Aging.</p>
+<div class='spacer'></div>
+<a href='/esi-questions' class='btn-ga' data-gaCategory='economic-checkup' data-gaAction='start-economic-checkup'><img src='/cf/bootstrap/css/images/getstarted.png' alt='Get Started Now'></a>
+
+</div>";
+				}
+			?>
+<script type="text/javascript">     
+	function PrintDiv() {    
+console.log ("Gets here at all.");
+    	var divToPrint = document.getElementById('printContent');
+        var popupWin = window.open('', '_blank');
+        popupWin.document.open();
+       	popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
+       	popupWin.document.close();
+ 	}
+	function PrintDivCanvas(imgCanvas, imgCanvasCount) {    
+    	var divToPrint = document.getElementById('printContent');
+//console.log("In called func canvasImgCount: "+imgCanvasCount);
+        if (imgCanvasCount == 1){  //avoiding repeated images
+//$("#flot-placeholder").hide();
+$("#flot-placeholder").append('<img src="'+imgCanvas+'"/>');
+}
+//document.getElementById('canvasImage').setAttribute('src',vara); 
+//console.log("Canvas img printing: "+imgCanvas);
+        var popupWin = window.open('', '_blank');
+        popupWin.document.open();
+       	popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
+       	popupWin.document.close();
+ 	}
+
+</script>
