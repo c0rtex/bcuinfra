@@ -64,13 +64,6 @@ jQuery(document).ready(function($){
 </script>
 
 <script type="text/javascript">
-	if(!(window.ActiveXObject) && "ActiveXObject" in window)
-	{
-		document.getElementById("esiMenuToggleButton").style.marginLeft = "5px";
-	}
-</script>
-
-<script type="text/javascript">
 $(document).ready(function() {
 
 if ( $(window).width() <= 700) {      
@@ -110,8 +103,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 
-    <button id="esiMenuToggleButton" class="btn"><span class="menuButtonESIText">Menu</span> </i> </button>
-  	<div class="container" id="top-bar">
+    <button id="esiMenuToggleButton" class="btn"><span id="menuButtonESITextForIE" class="menuButtonESIText">Menu</span> </i> </button>
+  	<script type="text/javascript">
+		if(!(window.ActiveXObject) && "ActiveXObject" in window)
+		{
+			document.getElementById("menuButtonESITextForIE").setAttribute("style", "margin-left:5px;");
+		}
+	</script>
+	<div class="container" id="top-bar">
     	<div class="row">
     		<div id="top-logo" class="span12">
   				<a target="_blank" href="http://www.ncoa.org"><img src="<?php echo get_template_directory_uri(); ?>/images/ncoa-logo-top.png" alt="National Council on Aging" title="National Council on Aging" alt="National Council on Aging" /></a>
