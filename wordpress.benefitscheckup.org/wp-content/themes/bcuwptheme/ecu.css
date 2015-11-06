@@ -537,7 +537,7 @@ padding-left: 10px;
     padding: 0;
     margin-bottom: 10px;
     background: #f1601b;
-    width: 25%;
+    width: 50px;
     height: 50px;
     border: 0px;
     border-radius: 0px;
@@ -555,7 +555,7 @@ padding-left: 10px;
 {
 	position: absolute;
 zoom: 1;
-margin-left: 5px;
+margin-left: -20px;
 _:-ms-lang(x), .ie10up { margin-left:5px; }
 padding-bottom: 15px
 padding-bottom: 15px;
@@ -564,4 +564,5 @@ bottom: 0;
     cursor: pointer;
 color: #ffffff;
 font-size: 1.1em;
+
 }
