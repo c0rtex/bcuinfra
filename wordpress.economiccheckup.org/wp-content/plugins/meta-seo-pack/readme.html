@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>	
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>Meta SEO Pack 2.2.1 Readme</title>
+</head>
+<body>
+<h1>Meta SEO Pack 2.2.1 Readme</h1>
+<p>Fine tune your WordPress for SEO: rewrite title, add meta tags, canonical links and more. Out-of-the-box settings are a good starting point for blogs.</p>
+<p><b>Plugin Homepage:</b> <a href="http://www.poradnik-webmastera.com/projekty/meta_seo_pack/">Meta SEO Pack</a></p>
+<p><b>Plugin Homepage on WordPress.org:</b> <a href="http://wordpress.org/extend/plugins/meta-seo-pack/">Meta SEO Pack</a></p>
+<p><b>Author Homepage:</b> <a href="http://www.poradnik-webmastera.com/">Poradnik Webmastera</a></p>
+<p><b>Author:</b> Daniel Frużyński</p>
+
+<h2>Description</h2>
+<p>One of the biggest sources of traffic for your blog are Search Engines - mainly Google, Yahoo! and Bing (formerly MSN). Therefore it is crucial to optimize WordPress to make it SEO-friendly. Many things are already done in WordPress itself, but still there is a room for many improvements.</p>
+<p>If you care about Search Engines and your position in search results, you should install this plugin. If you are a beginner, default settings will be good for you. If you are an advanced user, you have many options to fine-tune your blog.</p>
+<p>Some of the plugin features are:</p>
+<ul>
+<li>Rewrite <code>&lt;title&gt;</code> tag to get most of it;</li>
+<li>Add Meta Keywords, Meta Description and Meta Robots tags to all blog pages;</li>
+<li>Use entered tags and descriptions for Meta Keywords and Meta Description tags, or generate them from content;</li>
+<li>Prevent Search Engines from indexing archive pages and feeds, in order to avoid Duplicate Content problem;</li>
+<li>Prevent Search Engines from using descriptions entered in DMOZ (ODP) or Yahoo! Directory as description for page;</li>
+<li>Add <code>&lt;link rel=&quot;canonical&quot;&gt;</code> to specify preferred URL for each page;</li>
+<li>Add <code>rel=&quot;nofollow&quot;</code> to links in various places;</li>
+<li>Allows to enter custom meta keywords, description and robots for every post and page;</li>
+<li>Full support for custom taxonomies;</li>
+<li>Good default configuration for beginners and a lot of configuration options for advanced users (look for new 'Meta SEO Pack' menu);</li>
+<li>Custom filters - other plugins can integrate itself with Meta SEO Pack;</li>
+</ul>
+<p>Available translations:</p>
+<ul>
+<li>English</li>
+<li>Polish (pl_PL) - done by me</li>
+<li>Dutch (nl_NL) - thanks Rene</li>
+</ul>
+
+<h2>Installation</h2>
+<ol>
+<li>Upload <code>meta-seo-pack</code> directory to the <code>/wp-content/plugins/</code> directory</li>
+<li>Activate the plugin through the 'Plugins' menu in WordPress</li>
+<li>Go to the 'Meta SEO Pack' menu and configure it if you want (you can also leave default configuration as-is if you are a beginner)</li>
+<li>Enjoy :)</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>How Meta SEO Pack rewrites <code>title</code> tag?</h3>
+<p>Meta SEO Pack uses following title formats as a base for title of different pages (configurable):</p>
+<ul>
+<li>Home Page: <code>%blog_name%</code></li>
+<li>Posts: <code>%title% | %categories% | %blog_name%</code></li>
+<li>Pages: <code>%title% | %blog_name%</code></li>
+<li>Attachments: <code>%title% | %categories% | %blog_name%</code></li>
+<li>Categories: <code>%categories% | Categories | %blog_name%</code></li>
+<li>Tags: <code>%tag% | Tags | %blog_name%</code></li>
+<li>Custom Taxonomies: <code>%term_name% | %tax_label% | %blog_name%</code></li>
+<li>Archive for Day/Month/Year: <code>Archive for %date% | %blog_name%</code></li>
+<li>Author Posts: <code>%author_name% | Authors | %blog_name%</code></li>
+<li>Search Results: <code>Search results for %search% | %blog_name%</code></li>
+<li>Other pages: `%blog_title% | %blog_name%`</li>
+</ul>
+<p>There are also extra rewriting rules for subsequent pages of archives, posts, pages and comments. This way you will avoid duplicate title problems (reported in Google Webmasters Tools):</p>
+<ul>
+<li>Subpages for multipage Archives/Posts/Pages: <code>%desc% - Page %n%</code></li>
+<li>Subpages for multipage comments: <code>%desc% - Comments Page %n%</code></li>
+</ul>
+
+<h3>How Meta SEO Pack generates value for <code>meta keywords</code> tag?</h3>
+<p>All pages uses configured Default keywords as value for <code>meta keywords</code> tag. Some of the pages also adds some extra keywords (configurable):</p>
+<ul>
+<li>Home Page: no extra keywords</li>
+<li>Posts: meta tags, tags, categories, custom taxonomies</li>
+<li>Pages: meta tags, custom taxonomies</li>
+<li>Attachments: no extra keywords</li>
+<li>Categories: category name and all parents</li>
+<li>Tags: tag name</li>
+<li>Custom Taxonomies: taxonomy name and taxonomy term name</li>
+<li>Archive for Day/Month/Year: no extra keywords</li>
+<li>Author Posts: author name</li>
+<li>Search Results: search term</li>
+</ul>
+<p>Plugin does not add extra keywords for subpages.</p>
+
+<h3>How Meta SEO Pack generates value for <code>meta description</code> tag?</h3>
+<p>Meta SEO Pack either uses entered description, excerpt or generate it from content. This depends on page (configurable):</p>
+<ul>
+<li>Home Page: special description (by default it is set to <code>%blog_name% - %blog_desc%</code>)</li>
+<li>Posts: either use entered meta description, excerpt (if entered) or generate from post content (initial part)</li>
+<li>Pages: use entered meta description or generate it from page content (initial part)</li>
+<li>Attachments: attachment description</li>
+<li>Categories: use category description</li>
+<li>Tags: use tag description</li>
+<li>Custom Taxonomies: taxonomy term description</li>
+<li>Archive for Day/Month/Year: description is not added (yet)</li>
+<li>Author Posts: description is not added (yet)</li>
+<li>Search Results: description is not added (yet)</li>
+</ul>
+<p>Description is also additionally changed for subsequent pages of archives, posts, pages and comments. This way you will avoid duplicate description problems (reported in Google Webmasters Tools):</p>
+<ul>
+<li>Subpages for multipage Archives/Posts/Pages: <code>%description% - page %n%</code></li>
+<li>Subpages for multipage comments: <code>%description% - comments page %n%</code></li>
+</ul>
+
+<h3>How Meta SEO Pack generates value for <code>meta robots</code> tag?</h3>
+<p>Meta SEO Pack adds <code>noindex,follow</code> as a value of <code>meta robots</code> for pages, in order to avoid Duplicate Content problem. <code>follow</code> is added to make sure you will keep link juice of links leading to noindexed pages. Here is the list of pages which can be noindexed (configurable):</p>
+<ul>
+<li>Home Page: subpages only</li>
+<li>Posts: comment subpages only</li>
+<li>Pages: no</li>
+<li>Attachments: yes</li>
+<li>Categories: yes</li>
+<li>Tags: yes</li>
+<li>Custom Taxonomies: yes</li>
+<li>Archive for Day/Month/Year: yes</li>
+<li>Author Posts: yes</li>
+<li>Search Results: yes</li>
+</ul>
+<p>Meta SEO Pack can also add <code>noodp</code> and <code>noydir</code>, in order to prevent Search Engines from using descriptions entered in DMOZ (ODP) or Yahoo! Directory as description for page.</p>
+<p>You can also enter your meta robots value for every Post and Page - when you do so, it will take precedence over default configuration. Meta SEO Pack will add <code>noodp</code> and <code>noydir</code> if you checked these options.</p>
+<p>You can also noindex your feeds - Meta SEO Pack can both add <code>meta robots</code> tag to feeds and send <code>X-Robots-Tag</code> HTTP Header.</p>
+
+<h3>How to remove footer added by Meta SEO Pack?</h3>
+<p>This plugin is provided for free, so this footer is the only way I can get credit from happy users. Of course you can disable it - just go to the plugin Options page, scroll to the bottom, uncheck &quot;Add link to Meta SEO Pack&quot; and save options.</p>
+
+<h2>Integration manual for plugin developers</h2>
+
+<h3>Filters usage in Meta SEO Pack</h3>
+<p>Meta SEO Pack internally calls many filters. Some of them are internal WordPress filters (some parts of plugin code bases on core WordPress code), but there is also a group of plugin-specific filters. You can use them to integrate your plugin with Meta SEO Pack. Full list of them you can find below.</p>
+<p>Meta SEO Pack uses two kinds of filters to get metadata information (title, keywords, etc.): ones named <code>msp_get_something</code> and <code>msp_something</code>. The former ones are called when Meta SEO Pack does not support particular page type - you can use them to return metadata for custom page types generated by your plugin. The latter ones are called to do postprocessing of metadata. By default plugin registers three default WordPress filters (<code>wptexturize</code>, <code>convert_chars</code> and <code>esc_html</code>) to postprocess title, keywords and description values.</p>
+
+<h3>Filters for title rewriting</h3>
+<ul>
+<li><code>msp_get_title_format</code> - filter called when Meta SEO Pack does not support some kind of pages internally. You can use it to return your title format (with <code>%name%</code> tags);</li>
+<li><code>msp_get_title_data</code> - filter called just after <code>msp_get_title_format</code> filter, to get array of values, which later are used to replace <code>%name%</code> tags in title. Note: keys in arrays should be added without percent (<code>%</code>) marks;</li>
+<li><code>msp_title</code> - postprocessing of title.</li>
+</ul>
+
+<h3>Filters for meta keywords</h3>
+<ul>
+<li><code>msp_get_keywords</code> - filter called when Meta SEO Pack does not support some kind of pages internally. You can use it to return your meta keywords;</li>
+<li><code>msp_keywords</code> - postprocessing of meta keywords.</li>
+</ul>
+
+<h3>Filters for meta description</h3>
+<ul>
+<li><code>msp_get_description</code> - filter called when Meta SEO Pack does not support some kind of pages internally. You can use it to return your meta description;</li>
+<li><code>msp_description</code> - postprocessing of meta description.</li>
+</ul>
+
+<h3>Filters for meta robots</h3>
+<ul>
+<li><code>msp_get_robots</code> - filter called when Meta SEO Pack does not support some kind of pages internally. You can use it to return your meta robots;</li>
+<li><code>msp_robots</code> - postprocessing of meta robots.</li>
+</ul>
+
+<h3>Filters for canonical URL</h3>
+<ul>
+<li><code>msp_get_canonical</code> - filter called when Meta SEO Pack does not support some kind of pages internally. You can use it to return your canonical URL;</li>
+<li><code>msp_canonical</code> - postprocessing of canonical URL.</li>
+</ul>
+
+<h3>Other functions</h3>
+<p>Meta SEO Pack exposes few functions too. You can use them in your plugin (or theme) too. Please use them instead of accessing class members and options directly - they may change in some version. On the other hand, functions listed here should not change.</p>
+<ul>
+<li><code>msp_get_option</code> - get value of selected Meta SEO Pack options. Functions returns option value, or <code>false</code> if option name is not supported. You can query values of following options:
+<ul>
+<li><code>rewrite_title</code> - <code>true</code> if title rewriting is enabled;</li>
+<li><code>add_keywords</code> - <code>true</code> if meta keywords are enabled;</li>
+<li><code>add_description</code> - <code>true</code> if meta description is enabled;</li>
+<li><code>add_robots</code> - <code>true</code> if meta robots are enabled;</li>
+<li><code>add_canonical</code> - <code>true</code> if canonical URLs are enabled.</li>
+</ul></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p><b>Integrate title generation</b></p>
+<p>Meta SEO Pack calls `wp_title()` function, so you can use `wp_title` filter to provide your title. Of course you can also take advantage of Meta SEO Pack integration - here is the code:</p>
+<pre>
+// Check if Meta SEO Pack is present and title rewriting is enabled
+if ( function_exists( 'msp_get_option' ) && msp_get_option( 'rewrite_title' ) ) {
+	// Register filters for Meta SEO Pack
+	add_filter( 'msp_get_title_format', 'my_title_format' );
+	add_filter( 'msp_get_title_data', 'my_title_data' );
+} else {
+	// Register default WordPress filter
+	add_filter( 'wp_title', 'my_title', 10, 3 );
+}
+
+// Return title format
+function my_title_format( $format ) {
+	if ( this_is_my_page() ) {
+		$format = '%f1% | %f2% | %blog_name%';
+	}
+	return $format;
+}
+
+// Return parameters for title format
+function my_title_data( $data ) {
+	if ( this_is_my_page() ) {
+		$data['f1'] = 'Value 1';
+		$data['f2'] = 'Value 2';
+	}
+	return $data;
+}
+
+// Return title for wp_title() function
+function wp_title( $title, $sep, $seplocation ) {
+	if ( this_is_my_page() ) {
+		if ( $seplocation == 'right' ) {
+			$title = "Value 1 $sep Value 2 $sep ";
+		} else {
+			$title = " $sep Value 2 $sep Value 1";
+		}
+	}
+	return $title;
+}
+</pre>
+
+<h2>Changelog</h2>
+<p>2.2.1</p>
+<ul>
+<li>Added Dutch translation (thanks Rene);</li>
+<li>Code cleanup</li>
+</ul>
+<p>2.2</p>
+<ul>
+<li>Fix: custom taxonomy pages does not have term name in rewritten title;</li>
+<li>Changed default title format for custom Taxonomies to <code>%term_name% | %tax_label% | %blog_name%</code> (MSP should update your existing title format automatically to use <code>%term_name%</code> instead of <code>%tax_name%</code>);</li>
+<li>Allow to use custom taxonomies as keywords for posts and pages;</li>
+<li>Show warning when WordPress is configured to block search engines;</li>
+<li>Fix: strip non-registered shortcodes too from generated meta description</li>
+</ul>
+<p>2.1.3</p>
+<ul>
+<li>Removed cannonical tag added by WP 2.9 (it is generated for posts, pages and attachments only)</li>
+<li>Marked as compatible with WP 2.9.x</li>
+</ul>
+<p>2.1.2</p>
+<ul>
+<li>Marked as compatible with WP 2.8.5</li>
+</ul>
+<p>2.1.1</p>
+<ul>
+<li>Do not show post/page metadata in Custom Fields</li>
+</ul>
+<p>2.1</p>
+<ul>
+<li>Added option to globally enable and disable <code>rel="nofollow"</code>;</li>
+<li>Allow to enter custom meta keywords, description and robots for every post and page;</li>
+<li>Added default title format for pages not supported by Meta SEO Pack yet (usually ones added by other plugins);</li>
+<li>Added "Integration manual for plugin developers" to the readme file</li>
+</ul>
+<p>1.2</p>
+<ul>
+<li>Added option to add <code>rel=&quot;nofollow&quot;</code> to links to admin section</li>
+</ul>
+<p>2.0</p>
+<ul>
+<li>Added options to add `rel="nofollow"` to various links;</li>
+<li>Added new menu, split single options page into multiple pages;</li>
+<li>Send Send X-Robots-Tag in WP 2.7 too;</li>
+<li>Optimised options initialisation</li>
+</ul>
+<p>1.1.2</p>
+<ul>
+<li>Added Polish translation</li>
+</ul>
+<p>1.1.1</p>
+<ul>
+<li>Fixed catchable fatal error when getting post category</li>
+</ul>
+<p>1.1</p>
+<ul>
+<li>Added options to configure title rewriting</li>
+<li>Fixed title rewriting for Custom Taxonomies</li>
+<li>Fixed error when mbstring PHP extension is not loaded</li>
+</ul>
+<p>1.0.1</p>
+<ul>
+<li>Make plugin compatible with WordPress 2.7 (may work with lower versions too)</li>
+</ul>
+<p>1.0</p>
+<ul>
+<li>Initial version</li>
+</ul>
+</body>
+</html>

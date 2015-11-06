@@ -1,0 +1,803 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Daniel Fruyski
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: admin/title.php:31 admin/title.php:43 admin/title.php:55 admin/title.php:67
+#: admin/title.php:79 admin/title.php:91 admin/title.php:103
+#: admin/title.php:115 admin/title.php:127 admin/title.php:139
+#: admin/title.php:164 admin/title.php:176
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/meta-seo-pack\n"
+"POT-Creation-Date: 2009-09-05 17:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/canonical.php:2
+msgid "Canonical URLs:"
+msgstr ""
+
+#: admin/canonical.php:6
+msgid "Add <code>&lt;link rel=&quot;canonical&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/description.php:2
+msgid "Meta Description tag:"
+msgstr ""
+
+#: admin/description.php:6
+msgid "Add <code>&lt;meta name=&quot;description&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/description.php:13 admin/keywords.php:23 admin/nofollow.php:13
+#: admin/robots.php:31 admin/title.php:23
+msgid "Home Page:"
+msgstr ""
+
+#: admin/description.php:17
+msgid "Home page description"
+msgstr ""
+
+#: admin/description.php:20
+msgid ""
+"You can use <code>%blog_name%</code> as a placeholder for Blog Name, and "
+"<code>%blog_desc%</code> for Blog Description (Tagline)."
+msgstr ""
+
+#: admin/description.php:24 admin/keywords.php:34 admin/nofollow.php:24
+#: admin/robots.php:42 admin/title.php:35
+msgid "Posts:"
+msgstr ""
+
+#: admin/description.php:28
+msgid "Generate description from post"
+msgstr ""
+
+#: admin/description.php:31
+msgid ""
+"Generate value for <code>&lt;meta name=&quot;description&quot;&gt;</code> "
+"tag from post excerpt (if entered) or post content"
+msgstr ""
+
+#: admin/description.php:35 admin/keywords.php:56 admin/nofollow.php:46
+#: admin/robots.php:53 admin/title.php:47
+msgid "Pages:"
+msgstr ""
+
+#: admin/description.php:39
+msgid "Generate description from page"
+msgstr ""
+
+#: admin/description.php:42
+msgid ""
+"Generate value for <code>&lt;meta name=&quot;description&quot;&gt;</code> "
+"tag from page content"
+msgstr ""
+
+#: admin/description.php:46 admin/keywords.php:67 admin/nofollow.php:57
+#: admin/robots.php:64 admin/title.php:59
+msgid "Attachments:"
+msgstr ""
+
+#: admin/description.php:50
+msgid "Use attachment description"
+msgstr ""
+
+#: admin/description.php:53
+msgid ""
+"Use attachment description as value for <code>&lt;meta name=&quot;"
+"description&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/description.php:57 admin/keywords.php:77 admin/nofollow.php:68
+#: admin/robots.php:75 admin/title.php:71
+msgid "Categories:"
+msgstr ""
+
+#: admin/description.php:61
+msgid "Use category description"
+msgstr ""
+
+#: admin/description.php:64
+msgid ""
+"Use category description as value for <code>&lt;meta name=&quot;"
+"description&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/description.php:68 admin/keywords.php:89 admin/nofollow.php:88
+#: admin/robots.php:86 admin/title.php:83
+msgid "Tags:"
+msgstr ""
+
+#: admin/description.php:72
+msgid "Use tag description"
+msgstr ""
+
+#: admin/description.php:75
+msgid ""
+"Use tag description as value for <code>&lt;meta name=&quot;description&quot;"
+"&gt;</code> tag"
+msgstr ""
+
+#: admin/description.php:79 admin/keywords.php:101 admin/nofollow.php:108
+#: admin/robots.php:97 admin/title.php:95
+msgid "Custom Taxonomies:"
+msgstr ""
+
+#: admin/description.php:83
+msgid "Use taxonomy item description"
+msgstr ""
+
+#: admin/description.php:86
+msgid ""
+"Use taxonomy item description as value for <code>&lt;meta name=&quot;"
+"description&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/description.php:90 admin/keywords.php:123 admin/nofollow.php:119
+#: admin/robots.php:108 admin/title.php:107
+msgid "Archive for Day/Month/Year:"
+msgstr ""
+
+#: admin/description.php:97 admin/description.php:108
+#: admin/description.php:119 admin/keywords.php:63 admin/keywords.php:73
+#: admin/keywords.php:130 admin/keywords.php:164 admin/keywords.php:175
+#: admin/nofollow.php:20 admin/nofollow.php:64 admin/nofollow.php:115
+#: admin/nofollow.php:138 admin/nofollow.php:149 admin/nofollow.php:160
+#: admin/nofollow.php:171 admin/robots.php:49 admin/robots.php:60
+#: admin/robots.php:148
+msgid "No extra configuration here (yet)."
+msgstr ""
+
+#: admin/description.php:101 admin/keywords.php:133 admin/nofollow.php:131
+#: admin/robots.php:119 admin/title.php:119
+msgid "Author Posts:"
+msgstr ""
+
+#: admin/description.php:112 admin/keywords.php:145 admin/nofollow.php:142
+#: admin/robots.php:130 admin/title.php:131
+msgid "Search Results:"
+msgstr ""
+
+#: admin/description.php:123 admin/keywords.php:157 admin/nofollow.php:153
+#: admin/robots.php:141 admin/title.php:156
+msgid "Subpages for multipage Archives/Posts/Pages:"
+msgstr ""
+
+#: admin/description.php:127
+msgid "Multi-paged description format"
+msgstr ""
+
+#: admin/description.php:131
+msgid ""
+"Subsequent pages of post archives and post/page content should have "
+"different descriptions in order to avoid duplicated description problem. Use "
+"<code>%description%</code> as a placeholder for generated description, and "
+"<code>%n%</code> for page number."
+msgstr ""
+
+#: admin/description.php:135 admin/keywords.php:168 admin/nofollow.php:164
+#: admin/robots.php:152 admin/title.php:168
+msgid "Subpages for multipage comments:"
+msgstr ""
+
+#: admin/description.php:139
+msgid "Multi-paged description format for comments"
+msgstr ""
+
+#: admin/description.php:143
+msgid ""
+"Similar to option above, but for comment pages. Use <code>%description%</"
+"code> and <code>%n%</code> here too."
+msgstr ""
+
+#: admin/keywords.php:2
+msgid "Meta Keywords tag:"
+msgstr ""
+
+#: admin/keywords.php:6
+msgid "Add <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/keywords.php:15
+msgid "Default keywords"
+msgstr ""
+
+#: admin/keywords.php:19
+msgid "Separate keywords with commas (e.g. <code>key1,key2,key3</code>)."
+msgstr ""
+
+#: admin/keywords.php:19
+msgid ""
+"These keywords will be used everywhere. You can enable options below to add "
+"additional tags to the list."
+msgstr ""
+
+#: admin/keywords.php:30
+msgid "Meta SEO Pack uses default keywords for Home Page"
+msgstr ""
+
+#: admin/keywords.php:38
+msgid "Add post tags"
+msgstr ""
+
+#: admin/keywords.php:42
+msgid ""
+"Check this to add post's tags to <code>&lt;meta name=&quot;keywords&quot;&gt;"
+"</code> tag for that Post."
+msgstr ""
+
+#: admin/keywords.php:48
+msgid "Add post categories"
+msgstr ""
+
+#: admin/keywords.php:52
+msgid ""
+"Check this to add post's categories (and parent categories too) to <code>&lt;"
+"meta name=&quot;keywords&quot;&gt;</code> tag for that Post."
+msgstr ""
+
+#: admin/keywords.php:81
+msgid "Add category name"
+msgstr ""
+
+#: admin/keywords.php:85
+msgid ""
+"Check this to add category name (and parent categories too) to <code>&lt;"
+"meta name=&quot;keywords&quot;&gt;</code> tag for that Category page."
+msgstr ""
+
+#: admin/keywords.php:93
+msgid "Add tag name"
+msgstr ""
+
+#: admin/keywords.php:97
+msgid ""
+"Check this to add tag name to <code>&lt;meta name=&quot;keywords&quot;&gt;</"
+"code> tag for that Tag page."
+msgstr ""
+
+#: admin/keywords.php:105
+msgid "Add taxonomy name"
+msgstr ""
+
+#: admin/keywords.php:109
+msgid ""
+"Check this to add taxonomy name to <code>&lt;meta name=&quot;keywords&quot;"
+"&gt;</code> tag for that Taxonomy page (custom taxonomies only)."
+msgstr ""
+
+#: admin/keywords.php:115
+msgid "Add taxonomy term name"
+msgstr ""
+
+#: admin/keywords.php:119
+msgid ""
+"Check this to add taxonomy term name to <code>&lt;meta name=&quot;"
+"keywords&quot;&gt;</code> tag for that Taxonomy page (custom taxonomies "
+"only)."
+msgstr ""
+
+#: admin/keywords.php:137
+msgid "Add author's display name"
+msgstr ""
+
+#: admin/keywords.php:141
+msgid ""
+"Check this to add author's display name to <code>&lt;meta name=&quot;"
+"keywords&quot;&gt;</code> tag for that Author page."
+msgstr ""
+
+#: admin/keywords.php:149
+msgid "Add search query"
+msgstr ""
+
+#: admin/keywords.php:153
+msgid ""
+"Check this to add search query to <code>&lt;meta name=&quot;keywords&quot;"
+"&gt;</code> tag for that Search page."
+msgstr ""
+
+#: admin/nofollow.php:2
+msgid "Nofollow Links:"
+msgstr ""
+
+#: admin/nofollow.php:6
+msgid "Add <code>rel=&quot;nofollow&quot;</code> attribute to links"
+msgstr ""
+
+#: admin/nofollow.php:28
+msgid "Add to comments links"
+msgstr ""
+
+#: admin/nofollow.php:31
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading directly to "
+"comments"
+msgstr ""
+
+#: admin/nofollow.php:37
+msgid "Add to \"Read More...\" links"
+msgstr ""
+
+#: admin/nofollow.php:40
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to \"Read More...\" links"
+msgstr ""
+
+#: admin/nofollow.php:41
+msgid ""
+"<b>Note:</b> it will be added only when you display whole posts on your main "
+"page and archive pages, and use <code>&lt;!--more--&gt;</code> tag somewhere "
+"in post content to show initial fragment only."
+msgstr ""
+
+#: admin/nofollow.php:42
+msgid ""
+"<b>Note 2:</b> when your Theme shows excerpts only on main page and archive "
+"pages, and you want to add <code>rel=&quot;nofollow&quot;</code> to &quot;"
+"Read More...&quot; links, you need to edit your theme manually."
+msgstr ""
+
+#: admin/nofollow.php:50
+msgid "Add to Pages links"
+msgstr ""
+
+#: admin/nofollow.php:53
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading to Pages (both "
+"from Theme and Pages Widget; not recommended)"
+msgstr ""
+
+#: admin/nofollow.php:72
+msgid "Add to Categories links from Theme"
+msgstr ""
+
+#: admin/nofollow.php:75
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading to Categories "
+"from Theme (not recommended)"
+msgstr ""
+
+#: admin/nofollow.php:81
+msgid "Add to Categories links from Widget"
+msgstr ""
+
+#: admin/nofollow.php:84
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading to Categories "
+"from Categories Widget (not recommended)"
+msgstr ""
+
+#: admin/nofollow.php:92
+msgid "Add to Tags links from Theme"
+msgstr ""
+
+#: admin/nofollow.php:95
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading to Tags from Theme"
+msgstr ""
+
+#: admin/nofollow.php:101
+msgid "Add to Tags links from Widget"
+msgstr ""
+
+#: admin/nofollow.php:104
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading to Tags from Tag "
+"Cloud Widget"
+msgstr ""
+
+#: admin/nofollow.php:123
+msgid "Add to Archive links from Widget"
+msgstr ""
+
+#: admin/nofollow.php:126
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to links leading to Day/Month/Year "
+"Archive pages from Archives Widget"
+msgstr ""
+
+#: admin/nofollow.php:127
+msgid ""
+"<b>Note:</b> this does not add <code>rel=&quot;nofollow&quot;</code> to "
+"links in the Calendar Widget (this is not supported by WordPress yet)."
+msgstr ""
+
+#: admin/nofollow.php:175
+msgid "Links to Admin section:"
+msgstr ""
+
+#: admin/nofollow.php:179
+msgid "Add to Admin links"
+msgstr ""
+
+#: admin/nofollow.php:182
+msgid ""
+"Add <code>rel=&quot;nofollow&quot;</code> to Register/Login/Logout/Site "
+"Admin links"
+msgstr ""
+
+#: admin/nofollow.php:186
+msgid "Blogroll:"
+msgstr ""
+
+#: admin/nofollow.php:190
+msgid "Add to Blogroll links"
+msgstr ""
+
+#: admin/nofollow.php:193
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to Blogroll links"
+msgstr ""
+
+#: admin/other.php:2
+msgid "Other:"
+msgstr ""
+
+#: admin/other.php:6
+msgid "Add link to Meta SEO Pack"
+msgstr ""
+
+#: admin/other.php:9
+msgid ""
+"If you think that this plugin is great, you can give me a credit by checking "
+"this option.<br />You can also post information about Meta SEO Pack "
+"somewhere on your blog."
+msgstr ""
+
+#: admin/robots.php:2
+msgid "Meta Robots tag:"
+msgstr ""
+
+#: admin/robots.php:6
+msgid "Add <code>&lt;meta name=&quot;robots&quot;&gt;</code> tag"
+msgstr ""
+
+#: admin/robots.php:15
+msgid "Do not allow to use description from DMOZ (ODP)"
+msgstr ""
+
+#: admin/robots.php:18
+msgid ""
+"Do not allow search engines to use description from DMOZ (ODP) as page "
+"description (supported by Google, Yahoo! and Bing)"
+msgstr ""
+
+#: admin/robots.php:24
+msgid "Do not allow to use description from Yahoo! Directory"
+msgstr ""
+
+#: admin/robots.php:27
+msgid ""
+"Do not allow search engines to use description from Yahoo! Directory as page "
+"description (supported by Yahoo! only)"
+msgstr ""
+
+#: admin/robots.php:35
+msgid "Do not index subpages of Front Page"
+msgstr ""
+
+#: admin/robots.php:38
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for subpages of Front Page (not recommended)"
+msgstr ""
+
+#: admin/robots.php:68
+msgid "Do not index attachments"
+msgstr ""
+
+#: admin/robots.php:71
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for attachment pages (not recommended)"
+msgstr ""
+
+#: admin/robots.php:79
+msgid "Do not index categories"
+msgstr ""
+
+#: admin/robots.php:82
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for category pages (not recommended)"
+msgstr ""
+
+#: admin/robots.php:90
+msgid "Do not index tags"
+msgstr ""
+
+#: admin/robots.php:93
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for tag pages"
+msgstr ""
+
+#: admin/robots.php:101
+msgid "Do not index custom taxonomies"
+msgstr ""
+
+#: admin/robots.php:104
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for custom taxonomy pages"
+msgstr ""
+
+#: admin/robots.php:112
+msgid "Do not index day/month/year archives"
+msgstr ""
+
+#: admin/robots.php:115
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for day/month/year archive page"
+msgstr ""
+
+#: admin/robots.php:123
+msgid "Do not index author posts page"
+msgstr ""
+
+#: admin/robots.php:126
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for author posts page"
+msgstr ""
+
+#: admin/robots.php:134
+msgid "Do not index search results"
+msgstr ""
+
+#: admin/robots.php:137
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for search results page"
+msgstr ""
+
+#: admin/robots.php:156
+msgid "Do not index subpages of multipage comments"
+msgstr ""
+
+#: admin/robots.php:159
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag for subpages of multipage comments (not recommended)"
+msgstr ""
+
+#: admin/robots.php:163
+msgid "Feeds (RSS, Atom, etc.):"
+msgstr ""
+
+#: admin/robots.php:167
+msgid "Do not index feeds"
+msgstr ""
+
+#: admin/robots.php:170
+msgid ""
+"Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt;"
+"</code> tag and send as value of <code>X-Robots-Tag</code> HTTP Header for "
+"feeds (RSS, Atom, etc.)"
+msgstr ""
+
+#: admin/title.php:2
+msgid "Title rewriting:"
+msgstr ""
+
+#: admin/title.php:6
+msgid "Rewrite <code>&lt;title&gt;</code> tag"
+msgstr ""
+
+#: admin/title.php:15
+msgid "Title separator"
+msgstr ""
+
+#: admin/title.php:19
+msgid ""
+"Meta SEO Pack will change <code>|</code> in formats to given character (by "
+"default <code>&amp;laquo;</code>)"
+msgstr ""
+
+#: admin/title.php:27
+msgid "Title format for Home Page"
+msgstr ""
+
+#: admin/title.php:39
+msgid "Title format for Posts"
+msgstr ""
+
+#: admin/title.php:51
+msgid "Title format for Pages"
+msgstr ""
+
+#: admin/title.php:63
+msgid "Title format for Attachments"
+msgstr ""
+
+#: admin/title.php:75
+msgid "Title format for Categories"
+msgstr ""
+
+#: admin/title.php:87
+msgid "Title format for Tags"
+msgstr ""
+
+#: admin/title.php:99
+msgid "Title format for Custom Taxonomies"
+msgstr ""
+
+#: admin/title.php:111
+msgid "Title format for Archives for Day/Month/Year"
+msgstr ""
+
+#: admin/title.php:123
+msgid "Title format for Author Posts"
+msgstr ""
+
+#: admin/title.php:135
+msgid "Title format for Search Results"
+msgstr ""
+
+#: admin/title.php:143
+msgid "Other pages:"
+msgstr ""
+
+#: admin/title.php:147
+msgid "Title format for other pages"
+msgstr ""
+
+#: admin/title.php:151
+msgid ""
+"This title format will be used for pages which are not supported by Meta SEO "
+"Pack directly - usually ones added by plugins."
+msgstr ""
+
+#: admin/title.php:152
+msgid ""
+"Note: please do not add <code>|</code> before last element - WordPress will "
+"add it automatically."
+msgstr ""
+
+#: admin/title.php:160
+msgid "Title format for Subpages for multipage Archives/Posts/Pages"
+msgstr ""
+
+#: admin/title.php:172
+msgid "Title format for Subpages for multipage comments"
+msgstr ""
+
+#: meta-seo-pack.php:175 meta-seo-pack.php:176 meta-seo-pack.php:1264
+msgid "Title Rewriting"
+msgstr ""
+
+#: meta-seo-pack.php:177 meta-seo-pack.php:178 meta-seo-pack.php:1269
+msgid "Meta Keywords"
+msgstr ""
+
+#: meta-seo-pack.php:179 meta-seo-pack.php:180 meta-seo-pack.php:1274
+msgid "Meta Description"
+msgstr ""
+
+#: meta-seo-pack.php:181 meta-seo-pack.php:182 meta-seo-pack.php:1279
+msgid "Meta Robots"
+msgstr ""
+
+#: meta-seo-pack.php:183 meta-seo-pack.php:184 meta-seo-pack.php:1284
+msgid "Canonical URLs"
+msgstr ""
+
+#: meta-seo-pack.php:185 meta-seo-pack.php:1289
+msgid "Nofollow links"
+msgstr ""
+
+#: meta-seo-pack.php:186
+msgid "Nofollow Links"
+msgstr ""
+
+#: meta-seo-pack.php:189 meta-seo-pack.php:190 meta-seo-pack.php:1299
+msgid "Other Settings"
+msgstr ""
+
+#: meta-seo-pack.php:1001
+msgid "Meta Description:"
+msgstr ""
+
+#: meta-seo-pack.php:1005
+msgid ""
+"Text entered above will be used as a value for the <code>&lt;meta name=&quot;"
+"description&quot;&gt;</code> tag."
+msgstr ""
+
+#: meta-seo-pack.php:1010
+msgid "Meta Keywords:"
+msgstr ""
+
+#: meta-seo-pack.php:1014
+msgid ""
+"Text entered above will be used as a value for the <code>&lt;meta name=&quot;"
+"keywords&quot;&gt;</code> tag. Separate keywords with commas (e.g. "
+"<code>key1,key2,key3</code>)."
+msgstr ""
+
+#: meta-seo-pack.php:1019
+msgid "Meta Robots:"
+msgstr ""
+
+#: meta-seo-pack.php:1023
+msgid ""
+"Text entered above will be used as a value for the <code>&lt;meta name=&quot;"
+"robots&quot;&gt;</code> tag. It will override default <code>noindex,follow</"
+"code> settings. Meta SEO Pack will add <code>noodp</code> and <code>noydir</"
+"code> if you checked to use them."
+msgstr ""
+
+#: meta-seo-pack.php:1090
+msgid "%categories% | Categories | %blog_name%"
+msgstr ""
+
+#: meta-seo-pack.php:1091
+msgid "%tag% | Tags | %blog_name%"
+msgstr ""
+
+#: meta-seo-pack.php:1093
+msgid "Archive for %date% | %blog_name%"
+msgstr ""
+
+#: meta-seo-pack.php:1094
+msgid "%author_name% | Authors | %blog_name%"
+msgstr ""
+
+#: meta-seo-pack.php:1095
+msgid "Search results for %search% | %blog_name%"
+msgstr ""
+
+#: meta-seo-pack.php:1097
+msgid "%title% - Page %n%"
+msgstr ""
+
+#: meta-seo-pack.php:1098
+msgid "%title% - Comments Page %n%"
+msgstr ""
+
+#: meta-seo-pack.php:1127
+msgid "%description% - page %n%"
+msgstr ""
+
+#: meta-seo-pack.php:1128
+msgid "%description% - comments page %n%"
+msgstr ""
+
+#: meta-seo-pack.php:1232
+msgid "Configuration has been saved."
+msgstr ""
+
+#: meta-seo-pack.php:1254
+msgid "Save settings"
+msgstr ""
+
+#. Plugin Name of an extension
+msgid "Meta SEO Pack"
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://www.poradnik-webmastera.com/projekty/meta_seo_pack/"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"Fine tune your WordPress blog for SEO: title rewriting, meta descriptions, "
+"tags, robots, canonical links and more.  Out-of-the-box settings are a good "
+"starting point for blogs."
+msgstr ""
+
+#. Author of an extension
+msgid "Daniel Fruyski"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://www.poradnik-webmastera.com/"
+msgstr ""

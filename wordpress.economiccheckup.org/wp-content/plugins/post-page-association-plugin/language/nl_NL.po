@@ -1,0 +1,485 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Post Page Associator Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-03 22:39+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dennis Hoppe\n"
+"Language-Team: Frank Devocht <frank.devocht@telenet.be>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: t;t:2c,1\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-plugin-post-page-associator.php:71
+msgid "Associated Posts Settings"
+msgstr "Instellingen Geassocieerde Berichten"
+
+#: ../wp-plugin-post-page-associator.php:72
+#: ../wp-plugin-post-page-associator.php:82
+#: ../wp-plugin-post-page-associator.php:146
+msgid "Associated Posts"
+msgstr "Geassocieerde Berichten"
+
+#: ../wp-plugin-post-page-associator.php:135
+msgid "Associate posts with this page"
+msgstr "Associeer Berichten met deze pagina"
+
+#: ../wp-plugin-post-page-associator.php:623
+msgid "As the name suggests the \"Associated Posts\" Plugin enables you to associate posts, pages and custom post types with each other. You can easily select a set of posts (in this case: all types of posts such as posts, pages and custom post types) by their taxonomies, by their authors and of course explicitly."
+msgstr "Zoals de naam doet vermoeden, laat de \"Associated Posts\" Plugin je toe om berichten en pagina's met elkaar te associëren.  Je kan een set berichten (in dit geval: alle types van berichten zoals berichten, pagina's en custom bericht types) selecteren volgens categorie, tag, auteur of zelf gedefinieerde types toevoegen en onderling associëren."
+
+#: ../wp-plugin-post-page-associator.php:624
+#: ../wp-plugin-post-page-associator.php:631
+#: ../wp-plugin-post-page-associator.php:647
+#: ../wp-plugin-post-page-associator.php:704
+#: ../meta_box.php:113
+#: ../meta_box.php:117
+#: ../meta_box.php:118
+#: ../options_page.php:19
+#: ../options_page.php:20
+msgid "Buy the Pro-Version"
+msgstr "Koop de Pro-Versie"
+
+#: ../wp-plugin-post-page-associator.php:635
+msgid "Visit the Plugin page"
+msgstr "Bezoek de Plugin webpagina"
+
+#: ../wp-plugin-post-page-associator.php:636
+msgid "Visit the authors website"
+msgstr "Bezoek de website van de auteur"
+
+#: ../wp-plugin-post-page-associator.php:646
+msgid "In the Pro-Version you can associate all types of posts with each other."
+msgstr "Met de Pro-Versie kan je eender welk type van berichten met elkaar associëren."
+
+#: ../wp-plugin-post-page-associator.php:686
+msgid "Post Page Associator"
+msgstr "Post Page Associator"
+
+#: ../wp-plugin-post-page-associator.php:687
+msgid "Could display the associated posts of the current page in the sidebar."
+msgstr "Kan de geassocieerde berichten van de huidige pagina tonen in de zijbalk."
+
+#: ../wp-plugin-post-page-associator.php:703
+msgid "In the Pro-Version you can add a Widget to your sidebars which displays the associated posts of the current post or page."
+msgstr "In de Pro-Versie kan je een Widget aan je zijbalk toevoegen dewelke de geassoicieerde berichten toont van het huidige bericht of pagina."
+
+#: ../wp-plugin-post-page-associator.php:705
+msgid "This Widget does not any output to the user."
+msgstr "Deze Widget geeft geen inhoud terug aan de gebruiker."
+
+#: ../meta_box.php:4
+msgid "Select posts by category"
+msgstr "Selecteer berichten volgens categorie"
+
+#: ../meta_box.php:6
+#: ../meta_box.php:27
+#: ../meta_box.php:48
+msgid "Selection mode:"
+msgstr "Selectie wijze:"
+
+#: ../meta_box.php:8
+msgid "Add to my selection: All posts which are at least in one of these categories."
+msgstr "In mijn selectie opnemen: Alle berichten die minstens tot één van deze categorieën behoren"
+
+#: ../meta_box.php:9
+msgid "Filter my selection: Only posts which are at least in one of these categories."
+msgstr "Filter mijn selectie: Enkel berichten die minstens tot één van deze categorieën behoren"
+
+#: ../meta_box.php:10
+msgid "Add to my selection: All posts which are in all of these categories."
+msgstr "In mijn selectie opnemen: Alle berichten die tot al deze categorieën behoren"
+
+#: ../meta_box.php:11
+msgid "Filter my selection: Only posts which are in all of these categories."
+msgstr "Filter mijn selectie: Enkel berichten die tot al deze categorieën behoren"
+
+#: ../meta_box.php:12
+msgid "Do not care about categories."
+msgstr "Geen rekening houden met categorieën"
+
+#: ../meta_box.php:25
+msgid "Select posts by tag"
+msgstr "Selecteer berichten volgens tag"
+
+#: ../meta_box.php:29
+msgid "Add to my selection: All posts which are tagged with at least one of these tags."
+msgstr "In mijn selectie opnemen: Alle berichten die minstens een van deze tags bevatten"
+
+#: ../meta_box.php:30
+msgid "Filter my selection: Only posts which are tagged with at least one of these tags."
+msgstr "Filter mijn selectie: Enkel berichten die minstens een van deze tags bevatten"
+
+#: ../meta_box.php:31
+msgid "Add to my selection: All posts which are tagged with all of these tags."
+msgstr "In mijn selectie opnemen: Alle berichten die al deze tags bevatten"
+
+#: ../meta_box.php:32
+msgid "Filter my selection: Only posts which are tagged with all of these tags."
+msgstr "Filter mijn selectie: Enkel berichten die al deze tags bevatten"
+
+#: ../meta_box.php:33
+msgid "Do not care about tags."
+msgstr "Geen rekening houden met tags"
+
+#: ../meta_box.php:46
+msgid "Select posts by author"
+msgstr "Selecteer berichten volgens auteur"
+
+#: ../meta_box.php:50
+msgid "Add to my selection: All posts by these authors."
+msgstr "In mijn selectie opnemen: Alle berichten door deze auteurs"
+
+#: ../meta_box.php:51
+msgid "Filter my selection: Only posts by these authors."
+msgstr "Filter mijn selectie: Enkel berichten door deze auteurs"
+
+#: ../meta_box.php:52
+msgid "Do not care about authors."
+msgstr "Geen rekening houden met auteurs"
+
+#: ../meta_box.php:64
+msgid "Select posts explicitly (Additionally to your Selection.)"
+msgstr "Manueel berichten selecteren (bijkomend aan je eerdere selectie)"
+
+#: ../meta_box.php:69
+#, php-format
+msgid "Post %s (Without title)"
+msgstr "Bericht %s (Geen titel)"
+
+#: ../meta_box.php:78
+msgid "Number of posts:"
+msgstr "Aantal berichten:"
+
+#: ../meta_box.php:78
+msgid "Leave blank to show all."
+msgstr "Dit veld leeg laten om alle berichten te tonen"
+
+#: ../meta_box.php:82
+msgid "Offset:"
+msgstr "Offset:"
+
+#: ../meta_box.php:82
+msgid "Leave blank to start with the first post."
+msgstr "Dit veld leeg laten om met het eerste bericht te starten"
+
+#: ../meta_box.php:83
+#: ../meta_box.php:88
+#, php-format
+msgid "This feature is only available in <a href=\"%s\" target=\"_blank\">Associated Posts Pro</a>."
+msgstr "Deze functie is enkel beschikbaar in <a href=\"%s\" target=\"_blank\">Associated Posts Pro</a>"
+
+#: ../meta_box.php:87
+msgid "Posts per page:"
+msgstr "Berichten per pagina:"
+
+#: ../meta_box.php:87
+msgid "Leave blank to show all posts on one page."
+msgstr "Leeg laten om alle berichten op één pagina te tonen"
+
+#: ../meta_box.php:93
+msgid "Order posts by:"
+msgstr "Berichten sorteren volgens:"
+
+#: ../meta_box.php:100
+msgid "Meta Value &mdash; Only available in the Pro Version."
+msgstr ""
+
+#: ../meta_box.php:105
+msgid "Order:"
+msgstr "Volgorde:"
+
+#: ../meta_box.php:107
+msgid "Descending"
+msgstr "Aflopend"
+
+#: ../meta_box.php:108
+msgid "Ascending"
+msgstr "Oplopend"
+
+#: ../meta_box.php:123
+msgid "Template"
+msgstr "Sjabloon"
+
+#: ../meta_box.php:135
+#: ../meta_box.php:137
+#: ../options_page.php:36
+#: ../options_page.php:38
+msgid "by"
+msgstr "door"
+
+#: ../options_page.php:1
+msgid "Position"
+msgstr "Positie"
+
+#: ../options_page.php:4
+msgid "Append the associated posts to the pages content."
+msgstr "Geassocieerde berichten onderaan de pagina toevoegen."
+
+#: ../options_page.php:8
+msgid "Prepend the associated posts to the pages content."
+msgstr "Geassocieerde berichten bovenaan de pagina toevoegen."
+
+#: ../options_page.php:12
+msgid "<b>Do not</b> show the associated posts to the pages automatically. (In this case you have to add the short code manually.)"
+msgstr "Geassocieerde berichten <b>niet</b> automatisch aan pagina's toevoegen. (In dit geval moet je de code manueel toevoegen.)"
+
+#: ../options_page.php:25
+msgid "Templates"
+msgstr "Sjablonen"
+
+#: ../options_page.php:41
+#, php-format
+msgid "Found in <em>%s</em>."
+msgstr "Gevonden in <em>%s</em>."
+
+#: ../options_page.php:50
+msgid "Do not show any text of the associated posts. (Only the title with link to the post.)"
+msgstr "De inhoud van de geassocieerde berichten niet tonen. (Enkel de titel met een link naar het bericht)"
+
+#: ../options_page.php:55
+msgid "Show an excerpt of the associated posts."
+msgstr "Toon een uittreksel van de geassocieerde berichten."
+
+#: ../options_page.php:60
+msgid "Show a post thumbnail of the associated posts."
+msgstr "Toon een voorbeeld van de geassocieerde berichten."
+
+#: ../options_page.php:65
+msgid "Show the full text of the associated posts."
+msgstr "Toon de volledige inhoud van de geassocieerde berichten."
+
+#: ../options_page.php:68
+msgid "Miscellaneous"
+msgstr "Diversen"
+
+#: ../options_page.php:71
+msgid "Please hide the Associated Posts Pro banner. Of course I will buy it."
+msgstr "De Associated Posts Pro reklame verbergen.  Ik zal het zeker kopen."
+
+#~ msgid "Please think about a donation!"
+#~ msgstr "Denk aub aan een donatie"
+#~ msgid "Donation to the Open Source Community"
+#~ msgstr "Donatie aan de Open Source Gemeenschap"
+#~ msgid "Reference"
+#~ msgstr "Referentie"
+#~ msgid "WordPress"
+#~ msgstr "Wordpress"
+#~ msgid "Plugin"
+#~ msgstr "Plugin"
+#~ msgid "the theme"
+#~ msgstr "het thema"
+#~ msgid "Hello %1$s!"
+#~ msgstr "Hallo %1$s!"
+#~ msgid ""
+#~ "My name is Dennis Hoppe and I am a computer science student working and "
+#~ "living in Berlin, Germany."
+#~ msgstr ""
+#~ "Mijn naam is Dennis Hoppe en ik ben student computer wetenschappen, "
+#~ "wonend en werkend in Berlijn, Duitsland."
+#~ msgid "Beside other plugins and themes I developed %1$s."
+#~ msgstr "Naast een aantal andere plugins en thema's die ik ontwikkelde %1$s."
+#~ msgid "and"
+#~ msgstr "en"
+#~ msgid ""
+#~ "I love the spirit of the open source movement, to write and share code "
+#~ "and knowledge, but I think the system can work only if everyone "
+#~ "contributes one's part properly."
+#~ msgstr ""
+#~ "Ik hou van de geest van de open source beweging, code te schrijven en "
+#~ "kennis te delen, maar ik denk dat het systeem alleen kan werken als "
+#~ "iedereen zijn deel doet."
+#~ msgid ""
+#~ "Because you are using %1$s of my WordPress extensions I hope you will "
+#~ "appreciate my job."
+#~ msgstr ""
+#~ "Omdat je %1$s van mijn Wordpress extensies gebruikt, hoop ik dat je mijn "
+#~ "werk waardeert."
+#~ msgid ""
+#~ "So please think about a donation. You would also help to keep alive and "
+#~ "growing the community."
+#~ msgstr ""
+#~ "Dus denk aub aan een donatie.  Je zou er ook de gemeenschap mee in leven "
+#~ "helpen houden en doen groeien."
+#~ msgid "Make a gift of the Amazon Wish List"
+#~ msgstr "Geef een geschenk van de Amazon Wens Lijst"
+#~ msgid "Amazon USA"
+#~ msgstr "Amazon USA"
+#~ msgid "Amazon Germany"
+#~ msgstr "Amazon Duitsland"
+#~ msgid "Make a donation via PayPal"
+#~ msgstr "Doe een donatie via Paypal"
+#~ msgid "Make a donation in US Dollars"
+#~ msgstr "Doe een donatie in US Dollars"
+#~ msgid "Amount"
+#~ msgstr "Bedrag"
+#~ msgid "Amount in USD"
+#~ msgstr "Bedrag in USD"
+#~ msgid "other amount"
+#~ msgstr "ander bedrag"
+#~ msgid "Proceed to PayPal"
+#~ msgstr "Ga naar Paypal"
+#~ msgid "Make a donation in Pound sterling"
+#~ msgstr "Doe een donatie in Pond Sterling"
+#~ msgid "Amount in GBP"
+#~ msgstr "Bedrag in GBP"
+#~ msgid "Make a donation in Euro"
+#~ msgstr "Doe een donatie in Euro"
+#~ msgid "Amount in EUR"
+#~ msgstr "Bedrag in EUR"
+#~ msgid "Make a donation in another currency"
+#~ msgstr "Doe een donatie in een andere valuta"
+#~ msgid "Other currency"
+#~ msgstr "Andere valuta"
+#~ msgid "International currency"
+#~ msgstr "Internationale valuta"
+#~ msgid ""
+#~ "After donation you will possibly get to know how you can hide this notice "
+#~ "easily. ;)"
+#~ msgstr ""
+#~ "Na donatie kom je mogelijk te weten hoe je dit bericht makkelijk kan "
+#~ "verbergen ;)"
+#~ msgid "Donation to Dennis Hoppe"
+#~ msgstr "Donatie aan Dennis Hoppe"
+#~ msgid ""
+#~ "I give the affidavit that I have sent a donation to Dennis Hoppe or paid "
+#~ "him a fee for his job."
+#~ msgstr ""
+#~ "Ik verklaar dat ik een donatie deed aan Dennis Hoppe of hem een "
+#~ "vergoeding betaalde voor zijn werk."
+#~ msgid "none"
+#~ msgstr "geen"
+#~ msgid "one"
+#~ msgstr "een"
+#~ msgid "two"
+#~ msgstr "twee"
+#~ msgid "three"
+#~ msgstr "drie"
+#~ msgid "four"
+#~ msgstr "vier"
+#~ msgid "five"
+#~ msgstr "vijf"
+#~ msgid "six"
+#~ msgstr "zes"
+#~ msgid "seven"
+#~ msgstr "zeven"
+#~ msgid "eight"
+#~ msgstr "acht"
+#~ msgid "nine"
+#~ msgstr "negen"
+#~ msgid "ten"
+#~ msgstr "tien"
+#~ msgid "eleven"
+#~ msgstr "elf"
+#~ msgid "twelve"
+#~ msgstr "twaalf"
+#~ msgid "thirteen"
+#~ msgstr "dertien"
+#~ msgid "fourteen"
+#~ msgstr "veertien"
+#~ msgid "fifteen"
+#~ msgstr "vijftien"
+#~ msgid "sixteen"
+#~ msgstr "zestien"
+#~ msgid "seventeen"
+#~ msgstr "zeventien"
+#~ msgid "eighteen"
+#~ msgstr "achttien"
+#~ msgid "nineteen"
+#~ msgstr "negentien"
+#~ msgid "twenty"
+#~ msgstr "twintig"
+#~ msgid "twenty-one"
+#~ msgstr "eenentwintig"
+#~ msgid "twenty-two"
+#~ msgstr "tweeëntwintig"
+#~ msgid "twenty-three"
+#~ msgstr "drieëntwintig"
+#~ msgid "twenty-four"
+#~ msgstr "vierentwintig"
+#~ msgid "twenty-five"
+#~ msgstr "vijfentwintig"
+#~ msgid "twenty-six"
+#~ msgstr "zesentwintig"
+#~ msgid "twenty-seven"
+#~ msgstr "zevenentwintig"
+#~ msgid "twenty-eight"
+#~ msgstr "achtentwintig"
+#~ msgid "twenty-nine"
+#~ msgstr "negenentwintig"
+#~ msgid "thirty"
+#~ msgstr "dertig"
+#~ msgid "thirty-one"
+#~ msgstr "eenendertig"
+#~ msgid "thirty-two"
+#~ msgstr "tweeëndertig"
+#~ msgid "thirty-three"
+#~ msgstr "drieëndertig"
+#~ msgid "thirty-four"
+#~ msgstr "vierendertig"
+#~ msgid "thirty-five"
+#~ msgstr "vijfendertig"
+#~ msgid "thirty-six"
+#~ msgstr "zesendertig"
+#~ msgid "thirty-seven"
+#~ msgstr "zevenendertig"
+#~ msgid "thirty-eight"
+#~ msgstr "achtendertig"
+#~ msgid "thirty-nine"
+#~ msgstr "negenendertig"
+#~ msgid "fourty"
+#~ msgstr "veertig"
+#~ msgid "fourty-one"
+#~ msgstr "eenenveertig"
+#~ msgid "fourty-two"
+#~ msgstr "tweeënveertig"
+#~ msgid "fourty-three"
+#~ msgstr "drieënveertig"
+#~ msgid "fourty-four"
+#~ msgstr "vierenveertig"
+#~ msgid "fourty-five"
+#~ msgstr "vijfenveertig"
+#~ msgid "fourty-six"
+#~ msgstr "zesenveertig"
+#~ msgid "fourty-seven"
+#~ msgstr "zevenenveertig"
+#~ msgid "fourty-eight"
+#~ msgstr "achtenveertig"
+#~ msgid "fourty-nine"
+#~ msgstr "negenenveertig"
+#~ msgid "fifty"
+#~ msgstr "vijftig"
+#~ msgid "fifty-one"
+#~ msgstr "eenenvijftig"
+#~ msgid "fifty-two"
+#~ msgstr "tweeënvijftig"
+#~ msgid "fifty-three"
+#~ msgstr "drieënvijftig"
+#~ msgid "fifty-four"
+#~ msgstr "vierënvijftig"
+#~ msgid "fifty-five"
+#~ msgstr "vijfenvijftig"
+#~ msgid "fifty-six"
+#~ msgstr "zesenvijftig"
+#~ msgid "fifty-seven"
+#~ msgstr "zevenenvijftig"
+#~ msgid "fifty-eight"
+#~ msgstr "achtenvijftig"
+#~ msgid "fifty-nine"
+#~ msgstr "negenenvijftig"
+#~ msgid "sixty"
+#~ msgstr "zestig"
+#~ msgid "seventy"
+#~ msgstr "zeventig"
+#~ msgid "eighty"
+#~ msgstr "tachtig"
+#~ msgid "ninty"
+#~ msgstr "negentig"
+#~ msgid "hundred"
+#~ msgstr "honderd"
+

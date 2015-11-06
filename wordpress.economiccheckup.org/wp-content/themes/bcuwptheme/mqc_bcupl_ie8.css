@@ -1,0 +1,29 @@
+#footer {
+
+margin-left: 200px;
+
+}
+
+.container {
+
+margin-left: 200px;
+}
+
+#footer_links {
+text-align: right;
+float: right;
+
+}
+
+#footer .row .span3 {
+
+margin-left: 20px;
+float: left;
+
+}
+
+input[type="radio"]{
+
+margin-right: 500px;
+
+}

@@ -1,0 +1,48 @@
+.file-commander-interface .folder {
+  padding-left: 20px;
+  min-height: 20px;
+  background: url(icon/folder.png) left center no-repeat;
+}
+
+.file-commander-interface .file {
+  padding-left: 20px;
+  min-height: 20px;
+  background: url(icon/file.gif) left center no-repeat;
+}
+
+.file-commander-interface .operation {
+  display: inline;
+}
+
+.file-commander-interface .operation .delete,
+.file-commander-interface .operation .view,
+.file-commander-interface .operation .download {
+  display: inline;
+}
+.file-commander-interface .operation .rename a, 
+.file-commander-interface .operation .delete a,
+.file-commander-interface .operation .view a,
+.file-commander-interface .operation .download a {
+  display: inline-block;
+  text-indent: -9999em;
+  height: 16px;
+  width: 16px;
+  margin: 1px 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.file-commander-interface .operation .rename a {
+  background-image: url(icon/rename.gif);
+}
+.file-commander-interface .folder .operation .delete a {
+  background-image: url(icon/delete_folder.png);
+}
+.file-commander-interface .file .operation .delete a {
+  background-image: url(icon/delete_file.gif);
+}
+.file-commander-interface .operation .view a {
+  background-image: url(icon/weblink.gif);
+}
+.file-commander-interface .operation .download a {
+  background-image: url(icon/download.gif);
+}
