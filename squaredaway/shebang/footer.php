@@ -57,9 +57,8 @@
 					<h2>About NCOA:</h2>
 						<ul>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/">Overview</a></li>
-							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/our-impact/">Our Impact</a></li>
+							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/our-impact/">Impact</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/leadership/">Leadership</a></li>
-							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/funders/">Funders</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/annual-report.html">Annual Report</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/careers/">Careers</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/contact-us/">Contact Us</a></li>
