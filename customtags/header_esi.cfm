@@ -290,9 +290,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<ul id="home">
 	<li id="esi-home"><a href="http://www.benefitscheckup.org/">Home</a></li>
 	<li id="esi-findhelp"><a href="http://www.benefitscheckup.org/esi-questions/" class="">My&nbsp;CheckUp</a></li>
-	<li id="esi-benefits"><a href="http://www.benefitscheckup.orgesi-find-help/"<cfif highlightFindBenefits IS 'yes'> class="current_tab"</cfif>>Resources</a></li>
-	<li id="esi-findfood"><a href="http://www.benefitscheckup.orgesi-about/" class="">About&nbsp;Us</a></li>
-	<li id="esi-taxrelief"><a href="http://www.benefitscheckup.orgesi-news/">News</a></li>
+	<li id="esi-benefits"><a href="http://www.benefitscheckup.org/esi-find-help/"<cfif highlightFindBenefits IS 'yes'> class="current_tab"</cfif>>Resources</a></li>
+	<li id="esi-findfood"><a href="http://www.benefitscheckup.org/esi-about/" class="">About&nbsp;Us</a></li>
+	<li id="esi-taxrelief"><a href="http://www.benefitscheckup.org/esi-news/">News</a></li>
 	<li id="esi-about"><a href="http://www.ncoa.org/Donate" class="" target="_blank"">Donate</a></li>
 
 	</ul>
