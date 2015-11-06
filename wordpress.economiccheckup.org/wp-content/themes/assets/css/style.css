@@ -1,0 +1,44 @@
+body{
+	padding-top:0px;
+	background: url("../images/bl_grdnt_bg.gif") repeat-x scroll center top #FFFFFF;
+}
+
+.container{
+	background-color:#ffffff;
+	padding:20px 0;
+}
+
+.logo{
+	width:100%;
+	left:-55px;
+	position:relative;
+}
+
+.item p {
+	font-size:14px;
+	margin:15px 0px 5px;
+}
+
+.embed {
+	font-size:14px;
+	height: 70px;
+}
+
+.small_banner{
+	width: 300px;
+	min-width:300px; 
+  	max-width:300px;
+}
+
+.large_rect{
+	width: 336px;
+	min-width:336px; 
+  	max-width:336px;
+}
+
+.orange{
+	width: 100%;
+	height: 2px;
+	background-color:#fa6300;
+	margin:20px 0;
+}

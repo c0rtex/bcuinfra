@@ -1,0 +1,5 @@
+@charset "UTF-8";
+/* CSS Document */
+ #content a.go-button{display:inline;text-align:right;}
+.questionHolder strong{position: relative; left: -32px !important;}
+.row input, .row select{width:140px;}

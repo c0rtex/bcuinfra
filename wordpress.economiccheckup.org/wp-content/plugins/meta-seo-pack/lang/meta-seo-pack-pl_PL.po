@@ -1,0 +1,558 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Daniel Fruyski
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Meta SEO Pack 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/meta-seo-pack\n"
+"POT-Creation-Date: 2009-08-15 15:21+0000\n"
+"PO-Revision-Date: 2009-08-15 17:25+0100\n"
+"Last-Translator: Daniel Frużyński <daniel [A-T] poradnik-webmastera.com>\n"
+"Language-Team: Author <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: meta-seo-pack.php:825
+msgid "%categories% | Categories | %blog_name%"
+msgstr "%categories% | Kategorie | %blog_name%"
+
+#: meta-seo-pack.php:826
+msgid "%tag% | Tags | %blog_name%"
+msgstr "%tag% | Tagi | %blog_name%"
+
+#: meta-seo-pack.php:828
+msgid "Archive for %date% | %blog_name%"
+msgstr "Archiwum dla %date% | %blog_name%"
+
+#: meta-seo-pack.php:829
+msgid "%author_name% | Authors | %blog_name%"
+msgstr "%author_name% | Autorzy | %blog_name%"
+
+#: meta-seo-pack.php:830
+msgid "Search results for %search% | %blog_name%"
+msgstr "Wyniki wyszukiwania dla %search% | %blog_name%"
+
+#: meta-seo-pack.php:831
+msgid "%title% - Page %n%"
+msgstr "%title% - Strona %n%"
+
+#: meta-seo-pack.php:832
+msgid "%title% - Comments Page %n%"
+msgstr "%title% - Strona komentarzy %n%"
+
+#: meta-seo-pack.php:857
+msgid "%description% - page %n%"
+msgstr "%description% - strona %n%"
+
+#: meta-seo-pack.php:858
+msgid "%description% - comments page %n%"
+msgstr "%description% - strona komentarzy %n%"
+
+#: meta-seo-pack.php:920
+msgid "Configuration has been saved."
+msgstr "Konfiguracja została zapisana."
+
+#: meta-seo-pack.php:926
+msgid "Meta SEO Pack - Options"
+msgstr "Meta SEO Pack - Opcje"
+
+#: meta-seo-pack.php:933
+msgid "Title rewriting:"
+msgstr "Przepisywanie tytułów:"
+
+#: meta-seo-pack.php:937
+msgid "Rewrite <code>&lt;title&gt</code> tag"
+msgstr "Przepisz znacznik <code>&lt;title&gt</code>"
+
+#: meta-seo-pack.php:946
+msgid "Title separator"
+msgstr "Separator tytułu"
+
+#: meta-seo-pack.php:950
+msgid "Meta SEO Pack will change <code>|</code> in formats to given character (by default <code>&amp;laquo;</code>)"
+msgstr "Meta SEO Pack będzie zmieniał <code>|</code> w formatach na podany znak (domyślnie <code>&amp;laquo;</code>)"
+
+#: meta-seo-pack.php:954
+#: meta-seo-pack.php:1120
+#: meta-seo-pack.php:1288
+#: meta-seo-pack.php:1452
+msgid "Home Page:"
+msgstr "Strona główna:"
+
+#: meta-seo-pack.php:958
+msgid "Title format for Home Page"
+msgstr "Format tytułu dla strony głównej"
+
+#: meta-seo-pack.php:966
+#: meta-seo-pack.php:1131
+#: meta-seo-pack.php:1299
+#: meta-seo-pack.php:1463
+msgid "Posts:"
+msgstr "Wpisy (posty):"
+
+#: meta-seo-pack.php:970
+msgid "Title format for Posts"
+msgstr "Format tytułu dla wpisów"
+
+#: meta-seo-pack.php:978
+#: meta-seo-pack.php:1153
+#: meta-seo-pack.php:1310
+#: meta-seo-pack.php:1474
+msgid "Pages:"
+msgstr "Strony:"
+
+#: meta-seo-pack.php:982
+msgid "Title format for Pages"
+msgstr "Format tytułu dla stron"
+
+#: meta-seo-pack.php:990
+#: meta-seo-pack.php:1164
+#: meta-seo-pack.php:1321
+#: meta-seo-pack.php:1485
+msgid "Attachments:"
+msgstr "Załączniki:"
+
+#: meta-seo-pack.php:994
+msgid "Title format for Attachments"
+msgstr "Format tytułu dla załączników"
+
+#: meta-seo-pack.php:1002
+#: meta-seo-pack.php:1174
+#: meta-seo-pack.php:1332
+#: meta-seo-pack.php:1496
+msgid "Categories:"
+msgstr "Kategorie:"
+
+#: meta-seo-pack.php:1006
+msgid "Title format for Categories"
+msgstr "Format tytułu dla kategorii"
+
+#: meta-seo-pack.php:1014
+#: meta-seo-pack.php:1186
+#: meta-seo-pack.php:1343
+#: meta-seo-pack.php:1507
+msgid "Tags:"
+msgstr "Tagi:"
+
+#: meta-seo-pack.php:1018
+msgid "Title format for Tags"
+msgstr "Format tytułu dla tagów"
+
+#: meta-seo-pack.php:1026
+#: meta-seo-pack.php:1198
+#: meta-seo-pack.php:1354
+#: meta-seo-pack.php:1518
+msgid "Custom Taxonomies:"
+msgstr "Własne taksonomie:"
+
+#: meta-seo-pack.php:1030
+msgid "Title format for Custom Taxonomies"
+msgstr "Format tytułu dla własnych taksonomii"
+
+#: meta-seo-pack.php:1038
+#: meta-seo-pack.php:1220
+#: meta-seo-pack.php:1365
+#: meta-seo-pack.php:1529
+msgid "Archive for Day/Month/Year:"
+msgstr "Archiwum dnia/miesiąca/roku:"
+
+#: meta-seo-pack.php:1042
+msgid "Title format for Archives for Day/Month/Year"
+msgstr "Format tytułu dla archiwów dnia/miesiąca/roku"
+
+#: meta-seo-pack.php:1050
+#: meta-seo-pack.php:1230
+#: meta-seo-pack.php:1376
+#: meta-seo-pack.php:1540
+msgid "Author Posts:"
+msgstr "Posty autora:"
+
+#: meta-seo-pack.php:1054
+msgid "Title format for Author Posts"
+msgstr "Format tytułu dla postów autora"
+
+#: meta-seo-pack.php:1062
+#: meta-seo-pack.php:1242
+#: meta-seo-pack.php:1387
+#: meta-seo-pack.php:1551
+msgid "Search Results:"
+msgstr "Wyniki wyszukiwania:"
+
+#: meta-seo-pack.php:1066
+msgid "Title format for Search Results"
+msgstr "Format tytułu dla wyników wyszukiwania"
+
+#: meta-seo-pack.php:1074
+#: meta-seo-pack.php:1254
+#: meta-seo-pack.php:1398
+#: meta-seo-pack.php:1562
+msgid "Subpages for multipage Archives/Posts/Pages:"
+msgstr "Podstrony wielostronicowych archiwów/wpisów/stron:"
+
+#: meta-seo-pack.php:1078
+msgid "Title format for Subpages for multipage Archives/Posts/Pages"
+msgstr "Format tytułu dla postron wielostronicowych archiwów/wpisów/stron"
+
+#: meta-seo-pack.php:1086
+#: meta-seo-pack.php:1265
+#: meta-seo-pack.php:1410
+#: meta-seo-pack.php:1573
+msgid "Subpages for multipage comments:"
+msgstr "Podstrony wielostronicowych komentarzy:"
+
+#: meta-seo-pack.php:1090
+msgid "Title format for Subpages for multipage comments"
+msgstr "Format tytułu dla podstron wielostronicowych komentarzy"
+
+#: meta-seo-pack.php:1099
+msgid "Meta Keywords tag:"
+msgstr "Znacznik Meta Keywords (słowa kluczowe):"
+
+#: meta-seo-pack.php:1103
+msgid "Add <code>&lt;meta name=&quot;keywords&quot;&gt</code> tag"
+msgstr "Dodaj znacznik <code>&lt;meta name=&quot;keywords&quot;&gt</code>"
+
+#: meta-seo-pack.php:1112
+msgid "Default keywords"
+msgstr "Domyślne słowa kluczowe"
+
+#: meta-seo-pack.php:1116
+msgid "Separate keywords with commas (e.g. <code>key1,key2,key3</code>)."
+msgstr "Rozdziel słowa kluczowe przecinkami (np. <code>słowo1,słowo2,słowo3</code>)."
+
+#: meta-seo-pack.php:1116
+msgid "These keywords will be used everywhere. You can enable options below to add additional tags to the list."
+msgstr "Te słowa kluczowe będą używane wszędzie. Włączając opcje poniżej możesz dodać dodatkowe słowa kluczowe do listy."
+
+#: meta-seo-pack.php:1127
+msgid "Meta SEO Pack uses default keywords for Home Page"
+msgstr "Meta SEO Pack używa domyślnych słów kluczowych dla strony głównej"
+
+#: meta-seo-pack.php:1135
+msgid "Add post tags"
+msgstr "Dodaj tagi wpisu"
+
+#: meta-seo-pack.php:1139
+msgid "Check this to add post's tags to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Post."
+msgstr "Zaznacz aby dodać tagi wpisu do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla danego wpisu."
+
+#: meta-seo-pack.php:1145
+msgid "Add post categories"
+msgstr "Dodaj kategorie wpisu"
+
+#: meta-seo-pack.php:1149
+msgid "Check this to add post's categories (and parent categories too) to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Post."
+msgstr "Zaznacz aby dodać kategorie wpisu (i kategorie nadrzędne także) do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla danego wpisu."
+
+#: meta-seo-pack.php:1160
+#: meta-seo-pack.php:1170
+#: meta-seo-pack.php:1227
+#: meta-seo-pack.php:1261
+#: meta-seo-pack.php:1272
+#: meta-seo-pack.php:1372
+#: meta-seo-pack.php:1383
+#: meta-seo-pack.php:1394
+#: meta-seo-pack.php:1470
+#: meta-seo-pack.php:1481
+#: meta-seo-pack.php:1569
+msgid "No extra configuration here (yet)."
+msgstr "Brak dodatkowej konfiguracji (jak na razie)."
+
+#: meta-seo-pack.php:1178
+msgid "Add category name"
+msgstr "Dodaj nazwę kategorii"
+
+#: meta-seo-pack.php:1182
+msgid "Check this to add category name (and parent categories too) to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Category page."
+msgstr "Zaznacz aby dodać nazwę kategorii (i kategorii nadrzędnych także) do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla danej strony kategorii."
+
+#: meta-seo-pack.php:1190
+msgid "Add tag name"
+msgstr "Dodaj nazwę tagu"
+
+#: meta-seo-pack.php:1194
+msgid "Check this to add tag name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Tag page."
+msgstr "Zaznacz aby dodać nazwę tagu do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla danej strony tagu."
+
+#: meta-seo-pack.php:1202
+msgid "Add taxonomy name"
+msgstr "Dodaj nazwę taksonomii"
+
+#: meta-seo-pack.php:1206
+msgid "Check this to add taxonomy name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Taxonomy page (custom taxonomies only)."
+msgstr "Zaznacz aby dodać nazwę taksonomii do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla danej strony taksonomii (tylko dla własnych taksonomii)."
+
+#: meta-seo-pack.php:1212
+msgid "Add taxonomy term name"
+msgstr "Dodaj nazwę elementu taksonomii"
+
+#: meta-seo-pack.php:1216
+msgid "Check this to add taxonomy term name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Taxonomy page (custom taxonomies only)."
+msgstr "Zaznacz aby dodać nazwę elementu taksomomii do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla danej strony taksonomii (tylko dla własnych taksonomii)."
+
+#: meta-seo-pack.php:1234
+msgid "Add author's display name"
+msgstr "Dodaj wyświetlaną nazwę autora"
+
+#: meta-seo-pack.php:1238
+msgid "Check this to add author's display name to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Author page."
+msgstr "Zaznacz aby dodać wyświetlaną nazwę autora do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla strony danego autora."
+
+#: meta-seo-pack.php:1246
+msgid "Add search query"
+msgstr "Dodaj szukaną frazę"
+
+#: meta-seo-pack.php:1250
+msgid "Check this to add search query to <code>&lt;meta name=&quot;keywords&quot;&gt;</code> tag for that Search page."
+msgstr "Zaznacz aby dodać szukaną frazę do znacznika <code>&lt;meta name=&quot;keywords&quot;&gt;</code> dla strony wyników wyszukiwania."
+
+#: meta-seo-pack.php:1277
+msgid "Meta Description tag:"
+msgstr "Znacznik Meta Description (opis strony)"
+
+#: meta-seo-pack.php:1281
+msgid "Add <code>&lt;meta name=&quot;description&quot;&gt</code> tag"
+msgstr "Dodaj znacznik <code>&lt;meta name=&quot;description&quot;&gt</code>"
+
+#: meta-seo-pack.php:1292
+msgid "Home page description"
+msgstr "Opis strony głównej"
+
+#: meta-seo-pack.php:1295
+msgid "You can use <code>%blog_name%</code> as a placeholder for Blog Name, and <code>%blog_desc%</code> for Blog Description (Tagline)."
+msgstr "Możesz użyć <code>%blog_name%</code> aby wstawić nazwę bloga, oraz <code>%blog_desc%</code> aby wstawić opis bloga."
+
+#: meta-seo-pack.php:1303
+msgid "Generate description from post"
+msgstr "Generuj opis z wpisu"
+
+#: meta-seo-pack.php:1306
+msgid "Generate value for <code>&lt;meta name=&quot;description&quot;&gt</code> tag from post excerpt (if entered) or post content"
+msgstr "Generuj wartość dla znacznika <code>&lt;meta name=&quot;description&quot;&gt</code> z wypisu (jeżeli jest podany) lub z treści wpisu"
+
+#: meta-seo-pack.php:1314
+msgid "Generate description from page"
+msgstr "Generuj opis ze strony"
+
+#: meta-seo-pack.php:1317
+msgid "Generate value for <code>&lt;meta name=&quot;description&quot;&gt</code> tag from page content"
+msgstr "Generuj wartość dla znacznika <code>&lt;meta name=&quot;description&quot;&gt</code> z treści strony"
+
+#: meta-seo-pack.php:1325
+msgid "Use attachment description"
+msgstr "Użyj opisu załącznika"
+
+#: meta-seo-pack.php:1328
+msgid "Use attachment description as value for <code>&lt;meta name=&quot;description&quot;&gt</code> tag"
+msgstr "Użyj opisu załącznika jako wartości dla znacznika <code>&lt;meta name=&quot;description&quot;&gt</code>"
+
+#: meta-seo-pack.php:1336
+msgid "Use category description"
+msgstr "Użyj opisu kategorii"
+
+#: meta-seo-pack.php:1339
+msgid "Use category description as value for <code>&lt;meta name=&quot;description&quot;&gt</code> tag"
+msgstr "Użyj opisu kategorii jako wartości dla znacznika <code>&lt;meta name=&quot;description&quot;&gt</code>"
+
+#: meta-seo-pack.php:1347
+msgid "Use tag description"
+msgstr "Użyj opisu tagu"
+
+#: meta-seo-pack.php:1350
+msgid "Use tag description as value for <code>&lt;meta name=&quot;description&quot;&gt</code> tag"
+msgstr "Użyj opisu tagu jako wartości dla znacznika <code>&lt;meta name=&quot;description&quot;&gt</code>"
+
+#: meta-seo-pack.php:1358
+msgid "Use taxonomy item description"
+msgstr "Użyj opisu elementu taksonomii"
+
+#: meta-seo-pack.php:1361
+msgid "Use taxonomy item description as value for <code>&lt;meta name=&quot;description&quot;&gt</code> tag"
+msgstr "Użyj opisu elementu taksonomii jako wartości dla znacznika <code>&lt;meta name=&quot;description&quot;&gt</code>"
+
+#: meta-seo-pack.php:1402
+msgid "Multi-paged description format"
+msgstr "Format opisu dla podstron"
+
+#: meta-seo-pack.php:1406
+msgid "Subsequent pages of post archives and post/page content should have different descriptions in order to avoid duplicated description problem. Use <code>%description%</code> as a placeholder for generated description, and <code>%n%</code> for page number."
+msgstr "Kolejne strony archiwum wpisów oraz wpisów/stron powinny mieć inne opisy aby uniknąć problemu powielonych meta opisów. Użyj znacznika <code>%description%</code> aby wstawić wygenerowany opis, oraz <code>%n%</code> aby wstawić numer strony."
+
+#: meta-seo-pack.php:1414
+msgid "Multi-paged description format for comments"
+msgstr "Format opisu dla postron komentarzy"
+
+#: meta-seo-pack.php:1418
+msgid "Similar to option above, but for comment pages. Use <code>%description%</code> and <code>%n%</code> here too."
+msgstr "Podobnie jak opcja powyżej, ale dla podstron komentarzy. Tutaj także użyj <code>%description%</code> i <code>%n%</code>."
+
+#: meta-seo-pack.php:1423
+msgid "Meta Robots tag:"
+msgstr "Znacznik Meta Robots:"
+
+#: meta-seo-pack.php:1427
+msgid "Add <code>&lt;meta name=&quot;robots&quot;&gt</code> tag"
+msgstr "Dodaj znacznik <code>&lt;meta name=&quot;robots&quot;&gt</code>"
+
+#: meta-seo-pack.php:1436
+msgid "Do not allow to use description from DMOZ (ODP)"
+msgstr "Nie pozwalaj na używanie opisów z DMOZ (ODP)"
+
+#: meta-seo-pack.php:1439
+msgid "Do not allow search engines to use description from DMOZ (ODP) as page description (supported by Google, Yahoo! and Bing)"
+msgstr "Nie pozwalaj wyszukiwarkom na używane opisów z DMOZ (ODP) jako opisu strony (wspierane przez Google, Yahoo! i Bing)"
+
+#: meta-seo-pack.php:1445
+msgid "Do not allow to use description from Yahoo! Directory"
+msgstr "Nie pozwalaj na używanie opisów z Yahoo! Directory"
+
+#: meta-seo-pack.php:1448
+msgid "Do not allow search engines to use description from Yahoo! Directory as page description (supported by Yahoo! only)"
+msgstr "Nie pozwalaj wyszukiwarkom na używanie opisów z Yahoo! Directory jako opisu strony (wspierane tylko przez Yahoo!)"
+
+#: meta-seo-pack.php:1456
+msgid "Do not index subpages of Front Page"
+msgstr "Nie indeksuj podstron strony głównej"
+
+#: meta-seo-pack.php:1459
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for subpages of Front Page (not recommended)"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla podstron strony głównej (niezalecane)"
+
+#: meta-seo-pack.php:1489
+msgid "Do not index attachments"
+msgstr "Nie indeksuj załączników"
+
+#: meta-seo-pack.php:1492
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for attachment pages (not recommended)"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla stron załączników (niezalecane)"
+
+#: meta-seo-pack.php:1500
+msgid "Do not index categories"
+msgstr "Nie indeksuj kategorii"
+
+#: meta-seo-pack.php:1503
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for category pages (not recommended)"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla stron kategorii (niezalecane)"
+
+#: meta-seo-pack.php:1511
+msgid "Do not index tags"
+msgstr "Nie indeksuj tagów"
+
+#: meta-seo-pack.php:1514
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for tag pages"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla stron tagów"
+
+#: meta-seo-pack.php:1522
+msgid "Do not index custom taxonomies"
+msgstr "Nie indeksuj własnych taksonomii"
+
+#: meta-seo-pack.php:1525
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for custom taxonomy pages"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla stron własnych taksonomii"
+
+#: meta-seo-pack.php:1533
+msgid "Do not index day/month/year archives"
+msgstr "Nie indeksuj archiwów dni/miesięcy/lat"
+
+#: meta-seo-pack.php:1536
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for day/month/year archive page"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla stron archiwów dni/miesięcy/lat"
+
+#: meta-seo-pack.php:1544
+msgid "Do not index author posts page"
+msgstr "Nie indeksuj listy wpisów autora"
+
+#: meta-seo-pack.php:1547
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for author posts page"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla strony wpisów autora"
+
+#: meta-seo-pack.php:1555
+msgid "Do not index search results"
+msgstr "Nie indeksuj wyników wyszukiwania"
+
+#: meta-seo-pack.php:1558
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for search results page"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla stron wyników wyszukiwania"
+
+#: meta-seo-pack.php:1577
+msgid "Do not index subpages of multipage comments"
+msgstr "Nie indeksuj podstron wielostronicowych komentarzy"
+
+#: meta-seo-pack.php:1580
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag for subpages of multipage comments (not recommended)"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> dla podstron wielostronicowych komentarzy (niezalecane)"
+
+#: meta-seo-pack.php:1584
+msgid "Feeds (RSS, Atom, etc.):"
+msgstr "Kanały (RSS, Atom, itp.):"
+
+#: meta-seo-pack.php:1588
+msgid "Do not index feeds"
+msgstr "Nie indeksuj kanałów"
+
+#: meta-seo-pack.php:1591
+msgid "Add <code>noindex,follow</code> to <code>&lt;meta name=&quot;robots&quot;&gt</code> tag and send as value of <code>X-Robots-Tag</code> HTTP Header for feeds (RSS, Atom, etc.)"
+msgstr "Dodaj <code>noindex,follow</code> do znacznika <code>&lt;meta name=&quot;robots&quot;&gt</code> i wyślij jako wartość nagłówka HTTP <code>X-Robots-Tag</code> dla kanałów (RSS, Atom, itp.)"
+
+#: meta-seo-pack.php:1596
+msgid "Canonical URLs:"
+msgstr "Adresy kanoniczne:"
+
+#: meta-seo-pack.php:1600
+msgid "Add <code>&lt;link rel=&quot;canonical&quot;&gt</code> tag"
+msgstr "Dodaj znacznik <code>&lt;link rel=&quot;canonical&quot;&gt</code>"
+
+#: meta-seo-pack.php:1608
+msgid "Nofollow links:"
+msgstr "Linki nofollow:"
+
+#: meta-seo-pack.php:1612
+msgid "Add to admin links"
+msgstr "Dodaj do linków do części administracyjnej"
+
+#: meta-seo-pack.php:1615
+msgid "Add <code>rel=&quot;nofollow&quot;</code> to Register/Login/Logout/Site Admin links"
+msgstr "Dodaj <code>rel=&quot;nofollow&quot;</code> do linków Zarejestruj się/Zaloguj się/Wyloguj się/Administracja stroną"
+
+#: meta-seo-pack.php:1620
+msgid "Other:"
+msgstr "Inne:"
+
+#: meta-seo-pack.php:1624
+msgid "Add link to Meta SEO Pack"
+msgstr "Dodaj link do strony Meta SEO Pack"
+
+#: meta-seo-pack.php:1627
+msgid "If you think that this plugin is great, you can give me a credit by checking this option.<br />You can also post information about Meta SEO Pack somewhere on your blog."
+msgstr "Jeżeli uważasz że to jest dobry plugin, możesz się zrewanżować zaznaczając tą opcję. <br />Możesz także umieścić informację o Meta SEO Pack'u na swoim blogu."
+
+#: meta-seo-pack.php:1635
+msgid "Save settings"
+msgstr "Zapisz ustawienia"
+
+#. Plugin Name of an extension
+msgid "Meta SEO Pack"
+msgstr "Meta SEO Pack"
+
+#. Plugin URI of an extension
+msgid "http://www.poradnik-webmastera.com/projekty/meta_seo_pack/"
+msgstr "http://www.poradnik-webmastera.com/projekty/meta_seo_pack/"
+
+#. Description of an extension
+msgid "Fine tune your WordPress blog for SEO: title rewriting, meta descriptions, tags, robots, canonical links and more.  Out-of-the-box settings are a good starting point for blogs."
+msgstr "Optymalizacja twojego WordPress'a pod SEO: przepisywanie tytułów, meta opisy, słowa kluczowe, robots, linki kanoniczne i nie tylko. Ustawienia domyślne są dobrym punktem wyjścia dla blogów."
+
+#. Author of an extension
+msgid "Daniel Fruyski"
+msgstr "Daniel Fruyski"
+
+#. Author URI of an extension
+msgid "http://www.poradnik-webmastera.com/"
+msgstr "http://www.poradnik-webmastera.com/"
+

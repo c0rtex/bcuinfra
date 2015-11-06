@@ -1,0 +1,4 @@
+#!/bin/sh
+
+curl --data "Lead priority=2&username=ncoa1&password=ncoapswd&first_name=Samantha&last_name=Huntley-Robinson&birthdate=1944-01-23&address_1=TestAddress&cit=SF&state_province=CA&zip_postal_code=94114&phone_number=(123)456-7890" https://ahnleads-qc.aon.com/create >curlResult
+

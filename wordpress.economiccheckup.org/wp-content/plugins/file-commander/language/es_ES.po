@@ -1,0 +1,218 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugin File Commander Plugin para WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-06 08:20+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dennis Hoppe\n"
+"Language-Team: Carlos Leyan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: t;t:2c,1\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../options-page.php:1
+msgid "Required user level"
+msgstr "Nivel de usuario Requerido"
+
+#: ../options-page.php:3
+msgid "User level"
+msgstr "Nivel de Usuario"
+
+#: ../options-page.php:5
+msgid "This is the minimum securitiy level a user has to have to use the file commander."
+msgstr "Este es el nivel de seguridad mínimo que debe tener un usuario para porder usar file commander"
+
+#: ../options-page.php:9
+msgid "Enable functions"
+msgstr "Activar funciones"
+
+#: ../options-page.php:12
+msgid "User can create folders."
+msgstr "El usuario puede crear directorios"
+
+#: ../options-page.php:17
+msgid "User can rename folders."
+msgstr "El usuario puede renombrar directorios"
+
+#: ../options-page.php:22
+msgid "User can delete folders."
+msgstr "El usuario puede eliminar directorios"
+
+#: ../options-page.php:27
+msgid "User can upload files."
+msgstr "El usuario puede subir archivos"
+
+#: ../options-page.php:32
+msgid "User can download files."
+msgstr "El usuario puede descargar archivos"
+
+#: ../options-page.php:37
+msgid "User can rename files."
+msgstr "El usuario puede renombrar archivos"
+
+#: ../options-page.php:42
+msgid "User can delete files."
+msgstr "El usuario puede eliminar archivos"
+
+#: ../options-page.php:47
+msgid "User can see the modification time of files."
+msgstr "El usuario puede ver la hora de modificación de los archivos"
+
+#: ../options-page.php:52
+msgid "User can see the file size."
+msgstr "El usuario puede ver el tamaño de los archivos"
+
+#: ../wp-plugin-file-commander.php:52
+#: ../wp-plugin-file-commander.php:69
+msgid "File Commander Options"
+msgstr "Opciones de File Commander"
+
+#: ../wp-plugin-file-commander.php:53
+#: ../wp-plugin-file-commander.php:259
+#: ../wp-plugin-file-commander.php:260
+#: ../wp-plugin-file-commander.php:277
+msgid "File Commander"
+msgstr "File Commander"
+
+#: ../wp-plugin-file-commander.php:141
+msgid "The new folder was created successfully."
+msgstr "Se ha creado un directorio correctamente"
+
+#: ../wp-plugin-file-commander.php:147
+msgid "Could not create the new folder."
+msgstr "No puedo crear un nuevo directorio"
+
+#: ../wp-plugin-file-commander.php:160
+msgid "The folder was renamed successfully."
+msgstr "El directorio fue renombrado exitosamente"
+
+#: ../wp-plugin-file-commander.php:165
+msgid "Could not rename the folder."
+msgstr "No puedo renombrar el directorio"
+
+#: ../wp-plugin-file-commander.php:177
+#, php-format
+msgid "The folder \"%s\" was deleted successfully."
+msgstr "El directorio  \"%s\" fué eliminado exitosamente."
+
+#: ../wp-plugin-file-commander.php:182
+#, php-format
+msgid "Could not delete the folder \"%s\"."
+msgstr "No puedo eliminar el directorio \"%s\"."
+
+#: ../wp-plugin-file-commander.php:200
+msgid "Could not copy all files successfully."
+msgstr "No pude copiar todos los archivos exitosamente "
+
+#: ../wp-plugin-file-commander.php:205
+msgid "All files uploaded."
+msgstr "Se han cargado los archivos"
+
+#: ../wp-plugin-file-commander.php:229
+msgid "The file was renamed successfully."
+msgstr "El archivo fué renombrado exitosamente"
+
+#: ../wp-plugin-file-commander.php:234
+msgid "Could not rename the file."
+msgstr "No puedo renombrar el archivo"
+
+#: ../wp-plugin-file-commander.php:246
+#, php-format
+msgid "The file \"%s\" was deleted successfully."
+msgstr "El archivo  \"%s\"  fué eliminado exitosamente"
+
+#: ../wp-plugin-file-commander.php:251
+#, php-format
+msgid "Could not delete the file \"%s\"."
+msgstr "No puedo elimiar el archivo  \"%s\" "
+
+#: ../interface.php:16
+msgid "Are you sure you want to delete this folder?"
+msgstr "¿Está seguro que quiere eliminar este directorio?"
+
+#: ../interface.php:17
+msgid "Are you sure you want to delete this file?"
+msgstr "¿Está seguro que quiere eliminar este archivo?"
+
+#: ../interface.php:31
+msgid "You are here"
+msgstr "Usted está aquí"
+
+#: ../interface.php:36
+msgid "&uArr; Upward"
+msgstr "&uArr; Arriba"
+
+#: ../interface.php:41
+msgid "Folders"
+msgstr "Directorios"
+
+#: ../interface.php:48
+#: ../interface.php:63
+#: ../interface.php:99
+#: ../interface.php:116
+msgid "Rename"
+msgstr "Renombrar"
+
+#: ../interface.php:50
+#: ../interface.php:101
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../interface.php:52
+#: ../interface.php:103
+msgid "View in Browser"
+msgstr "Ver en el navegador"
+
+#: ../interface.php:61
+msgid "New name for this folder"
+msgstr "Nuevo nombre para este directorio"
+
+#: ../interface.php:70
+msgid "Create folder"
+msgstr "Crear Directorio"
+
+#: ../interface.php:74
+msgid "Name of the new folder"
+msgstr "Nombre del nuevo directorio"
+
+#: ../interface.php:76
+msgid "Create"
+msgstr "Crear"
+
+#: ../interface.php:82
+msgid "Files"
+msgstr "Archivos"
+
+#: ../interface.php:95
+msgctxt "Dateformat for the file modification time."
+msgid "F d Y H:i:s"
+msgstr "d F Y H:i:s"
+
+#: ../interface.php:105
+msgid "Download"
+msgstr "Descargar"
+
+#: ../interface.php:114
+msgid "New name for this file"
+msgstr "Nuevo nombre para este archivo"
+
+#: ../interface.php:123
+msgid "Upload file"
+msgstr "Cargar archivo"
+
+#: ../interface.php:128
+msgid "Please choose a file"
+msgstr "Por favor escoja un archivo"
+
+#: ../interface.php:131
+msgid "All already existing files will be overwritten!"
+msgstr "¡Todos los archivos existentes serán sobreescritos!"
+
+#: ../interface.php:132
+msgid "Upload"
+msgstr "Cargar"
+

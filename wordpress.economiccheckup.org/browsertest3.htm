@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MedicareQuickCheck</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="en-US" />
+	<meta name="lang" content="en" />
+	<meta name="description" content="MedicareCheckUp helps you find benefit programs that can help pay for medications, health care, food, utilities and more. All from a reliable and trusted source." />
+	<meta name="keywords" content="benefit programs, prescription drug assistance, Medicare Part D, extra help, low income subsidy, LIS, Medicare Savings Programs, QMB, SLMB, QI, nutrition, food stamps, SNAP, supplemental nutrition assistance program,  energy assistance, LIHEAP, tax relief, reverse mortgage, foreclosure counseling, housing assistance, in-home services, transportation, educational assistance, employment and volunteer services." />
+	<meta name="Copyright" content="Copyright NCOA 2013" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+        <script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/js/jquery-latest.js"></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
+        <script src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap-tooltip.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/wp-content/themes/bootswatch/js/scrolltofixed.js"></script>
+        <script src="/wp-content/themes/bootswatch/bootstrap/js/application.js"></script>
+	<script type="text/javascript" src="https://redesign.benefitscheckup.org/CFIDE/scripts/cfform.js"></script>
+		
+		<link rel="stylesheet" href="/cf/bootswatch/css/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+		<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+		<link href="/cf/bootswatch/bootstrap/css/mqc_style1.css" rel="stylesheet">
+       	 	<link href="/cf/bootswatch/bootstrap/css/bootstrap_mqc.css" rel="stylesheet">
+        	<link href="/cf/bootswatch/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+        
+       
+        
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/cf/bootswatch/bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+  <script>
+  $(document).ready(function(){
+    $("#commentForm").validate();
+  });
+  </script>
+
+<script type="text/javascript">
+        var _gaq = _gaq || [];
+         var pluginUrl = 
+        '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-44844277-1']);
+        _gaq.push(['_setDomainName', 'benefitscheckup.org']);  (ie benefitscheckup.org with NO WWW if that is the domain name )
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav">
+		<script>
+			$(document).ready(function() {
+		  	var sidebar = $('.sidebar-nav');
+		  	sidebar.scrollToFixed({
+			marginTop: $('.navbar').outerHeight(true) + 50,
+			zIndex: 999
+		  	});
+	
+		  	var body_headers = $('.body-header');              
+			body_headers.each(function(i) {
+			var body_header = $(body_headers[i]);
+			var next = body_headers[i + 1];
+	
+			body_header.scrollToFixed({
+				marginTop: $('.navbar').outerHeight(true) ,
+				limit: function() {
+				var limit = 0;
+				if (next) {
+					limit = $(next).offset().top + $(this).outerHeight(true);
+				} 
+				return limit;
+				},
+					zIndex: 999
+				});
+
+			
+
+				
+			}); 
+			// Define the function to validate the form on submission
+			function validateForm( inputs ) {
+				// Clear out all previous alerts
+				$('.alert').remove();
+				var validated = 1;
+				
+				// Begin to check which fields need to filled in
+				jQuery.each( inputs, function( i, val ) {
+					if( $( "#" + i ).val() == '') {
+			  		$( "#" + i ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>' + val + '</strong> is a required field.</div>');
+			  		validated = 0;
+			  	};
+				});
+			}
+			
+			
+		
+		
+			// Start the validation on form submission
+			$('#mqcForm').submit(function() {
+				// Create an array of input IDs and their names for fields that cannot be blank
+				var inputs = { "select_mqc_client": "Form Completion", "mqc_zipcode": "Zip Code", "mqc_birth_month": "Birth Month", "mqc_birth_year": "Birth Year", "mqc_birth_day": "Birth Day", "select_mqc_marital": "Marital Status" };
+			
+				
+
+				validateForm( inputs );
+				
+				// Validate specific input parameters
+				if( $('#mqc_zipcode').val().length != 5 ) {
+					$( "#mqc_zipcode" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>Zip Code</strong> must be 5 digits</div>');
+			  	validated = 0;
+				}
+				
+				if( $('input:radio[name=mqc_outofpocket]:checked').val() == null) {
+					$( "#mqc_outofpocket" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>This field</strong> is required</div>');
+			  	validated = 0;
+				}
+			
+				
+
+				if( $('input:radio[name=mqc_coveragesatisfaction]:checked').val() == null) {
+					$( "#mqc_coveragesatisfaction" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>This field</strong> is required</div>');
+			  	validated = 0;
+				}
+	
+				if( $('input:radio[name=mqc_medicarecoverage]:checked').val() == null) {
+					$( "#mqc_medicarecoverage" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>This field</strong> is required</div>');
+			  	validated = 0;
+				}
+
+                                if ($("input:checkbox[id=mqc_receivingrrb]:checked").val() == null && $("input:checkbox[id=mqc_receivingrrb]:checked").val() == null && $("input:checkbox[id=mqc_receivingtricare]:checked").val() == null && $("input:checkbox[id=mqc_recvetben]:checked").val() == null && $("input:checkbox[id=mqc_govben]:checked").val() == null && $("input:checkbox[id=mqc_livenursingfacility]:checked").val() == null && $("input:checkbox[id=mqc_renaldisease]:checked").val() == null && $("input:checkbox[id=mqc_als]:checked").val() == null && $("input:checkbox[id=mqc_noneofabove]:checked").val() == null) {
+					$( "#mqc_situation" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> Please check at least one checkbox</div>');
+
+			  	validated = 0;
+}
+                                if (($("input:checkbox[id=mqc_receivingrrb]:checked").val() != null || $("input:checkbox[id=mqc_receivingrrb]:checked").val() != null || $("input:checkbox[id=mqc_receivingtricare]:checked").val() != null || $("input:checkbox[id=mqc_recvetben]:checked").val() != null || $("input:checkbox[id=mqc_govben]:checked").val() != null || $("input:checkbox[id=mqc_livenursingfacility]:checked").val() != null || $("input:checkbox[id=mqc_renaldisease]:checked").val() != null || $("input:checkbox[id=mqc_als]:checked").val() != null) && $("input:checkbox[id=mqc_noneofabove]:checked").val() != null) {
+					$( "#mqc_situation" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> Please select "None of these apply to me" only if you have not selected anything else"</div>');
+
+			  	validated = 0;
+}
+
+
+if( $('input:radio[name=mqc_medicare]:checked').val() == 'n'){
+					$( "#tr_mqc_medicare" ).before('<div class="alert alert-danger"><i class="icon-warning-sign"></i> This Medicare QuickCheck tool is currently only available for people who have Medicare. <a target="_new" href="https://qa.mymedicarematters.org/AboutMedicare/new-to-medicare-advice-for-your-situation/">Learn more </a> about enrolling in Medicare for the first time and get help selecting your coverage.</div>');
+validated = 0;
+
+}
+//console.log("Medicare" + $('input:radio[name=mqc_medicare]:checked').val());
+//console.log("Validated" + validated);
+				
+				if(validated == 0) {
+					// Do not submission if the form fails validation
+					$(".alert-danger")[0].scrollIntoView(true);
+					$("#basics .well").prepend('<div class="alert alert-danger"><i class="icon-warning-sign"></i> We\'re sorry, but some responses are missing or were completed incorrectly. Please correct the problems where indicated below.</div>');
+					return false;	
+				}	
+			});
+		  });
+
+		</script>
+		<div class="container-fluid">
+        	<div id="header">
+	            <div id="header_logo">
+	              <a href="http://qa.mymedicarematters.org" target="_blank"><img src="https://esidtc.benefitscheckup.org/cf/images/my_medicare_matters_logo.png" alt="My Medicare Matters" title="My Medicare Matters"></a>
+	            </div>
+	          </div>
+            <div class="content row-fluid">
+            	<div class="row-fluid" id="outercontainer">
+
+<div id="page" class="subpage layout-default"><!-- "page" id should remain on every page, swap or extend the "layout-default" class for alternate layouts (class="subpage layout-noRightCol" or class="forum layout-default" -->
+
+<div id="content" class="span12">
+   			
+<!-- If page is not home page, show page_wrapper -->
+     <div class="page_wrapper">
+			
+<script language='javascript'>
+	function lookup(i) {
+    	var d =open(i, 'Glossary', 'width=400,height=300,status=no,toolbar=no,menubar=no');
+	}
+</script>
+     <div class='span8'>  
+	<section id='factsheet'>  	
+        <div class='body-header-wrapper'>	<h2><i class='icon-book '></i> Fact Sheet </h2>	
+            <div class='body-header' style='z-index: 999; position: static; top: 251.5px;'>
+                <div class='body-header-inner'>
+                    <div class=''>
+                            
+                    </div>
+                </div>
+            </div>
+            <div style='display: none; width: 620px; height: 0px; float: none;'></div>
+        </div>
+        <div class=''>
+            <h4></h4>
+        </div>
+        <div class=''>
+            <form class='whitewell'>
+                <fieldset>
+                    <legend><i class='icon-list-alt '></i> Medicaid</legend>                       
+
+<section id='howhelp'>
+                        <div class='clearfix'>
+                                <p><h4><i class="icon-question-sign "></i> How can this program help me?</h4><br />
+Medicaid is a health insurance program paid for by the Federal and state governments.  The program helps make health care affordable for people who are elderly, disabled, and/or blind.   Medicaid pays for medical services such as: 
+<ul><li>visits to healthcare providers (including physician and nurse practitioners) </li>
+<li>inpatient and outpatient hospital services </li>
+<li>prescription drug coverage (only available in certain cases)</li>
+<li>lab tests </li>
+<li>x-rays</li>
+<li>medical transportation </li>
+<li>nursing home care</li>
+<li>home health services </li>
+<li>family planning services </li></ul>
+
+To get program benefits, you should go to a healthcare provider that participates in the Medicaid program. <br />
+<br />
+
+<h4><i class="icon-user "></i> Can I apply? </h4><br />
+You may get help from the Medicaid program if you have limited income and resources.  Some resources such as your home, car, and certain portions of life insurance and burial accounts may not be counted when determining whether you meet the program guidelines.  <br />
+<br />
+If you are a U.S. citizen and meet the other program guidelines, you may get help from this program.  Some people who are not U.S. citizens may also take part in the program.  You should contact your local office for more information about the Medicaid program&#8217;s citizenship rules. <br />
+<br />
+
+<b> How does Medicare and Medicaid work together?</b><br />
+If you get Medicare, you also may be able to get help from Medicaid.   Medicaid pays for some services not covered by Medicare such as eyeglasses, hearing aids, and dental care.  It also pays for some Medicare co-payments and deductibles. <br />
+<br />
+In addition, if you enroll in both Medicare and Medicaid, you will be signed up for the Extra Help program through Medicare Prescription Drug Coverage.  This program helps people with limited income and resources pay for their medicines. <br />
+<br />If you have Medicare and Medicaid, you may want to consider getting your coverage through a Medicare Advantage Special Needs Plan (SNP).  This plan may help you by managing the healthcare services you need.  SNPs may also offer more benefits than what you already get from Original Medicare. In some cases, you may have no monthly premiums and/or you may pay lower co-payments.  However, all SNP plans are different so check with the plans to see if you can enroll and what the plans cover. It is also important to note that SNPs are not available in every community.  To find out if there is a SNP available in your area, please go to <A HREF="http://www.medicare.gov"target="_blank"> www.medicare.gov</A> or call 1-800-MEDICARE (1-800-633-4227) or 1-877-486-2048 (TTY).<br /><br />
+<h4><i class="icon-user "></i> How do I apply? </h4><br />
+To apply for this program, you can print and fill out the application form and mail it to your local office.</p>
+                        </div>
+</section>
+ <section id="moreinfo">
+                                                 
+
+    	
+	
+     
+             
+        
+   	
+   		
+   		
+		
+		
+		
+		
+
+		
+		
+        
+    	
+    	
+        
+        
+        
+        
+    	
+        
+        
+			
+            
+            
+        
+        
+		
+        
+        
+		
+
+       
+	
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+        
+    
+    
+
+	
+	
+		
+	
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+	<h4><i class="None" ></i class='factSheetH2'></h4>
+    
+	<div id="frmDetails">
+		
+	
+	 
+	These are the offices that serve your county.  
+All program inquiries should be made through these offices.
+<a class='offices_link'  href="https://redesign.benefitscheckup.org/cf/offices.cfm?group_id=17&#038;program_id=579" 
+onClick="this.href='https://redesign.benefitscheckup.org/cf/dispatch.cfm?cfid=6133&#038;cftoken=56031025&#038;source_id=0&#038;org_id=0&#038;partner_id=0&#038;subset_id=0&#038;group_id=17&#038;program_id=579&#038;bcu_url=https%3A%2F%2Fredesign%2Ebenefitscheckup%2Eorg%2Fcf%2Foffices%2Ecfm%3Fgroup%5Fid%3D17%26program%5Fid%3D579';">
+Click here</a> to see all 76 offices located in New York.
+<div class="entry_point">
+<span class="epName">Gouverneur Hospital Medicaid Office</span><br />
+227 Madison Street, 7th Floor<br />New York, NY 10002<br />Toll-Free: (888) 692-6116 or (877) 472-8411 (Infoline)<br />Phone: (212) 238-7790<br /></div>
+<div class="entry_point">
+
+<span class='strong'>Bellevue Hospital Medicaid Office</span>
+<br />462 First Avenue, G Link, Ground Floor<br />New York, NY 10016<br />Toll-Free: (888) 692-6116 or (877) 472-8411 (Infoline)<br />Phone: (212) 679-7424<br /></div>
+<div class="entry_point">
+
+<span class='strong'>Metropolitan Hospital Medicaid Office</span><br />1901 First Avenue, 1st Floor, Room 1D-27<br />
+New York, NY 10029<br />Toll-Free: (888) 692-6116 or (877) 472-8411 (Infoline)<br />Phone: (212) 423-7006
+</div>
+
+	
+	
+	
+		
+		
+</section>
+
+    			<section id="materials">
+                        <div class="clearfix">
+                            <label for="xlInput"><h4><i class="icon-check "></i> Please be prepared to have the following materials available:</h4>
+                                <p>(Click on the links below to view examples.)
+                                	<div class="nav nav-list">
+                                        <ul>
+		<li><a data-content="Birth Certificate, Driver's License, State Issued Non-Drivers' I.D. Card, Marriage Certificate with D.O.B., Immigration or Naturalization Certificate,  Hospital Certificate of Birth, Medicaid Card, or U.S. Passport" html="true" data-html="true" title="" data-toggle="popover" class="" href="#" data-original-title="Proof of Age">Proof of Age</a></li>
+
+		<li><a data-content="&lt;b&gt;INCOME:&lt;/b&gt; Current Wage Stubs, Letter from Employer, Income Tax Return, Business Records, Current Unemployment Check, Bank Statements, Credit Union Records, Family Court Records, Social Security Benefits Statement, or Veterans Administration Benefit Check&lt;br&gt;&lt;br&gt;
+
+&lt;b&gt;RESOURCES:&lt;/b&gt; Bank Records, Credit Union Records, Stock &amp; Bond Certificates, Trust Fund Agreements, Deeds, Life Insurance Policy, Burial Fund Records, Motor Vehicle Registration or Title" html="true" data-html="true" title="" data-toggle="popover" class="" href="#" data-original-title="Proof of Income and Resources">Proof of Income and Resources</a></li>
+
+		<li><a data-content="Birth Certificate, Hospital Records, Military Service Records, USCIS Documentation, U.S. Passport, Naturalization Certificate, or Citizenship Papers" html="true" data-html="true" title="" data-toggle="popover" class="" href="#" data-original-title="Proof of U.S. Citizenship or Legal Resident">Proof of U.S. Citizenship or Legal Resident</a></li>
+
+		<li><a data-content="Hospital Records and Bills, Home Care Bills, Insurance Bills,  Medicaid Statement, Records and Bills from Healthcare Provider, Hearing Aid Receipt, or Eye Glasses Receipt" html="true" data-html="true" title="" data-toggle="popover" class="" href="#" data-original-title="Medical Proof of Disability or Blindness (If Applicable)">Medical Proof of Disability or Blindness (If Applicable)</a></li>
+
+		<li><a data-content="State Tax Return, Driver's License or State I.D. Card, Current Rent Receipt, Recent Utility Bill in Your Name, Statement from Non-Relative Landlord, Real Estate Tax Bill, Copy of Current Lease, Mortgage Records and Book, or Current Mail" html="true" data-html="true" title="" data-toggle="popover" class="" href="#" data-original-title="Proof of State Residency">Proof of State Residency</a></li>
+                                  </ul>
+					</div>
+                                </p>
+				</label>
+                        </div>
+			</section>
+
+<section id="appforms">
+                    	<div class="clearfix">
+                        	<label for="xlInput"><h4><i class="icon-file-alt "></i> Application Forms</h4>
+                                <p>Click below to get the application and/or document(s) for this program:
+                                    <div class="nav nav-list">
+                                    	<ul>
+<li><a href="/forms/ny_mdcd_schip_english.pdf" target="_blank">Application Form in English (Health Care Coverage Only)</a></li><li><a href="/forms/ny_mdcd_schip_instructions.pdf" target="_blank">Instructions in English (Health Care Coverage Only)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_english.pdf" target="_blank">Application Form in English (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_english.pdf" target="_blank">Instructions in English (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_schip_spanish.pdf" target="_blank">Application Form in Spanish (Health Care Coverage Only)</a></li><li><a href="/forms/ny_mdcd_schip_spanish_instructions.pdf" target="_blank">Instructions in Spanish (Health Care Coverage Only)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_spanish.pdf" target="_blank">Application Form in Spanish (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_spanish.pdf" target="_blank">Instructions in Spanish (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_arabic.pdf" target="_blank">Application Form in Arabic (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_arabic.pdf" target="_blank">Instructions in Arabic (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_chinese.pdf" target="_blank">Application Form in Chinese (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_chinese.pdf" target="_blank">Instructions in Chinese (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_haitian_creole.pdf" target="_blank">Application Form in Haitian Creole (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_haitian_creole.pdf" target="_blank">Instructions in Haitian Creole (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_italian.pdf" target="_blank">Application Form in Italian (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_italian.pdf" target="_blank">Instructions in Italian (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_application_russian.pdf" target="_blank">Application Form in Russian (Multi-Program)</a></li><li><a href="/forms/ny_mdcd_msp_fs_instructions_russian.pdf" target="_blank">Instructions in Russian (Multi-Program)</a></li> 
+                                    	</ul>
+                                    </div>
+                             	</p>
+                            </label>
+                        </div>
+                    </section>
+				                   
+                </fieldset>
+            </form>
+        </div>
+    </section>
+</div> <!--span8-->
+
+<div class="span3">
+   	<div class="well sidebar-nav" >
+        <legend><i class="icon-list-alt "></i> Your Fact Sheet</legend>
+        <ol class="nav nav-list">
+            <li class=""><a href="#howhelp"><i class="icon-question-sign "></i> General Information </a></li>
+            <li class=""><a href="#moreinfo"><i class="icon-building "></i> Offices </a></li>
+	     	<li class=""><a href="#materials"><i class="icon-check "></i> Required Materials </a></li>
+	     <li class=""><a href="#appforms"><i class="icon-file-alt "></i> Application Form(s) </a></li>
+        </ol><br />
+        <legend><i class="icon-file-alt "></i> Resources</legend>
+        <ol class="nav nav-list">
+	     <li><a href="http://www.health.state.ny.us/health_care/medicaid/index.htm" target="_blank"><i class="icon-link "></i> Program Website </a></li>            <li><a data-toggle="modal" role="button" href="#printable"><i class="icon-print "></i> Printable Fact Sheet </a></li>            <li><a data-toggle="modal" role="button" href="/mqc-results?screeningID=5024207&#038;shadowID=5024208"><i class="icon-circle-arrow-left "></i> Back to Your Report </a></li>
+        </ol>		
+    </div>	  
+</div>
+	
+	
+
+<!-- If page is not home page, show page_wrapper --> 
+      </div><!--end page_wrapper -->
+
+</div><!-- end content -->
+
+</div></div>
+		
+</div>
+
+<div class="span9" id="footer_div">
+
+		    <div id="footer_logo">
+		        <a target="_new" href="http://www.ncoa.org/"><img src="/cf/images/ncoa_logo.png" alt="NCOA" title="NCOA"></a>
+		    </div>
+
+		    <div id="footer_right">
+		        <ul id="footer_links">
+		            <li>
+		                <a target="_new" href="https://qa.mymedicarematters.org/about/">About This Site</a>
+		            </li>
+		            <li class="footer_divider">|</li>
+		            <li>
+		                <a target="_new" href="https://qa.mymedicarematters.org/privacy-policydisclaimers/">Privacy Policy</a>
+		            </li>
+		            <li class="footer_divider">|</li>
+		            <li>
+		                <a target="_new" href="https://qa.mymedicarematters.org/get-help/contact-us/">Contact Us</a>
+		            </li>
+		            <li class="footer_divider">|</li>
+		            <li>
+		                <a target="_new" href="https://qa.mymedicarematters.org/get-help/faq/">FAQs</a>
+		            </li>
+		            <li class="footer_divider">|</li>
+		            <li>
+		                <a target="_new" href="https://qa.mymedicarematters.org/get-help/glossary/">Glossary</a>
+		            </li>
+		        </ul>
+
+		        <ul id="socialnetwork_links">
+		            <li>
+		                <a target="_new" href="https://www.facebook.com" id="facebook_link"></a>
+		            </li>
+		            <li>
+		                <a target="_new" href="https://www.twitter.com" id="twitter_link"></a>
+		            </li>
+		            <li>
+		                <a target="_new" href="https://www.pinterest.com" id="pinterest_link"></a>
+		            </li>
+		            <li>
+		                <a target="_new" href="https://www.mysocialnetwork.com" id="socialnetwork_link"></a>
+		            </li>
+		        </ul>
+		    </div>
+		</div><!-- #footer -->           
+<!-- MQC Tracking Code QA -->
+
+</body>
+</html></div></div></div>
+
+
+
