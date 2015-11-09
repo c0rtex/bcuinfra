@@ -288,11 +288,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <div id="main-nav">
 	<ul id="home">
-	<li id="esi-home"><a href="http://qa.economiccheckup.org/">Home</a></li>
-	<li id="esi-findhelp"><a href="http://qa.economiccheckup.org/esi-questions/" class="">My&nbsp;CheckUp</a></li>
-	<li id="esi-benefits"><a href="http://qa.economiccheckup.org/esi-find-help/"<cfif highlightFindBenefits IS 'yes'> class="current_tab"</cfif>>Resources</a></li>
-	<li id="esi-findfood"><a href="http://qa.economiccheckup.org/esi-about/" class="">About&nbsp;Us</a></li>
-	<li id="esi-taxrelief"><a href="http://qa.economiccheckup.org/esi-news/">News</a></li>
+	<li id="esi-home"><a href="http://www.economiccheckup.org/">Home</a></li>
+	<li id="esi-findhelp"><a href="http://www.economiccheckup.org/esi-questions/" class="">My&nbsp;CheckUp</a></li>
+	<li id="esi-benefits"><a href="http://www.economiccheckup.org/esi-find-help/"<cfif highlightFindBenefits IS 'yes'> class="current_tab"</cfif>>Resources</a></li>
+	<li id="esi-findfood"><a href="http://www.economiccheckup.org/esi-about/" class="">About&nbsp;Us</a></li>
+	<li id="esi-taxrelief"><a href="http://www.economiccheckup.org/esi-news/">News</a></li>
 	<li id="esi-about"><a href="http://www.ncoa.org/Donate" class="" target="_blank"">Donate</a></li>
 
 	</ul>
