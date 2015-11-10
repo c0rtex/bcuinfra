@@ -109,7 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		{
 			document.getElementById("menuButtonESITextForIE").setAttribute("style", "margin-left:5px;");
 			if($(window).width() <= 700)
-				document.getElementById("menuButtonESITextForIE").setAttribute("style","display:block;");
+				document.getElementById("esiMenuToggleButton").setAttribute("style","display:block;");
 		}
 	</script>
 	<div class="container" id="top-bar">
