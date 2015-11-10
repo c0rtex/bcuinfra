@@ -39,15 +39,15 @@ Template Name: ECU Revised page alternate layout (homepage)
                     
 <div class="row-fluid" style="clear:both">
 	<div class="span4">
-		<h4><a href="/protecting-yourself-from-scams-swindles/">Protect Yourself from Scams:</a></h4>
+		<h3><a href="/protecting-yourself-from-scams-swindles/">Protect Yourself from Scams:</a></h3>
 		<p>Discover how to avoid the most common scams targeting seniors</p>
 	</div>
 	<div class="span4">
-		<h4><a href="/money-management-tools/">Manage Your Money:</a></h4>
+		<h3><a href="/money-management-tools/">Money Saving Tips:</a></h3>
 		<p>Create a budget and see where to cut expenses</p>
 	</div>
 	<div class="span4">
-		<h4><a href="http://www.ncoajobsource.org/" target="_blank">Find Work:</a></h4>
+		<h3><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors:</a></h3>
 		<p>Define your skills, get training, and land a job</p>
 	</div>
 </div>

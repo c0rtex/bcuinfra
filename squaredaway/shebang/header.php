@@ -154,7 +154,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      	</div>
         <div id="header" class="container">
 	        <div class="span5" >
-	        	<a href="https://qa.economiccheckup.org/" ><img src="/wp-content/themes/shebang/_images/_logos/ECU-PNG-Logo-2015.png" 
+	        	<a href="http://www.economiccheckup.org/" ><img src="/wp-content/themes/shebang/_images/_logos/ECU-PNG-Logo-2015.png" 
 	        		title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp" id="logo"/></a><br><BR>
 	      	</div>
        	<div class="span7 statistics" id="logo" ><br>Since 2010, we’ve helped thousands of older adults find work, budget their money, 
@@ -178,11 +178,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	
 	<div id="main-nav" class="navbar row-fluid">
 		<ul id="home-nav" class="row-fluid">
-			<li id="esi-home" class="span2"><a class="<?php echo $_home; ?>" href="https://qa.economiccheckup.org/">Home</a></li>
-			<li id="esi-spq" class="span2"><a href="https://qa.economiccheckup.org/esi-questions" class="<?php echo $_spq; ?>">My&nbsp;CheckUp</a></li>
-		    <li id="esi-help" class="span2"><a href="https://qa.economiccheckup.org/esi-find-help" class="<?php echo $_help; ?>">Resources</a></li>
-			<li id="esi-about" class="span2"><a href="https://qa.economiccheckup.org/esi-about" class="<?php echo $_about; ?>">About Us</a></li>				
-			<li id="esi-news" class="span2"><a href="https://qa.economiccheckup.org/esi-news" class="<?php echo $_news; ?>">News</a></li>
+			<li id="esi-home" class="span2"><a class="<?php echo $_home; ?>" href="http://www.economiccheckup.org/">Home</a></li>
+			<li id="esi-spq" class="span2"><a href="http://www.economiccheckup.org/esi-questions" class="<?php echo $_spq; ?>">My&nbsp;CheckUp</a></li>
+		    <li id="esi-help" class="span2"><a href="http://www.economiccheckup.org/esi-find-help" class="<?php echo $_help; ?>">Resources</a></li>
+			<li id="esi-about" class="span2"><a href="http://www.economiccheckup.org/esi-about" class="<?php echo $_about; ?>">About Us</a></li>				
+			<li id="esi-news" class="span2"><a href="http://www.economiccheckup.org/esi-news" class="<?php echo $_news; ?>">News</a></li>
 			<li id="esi-donate" class="span2"><a href="http://www.ncoa.org/Donate" class="" target="_blank">Donate</a></li>
 		</ul>	
 	</div><!--end main nav --> 

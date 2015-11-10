@@ -13,16 +13,16 @@
             	<div id="bcu" class="span2 sites">
 					<h2>EconomicCheckUp:</h2>
 						<ul>
-							<li><a href="http://www.benefitscheckup.org/esi-questions">My CheckUp</a></li>
-							<li><a href="http://www.benefitscheckup.org/esi-find-help">Resources</a></li>
-							<li><a href="http://www.benefitscheckup.org/esi-about">About Us</a></li>
-							<li><a href="http://www.benefitscheckup.org/esi-news">News</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-questions">My CheckUp</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-find-help">Resources</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-about">About Us</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-news">News</a></li>
 							<li><a href="http://www.ncoa.org/Donate" target="_blank">Donate</a></li>
-							<li><a href="http://www.benefitscheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
-							<li><a href="http://www.benefitscheckup.org/esi-termsofuse/">Terms of Use</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-termsofuse/">Terms of Use</a></li>
 							<li><a href="http://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
 							<li><a href="mailto:economiccheckup@ncoa.org">Contact Us</a></li>
-							<li><a target =_blank href="https://oe.benefitscheckup.org/oe/?partner_id=77">Partner Login</a></li>
+							<li><a target =_blank href="https://oe.economiccheckup.org/oe/?partner_id=77">Partner Login</a></li>
 						</ul>
 				</div>
                 <div id="other" class="span2 sites">
@@ -30,7 +30,7 @@
 						<ul>
 
 <li><a target=_blank href="http://NCOA.org/">NCOA.org</a></li>
-<li><a target=_blank href="http://www.benefitscheckup.org/">BenefitsCheckUp&reg;</a></li>
+<li><a target=_blank href="http://www.economiccheckup.org/">BenefitsCheckUp&reg;</a></li>
 
 <li><a target=_blank href="http://www.mymedicarematters.org/">My Medicare Matters&reg;</a></li>
 
@@ -113,7 +113,7 @@ Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-2674020-8', 'benefitscheckup.org');
+  ga('create', 'UA-2674020-8', 'economiccheckup.org');
   ga('send', 'pageview');
 
 </script>

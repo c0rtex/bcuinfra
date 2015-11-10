@@ -13,16 +13,16 @@
             	<div id="bcu" class="span2">
 					<h2>EconomicCheckUp:</h2>
 						<ul>
-							<li><a href="https://qa.economiccheckup.org/esi-questions">My CheckUp</a></li>
-							<li><a href="https://qa.economiccheckup.org/esi-find-help">Resources</a></li>
-							<li><a href="https://qa.economiccheckup.org/esi-about">About Us</a></li>
-							<li><a href="https://qa.economiccheckup.org/esi-news">News</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-questions">My CheckUp</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-find-help">Resources</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-about">About Us</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-news">News</a></li>
 							<li><a href="http://www.ncoa.org/Donate" target="_blank">Donate</a></li>
-							<li><a href="https://qa.economiccheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
-							<li><a href="https://qa.economiccheckup.org/esi-termsofuse/">Terms of Use</a></li>
-							<li><a href="https://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-privacy-policy/">Privacy Policy</a></li>
+							<li><a href="http://www.economiccheckup.org/esi-termsofuse/">Terms of Use</a></li>
+							<li><a href="http://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
 							<li><a href="mailto:economiccheckup@ncoa.org">Contact Us</a></li>
-							<li><a target =_blank href="https://oeqa.economiccheckup.org/?partner_id=77">Partner Login</a></li>
+							<li><a target =_blank href="http://oe.economiccheckup.org/?partner_id=77">Partner Login</a></li>
 						</ul>
 				</div>
                 <div id="other" class="span2 sites">
@@ -57,9 +57,8 @@
 					<h2>About NCOA:</h2>
 						<ul>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/">Overview</a></li>
-							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/our-impact/">Our Impact</a></li>
+							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/our-impact/">Impact</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/leadership/">Leadership</a></li>
-							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/funders/">Funders</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/annual-report.html">Annual Report</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/careers/">Careers</a></li>
 							<li><a target="_blank" href="http://www.ncoa.org/about-ncoa/contact-us/">Contact Us</a></li>
@@ -117,7 +116,7 @@
     <script type="text/javascript" src="/wp-content/themes/shebang/bootstrap/js/bootstrap.js"></script>
     <!-- <script type="text/javascript" src="/wp-content/themes/shebang/bootstrap/js/bootstrap-tooltip.js"></script> -->
     <script type="text/javascript" src="/wp-content/themes/shebang/bootstrap/js/application.js"></script>
-	<script type="text/javascript" src="https://qa.economiccheckup.org/CFIDE/scripts/cfform.js"></script>
+	<script type="text/javascript" src="https://www.economiccheckup.org/CFIDE/scripts/cfform.js"></script>
 	<!-- REM - New links included from the SA header -->	 
 	<script type="text/javascript" src="http://use.typekit.com/kun2gxu.js"></script> 
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script> 
