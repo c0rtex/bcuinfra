@@ -157,9 +157,9 @@ $('input:checkbox[name=mqc_noneofabove]').prop("checked", false);
 
 
 </script>
-<script src="https://redesign.benefitscheckup.org/cf/ValidationFunctions.js"></script>
-<script src="https://redesign.benefitscheckup.org/cf/scripts.js"></script>
-<form name="esiForm" id="esiForm" action="https://redesign.benefitscheckup.org/cf/esiprocess.cfm" method="post" > 
+<script src="/cf/ValidationFunctions.js"></script>
+<script src="/cf/scripts.js"></script>
+<form name="esiForm" id="esiForm" action="https://www.benefitscheckup.org/cf/esiprocess.cfm" method="post" > 
 <?php require_once('section.php') ?>
 <div class="printButton">
 <?php
