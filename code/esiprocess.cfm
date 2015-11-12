@@ -4,6 +4,7 @@
 <cfparam name="badResponseList" type="string" default="">
 <cfparam name="session.screening.recap" default="0">
 <cfparam name="url.repop" default="false">
+<cfparam name="url.esiprod" default="0">
 <cfset session.reloadpage = "false">
 <cfset session.SCREENING.PGNO = 2>
 <cfset session.subset_id = 63>
@@ -259,11 +260,18 @@
 	<cfoutput><p>ScreeningID: #session.screening_id# badResponseList: #badResponseList#</p></cfoutput>
 	<cfabort>
   <cfelse>
+	<cfif url.esiprod eq 1>
+	<cfoutput><a href="https://preview.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
+  	<cfelse>
 	<cfoutput><a href="/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
-  </cfif>
+	</cfif>
 <cfabort>
 <cfelse>
 	<cfset tmpScreeningID = session.screening_id>
 	<cfinclude template="procESIShadowPHP.cfm">
-	<cfoutput><meta http-equiv="refresh" content="0;url=/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+	<cfif url.esiprod eq 1>
+	<cfoutput><meta http-equiv="refresh" content="0;url=https://preview.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+	<cfelse>
+		<cfoutput><meta http-equiv="refresh" content="0;url=/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+	</cfif>
 </cfif>
