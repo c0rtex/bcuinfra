@@ -264,7 +264,8 @@
 	<cfoutput><a href="https://preview.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	<cfelse>
 	<cfoutput><a href="/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
-	</cfif>
+  	</cfif>
+  </cfif>
 <cfabort>
 <cfelse>
 	<cfset tmpScreeningID = session.screening_id>
