@@ -37,9 +37,9 @@
   	     <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   	     <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   	<![endif]-->
-  	
-<title><?php bloginfo('name'); ?></title>
+  	<title><?php bloginfo('title'); ?></title>
 		<?php wp_head(); ?>
+
 <!--- Lynna Cekova: <title> after wp_head because otherwise the title is automatic from WP --->
 		
 		<?php //add most of this to enqueue during clean-up ?>
@@ -75,7 +75,7 @@ $("#logo.statistics").hide();
             <!-- move into mqc.js? only if it's used in the mqc files and not the ecu files -->
             <script src="<?php echo get_template_directory_uri(); ?>/application.js"></script>
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
-		<script src="https://www.benefitscheckup.org/cf/js/infinite-rotator.js" type="text/javascript"></script>
+		<script src="/cf/js/infinite-rotator.js" type="text/javascript"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/ecu_liveonly.js"></script>
 		
 	     <link rel="stylesheet" href="/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
@@ -103,8 +103,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 
-    <button id="esiMenuToggleButton" class="btn"><span class="menuButtonESIText">Menu</span> </i> </button>
-  	<div class="container" id="top-bar">
+    <button id="esiMenuToggleButton" class="btn"><span id="menuButtonESITextForIE" class="menuButtonESIText">Menu</span> </i> </button>
+  	<script type="text/javascript">
+		if(!(window.ActiveXObject) && "ActiveXObject" in window)
+		{
+			document.getElementById("menuButtonESITextForIE").setAttribute("style", "margin-left:5px;");
+			if($(window).width() <= 700)
+				document.getElementById("esiMenuToggleButton").setAttribute("style","display:block;");
+		}
+	</script>
+	<div class="container" id="top-bar">
     	<div class="row">
     		<div id="top-logo" class="span12">
   				<a target="_blank" href="http://www.ncoa.org"><img src="<?php echo get_template_directory_uri(); ?>/images/ncoa-logo-top.png" alt="National Council on Aging" title="National Council on Aging" alt="National Council on Aging" /></a>
