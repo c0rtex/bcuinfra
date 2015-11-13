@@ -25,7 +25,9 @@
 	<cfsavecontent variable="strSubHeading">
     <div style="clear:left;">
 	<div id="frmDetails">
+<cfif session.partner_id EQ 0>
 		<strong class="factSheetH2" style="margin:auto;">For further information about this program: </strong><br>
+</cfif>
 	
 	<!---<table cellpadding="0" cellspacing="0" border="0" <!---<cfif CGI.SCRIPT_NAME CONTAINS "frmdetails" AND URL.county EQ 'NEW YORK'>width="55%"<cfelse>width="100%"</cfif>--->>
 		<cfif attributes.suppressText IS false>
