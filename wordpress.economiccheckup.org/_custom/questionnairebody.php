@@ -28,7 +28,7 @@ seniors.
 <div class="span12">
 <div class="span8">  
 <?php 
-echo "QA".$QA;
+//echo "QA".$QA;
 require_once('displaycontent.php');
 
 //$screening_id = $_GET['Screening_id'];
