@@ -13,6 +13,7 @@
 		
 		<meta name="language" content="en-US" />
 		<meta name="lang" content="en" />
+<meta name="msvalidate.01" content="73FAF9EF809DEE2A8BAD7758DB4A3776" />
 
 		<!-- Google Chrome Frame for IE -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -39,6 +40,7 @@
 		  
         <title><?php bloginfo('title'); ?></title>
 		<?php wp_head(); ?>
+
 		
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>-->
 				  <?php //add most of this to enqueue during clean-up ?>
