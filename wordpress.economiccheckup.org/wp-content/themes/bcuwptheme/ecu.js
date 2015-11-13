@@ -7,7 +7,7 @@ console.log ("this script works at all");
 
 
 $(window).resize(function() {
-   //responsiveMenu ();
+   responsiveMenu ();
 });
 
 $("#esiMenuToggleButton").click(function(){
@@ -74,7 +74,7 @@ return false;
           
           var myVal = $(this).val();
           jQuery.ajax({
-          	url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
+          	url: '/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
             datatype:'json',
             data: 'zipcode='+myVal, 
             cache:false,
@@ -129,7 +129,7 @@ removeZipAlerts();
 				};
 				
 				jQuery.ajax({
-        	url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
+        	url: '/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
           datatype:'json',
           data: 'zipcode='+$(this).val()+'&state_id=NY', 
           cache:false,
