@@ -783,9 +783,10 @@ order by question_code, answerfield
 </cfinvoke> 
 <cfelseif request.subset_id eq 73>
 <cfset url.screeningId = request.screening_id >
-<cfinclude template="util/aon_submit.cfm">
+<!-- include template="util/aon_submit.cfm" -->
 <cfset status = aon_status>
-<cfoutput>#status#</cfoutput>
+<!-- AON Disabled -->
+<cfset status = ''>
 <cfset temp = #QuerySetCell(resultset, "screening_status", aon_status, rownum)#>
 </cfif>
 <cfif request.debug><cfoutput><h1>Screening Complete<br></h1></cfoutput></cfif>
