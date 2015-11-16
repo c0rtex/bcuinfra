@@ -1,0 +1,111 @@
+<cfparam name="id" type="numeric" default="0">
+<cfparam name="action" type="string" default="view">
+<cfparam name="saving" type="numeric" default="0">
+<cfparam name="linkname" type="string" default="">
+<cfparam name="linktable" type="string" default="">
+<cfparam name="linkcolumn" type="string" default="">
+<cfparam name="linkkeycolumn" type="string" default="">
+<cfparam name="linkid" type="any" default="">
+<cfparam name="linkaction" type="string" default="">
+<cfparam name="by" type="string" default="">
+<cfparam name="dir" type="string" default="asc">
+<cfparam name="page" type="numeric" default="1">
+<cfparam name="rows" type="numeric" default="50">
+
+<cf_deflect id="#id#" action="#action#" table="answerfield" key="answerfield_id" column="answerfieldtype_id" deflectValueList="13,14,15" deflectURLList="../rx/drug[[action]].cfm?brand_id=[[id]],../rx/generic[[action]].cfm?generic_id=[[id]],../rx/company[[action]].cfm?company_id=[[id]]">
+
+<cfif action eq 'view'>
+	<cf_checkAccess level="5">
+<cfelse>
+	<cf_checkAccess level="3">
+</cfif>
+
+<cf_buildPage title="Answerfield Administration" section="answerfield"><cfoutput>
+
+<cf_buildView table="answerfield" code="answerfield" key="#id#" action="#action#" saving="#saving#" title="Answerfield Data">
+	<cf_buildViewProperty column="answerfieldtype_id" input="select" references="answerfieldtype" condition="answerfieldtype_id not in (13, 14, 15)">
+	<cf_buildViewProperty column="answerfield" limit="64" case="lower" restriction="alphanumeric" visible="disableonedit">
+	<cf_buildViewProperty column="display_id" input="display" rows="4" group="answerfield" namefrom="answerfield" codefrom="answerfield">
+	<cf_buildViewProperty column="short_display_id" input="display" rows="1" group="afshort" namefrom="answerfield" codefrom="answerfield">
+	<cf_buildViewProperty column="spq_display_id" input="display" rows="3" group="afspq" namefrom="answerfield" codefrom="answerfield">
+	<cf_buildViewProperty column="print_display_id" input="display" rows="3" group="afprint" namefrom="answerfield" codefrom="answerfield">
+	<cf_buildViewProperty column="default_value" input="default" bindto="answerfieldtype_id" bindoptionskey="answerfield_id" limit="64" skipon="new">
+	<cf_buildViewProperty column="spq_default_value" input="default" bindto="answerfieldtype_id" bindoptionskey="answerfield_id" limit="64" skipon="new">
+	<cf_buildViewProperty column="oe_default_value" input="default" bindto="answerfieldtype_id" bindoptionskey="answerfield_id" limit="64" skipon="new">
+	<cf_buildViewProperty column="required_flag" input="flag" default="no">
+	<cf_buildViewProperty column="rx_required_flag" input="flag" default="no">
+	<cf_buildViewProperty column="rule_id" input="select" references="rule">
+	<cf_buildViewProperty column="validation_id" input="select" references="validation">
+	<cf_buildViewProperty column="state_id" input="select" references="state">
+	<cf_buildViewProperty column="answerfield_desc" input="textarea" limit="255">
+	<cf_buildViewProperty column="create_user_id" visible="false" user="this" skipon="edit">
+	<cf_buildViewProperty column="create_date" visible="false" input="date" skipon="edit">
+	<cf_buildViewProperty column="modify_user_id" visible="false" user="this">
+	<cf_buildViewProperty column="modify_date" visible="false" input="date">
+</cf_buildView>
+
+<cfif action eq 'view' or hasSaved>
+
+	<cf_buildList name="optionAssociate" table="option" code="option" title="Associated Options" key="#id#" crosstable="answerfield_option" crosscolumn="answerfield_id" crossvalue="#id#" crossorder="sort" crossreorderlink="answerfieldoptionorder.cfm?id=#id#&name=optionAssociate" linkname="#linkname#" linksection="answerfield" linktable="#linktable#" linkcolumn="#linkcolumn#" linkkeycolumn="#linkkeycolumn#" linkid="#linkid#" linkaction="#linkaction#">
+		<cf_buildListProperty column="display_id" display="display">
+		<cf_buildListProperty column="include_flag" display="yesno">
+		<cf_buildListProperty column="create_user_id" visible="false">
+		<cf_buildListProperty column="create_date" visible="false">
+		<cf_buildListProperty column="modify_user_id" visible="false">
+		<cf_buildListProperty column="modify_date" visible="false">
+	</cf_buildList>
+    
+    <cf_buildList name="questionAssociate" table="question" code="question" title="Associated Questions" key="#id#" crosstable="question_answerfield" crosscolumn="answerfield_id" crossvalue="#id#" crossorder="sort" crossreorderlink="answerfieldoptionorder.cfm?id=#id#&name=optionAssociate" linkname="#linkname#" linksection="question" linktable="#linktable#" linkcolumn="#linkcolumn#" linkkeycolumn="#linkkeycolumn#" linkid="#linkid#" linkaction="#linkaction#">
+			<cf_buildListProperty column="dep_question_id" visible="false">
+			<cf_buildListProperty column="questioncategory_id" references="questioncategory">
+			<cf_buildListProperty column="questionheader_id" visible="false">
+			<cf_buildListProperty column="questiontype_id" visible="false">
+			<cf_buildListProperty column="display_id" display="display">
+			<cf_buildListProperty column="short_display_id" visible="false">
+			<cf_buildListProperty column="spq_display_id" visible="false">
+			<cf_buildListProperty column="print_display_id" visible="false">
+			<cf_buildListProperty column="format_id" visible="false">
+			<cf_buildListProperty column="rule_id" visible="false">
+			<cf_buildListProperty column="include_flag" visible="false">
+			<cf_buildListProperty column="exclude_flag" visible="false">
+			<cf_buildListProperty column="suppress_qno_flag" visible="false">
+			<cf_buildListProperty column="spq_exclude_flag" visible="false">
+			<cf_buildListProperty column="sort" visible="false">
+			<cf_buildListProperty column="create_user_id" visible="false">
+			<cf_buildListProperty column="create_date" visible="false">
+			<cf_buildListProperty column="modify_user_id" visible="false">
+			<cf_buildListProperty column="modify_date" visible="false">
+		</cf_buildList>
+
+	<br />
+	<cf_buildList name="defaultAssociate" title="Screening-Specific Default Values" table="answerfield_subset_partner" code="answerfield" condition="asp.answerfield_id=#id#" order="subset_id, partner_id" orderlinks="false" view="false" editlink="answerfielddefaultedit.cfm?answerfield_id=[[answerfield_id]]&subset_id=[[subset_id]]&partner_id=[[partner_id]]&action=edit&name=defaultAssociate" delete="true" deletelink="answerfielddefaultdelete.cfm?answerfield_id=[[answerfield_id]]&subset_id=[[subset_id]]&partner_id=[[partner_id]]" reverseadd="true" reverseaddtable="subset" reverseaddcolumn="answerfield_id" reverseaddvalue="#id#" reverseaddlink="answerfielddefaultview.cfm?action=new" message="<strong>HINT:</strong>&nbsp; To add a default value, select a subset from the dropdown and click ""Add."" If you<br>want to add a general default value without selecting a subset, then just click ""Add.""">
+		<cf_buildListProperty column="answerfield_id" visible="false">
+		<cf_buildListProperty column="subset_id" references="subset">
+		<cf_buildListProperty column="partner_id" references="tbl_partner">
+		<cf_buildListProperty column="default_value" display="default">
+		<cf_buildListProperty column="background_flag" display="yesno">
+	</cf_buildList>
+
+	<cf_buildList title="Associated Programs" table="program" code="program" by="#by#" dir="#dir#" page="#page#" rows="#rows#" crosstable="view_program_answerfield" crosscolumn="answerfield_id" crossvalue="#id#" joincolumn="program_id" crossorder="program_id" crossadd="false" crossdelete="false" crossorderlinks="true" linksection="program" selflink="true" selflinkid="#id#">
+		<cf_buildListProperty column="programcategory_id" references="programcategory">
+		<cf_buildListProperty column="programgroup_id" references="programgroup">
+		<cf_buildListProperty column="name_display_id" display="display">
+		<cf_buildListProperty column="desc_display_id" visible="false">
+		<cf_buildListProperty column="url" visible="false">
+		<cf_buildListProperty column="exclude_flag" visible="false">
+		<cf_buildListProperty column="significant_flag" visible="false">
+		<cf_buildListProperty column="active_flag" visible="false">
+		<cf_buildListProperty column="funder_id" visible="false">
+		<cf_buildListProperty column="reference_id" visible="false">
+		<cf_buildListProperty column="notes" visible="false">
+		<cf_buildListProperty column="last_update" visible="false">
+		<cf_buildListProperty column="legacy_pri_sec" visible="false">
+		<cf_buildListProperty column="create_user_id" visible="false">
+		<cf_buildListProperty column="create_date" visible="false">
+		<cf_buildListProperty column="modify_user_id" visible="false">
+		<cf_buildListProperty column="modify_date" visible="false">
+	</cf_buildList>
+
+</cfif>
+
+</cfoutput></cf_buildPage>

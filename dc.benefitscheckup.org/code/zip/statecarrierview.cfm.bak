@@ -1,0 +1,44 @@
+<cfparam name="state" type="string" default=""> <!--- state --->
+<cfparam name="action" type="string" default="view">
+<cfparam name="saving" type="numeric" default="0">
+<cfparam name="linkname" type="string" default="">
+<cfparam name="linktable" type="string" default="">
+<cfparam name="linkcolumn" type="string" default="">
+<cfparam name="linkkeycolumn" type="string" default="">
+<cfparam name="linkid" type="any" default="">
+<cfparam name="linkaction" type="string" default="">
+<cfparam name="by" type="string" default="">
+<cfparam name="dir" type="string" default="asc">
+<cfparam name="page" type="numeric" default="1">
+<cfparam name="rows" type="numeric" default="50">
+
+<cfif action eq 'view'>
+	<cf_checkAccess level="5">
+<cfelse>
+	<cf_checkAccess level="3">
+</cfif>
+
+<cf_buildPage title="Subset Administration" section="stateCarrier"> <!--- the stateCarrier section is not registered --->
+
+
+<cfif action eq 'view' or hasSaved>
+
+	<br />
+
+
+         <cf_buildList view=false  name="stateCarrierAssociate" table="statecarrier" code="subset_content" title="List of Carriers by State" order="state_id, name" condition="state_id='#state#'" addlink="statecarrier_edit.cfm?state=#state#&action=new" editlink="statecarrier_edit.cfm?state=#state#&statecarrier_id=[[statecarrier_id]]&action=edit" delete="true" deletelink="statecarrier_delete.cfm?state=#state#&statecarrier_id=[[statecarrier_id]]"add=true>
+		<cf_buildListProperty column="display_id" display="display">
+		<cf_buildListProperty column="def_display_id" visible="false">
+		<cf_buildListProperty column="description" visible="false"> 
+	</cf_buildList>  
+
+		<br />
+
+		</cfif>
+
+
+
+
+
+
+</cf_buildPage>

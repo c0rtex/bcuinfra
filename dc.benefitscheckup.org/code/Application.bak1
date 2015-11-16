@@ -1,0 +1,39 @@
+<!--- Define the application parameters --->
+<cfapplication name="DataCollector"
+               clientmanagement="Yes"
+               sessionmanagement="Yes"
+               sessiontimeout="#CreateTimeSpan(0,1,0,0)#"
+               applicationtimeout="#CreateTimeSpan(1,0,0,0)#">
+			   
+<cfsetting showdebugoutput="yes">
+<cfparam name="application.dbSrc" default="BCU_TEST_DC">
+<cfparam name="application.dbSrcQA" default="BCU_DEV">
+<cfparam name="application.subsetsUseViews" default="true">
+<cfparam name="application.serverPathBCU" default="dc.benefitscheckup.org">
+<cfparam name="application.rootPathBCU" default="/var/www/redesign/dc.benefitscheckup.org/code">
+<cfparam name="application.rootSlash" default="/">
+<cfset application.maintenanceFlag = false>
+
+<cfset request.subsetsUseViews = application.subsetsUseViews>
+
+<CFPARAM NAME="session.transfertype" DEFAULT="http">
+<cfif CGI.HTTP_HOST eq 'data.hq.benefitscheckup.org'>
+	<CFPARAM NAME="session.serverpath" DEFAULT="#session.transfertype#://#CGI.HTTP_HOST#">
+<cfelse>
+	<CFPARAM NAME="session.serverpath" DEFAULT="#session.transfertype#://dc.benefitscheckup.org">
+</cfif>
+<CFPARAM NAME="session.added_dt" DEFAULT="now()">
+<CFPARAM NAME="session.mod_dt" DEFAULT="now()">
+<CFPARAM NAME="session.user_id" DEFAULT="0">
+<CFPARAM NAME="session.user" DEFAULT="">
+<CFPARAM NAME="session.usertype" DEFAULT="">
+<CFPARAM NAME="session.user_level" DEFAULT="">
+<CFPARAM NAME="session.level" DEFAULT="5">
+<cfparam name="session.email" default="true">
+
+<cfset website_url = "http://dc.benefitscheckup.org">
+<cfset website_path = "/var/www/redesign/dc.benefitscheckup.org/code">
+<cfset path_slash = "/">
+
+
+
