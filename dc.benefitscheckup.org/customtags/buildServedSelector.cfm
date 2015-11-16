@@ -109,12 +109,12 @@
 </cfquery>
 <cfquery name="served" datasource="#application.dbSrc#">
 	select #main.tag#.#main.keys#, #main.tag#.#main.name#, #main.tag#.valid
-	from `#cross.table#` #cross.tag#, `#main.table#` #main.tag#<cfif main.table eq 'city'><cfif limitByCounty>, zip z</cfif></cfif>
+	from `#cross.table#` #cross.tag#, `#main.table#` #main.tag#<cfif main.table eq 'city'>, view_city_zip_preferred vw<cfif limitByCounty>, zip z</cfif></cfif>
 	where #cross.tag#.entrypoint_id=#attributes.entrypoint_id#
 		and #cross.tag#.#attributes.crosscolumn#=#main.tag#.#attributes.crosscolumn#
 		and #main.tag#.state_id='#attributes.state_id#'
 		<cfif limitByCounty and main.table eq 'zip'>and #main.tag#.county_id='#attributes.county_id#'</cfif>
-		<cfif main.table eq 'city'>
+		<cfif main.table eq 'city'>and #main.tag#.city_id=vw.city_id
 				<cfif limitByCounty>and vw.zipcode=z.zipcode
 									and z.valid=1
 									and z.county_id='#attributes.county_id#'</cfif></cfif>
@@ -123,22 +123,22 @@
 </cfquery>
 <cfquery name="pool" datasource="#application.dbSrc#">
 	select #main.tag#.#main.keys#, #main.tag#.#main.name#
-	from `#main.table#` #main.tag#<cfif main.table eq 'city'><cfif limitByCounty>, zip z</cfif></cfif>
+	from `#main.table#` #main.tag#<cfif main.table eq 'city'>, view_city_zip_preferred vw<cfif limitByCounty>, zip z</cfif></cfif>
 	where #main.tag#.state_id='#attributes.state_id#'
 		and #main.tag#.valid=1
 		<cfif limitByCounty and main.table eq 'zip'>and #main.tag#.county_id='#attributes.county_id#'</cfif>
-		<cfif main.table eq 'city'>
+		<cfif main.table eq 'city'>and #main.tag#.city_id=vw.city_id
 				<cfif limitByCounty>and vw.zipcode=z.zipcode
 									and z.valid=1
 									and z.county_id='#attributes.county_id#'</cfif></cfif>
 		and #main.tag#.#main.keys# not in (
 			select #main.tag#.#main.keys#
-			from `#cross.table#` #cross.tag#, `#main.table#` #main.tag#<cfif main.table eq 'city'><cfif limitByCounty>, zip z</cfif></cfif>
+			from `#cross.table#` #cross.tag#, `#main.table#` #main.tag#<cfif main.table eq 'city'>, view_city_zip_preferred vw<cfif limitByCounty>, zip z</cfif></cfif>
 			where #cross.tag#.entrypoint_id=#attributes.entrypoint_id#
 				and #cross.tag#.#attributes.crosscolumn#=#main.tag#.#attributes.crosscolumn#
 				and #main.tag#.state_id='#attributes.state_id#'		
 				<cfif limitByCounty and main.table eq 'zip'>and #main.tag#.county_id='#attributes.county_id#'</cfif>
-				<cfif main.table eq 'city'>
+				<cfif main.table eq 'city'>and #main.tag#.city_id=vw.city_id
 						<cfif limitByCounty>and vw.zipcode=z.zipcode
 											and z.valid=1
 											and z.county_id='#attributes.county_id#'</cfif></cfif>
