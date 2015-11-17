@@ -1,0 +1,234 @@
+<cf_header>
+<!--edit sponsoring agency-->
+<HTML>
+<HEAD>
+	<TITLE>Org</TITLE>
+</HEAD>
+
+<BODY>
+
+<CFFORM action="spons_agcy.cfm" method="post" NAME="edit_spons">
+	<CFQUERY DATASOURCE="#session.datasrc#" NAME="org">
+		select address,city,st,zip,org_id,phone_no,org_name,web_site,fax,email,org_name2,address1,address2,counties_served,hours
+		from tbl_entry
+		where org_id=<CFIF isdefined("cfgridkey")>#cfgridkey#<cfelse>#org_id#</CFIF>
+	</CFQUERY>
+	
+	<CFOUTPUT>
+	<CFIF isdefined("st")>
+		<INPUT TYPE="hidden" NAME="srch_st" VALUE="#st#">
+	</CFIF>
+	
+	<CFIF isdefined("group_id")>
+		<INPUT TYPE="hidden" NAME="group_id" VALUE="#group_id#">
+		<INPUT TYPE="button" VALUE="Refresh" onclick="window.location = 'edit_spons.cfm?datasrc=#session.datasrc#&user=#session.user#&st=#st#&group_id=#group_id#&cfgridkey=#cfgridkey#'">
+	</CFIF>
+	
+	</CFOUTPUT>
+	
+	<table border="1" width="100%">
+	<CFOUTPUT query="org">
+		<tr>
+		<td width="1%">Name</td><td colspan="3"><INPUT TYPE="text" NAME="org_name" VALUE="#org_name#" size="50"></td>
+		</tr>
+		<td width="1%">Name2</td><td colspan="3"><INPUT TYPE="text" NAME="org_name2" VALUE="#org_name2#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Address</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="address" VALUE="#address#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Address1</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="address1" VALUE="#address1#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Address2</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="address2" VALUE="#address2#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">City</td>
+		<td width="1%" colspan="3"><INPUT TYPE="text" NAME="city" VALUE="#city#" size="25"></td>
+		</tr>
+		<tr>
+		<td width="1%">St</td>
+		<td width="1%"><INPUT TYPE="text" NAME="st" VALUE="#st#" size="2"></td>
+		<td width="1%">Zip</td>
+		<td width="1%"><INPUT TYPE="text" maxlength="5" NAME="zip" VALUE="#zip#" size="5"></td>
+		</tr>
+		<tr>
+		<td width="1%">Counties Served</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="counties_served" VALUE="#counties_served#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Phone</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="phone_no" VALUE="#phone_no#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Fax</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="fax" VALUE="#fax#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Hours</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="hours" VALUE="#hours#" size="50"></td>
+		</tr>
+		<tr>
+		<td width="1%">Web site</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="web_site" VALUE="#web_site#" size="50"></td>
+		</tr>
+		<td width="1%">E-mail</td>
+		<td colspan="3"><INPUT TYPE="text" NAME="email" VALUE="#email#" size="50"></td>
+		</tr>
+		</table>
+		<!---- Mir Begin To prevent the Read only user from inserting or updating the data base ---->
+		<CFIF "#session.user#" IS  "READUSER"> 
+			<H3> You are a Read Only User </H3>
+		<CFELSE> 
+			<!--  Mir End  --->
+			<INPUT TYPE="submit" NAME="edit" VALUE="Update">
+		
+			<CFSET AddedExpr = "&datasrc=" & datasrc & "&user=" & user >
+			<CFIF isdefined("st")>
+				<CFSET MySt = st>
+				<CFSET AddedExpr = AddedExpr & "&st=" & st>
+			</CFIF>
+		
+			<CFIF isdefined("group_id")>
+				<CFSET MyGroupId = group_id>
+				<CFSET AddedExpr = AddedExpr & "&group_id=" & MyGroupId>
+			</CFIF>
+		
+			<INPUT TYPE="button" VALUE="Delete" onclick="if (confirm('Are you sure you want to delete this entry?')) {location.href='DeleteEntry.cfm?OrgId=#org_id##AddedExpr#'}"> <!--- Chaim Add 1/4/00 --->
+		</cfif> <!---end Mir --->
+		<INPUT TYPE="button" VALUE="Cancel" onclick="history.go(-1)">
+		<INPUT TYPE="hidden" NAME="org_id" VALUE="#org_id#">
+	</CFOUTPUT>
+	
+</cfFORM>
+		
+		 <!--- Chaim change 1/4/00 --->
+<!---/CFOUTPUT--->
+
+<!---	<CFQUERY DATASOURCE="#session.datasrc#" NAME="phone">--->
+<!---		select a_area,a_number,a_note,b_area,b_number,b_note,c_area,c_number,c_note,f_area,f_number,addtional--->
+<!---		from tbl_phone_lookup--->
+<!---		where org_id=<CFIF isdefined("cfgridkey")>#cfgridkey#<cfelse>#org_id#</CFIF>--->
+<!---	</CFQUERY>--->
+<!---<CFOUTPUT QUERY="phone">--->
+<!---	<TR>--->
+<!---		<TD WIDTH="1%">--->
+<!---			<B>1st-area</B>
+		</TD>
+		<TD WIDTH="1%">
+			<INPUT TYPE="text" NAME="a_area" VALUE="#a_area#" SIZE="3">
+		</TD>
+		<TD WIDTH="1%">
+			<B>1st-number</B>
+		</TD>
+		<TD WIDTH="30%">
+			<INPUT TYPE="text" NAME="a_number" VALUE="#a_number#" SIZE="7">
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<B>Notes</B>
+		</TD>
+		<TD COLSPAN="3">
+			<INPUT TYPE="text" NAME="a_note" VALUE="#a_note#" SIZE="50">
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH="1%">
+			<B>2nd-area</B>
+		</TD>
+		<TD WIDTH="1%">
+			<INPUT TYPE="text" NAME="b_area" VALUE="#b_area#" SIZE="3">
+		</TD>
+		<TD WIDTH="1%">
+			<B>2nd-number</B>
+		</TD>
+		<TD WIDTH="30%">
+			<INPUT TYPE="text" NAME="b_number" VALUE="#b_number#" SIZE="7">
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<B>Notes</B>
+		</TD>
+		<TD COLSPAN="3">
+			<INPUT TYPE="text" NAME="b_note" VALUE="#b_note#" SIZE="50">
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH="1%">
+			<B>3rd-area</B>
+		</TD>
+		<TD WIDTH="1%">
+			<INPUT TYPE="text" NAME="c_area" VALUE="#c_area#" SIZE="3">
+		</TD>
+		<TD WIDTH="1%">
+			<B>3rd-number</B>
+		</TD>
+		<TD WIDTH="30%">
+			<INPUT TYPE="text" NAME="c_number" VALUE= "#VALUE="#c_number#" #" SIZE="7">
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<B>Notes</B>
+		</TD>
+		<TD COLSPAN="3">
+			<INPUT TYPE="text" NAME="c_note" VALUE="#c_note#" SIZE="50">
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH="1%">
+			<B>Fax-area</B>
+		</TD>
+		<TD WIDTH="1%">
+			<INPUT TYPE="text" NAME="f_area" VALUE="#f_area#" SIZE="3">
+		</TD>
+		<TD WIDTH="1%">
+			<B>Fax-number</B>
+		</TD>
+		<TD WIDTH="30%">
+			<INPUT TYPE="text" NAME="f_number" VALUE="#f_number#" SIZE="7">
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<B>Additional Notes</B>
+		</TD>
+		<TD COLSPAN="3">
+			<INPUT TYPE="text" NAME="additional" VALUE="#additional#" SIZE="50">
+		</TD>
+	</TR>
+--->
+<!---Darren
+
+		<!--- Chaim 1/4/00 --->
+		<CFSET AddedExpr = "&datasrc=" & datasrc & "&user=" & user >
+		<CFIF isdefined("st")>
+			<CFSET MySt = st>
+			<CFSET AddedExpr = AddedExpr & "&st=" & st>
+		</CFIF>
+		
+		<CFIF isdefined("group_id")>
+			<CFSET MyGroupId = group_id>
+			<CFSET AddedExpr = AddedExpr & "&group_id=" & MyGroupId>
+		</CFIF>
+       
+	   <!---- Mir Begin  To prevent the Read only user from inserting or updating the data base ---->
+		<CFIF "#session.user#" IS  "READUSER"> 
+			<input type="Submit"   name="goback"  value="Back">
+		<CFELSE> <!--  Mir End  --->
+			<INPUT TYPE="button" VALUE="Delete" onclick="if (confirm('Are you sure you want to delete this entry?')) {location.href='DeleteEntry.cfm?OrgId=#org_id##AddedExpr#'}"> <!--- Chaim Add 1/4/00 --->
+		<cfif></cfif> <!---end Mir --->
+		<INPUT TYPE="hidden" NAME="org_id" VALUE="#org_id#">
+	</CFOUTPUT>
+	
+</cfFORM> --->
+
+</BODY>
+</HTML>
+<!--- 323-666-7346 www.ncoadc.com state_eval---->
+<cf_footer>
