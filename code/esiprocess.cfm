@@ -254,14 +254,14 @@
 <!--- Log Screening Data , Validate and Set values to database --->
 <cf_logScreeningInputPHP initvarname="accumAFList" useOptionCodes="true" debug="false">
 <cfflush>
-<!--- Check for Validation Errors if so return to form --->
+<!--- Check for Validation Errors if so return to form otherwise go to report --->
 <cfif badResponseList neq ''>
   <cfif isdefined('url.debug')>
 	<cfoutput><p>ScreeningID: #session.screening_id# badResponseList: #badResponseList#</p></cfoutput>
 	<cfabort>
   <cfelse>
 	<cfif url.esiprod eq 1>
-	<cfoutput><a href="https://preview.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
+	<cfoutput><a href="https://www.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	<cfelse>
 	<cfoutput><a href="/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	</cfif>
@@ -271,8 +271,9 @@
 	<cfset tmpScreeningID = session.screening_id>
 	<cfinclude template="procESIShadowPHP.cfm">
 	<cfif url.esiprod eq 1>
-	<cfoutput><meta http-equiv="refresh" content="0;url=https://preview.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	<cfelse>
 		<cfoutput><meta http-equiv="refresh" content="0;url=/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	</cfif>
 </cfif>
+ 
