@@ -1,3 +1,9 @@
+<!---
+Template Name: lisapp/index.cfm 
+Component Purpose: redirects users to first page of low income subsidy application
+Data Tables: NA	
+--->
+
 <cfparam name="partner_id" type="any" default="0">
 <cfparam name="skipintro" type="boolean" default="false">
 <cf_sessionLoadVars>
@@ -14,9 +20,9 @@
 </cfif>
 
 <cfif skipintro>
-	<cfset destTemplate = '/cf/questions.cfm'>
+	<cfset destTemplate = '/cf/lisapp/questions.cfm'>
 <cfelse>
-	<cfset destTemplate = '/cf/start.cfm'>
+	<cfset destTemplate = '/cf/lisapp/start.cfm'>
 </cfif>
 <!--- Removed to address bug 7543. don't know why this was needed. --->
 <!---cfif session.partner_id eq 0 >
