@@ -360,7 +360,7 @@ Complete this form to authorize an agency in your community to receive a copy of
 <div class="well" id="disclaimer" >
 <legend><i class='icon-ok '></i> Terms & Conditions</legend> 
 <p>
-By submitting my contact details in this form, I agree to allow a professional in the field of aging to electronically access my contact information and contact me to discuss my EconomicCheckUp report as well as other available community resources.  I have read and understand the Privacy Policy and know that NCOA will not sell or share my personal data to outside parties without my consent.
+By submitting my contact details in this form, I agree to allow a professional in the field of aging to electronically access my contact information and contact me to discuss my EconomicCheckUp report as well as other available community resources.  I have read and understand the <a href="/esi-privacy-policy" target="_blank">Privacy Policy</a> and know that NCOA will not sell or share my personal data to outside parties without my consent.
 </p>
 </div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["consent"]== "") ? " This field is required. " : "";} ?></div>
