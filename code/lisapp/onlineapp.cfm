@@ -1,3 +1,9 @@
+<!---
+Template Name: onlineapp.cfm 
+Component Purpose: This file contains informational content to the user about lisapp
+Data Tables: NA	
+--->
+
 <cf_buildHTML cellpadding="12" cellspacing="2">
 <cfoutput>
 
