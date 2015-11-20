@@ -165,7 +165,7 @@ Back to Your Report
 //send email to the agency
 
 $to = $email;
-$subject = "A consumer in your area has requested help with their EconomicCheckUp report";
+$subject = "Contact EconomicCheckUp Consumer";
 
 $message = '
 <html>
@@ -270,7 +270,7 @@ $emailC = decrypt($record["email"], $encPass, $encKey);
 
 
 $to2 = $emailC;
-$subject2 = "An organization in your area will contact you to help you with your EconomicCheckUp report";
+$subject2 = "Assistance with your EconomicCheckUp Report";
 
 $message2 = '
 <html>
@@ -280,7 +280,6 @@ $message2 = '
 <body>
 
 
-<p>Dear '.$fName.',</p>
 
 <p>Thank you for submitting your EconomicCheckUp contact information. A representative of '.$agency.' should be reaching out to you within the next 3 business days to help you achieve your financial needs and goals. </p>
 
