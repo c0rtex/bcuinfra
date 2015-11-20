@@ -64,7 +64,7 @@ Data Tables: NA
 
 
 <cfif ListFind('1,3,4,5,6,7,8,9,11,12,13,14,15,16,17', qrySubmission.submission_status)>
-<form action="frmRecommend.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#" method="post">
+<form action="/cf/frmRecommend.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#" method="post">
 	<input type="submit" value="BenefitsCheckUp Results">
 </form>
 </cfif>
