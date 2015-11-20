@@ -1,3 +1,9 @@
+<!---
+Template Name: submissionreceipt.cfm 
+Component Purpose: This file contains informational content for lisapp submission and receipt of the data by ssa
+Data Tables: screening_submission , screening
+--->
+
   <style type="text/css" media="screen">
 
         a:visited 

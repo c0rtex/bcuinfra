@@ -1,4 +1,8 @@
-
+<!---
+Template Name: onlineapp.cfm 
+Component Purpose: This file processes benefits eligibility information based on lisapp responses.
+Data Tables: NA	
+--->
 <cf_handleScreeningAnswerfield action="get" code="st" element="val" var="preserveStateID">
 <cfset preserveSessionID = session.screening.id>
 
