@@ -48,8 +48,8 @@ $agency = "Baltimore City Commission on Aging and Retirement
 Education";
 $phone = "(410) 396-2273";
 //redesign
-//$email = "support@economiccheckup.org";
-//$email = "support@economiccheckup.org, kiryl.hakhovich@gmail.com";
+//$email = "support@benefitscheckup.org";
+//$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 $email = "map.bchd@baltimorecity.gov";
 }
 
@@ -57,8 +57,8 @@ else if ($county == '24043'){
 $agency = "Washington County Commission on Aging";
 $phone="(301) 790-0275";
 //redesign
-//$email = "support@economiccheckup.org";
-//$email = "support@economiccheckup.org, kiryl.hakhovich@gmail.com";
+//$email = "support@benefitscheckup.org";
+//$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 $email = "bcorbett@wccoaging.org, lchurch@wccoaging.org";
 }
 
@@ -67,8 +67,8 @@ $agency = "Jewish Social Service Agency of Montgomery County";
 $phone= "(301) 816-2633";
 $email = "kprice@jssa.org";
 //redesign
-//$email = "support@economiccheckup.org";
-//$email = "support@economiccheckup.org, kiryl.hakhovich@gmail.com";
+//$email = "support@benefitscheckup.org";
+//$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 
 }
 else if($county == '24027') {
@@ -76,8 +76,8 @@ $agency = "Howard County Office on Aging";
 $phone="(410) 313-5980";
 $email = "map@howardcountymd.gov";
 //redesign
-//$email = "support@economiccheckup.org";
-//$email = "support@economiccheckup.org, kiryl.hakhovich@gmail.com";
+//$email = "support@benefitscheckup.org";
+//$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 
 }
 
@@ -85,8 +85,8 @@ else if ($county == '24019'|| $county == '24039' || $county == '24045' || $count
 $agency = "Maintaining Active Citizens";
 $phone = "(410) 742-0505 (ext. 109)";
 //redesign
-//$email = "support@economiccheckup.org";
-//$email = "support@economiccheckup.org, kiryl.hakhovich@gmail.com";
+//$email = "support@benefitscheckup.org";
+//$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 $email = "tld@macinc.org";
 
 }
@@ -216,7 +216,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 //$headers .= 'From: economiccheckup<do-not-reply>@ncoa.org>' . "\r\n";
 $headers .= 'Return-Path: EconomicCheckUp  <donotreply@economiccheckup.org>' . "\r\n";
 $headers .= 'From: EconomicCheckUp <donotreply@economiccheckup.org>' . "\r\n";
-$headers .= 'Bcc: support@economiccheckup.org' . "\r\n";
+$headers .= 'Bcc: support@benefitscheckup.org' . "\r\n";
 
 
 if ($availPar == true) {
