@@ -161,16 +161,16 @@ $('input:checkbox[name=mqc_noneofabove]').prop("checked", false);
 <script src="/cf/scripts.js"></script>
 <form name="esiForm" id="esiForm"
 <?php  
-if (QA = 1){
-$subdomain 'www';
+if (QA == 0){
+$subdomain = 'www';
 $esiprod = 1;
 }
 else
 {
-$subdomain 'redesign';
+$subdomain ='redesign';
 $esiprod = 0;
 }
-echo 'action="https://'$subdomain'.'.benefitscheckup.org/cf/esiprocess.cfm?esiprod='.$esiprod.'"'; ?> 
+echo 'action="https://'.$subdomain.'.benefitscheckup.org/cf/esiprocess.cfm?esiprod='.$esiprod.'"'; ?> 
 method="post" > 
 <?php require_once('section.php') ?>
 <div class="printButton">
