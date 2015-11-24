@@ -9,10 +9,10 @@ $wpdb->show_errors();
 //$doposts_query = $wpdb->get_results($query_doposts);  
 
 $query_getposts = "
-SELECT id
+SELECT id,post_status
 from wp_posts
 where post_type = 'page' 
-
+and post_status = 'trash'
 ";
 $getposts_query = $wpdb->get_results($query_getposts);  
 //print_r($getposts_query);  
@@ -22,8 +22,16 @@ $postcount = 0;
        if ($id != 0){
 		$postcount ++;
 		//echo "post type:".$postObj->post_type."post title:".$postObj->post_title."post id:".$postObj->id."post code:".$postObj->meta_value."<br>";
+		echo $postObj->id.",".$postObj->post_status;
+		}
+  endforeach;
+echo "post count".$postcount."<br><br>";
+ foreach ($getposts_query as $postObj) :
+	$id = $postObj->id;
+       if ($id != 0){
+		$postcount ++;
+		//echo "post type:".$postObj->post_type."post title:".$postObj->post_title."post id:".$postObj->id."post code:".$postObj->meta_value."<br>";
 		echo $postObj->id.",";
 		}
   endforeach;
-echo "post count".$postcount;
 ?>
