@@ -9,9 +9,9 @@ $wpdb->show_errors();
 //$doposts_query = $wpdb->get_results($query_doposts);  
 
 $query_getposts = "
-SELECT id, post_code, post_type, post_title,meta_value from wp_posts,wp_postmeta
-where wp_posts.id = wp_postmeta.post_id 
- and post_type = 'page' 
+SELECT id
+from wp_posts
+where post_type = 'page' 
 
 ";
 $getposts_query = $wpdb->get_results($query_getposts);  
@@ -20,9 +20,10 @@ $postcount = 0;
  foreach ($getposts_query as $postObj) :
 	$id = $postObj->id;
        if ($id != 0){
-		//$postcount ++;
+		$postcount ++;
 		//echo "post type:".$postObj->post_type."post title:".$postObj->post_title."post id:".$postObj->id."post code:".$postObj->meta_value."<br>";
 		echo $postObj->id.",";
 		}
   endforeach;
+echo "post count".$postcount;
 ?>
