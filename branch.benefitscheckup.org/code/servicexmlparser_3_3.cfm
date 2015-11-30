@@ -361,6 +361,22 @@ order by question_code, answerfield
 <cfparam name="response_set.MQC_MEDICARE_ENROLL_WITHIN_1_YEAR_YES"  default="">
 <cfparam name="response_set.MQC_MEDICARE_ENROLL_BENEFITS_ADVISOR"  default="">
 <cfparam name="response_set.MQC_CHAMPVA"  default="">
+<cfif isdefined('response_set.mqc_situationmedicare')>
+	<cfif response_set.mqc_situationmedicare eq  'mqc_situationmedicare_madedecision'>
+		<cfset response_set.mqc_situationmedicare_madedecision = "y">
+	<cfelseif response_set.mqc_situationmedicare eq 'mqc_situationmedicare_prettysure'>
+		<cfset response_set.mqc_situationmedicare_prettysure = "y">
+        <cfelseif response_set.mqc_situationmedicare eq 'mqc_situationmedicare_talkpartd'>
+		<cfset response_set.mqc_situationmedicare_talkpartd = "y">
+	<cfelseif response_set.mqc_situationmedicare eq 'mqc_situationmedicare_heedhelp'>
+		<cfset response_set.mqc_situationmedicare_heedhelp = "y">
+	<cfelseif response_set.mqc_situationmedicare eq 'mqc_situationmedicare_noneabove'>
+		<cfset response_set.mqc_situationmedicare_noneabove = "y">
+	<cfelseif response_set.mqc_situationmedicare eq 'mqc_situationmedicare_talkadvisor'>
+		<cfset response_set.mqc_situationmedicare_talkadvisor = "y">
+	</cfif>
+</cfif>
+
 <cfif isdefined('response_set.mqc_coveragesatisfaction_2')>
 	<cfif response_set.mqc_coveragesatisfaction_2 eq 'satisfied_yes'>
 		<cfset response_set.satisfied_yes = "y">
@@ -641,9 +657,7 @@ order by question_code, answerfield
 <cfif response_set.mqc_describesituation eq 'mqc_situationconfident'>
 	<cfset response_set.mqc_situationconfident  ="y">
 </cfif>
-<cfif response_set.mqc_describesituation eq 'mqc_situationmedicare'>
-	<cfset response_set.mqc_situationmedicare  ="y">
-</cfif>	
+
 <cfif response_set.mqc_describesituation eq 'mqc_situationhappy'>
 	<cfset response_set.mqc_situationhappy  ="y">
 </cfif>

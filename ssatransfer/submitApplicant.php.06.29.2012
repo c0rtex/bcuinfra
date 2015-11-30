@@ -1,0 +1,517 @@
+<?php  
+//echo "submitting....";
+require_once("includes/config.php");  //always have to include this
+require_once(INCLUDES_DIR."Logger.php");
+require_once(INCLUDES_DIR."encryption.php");
+require_once("Validate.php");
+$debug = false;
+$smarty = new SetupSmarty;
+if ($debug == false){$smarty->display("submitApplicant.tpl");}
+$screening_id = $_GET['Screening_id'];
+$isBatch = "false";
+if (isset($_GET['batch']))
+{
+	$isBatch = $_GET["batch"];
+}
+
+/*
+$query = "SELECT screening_id FROM screening_submission WHERE screening_id = '".$screening_id."' ";
+$result = $GLOBALS['db']->query($query);
+if($result->numRows() > 0)
+{
+	$log->write("<!---------------------screening_id $screening_id already exists---------------------");
+}
+*/
+//else //only create a new submission if one doesn't exist for the screening_id
+if( Validate::number($screening_id) ) //scrub user input to check for sql injection
+{
+	$md5_ssn = md5($answers['BE_CLNT_COSSN']);//MH-encrypt ssn
+	$query = "INSERT INTO screening_submission (screening_id, post_start_time) VALUES('".$screening_id."', now() )";//MH-Associates screening_id with submission rec
+	$GLOBALS['db']->query($query);
+	$query = "SELECT max(submission_id) FROM screening_submission"; 
+	$submission_id = $GLOBALS['db']->getOne($query);//MH-//grabs submission record 
+}
+else
+{
+	echo "Invalid screening_id";
+	exit;
+}
+
+ //MH-grabs data associated with this sreening_id ie all application info tied to this screening_id
+$query = "SELECT a.answerfield, sa.responsetype, sa.response, sa.option_id, o.option_code, sa.encryption_flag, sa.encrypted_response
+         	FROM answerfield a 
+         	INNER JOIN screening_answerfield sa ON a.answerfield_id = sa.answerfield_id 
+          	LEFT OUTER JOIN `option` o ON sa.option_id = o.option_id
+          	WHERE     (sa.screening_id = '".$screening_id."')
+          	ORDER BY a.answerfield ";
+$result = $GLOBALS['db']->getAll($query, DB_FETCHMODE_ASSOC);
+
+
+//MH-loop thru the data pulled per stored per application/screening_id and store them in the 'answers' array with a format consistent with SSA 
+foreach($result as $row)
+{
+	$fieldname = strtoupper($row['answerfield']); //change all values to uppercase to be consistent with ssa
+	if($row['encryption_flag'] == 1)//MH-decrypts encrypted SSN
+	{
+		$answers[$fieldname] = decryptString($row['encrypted_response']);
+		if ($debug) { echo $answers[$fieldname]." was encrypted ".$row['response']."<br>"; }
+	}
+	else if($row['responsetype'] == 3)//MH-if responsetype is 3 then answers[x] = option_code
+	{
+		$answers[$fieldname] = $row['option_code'];
+	}
+	else//MH-for all other answerfieldtypes answers[x] = response
+	{
+		$answers[$fieldname] = $row['response'];
+	}
+	//show each raw query value
+		if ($debug) { echo $fieldname." is ".$row['response']."<br>";}
+}
+
+//$answers['CT_LIVE_GRT'] = 35;
+
+//$answers['CT_CLNT_COSSN'] = '743-98-0022';
+//$answers['CT_NONCL_COSSN'] = '743-98-0023';
+$answers['CT_CLNT_COSSN'] = $answers['BE_CLNT_COSSN'];
+$answers['CT_NONCL_COSSN'] = $answers['BE_NONCL_COSSN'];
+//echo $answers['CT_CLNT_COSSN']."<br>";
+//echo $answers['CT_NONCL_COSSN']."<br>";
+
+$temp_ssn1 = str_replace('-','',$answers['BE_CLNT_COSSN']);
+$temp_ssn2 = str_replace('-','',$answers['BE_NONCL_COSSN']);
+$temp_l_name1 = "XXXX".substr($answers['BE_CLNT_LNM'], -4);
+$temp_f_name1 = "XXXX".substr($answers['BE_CLNT_FNM'], -4);
+$temp_l_name2 = "XXXX".substr($answers['BE_NONCL_LNM'], -4);
+$temp_f_name2 = "XXXX".substr($answers['BE_NONCL_FNM'], -4);
+
+
+
+if ($isBatch != "true")
+{
+	$answers['CT_CLNT_PHONE'] = $answers['BE_CLNT_PHNAREA'].$answers['BE_CLNT_PHNEXCH'].$answers['BE_CLNT_PHNNUM'];
+	$answers['CT_THRD_PHONE'] = $answers['BE_THRD_PHNAREA'].$answers['BE_THRD_PHNEXCH'].$answers['BE_THRD_PHNNUM'];
+	$answers['CT_CNTCT_PHONE'] = $answers['BE_CNTCT_PHNAREA'].$answers['BE_CNTCT_PHNEXCH'].$answers['BE_CNTCT_PHNNUM'];
+}
+
+//$answers['BE_NONCL_WRKD_l2yr_xnd'] = 0; 
+//$answers['BE_CLNT_WRKD_l2yr_xnd'] = 0;
+//echo "CT_CLNT_PHONE"." is ".$answers['CT_CLNT_PHONE']."<br>";
+//echo "CT_CNTCT_PHONE"." is ".$answers['CT_CNTCT_PHONE']."<br>";
+
+$md5_ssn = md5($answers['CT_CLNT_COSSN']);//MH-encrypts ssn
+$query = "UPDATE screening_submission set ssn_hash = '".$md5_ssn."' WHERE submission_id = '".$submission_id."' ";
+$GLOBALS['db']->query($query);
+
+
+//$answers['CT_CLNT_COSSN'] = 743980470;
+//MH-Log files are created here
+$fileName = $screening_id."_".time().".html";
+$logFile = LOG_DIR.$fileName;
+$log = new Logger($logFile);
+
+//MH-replaces first 5 digits of SSN to then be stored in the log files.
+$feedback = print_r($answers, true);
+$feedback = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $feedback);
+$feedback = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $feedback);
+
+//$feedback = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $feedback);
+//$feedback = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $feedback);
+//$feedback = str_replace($temp_ssn1, "XXXXX".substr($temp_ssn1, -4), $feedback);
+//$feedback = str_replace($temp_ssn2, "XXXXX".substr($temp_ssn2, -4), $feedback);
+
+
+
+$log->write($feedback.'<br><br>');
+
+//MH-sets where to send the data based upon QA or prod version
+if(QA)
+{
+	$ch = curl_init("https://secureval.ssa.gov/i1020/start"); //qa
+}
+else
+{
+	$ch = curl_init("https://secure.ssa.gov/i1020/start"); //prod
+}
+
+//MH-??Setting Parameters for data transfer
+curl_setopt($ch, CURLOPT_RETURNTRANSFER,true); // return into a variable
+curl_setopt($ch, CURLOPT_HEADER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, TRUE);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+curl_setopt($ch, CURLOPT_POST, true);
+//$page = curl_exec($ch);
+//echo $page;
+if(QA) //go through the login form
+{
+//	curl_setopt($ch, CURLOPT_URL, "https://s044152.ssa.gov/pkmslogin.form");
+//	curl_setopt($ch, CURLOPT_POSTFIELDS, 'username=stephen1&password=passwZrd0&login-form-type=pwd');
+//	$page = curl_exec($ch);
+//	$cookiejar = get_cookie($page);
+//	curl_setopt($ch, CURLOPT_COOKIE, $cookiejar);
+	curl_setopt($ch, CURLOPT_URL, "https://secureval.ssa.gov/i1020/start"); //qa
+	$page = curl_exec($ch);
+	$cookiejar = get_cookie($page);
+	curl_setopt($ch, CURLOPT_COOKIE, $cookiejar);
+	curl_setopt($ch, CURLOPT_URL, "https://secureval.ssa.gov/i1020/start");
+	$page = curl_exec($ch);
+	
+}
+else//MH-no login for prod submission
+{
+	curl_setopt($ch, CURLOPT_URL, "https://secure.ssa.gov/i1020/start"); //prod
+	$page = curl_exec($ch);
+	$cookiejar = get_cookie($page);
+	curl_setopt($ch, CURLOPT_COOKIE, $cookiejar);
+	curl_setopt($ch, CURLOPT_URL, "https://secure.ssa.gov/i1020/start");
+	$page = curl_exec($ch);
+}
+
+if ($isBatch == "true"){
+	require_once("TranslateSSAbatch.php");
+}
+else
+{
+	require_once("TranslateSSA.php");	
+}
+require_once("Applicant.php");
+$answers['CT_LIVE_GRT'] = $answers['CT_LIVE'];
+$answers['CT_CLNT_MAIL_ADDR_ST_GRT'] = $answers['BE_CLNT_MAIL_ADDR_ST'];
+$answers['CT_THRD_ADDR_ST_GRT'] = $answers['BE_THRD_ADDR_ST'];
+$Applicant = new Applicant($answers);
+$answers['BE_THRD_SUB_SW'] = 'y';
+$answers['BE_CLNT_SUB_SW'] = 'y';
+$answers['BE_NONCL_SUB_SW'] = 'y';
+//MH-calls a function in TranslateSSA.php to translate answers[x] values to be consistent with ssa
+
+$Applicant->translateAll($Applicant->answers);
+//print_r($answers);
+//switch to new state drop down fields used on ssa site
+
+
+if($Applicant->answers['BE_CLNT_EARN_LOSS_XND'] == 99) //here we have to change the 99 to a 1 because due to some quirk in php the 1 in the class was always being changed to 0 before
+{
+	$Applicant->answers['BE_CLNT_EARN_LOSS_XND'] = 1;
+}
+if($Applicant->answers['BE_NONCL_EARN_LOSS_XND'] == 99) //here we have to change the 99 to a 1 because due to some quirk in php the 1 in the class was always being changed to 0 before
+{
+	$Applicant->answers['BE_NONCL_EARN_LOSS_XND'] = 1;
+}
+$Applicant->defaultThirdParty($Applicant->answers);//MH-??calls an empty function in Applicant.php
+ 
+if($Applicant->answers['CT_MRTL_STUS'] == 'MLT')//MH-if married and living together
+{
+	require_once("MarriedApplicantCT.php");
+	$ApplicantCT = new MarriedApplicantCT();
+	$ApplicantCT->savingsLimit($Applicant->answers['BE_SAV_LMT_XND']);
+	$ApplicantCT->wagesEarning(
+	$Applicant->answers['BE_CLNT_WRKD_L2YR_XND'], 
+	$Applicant->answers['BE_NONCL_WRKD_L2YR_XND'],				
+	$Applicant->answers['BE_CLNT_PAY_DISBLTY_XND'], 
+	$Applicant->answers['BE_NONCL_PAY_DISBLTY_XND'],
+	$Applicant->answers['BE_NONCL_DOB_YEAR'],
+	$Applicant->answers['BE_NONCL_STOP_WRK_XND']);
+}
+//MH-if widow or single or divorced
+elseif($Applicant->answers['CT_MRTL_STUS'] == 'WDW' OR $Applicant->answers['CT_MRTL_STUS'] == 'SNG' OR $Applicant->answers['CT_MRTL_STUS'] == 'DIV' OR $Applicant->answers['CT_MRTL_STUS'] == 'SEP' OR $Applicant->answers['CT_MRTL_STUS'] == 'MLA')
+{
+	require_once("SingleApplicantCT.php");
+	$ApplicantCT = new SingleApplicantCT();
+	$ApplicantCT->savingsLimit($Applicant->answers['BE_SAV_LMT_XND']);
+	$ApplicantCT->wagesEarning($Applicant->answers['BE_CLNT_WRKD_L2YR_XND'],$Applicant->answers['BE_CLNT_PAY_DISBLTY_XND'],$Applicant->answers['BE_CLNT_DOB_YEAR']);
+}
+else
+{
+	echo "No handler for this  status -".$Applicant->answers['CT_MRTL_STUS']."- yet";
+	exit;
+}
+$ApplicantCT->thirdParty($Applicant->answers['CT_THRD_PTY_XND']);
+//print_r($Applicant->answers).'<br><br>';
+$feedback = print_r($Applicant->answers, true);
+$feedback = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $feedback);
+$feedback = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $feedback);
+
+$feedback = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $feedback);
+$feedback = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $feedback);
+$feedback = preg_replace($temp_ssn1, "XXXXX".substr($temp_ssn1, -4), $feedback);
+$feedback = preg_replace($temp_ssn2, "XXXXX".substr($temp_ssn2, -4), $feedback);
+
+
+
+$log->write($feedback.'<br><br>');
+//echo 'starting foreach loop...<br><br>';
+//exit('<b>exiting before start of loop</b>');
+
+foreach($ApplicantCT->pages as $page)
+{
+	$postFields = '';
+	foreach($page as $key => $value)
+	{
+		//MH- SSA Page Properties. Subject to change per APP (PAGEID, PAGEOCCURRENCE, PAGESETID, PAGESETOCCURRENCE, ACTION.START, ACTION.CONTINUE, ACTION.SUBMIT) 
+		//MH- Need to verify these properties by looking at the SSA website page source and comparing them
+		if($key != 'PAGEID' AND $key != 'PAGEOCCURRENCE' AND $key != 'PAGESETID' AND $key != 'PAGESETOCCURRENCE' AND $key != 'ACTION.START' AND $key != 'ACTION.CONTINUE' AND $key != 'ACTION.SUBMIT')
+		{
+			$postFields .= "&".$key."=".$Applicant->answers[$key];	
+			//print_r($page).'testing...<br><br>';
+		}
+
+		//SE - temp change for noncl work value issue
+		elseif (($key <> 'BE_NONCL_STOP_WRK_XND') or ($value <> ''))
+		{
+			$postFields .= "&".$key."=".$value;
+		}
+		if ($key == 'PAGEID')
+		{
+		if(QA) //go through the login form
+		{
+		$tempurl = "https://secureval.ssa.gov/i1020/".$value."Submit.do";
+		}
+		else 
+		{
+		$tempurl = "https://secure.ssa.gov/i1020/".$value."Submit.do";
+		}
+			if ($debug) {echo "POST URL: ".$tempurl."<br><br>";}
+		curl_setopt($ch, CURLOPT_URL,$tempurl);	
+		}
+		
+	}
+	curl_setopt($ch, CURLOPT_POSTFIELDS, substr($postFields, 1) );
+	$postFields = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $postFields);
+	$postFields = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $postFields);
+	//$postFields = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $postFields);
+        //$postFields = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $postFields);
+
+	$log->write(substr($postFields, 1).'<br><br>');
+	//echo substr($postFields, 1).'<br><br>'; //loggin to screen
+	//echo $postFields.'<br><br>';
+	
+	$feedback = curl_exec($ch);
+	$feedback = ereg_replace('<script type="text/javascript">(.*)</script>', "", $feedback);
+	$feedback = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $feedback);
+	$feedback = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $feedback);
+        //$feedback = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $postFields);
+        //$feedback = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $postFields);
+
+	//$feedback = preg_replace($temp_ssn1, "XXXXX".substr($temp_ssn1, -4), $feedback);
+        //$feedback = preg_replace($temp_ssn2, "XXXXX".substr($temp_ssn2, -4), $feedback);
+        //$feedback = str_replace($answers['BE_CLNT_LNM'],$temp_l_name1,$feedback);
+        //$feedback = str_replace($answers['BE_CLNT_FNM'],$temp_f_name1,$feedback);
+        //$feedback = str_replace($answers['BE_NONCL_LNM'],$temp_l_name2,$feedback);
+        //$feedback = str_replace($answers['BE_NONCL_FNM'],$temp_f_name2,$feedback);
+
+
+	eregi("<title>(.*)</title>", $feedback, $title);
+	if ($debug) {print_r($title);}
+	$parts = explode(",",$title[1]);
+	if ($debug) { print_r($parts);}
+	if ($debug) {echo "<b>TITLE: </b>".$parts[0]."<br><br>";}
+	
+	if(trim($parts[0]) == "Print The Re-entry Number")
+	{
+		if ($debug) {echo "<b>GET REENTRY:</b>";}
+		preg_match_all('/(<span class="uef-reEntryNumber">)([^<]*)(<\/span>)/', $feedback, $matches);
+		$reentry = trim($matches[2][1]); //reentry number removing leading and trailing whitespace
+		$reentry = $reentry;
+		if ($debug) {print_r($matches);}
+		if ($debug) {echo "<b>RE-ENTRY NUM:</b>".$reentry."|";}
+		$md5_ssn = md5($answers['CT_CLNT_COSSN']);
+		$query = "UPDATE screening_submission set reentry_number = '".$reentry."' WHERE submission_id = '".$submission_id."' ";
+		$GLOBALS['db']->query($query);   
+	}
+	$status = get_status(trim($parts[0]));
+	if ($debug) { echo "<b>STATUS:".$status."</b>".$parts[0]."<br><br>";}
+	if($status == 1)
+	{
+		$feedback = ereg_replace('HTTP/1.1 200 Document follows(.*)expires: Sun, 7 May 1995 12:00:00 GMT', "", $feedback);
+		$feedback = ereg_replace('h6', "h4", $feedback);
+		$feedback = ereg_replace('h5', "h3", $feedback);
+		$feedback = ereg_replace('<!doctype html>(.*)<form name="Rs004Form" method="post" action="/i1020/Rs004Submit.do">', "", $feedback);
+		$feedback = ereg_replace('<p>If you need help completing this application, call Social Security toll-free at: <br/> <strong>1-800-772-1213</strong> or <br/>TTY <strong>1-800-325-0778</strong>, <br/>Monday-Friday 7am-7pm</p>', "", $feedback);
+		$feedback = ereg_replace('<head>(.*)</head>', "", $feedback);
+		$feedback = ereg_replace('<div class="uef-formControls" id="bottom">(.*)</div>', "", $feedback);
+		$feedback = ereg_replace('<p>Select this link to <a href="./msgpages/Rs007.jsp" rel="msg" target="_blank">print this page or save</a> it to your computer.</p>', "", $feedback);
+		$feedback = ereg_replace('For instructions on how to print, save, or view the saved file, please refer to the <a href="./msgpages/Msg063.jsp" rel="msg" target="_blank">Print/Save/View Guide</a>.</p>', "<br>", $feedback);
+		//$feedback = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $feedback);
+                //$feedback = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $feedback);
+                //$feedback = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $feedback);
+                //$feedback = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $feedback);
+                //$feedback = preg_replace($temp_ssn1, "XXXXX".substr($temp_ssn1, -4), $feedback);
+                //$feedback = preg_replace($temp_ssn2, "XXXXX".substr($temp_ssn2, -4), $feedback);
+                //$feedback = str_replace($answers['BE_CLNT_LNM'],$temp_l_name1,$feedback);
+                //$feedback = str_replace($answers['BE_CLNT_FNM'],$temp_f_name1,$feedback);
+                //$feedback = str_replace($answers['BE_NONCL_LNM'],$temp_l_name2,$feedback);
+                //$feedback = str_replace($answers['BE_NONCL_FNM'],$temp_f_name2,$feedback);
+
+	}
+	$feedback = ereg_replace('<script type="text/javascript">(.*)</script>', "", $feedback);
+	$feedback = str_replace('if (SSA.page && SSA.page.timeout) { SSA.page.timeout.config({url:"Controller"}); }', " ", $feedback);
+	$feedback = ereg_replace('SSA.page.timeout.config', "", $feedback);
+	//$feedback = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $feedback);
+        //$feedback = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $feedback);
+        //$feedback = preg_replace($temp_ssn1, "XXXXX".substr($temp_ssn1, -4), $feedback);
+        //$feedback = preg_replace($temp_ssn2, "XXXXX".substr($temp_ssn2, -4), $feedback);
+        //$feedback = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $feedback);
+        //$feedback = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $feedback);
+        //$feedback = preg_replace($answers['BE_CLNT_LNM'],$temp_l_name1,$feedback);
+        //$feedback = preg_replace($answers['BE_CLNT_FNM'],$temp_f_name1,$feedback);
+        //$feedback = preg_replace($answers['BE_NONCL_LNM'],$temp_l_name2,$feedback);
+        //$feedback = preg_replace($answers['BE_NONCL_FNM'],$temp_f_name2,$feedback);
+
+
+
+	$log->write($feedback);
+	if ($debug) { echo $feedback; } //loggin to screen 
+	if($status == "Warning: System Will Shut Down")
+	{
+		if ($debug) {echo"<h3>System Shutdown</h3>";}
+		curl_setopt($ch, CURLOPT_POSTFIELDS, 'PAGEID=msg045&PAGEOCCURRENCE=1&PAGESETID=&PAGESETOCCURRENCE=0&ACTION.CONTINUE=Apply+Now');
+		
+
+		if(QA) //go through the login form
+		{
+		$tempurl = "https://secureval.ssa.gov/i1020/Msg045Submit.do";
+		}
+		else 
+		{
+		$tempurl = "https://secure.ssa.gov/i1020/Msg045Submit.do";
+		}
+		if ($debug) {echo "POST URL: ".$tempurl."<br><br>";}
+		curl_setopt($ch, CURLOPT_URL,$tempurl);	
+		
+		$feedback = curl_exec($ch);
+		$feedback = ereg_replace('<script type="text/javascript">(.*)</script>', "", $feedback);
+		//$feedback = str_replace($answers['BE_NONCL_LNM'], "XXX".substr($answers['BE_NONCL_LNM'], -3), $feedback);
+                //$feedback = str_replace($answers['BE_CLNT_LNM'], "XXX".substr($answers['BE_CLNT_LNM'], -3), $feedback);
+                //$feedback = replace_ssn($answers['CT_CLNT_COSSN'], "XXX-XX-".substr($answers['CT_CLNT_COSSN'], -4), $feedback);
+                //$feedback = replace_ssn($answers['CT_NONCL_COSSN'], "XXX-XX-".substr($answers['CT_NONCL_COSSN'], -4), $feedback);
+                //$feedback = preg_replace($temp_ssn1, "XXXXX".substr($temp_ssn1, -4), $feedback);
+                //$feedback = preg_replace($temp_ssn2, "XXXXX".substr($temp_ssn2, -4), $feedback);
+                //$feedback = str_replace($answers['BE_CLNT_LNM'],$temp_l_name1,$feedback);
+                //$feedback = str_replace($answers['BE_CLNT_FNM'],$temp_f_name1,$feedback);
+                //$feedback = str_replace($answers['BE_NONCL_LNM'],$temp_l_name2,$feedback);
+                //$feedback = str_replace($answers['BE_NONCL_FNM'],$temp_f_name2,$feedback);
+
+		$log->write($feedback);
+
+	}
+	if($status)
+	{		
+		process_status($status, $feedback, $submission_id, $fileName);
+		curl_close($ch);
+		$log->close();
+		//echo  headers_sent($filename, $linenum)."--$filename, $linenum<br>";
+		if (QA) {		
+		redirect('/cf/confirmation.cfm?cfid='.$_GET['CFID'].'&cftoken='.$_GET['CFTOKEN'].'&prev_id='.$screening_id, 5);
+		}
+		else {
+		redirect('/cf/confirmation.cfm?cfid='.$_GET['CFID'].'&cftoken='.$_GET['CFTOKEN'].'&prev_id='.$screening_id, 5);
+		//redirect("https://".$_SERVER['SERVER_NAME']."/confirmation.cfm?cfid=".$_GET["CFID"].'&cftoken='.$_GET["CFTOKEN"], 5);
+		//redirect('https://www.benefitscheckup.org/confirmation.cfm?cfid='.$_GET['CFID'].'&cftoken='.$_GET['CFTOKEN'].'&prev_id='.$screening_id, 5);
+		}
+	}
+}
+
+if($status == 0)
+{	
+	process_status($status=16, $feedback="", $submission_id, $fileName);
+}
+curl_close($ch);
+$log->close();
+//echo  headers_sent()."-2<br>"; //logging
+	if (QA) {		
+		//redirect('/cf/confirmation.cfm?cfid='.$_GET['CFID'].'&cftoken='.$_GET['CFTOKEN'], 5);
+	}
+	else {
+		redirect('/cf/confirmation.cfm?cfid='.$_GET['CFID'].'&cftoken='.$_GET['CFTOKEN'].'&prev_id='.$screening_id, 5);
+	}
+
+function replace_ssn($ssn, $replacement, $string)
+{
+	$ssn_int = str_replace("-", "", $ssn);
+	$ssn_string = substr($ssn_int, 0, 3)."-".substr($ssn_int, 3, 2)."-".substr($ssn_int, 5, 4);
+	$string = str_replace($ssn_int, $replacement, $string);
+	$string = str_replace($ssn_string, $replacement, $string);
+	return $string;
+}
+
+function get_status($title)
+{
+	switch ($title)
+	{
+		case "Successful Submission - Print Or Save Your Receipt":
+			$status = 1;
+			break;
+		case "Authentication - Medicare Part D Database Not Eligible Or SSI Recipient":
+			$status = 2;
+			break;
+		case "Check The Social Security Number You Entered":
+			$status = 3;
+			break;
+		case "Check The Social Security Numbers You Entered":
+			$status = 4;
+			break;
+		case "Limit Number Of Restarts":
+			$status = 5;
+			break;
+		case "Limit Number Of Starts For A New Application":
+			$status = 6;
+			break;
+		case "Limit On The Number Of Tries To Start The Application":
+			$status = 7;
+			break;
+		case "Check The Information You Entered":
+			$status = 8;
+			break;
+		case "System Failure":
+			$status = 9;	//same as we cannot process your request
+			break;
+		case "Not Eligible For The Prescription Drug Plan":
+			$status = 10;
+			break;
+		//case "You Are Not Eligible For The Extra Help":
+		//	$status = 10;
+		//	break;
+		case "We Cannot Process Your Request At This Time":
+			$status = 11;
+			break;
+			/*
+			case "Sign-In Problem": //only used for reentry this should never occur
+			$status = 12;
+			break;
+			*/
+		case "System Failure":
+			$status = 13;
+			break;
+		case "There Is A Pending Application For This Social Security Number":
+			$status = 14;
+			break;
+		case "We Cannot Process Your Request":
+			$status = 15;
+			break;
+		case "You Have Already Sent Us An Application":
+			$status = 17;
+			break;
+		default:
+			$status = 0;
+	}
+	return $status;
+}
+
+function process_status($status, $feedback, $submission_id, $fileName)
+{
+	switch ($status)
+	{
+		case 1:
+			//echo $feedback;
+			//eregi('<div class="attentionMessage rowbackgrnd displayAnswer" tabindex="0">(.*)<div class="buttons">', $feedback, $matches);
+			//$feedback = str_replace("'", "''", $matches[1]); //add quotes to escape quotes for sql server
+			$query = "UPDATE screening_submission set submission_status = $status, submission_result = '$feedback', file_name = '$fileName', post_finish_time = now() WHERE submission_id = '".$submission_id."' ";
+			//echo "Final Updates:".$query;
+			$GLOBALS['db']->query($query);
+			break;
+		default:
+			$query = "UPDATE screening_submission set submission_status = '".$status."', file_name = '$fileName', post_finish_time = now() WHERE submission_id = '".$submission_id."' ";
+			$GLOBALS['db']->query($query);
+	}	
+}
+?>
