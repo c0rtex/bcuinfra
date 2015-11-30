@@ -1,10 +1,26 @@
+<!---
+	Template Name: OrganizationPoolCache
+	Component Purpose: Component manages local cache of organizations and there contacts
+
+	Data Tables: Organization, Address, Phone, Report
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuOrganizationPoolComponent">
+
+<!---
+	Method initializes local cache and clear them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
 	<cfset this.internalContent.lastRefresh = Now()>
 	<cfset this.internalContent.o = StructNew()>
 </cffunction>
+
+<!---
+	Method retrieves particular organization from database by id and puts them to local cache
+--->
 
 <cffunction name="actionRefreshOrganization" output="no">
 	<cfargument name="org_id" type="any" default="">
@@ -48,6 +64,10 @@
 		<cfset StructInsert(this.internalContent.o[ohash], 'comment', cover_comments)>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfargument name="org_id" type="any" default="">
@@ -108,6 +128,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns struct contained organization info and contacts with passed organization id
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="org_id" type="any" default="">

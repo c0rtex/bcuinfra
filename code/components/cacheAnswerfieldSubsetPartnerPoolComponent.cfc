@@ -1,4 +1,16 @@
+<!---
+	Template Name: AnswerfieldSubsetPartnerPoolCache
+	Component Purpose: Component manages local cache of answer fields stored in database and there binding to subsets and partners
+
+	Data Tables: Answerfield_subset_partner, Answerfield
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuAnswerfieldSubsetPartnerPoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -38,6 +50,10 @@
 	</cfloop>
 </cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 <cffunction name="actionDump" output="yes">
 	<cfoutput>
 		<table border="1" cellpadding="3" cellspacing="1">
@@ -59,6 +75,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns true if passed subsets answer field list equals to answer field list binded to passed couple subset and partner
+--->
 
 <cffunction name="actionIsDifferent" output="no">
 	<cfargument name="partner_id" type="numeric" default="0">

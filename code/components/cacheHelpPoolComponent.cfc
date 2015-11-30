@@ -1,4 +1,16 @@
+<!---
+	Template Name: HelpPoolCache
+	Component Purpose: Component manages local cache of help notes stored in database
+
+	Data Tables: Help, Helptype, Display
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuHelpPoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -40,6 +52,10 @@
 	</cfloop>
 </cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 <cffunction name="actionDump" output="yes">
 	<cfoutput>
 		<table border="1" cellpadding="3" cellspacing="1">
@@ -68,6 +84,10 @@
 	</cfoutput>
 </cffunction>
 
+<!---
+	Method returns struct contained help text and additional help attributes with passed help code
+--->
+
 <cffunction name="actionGet" output="no">
 	<cfargument name="code" type="string" default="">
 	<cfif code neq '' and StructKeyExists(this.internalContent.h, code)>
@@ -76,6 +96,10 @@
 		<cfreturn StructCopy(this.internalContent.null)>
 	</cfif>
 </cffunction>
+
+<!---
+	Method returns help code for passed help keyword
+--->
 
 <cffunction name="actionGetCodeByKeyword" output="no">
 	<cfargument name="keyword" type="string" default="">

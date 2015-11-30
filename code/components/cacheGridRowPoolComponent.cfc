@@ -1,4 +1,16 @@
+<!---
+	Template Name: GridRowPoolCache
+	Component Purpose: Component manages local cache of grid rows
+
+	Data Tables: Gridrow, Help
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuGridRowPoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 	<cffunction name="actionRefresh" output="no">
 		<cfset this.internalContent = StructNew()>
@@ -20,6 +32,10 @@
 			</cfif>
 		</cfloop>
 	</cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 	<cffunction name="actionDump" output="yes">
 		<cfoutput>
@@ -46,6 +62,10 @@
 		</cfoutput>
 	</cffunction>
 
+<!---
+	Method returns grid row item (struct) with passed grid row code
+--->
+
 	<cffunction name="actionGet" output="no">
 		<cfargument name="code" type="string" default="">
 		<cfif code neq '' and StructKeyExists(this.internalContent.gr, code)>
@@ -55,6 +75,5 @@
 		</cfif>
 
 	</cffunction>
-
 
 </cfcomponent>

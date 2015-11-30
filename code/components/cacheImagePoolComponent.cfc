@@ -1,4 +1,16 @@
+<!---
+	Template Name: ImagePoolCache
+	Component Purpose: Component manages local cache of image files set, which references and attributes stored in database
+
+	Data Tables: Image
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuImagePoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -24,6 +36,10 @@
 		</cfif>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfoutput>
@@ -51,6 +67,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns struct contained image file attributes with passed image code
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="code" type="string" default="">

@@ -1,4 +1,16 @@
+<!---
+	Template Name: AnswerfieldPoolCache
+	Component Purpose: Component manages local cache of answer fields stored in database
+
+	Data Tables: Answerfield, Answerfieldtype, Rule, Validation, Answerfield_option, Option
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuAnswerfieldPoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 	<cffunction name="actionRefresh" output="no">
 		<cfset this.internalContent = StructNew()>
@@ -79,6 +91,10 @@
 
 	</cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 	<cffunction name="actionDump" access="public" output="yes">
 
 		<cfset var displayname = getMetaData(this).displayname>
@@ -115,6 +131,10 @@
 			</table>
 		</cfoutput>
 	</cffunction>
+
+<!---
+	Method returns answer field item (struct) with passed answer field code
+--->
 
 	<cffunction name="actionGet" access="public" output="no">
 		<cfargument name="code" type="string" required="true">

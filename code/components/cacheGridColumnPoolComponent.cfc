@@ -1,4 +1,16 @@
+<!---
+	Template Name: GridColumnPoolCache
+	Component Purpose: Component manages local cache of grid columns
+
+	Data Tables: Gridcolumn, Help
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuGridColumnPoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -20,6 +32,10 @@
 		</cfif>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfoutput>
@@ -45,6 +61,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns grid column item (struct) with passed grid column code
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="code" type="string" default="">>

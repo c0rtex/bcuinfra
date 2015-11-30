@@ -1,4 +1,16 @@
+<!---
+	Template Name: LanguagePoolCache
+	Component Purpose: Component manages local cache of languages stored in database
+
+	Data Tables: Language, Display
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuLanguagePoolComponent">
+
+<!---
+	Method initializes local cache and refreshes them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -37,9 +49,17 @@
 	</cfloop>
 </cffunction>
 
+<!---
+	Method returns default language
+--->
+
 <cffunction name="actionDefault" output="no">
 	<cfreturn this.internalContent.default>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfoutput>
@@ -68,6 +88,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns struct contained language attributes with passed language code
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="language_id" type="string" default="">
