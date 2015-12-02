@@ -157,22 +157,22 @@ if (($phoneV == false || $confirmphoneV == false) && ($emailV == false || $email
 
 if ($phoneV == false){
   //$phoneError = "<div class='alert alert-danger'>Please enter a valid phone number.</div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
 }
 if ($confirmphoneV == false){
 //  $confirmphoneError = "<div class='alert alert-danger'>Phone numbers must match.</div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
 }
 if ($emailV == false){
 
   //$emailError = "<div class='alert alert-danger'>Please enter a valid E-mail address. </div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
 }
 
 //echo "THERE AGAIN <br/>emailV ".$emailV;
 if ($emailV == "emailMismatch"){
  // $emailError = "<div class='alert alert-danger'>Emails don't match.</div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
 }
 }
 
