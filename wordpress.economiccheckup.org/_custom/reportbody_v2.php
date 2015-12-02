@@ -454,7 +454,7 @@ echo "<a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$co
 <h2>EconomicCheckUp Report</h2>
 <p>This report provides an overview
 of your economic status along with recommendations for services to help you
-with your financial challenges.<?php if ($dataBridge == true) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\";}>Click here to discuss your financial goals and this report with an agency in your community.</a>"}  ?></p>
+with your financial challenges.<?php if ($dataBridge == true) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">Click here to discuss your financial goals and this report with an agency in your community.</a>";}  ?></p>
 <br/>
 </section>
 	<section id="currentstatus"> 
