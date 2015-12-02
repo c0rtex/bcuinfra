@@ -160,7 +160,8 @@ if ($phoneV == false){
   $phoneError = "<div class='alert alert-danger'>You must enter either a phone number or email address.</div>";
 }
 if ($confirmphoneV == false){
-  $confirmphoneError = "<div class='alert alert-danger'>Phone numbers must match.</div>";
+//  $confirmphoneError = "<div class='alert alert-danger'>Phone numbers must match.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a phone number or email address.</div>";
 }
 if ($emailV == false){
 
@@ -170,7 +171,8 @@ if ($emailV == false){
 
 //echo "THERE AGAIN <br/>emailV ".$emailV;
 if ($emailV == "emailMismatch"){
-  $emailError = "<div class='alert alert-danger'>Emails don't match.</div>";
+ // $emailError = "<div class='alert alert-danger'>Emails don't match.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a phone number or email address.</div>";
 }
 }
 
