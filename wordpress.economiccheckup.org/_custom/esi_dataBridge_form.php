@@ -378,7 +378,11 @@ By submitting my contact details in this form, I agree to allow a professional i
 </p>
 </div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["consent"]== "") ? " This field is required. " : "";} ?></div>
+<div class="checkbox>
+            	<label class="checkbox">
 <a id="consent" consent></a><input name="consent" required="required" type="checkbox"> I agree to the terms and conditions described above.</input>
+</label> 
+         	</div>
 <br/>
 <br/>
 
