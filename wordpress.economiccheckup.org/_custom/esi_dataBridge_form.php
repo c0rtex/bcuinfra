@@ -78,6 +78,7 @@ else { //the form has been submitted
 
 
 $phoneV = validateUSPhone ($phone);
+$confirmphoneV = true; //default
 $confirmphoneV = confirmPhone($phone,$confirmphone);
 
 //echo "EMAIL".$email."end";
