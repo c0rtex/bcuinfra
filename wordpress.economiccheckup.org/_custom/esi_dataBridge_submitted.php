@@ -48,35 +48,35 @@ $agency = "Baltimore City Commission on Aging and Retirement
 Education";
 $phone = "(410) 396-2273";
 //redesign
-//$email = "support@benefitscheckup.org";
+$email = "support@benefitscheckup.org";
 //$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
-$email = "map.bchd@baltimorecity.gov";
+//$email = "map.bchd@baltimorecity.gov";
 }
 
 else if ($county == '24043'){
 $agency = "Washington County Commission on Aging";
 $phone="(301) 790-0275";
 //redesign
-//$email = "support@benefitscheckup.org";
+$email = "support@benefitscheckup.org";
 //$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
-$email = "bcorbett@wccoaging.org, lchurch@wccoaging.org";
+//$email = "bcorbett@wccoaging.org, lchurch@wccoaging.org";
 }
 
 else if ($county == '24031'){
 $agency = "Jewish Social Service Agency of Montgomery County";
 $phone= "(301) 816-2633";
-$email = "kprice@jssa.org";
+//$email = "kprice@jssa.org";
 //redesign
-//$email = "support@benefitscheckup.org";
+$email = "support@benefitscheckup.org";
 //$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 
 }
 else if($county == '24027') {
 $agency = "Howard County Office on Aging";
 $phone="(410) 313-5980";
-$email = "map@howardcountymd.gov";
+//$email = "map@howardcountymd.gov";
 //redesign
-//$email = "support@benefitscheckup.org";
+$email = "support@benefitscheckup.org";
 //$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
 
 }
@@ -85,9 +85,9 @@ else if ($county == '24019'|| $county == '24039' || $county == '24045' || $count
 $agency = "Maintaining Active Citizens";
 $phone = "(410) 742-0505 (ext. 109)";
 //redesign
-//$email = "support@benefitscheckup.org";
+$email = "support@benefitscheckup.org";
 //$email = "support@benefitscheckup.org, kiryl.hakhovich@gmail.com";
-$email = "tld@macinc.org";
+//$email = "tld@macinc.org";
 
 }
 
