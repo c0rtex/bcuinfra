@@ -111,7 +111,7 @@ $emailV = validateEmail ($email, $confirmemail);
 //echo "<br/>";
 //echo "<br/>";
 //echo $emailV;
-if ((($phoneV != false && $confirmphoneV != false) || ($emailV != false && $emailV != "emailMismatch")) && trim($_POST["first_name"]) != "" && trim($_POST["last_name"]) != "" ){ 
+if ((($phoneV != false && $confirmphoneV != false && $emailV != "emailMistmatch") || ($emailV != false && $emailV != "emailMismatch" && $confirmphoneV != false)) && trim($_POST["first_name"]) != "" && trim($_POST["last_name"]) != "" ){ 
 
 //echo "HERE <br/>emailV ".$emailV;
 $saveResult = saveContactInfo ($fName, $lName, $emailV, $phoneV, $zip, $encPass, $encKey, $screeningID);
