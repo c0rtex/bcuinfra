@@ -145,6 +145,14 @@ else { //return to the form with the correct errors.
 //echo "THERE <br/>emailV ".$emailV;
 $formErrors = "<div class='alert alert-danger'><strong>Please correct the following fields.</strong></div>";
 
+if (trim($_POST["first_name"]) == ""){
+  $firstNameError = "<div class='alert alert-danger'>Please enter a first name.</div>";
+}
+
+if (trim($_POST["last_name"]) == ""){
+  $lastNameError = "<div class='alert alert-danger'>Please enter a last name.</div>";
+}
+
 if ($phoneV == false){
   $phoneError = "<div class='alert alert-danger'>Please enter a valid phone number.</div>";
 }
@@ -310,8 +318,9 @@ return array('status'=>'false');
 Complete this form to authorize an agency in your community to receive a copy of your assessment and contact information.  Your information will remain secure at all times. It will NOT be made public or used for any purpose other than to contact you to discuss resources that may be available to help you meet your financial needs. There is no fee for this service.
 </p>
 <p>
+<div><?php echo $firstNameError; ?></div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["first_name"] == "") ? " First Name is required." : "";} ?></div>
-<div><?php echo $fNameError; ?></div>
+<div><?php echo $lastNameError; ?></div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["last_name"] == "") ? " Last Name is required." : "";} ?></div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["phone_number"] == "") ? " Phone is required." : "";} ?></div>
 <div><?php echo $phoneError; ?></div>
