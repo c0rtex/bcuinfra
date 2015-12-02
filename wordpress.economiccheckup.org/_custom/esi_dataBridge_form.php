@@ -351,21 +351,21 @@ Complete this form to authorize an agency in your community to receive a copy of
 <tr class="dataBridge" id="phone">
 <td>
         <label>Phone Number  (XXX) XXX-XXXX:</label>
-        <input name="phone_number" required="required"  type="text" value="<?php echo $phone; ?>">
+        <input name="phone_number" type="text" value="<?php echo $phone; ?>">
 </td>
 <td>
         <label>Confirm Phone (XXX) XXX-XXXX:</label>
-        <input name="confirm_phone" required="required"  type="text" value="<?php echo $confirmphone; ?>">
+        <input name="confirm_phone" type="text" value="<?php echo $confirmphone; ?>">
 </td>
 </tr>
 <tr class="dataBridge" id="email">
 <td>
         <label> E-mail address:</label>
-        <input name="email" required="required" type="email" value="<?php echo $email; ?>">
+        <input name="email" type="email" value="<?php echo $email; ?>">
 </td>
 <td>
         <label> Re-enter E-mail address:</label>
-        <input name="confirmemail" required="required" type="email" value="<?php echo $confirmemail; ?>">
+        <input name="confirmemail" type="email" value="<?php echo $confirmemail; ?>">
 </td>
 </tr>
 </table>
