@@ -433,11 +433,28 @@ echo "<br/>";
 echo "<b>Unique ID: ".$screeningID."</b>";
 echo "<br/>";
 }
+
+//Lynna Cekova: MD data bridge
+
+	//echo "test location: ".$county." county id ".$countyId." ".$state_id." ".$esi_zip; 
+
+     $dataBridge = false;
+if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $countyId == '24019' || $countyId == '24043' || $countyId == '24039' || $countyId == '24045' || $countyId == '24047'){
+     $dataBridge = true;
+}
+if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+echo "<a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\"><p>Click here to discuss your report with an aging services office in your area that may be able to help you meet your financial goals/needs. </p></a>";
+}
+//Lynna Cekova: End of data bridge
+
+
 ?>
+
+
 <h2>EconomicCheckUp Report</h2>
 <p>This report provides an overview
 of your economic status along with recommendations for services to help you
-with your financial challenges.</p>
+with your financial challenges.<?php if ($dataBridge == true) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">Click here to discuss your financial goals and this report with an agency in your community.</a>"}  ?></p>
 <br/>
 </section>
 	<section id="currentstatus"> 
@@ -674,19 +691,6 @@ Boston. <a href=""><a data-toggle="modal" role="button" href="#learnmore">Learn 
 	//Rec - If income < expenses or income < elder index: 
        if (($IncomeAndBenefits < $esiMonthlyIncomeByLocation)||($IncomeAndBenefits < $totalMthlyExp ) ){
 	echo "<p>You are not alone. There are many free and trusted programs that can help you get back on track with your finances. Let’s get started now!</p>";
-//Lynna Cekova: MD data bridge
-
-	//echo "test location: ".$county." county id ".$countyId." ".$state_id." ".$esi_zip; 
-
-     $dataBridge = false;
-if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $countyId == '24019' || $countyId == '24043' || $countyId == '24039' || $countyId == '24045' || $countyId == '24047'){
-     $dataBridge = true;
-}
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
-echo "<p>You can also discuss your report with an <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">aging services office in your area</a> that may be able to help you meet your financial goals/needs.</p>";
-}
-//Lynna Cekova: End of data bridge
-
 
 	}
 	else {
