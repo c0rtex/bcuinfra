@@ -153,20 +153,25 @@ if (trim($_POST["last_name"]) == ""){
   $lastNameError = "<div class='alert alert-danger'>Please enter a last name.</div>";
 }
 
+if (($phoneV == false || $confirmphoneV == false) && ($emailV == false || $emailV == "emailMismatch")){ //only phone or email required
+
 if ($phoneV == false){
-  $phoneError = "<div class='alert alert-danger'>Please enter a valid phone number.</div>";
+  //$phoneError = "<div class='alert alert-danger'>Please enter a valid phone number.</div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a phone number or email address.</div>";
 }
 if ($confirmphoneV == false){
   $confirmphoneError = "<div class='alert alert-danger'>Phone numbers must match.</div>";
 }
 if ($emailV == false){
 
-  $emailError = "<div class='alert alert-danger'>Please enter a valid E-mail address. </div>";
+  //$emailError = "<div class='alert alert-danger'>Please enter a valid E-mail address. </div>";
+  $phoneError = "<div class='alert alert-danger'>You must enter either a phone number or email address.</div>";
 }
 
 //echo "THERE AGAIN <br/>emailV ".$emailV;
 if ($emailV == "emailMismatch"){
   $emailError = "<div class='alert alert-danger'>Emails don't match.</div>";
+}
 }
 
 
