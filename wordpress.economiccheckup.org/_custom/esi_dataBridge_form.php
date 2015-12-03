@@ -111,9 +111,9 @@ $emailV = validateEmail ($email, $confirmemail);
 
 //echo "<br/>";
 //echo "<br/>";
-echo "<br>phoneV".$phoneV;
-echo "<br>confirmphoneV".$confirmphoneV;
-echo "<br>emailV".$emailV;
+//echo "<br>phoneV".$phoneV;
+//echo "<br>confirmphoneV".$confirmphoneV;
+//echo "<br>emailV".$emailV;
 if ($confirmphoneV != false){
 //echo "wth";
 }
@@ -151,6 +151,8 @@ else { //return to the form with the correct errors.
 //echo "THERE <br/>emailV ".$emailV;
 $formErrors = "<div class='alert alert-danger'><strong>Please correct the following fields.</strong></div>";
 
+
+if (trim($_POST["first_name"]) == "" || trim($_POST["first_name"]) == ""){
 if (trim($_POST["first_name"]) == ""){
   $firstNameError = "<div class='alert alert-danger'>Please enter a first name.</div>";
 }
@@ -158,30 +160,10 @@ if (trim($_POST["first_name"]) == ""){
 if (trim($_POST["last_name"]) == ""){
   $lastNameError = "<div class='alert alert-danger'>Please enter a last name.</div>";
 }
-
-if (($phoneV == false || $confirmphoneV == false) && ($emailV == false || $emailV == "emailMismatch")){ //only phone or email required
-
-if ($phoneV == false){
-  //$phoneError = "<div class='alert alert-danger'>Please enter a valid phone number.</div>";
+}
+else { //there is some problem with the phone or email
   $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
 }
-if ($confirmphoneV == false){
-//  $confirmphoneError = "<div class='alert alert-danger'>Phone numbers must match.</div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
-}
-if ($emailV == false){
-
-  //$emailError = "<div class='alert alert-danger'>Please enter a valid E-mail address. </div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
-}
-
-//echo "THERE AGAIN <br/>emailV ".$emailV;
-if ($emailV == "emailMismatch"){
- // $emailError = "<div class='alert alert-danger'>Emails don't match.</div>";
-  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
-}
-}
-
 
 //echo "date error";
 
@@ -190,7 +172,7 @@ if ($emailV == "emailMismatch"){
 
 
 function confirmPhone($phone,$confirmphone){
-if (trim($phone) === trim($confmirmphone)){
+if (trim($phone) === trim($confirmphone)){
 return $phone;
 }
 else {
