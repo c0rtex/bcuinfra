@@ -111,8 +111,13 @@ $emailV = validateEmail ($email, $confirmemail);
 
 //echo "<br/>";
 //echo "<br/>";
-//echo $emailV;
-if ((($phoneV != false && $confirmphoneV != false && $emailV != "emailMistmatch") || ($emailV != false && $emailV != "emailMismatch" && $confirmphoneV != false)) && trim($_POST["first_name"]) != "" && trim($_POST["last_name"]) != "" ){ 
+//echo "<br>phoneV".$phoneV;
+//echo "<br>confirmphoneV".$confirmphoneV;
+//echo "<br>emailV".$emailV;
+if ($confirmphoneV != false){
+//echo "wth";
+}
+if ((($phoneV != false && $confirmphoneV != false && $emailV != "emailMistmatch") || ($emailV != false && $emailV != "emailMismatch" && ($confirmphoneV != false || ($phoneV == false && $confirmphoneV == false)))) && trim($_POST["first_name"]) != "" && trim($_POST["last_name"]) != "" ){ 
 
 //echo "HERE <br/>emailV ".$emailV;
 $saveResult = saveContactInfo ($fName, $lName, $emailV, $phoneV, $zip, $encPass, $encKey, $screeningID);
@@ -185,7 +190,7 @@ if ($emailV == "emailMismatch"){
 
 
 function confirmPhone($phone,$confirmphone){
-if ($phone == $confirmphone){
+if (trim($phone) === trim($confmirmphone)){
 return $phone;
 }
 else {
@@ -330,9 +335,9 @@ Complete this form to authorize an agency in your community to receive a copy of
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["first_name"] == "") ? " First Name is required." : "";} ?></div>
 <div><?php echo $lastNameError; ?></div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["last_name"] == "") ? " Last Name is required." : "";} ?></div>
-<div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["phone_number"] == "") ? " Phone is required." : "";} ?></div>
+<div  class=" "><?php if ($submitted == 'true'){ } ?></div>
 <div><?php echo $phoneError; ?></div>
-<div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["confirm_phone"] == "") ? " Confirm Phone is required." : "";} ?></div>
+<div  class=" "><?php if ($submitted == 'true'){ } ?></div>
 <div><?php echo $confirmphoneError ?></div>
 <div  class=" "><?php echo $emailError; ?></div>
 </p>
