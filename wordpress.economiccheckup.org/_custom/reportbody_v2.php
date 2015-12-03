@@ -2423,6 +2423,19 @@ if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with data
         	<li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/s/3V39M9Z" target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
             <li><form><a data-toggle="modal" role="button" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvas(canvasImg, canvasImgCount);"><i class="icon-print "></i> Printable Report</a></form></li>
+<li>
+<?php
+if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+?>
+<div class="printButton">
+            <form><a data-toggle="modal" role="button" class="btn" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
+</div>
+ 
+<?php
+}
+?>
+
+</li>
         </ol>		
     </div>	  
 </div>
