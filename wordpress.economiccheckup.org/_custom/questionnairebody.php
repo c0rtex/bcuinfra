@@ -17,7 +17,7 @@ echo "<br/>";
 
 <h2>Start Making the Most of Your Money!</h2>
 <p>
-Answer 23 simple questions—and you will get a personal report with tips on
+Answer 23 simple questions and you will get a personal report with tips on
 money management and budgeting, staying healthy, and protecting your financial
 information.  All recommendations are designed to meet the unique needs of
 seniors. 
