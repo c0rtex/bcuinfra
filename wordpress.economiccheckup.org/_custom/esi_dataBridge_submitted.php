@@ -190,7 +190,7 @@ $message = '
 
 <p>Please note, a consumer in your area has asked for help with their EconomicCheckUp report.</p>
 
-<p>You can access the consumer’s contact information, EconomicCheckUp report, and answers to the EconomicCheckUp assessment online through your <a href="https://oe.economiccheckup.org/oe/?partner_id=77">login</a>. Please review this information, and contact them within the next 3 business days. </p>
+<p>You can access the consumer’s contact information, EconomicCheckUp report, and answers to the EconomicCheckUp assessment online through your <a href="'.PARTNER_LOGIN.'/?partner_id=77">login</a>. Please review this information, and contact them within the next 3 business days. </p>
 
 <p>Please do not reply to this email. If you have any questions, please feel free to contact us
 at EconomicCheckUp@ncoa.org.</p>
