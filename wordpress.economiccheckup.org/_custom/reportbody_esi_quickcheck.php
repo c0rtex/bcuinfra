@@ -2069,6 +2069,10 @@ $("#health").hide();
 <br/>
         	<li><a data-toggle="modal" role="button" href="/esi-questions" target="_blank"><i class="icon-check "></i> My CheckUp -- for a personalized report</a></li>
         </form></ol>	
+<div class="printButton">
+            <form><a data-toggle="modal" role="button" class="btn" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
+</div>
+ 
     </div>	  
 </div>
 <div id="learnmore" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Learn More" aria-hidden="true" style="display: none;">
