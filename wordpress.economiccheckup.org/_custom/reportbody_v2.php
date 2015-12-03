@@ -442,9 +442,6 @@ echo "<br/>";
 if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $countyId == '24019' || $countyId == '24043' || $countyId == '24039' || $countyId == '24045' || $countyId == '24047'){
      $dataBridge = true;
 }
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
-echo "<a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\"><p>Click here to discuss your report with an aging services office in your area that may be able to help you meet your financial goals/needs. </p></a>";
-}
 //Lynna Cekova: End of data bridge
 
 
@@ -697,6 +694,10 @@ Boston. <a href=""><a data-toggle="modal" role="button" href="#learnmore">Learn 
 	//Rec - If income > expenses and income > elder index: 
 	echo "<p>While you’re on track with your finances today, it’s important to stay on track. There are many free and trusted programs that can help you manage and meet your financial goals. Let’s get started now!</p>";
 	}
+if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+echo "<a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\"><p>Click here to discuss your report with an aging services office in your area that may be able to help you meet your financial goals/needs. </p></a>";
+}
+
 	//echo "test location:".$county.$state_id.$esi_zip;
 	?>
 	</div>
