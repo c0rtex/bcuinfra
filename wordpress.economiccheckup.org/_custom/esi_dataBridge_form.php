@@ -111,9 +111,9 @@ $emailV = validateEmail ($email, $confirmemail);
 
 //echo "<br/>";
 //echo "<br/>";
-//echo "<br>phoneV".$phoneV;
-//echo "<br>confirmphoneV".$confirmphoneV;
-//echo "<br>emailV".$emailV;
+echo "<br>phoneV".$phoneV;
+echo "<br>confirmphoneV".$confirmphoneV;
+echo "<br>emailV".$emailV;
 if ($confirmphoneV != false){
 //echo "wth";
 }
