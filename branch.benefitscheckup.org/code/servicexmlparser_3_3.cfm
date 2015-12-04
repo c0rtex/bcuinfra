@@ -9,7 +9,7 @@
 <cfparam name="request.debug" type="boolean"  default="false">
 <cfset request.debug = "false">
 <!-- set AEP subset to 72 for open enrollment 86 otherwise -->
-<cfset application.AEP_subset = 72>
+<cfset application.AEP_subset = 86 >
 <cfset application.chicagovars = structnew()>
 <!-- default test parameter xml string -->
 <cfif testresponse and not isdefined('response_list')>
