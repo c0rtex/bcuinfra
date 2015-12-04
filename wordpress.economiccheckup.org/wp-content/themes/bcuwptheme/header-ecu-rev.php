@@ -20,6 +20,8 @@
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<meta name="msvalidate.01" content="73FAF9EF809DEE2A8BAD7758DB4A3776" />
+
 		<!-- icons & favicons -->
 		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-icon-touch.png">
 		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">

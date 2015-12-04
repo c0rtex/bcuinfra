@@ -29,9 +29,9 @@
 
 <cf_buildPage title="Eligibility Rule" section="rule">
 
-<cfquery name="postCode" datasource="#application.dbSrc#">
+<cfquery name="postCode" datasource="#application.dbSrcWp#">
 		select r.code, wppm.post_id
-		from `rule` r, bcu_wp.wp_postmeta wppm, bcu_wp.wp_posts wpp
+		from #preservesinglequotes(application.dbNameBCU)#.rule r, #preservesinglequotes(application.dbNameWP)#.wp_postmeta wppm, #preservesinglequotes(application.dbNameWP)#.wp_posts wpp
 		where r.rule_id=#id#
                         and wppm.meta_key='post_code'				
                         and r.code=wppm.meta_value

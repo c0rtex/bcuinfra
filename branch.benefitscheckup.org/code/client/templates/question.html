@@ -1,0 +1,5 @@
+    <span ng-bind-html="question.display"></span><div-helps ng-if="question.helps.length>0" help="question.helps[0]"></div-helps>
+    <div ng-repeat="answer_field in question.answer_fields | orderBy:'sort'" ng-controller="ValidationController">
+        <div-answer-field ng-attr-answer-field="answer_field"/>
+    </div>
+    <p/>
