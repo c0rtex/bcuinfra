@@ -5,6 +5,7 @@
 	<cfargument name="subset_id" type="numeric" required="yes" >
 	<cfargument name="responseStruct" required="yes"  >
 	<cfargument name="debugOutput" type="numeric" required="no" default="false" >
+	<cfparam name="SHOWMOREOUTPUT" default="false">
 	<cfset request.sep_narrative = false >
 	<cfset request.iep_narrative = false >
 	<cfparam name="arguments.responseStruct.dob" default="">
