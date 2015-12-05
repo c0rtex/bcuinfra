@@ -1955,7 +1955,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 <a href="mailto:economiccheckup@ncoa.org">Tell us</a> how it worked for you.</div>
 
 <br/>
-<div class="printButton">
+<div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i class="icon-print "></i> Print Your Report</a></form>
 </div>
 
