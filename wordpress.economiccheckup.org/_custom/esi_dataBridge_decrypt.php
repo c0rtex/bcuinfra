@@ -110,11 +110,11 @@ Complete this form to authorize an agency in your community to receive a copy of
 $phone = explode(")", decrypt($record["phone"], $encPass, $encKey));
 ?>
         <label>Phone Number  (XXX) XXX-XXXX:</label>
-        <input name="phone_number" disabled required="required"  type="text" value="<?php echo $phone[0].") ".$phone[1]; ?>">
+        <input name="phone_number" disabled required="required"  type="text" value="<?php if (trim($phone[0]) != "") {echo $phone[0].") ".$phone[1];} ?>">
 </td>
 <td>
         <label>Confirm Phone (XXX) XXX-XXXX:</label>
-        <input name="confirm_phone" disabled required="required"  type="text" value="<?php echo $phone[0].") ".$phone[1]; ?>">
+        <input name="confirm_phone" disabled required="required"  type="text" value="<?php if (trim($phone[0]) != "") {echo $phone[0].") ".$phone[1];} ?>">
 </td>
 </tr>
 <tr class="dataBridge">
