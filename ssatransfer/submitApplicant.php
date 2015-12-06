@@ -1,5 +1,8 @@
 <?php  
-
+/*
+This template accepts a screening id from the previous page, queries the field data related to the screening id, uses the curl utilitity to send data page by page to ssa.gov
+TABLES: screening, screening_answerfield, answerfield, screening_submission
+*/
 require_once("includes/config.php");  //always have to include this
 require_once(INCLUDES_DIR."Logger.php");
 require_once(INCLUDES_DIR."encryption.php");
