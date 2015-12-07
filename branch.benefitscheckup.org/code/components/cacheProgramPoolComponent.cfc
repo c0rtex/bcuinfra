@@ -1,6 +1,22 @@
+<!---
+	Template Name: ProgramPoolCache
+	Component Purpose: Component manages local cache of programs
+
+	Data Tables: Program, Programgroup, Display_language, Program_rule, Rule, Program_requisite, Requisite
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuProgramPoolComponent">
 
+<!---
+	Component property indicates if multilanguage is used for display programs
+--->
+
 	<cfproperty name="multiLanguage" type="boolean" default="false">
+
+<!---
+	Method initializes local cache and refresh them
+--->
 
 	<cffunction name="actionRefresh" output="no">
 		<cfset this.internalContent = StructNew()>
@@ -70,6 +86,10 @@
 		</cfloop>
 	</cffunction>
 
+<!---
+	Method refresh particular program with passed id in local cache
+--->
+
 	<cffunction name="refreshProgram" output="no">
 		<cfargument name="code" type="string" default="">
 
@@ -121,6 +141,10 @@
 		</cfloop>
 	</cffunction>
 
+<!---
+	Method returns program code definition based on program id and legacy
+--->
+
 	<cffunction name="getCodeVar" output="no">
 		<cfargument name="code" type="string" default="">
 		<cfargument name="id" type="numeric" default="0">
@@ -137,6 +161,10 @@
 			</cftry>
 		</cfif>
 	</cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 	<cffunction name="actionDump" output="yes">
 		<cfoutput>
@@ -167,6 +195,10 @@
 			</table>
 		</cfoutput>
 	</cffunction>
+
+<!---
+	Method returns struct contained program info for passed program code or couple of program id and legacy
+--->
 
 	<cffunction name="actionGet" output="no">
 		<cfargument name="code" type="string" default="">

@@ -1,4 +1,16 @@
+<!---
+	Template Name: WrapperPoolCache
+	Component Purpose: Component manages local cache of partner wrappers
+
+	Data Tables: Wrapper, Tbl_partner
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuWrapperQueryComponent">
+
+<!---
+	Method initializes local cache and refresh them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -28,6 +40,10 @@
 		</cfif>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method returns struct contained wrapper info for passed partner id
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="partner_id" type="numeric">

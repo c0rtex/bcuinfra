@@ -1,4 +1,17 @@
+<!---
+	Template Name: SubsetQuestionPoolCache
+	Component Purpose: Component manages local cache of questions and it's includes to subsets
+
+	Data Tables: Subset_program_base, Program, Program_answerfield, Answerfield, Answerfield_subset_partner, Answerfield_relationship,
+				 Subset_program_sum, Program_parent pp, Subset_question, Question
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuSubsetQuestionPoolComponent">
+
+<!---
+	Methods returns true if passed to actionGet parameters affected to all elements in cache
+--->
 
 <cffunction name="isDoAll" output="no">
 	<cfargument name="basics" type="boolean" default="false">
@@ -8,6 +21,10 @@
 
 	<cfreturn (state_id eq '' and not basics and not app) or subset_id eq ''>
 </cffunction>
+
+<!---
+	Method returns cache key defined using state id, subset id and partner id
+--->
 
 <cffunction name="getSqHash" output="no">
 	<cfargument name="basics" type="boolean" default="false">
@@ -30,11 +47,19 @@
 	</cfif>
 </cffunction>
 
+<!---
+	Methods initializes and recreates cache container
+--->
+
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
 	<cfset this.internalContent.lastRefresh = Now()>
 	<cfset this.internalContent.sq = StructNew()>
 </cffunction>
+
+<!---
+	Methods adds or refresh question set included to particular subset and binded with partner
+--->
 
 <cffunction name="actionRefreshSubsetQuestionPoolComponent" output="no">
 	<cfargument name="basics" type="boolean" default="false">
@@ -59,7 +84,7 @@
 			SELECT q.question_id, NULL AS page_id
 			FROM (
 				SELECT pa.answerfield_id
-				FROM subset_program_base sp, program p, program_answerfield pa, answerfield a
+--				FROM subset_program_base sp, program p, program_answerfield pa, answerfield a
 				WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 					AND sp.program_id=p.program_id
 					AND <cfif not basics>(</cfif>p.state_id IS NULL
@@ -70,7 +95,7 @@
 					AND p.program_id=pa.program_id
 					AND pa.answerfield_id NOT IN (
 						SELECT answerfield_id
-						FROM answerfield_subset_partner
+--						FROM answerfield_subset_partner
 						WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 							AND <cfif includePartner>(</cfif>partner_id is null
 							<cfif includePartner>
@@ -85,7 +110,7 @@
 					</cfif>
 				UNION
 				SELECT ar.right_answerfield_id as answerfield_id
-				FROM subset_program_base sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
+--				FROM subset_program_base sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
 				WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 					AND sp.program_id=p.program_id
 					AND <cfif not basics>(</cfif>p.state_id IS NULL
@@ -96,7 +121,7 @@
 					AND p.program_id=pa.program_id
 					AND pa.answerfield_id NOT IN (
 						SELECT answerfield_id
-						FROM answerfield_subset_partner
+--						FROM answerfield_subset_partner
 						WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 							AND <cfif includePartner>(</cfif>partner_id is null
 							<cfif includePartner>
@@ -113,7 +138,7 @@
 					</cfif>
 				UNION
 				SELECT  pa.answerfield_id
-				FROM subset_program_sum sps, program_answerfield pa, answerfield a
+--				FROM subset_program_sum sps, program_answerfield pa, answerfield a
 				WHERE
 					sps.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 					and pa.program_id = sps.program_id
@@ -121,7 +146,7 @@
 					and sps.program_id in
 					(
 						select  pp.parent_program_id
-						from program_parent pp, program p, subset_program_base spb
+--						from program_parent pp, program p, subset_program_base spb
 						where
 						spb.program_id = pp.program_id
 						and pp.program_id = p.program_id
@@ -130,7 +155,7 @@
 					)
 				UNION
 				SELECT ar.right_answerfield_id as answerfield_id
-				FROM subset_program_sum sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
+--				FROM subset_program_sum sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
 				WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 					AND sp.program_id=p.program_id
 					AND <cfif not basics>(</cfif>p.state_id IS NULL
@@ -141,7 +166,7 @@
 					AND p.program_id=pa.program_id
 					AND pa.answerfield_id NOT IN (
 						SELECT answerfield_id
-						FROM answerfield_subset_partner
+--						FROM answerfield_subset_partner
 						WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 							AND <cfif includePartner>(</cfif>partner_id is null
 							<cfif includePartner>
@@ -151,7 +176,7 @@
 					)
 					and sp.program_id in
 					(	select  pp.parent_program_id
-						from program_parent pp, program p, subset_program_base spb
+--						from program_parent pp, program p, subset_program_base spb
 						where
 						spb.program_id = pp.program_id
 						and pp.program_id = p.program_id
@@ -173,7 +198,7 @@
 			WHERE a.answerfield_id=qa.answerfield_id
 				AND qa.question_id NOT IN (
 					SELECT question_id
-					FROM subset_question
+--					FROM subset_question
 					WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 						AND exclude_flag=1
 				)
@@ -181,13 +206,13 @@
 				AND q.exclude_flag=0
 			UNION
 			SELECT q.question_id, sq.page_id
-			FROM subset_question sq, question q
+--			FROM subset_question sq, question q
 			WHERE sq.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
 				AND sq.exclude_flag=0
 				AND sq.question_id=q.question_id
 			UNION
 			SELECT q.question_id, NULL AS page_id
-			FROM question q
+--			FROM question q
 			WHERE q.include_flag=1
 				AND q.question_id NOT IN (
 					SELECT question_id
@@ -210,6 +235,10 @@
 		<cfset StructInsert(this.internalContent.sq[sqhash].sort, qCount, question_code)>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfargument name="basics" type="boolean" default="false">
@@ -248,6 +277,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Methods returns question set from cache included to passed subset id and binded with passed partner id
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="basics" type="boolean" default="false">

@@ -1,10 +1,26 @@
+<!---
+	Template Name: SubsetAnswerfieldPoolCache
+	Component Purpose: Component manages local cache of subsets answer fields, i.e. binding between subsets and answer fields
+
+	Data Tables: Subset_program_sum, Program, Program_answerfield, Answerfield, Answerfield_subset_partner, Answerfield_relationship, Subset_question, Question
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuSubsetAnswerfieldPoolComponent">
+
+<!---
+	Methods initializes and recreates cache container
+--->
 
 	<cffunction name="actionRefresh" output="no">
 		<cfset this.internalContent = StructNew()>
 		<cfset this.internalContent.lastRefresh = Now()>
 		<cfset this.internalContent.sa = StructNew()>
 	</cffunction>
+
+<!---
+	Methods adds or refresh particular subsets answer fields in cache
+--->
 
 	<cffunction name="actionRefreshSubsetAnswerfield" output="no">
 		<cfargument name="subset_id" type="any" default="">
@@ -84,6 +100,10 @@
 
 	</cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 	<cffunction name="actionDump" output="yes">
 		<cfargument name="subset_id" type="any" default="">
 		<cfargument name="partner_id" type="any" default="">
@@ -124,10 +144,18 @@
 		</cfoutput>
 	</cffunction>
 
+<!---
+	Method returns true if subset id is empty when components methods are invoked
+--->
+
 	<cffunction name="isDoAll" output="no">
 		<cfargument name="subset_id" type="any" default="">
 		<cfreturn subset_id eq ''>
 	</cffunction>
+
+<!---
+	Method defines and returns local cache value key based on subset and partner ids
+--->
 
 	<cffunction name="getSaHash" output="no">
 		<cfargument name="subset_id" type="any" default="">
@@ -146,6 +174,10 @@
 		<cfreturn "s#subset_id##phash#">
 	</cffunction>
 
+<!---
+	Method returns true if passed subsets answer field list equals to answer field list binded to passed couple subset and partner
+--->
+
 	<cffunction name="isPartnerDiff" output="no">
 		<cfargument name="subset_id" type="any" default="">
 		<cfargument name="partner_id" type="any" default="">
@@ -156,12 +188,16 @@
 			<cfreturn partnerDiff>
 	</cffunction>
 
+<!---
+	Method returns struct contained subsets answer field list for passed subset id, partner id and state id. Method returns false if state id is empty
+--->
+
 	<cffunction name="actionGet" output="no">
 		<cfargument name="subset_id" type="any" default="">
 		<cfargument name="partner_id" type="any" default="">
 		<cfargument name="state_id" type="any" default="">
 
-		<cfif this.isDoall(subset_is)>
+		<cfif this.isDoall(subset_id)>
 			<cfreturn false>
 		<cfelse>
 			<cfset sahash = this.getSahash(subset_id,partner_id)>

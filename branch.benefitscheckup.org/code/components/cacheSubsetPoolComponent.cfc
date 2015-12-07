@@ -1,4 +1,16 @@
+<!---
+	Template Name: SubsetPoolCache
+	Component Purpose: Component manages local cache of subsets
+
+	Data Tables: Subset, Subsettype, Resultpage, Subset_partner_shadow, Requisite, Subset_requisite
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuSubsetPoolComponent">
+
+<!---
+	Method initializes local cache and refresh them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
@@ -18,6 +30,10 @@
 		<cfset StructInsert(this.internalContent.sort, sCount, code)>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method adds or refresh particular subset in cache with passed subset id
+--->
 
 <cffunction name="actionRefreshSubset" output="no">
 	<cfargument name="subset_id" type="any" default="">
@@ -89,6 +105,10 @@
 	</cfloop>
 </cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 <cffunction name="actionDump" output="yes">
 	<cfargument name="subset_id" type="any" default="">
 
@@ -149,6 +169,10 @@
 	</cfoutput>
 </cffunction>
 
+<!---
+	Method returns struct contained subset info for passed subset id
+--->
+
 <cffunction name="actionGet" output="no">
 	<cfargument name="subset_id" type="any" default="">
 
@@ -164,6 +188,10 @@
 		<cfreturn StructCopy(this.internalContent.s[shash])>
 	</cfif>
 </cffunction>
+
+<!---
+	Method returns struct contained subsets shadow info for passed couple of subset id and partner id
+--->
 
 <cffunction name="actionGetShadow" output="no">
 	<cfargument name="subset_id" type="any" default="">

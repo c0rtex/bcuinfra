@@ -1,10 +1,26 @@
+<!---
+	Template Name: ToteboardPoolCache
+	Component Purpose: Component manages local cache of user tote boards
+
+	Data Tables: Screening, Oe_org
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuToteboardComponent">
+
+<!---
+	Method initialises and clears local cache container
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
 
 	<cfinvoke component="#this#" method="actionrefreshtoteboard">
 </cffunction>
+
+<!---
+	Method initialises and clears local cache container
+--->
 
 <cffunction name="actionRefreshToteboard" output="no">
 	<cfset refreshDate = DateAdd('h', 20, Now())>
@@ -14,6 +30,10 @@
 	<cfset this.internalContent.users = ''>
 	<cfset this.internalContent.dollars = ''>
 </cffunction>
+
+<!--
+	Method return screening tote board with passed precision
+--->
 
 <cffunction name="getScreenings" output="no">
 	<cfargument name="writerounded" type="boolean" default="false">
@@ -32,6 +52,10 @@
 	<cfreturn this.formatValue(this.internalContent.screenings,writerounded)>
 </cffunction>
 
+<!---
+	Method returns user tote board with passed precision
+--->
+
 <cffunction name="getUsers" output="no">
 	<cfargument name="writerounded" type="boolean" default="false">
 
@@ -42,6 +66,10 @@
 
 	<cfreturn this.formatValue(this.internalContent.users,writerounded)>
 </cffunction>
+
+<!---
+	Method returns dollars tote board with passed precision
+--->
 
 <cffunction name="getDollars" output="no">
 	<cfargument name="writerounded" type="boolean" default="false">
@@ -61,6 +89,10 @@
 
 	<cfreturn "$"&this.formatValue(this.internalContent.dollars,writerounded)>
 </cffunction>
+
+<!---
+	Method return value formated to passed precision
+--->
 
 <cffunction name="formatValue">
 	<cfargument name="value" type="any" default="">
