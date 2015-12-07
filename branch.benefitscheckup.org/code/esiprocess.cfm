@@ -263,7 +263,7 @@
 	<cfif url.esiprod eq 1>
 	<cfoutput><a href="https://www.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	<cfelse>
-	<cfoutput><a href="/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
+	<cfoutput><a href="http://qa.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	</cfif>
   </cfif>
 <cfabort>
@@ -273,7 +273,7 @@
 	<cfif url.esiprod eq 1>
 	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	<cfelse>
-		<cfoutput><meta http-equiv="refresh" content="0;url=/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+		<cfoutput><meta http-equiv="refresh" content="0;url=http://qa.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	</cfif>
 </cfif>
  

@@ -1,32 +1,30 @@
 <!-- This script takes an input xml file from the screenforbenefits.cfc parses the xml and passes the variables into the bcu screening--> <!-- Try and Catch all processing errors --> 
-<cfparam name="testresponse" default="0">
+<cfparam name="testresponse" default="1">
 <cfparam name="request.partner_id" default="14">
 <cfparam name="request.client_id" default="0">
 <cfparam name="request.org_id" default="0">
 <cfparam name="request.partner_screening_id" default="">
 <cfparam name="request.campaign_id" default="">
 <cfparam name="program_xml" default="">
+<cfparam name="request.prg_list" default="">
 <cfparam name="request.debug" type="boolean"  default="false">
 <cfset request.debug = "false">
 <!-- set AEP subset to 72 for open enrollment 86 otherwise -->
-<cfset application.AEP_subset = 72>
+<cfset application.AEP_subset = 86>
 <cfset application.chicagovars = structnew()>
 <!-- default test parameter xml string -->
 <cfif testresponse and not isdefined('response_list')>
 <cfset xmlstring = '
 <?xml version="1.0" encoding="utf-16"?>
 <ScreeningSet>
-<Screening Subset_id="74">
-
-<Answer AnswerField="subset_id" AnswerValue="74" ></Answer>
-<Answer AnswerField="mqc_client" AnswerValue="1359-test" ></Answer>
-<Answer AnswerField="mqc_zipcode" AnswerValue="10022" ></Answer>
-<Answer AnswerField="mqc_birth_month" AnswerValue="12" ></Answer>
-<Answer AnswerField="mqc_birth_day" AnswerValue="13" ></Answer>
-<Answer AnswerField="mqc_birth_year" AnswerValue="1949" ></Answer>
-<Answer AnswerField="mqc_medicare_enroll_situation" AnswerValue="mqc_medicare_enroll_disability_yes" ></Answer>
-<Answer AnswerField="mqc_noneofabove" AnswerValue="y" ></Answer>
-<Answer AnswerField="mqc_employer_insurance" AnswerValue="n" ></Answer>
+<Screening Subset_id="83">
+<Answer AnswerField="esi_zip" AnswerValue="60606" ></Answer>
+<Answer AnswerField="esi_category_retirement_planning" AnswerValue="y" ></Answer>
+<Answer AnswerField="esi_category_money_management" AnswerValue="y" ></Answer>
+<Answer AnswerField="esi_category_homeowner_resources" AnswerValue="y" ></Answer>
+<Answer AnswerField="esi_category_consumer_protection" AnswerValue="y" ></Answer>
+<Answer AnswerField="esi_category_legal_resources" AnswerValue="y" ></Answer>
+<Answer AnswerField="subset_id" AnswerValue="83" ></Answer>
 </Screening>
 </ScreeningSet>
 ' > 
@@ -497,6 +495,8 @@ order by question_code, answerfield
   <cfset checkzip = response_set.mqc_zip>
 <cfelseif isdefined('response_set.mqc_zipcode') and response_set.mqc_zipcode neq ''>
   <cfset checkzip = response_set.mqc_zipcode>
+<cfelseif isdefined('response_set.esi_zip') and response_set.esi_zip neq ''>
+  <cfset checkzip = response_set.esi_zip>
 <cfelse>
   <cfset checkzip = 0>
 </cfif>
@@ -537,6 +537,16 @@ order by question_code, answerfield
 	 		<cfset result = StructDelete(structBCUvars[x],"city")>
 		</cfif>
 </cfif>
+<cfif isdefined('checkzip') and checkzip neq 0 >
+<cfinvoke  
+    component="util" 
+    method="getStateCountyFromZip" returnVariable = "locationdata" 
+    > 
+<cfinvokeargument name="zipcode" value="#checkzip#"/> 
+</cfinvoke> 
+	<cfset response_set.county = locationdata.county_name>
+</cfif>
+
 
 	<cf_screeningInsert prev_screening_id="" source_id="#request.source_id#" org_id="#request.org_id#" partner_id="#request.partner_id#" subset_id="#request.subset_id#" language_id="EN" access_id="" client_id="#request.client_id#" user_id="" preset_state_id="#request.state_id#" test_flag="#url.test_id#" var="outvar">
  	<cfset request.screening_id = outvar>
