@@ -1,10 +1,26 @@
+<!---
+	Template Name: SubsetQuestionGridrowPoolCache
+	Component Purpose: Component manages local cache of grid row codes included to subsets and it's questions
+
+	Data Tables: Question, Question_gridrow, Gridrow, Subset_gridrow,
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuSubsetQuestionGridrowPoolComponent">
+
+<!---
+	Methods initializes and recreates cache container
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
 	<cfset this.internalContent.lastRefresh = Now()>
 	<cfset this.internalContent.sqg = StructNew()>
 </cffunction>
+
+<!---
+	Methods adds or refresh particular grids questions included to particular subset
+--->
 
 <cffunction name="actionRefreshSubsetQuestionGridrow" output="no">
 	<cfargument name="subset_id" type="any" default="">
@@ -51,6 +67,10 @@
 	</cfloop>
 </cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 <cffunction name="actionDump" output="yes">
 	<cfargument name="subset_id" type="any" default="">
 	<cfargument name="question" type="any" default="">
@@ -94,6 +114,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns struct contained grid row code for passed subset id and  question code
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="subset_id" type="any" default="">

@@ -1,10 +1,27 @@
+<!---
+	Template Name: SubsetQuestionAnswerfieldPoolCache
+	Component Purpose: Component manages local cache of subsets questions and it's answer fields
+
+	Data Tables: Subset_program_base, Program, Program_answerfield, Answerfield, Answerfield_subset_partner, Answerfield_relationship,
+				 Subset_program_sum, Program_parent, Subset_program_base, Subset_question, Question
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuSubsetQuestionAnswerfieldPoolComponent">
+
+<!---
+	Methods initializes and recreates cache container
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
 	<cfset this.internalContent.lastRefresh = Now()>
 	<cfset this.internalContent.sqa = StructNew()>
 </cffunction>
+
+<!---
+	Methods adds or refresh particular subsets questions and it's answer fields in cache
+--->
 
 <cffunction name="actionRefreshSubsetQuestionAnswerfield" output="no">
 	<cfargument name="state_id" type="string" default="">
@@ -162,6 +179,10 @@
 	</cfloop>
 </cffunction>
 
+<!---
+	Method returns true if any of subset id, state id or question code is empty when components methods are invoked
+--->
+
 <cffunction name="isDoAll" output="no">
 	<cfargument name="state_id" type="string" default="">
 	<cfargument name="subset_id" type="any" default="">
@@ -169,6 +190,10 @@
 
 	<cfreturn state_id eq '' or subset_id eq '' or question eq ''>
 </cffunction>
+
+<!---
+	Method defines and returns local cache value key based on subset id, partner id, state id and question code
+--->
 
 <cffunction name="getSqaHash" output="no">
 	<cfargument name="state_id" type="string" default="">
@@ -189,6 +214,10 @@
 	<cfreturn state_id & subset_id & phash & '_' & question>
 </cffunction>
 
+<!---
+	Method returns true if passed subsets answer field list equals to answer field list binded to passed couple subset and partner
+--->
+
 <cffunction name="isPartnerDiff" output="no">
 	<cfargument name="subset_id" type="any" default="">
 	<cfargument name="partner_id" type="any" default="">
@@ -198,6 +227,10 @@
 		</cfif>
 		<cfreturn partnerDiff>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfargument name="state_id" type="string" default="">
@@ -244,6 +277,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns struct contained subsets questions and it's answer fields for passed subset id, partner id and state id. Method returns false if state id is empty
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="state_id" type="string" default="">

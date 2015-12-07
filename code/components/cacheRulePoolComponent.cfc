@@ -1,4 +1,16 @@
+<!---
+	Template Name: RulePoolCache
+	Component Purpose: Component manages local cache of rules
+
+	Data Tables: Rule
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuRulePoolComponent">
+
+<!---
+	Method initializes local cache and refresh them
+--->
 
 	<cffunction name="actionRefresh" output="no" >
 		<cfset this.internalContent = StructNew()>
@@ -29,6 +41,10 @@
 		</cfloop>
 	</cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 	<cffunction name="actionDump" output="yes">
 		<cfoutput>
 			<table border="1" cellpadding="3" cellspacing="1">
@@ -51,6 +67,10 @@
 			</table>
 		</cfoutput>
 	</cffunction>
+
+<!---
+	Method returns struct contained rule info for passed code
+--->
 
 	<cffunction name="actionGet" output="no">
 		<cfargument name="code" type="string" default="">

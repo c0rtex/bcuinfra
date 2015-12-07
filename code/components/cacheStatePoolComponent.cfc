@@ -1,11 +1,16 @@
 <!---
-  --- cacheStatePoolComponent
-  --- -----------------------
-  ---
-  --- author: aukasov
-  --- date:   16.04.15
-  --->
+	Template Name: StatePoolCache
+	Component Purpose: Component manages local cache of states
+
+	Data Tables: State, Statetype
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuStatePoolComponent">
+
+<!---
+	Method initializes local cache and refresh them
+--->
 
 	<cffunction name="actionRefresh" output="false">
 		<cfset this.internalContent = StructNew()>
@@ -38,6 +43,10 @@
 		</cfloop>
 	</cffunction>
 
+<!---
+	Method returns html table with dump of cache content
+--->
+
 	<cffunction name="actionDump" output="true">
 
 		<cfset var displayname = getMetaData(this).displayname>
@@ -62,6 +71,10 @@
 			</table>
 		</cfoutput>
 	</cffunction>
+
+<!---
+	Method returns struct contained state info for passed state id
+--->
 
 	<cffunction name="actionGet" output="false">
 		<cfargument name="state_id" type="string">

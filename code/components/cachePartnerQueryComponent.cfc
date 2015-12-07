@@ -1,5 +1,16 @@
+<!---
+	Template Name: PartnerPoolCache
+	Component Purpose: Component manages local cache of partners
+
+	Data Tables: Tbl_partner, Wrapper
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuPartnerQueryComponent">
 
+<!---
+	Method initializes local cache and refresh them
+--->
 
 	<cffunction name="actionRefresh" output="no">
 		<cfset This.internalContent = StructNew()>
@@ -32,6 +43,10 @@
 			</cfif>
 		</cfloop>
 	</cffunction>
+
+<!---
+	Method returns struct contained partner info for passed partner id
+--->
 
 	<cffunction name="getQuery" access="public" output="false">
 		<cfargument name="partner_id" type="numeric">

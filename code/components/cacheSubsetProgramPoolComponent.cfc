@@ -1,10 +1,26 @@
+<!---
+	Template Name: SubsetProgramPoolCache
+	Component Purpose: Component manages local cache of subsets programs
+
+	Data Tables: Subset_program_sum, Program
+
+--->
+
 <cfcomponent extends="cacheSingletonComponent" displayname="bcuSubsetProgramPoolComponent">
+
+<!---
+	Method initializes local cache and refresh them
+--->
 
 <cffunction name="actionRefresh" output="no">
 	<cfset this.internalContent = StructNew()>
 	<cfset this.internalContent.lastRefresh = Now()>
 	<cfset this.internalContent.sp = StructNew()>
 </cffunction>
+
+<!---
+	Method adds or refresh particular subset programs in cache with passed subset id and state id
+--->
 
 <cffunction name="actionRefreshSubsetProgram" output="no">
 	<cfargument name="state_id" type="string" default="">
@@ -31,6 +47,10 @@
 		<cfset StructInsert(this.internalContent.sp[sphash].sort, pCount, program_code)>
 	</cfloop>
 </cffunction>
+
+<!---
+	Method returns html table with dump of cache content
+--->
 
 <cffunction name="actionDump" output="yes">
 	<cfargument name="state_id" type="string" default="">
@@ -77,6 +97,10 @@
 		</table>
 	</cfoutput>
 </cffunction>
+
+<!---
+	Method returns struct contained subset programs info for passed subset id and state id
+--->
 
 <cffunction name="actionGet" output="no">
 	<cfargument name="state_id" type="string" default="">
