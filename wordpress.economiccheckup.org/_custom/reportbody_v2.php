@@ -1519,6 +1519,44 @@ $health_recs = array();
 					}
 					unset($AFrow_index);				
 
+					//BDT(post id = 16305)
+					//$links_esi_report_bdt = array();
+					$hasbdt = 0;
+					foreach ($Program_array as $i => $row)
+					{
+						$value = $row["program_code"];
+						$cat_id = $row["programcategory_id"];
+						$needle = 'rxgov_'.strtolower($state_id);
+						//echo $needle;
+						$searchIndex = strpos($value,$needle);
+						//echo "bdt:".$value.$cat_id."<br>";
+						//is_numeric($searchIndex)
+						if (($cat_id = 8) ||($cat_id = 8) || ($cat_id = 23)||( $program_id = 150)||($program_id = 1284)){ 
+							
+							//$links_esi_report_bdt[] = $row["program_id"];
+							//echo "bdt cat found:".$value."<br>";
+							$countyList = 'BALTIMORE, ALLEGANY, ANNE ARUNDEL, CALVERT, CAROLINE, CARROLL, CECIL, CHARLES, FREDERICK, GARRETT, HARFORD, KENT, PRINCE GEORGES, QUEEN ANNES, SAINT MARYS, TALBOT';
+							$searchCounty = strpos($countyList,$county);
+							if (is_numeric($searchCounty)){
+								$health_recs["esi_report_bdt"]["show"] = 1;
+							}
+ 
+							
+							$hasbdt = 1;
+						} 
+					}
+					unset($i);
+					unset($row);
+					unset($searchIndex);
+					unset($value);
+
+					$AFrow_index = searchForId('esi_rxhelp', $AF_array);
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){
+					if ($hasSPAP > 0 ) {
+					$health_recs["esi_report_spap"]["show"] = 1;
+					}
+					}
+					unset($AFrow_index);
 
 					//Medicaid 11710
 					$links_esi_report_medicaid = array();
