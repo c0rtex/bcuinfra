@@ -1962,7 +1962,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 <?php
 if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
 ?>
-<div class="printButton">
+<div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
 </div>
  

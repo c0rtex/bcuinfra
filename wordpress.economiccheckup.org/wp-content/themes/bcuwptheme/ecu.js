@@ -308,11 +308,13 @@ $('#esiQuickcheckForm').submit(function() {
 
 
 	function PrintDiv() {    
+ $(".printReport").hide();
     	var divToPrint = document.getElementById('printContent');
         var popupWin = window.open('', '_blank');
         popupWin.document.open();
        	popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
        	popupWin.document.close();
+ $(".printReport").show();
  	}
 	function PrintDivCanvas(imgCanvas, imgCanvasCount) {    
  $(".printReport").hide();
