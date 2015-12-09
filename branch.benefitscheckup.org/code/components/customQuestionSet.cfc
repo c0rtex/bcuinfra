@@ -1,4 +1,16 @@
+<!---
+	Template Name: CustomQuestionSet
+	Component Purpose: Abstract root component for web services, that returns questionnaires question sets in json format
+
+	Data Tables: component doesn't use database tables directly
+
+--->
+
 <cfcomponent>
+
+<!---
+	Method is implemented for use in web service call to child components that returns questionaaires question sets
+--->
 
 	<cffunction name="getQuestionSet" access="remote" returnFormat="plain">
 		<cfargument name="state_id" type="string" required="no" default="">
@@ -26,6 +38,5 @@
 
 		<cfreturn data>
 	</cffunction>
-
 
 </cfcomponent>
