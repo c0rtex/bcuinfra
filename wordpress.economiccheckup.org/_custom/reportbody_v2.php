@@ -1288,18 +1288,18 @@ please check back.";
 					unset($value);
 					
 					// Roomate matching post id=15127 for specific SF area zips
-					$AFrow_index = searchForId('esi_housingtype', $AF_array);
-					$AFrow_index2 = searchForId('esi_gender', $AF_array);
+					//$AFrow_index = searchForId('esi_housingtype', $AF_array);
+					//$AFrow_index2 = searchForId('esi_gender', $AF_array);
 					//echo "Gender".$AFrow_index2;
-					$roomate_countylist = stristr('alameda,contra costa,imperial,marin,san francisco,san mateo,santa clara',$county, false);
+					//$roomate_countylist = stristr('alameda,contra costa,imperial,marin,san francisco,san mateo,santa clara',$county, false);
 					
 					
-					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == "esi_housingtype_own")){
+					//if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == "esi_housingtype_own")){
 
-						if (($userAge >= 50 ) && ($AF_array[$AFrow_index2]["option_code"] == "female") && ($roomate_countylist == true )  ){
-						$housing_recs["esi_report_roommate_matching"]["show"] = 1;
-						}	
-					} 		
+						//if (($userAge >= 50 ) && ($AF_array[$AFrow_index2]["option_code"] == "female") && ($roomate_countylist == true )  ){
+						//$housing_recs["esi_report_roommate_matching"]["show"] = 1;
+						//}	
+					//} 		
 					
 
 					// Qualifies for BCU LIHEAP Programs - post id 2669
@@ -1488,7 +1488,38 @@ $health_recs = array();
 
                                                  }
 
-				
+					// SPAP (post id = 16311)
+					$links_esi_report_spap = array();
+					$hasSPAP = 0;
+					foreach ($Program_array as $i => $row)
+					{
+						$value = $row["program_code"];
+						$cat_id = $row["programcategory_id"];
+						$needle = 'rxgov_'.strtolower($state_id);
+						//echo $needle;
+						$searchIndex = strpos($value,$needle);
+						//echo "msp:".$value.$cat_id."<br>";
+						if(is_numeric($searchIndex)){ 
+							
+							$links_esi_report_spap[] = $row["program_id"];
+							//echo "spap:".$value."<br>";
+							$hasSPAP = 1;
+						} 
+					}
+					unset($i);
+					unset($row);
+					unset($searchIndex);
+					unset($value);
+
+					$AFrow_index = searchForId('esi_rxhelp', $AF_array);
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){
+					if ($hasSPAP > 0 ) {
+					$health_recs["esi_report_spap"]["show"] = 1;
+					}
+					}
+					unset($AFrow_index);				
+
+
 					//Medicaid 11710
 					$links_esi_report_medicaid = array();
 					foreach ($Program_array as $i => $row)
@@ -1605,8 +1636,8 @@ $health_recs = array();
                     //for ($row = 0; $row < $num_health_recs; $row++)
 
 
-//echo ("health recs before");
-//var_dump ($health_recs);
+			//echo ("health recs before");
+			//var_dump ($health_recs);
 
                     foreach ($health_recs as $row => $rec) //$row has the key, e.g. esi_report_budget_3min
 
@@ -1628,11 +1659,12 @@ $health_recs = array();
 							//echo "links_" . $health_recs[$row]["postid"];
 							if ($health_recs[$row]["bcu"] == 1)
 							{
-								
+								//echo "links_" .$health_recs[$row]["post_code"];
 								if (isset(${"links_" . $health_recs[$row]["post_code"]})) {
 										
 									foreach (${'links_'.$health_recs[$row]["post_code"]} as $program_id)
 									{
+										//echo "links_" .$health_recs[$row]["post_code"];
 										//echo 'program'.$program_id;
 										$query_programName = "SELECT display_language.display_text as program_title FROM display_language INNER JOIN program ON program.name_display_id = display_language.display_id where language_id='EN' and  program_id = ".$program_id." LIMIT 1";
 										$programName_query = $bcudb->get_results($query_programName);
@@ -1810,7 +1842,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 					$employment_recs_count = 0; // total recs to show based on responses.
 
 
-$employment_recs = array();
+					$employment_recs = array();
                                          
                                         $employmentRecsQuery = "select rc.post_id, sc.post_code, sc.sort_order, sc.bcu from subset_content sc, rule_content rc where sc.subset_id='63' and sc.section_code='employment_recs' and sc.post_code = rc.post_code order by sc.sort_order;";
 								$employmentRecsResults = $bcudb->get_results($employmentRecsQuery);
@@ -2183,7 +2215,7 @@ please check back.";
          	<div action="" method="get" id="commentForm" class="well cmxform">
                 <?php
 
-$consumer_recs = array();
+					$consumer_recs = array();
                                          
                                         $consumerRecsQuery = "select rc.post_id, sc.post_code, sc.sort_order, sc.bcu from subset_content sc, rule_content rc where sc.subset_id='63' and sc.section_code='consumer_recs' and sc.post_code = rc.post_code order by sc.sort_order;";
 								$consumerRecsResults = $bcudb->get_results($consumerRecsQuery);
@@ -2251,15 +2283,15 @@ $consumer_recs = array();
 
 
 					//Legal Assistance Hotline  
-/*
-Lynna Cekova: removed as per bug 7855
+					/*
+					Lynna Cekova: removed as per bug 7855
 					$AFrow_index = searchForId('esi_retire_legal_concerns', $AF_array);
 					if ($userAge > 59){
 					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n'))){$consumer_recs[5]["show"] = 1;}
 					}
 					unset($searchIndex);
 					unset ($AFrow_index);
-*/
+					*/
 
 					// Power of Attorney (postid = 2771)
 					$req3 = 0;
@@ -2394,7 +2426,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 <?php
 if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
 ?>
-<div class="printButton">
+<div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
 </div>
  

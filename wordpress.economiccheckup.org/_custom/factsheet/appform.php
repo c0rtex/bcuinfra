@@ -45,8 +45,13 @@ echo '
               $appLink = $file;
 	}
 	   				  else {
+if (QA){
+ echo '<li><a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id='.$form_id.'&tgtPartner=77&tgt=/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
+}
+else {
 
- echo '<li><a href="/cf/form_redirect.cfm?id='.$form_id.'&tgtPartner=77&tgt=/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
+ echo '<li><a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$form_id.'&tgtPartner=77&tgt=/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
+}
 
         				  	//echo '<li><a href="/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
 				         }

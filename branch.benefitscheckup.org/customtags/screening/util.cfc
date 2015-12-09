@@ -44,7 +44,7 @@
 	</cfif>
 	<cfloop query="rule_content">       
 	<cfif arguments.debugOutput><cfoutput>#CreateODBCDateTime(Now())#: Starting cacheRulePool code="#rule_content.code#" <br /><br /></cfoutput></cfif>
-
+			
 			<cfset strRule = Replace(rule_content.rule_text, "gteq", "gte", "ALL")>
 			<cfset strRule = Replace(strRule, "lteq", "lte", "ALL")>
 			<!-- Do not use session vars --->
@@ -54,6 +54,17 @@
 			number of people in the household --->
 			
 				<cfif arguments.debugOutput><cfoutput><h2>#strRule#</h2></cfoutput></cfif>
+				<!--- temp for bdt program content esi_report_bdt --->
+				<cfif rule_content.code eq 'esi_report_bdt' >
+					<cfif (RESPONSESTRUCT.esi_category_health_resources eq 'y') >
+						<cfset checkcountylist = "BALTIMORE, ALLEGANY, ANNE ARUNDEL, CALVERT, CAROLINE, CARROLL, CECIL, CHARLES, FREDERICK, GARRETT, HARFORD, KENT, PRINCE GEORGES, QUEEN ANNES, SAINT MARYS, TALBOT">
+						<cfif FindNoCase(RESPONSESTRUCT.county,checkcountylist,1) gt 0>
+							<cfset strRule = "(1 eq 1)">
+						<cfelse>	
+							<cfset strRule = "(1 eq 0)">
+						</cfif>
+					</cfif>
+				</cfif>
 				
 			   <!--- Need an additional proc for the 'NOT IN' rules --->
 				<cfset posIn = FindNoCase(' in ', strRule, 1)>
@@ -107,6 +118,20 @@
 			   </cfif>
 			   <cfif arguments.debugOutput><cfoutput> = #answer#<br></cfoutput></cfif>
 	    <cfset trimmed_code = #trim(rule_content.code)#>
+        <cfif arguments.subset_id eq 63 or arguments.subset_id eq 83>
+	    <cfquery name="wp_posts" datasource="ESI">           
+            	SELECT
+		wp_posts.ID
+		FROM
+		wp_postmeta
+		INNER 
+		JOIN wp_posts 
+		ON wp_postmeta.post_id = wp_posts.ID
+		where meta_key = 'post_code'
+		and meta_value like '#trimmed_code#'
+		and wp_posts.post_type = 'post' 
+            </cfquery>
+	   <cfelse>
             <cfquery name="wp_posts" datasource="wp_benefitscheckup">           
             	SELECT
 		wp_posts_v3_1.ID
@@ -119,6 +144,7 @@
 		and meta_value like '#trimmed_code#'
 		and wp_posts_v3_1.post_type = 'post' 
             </cfquery>
+	    </cfif>
 	    <cfif wp_posts.recordcount gt 0>
 	    <cfif answer eq 'yes' >
 	    <cfif #findNoCase('mqc_report_mc_narrative_sep_',trimmed_code)# gt 0>

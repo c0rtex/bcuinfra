@@ -1,3 +1,8 @@
+<!---
+Template Name: procBatchSSASubmission.cfm
+Component Purpose: This file processes benefits eligibility information based on data imported from client excel files to mysql database.The procedure loops through the data validates response and sends to ssa.gov
+Data Tables: epicssabatch,bdtssabatch,xsubset,subset_partner, batch_submission, screening_submission, screening
+--->
 <!-- To Run this file, set the partner id and start and end rows for the recordset to be executed. The batch will not execute without the url.start parameter set to "start"" . Set Server to qa for testing ssl1 for production -->
 <cfif url.start neq 'start'>
 	<cfabort>
