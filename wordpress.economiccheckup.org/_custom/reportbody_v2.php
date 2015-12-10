@@ -1502,7 +1502,7 @@ $health_recs = array();
 						if(is_numeric($searchIndex)){ 
 							
 							$links_esi_report_spap[] = $row["program_id"];
-							echo "spap:".$value."<br>";
+							//echo "spap:".$value."<br>";
 							$hasSPAP = 1;
 						} 
 					}
