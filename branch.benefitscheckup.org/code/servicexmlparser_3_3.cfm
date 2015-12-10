@@ -131,6 +131,8 @@ order by question_code, answerfield
 </cfif>
 </cfif>
 </cfloop>
+<cfparam name="response_set.esi_category_health_resources" default="">
+	<cfparam name="response_set.esi_rxhelp" default="">
 <cfif current_subset_id eq 79>
 	<cfparam name="response_set.mqc_medicare_enroll_disability_no" default="">
 	<cfparam name="response_set.mqc_medicare_enroll_disability_yes" default="">
