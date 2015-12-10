@@ -175,7 +175,7 @@
 					wp_reset_postdata();
 					$i++;
 					if ($i == $parent_query->post_count && $pi->post_type != 'calculators'){
-						echo '<a href="#" class="print-btn article-body-print-btn trigger-print" style="margin-bottom: 20px;"><span class="print-btn-icon"></span>Print</a>';
+						echo '<a href="#" class="print-btn article-body-print-btn trigger-print" style="margin-bottom: 50px" ><span class="print-btn-icon"></span>Print</a>';
 					}
 					
 					?>
