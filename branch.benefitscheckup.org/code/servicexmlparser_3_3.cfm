@@ -1,4 +1,4 @@
-<!-- This script takes an input xml file from the screenforbenefits.cfc parses the xml and passes the variables into the bcu screening--> <!-- Try and Catch all processing errors --> 
+<!-- This script takes an  input xml file from the screenforbenefits.cfc parses the xml and passes the variables into the bcu screening--> <!-- Try and Catch all processing errors --> 
 <cfparam name="testresponse" default="0">
 <cfparam name="request.partner_id" default="14">
 <cfparam name="request.client_id" default="0">
