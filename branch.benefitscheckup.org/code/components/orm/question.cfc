@@ -1,3 +1,16 @@
+<!---
+	Template Name: QuestionEntity
+	Component Purpose: Component mapped to database table question via object relation mapping framework.
+					   Each property of component defines mapping to database table column by using attribute column.
+					   If this attribute isn't defined, than property name set in attribute name equals to database column name.
+					   Fieldtype attribute defines primary (id) or foreign (many-to-one, one-to-many) key.
+					   For mapped foreign key fkcolumn attribute contains database foreign key column name,
+					   cfc attribute contains component entity name which mapped to master database table.
+
+	Data Tables: question
+
+--->
+
 <cfcomponent persistent="true" entityname="question" table="question">
     <cfproperty name="id" fieldtype="id" column="question_id">
     <cfproperty name="dep_question" fieldtype="many-to-one" fkcolumn="dep_question_id" cfc="Question">
@@ -18,6 +31,11 @@
 	<cfproperty name="sort">
 	<cfproperty name="answer_fields" fieldtype="one-to-many" cfc="question_answer_field" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
 	<cfproperty name="helps" fieldtype="one-to-many" cfc="question_help" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
+
+<!---
+	Method returns structure, that contains question info and there answer fields, help notes and answer fields rules
+	for serialization to json format for sending via questionset web service response
+--->
 
 	<cffunction name="returnStruct">
 		<cfargument name="state_id" type="string" required="no" default="">
