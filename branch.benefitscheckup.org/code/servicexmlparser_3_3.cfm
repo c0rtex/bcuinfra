@@ -1,5 +1,5 @@
 <!-- This script takes an input xml file from the screenforbenefits.cfc parses the xml and passes the variables into the bcu screening--> <!-- Try and Catch all processing errors --> 
-<cfparam name="testresponse" default="1">
+<cfparam name="testresponse" default="0">
 <cfparam name="request.partner_id" default="14">
 <cfparam name="request.client_id" default="0">
 <cfparam name="request.org_id" default="0">
@@ -231,6 +231,7 @@ order by question_code, answerfield
 </cfif>
 	<cfparam name="response_set.esi_category_health_resources" default="">
 	<cfparam name="response_set.esi_rxhelp" default="">
+	<cfparam name="response_set.MQC_GROUP_INSURANCE_SELF" default="">
 	<cfparam name="response_set.MQC_GROUP_INSURANCE_SPOUSE" default="">
 	<cfparam name="response_set.MQC_PLANDISCONTINUED" default="">
 	<cfparam name="response_set.MQC_COSTSMINORPROBLEM" default="">
