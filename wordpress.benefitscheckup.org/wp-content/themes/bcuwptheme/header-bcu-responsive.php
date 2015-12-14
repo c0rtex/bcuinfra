@@ -49,7 +49,7 @@
 			  	  <script src="<?php echo $dev_url; ?>/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>
 			  	   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>-->
 			      <script type="text/javascript" src="<?php echo $dev_url; ?>/wp-content/themes/bootswatch/bootstrap/js/jquery.validate.js"></script>
-			      <script type="text/javascript" src="<?php echo $dev_url; ?>/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
+<!--			      <script type="text/javascript" src="<?php echo $dev_url; ?>/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script> -->
 			      <script type="text/javascript" src="<?php echo $dev_url; ?>/wp-content/themes/bootswatch/bootstrap/js/scrolltofixed.js"></script>
 				  <link href="https://fonts.googleapis.com/css?family=PT+Sans&v1" rel="stylesheet" type="text/css">
 				  <script src="<?php echo $dev_url; ?>/cf/ValidationFunctions.js"></script>
