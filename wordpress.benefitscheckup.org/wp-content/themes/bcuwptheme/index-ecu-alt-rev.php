@@ -28,7 +28,7 @@ Template Name: ECU Revised page alternate layout (homepage)
 <h2 class="esiQuickcheckTitle">EconomicCheckUp&reg;</h2>
 </div>
 
-<?php require_once ($_SERVER["DOCUMENT_ROOT"]."/_custom/questionnairebody_esi_quickcheck.php"); ?>
+<?php require_once ($_SERVER["DOCUMENT_ROOT"]."/_custom/questionnairebody_esi.php"); ?>
 
   </div>
 
