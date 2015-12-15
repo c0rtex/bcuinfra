@@ -1,5 +1,6 @@
 <?PHP
 
+ 
 require_once('displaycontent.php');					 
 
 
