@@ -23,8 +23,9 @@
 						$linknum = 1;
 						while ($link_query->have_posts()) : $link_query->the_post(); ?>
 						<li id="<?php echo 'article-body-nav-item-'.$linknum; ?>" class="article-body-nav-item <?php if ($linknum==1) {echo 'item-active';} ?>">
-							<a href="#block-<?php echo get_the_ID(); ?>"><?php echo get_the_title(); ?></a></li>
+							<!--<a href="#block-<?php //echo get_the_ID(); ?>"><?php //echo get_the_title(); ?></a></li> -->
 							<?php $linknum++; ?>
+<!--NOTE: the titles include subtitles in themselves -->
 						<?php 
 						endwhile;
 						wp_reset_postdata();
@@ -86,6 +87,7 @@
 							shebang_edit_link(0, 'Edit Slide', 'button');
 						}
 					?></div>
+
 					
 					<?php
 					/* --------------- Child Loop ---------------- */
@@ -173,7 +175,7 @@
 					wp_reset_postdata();
 					$i++;
 					if ($i == $parent_query->post_count && $pi->post_type != 'calculators'){
-						echo '<a href="#" class="print-btn article-body-print-btn trigger-print"><span class="print-btn-icon"></span>Print</a>';
+						echo '<a href="#" class="print-btn article-body-print-btn trigger-print" style="margin-bottom: 50px" ><span class="print-btn-icon"></span>Print</a>';
 					}
 					
 					?>

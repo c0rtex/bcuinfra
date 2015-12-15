@@ -1,13 +1,13 @@
 <?PHP
 require_once('CachedSoapClient.php');
 if (QA == 1){
-$subdomain = 'www';
-$esiprod = 1;
+$subdomain = 'redesign';
+$esiprod = 0;
 }
 else
 {
-$subdomain = 'redesign';
-$esiprod = 0;
+$subdomain = 'www';
+$esiprod = 1;
 }
 
 $url = "https://".$subdomain.".benefitscheckup.org/util/remotescreening_3_7.cfc?WSDL";

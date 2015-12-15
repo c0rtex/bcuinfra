@@ -523,10 +523,12 @@
 	<tr bgcolor="#localmed#">
 		<td colspan="2"><font size="+1"><b>Correct your errors and try again.</b></font></td>
 
+<!---
 	<cfoutput> colhash.columns.state_snap_id.error</cfoutput>
 	<cfoutput> #colhash.columns.state_snap_id.error#</cfoutput>
 	<cfoutput> colhash.columns.state_id.error</cfoutput>
 	<cfoutput> #colhash.columns.state_id.error#</cfoutput>
+--->
 	</tr>
 </cfif>
 <cfif attributes.action neq 'new'>

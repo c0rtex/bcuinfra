@@ -78,6 +78,7 @@ else { //the form has been submitted
 
 
 $phoneV = validateUSPhone ($phone);
+$confirmphoneV = true; //default
 $confirmphoneV = confirmPhone($phone,$confirmphone);
 
 //echo "EMAIL".$email."end";
@@ -110,8 +111,13 @@ $emailV = validateEmail ($email, $confirmemail);
 
 //echo "<br/>";
 //echo "<br/>";
-//echo $emailV;
-if ($phoneV != false && $emailV != false && $emailV != "emailMismatch" && trim($_POST["first_name"]) != "" && trim($_POST["last_name"]) != "" && $confirmphoneV != false){ 
+//echo "<br>phoneV".$phoneV;
+//echo "<br>confirmphoneV".$confirmphoneV;
+//echo "<br>emailV".$emailV;
+if ($confirmphoneV != false){
+//echo "wth";
+}
+if ( (($phoneV != false && $confirmphoneV != false && $emailV != "emailMismatch") || ($emailV != false && $emailV != "emailMismatch" && ($confirmphoneV != false || ($phoneV == false && $confirmphoneV == false)))) && trim($_POST["first_name"]) != "" && trim($_POST["last_name"]) != "" ){ 
 
 //echo "HERE <br/>emailV ".$emailV;
 $saveResult = saveContactInfo ($fName, $lName, $emailV, $phoneV, $zip, $encPass, $encKey, $screeningID);
@@ -145,22 +151,19 @@ else { //return to the form with the correct errors.
 //echo "THERE <br/>emailV ".$emailV;
 $formErrors = "<div class='alert alert-danger'><strong>Please correct the following fields.</strong></div>";
 
-if ($phoneV == false){
-  $phoneError = "<div class='alert alert-danger'>Please enter a valid phone number.</div>";
-}
-if ($confirmphoneV == false){
-  $confirmphoneError = "<div class='alert alert-danger'>Phone numbers must match.</div>";
-}
-if ($emailV == false){
 
-  $emailError = "<div class='alert alert-danger'>Please enter a valid E-mail address. </div>";
+if (trim($_POST["first_name"]) == "" || trim($_POST["first_name"]) == ""){
+if (trim($_POST["first_name"]) == ""){
+  $firstNameError = "<div class='alert alert-danger'>Please enter a first name.</div>";
 }
 
-//echo "THERE AGAIN <br/>emailV ".$emailV;
-if ($emailV == "emailMismatch"){
-  $emailError = "<div class='alert alert-danger'>Emails don't match.</div>";
+if (trim($_POST["last_name"]) == ""){
+  $lastNameError = "<div class='alert alert-danger'>Please enter a last name.</div>";
 }
-
+}
+else { //there is some problem with the phone or email
+  $phoneError = "<div class='alert alert-danger'>You must enter either a valid phone number or email address and confirm it.</div>";
+}
 
 //echo "date error";
 
@@ -169,7 +172,7 @@ if ($emailV == "emailMismatch"){
 
 
 function confirmPhone($phone,$confirmphone){
-if ($phone == $confirmphone){
+if (trim($phone) === trim($confirmphone)){
 return $phone;
 }
 else {
@@ -310,12 +313,13 @@ return array('status'=>'false');
 Complete this form to authorize an agency in your community to receive a copy of your assessment and contact information.  Your information will remain secure at all times. It will NOT be made public or used for any purpose other than to contact you to discuss resources that may be available to help you meet your financial needs. There is no fee for this service.
 </p>
 <p>
+<div><?php echo $firstNameError; ?></div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["first_name"] == "") ? " First Name is required." : "";} ?></div>
-<div><?php echo $fNameError; ?></div>
+<div><?php echo $lastNameError; ?></div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["last_name"] == "") ? " Last Name is required." : "";} ?></div>
-<div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["phone_number"] == "") ? " Phone is required." : "";} ?></div>
+<div  class=" "><?php if ($submitted == 'true'){ } ?></div>
 <div><?php echo $phoneError; ?></div>
-<div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["confirm_phone"] == "") ? " Confirm Phone is required." : "";} ?></div>
+<div  class=" "><?php if ($submitted == 'true'){ } ?></div>
 <div><?php echo $confirmphoneError ?></div>
 <div  class=" "><?php echo $emailError; ?></div>
 </p>
@@ -337,21 +341,21 @@ Complete this form to authorize an agency in your community to receive a copy of
 <tr class="dataBridge" id="phone">
 <td>
         <label>Phone Number  (XXX) XXX-XXXX:</label>
-        <input name="phone_number" required="required"  type="text" value="<?php echo $phone; ?>">
+        <input name="phone_number" type="text" value="<?php echo $phone; ?>">
 </td>
 <td>
         <label>Confirm Phone (XXX) XXX-XXXX:</label>
-        <input name="confirm_phone" required="required"  type="text" value="<?php echo $confirmphone; ?>">
+        <input name="confirm_phone" type="text" value="<?php echo $confirmphone; ?>">
 </td>
 </tr>
 <tr class="dataBridge" id="email">
 <td>
         <label> E-mail address:</label>
-        <input name="email" required="required" type="email" value="<?php echo $email; ?>">
+        <input name="email" type="email" value="<?php echo $email; ?>">
 </td>
 <td>
         <label> Re-enter E-mail address:</label>
-        <input name="confirmemail" required="required" type="email" value="<?php echo $confirmemail; ?>">
+        <input name="confirmemail" type="email" value="<?php echo $confirmemail; ?>">
 </td>
 </tr>
 </table>
@@ -364,7 +368,11 @@ By submitting my contact details in this form, I agree to allow a professional i
 </p>
 </div>
 <div  class=" "><?php if ($submitted == 'true'){ echo ($_POST["consent"]== "") ? " This field is required. " : "";} ?></div>
+<div class="checkbox">
+            	<label class="checkbox">
 <a id="consent" consent></a><input name="consent" required="required" type="checkbox"> I agree to the terms and conditions described above.</input>
+</label> 
+         	</div>
 <br/>
 <br/>
 
