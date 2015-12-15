@@ -1,6 +1,5 @@
 <div id="printContent" class="span8"> 
 <?php 
-//echo 'Test';
 if (isset($_GET["subset_id"])){
 $subsetID = htmlspecialchars($_GET["subset_id"]);
 }
@@ -8,6 +7,7 @@ else {
  $subsetID = 93;
 }
 
+//echo 'Test '.$subsetID;
 require_once('soap_client.php');
 require_once('displaycontent_bcu_quickcheck.php');
 
@@ -71,7 +71,7 @@ echo '<form name="esiQuickcheckForm" id="esiQuickcheckForm" action="../process_n
 //Show Intro and legend Section
 /*$sectionLegend*/
 
-$sectionLegendPost = $soapClient->getWPPost('15912');
+//sectionLegendPost = $soapClient->getWPPost('15912');
 
 //$sectionLegend = apply_filters('the_content', get_post_field('post_content', 12360));
 //$sectionLegendPost = restructureWSArray ($sectionLegendPost);

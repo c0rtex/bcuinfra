@@ -822,3 +822,17 @@ font-size:28px;
 #text-size a {
 text-decoration:none;
 }
+
+#bcuQuickcheckClose {
+float: right;
+}
+
+
+#bcuQuickcheckTitle {
+    border-bottom: 2px solid #00479d;
+}
+
+
+h2.bcuQuickcheckTitle {
+color: #00479d;
+}
