@@ -8,7 +8,8 @@ foreach($questionType_query as $questionTypeObj):
 
 $questionTypeCode = $questionTypeObj["QUESTIONTYPE_CODE"];
 $questionCode = $questionTypeObj["QUESTION_CODE"];
-//echo "type".$questionTypeCode."<br>";
+//echo "question code ".$questionCode."<br>";
+//echo "type ".$questionTypeCode."<br>";
 switch ($questionTypeCode) {
 	
     case 'select_other_specify':
@@ -18,6 +19,11 @@ switch ($questionTypeCode) {
 case 'multi_horizontal':
 	require('_custom/answerfield_bcu_quickcheck.php');
 	break;
+
+case 'date': //date is multihorizontal, month and year
+	require('_custom/answerfield_bcu_quickcheck.php');
+	break;
+
 	
 case 'general':
 	require('_custom/answerfield_bcu_quickcheck.php');

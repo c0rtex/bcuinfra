@@ -836,3 +836,9 @@ float: right;
 h2.bcuQuickcheckTitle {
 color: #00479d;
 }
+
+#bcu_quickcheck {
+min-width: 700px;
+}
+
+

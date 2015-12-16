@@ -64,14 +64,14 @@ elseif ($subsetID == 75 ) { // mqc3
 //echo '<form name="mqcForm3" id="mqcForm3" action="/process_mqc.php" method="post" > ';
 echo '<form name="mqcForm3" id="mqcForm3" action="../process_next.php" method="post" > ';
 }
-else { // triage, subset_id 79
-echo '<form name="esiQuickcheckForm" id="esiQuickcheckForm" action="../process_next.php" method="post" > ';
+else { 
+echo '<form name="bcuQuickcheckForm" id="bcuQuickcheckForm" action="../process_next.php" method="post" > ';
 }
 
 //Show Intro and legend Section
 /*$sectionLegend*/
 
-//sectionLegendPost = $soapClient->getWPPost('15912');
+$sectionLegendPost = $soapClient->getWPPost('15912');
 
 //$sectionLegend = apply_filters('the_content', get_post_field('post_content', 12360));
 //$sectionLegendPost = restructureWSArray ($sectionLegendPost);
@@ -86,13 +86,14 @@ $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 				}
 			  //Show Intro text under basics section
 
+echo '<p>'.$sectionLegend.'</p>';
 
 ?> 
 <?php  require_once('section_bcu_quickcheck.php'); 
 
 echo '<input type="hidden" name="subset_id" value="'.$subsetID.'">';
  ?>
-					<a id="esiQuickcheckSubmit" href="#esi_quickcheck" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-toggle="modal">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
+					<a id="esiQuickcheckSubmit" href="#bcu_quickcheck" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-toggle="modal">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
 
 
 </div> 
