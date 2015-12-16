@@ -58,14 +58,14 @@ if ($continue == 2){
 if ($subsetID == 72 || $subsetID == 74){ //MQC1 or MQC2
 //echo '<form name="mqcForm" id="mqcForm" action="/process_mqc.php" method="post" > ';
 //echo '<form name="mqcForm" id="mqcForm" action="/process_mqc.php" method="post" > ';
-echo '<form name="mqcForm" id="mqcForm" action="../process_next.php" method="post" > ';
+echo '<form name="mqcForm" id="mqcForm" action="/process_next.php" method="post" > ';
 }
 elseif ($subsetID == 75 ) { // mqc3
 //echo '<form name="mqcForm3" id="mqcForm3" action="/process_mqc.php" method="post" > ';
-echo '<form name="mqcForm3" id="mqcForm3" action="../process_next.php" method="post" > ';
+echo '<form name="mqcForm3" id="mqcForm3" action="/process_next.php" method="post" > ';
 }
 else { 
-echo '<form name="bcuQuickcheckForm" id="bcuQuickcheckForm" action="../process_next.php" method="post" > ';
+echo '<form name="bcuQuickcheckForm" id="bcuQuickcheckForm" action="/process_next.php" method="post" > ';
 }
 
 //Show Intro and legend Section
