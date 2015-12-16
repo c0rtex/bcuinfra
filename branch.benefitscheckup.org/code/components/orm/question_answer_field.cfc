@@ -17,5 +17,5 @@
     <cfproperty name="state" fieldtype="many-to-one" fkcolumn="state_id" cfc="state">
     <cfproperty name="rule" fieldtype="many-to-one" fkcolumn="rule_id" cfc="rule">
     <cfproperty name="sort">
-
+	<cfproperty name="question" fieldtype="many-to-one" fkcolumn="question_id" cfc="question">
 </cfcomponent>
