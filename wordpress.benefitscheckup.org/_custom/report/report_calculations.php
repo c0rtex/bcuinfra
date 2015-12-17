@@ -106,7 +106,7 @@ function age($month, $day, $year){
 						elseif ($cat_code == 'foodsupp'){
 						$sectioncode = 'bcu_quickcheck_report_heading_foodsupp';
 						$iconcode = 'coffee';
-						$interested = 'bcuqc_category_property_foodsupp';
+						$interested = 'bcuqc_category_foodsupp';
 						}
 
 						elseif ($cat_code == 'nutrition'){
