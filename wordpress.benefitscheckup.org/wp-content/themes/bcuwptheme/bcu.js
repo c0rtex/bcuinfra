@@ -8,12 +8,17 @@ jQuery(document).ready(function() {
     validated = 1;
     // Validate specific input parameters
     removeZipAlerts();
+    jQuery('#invalidInterest').remove();
     if ($zip_code.val().length != 5) {
-      $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
+      $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
       validated = 0;
     }
     if (jQuery('#zyxzip_zip_abbrev').val() == '??') {
-      $zip_code.before('<div id="invalidZip" class="alert alert-danger"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
+      $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
+      validated = 0;
+    }
+    if (!(jQuery('#esiQuickcheckCheckboxes :checkbox:checked').length > 0)) {
+      jQuery('#esiQuickcheckCheckboxes').before('<div id="invalidInterest" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select at least one area of interest.</strong></div>');
       validated = 0;
     }
 
@@ -38,7 +43,7 @@ jQuery(document).ready(function() {
         //alert('You must enter a valid ZIP code containing all numbers. Please try again');
         if (jQuery('#invalidZipLetters').length == 0){
           removeZipAlerts();
-          $zip_code.before('<div id="invalidZipLetters" class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all numbers. Please try again.</strong></div>');
+          $zip_code.before('<div id="invalidZipLetters" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all numbers. Please try again.</strong></div>');
         }
         jQuery(this).val('');
         return false;
@@ -51,7 +56,7 @@ jQuery(document).ready(function() {
         if (jQuery('#invalidZip').length == 0){
 
           removeZipAlerts();
-          $zip_code.before('<div id="invalidZip" class="alert alert-danger"><i class="icon-warning-sign"></i> The zip code you entered is invalid. Please enter a zip code for the U.S. or District of Columbia.</div>');
+          $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> The zip code you entered is invalid. Please enter a zip code for the U.S. or District of Columbia.</div>');
         }
         jQuery(this).val('');
         return false;
@@ -72,7 +77,7 @@ jQuery(document).ready(function() {
             if (jQuery('#invalidZip').length == 0){
 
               removeZipAlerts();
-              $zip_code.before('<div id="invalidZip" class="alert alert-danger"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
+              $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
             }
             jQuery('#zyxzip_zip_abbrev').val('??');
             jQuery('#zyxzip_zip_abbrev').css('color','black');
@@ -108,7 +113,7 @@ jQuery(document).ready(function() {
       //alert('You must enter a valid ZIP code containing all 5 numbers. Please try again');
 
       removeZipAlerts();
-      $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
+      $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
       jQuery(this).val('');
       return false;
     };

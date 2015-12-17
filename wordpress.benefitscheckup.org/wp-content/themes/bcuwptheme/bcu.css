@@ -841,4 +841,6 @@ color: #00479d;
 min-width: 700px;
 }
 
-
+.alert-bcuQuickCheck {
+  margin: 8px 0 !important;
+}
