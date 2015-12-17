@@ -93,7 +93,7 @@ echo '<p>'.$sectionLegend.'</p>';
 
 echo '<input type="hidden" name="subset_id" value="'.$subsetID.'">';
  ?>
-					<a id="esiQuickcheckSubmit" href="#bcu_quickcheck" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-toggle="modal">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
+					<a id="esiQuickcheckSubmit" href="#" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-toggle="modal">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
 
 
 </div> 
