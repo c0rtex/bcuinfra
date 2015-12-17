@@ -100,7 +100,7 @@ function age($month, $day, $year){
 						elseif ($cat_code == 'taxrelief'){
 						$sectioncode = 'bcu_quickcheck_report_heading_taxrelief';
 						$iconcode = 'building';
-						$interested = 'bcuqc_category_taxrelief';
+						$interested = 'bcuqc_category_property_taxrelief';
 						}
 						
 						elseif ($cat_code == 'foodsupp'){
@@ -112,7 +112,7 @@ function age($month, $day, $year){
 						elseif ($cat_code == 'nutrition'){
 						$sectioncode = 'bcu_quickcheck_report_heading_nutrition';
 						$iconcode = 'heart';
-						$interested = 'bcuqc_category_property_nutrition';
+						$interested = 'bcuqc_category_nutrition';
 						}
 						elseif ($cat_code == 'rxgov'){
 						$sectioncode = 'bcu_quickcheck_report_heading_rx';
