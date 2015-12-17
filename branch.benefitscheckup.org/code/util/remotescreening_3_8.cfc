@@ -1,5 +1,42 @@
 <cfcomponent   >
-    <cffunction   access="remote" name="doScreening" output="false" returntype="query"  hint="accepts list of field responses in xml  and processes screening results - Version 1 ( to be upgraded)" >
+     <cffunction access="remote" name="getProgByCat" output="false" returntype="query"  hint="Returns programs by subset"  >
+        <!-- pass arguments -->
+        <cfargument name="state_id" type="string" required="yes" >
+	<cfargument name="subset_id" type="numeric" required="yes" >
+	<cfargument name="programcategory_id" type="numeric" required="yes" >
+        <cfset version = "testtestest">
+	
+	<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
+			Select * from subset_program_sum sps, program p , display_language dl, programcategory pc
+			where subset_id = #subset_id#
+			and p.program_id = sps.program_id
+			and  p.programcategory_id = pc.programcategory_id
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			and active_flag = 1 and exclude_flag = 0
+			and (state_id = '#state_id#' or state_id = 'FD')
+			and pc.programcategory_id = #programcategory_id#
+	</cfquery>
+        <cfreturn  getSubsetProgramsByCategory>
+    </cffunction>
+    
+    <cffunction access="remote" name="getSubCats" output="false" returntype="query"  hint="Returns program categories by subset " >
+        <!-- pass arguments -->
+	<cfargument name="subset_id" type="numeric" required="yes" >
+	<cfquery name="getSubCats" datasource="#application.dbSrc#">
+			select
+ 			code,pc.display_id,dl.DISPLAY_TEXT as category_title,sort
+			from subset_programcategory sp, programcategory pc, display_language dl
+			where sp.programcategory_id = pc.programcategory_id
+			and dl.display_id = pc.display_id
+			and sp.subset_id = 93 
+			and dl.language_id = 'EN'
+			order by sort
+	</cfquery>
+        <cfreturn  getSubCats>
+    </cffunction>
+
+    <cffunction   access="remote" name="doScreening" output="false" returntype="query"  hint="accepts listgraf field responses in xml  and processes screening results - Version 1 ( to be upgraded)" >
         <!-- pass arguments -->
         <cfargument name="partner_id" type="numeric" required="yes" >
         <cfargument name="partner_screening_id" type="string" required="yes" >
@@ -373,6 +410,246 @@ SELECT q.question_id, q.question_code, q.rule_id, qc.questioncategory_code, q.di
         <cfreturn  querySubsetProgram>
     </cffunction>
 
+   <cffunction access="remote" name="getBcuQuickcheckQuestions" output="false" returntype="query"  hint="return all questions in this subset"  >
+        <!-- pass arguments -->
+        <cfargument name="subset_id" type="numeric" required="yes"  >
+        <cfset querySubsetProgram = QueryNew("question_id")>
+        <cfquery name="querySubsetProgram" datasource="#application.dbSrc#">
+SELECT * from tbl_questions_new q, subset_question sq where q.question_id = sq.question_id and sq.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+		</cfquery>
+        <cfreturn  querySubsetProgram>
+    </cffunction>
+
+
+<!---
+<cffunction access="remote" name="getBcuQuickcheckQuestions" output="false" returntype="query"  hint="return all questions in this subset"  >
+        <!-- pass arguments -->
+        <cfargument name="subset_id" type="numeric" required="yes"  >
+        <cfargument name="partner_id" type="numeric" required="yes"  >
+        <cfargument name="state" type="string" required="yes"  >
+        <cfset querySubsetProgram = QueryNew("question_id")>
+        <cfquery name="querySubsetProgram" datasource="#application.dbSrc#">
+SELECT q.question_id, q.pri_sec, q.answerfield, q.type, q.textlength, q.validation, q.dep_formula, q.category, q.order_num, 0 AS options_flag
+
+		FROM (
+
+			SELECT q.question_id, q.question_code, qc.questioncategory_code, a.page_id
+
+			FROM (
+
+				SELECT q.question_id, NULL AS page_id
+
+				FROM (
+
+					SELECT pa.answerfield_id
+					FROM subset_program_base sp, program p, program_answerfield pa, answerfield a
+					WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+
+						AND sp.program_id=p.program_id
+						AND (p.state_id IS NULL or p.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+						AND p.active_flag=1
+						AND p.program_id=pa.program_id
+						AND pa.answerfield_id NOT IN (
+							SELECT answerfield_id
+							FROM answerfield_subset_partner
+							WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+								AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
+								AND background_flag=1
+						)
+
+						AND pa.answerfield_id=a.answerfield_id
+
+						AND (a.state_id IS NULL or a.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+
+					UNION
+					SELECT ar.right_answerfield_id as answerfield_id
+					FROM subset_program_base sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
+					WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+						AND sp.program_id=p.program_id
+						AND (p.state_id IS NULL or p.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+						AND p.active_flag=1
+						AND p.program_id=pa.program_id
+						AND pa.answerfield_id NOT IN (
+							SELECT answerfield_id
+							FROM answerfield_subset_partner
+							WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+								AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
+								AND background_flag=1
+						)
+						AND pa.answerfield_id=ar.left_answerfield_id
+						AND ar.relationship_id=2
+						AND ar.right_answerfield_id=a.answerfield_id
+						AND (a.state_id IS NULL or a.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+					
+					UNION
+					SELECT pa.answerfield_id
+					FROM subset_program_sum sp, program p, program_answerfield pa, answerfield a
+					WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+						AND sp.program_id=p.program_id
+						AND (p.state_id IS NULL or p.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+						AND p.active_flag=1
+						AND p.program_id=pa.program_id
+						AND pa.answerfield_id NOT IN (
+							SELECT answerfield_id
+							FROM answerfield_subset_partner
+							WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+								AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
+								AND background_flag=1
+						)
+
+						AND pa.answerfield_id=a.answerfield_id
+
+						AND (a.state_id IS NULL or a.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+						AND pa.program_id in
+						(	select  pp.parent_program_id
+							from program_parent pp, program p, subset_program_base spb
+							where 
+							spb.program_id = pp.program_id
+							and pp.program_id = p.program_id
+							and spb.subset_id = <cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+							and ( p.state_id = '<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">' or p.state_id is NULL )
+						)
+
+					UNION
+					SELECT ar.right_answerfield_id as answerfield_id
+					FROM subset_program_sum sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
+					WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+						AND sp.program_id=p.program_id
+						AND (p.state_id IS NULL or p.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+						AND p.active_flag=1
+						AND p.program_id=pa.program_id
+						AND pa.answerfield_id NOT IN (
+							SELECT answerfield_id
+							FROM answerfield_subset_partner
+							WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+								AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
+								AND background_flag=1
+						)
+						AND pa.answerfield_id=ar.left_answerfield_id
+						AND ar.relationship_id=2
+						AND ar.right_answerfield_id=a.answerfield_id
+						AND (a.state_id IS NULL or a.state_id='<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">')
+						and pa.program_id in
+						(	select  pp.parent_program_id
+							from program_parent pp, program p, subset_program_base spb
+							where 
+							spb.program_id = pp.program_id
+							and pp.program_id = p.program_id
+							and spb.subset_id = <cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+							and ( p.state_id = '<cfqueryparam cfsqltype="cf_sql_varchar" value="#state#" maxlength="50">' or p.state_id is NULL )
+						)
+
+
+
+				) AS a, question_answerfield qa, question q
+
+				WHERE a.answerfield_id=qa.answerfield_id
+
+						AND <cfif session.subset_id neq 27 Or session.partner_id neq 8>qa.question_id NOT IN (
+
+							SELECT question_id
+
+							FROM subset_question
+
+							WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+
+								AND exclude_flag=1
+
+						)
+
+						AND </cfif>qa.question_id=q.question_id
+
+						AND q.exclude_flag=0
+
+				<cfif session.subset_id neq 27 Or session.partner_id neq 8>UNION
+
+				SELECT q.question_id, sq.page_id
+
+				FROM subset_question sq, question q
+
+				WHERE sq.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+
+					AND sq.exclude_flag=0
+
+					AND sq.question_id=q.question_id
+
+				</cfif>UNION
+
+				SELECT q.question_id, NULL AS page_id
+
+				FROM question q
+
+				WHERE q.include_flag=1
+
+					AND q.question_id NOT IN (
+
+						SELECT question_id
+
+						FROM subset_question
+
+						WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+
+							AND exclude_flag=1
+
+					)
+
+			) AS a, question q, questioncategory qc
+
+			WHERE a.question_id=q.question_id
+
+				AND q.questioncategory_id=qc.questioncategory_id
+
+		) sq, tbl_questions_new q, question qq, questioncategory qc
+
+		WHERE sq.question_id=q.question_id
+
+			AND q.answerfield not in ('zip')
+
+			AND q.client='self'
+
+			AND q.pri_sec='pri'
+
+			AND q.type is not null
+
+			AND q.question_id=qq.question_id
+
+			AND qq.questioncategory_id=qc.questioncategory_id
+				 
+			AND q.question_id <> 644
+			AND q.question_id <> 770
+			<cfif session.partner_id neq 0 or session.org_id gt 0>
+			AND q.question_id <> 645
+			AND q.question_id <> 646
+			</cfif>
+            <cfif session.subset_id eq 59 or (session.st eq 'VI')>
+            AND q.question_id <> 428
+            </cfif>
+            <cfif session.subset_id eq 27 or session.subset_id eq 39>
+            AND q.question_id <> 652
+            </cfif>
+            <cfif session.subset_id eq 51 or session.partner_id Neq 76>
+            AND q.question_id <> 713
+            AND q.question_id <> 714
+           AND q.question_id <> 771
+            </cfif>
+            <cfif session.partner_id neq 0 or session.subset_id neq 0 or session.org_id neq 0>
+            AND q.question_id <> 715 and q.question_id <> 794
+            </cfif>
+	    <cfif (session.partner_id neq 0 and session.partner_id neq 58) or session.subset_id neq 0 or session.org_id neq 0>
+            AND q.question_id <> 792
+           </cfif>
+	    <cfif session.partner_id neq 0 and session.partner_id neq 80>
+            AND q.question_id <> 862 
+	    and q.question_id <> 863
+            </cfif>
+            AND q.question_id <> 774
+            AND q.question_id <> 795
+		ORDER BY qc.sort, qq.sort
+		</cfquery>
+        <cfreturn  querySubsetProgram>
+    </cffunction>
+
+--->
 
 
 
@@ -1417,7 +1694,7 @@ order by prq.sort
         <cfargument name="post_id" type="numeric" required="yes"  >
         <cfset queryAFS = QueryNew("post_title, post_content")>
         <cfquery  name="querySAFS" datasource="wp_benefitscheckup" >
-		select post_title, post_content from wp_posts_v3_1
+		select post_title, post_content from wp_posts
 		where ID=<cfqueryparam cfsqltype="cf_sql_integer" value="#post_id#" maxlength="4">
 
         </cfquery>
@@ -1428,7 +1705,7 @@ order by prq.sort
         <cfargument name="post_code" type="string" required="yes"  >
         <cfset queryAFS = QueryNew("post_title, post_content")>
         <cfquery name="querySAFS" datasource="wp_benefitscheckup">
-		select post_title, post_content from wp_posts_v3_1
+		select post_title, post_content from wp_posts
 		where post_code like '#post_code#'
 		</cfquery>
         <cfreturn  querySAFS>
@@ -1746,6 +2023,24 @@ select e.name, di.display_text hours_text
 				and s.statetype_id = 1
 		</cfquery>
 		<cfreturn getStateCountyData>
+	</cffunction>
+
+	<cffunction name="getSubsetProgramsByCategory" access="public"  output="false" returntype="query"  hint="returns programs in subset by category" >
+		<cfargument name="state_id" type="string" required="yes" >
+		<cfargument name="subset_id" type="numeric" required="yes" >
+		<cfargument name="programcategory_id" type="numeric" required="yes" >
+		<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
+			Select * from subset_program_sum sps, program p , display_language dl, programcategory pc
+			where subset_id = #subset_id#
+			and p.program_id = sps.program_id
+			and  p.programcategory_id = pc.programcategory_id
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			and active_flag = 1 and exclude_flag = 0
+			and (state_id = '#state_id#' or state_id = 'FD')
+			and pc.programcategory_id = #programcategory_id#
+		</cfquery>
+		<cfreturn getSubsetProgramsByCategory>
 	</cffunction>
 </cfcomponent>
 
