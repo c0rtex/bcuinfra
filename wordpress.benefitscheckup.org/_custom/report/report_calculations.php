@@ -63,72 +63,8 @@ function searchForId($id, $array){
 }
 
 	//test
-	$AFrow_index = searchForId('esi_category_retirement_planning', $AF_array);
-	$esi_category_retirement_planning = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_retirement_planning";
-	$esi_category_retirement_planning = true;
-	}
-	$AFrow_index = searchForId('esi_category_consumer_protection', $AF_array);
-	$esi_category_consumer_protection = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_consumer_protection";
-	$esi_category_consumer_protection = true;
-	}
-	
-	$AFrow_index = searchForId('esi_category_credit_debt_management', $AF_array);
-	$esi_category_credit_debt_management = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_credit_debt_management";
-	$esi_category_credit_debt_management = true;
-	}
-	$AFrow_index = searchForId('esi_category_employment_training', $AF_array);
-	$esi_category_employment_training = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_employment_training";
-	$esi_category_employment_training = true;
-	}
-	$AFrow_index = searchForId('esi_category_health_resources', $AF_array);
-	$esi_category_health_resources = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_health_resources";
-	$esi_category_health_resources = true;
-	}
-	
-	$AFrow_index = searchForId('esi_category_homeowner_resources', $AF_array);
-	$esi_category_homeowner_resources = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_homeowner_resources";
-	$esi_category_homeowner_resources = true;
-	}
-	$AFrow_index = searchForId('esi_category_legal_resources', $AF_array);
-	$esi_category_legal_resources = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_legal_resources";
-	$esi_category_legal_resources = true;
-	}
-	$AFrow_index = searchForId('esi_category_money_management', $AF_array);
-	$esi_category_money_management = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_money_management";
-	$esi_category_money_management = true;
-	}
-	//esi_category_renter_resources
-	$AFrow_index = searchForId('esi_category_renter_resources', $AF_array);
-	$esi_category_renter_resources = false;
-	if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))
-	{
-	//echo "testing......................esi_category_renter_resources";
-	$esi_category_renter_resources = true;
-	}
+	//$AFrow_index = searchForId('esi_category_retirement_planning', $fields);
+
 					
 
 
@@ -147,7 +83,7 @@ function age($month, $day, $year){
  }
  return($age);
 }
-$sectioncode = 'bcu_quickcheck_report_heading_veteran';
+//$sectioncode = 'bcu_quickcheck_report_heading_veteran';
 //show sections and program info
 		foreach ($cats as $c => $row)
 					{
@@ -159,32 +95,39 @@ $sectioncode = 'bcu_quickcheck_report_heading_veteran';
 						if ($cat_code == 'veteran'){
 						$sectioncode = 'bcu_quickcheck_report_heading_veteran';
 						$iconcode = 'user';
+						$interested = 'bcuqc_category_veteran';
 						}
 						elseif ($cat_code == 'taxrelief'){
 						$sectioncode = 'bcu_quickcheck_report_heading_taxrelief';
 						$iconcode = 'building';
+						$interested = 'bcuqc_category_taxrelief';
 						}
 						
 						elseif ($cat_code == 'foodsupp'){
 						$sectioncode = 'bcu_quickcheck_report_heading_foodsupp';
 						$iconcode = 'coffee';
+						$interested = 'bcuqc_category_property_foodsupp';
 						}
 
 						elseif ($cat_code == 'nutrition'){
 						$sectioncode = 'bcu_quickcheck_report_heading_nutrition';
 						$iconcode = 'heart';
+						$interested = 'bcuqc_category_property_nutrition';
 						}
 						elseif ($cat_code == 'rxgov'){
 						$sectioncode = 'bcu_quickcheck_report_heading_rx';
 						$iconcode = 'medkit';
+						$interested = 'bcuqc_category_rx';
 						}
 						elseif ($cat_code == 'medicaid'){
 						$sectioncode = 'bcu_quickcheck_report_heading_medicaid';
 						$iconcode = 'ambulance';
+						$interested = 'bcuqc_category_medicaid';
 						}
 						elseif ($cat_code == 'income'){
 						$sectioncode = 'bcu_quickcheck_report_heading_income';
 						$iconcode = 'money';
+						$interested = 'bcuqc_category_income';
 						}
 						$sectiontext = $soapClient->getWPPostByMetaTag($sectioncode);
 						$sectionSummary = $sectiontext[0]["POST_CONTENT"];		

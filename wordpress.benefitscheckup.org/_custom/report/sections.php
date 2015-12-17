@@ -1,7 +1,20 @@
 <?php
+
 $programs = $soapClient->getProgByCat($state_id,93,$programcategory_id);
 //if there are programs output the category section
-if (sizeOf($programs) != ''){
+$thischecked = false;
+foreach ($fields as $f => $row)
+					{
+						if ($row["ANSWERFIELD"] == $interested) {
+						$zip = $row["RESPONSE"];
+						//echo "field:".$interested;
+						$thischecked = true;			
+						}
+						
+
+					}
+
+if ($thischecked == true) {
 ?>
 
 <section id="programlist">  	
@@ -30,6 +43,9 @@ if (sizeOf($programs) != ''){
 						//echo "<br>";
 					}
 				//print_r($programs);
+				if (sizeOf($programs) == ''){
+					echo "We do not have information on programs of interest of this category available in your area at the moment.";
+				}
 			     ?> 
 		</ol>
             </div>
