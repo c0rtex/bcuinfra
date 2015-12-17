@@ -25,7 +25,7 @@
 	<cfargument name="subset_id" type="numeric" required="yes" >
 	<cfquery name="getSubCats" datasource="#application.dbSrc#">
 			select
- 			code,pc.display_id,dl.DISPLAY_TEXT as category_title,sort
+ 			code,pc.display_id,dl.DISPLAY_TEXT as category_title,sort,pc.programcategory_id
 			from subset_programcategory sp, programcategory pc, display_language dl
 			where sp.programcategory_id = pc.programcategory_id
 			and dl.display_id = pc.display_id
@@ -1710,7 +1710,24 @@ order by prq.sort
 		</cfquery>
         <cfreturn  querySAFS>
     </cffunction>
-
+    <cffunction access="remote" name="getWPPostByMetaTag" output="false" returntype="query"  hint="Gets Post Content from the NCOA WP DB by meta content code"  >
+        <!-- pass arguments  -->
+        <cfargument name="post_code" type="string" required="yes"  >
+        <cfset queryAFS = QueryNew("post_title, post_content")>
+        <cfquery name="querySAFS" datasource="wp_benefitscheckup">
+		SELECT
+		wp_posts.post_title, wp_posts.post_content
+		FROM
+		wp_postmeta
+		INNER 
+		JOIN wp_posts 
+		ON wp_postmeta.post_id = wp_posts.ID
+		where meta_key = 'post_code'
+		and meta_value like '#post_code#'
+		and wp_posts.post_type = 'post' 
+		</cfquery>
+        <cfreturn  querySAFS>
+    </cffunction>
     <cffunction access="remote" name="getStateCarrier" output="false" returntype="query"  hint="Get Carriers by State"  >
         <!-- pass arguments -->
         <cfargument name="screening_id" type="numeric" required="yes"   >
@@ -2008,7 +2025,11 @@ select e.name, di.display_text hours_text
 
 		<cfreturn theResult >
 	</cffunction>
-
+	<cffunction name="getStuff" access="public"  output="false" returntype="string"  hint="returns a valid state,county, lat,lon if exists for a zipcode" >
+		<cfargument name="zipcode" type="numeric" required="yes" >
+		<cfset getStateCountyData = "abcd">
+		<cfreturn getStateCountyData>
+	</cffunction>
 
 
 	<cffunction name="getStateCountyFromZip" access="public"  output="false" returntype="query"  hint="returns a valid state,county, lat,lon if exists for a zipcode" >
