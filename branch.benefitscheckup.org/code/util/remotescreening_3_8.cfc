@@ -14,8 +14,9 @@
 			and p.name_display_id = dl.display_id
 			and dl.language_id = 'EN'
 			and active_flag = 1 and exclude_flag = 0
-			and (state_id = '#state_id#' or state_id = 'FD')
+			and (state_id = '#state_id#' or state_id is null)
 			and pc.programcategory_id = #programcategory_id#
+			order by p.sort
 	</cfquery>
         <cfreturn  getSubsetProgramsByCategory>
     </cffunction>
