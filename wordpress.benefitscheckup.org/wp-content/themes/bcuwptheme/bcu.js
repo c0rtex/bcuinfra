@@ -2,7 +2,7 @@ jQuery(document).ready(function() {
   var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
   var validated = 0;
 
-  jQuery('#esiQuickcheckSubmit').on('click', function(e) {
+  jQuery('#esiQuickcheckResultsButton').on('click', function(e) {
     e.preventDefault();
 
     validated = 1;

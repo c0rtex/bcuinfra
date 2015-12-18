@@ -850,3 +850,6 @@ div.AdvancedText {
 #esiQuickcheckCheckboxes {
   -webkit-column-count: 2;
 }
+#esiQuickcheckResultsButton {
+  cursor: pointer;
+}
