@@ -1,4 +1,4 @@
-<div id="printContent" class="span8"> 
+<div id="printContent">
 <?php 
 if (isset($_GET["subset_id"])){
 $subsetID = htmlspecialchars($_GET["subset_id"]);
@@ -96,8 +96,7 @@ echo '<input type="hidden" name="subset_id" value="'.$subsetID.'">';
 					<a id="esiQuickcheckSubmit" href="#" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-toggle="modal">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
 
 
-</div> 
-<!--span8-->
+</div>
 
 <?php 
 if (isset($_GET['screeningID'])) {
