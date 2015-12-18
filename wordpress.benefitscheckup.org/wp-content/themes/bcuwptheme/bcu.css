@@ -847,3 +847,6 @@ div.AdvancedText {
 .bcuQuickcheckQuestion .radio, .bcuQuickcheckQuestion .checkbox {
   margin-top: 6px;
 }
+#esiQuickcheckCheckboxes {
+  -webkit-column-count: 2;
+}

@@ -588,13 +588,13 @@ onChange="if(!startForm) { ga(\'send\', \'event\', \'mqc\', \'MQC Tool Start\', 
     echo '<label id="label_'.$answerfield.'">
 					<select id="'.$answerfield.'" name="'.$answerfield.'">	          			
                                	 <option value="">-- Year --</option>';
-    $displayyear = 2014;
+    $displayyear = 1900;
     if ($answerfieldValue == '' ) {
       $answerfieldValue = 1950;
     }
-    while ($displayyear > 1899 ){
+    while ($displayyear <= 2015 ){
       echo '<option value="'.$displayyear.'" '; if ($answerfieldValue == $displayyear){ echo 'selected'; } echo '> '.$displayyear.' </option>';
-      $displayyear --;
+      $displayyear ++;
     }
 
     echo '</select>
