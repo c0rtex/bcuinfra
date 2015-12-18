@@ -33,11 +33,12 @@ if ($thischecked == true) {
 						$prog_title = $row2["DISPLAY_TEXT"];
 						$program_id = $row2["PROGRAM_ID"];
 						$program_code = $row2["PROGRAM_CODE"];
+						$legacy_code = $row2["LEGACY_PRG_ID"];
 						
 				?>
 				<li id="<?php echo $program_code ?>" class="">	
-				<?php	
-				echo " <a target='blank' href='/benefits-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign '></i>".$prog_title." </a></li>";
+				<?php	 
+				echo " <a target='blank' href='/cf/frmDetails.cfm?prg_id=".$legacy_code."&state_id=".$state_id."&county=".$county."&zip=".$zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign '></i>".$prog_title." </a></li>";
 				
 						//echo $program_id;
 						//echo "<br>";
