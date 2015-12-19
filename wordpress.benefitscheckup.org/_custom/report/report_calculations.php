@@ -1,5 +1,5 @@
 <?php
-require_once('_custom/soap_client.php');
+ require_once('_custom/soap_client.php');
 require_once('_custom/displaycontent.php');
 //echo '<h3>testing</h3>';
 $cats2 = array(

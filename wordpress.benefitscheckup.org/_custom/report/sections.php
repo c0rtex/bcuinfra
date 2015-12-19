@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 $programs = $soapClient->getProgByCat($state_id,93,$programcategory_id);
 //if there are programs output the category section
