@@ -853,3 +853,6 @@ div.AdvancedText {
 #esiQuickcheckResultsButton {
   cursor: pointer;
 }
+#bcuQuickcheckForm {
+  margin: 0 0 4px;
+}

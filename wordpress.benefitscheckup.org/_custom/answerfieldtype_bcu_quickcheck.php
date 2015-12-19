@@ -446,7 +446,7 @@ onChange="if(!startForm) { ga(\'send\', \'event\', \'mqc\', \'MQC Tool Start\', 
 
     echo '
         <div class="input" id="tr_'.$answerfield.'">									
-		<input type="text" pattern="[0-9]*"  maxwidth="5" id="'.$answerfield.'" size="6" autocomplete="off" minlength="5"  maxlength="5" name="'.$answerfield.'" class="required"';
+		<input type="text" pattern="[0-9]*"  maxwidth="5" id="'.$answerfield.'" size="6" autocomplete="off" minlength="5"  maxlength="5" name="'.$answerfield.'" class="required">';
     //zip state js check
 
     echo "
@@ -454,11 +454,9 @@ onChange="if(!startForm) { ga(\'send\', \'event\', \'mqc\', \'MQC Tool Start\', 
 
 	";
 
-    echo '">
-    	<input type="text" name="zyxzip_zip_abbrev" id="zyxzip_zip_abbrev" size="1" value="" disabled="" style="font-size: 7pt; font-weight: bold; color: rgb(102, 102, 102); background-color: rgb(221, 221, 221); border: 1px dotted black; background-position: initial initial; background-repeat: initial initial;">
+    echo '
+    	<input type="text" name="zyxzip_zip_abbrev" id="zyxzip_zip_abbrev" size="1" value="" disabled="" style="font-size: 7pt; font-weight: bold; color: rgb(102, 102, 102); background-color: rgb(221, 221, 221); border: 1px dotted black;">
     ';
-    echo '	</div>
-		';
     break;
   case 'day':
     $responseType = 1;
@@ -603,5 +601,3 @@ onChange="if(!startForm) { ga(\'send\', \'event\', \'mqc\', \'MQC Tool Start\', 
   default:
     echo '<div class="alert alert-error">Error: No Anwerfield Type!</div>';
 }
-?>
-
