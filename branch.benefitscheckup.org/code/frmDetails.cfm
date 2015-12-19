@@ -1,7 +1,7 @@
 <cfif IsDefined('SESSION.partner_id') AND (SESSION.partner_id EQ 0 or session.partner_id eq 77  )>	
 	
 	<cfprocessingdirective suppresswhitespace="Yes"> 
-	
+	<cfset session.state_id = url.state_id>
 	<!----
 	DESCRIPTION: shows description of programs, entry points, and required materials
 	CALLED BY: frmEligibility.cfm
@@ -29,6 +29,7 @@
 	    </form> ---> 
 	</cfoutput>
 	<cfif Not IsDefined('session.st')>
+	  <cfset session.state_id = url.stat_id>
 	  <cfset session.st = session.state_id>
 	</cfif>
     <cfif session.partner_id eq 77>
@@ -134,6 +135,8 @@
 								<a href="/cf/taxRelief2.cfm?partner_id=77&taxReliefZip=#passZip#"><img src="img/backToRelief.gif" alt="Back to Tax Relief Programs" border="0" /></a>
 						<cfelseif src eq 'elig' >
 							<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
+						<cfelseif src eq 'quickcheck' >
+							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						<cfelseif src eq 'ec'>
 							<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
 						<cfelseif url.ReportType neq "">
@@ -164,6 +167,8 @@
 							<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
 						<cfelseif src eq 'elig'>
 							<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
+						<cfelseif src eq 'quickcheck' >
+							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						<cfelseif src eq 'ec'>
 							<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
 						<cfelseif url.ReportType neq "">
@@ -206,7 +211,7 @@
 	GOES TO: N/A
 	REQUIRED: prg_id  sent via the URL.
 	---->
-	
+	<cfparam name="session.partner_id" default = "0">
 	<cfparam name="src" type="string" default="">
 	<cfparam name="sr" type="numeric" default="1">
 	<cfparam name="url.reportType" type="string" default="">
@@ -227,6 +232,7 @@
 	    </form> ---> 
 	</cfoutput>
 	<cfif Not IsDefined('session.st')>
+		<cfset session.state_id = url.state_id>
 		<cfset session.st = session.state_id>
 	</cfif>
     <cfif session.partner_id eq 76>

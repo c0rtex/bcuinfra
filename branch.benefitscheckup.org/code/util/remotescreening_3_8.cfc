@@ -1,5 +1,43 @@
 <cfcomponent   >
-    <cffunction   access="remote" name="doScreening" output="false" returntype="query"  hint="accepts list of field responses in xml  and processes screening results - Version 1 ( to be upgraded)" >
+     <cffunction access="remote" name="getProgByCat" output="false" returntype="query"  hint="Returns programs by subset"  >
+        <!-- pass arguments -->
+        <cfargument name="state_id" type="string" required="yes" >
+	<cfargument name="subset_id" type="numeric" required="yes" >
+	<cfargument name="programcategory_id" type="numeric" required="yes" >
+        <cfset version = "testtestest">
+	
+	<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
+			Select * from subset_program_sum sps, program p , display_language dl, programcategory pc
+			where subset_id = #subset_id#
+			and p.program_id = sps.program_id
+			and  p.programcategory_id = pc.programcategory_id
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			and active_flag = 1 and exclude_flag = 0
+			and (state_id = '#state_id#' or state_id is null)
+			and pc.programcategory_id = #programcategory_id#
+			order by p.sort
+	</cfquery>
+        <cfreturn  getSubsetProgramsByCategory>
+    </cffunction>
+    
+    <cffunction access="remote" name="getSubCats" output="false" returntype="query"  hint="Returns program categories by subset " >
+        <!-- pass arguments -->
+	<cfargument name="subset_id" type="numeric" required="yes" >
+	<cfquery name="getSubCats" datasource="#application.dbSrc#">
+			select
+ 			code,pc.display_id,dl.DISPLAY_TEXT as category_title,sort,pc.programcategory_id
+			from subset_programcategory sp, programcategory pc, display_language dl
+			where sp.programcategory_id = pc.programcategory_id
+			and dl.display_id = pc.display_id
+			and sp.subset_id = 93 
+			and dl.language_id = 'EN'
+			order by sort
+	</cfquery>
+        <cfreturn  getSubCats>
+    </cffunction>
+
+    <cffunction   access="remote" name="doScreening" output="false" returntype="query"  hint="accepts listgraf field responses in xml  and processes screening results - Version 1 ( to be upgraded)" >
         <!-- pass arguments -->
         <cfargument name="partner_id" type="numeric" required="yes" >
         <cfargument name="partner_screening_id" type="string" required="yes" >
@@ -1673,7 +1711,24 @@ order by prq.sort
 		</cfquery>
         <cfreturn  querySAFS>
     </cffunction>
-
+    <cffunction access="remote" name="getWPPostByMetaTag" output="false" returntype="query"  hint="Gets Post Content from the NCOA WP DB by meta content code"  >
+        <!-- pass arguments  -->
+        <cfargument name="post_code" type="string" required="yes"  >
+        <cfset queryAFS = QueryNew("post_title, post_content")>
+        <cfquery name="querySAFS" datasource="wp_benefitscheckup">
+		SELECT
+		wp_posts.post_title, wp_posts.post_content
+		FROM
+		wp_postmeta
+		INNER 
+		JOIN wp_posts 
+		ON wp_postmeta.post_id = wp_posts.ID
+		where meta_key = 'post_code'
+		and meta_value like '#post_code#'
+		and wp_posts.post_type = 'post' 
+		</cfquery>
+        <cfreturn  querySAFS>
+    </cffunction>
     <cffunction access="remote" name="getStateCarrier" output="false" returntype="query"  hint="Get Carriers by State"  >
         <!-- pass arguments -->
         <cfargument name="screening_id" type="numeric" required="yes"   >
@@ -1971,7 +2026,11 @@ select e.name, di.display_text hours_text
 
 		<cfreturn theResult >
 	</cffunction>
-
+	<cffunction name="getStuff" access="public"  output="false" returntype="string"  hint="returns a valid state,county, lat,lon if exists for a zipcode" >
+		<cfargument name="zipcode" type="numeric" required="yes" >
+		<cfset getStateCountyData = "abcd">
+		<cfreturn getStateCountyData>
+	</cffunction>
 
 
 	<cffunction name="getStateCountyFromZip" access="public"  output="false" returntype="query"  hint="returns a valid state,county, lat,lon if exists for a zipcode" >
@@ -1986,6 +2045,24 @@ select e.name, di.display_text hours_text
 				and s.statetype_id = 1
 		</cfquery>
 		<cfreturn getStateCountyData>
+	</cffunction>
+
+	<cffunction name="getSubsetProgramsByCategory" access="public"  output="false" returntype="query"  hint="returns programs in subset by category" >
+		<cfargument name="state_id" type="string" required="yes" >
+		<cfargument name="subset_id" type="numeric" required="yes" >
+		<cfargument name="programcategory_id" type="numeric" required="yes" >
+		<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
+			Select * from subset_program_sum sps, program p , display_language dl, programcategory pc
+			where subset_id = #subset_id#
+			and p.program_id = sps.program_id
+			and  p.programcategory_id = pc.programcategory_id
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			and active_flag = 1 and exclude_flag = 0
+			and (state_id = '#state_id#' or state_id = 'FD')
+			and pc.programcategory_id = #programcategory_id#
+		</cfquery>
+		<cfreturn getSubsetProgramsByCategory>
 	</cffunction>
 </cfcomponent>
 
