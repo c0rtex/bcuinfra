@@ -17,7 +17,7 @@ foreach ($fields as $f => $row)
 if ($thischecked == true) {
 ?>
 
-<section id="programlist">  	
+<section id="<?php echo $interested  ?>">  	
         <div class="body-header-wrapper">	<h2><i class="icon-<?php echo $iconcode; ?>"> </i> <?php echo $cat_title; ?></h2>	
           	
      	</div>
@@ -38,7 +38,7 @@ if ($thischecked == true) {
 				?>
 				<li id="<?php echo $program_code ?>" class="">	
 				<?php	 
-				echo " <a target='blank' href='/cf/frmDetails.cfm?prg_id=".$legacy_code."&state_id=".$state_id."&county=".$county."&zip=".$zip."&screeningID=".$screeningID."&shadowID=".$shadowID."&src=quickcheck'><i class='icon-info-sign '></i>".$prog_title." </a></li>";
+				echo "<div><i class='icon-info-sign '></i> <a target='blank' href='/cf/frmDetails.cfm?prg_id=".$legacy_code."&state_id=".$state_id."&county=".$county."&zip=".$zip."&screeningID=".$screeningID."&shadowID=".$shadowID."&src=quickcheck'>".$prog_title." </a></div></li>";
 				
 						//echo $program_id;
 						//echo "<br>";
