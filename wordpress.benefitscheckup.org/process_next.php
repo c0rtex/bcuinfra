@@ -46,6 +46,10 @@ elseif ($subset_id == 83) {
 //do screening
   $screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
 }
+elseif ($subset_id == 93) {
+//do screening
+  $screeningresponse_query = $soapClient->doScreening(0,'',0,$answerset_xml,'');
+}
 else {
 //do screening
   $screeningresponse_query = $soapClient->doScreening(14,'','0',$answerset_xml,'');
