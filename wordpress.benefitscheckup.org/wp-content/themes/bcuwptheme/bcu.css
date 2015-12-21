@@ -472,9 +472,9 @@ img.alignright {
 
 /* ESI questions - get started */
 /*.nav-list > li > a,.nav-list > li > form > a, .nav-list .nav-header {  color: #8388C2;}*/
-.nav-list > li > a,.nav-list > li > form > a, .nav-list .nav-header {  color: #1f419b;}
+.nav-list > li > a,.nav-list > li > form > a, .nav-list .nav-header {  color: #1f419b; text-decoration: none;}
 
-.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus { background-color: rgb(221, 72, 20);}
+.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus { background-color: rgb(221, 72, 20); text-decoration: none;}
 
 
 legend { color: #8388c2;}
@@ -550,7 +550,7 @@ a.go-button {
 
 /*.printButton .btn{font-family: 'Roboto Condensed', sans-serif; color:#8B0000; text-transform:uppercase; font-weight:600; background: Salmon; margin-top:15px;
 }*/
-.printButton .btn{font-family: 'Roboto Condensed', sans-serif; color:#fff; text-transform:uppercase; font-weight:600; background: #f47735; margin-top:15px;
+.printButton .btn{font-family: 'Roboto Condensed', sans-serif; color:#fff; text-transform:uppercase; font-weight:600; background: #f47735; margin-top:15px; text-decoration: none;
 }
 
 .btn:hover, .btn:focus {color:#fff;}
