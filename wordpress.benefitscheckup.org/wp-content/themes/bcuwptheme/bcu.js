@@ -161,4 +161,9 @@ jQuery(document).ready(function() {
     }
 
   }
+
+  jQuery('#esiQuickcheckCheckboxes').prepend('<div class="last-column"></div>');
+  jQuery('#esiQuickcheckCheckboxes').prepend('<div class="first-column"></div>');
+  jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
+  jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
 });

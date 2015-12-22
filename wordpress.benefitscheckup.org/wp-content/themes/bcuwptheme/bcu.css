@@ -844,6 +844,13 @@ text-decoration:none;
     min-height: 430px !important;
   }
 }
+@media (max-width: 768px) {
+  #bcu_quickcheck {
+    width: 90%;
+    margin-left: -45%;
+    max-height: 200px !important;
+  }
+}
 #bcu_quickcheck .alert-bcuQuickCheck {
   margin: 6px 0 !important;
 }
@@ -862,4 +869,12 @@ text-decoration:none;
 }
 #bcuQuickcheckForm {
   margin: 0 0 5px;
+}
+#esiQuickcheckCheckboxes .first-column {
+  width: 50%;
+  float: left;
+}
+#esiQuickcheckCheckboxes .last-column {
+  width: 50%;
+  float: left;
 }
