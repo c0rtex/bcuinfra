@@ -10,57 +10,20 @@
 	<cfparam name="attributes.append" type="boolean" default="false">
 	<cfparam name="attributes.state_id" type="string" default="">
 	<cfparam name="attributes.format" type="string" default="html">
-	<cfif not isdefined('session.st')>
-		<cfset session.st = attributes.state_id>
-	</cfif>
+	
 	
 	<cfset outstr = ''>
 	<cf_cacheProgramPool action="get" id="#attributes.program_id#" var="pobj" codevar="code">
 	<cf_displayText group="prgdesc" code="prgdesc_#code#" var="programDescription">
 	
-	<cfif attributes.eform>
-		<cfquery datasource="#application.dbSrc#" name="appforms">
-			SELECT ft.string, t.tag_name
-			FROM program_form pf, form f, form_formtype ft, formtag t
-			WHERE pf.program_id=<cfqueryparam cfsqltype="cf_sql_numeric" value="#attributes.program_id#" maxlength="6">
-				AND pf.form_id=f.form_id
-				and (f.state_id is null or f.state_id='#session.st#')
-				AND f.form_id=ft.form_id
-				AND ft.formtype_id=2
-				AND ft.active=1
-				AND f.formtag_id=t.formtag_id
-			ORDER BY pf.sort
-		</cfquery>
-		<cfif appforms.recordcount neq 0>
-			<cfset countAppsDisplayed = 0>
-			<cfloop query="appforms"> 
-				<cfif countAppsDisplayed eq 0>
-					<cfset outstr = outstr & "<span class='strong'>The following eForms are available for this program (clicking links will open new browser window):</span><ul class='striping' style='list-style: none outside none; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;'>">
-				</cfif>
-				<cfset outstr = outstr & "<li class='questionBar'><a href=""eformsubmit.cfm?efitem=#appforms.string#&prg_id=#prg_id#&cftoken=#session.cftoken#&cfif=#session.cfid#"" target=""_blank"">#tag_name#</a>">
-				<cfif application.subsetsUseViews>
-					<cf_genAssistGuideXML code="#appforms.string#" prg_id="#pobj.legacy#">
-					<cfset outstr = outstr & "<form action=""xml.cfm"" method=""post"" name=""eform"" target=""_blank"">
-						<input type=""hidden"" name=""#appforms.string#"" value=""include"">
-						<input type=""hidden"" name=""startxml"" value=""#startAssistGuideXML#"">
-						<input type=""hidden"" name=""endxml"" value=""#endAssistGuideXML#"">
-						<input type=""hidden"" name=""xml"" value="""">
-						<input type=""button"" value=""Show XML for Debugging"" onClick=""javascript:document.eform.xml.value = document.eform.startxml.value; for (x = 0; x < document.eform.elements.length; x++) {if (document.eform.elements[x].type == 'hidden' && document.eform.elements[x].value == 'include') {document.eform.xml.value = document.eform.xml.value + '<Form>' + document.eform.elements[x].name + '</Form>\n';}} document.eform.xml.value = document.eform.xml.value + document.eform.endxml.value; document.eform.submit();"">
-						</form>">
-				</cfif>
-				<cfset countAppsDisplayed = countAppsDisplayed + 1>
-			</cfloop>
-			<cfif countAppsDisplayed gt 0>
-				<cfset outstr = outstr & "</ul>">
-			</cfif>
-		</cfif>
-	<cfelseif attributes.source eq 'details'>
+	
+	<cfif attributes.source eq 'details'>
 		<cfquery datasource="#application.dbSrc#" name="appforms">
 			SELECT ft.string, t.tag_name,f.form_id
 			FROM program_form pf, form f, form_formtype ft, formtag t
 			WHERE pf.program_id=<cfqueryparam cfsqltype="cf_sql_numeric" value="#attributes.program_id#" maxlength="6">
 				AND pf.form_id=f.form_id
-				and (f.state_id is null or f.state_id='#session.st#')
+				and (f.state_id is null or f.state_id='#url.state_id#')
 				AND f.form_id=ft.form_id
 				AND ft.formtype_id
 				<cfif attributes.formtype_id eq 0> in (1, 4)
@@ -154,7 +117,7 @@
 			FROM program_form pf, form f, form_formtype ft, formtag t
 			WHERE pf.program_id=<cfqueryparam cfsqltype="cf_sql_numeric" value="#attributes.program_id#" maxlength="6">
 				AND pf.form_id=f.form_id
-				and (f.state_id is null or f.state_id='#session.st#')
+				and (f.state_id is null or f.state_id='#url.state_id#')
 				AND f.form_id=ft.form_id
 				AND ft.formtype_id
 				<cfif attributes.formtype_id eq 0> in (1, 4)
