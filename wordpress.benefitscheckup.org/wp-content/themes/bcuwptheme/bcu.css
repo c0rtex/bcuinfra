@@ -836,8 +836,8 @@ text-decoration:none;
   font-size: 31.5px !important;
 }
 #bcu_quickcheck {
-  min-width: 70%;
-  min-height: 75%;
+  width: 90%;
+  margin-left: -45%;
 }
 #bcu_quickcheck .alert-bcuQuickCheck {
   margin: 6px 0 !important;
