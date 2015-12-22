@@ -829,30 +829,32 @@ text-decoration:none;
 }
 #bcuQuickcheckTitle {
   border-bottom: 2px solid #00479d;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
 }
 #bcu_quickcheck h2.bcuQuickcheckTitle {
   color: #1F419B !important;
   font-size: 31.5px !important;
 }
 #bcu_quickcheck {
-  min-width: 700px;
+  min-width: 70%;
+  min-height: 75%;
 }
 #bcu_quickcheck .alert-bcuQuickCheck {
-  margin: 8px 0 !important;
+  margin: 6px 0 !important;
 }
 #bcu_quickcheck .bcuQuestionSet {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .bcuQuickcheckQuestion .radio, .bcuQuickcheckQuestion .checkbox {
-  margin-top: 6px;
+  margin-top: 4px;
 }
 #esiQuickcheckCheckboxes {
   -webkit-column-count: 2;
 }
 #esiQuickcheckResultsButton {
   cursor: pointer;
+  margin-bottom: 10px;
 }
 #bcuQuickcheckForm {
-  margin: 0 0 4px;
+  margin: 0 0 5px;
 }
