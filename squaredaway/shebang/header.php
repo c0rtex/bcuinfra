@@ -153,14 +153,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     		</div>
      	</div>
         <div id="header" class="container">
+    	<div class="row-fluid">    
 	        <div class="span5" >
 	        	<a href="http://www.economiccheckup.org/" ><img src="/wp-content/themes/shebang/_images/_logos/ECU-PNG-Logo-2015.png" 
-	        		title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp" id="logo"/></a><br><BR>
+	        		title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp" id="logo"/></a>
 	      	</div>
-       	<div class="span7 statistics" id="logo" ><br>Since 2010, we’ve helped thousands of older adults find work, budget their money, 
+       	<div class="span6 statistics" id="logo" style="margin-left: -70px;"  ><br>Since 2010, we’ve helped thousands of older adults find work, budget their money, 
        		and save on daily expenses.
         </div>
+</div>
 	</div><!--end header -->
+<br/>
 
 	<?php 
 	$_home = '';
