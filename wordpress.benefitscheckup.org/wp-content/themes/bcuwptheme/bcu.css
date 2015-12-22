@@ -847,7 +847,7 @@ text-decoration:none;
 @media (max-width: 768px) {
   #bcu_quickcheck {
     width: 90%;
-    margin-left: -45%;
+    margin-left: 2%;
     max-height: 200px !important;
   }
 }
