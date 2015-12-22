@@ -100,6 +100,9 @@ function rbcu_scripts_and_styles() {
 		}
 }
 
+// Validations for the BCU QuickCheck form.
+wp_enqueue_script( 'bcu-js', get_template_directory_uri() . '/bcu.js', array(), '1.0.0', true );
+
 // enqueue base scripts and styles
 add_action('wp_enqueue_scripts', 'rbcu_scripts_and_styles');
 
