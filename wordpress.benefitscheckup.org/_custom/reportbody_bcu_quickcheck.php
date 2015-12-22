@@ -1,13 +1,9 @@
- 
-
-
 <div class="span8" id="printContent">  
 <?php
 require_once('_custom/soap_client.php');
 //echo '<h3>testing</h3>';
-$summarytext = '<p>Below is the information you wanted to learn more about. Click on the name of each program for a description of the benefits, contact information, and application forms (if available). 
-</p>
-<p>Want to find out if you qualify for these programs and other helpful benefits in your area? Complete a <a href="/cf/frmwelcome2.cfm?subset_id=0&partner_id=0&sc_partner_id=0">Full BenefitsCheckUp Questionnaire</a> to get a personalized report.</p>';
+$summarytextPost =  $soapClient->getWPPostByMetaTag('bcu_quickcheck_report_heading_overview');
+$summarytext = $summarytextPost[0]["POST_CONTENT"];
 $screeningID = $_GET['screeningID'];
 //echo "<br/>";
 //echo "<b>Unique ID: ".$screeningID."</b>";
@@ -15,29 +11,18 @@ $screeningID = $_GET['screeningID'];
 
 
 ?>
-
 <h2>BenefitsCheckUp Report</h2>
 <?php
 echo $summarytext;
-
-
 ?>
-
 <br/>
 </section>
 <?PHP
 require_once('report/report_calculations.php');					 
 ?>		
-
-	
-
-
 <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i class="icon-print "></i> Print Your Report</a></form>
 </div>
-
-		
-   
 </div> <!--span8-->
 <div class="span4">
    	<div class="well sidebar-nav " style="z-index: 999; position: static; width:220px; top: 191px;">

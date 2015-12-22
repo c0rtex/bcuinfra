@@ -25,12 +25,6 @@
   }
 
 
-
-
-
-
-
-
   //function mqc3Script (){
   //wp_enqueue_script( 'mqc-js-3' ); //include mqc_v3.js
   //}
@@ -67,10 +61,11 @@
   //Show Intro and legend Section
   /*$sectionLegend*/
 
-  $sectionLegendPost = $soapClient->getWPPost('15912');
+  $sectionLegendPost = $soapClient->getWPPostByMetaTag('bcu_quickcheck_questionnaire_heading_introduction');
+  $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 
   //$sectionLegend = apply_filters('the_content', get_post_field('post_content', 12360));
-  //$sectionLegendPost = restructureWSArray ($sectionLegendPost);
+  //$sectionLegendPost = restructureWSArray ($sectionLegendPost);  bcu_quickcheck_questionnaire_heading_introduction
   $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 
 
@@ -110,7 +105,4 @@ if (isset($_GET['screeningID'])) {
   <div class="modal-footer">
   </div>
 </div>
-
-
 <?php  require_once('questionnaire/footer_includes.php'); ?> 
-
