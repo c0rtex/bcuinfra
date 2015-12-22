@@ -1,7 +1,9 @@
 <cfif IsDefined('SESSION.partner_id') AND (SESSION.partner_id EQ 0 or session.partner_id eq 77  )>	
 	
 	<cfprocessingdirective suppresswhitespace="Yes"> 
-	<cfset session.state_id = url.state_id>
+	<cfif isdefined('url.state_id')>
+		<cfparam name="session.state_id" default="#url.state_id#">
+	</cfif>
 	<!----
 	DESCRIPTION: shows description of programs, entry points, and required materials
 	CALLED BY: frmEligibility.cfm
@@ -133,10 +135,10 @@
 							<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
 						<cfelseif src eq 'elig' and sr eq 77>
 								<a href="/cf/taxRelief2.cfm?partner_id=77&taxReliefZip=#passZip#"><img src="img/backToRelief.gif" alt="Back to Tax Relief Programs" border="0" /></a>
+						<cfelseif src eq 'elig' and sr eq 2  >
+							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						<cfelseif src eq 'elig' >
 							<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
-						<cfelseif src eq 'quickcheck' >
-							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						<cfelseif src eq 'ec'>
 							<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
 						<cfelseif url.ReportType neq "">
@@ -155,6 +157,33 @@
 	
 		<div class="question">
 			<div class="questionHolder questionBar">
+
+			<cfif IsDefined('url.county') and url.county neq '0'>
+				<cfset passCounty = url.county>
+			<cfelseif IsDefined('session.county') and session.county neq '0'>
+				<cfset passCounty = session.county>
+			<cfelse>
+				<cfset passCounty = ''>
+			</cfif>
+	
+			<cfif IsDefined('url.st')>
+				<cfset passState = url.st>
+			<cfelseif IsDefined('url.state_id')>
+				<cfset passState = url.state_id>
+			<cfelseif IsDefined('session.st')>
+				<cfset passState = session.st>
+			<cfelse>
+				<cfset passState = ''>
+			</cfif>
+			<cfif IsDefined('url.zip') and url.zip neq '0' and url.zip neq '00000'>
+				<cfset passZip = url.zip>
+			<cfelseif IsDefined('session.zip') and session.zip neq '0' and session.zip neq '00000'>
+				<cfset passZip = session.zip>
+			<cfelse>
+				<cfset passZip = ''>
+			</cfif>
+
+		
 				<cf_displayprogramdetail language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#" getWebResources="TRUE">
 			</div><!-- questionHolder -->
 		</div><!-- question -->	
@@ -165,10 +194,10 @@
 					<div class="questionHolder questionBar" style="margin-left:-75px !important">
 						<cfif src eq 'eforms'>
 							<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
+						<cfelseif src eq 'elig' and sr eq 2 >
+							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						<cfelseif src eq 'elig'>
 							<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
-						<cfelseif src eq 'quickcheck' >
-							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						<cfelseif src eq 'ec'>
 							<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
 						<cfelseif url.ReportType neq "">
@@ -290,7 +319,7 @@
 					<tr>
 						<td valign="top" style="padding-right: 8px;"><cfif src eq 'eforms'>
 								<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
-								<cfelseif src eq 'elig'>
+								<cfelseif src eq 'elig' or src eq 'quickcheck'>
 								<cfif SESSION.partner_id EQ 80>
 									<div id="results_button">
 								</cfif>
@@ -347,12 +376,13 @@
 			<cfelse>
 			<cfset passState = ''>
 		</cfif>
-		<cfif IsDefined('session.zip') and session.zip neq '0' and session.zip neq '00000'>
+		<cfif IsDefined('url.zip') and url.zip neq '0' and url.zip neq '00000'>
+			<cfset passZip = url.zip>
+		<cfelseif IsDefined('session.zip') and session.zip neq '0' and session.zip neq '00000'>
 			<cfset passZip = session.zip>
-			<cfelse>
+		<cfelse>
 			<cfset passZip = ''>
 		</cfif>
-		
 		<cf_displayprogramdetail language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#">
 		
 		<!--- 02/24/2002 REM  A new attribute that will be passed if this page is called as a 
@@ -371,14 +401,16 @@
 									<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
 									<cfelseif src eq 'taxrelief'>
 										<!---<a href="##" id="hideFactSheet"><img src="img/backToRelief.gif" alt="Back to Tax Relief Programs" border="0" /></a>--->
+									<cfelseif src eq 'elig' and sr eq 2  >
+										<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 									<cfelseif src eq 'elig'>
-									<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a>
+										<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a>
 									<cfelseif src eq 'ec'>
-									<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
+										<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
 									<cfelseif url.ReportType neq "">
 									<a href="frmRecommend.cfm?ReportType=#url.ReportType#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
 									<cfelseif src neq 'frame'>
-									<a href="frmRecommend.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
+										<a href="frmRecommend.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
 								</cfif></td>
 							<td valign="top"align="right"><cfif (src neq 'taxrelief' or session.partner_id eq 77) and session.partner_id neq 22><img src="img/print_this_page.gif" alt="Print this Page" onclick="self.print();" border="0" /></cfif></td>
 						</tr>

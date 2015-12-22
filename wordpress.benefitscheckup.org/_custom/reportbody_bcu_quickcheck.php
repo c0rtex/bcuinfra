@@ -113,12 +113,12 @@ require_once('report/report_calculations.php');
         </ol><BR>
 
         <legend><i class="icon-file-alt "></i> Resources</legend>
-        <ol class="nav nav-list"><form>	
+        <ol class="nav nav-list">
         	<li><a data-toggle="modal" role="button" href="mailto:support@benefitscheckup.org" target="_blank"><i class="icon-edit "></i> Send Us Your Feedback</a></li>
             <li><a data-toggle="modal" role="button" href="#" onClick="PrintDiv();"><i class="icon-print "></i> Printable Report</a></li>
 		<br/>
         	<li><a data-toggle="modal" role="button" href="/cf/frmwelcome2.cfm?subset_id=0&partner_id=0&sc_partner_id=0" target="_blank"><i class="icon-check "></i>Full BenefitsCheckUp Questionnaire</a></li>
-        </form></ol>	
+        </ol>	
     </div>	  
 </div>
 <div id="learnmore" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Learn More" aria-hidden="true" style="display: none;">
