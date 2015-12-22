@@ -246,8 +246,8 @@
 			</cfif><!--- END <cfif webResources.recordcount GT 0 OR programWebsite.recordcount GT 0> --->
 			
 			<cfif attributes.supressforms neq "true">
-				<cf_displayProgramDetailForms program_id="#attributes.program_id#" formtype_id="0" var="outstr" append="true">
-				<cf_displayProgramDetailForms program_id="#attributes.program_id#" eform="true" var="outstr" append="true">
+				<cf_displayProgramDetailForms_quickcheck program_id="#attributes.program_id#" formtype_id="0" var="outstr" append="true">
+				<cf_displayProgramDetailForms_quickcheck program_id="#attributes.program_id#" eform="true" var="outstr" append="true">
 			</cfif>
 			
 			<cfset outstr = outstr & "</div>">
