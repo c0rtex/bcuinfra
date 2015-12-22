@@ -25,10 +25,6 @@
   }
 
 
-  //echo $subsetID;
-
-  //echo "<pre>";
-  //print_r ($soapClient);
 
 
 
@@ -77,7 +73,6 @@
   //$sectionLegendPost = restructureWSArray ($sectionLegendPost);
   $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 
-  //$sectionLegend = $soapClient->getWPPost('3484');
 
   //Warning Message regarding validation errors
   if ( isset($_GET['badresponselist'])) {
@@ -110,15 +105,6 @@ if (isset($_GET['screeningID'])) {
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close <i class="icon-remove"></i></button>
     <div><h2>Getting Started</h2></div>
-  </div>
-  <div class="modal-body">
-    <?php
-    //get info for popup from webservice content db
-    //$neededInfo = $soapClient->getWPPost('3484');
-    //$neededInfo = restructureWSArray ($neededInfo);
-    echo $neededInfo[0]["POST_CONTENT"];
-
-    ?>
   </div>
 
   <div class="modal-footer">
