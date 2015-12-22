@@ -861,7 +861,7 @@ text-decoration:none;
   margin-top: 4px;
 }
 #esiQuickcheckCheckboxes {
-  -webkit-column-count: 2;
+  margin-top: 6px;
 }
 #esiQuickcheckResultsButton {
   cursor: pointer;
