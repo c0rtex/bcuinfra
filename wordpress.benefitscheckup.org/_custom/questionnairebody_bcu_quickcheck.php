@@ -1,5 +1,29 @@
+<?php 
+  require_once('soap_client.php');
+  $benefitsPost = $soapClient->getWPPostByMetaTag('bcu_quickcheck_homepage_heading_introduction');
+  $leadtext = $benefitsPost[0]["POST_CONTENT"];
+  print_r($benefits ); 
+  
+ ?>
+
+<h2><?php print $benefitsPost[0]["POST_TITLE"]; ?></h2>
+<p id="feature_paragraph"><?php print $leadtext ?></p>
+
+<p>
+<a id="getStartedBCUButton" href="#bcu_quickcheck" data-toggle="modal" data-target="#bcu_quickcheck">                    
+<img id="getStartedBCUQuickcheck" src="/wp-content/uploads/2011/09/getstarted.png"></a></p>
+
+
+<div id="bcu_quickcheck" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="QuickCheck" aria-hidden="true" style="display: none;">
+  <div class="well modal-body">
+<div id="bcuQuickcheckTitle">
+<button aria-hidden="true" data-dismiss="modal" class="btn" id="bcuQuickcheckClose">Close <i class="icon-remove"></i> </button>
+<h2 class="bcuQuickcheckTitle">BenefitsCheckUp&reg;</h2>
+</div>
+
 <div id="printContent">
   <?php
+
   if (isset($_GET["subset_id"])){
     $subsetID = htmlspecialchars($_GET["subset_id"]);
   }
@@ -8,7 +32,6 @@
   }
 
   //echo 'Test '.$subsetID;
-  require_once('soap_client.php');
   require_once('displaycontent_bcu_quickcheck.php');
 
   if (isset($_GET["partner_id"])){
@@ -23,6 +46,12 @@
   else{
     $stateID = 'FD';
   }
+
+
+
+
+
+
 
 
   //function mqc3Script (){
@@ -40,6 +69,7 @@
       require_once('processquestions_bcu_quickcheck.php'); //this file is not important
     }
   }
+
   ?>
 
 
@@ -65,7 +95,7 @@
   $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 
   //$sectionLegend = apply_filters('the_content', get_post_field('post_content', 12360));
-  //$sectionLegendPost = restructureWSArray ($sectionLegendPost);  bcu_quickcheck_questionnaire_heading_introduction
+  //$sectionLegendPost = restructureWSArray ($sectionLegendPost);
   $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 
 
@@ -105,4 +135,7 @@ if (isset($_GET['screeningID'])) {
   <div class="modal-footer">
   </div>
 </div>
+
+
 <?php  require_once('questionnaire/footer_includes.php'); ?> 
+
