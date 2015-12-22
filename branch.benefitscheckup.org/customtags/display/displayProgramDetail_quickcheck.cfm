@@ -177,9 +177,7 @@
 		</cfif>
 		<cfset outstr = outstr & "<br />">
 		
-		<cfif attributes.report_type eq "webservice" and ( 1 eq 0) >
-			<cfset outstr = outstr & webresources & "<br />">
-		</cfif>
+		
 		
 		<cf_displayProgramDetailRx program_id="#attributes.program_id#" var="outstr" append="true">
 		<cfif attributes.entrypoints>
@@ -247,7 +245,6 @@
 			
 			<cfif attributes.supressforms neq "true">
 				<cf_displayProgramDetailForms_quickcheck program_id="#attributes.program_id#" formtype_id="0" var="outstr" append="true">
-				<cf_displayProgramDetailForms_quickcheck program_id="#attributes.program_id#" eform="true" var="outstr" append="true">
 			</cfif>
 			
 			<cfset outstr = outstr & "</div>">
