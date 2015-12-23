@@ -1,20 +1,11 @@
-<<<<<<< HEAD
-<?php
-
-=======
 <?php 
->>>>>>> bcuQuickcheck
 $programs = $soapClient->getProgByCat($state_id,93,$programcategory_id);
 //if there are programs output the category section
 $thischecked = false;
 foreach ($fields as $f => $row)
 					{
 						if ($row["ANSWERFIELD"] == $interested) {
-<<<<<<< HEAD
-						$zip = $row["RESPONSE"];
-=======
 						//$zip = $row["RESPONSE"];
->>>>>>> bcuQuickcheck
 						//echo "field:".$interested;
 						$thischecked = true;			
 						}
@@ -24,15 +15,8 @@ foreach ($fields as $f => $row)
 
 if ($thischecked == true) {
 ?>
-<<<<<<< HEAD
-
-<section id="programlist">  	
-        <div class="body-header-wrapper">	<h2><i class="icon-<?php echo $iconcode; ?>"> </i> <?php echo $cat_title; ?></h2>	
-          	
-=======
 <section id="<?php echo $interested  ?>">  	
         <div class="body-header-wrapper">	<h2><i class="icon-<?php echo $iconcode; ?>"> </i> <?php echo $cat_title; ?></h2>	       	
->>>>>>> bcuQuickcheck
      	</div>
         <div class="">
 			<div action="" method="get" id="commentForm" class="well cmxform">
@@ -47,19 +31,11 @@ if ($thischecked == true) {
 						$program_id = $row2["PROGRAM_ID"];
 						$program_code = $row2["PROGRAM_CODE"];
 						$legacy_code = $row2["LEGACY_PRG_ID"];
-<<<<<<< HEAD
-						
-				?>
-				<li id="<?php echo $program_code ?>" class="">	
-				<?php	 
-				echo " <a target='blank' href='/cf/frmDetails.cfm?prg_id=".$legacy_code."&state_id=".$state_id."&county=".$county."&zip=".$zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign '></i>".$prog_title." </a></li>";
-=======
 						//echo $state_id.$zip;
 				?>
 				<li id="<?php echo $program_code ?>" class="">	
 				<?php	 
 				echo "<div><i class='icon-info-sign '></i> <a target='blank' href='/cf/factsheet.cfm?prg_id=".$legacy_code."&state_id=".$state_id."&sr=1&county=".$county."&zip=".$zip."&screeningID=".$screeningID."&city=0&src=elig&partner_id=0&subset_id=0'>".$prog_title." </a></div></li>";
->>>>>>> bcuQuickcheck
 				
 						//echo $program_id;
 						//echo "<br>";

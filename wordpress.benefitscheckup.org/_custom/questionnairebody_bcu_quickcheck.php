@@ -2,7 +2,7 @@
   require_once('soap_client.php');
   $benefitsPost = $soapClient->getWPPostByMetaTag('bcu_quickcheck_homepage_heading_introduction');
   $leadtext = $benefitsPost[0]["POST_CONTENT"];
-  print_r($benefits ); 
+  //print_r($benefits ); 
   
  ?>
 

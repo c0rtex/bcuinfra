@@ -848,7 +848,7 @@ text-decoration:none;
   #bcu_quickcheck {
     width: 90%;
     margin-left: 2%;
-    max-height: 200px !important;
+    max-height: 95% !important;
   }
 }
 #bcu_quickcheck .alert-bcuQuickCheck {

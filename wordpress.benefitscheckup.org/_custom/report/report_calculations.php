@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
-require_once('_custom/soap_client.php');
-require_once('_custom/displaycontent.php');
-=======
  	require_once('_custom/soap_client.php');
 	require_once('_custom/displaycontent.php');
->>>>>>> bcuQuickcheck
 //echo '<h3>testing</h3>';
 $cats2 = array(
 "income" => "bcu_quickcheck_report_heading_income", 

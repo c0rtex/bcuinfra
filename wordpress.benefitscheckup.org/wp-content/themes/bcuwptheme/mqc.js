@@ -394,7 +394,7 @@ function aonFloodlightCompareIcon () {
         var divToPrint = document.getElementById('printContent');
         var popupWin = window.open('', '_blank');
         popupWin.document.open();
-        popupWin.document.write('<html><title>MedicareQuickCheck</title><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+        popupWin.document.write('<html><title>BenefitsCheckUp.org</title><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
         popupWin.document.close();
         }
 
@@ -403,14 +403,14 @@ function PrintDivMMM() {
         var divToPrint = document.getElementById('printContent');
         var popupWin = window.open('', '_blank');
         popupWin.document.open();
-       	popupWin.document.write('<html><title>MedicareQuickCheck</title><body onload="window.print()"><img id="logo" alt="Medicare Matters" title="Medicare Matters" src="/wp-content/themes/bcuwptheme/images/mmm-logo.png"><BR />' + divToPrint.innerHTML + '</html>');
+       	popupWin.document.write('<html><title>BenefitsCheckUp.org</title><body onload="window.print()"><img id="logo" alt="" title="" src="/wp-content/themes/bcuwptheme/images/mmm-logo.png"><BR />' + divToPrint.innerHTML + '</html>');
         popupWin.document.close();
         }
 
 
 
         function PrintDivCanvasMMM(imgCanvasCount) {    
-$("#imageToPrint").append('<img id="logo" alt="Medicare Matters" title="Medicare Matters" src="/wp-content/themes/bcuwptheme/images/mmm-logo.png">');
+$("#imageToPrint").append('<img id="logo" alt="" title="" src="/wp-content/themes/bcuwptheme/images/mmm-logo.png">');
         var divToPrint = document.getElementById('printContent');
 html2canvas($(divToPrint), {
     onrendered : function(canvas) {
@@ -425,7 +425,7 @@ html2canvas($(divToPrint), {
         divToPrint = document.getElementById('imageToPrint');
         var popupWin = window.open('', '_blank');
         popupWin.document.open();
-       	popupWin.document.write('<html><title>MedicareQuickCheck</title><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+       	popupWin.document.write('<html><title>BenefitsCheckUp.org</title><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
         popupWin.document.close();
         }
         });

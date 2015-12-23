@@ -95,23 +95,13 @@ if ($subset_id == 79){
 //the rest of the subsets use this to continue to report page
 else {
 
-<<<<<<< HEAD
-$link = '/mqc-results-4/?screeningID='.$screening_id.'&shadowID='.$screening_id.'&subset_id='.$subset_id;
-if ($subset_id == 83){
-$link = '/esi-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
-}
-if ($subset_id == 93){
-$link = '/quickcheck-report/?subset_id=93&partner_id=0&screeningID='.$screening_id.'&shadowID='.$screening_id;
-}
-=======
   $link = '/mqc-results-4/?screeningID='.$screening_id.'&shadowID='.$screening_id.'&subset_id='.$subset_id;
   if ($subset_id == 83){
     $link = '/esi-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
   }
   else if ($subset_id == 93) {
-    $link = '/quickcheck-report/?subset_id=93&partner_id=0&screeningID='.$screening_id.'&shadowID='.$screening_id;
+    $link = '/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID='.$screening_id.'&shadowID='.$screening_id;
   }
->>>>>>> bcuQuickcheck
 //echo '<center><a data-toggle="modal" class="btn btn-large btn-recs" href="'.$link.'">Continue</a></center>';
   header("Location: ".$link);
   echo '<META
