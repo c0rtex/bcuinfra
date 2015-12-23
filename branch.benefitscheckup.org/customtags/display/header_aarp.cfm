@@ -199,7 +199,7 @@ function resize() {
 </head>
 
 <body onLoad="fixpopups();#attributes.onload#">
-<cfinclude template="google_data_tracking.cfm">	
+<cfinclude template="../util/google_data_tracking.cfm">	
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHJ4LQ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

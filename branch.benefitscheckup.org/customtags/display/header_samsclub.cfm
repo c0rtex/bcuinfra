@@ -267,7 +267,7 @@ function resize() {
      }
 }
 </style>
-<cfinclude template="google_data_tracking.cfm">	
+<cfinclude template="../util/google_data_tracking.cfm">	
 </head>
 
 <body onLoad="fixpopups();#attributes.onload#" <cfif URL.printfriendly>class="ppw_remove_bg ppw_clear_bg"</cfif>>

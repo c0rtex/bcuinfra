@@ -28,7 +28,7 @@
 #nobackScript#
 <script language="JavaScript" src="ValidationFunctions.js"></script>
 <title>#title#</title>
-<cfinclude template="google_data_tracking.cfm">	
+<cfinclude template="../util/google_data_tracking.cfm">	
 </head>
 
 <body link="#link_color#" vlink="#link_color#" alink="#link_color#" #onLoadScript#>
