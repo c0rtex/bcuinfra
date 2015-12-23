@@ -1,3 +1,20 @@
+
+
+
+
+<cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
+
+SELECT * from tbl_questions_new q, 
+		subset_question sq where q.question_id = sq.question_id 
+		and sq.subset_id=93
+		order by sq.sort
+</cfquery><cfdump var="#results10#"><cfabort>
+
+<cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
+
+show tables
+</cfquery><cfdump var="#results10#"><cfabort>
+
 <cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
 
 update subset_question set sort = 1  where subset_id = 93 and question_id = 13
@@ -8,12 +25,12 @@ update subset_question set sort = 2  where subset_id = 93 and question_id = 14
 </cfquery>
 <cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
 
-update subset_question set sort = 3  where subset_id = 93 and question_id = 888
+update subset_question set sort = 4  where subset_id = 93 and question_id = 888
 </cfquery>
 
-<cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
 
-update subset_question set sort = 4  where subset_id = 93 and question_id = 891
+<cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
+update subset_question set sort = 3  where subset_id = 93 and question_id = 891
 </cfquery>
 
 <cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
