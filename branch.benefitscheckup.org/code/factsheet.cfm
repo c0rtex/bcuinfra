@@ -106,8 +106,7 @@
 				<cfset passZip = ''>
 			</cfif>
 
-			<cfoutput>displayprogramdetail language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#" getWebResources="TRUE"</cfoutput>
-				<cf_displayprogramdetail language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#" getWebResources="TRUE">
+				<cf_displayprogramdetail_quickcheck language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#" getWebResources="TRUE">
 			</div><!-- questionHolder -->
 		</div><!-- question -->	
 				
