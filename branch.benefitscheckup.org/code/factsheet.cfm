@@ -114,7 +114,7 @@
 				<div class="question">
 					<div class="questionHolder questionBar" style="margin-left:-75px !important">
 						
-							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
+							<a href="/bcu-quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
 						
 							<img  src="img/print_this_page.gif" alt="Print this Page" onclick="self.print();" border="0" /> 
 						
