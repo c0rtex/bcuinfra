@@ -218,7 +218,7 @@ function resize() {
 
 
 </script>
-<cfinclude template="google_data_tracking.cfm">	
+<cfinclude template="../util/google_data_tracking.cfm">	
 
 </head>
 
