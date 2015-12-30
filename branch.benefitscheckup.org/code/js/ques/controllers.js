@@ -3,7 +3,7 @@
 /* Controllers */
 
 var parseLocation = function(location) {
-  var params = location.split("?")[1];
+  var params = location.split("#")[0].split("?")[1];
   var pairs = params.split("&");
   var obj = {};
   var pair;
@@ -25,7 +25,8 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
   function($scope, $location, $injector,$routeParams) {
     if ($scope.$root.div_af == undefined) $scope.$root.div_af = {};
     if ($scope.$root.af == undefined) $scope.$root.af = {};
-    $scope.questions = $injector.get($routeParams.questionSet).query();
+    var params = parseLocation($location.$$absUrl);
+    $scope.questions = $injector.get($routeParams.questionSet).query(params);
   }]);
 
 
