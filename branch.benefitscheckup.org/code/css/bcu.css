@@ -233,6 +233,10 @@ BODY
 	margin: 0px 0px 12px;
 	padding: 0px;
 }
+h1.benefitsCheckUpTitle
+{
+	font-size : 1.8em;
+}
 .h3
 {
 	font-size: 1.2em;
