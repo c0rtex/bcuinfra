@@ -8,9 +8,7 @@
 				FROM program p
 				INNER JOIN display_language dl ON dl.display_id = p.name_display_id
 				INNER JOIN zip z ON z.state_id = p.state_id
-		        INNER JOIN county c ON c.county_id = z.county_id
-		        INNER JOIN city_zip cz ON cz.zipcode = z.zipcode
-		        INNER JOIN city ci ON ci.city_id = cz.city_id
+		        	INNER JOIN county c ON c.county_id = z.county_id
 				WHERE p.programcategory_id = 5
 				AND p.active_flag = 1
 				AND z.zipcode = <cfqueryparam value="#taxReliefZip#" CFSQLType="CF_SQL_VARCHAR">
@@ -33,8 +31,6 @@
 				INNER JOIN display_language dl ON dl.display_id = p.name_display_id
 				INNER JOIN zip z ON z.state_id = p.state_id
 		        INNER JOIN county c ON c.county_id = z.county_id
-		        INNER JOIN city_zip cz ON cz.zipcode = z.zipcode
-		        INNER JOIN city ci ON ci.city_id = cz.city_id
 				WHERE p.programcategory_id = 5
 				AND p.active_flag = 1
 				AND z.zipcode = #session.zip#
@@ -135,13 +131,12 @@
 				INNER JOIN display_language dl ON dl.display_id = p.name_display_id
 				INNER JOIN zip z ON z.state_id = p.state_id
 		        INNER JOIN county c ON c.county_id = z.county_id
-		        INNER JOIN city_zip cz ON cz.zipcode = z.zipcode
-		        INNER JOIN city ci ON ci.city_id = cz.city_id
+		       
 				WHERE p.programcategory_id = 5
 				AND p.active_flag = 1
 				AND z.zipcode = <cfqueryparam value="#taxReliefZip#" CFSQLType="CF_SQL_VARCHAR">
 				AND dl.display_text != ''
-				AND p.program_id IN (#prgList#) and p.program_id not in (1750,1761,1428,1350,1777,63,1019)
+				 and p.program_id not in (1750,1761,1428,1350,1777,63,1019)
 				ORDER BY dl.display_text ASC
 	    	</cfquery>
 	    	
@@ -391,7 +386,7 @@
 			<cfelse>
 				<div id="stateMap">
 					<!---h3>Invalid Zip Code: #arguments.taxReliefZip#</h3--->
-					<p style="color:red">You have entered an invalid zip code: <strong>#taxReliefZip#</strong>.
+					<p style="color:red">You have entered an invalid zip code1: <strong>#taxReliefZip#</strong>.
 					Please enter a five digit, numeric zip code.
 					</p>
 				</div>
@@ -404,7 +399,7 @@
     		<cfsavecontent variable="html">
     			<div id="stateMap">
 					<!---h3>Invalid Zip Code: #taxReliefZip#</h3--->
-					<p style="color:red">You have entered an invalid zip code: <strong>#taxReliefZip#</strong>.
+					<p style="color:red">You have entered an invalid zip code2: <strong>#taxReliefZip#</strong>.
 					Please enter a five digit, numeric zip code.
 					</p>
 				</div>
