@@ -25,7 +25,7 @@
 		<cfset retVal = arrayNew(1)>
 
 		<cfloop array="#cf#" index="it">
-			<cfset arrayAppend(retVal,it.returnStruct(state_id))>
+			<cfset arrayAppend(retVal,it.toStructure(state_id=state_id,subset_id=subset_id,partner_id=partner_id))>
 		</cfloop>
 
 		<cfset data = serializeJSON(retVal)>

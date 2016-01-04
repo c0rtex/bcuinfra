@@ -6,12 +6,13 @@
 					   Fieldtype attribute defines primary (id) or foreign (many-to-one, one-to-many) key.
 					   For mapped foreign key fkcolumn attribute contains database foreign key column name,
 					   cfc attribute contains component entity name which mapped to master database table.
+					   Component extends from ToStructConverter component for serialization purpose.
 
 	Data Tables: user
 
 --->
 
-<cfcomponent persistent="true" entityname="user" table="user">
+<cfcomponent persistent="true" entityname="user" table="user" extends="ToStructConverter">
 	<cfproperty name="id" fieldtype="id" column="user_id">
 	<cfproperty name="user_type" fieldtype="many-to-one" fkcolumn="usertype_id" cfc="user_type">
 	<cfproperty name="user_name" column="username">
