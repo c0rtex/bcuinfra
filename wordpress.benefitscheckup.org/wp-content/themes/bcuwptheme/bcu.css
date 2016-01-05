@@ -878,3 +878,8 @@ text-decoration:none;
   width: 50%;
   float: left;
 }
+h1.benefitsCheckUpTitle
+{
+	font-size : 1.8em;
+	color: #012A5C;
+}
