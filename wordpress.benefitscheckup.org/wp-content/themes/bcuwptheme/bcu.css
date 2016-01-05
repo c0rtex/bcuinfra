@@ -880,6 +880,6 @@ text-decoration:none;
 }
 h2.benefitsCheckUpTitle
 {
-	font-size : 1.8em;
-	color: #012A5C;
+	font-size : 1.8em !important;
+	color: #012A5C !important;
 }
