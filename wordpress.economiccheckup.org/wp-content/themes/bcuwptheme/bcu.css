@@ -822,3 +822,9 @@ font-size:28px;
 #text-size a {
 text-decoration:none;
 }
+
+h1.benefitsCheckUpTitle
+{
+	font-size : 1.8em;
+	color: #012A5C;
+}
