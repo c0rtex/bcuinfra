@@ -159,6 +159,10 @@ jQuery(document).ready(function() {
     if (jQuery('#invalidZipLetters').length != 0){
       jQuery('#invalidZipLetters').remove();
     }
+    //Removes all alerts
+    else jQuery(".alert").remove();
+    //Reset the form as well.
+    jQuery('form#bcuQuickcheckForm').resetForm();
 
   }
 
@@ -182,7 +186,8 @@ jQuery(document).ready(function() {
     console.log("click_debug_msg");
     var alertId = ".alert";
     var divElem = "div";
-    $(divElem).remove(alertId);
+    jQuery(divElem).remove(alertId);
+
   }
 
   //Goes through all input elements an removes their alert messages.
