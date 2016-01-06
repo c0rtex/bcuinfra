@@ -5,9 +5,9 @@
 	<cfargument name="subset_id" type="numeric" required="yes" >
 	<cfargument name="programcategory_id" type="numeric" required="yes" >
         <cfset version = "testtestest">
-	
+	<!-- added special msp exception to include in Medicaid Category for report display  -->
 	<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
-			Select * from subset_program_sum sps, program p , display_language dl, programcategory pc
+			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text from subset_program_sum sps, program p , display_language dl, programcategory pc
 			where subset_id = #subset_id#
 			and p.program_id = sps.program_id
 			and  p.programcategory_id = pc.programcategory_id
@@ -16,7 +16,17 @@
 			and active_flag = 1 and exclude_flag = 0
 			and (state_id = '#state_id#' or state_id is null)
 			and pc.programcategory_id = #programcategory_id#
+			<cfif programcategory_id eq 8>
+			union
+			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text
+			from program p , display_language dl
+			where p.program_id = 1930
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			<cfelse>
 			order by p.sort
+			</cfif>
+			
 	</cfquery>
         <cfreturn  getSubsetProgramsByCategory>
     </cffunction>
@@ -416,7 +426,10 @@ SELECT q.question_id, q.question_code, q.rule_id, qc.questioncategory_code, q.di
         <cfargument name="subset_id" type="numeric" required="yes"  >
         <cfset querySubsetProgram = QueryNew("question_id")>
         <cfquery name="querySubsetProgram" datasource="#application.dbSrc#">
-SELECT * from tbl_questions_new q, subset_question sq where q.question_id = sq.question_id and sq.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+		SELECT * from tbl_questions_new q, 
+		subset_question sq where q.question_id = sq.question_id 
+		and sq.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+		order by sq.sort
 		</cfquery>
         <cfreturn  querySubsetProgram>
     </cffunction>
