@@ -378,7 +378,7 @@ function responsiveMenu() {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
     }
 
-    //if the overlay URL parameter is set to true then show the quick check modal.
+    //if the overlay URL parameter is set to true then show the quick check modal dialog.
     if (getURLParameter("overlay") == "true") {
         jQuery('#esi_quickcheck').modal('show')
     }
