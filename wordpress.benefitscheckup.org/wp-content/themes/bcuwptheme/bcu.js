@@ -2,10 +2,6 @@ jQuery(document).ready(function() {
   var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
   var validated = 0;
 
-  $(".modal").on("hidden.bs.modal", function() {
-    $(".alert").remove();
-  });
-
   jQuery('#esiQuickcheckResultsButton').on('click', function(e) {
     e.preventDefault();
 
@@ -176,22 +172,17 @@ jQuery(document).ready(function() {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
   }
 
+  //if the overlay URL parameter is set to true then show the quick check modal.
   if(getURLParameter("overlay") == "true"){
     jQuery('#bcu_quickcheck').modal('show')
   }
 
-  //Clears all alerts.
-  function clearErrorsOnClose(){
-    console.log("click_debug_msg");
-    var alertId = ".alert";
-    var divElem = "div";
-    jQuery(divElem).remove(alertId);
-
-    jQuery('form#bcuQuickcheckForm').resetForm();
+  //clears all alerts
+  function clearErrorsOnHide() {
+    jQuery(".alert").remove();
   }
 
-  //Goes through all input elements an removes their alert messages.
-  var closeButton = document.getElementById("bcuQuickcheckClose");
-  closeButton.onclick = clearErrorsOnClose();
+  //clear all alerts when the modal dialog is closed.
+  jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
 
 });
