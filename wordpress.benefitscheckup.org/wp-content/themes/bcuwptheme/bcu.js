@@ -167,4 +167,10 @@ jQuery(document).ready(function() {
   jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
   jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
   jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column')
+
+//  Check if overlay overlay has been set to true
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+  }
+  console.log(getURLParameter("overlay"))
 });
