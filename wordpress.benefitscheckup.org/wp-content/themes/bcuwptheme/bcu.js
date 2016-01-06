@@ -175,6 +175,6 @@ jQuery(document).ready(function() {
 
   if(getURLParameter("overlay") == "true"){
     console.log("showing modal dialog.");
-    jQuery('#myModal').modal('show')
+    jQuery('#bcu_quickcheck').modal('show')
   }
 });
