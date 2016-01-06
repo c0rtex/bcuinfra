@@ -110,7 +110,7 @@ switch ($answerfieldCode) {
 		  <div id="tr_' . $answerfield . '" class="checkbox">
                 <label class="checkbox" id="label_' . $answerfield . '"><input type="checkbox" ' . $checked . ' name="' . $answerfield . '" id="' . $answerfield . '" value="' . $answerfield . '"';
 //QUESTIONS 11 and 12
-//Attemp to fix veteran assistance missing it's checkbox.
+//Attempt to fix veteran assistance missing it's checkbox.
         if ($answerfield == 'fdstmp_receive' || $answerfield == 'liheap_receive' || $answerfield == 'med_receive' || $answerfield == 'receive_propertytax' || $answerfield == 'receive_va') { //the first two don't get the class because they use an alt js function for showing/hiding QUESTION 12
 
             echo ' class="benefitsCheckbox"';//.$answerfield.;
