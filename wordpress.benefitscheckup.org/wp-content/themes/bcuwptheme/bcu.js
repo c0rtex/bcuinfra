@@ -166,7 +166,7 @@ jQuery(document).ready(function() {
   jQuery('#esiQuickcheckCheckboxes').prepend('<div class="first-column"></div>');
   jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
   jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
-  jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column')
+  jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
 
 //  Check if overlay overlay has been set to true
   function getURLParameter(name) {
@@ -174,7 +174,19 @@ jQuery(document).ready(function() {
   }
 
   if(getURLParameter("overlay") == "true"){
-    console.log("showing modal dialog.");
     jQuery('#bcu_quickcheck').modal('show')
   }
+
+  //Clears all alerts.
+  function clearErrorsOnClose(){
+    console.log("click_debug_msg");
+    var alertId = ".alert";
+    var divElem = "div";
+    $(divElem).remove(alertId);
+  }
+
+  //Goes through all input elements an removes their alert messages.
+  var closeButton = document.getElementById("bcuQuickcheckClose");
+  closeButton.onclick = clearErrorsOnClose();
+
 });
