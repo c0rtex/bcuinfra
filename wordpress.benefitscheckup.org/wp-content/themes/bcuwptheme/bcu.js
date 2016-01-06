@@ -172,5 +172,9 @@ jQuery(document).ready(function() {
   function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
   }
-  console.log(getURLParameter("overlay"))
+
+  if(getURLParameter("overlay") == "true"){
+    console.log("showing modal dialog.");
+    jQuery('#myModal').modal('show')
+  }
 });
