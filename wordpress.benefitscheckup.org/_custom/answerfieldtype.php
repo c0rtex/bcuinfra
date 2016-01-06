@@ -63,6 +63,7 @@ switch ($answerfieldCode) {
         }
 
 
+
         echo '><span class="add-on">.00</span>
 					</label>
 				</div>
