@@ -159,11 +159,6 @@ jQuery(document).ready(function() {
     if (jQuery('#invalidZipLetters').length != 0){
       jQuery('#invalidZipLetters').remove();
     }
-    //Removes all alerts
-    else jQuery(".alert").remove();
-    //Reset the form as well.
-    jQuery('form#bcuQuickcheckForm').resetForm();
-
   }
 
   jQuery('#esiQuickcheckCheckboxes').prepend('<div class="last-column"></div>');
@@ -187,6 +182,7 @@ jQuery(document).ready(function() {
     var alertId = ".alert";
     var divElem = "div";
     jQuery(divElem).remove(alertId);
+    jQuery('form#bcuQuickcheckForm').resetForm();
 
   }
 
