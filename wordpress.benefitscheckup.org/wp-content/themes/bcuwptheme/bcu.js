@@ -2,6 +2,10 @@ jQuery(document).ready(function() {
   var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
   var validated = 0;
 
+  $(".modal").on("hidden.bs.modal", function() {
+    $(".alert").remove();
+  });
+
   jQuery('#esiQuickcheckResultsButton').on('click', function(e) {
     e.preventDefault();
 
@@ -182,8 +186,8 @@ jQuery(document).ready(function() {
     var alertId = ".alert";
     var divElem = "div";
     jQuery(divElem).remove(alertId);
-    jQuery('form#bcuQuickcheckForm').resetForm();
 
+    jQuery('form#bcuQuickcheckForm').resetForm();
   }
 
   //Goes through all input elements an removes their alert messages.
