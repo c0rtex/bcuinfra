@@ -114,9 +114,11 @@
   echo '<input type="hidden" name="subset_id" value="'.$subsetID.'">';
   ?>
 
-<div class="text-center">
+<a id="esiQuickcheckSubmit" class="btn-ga" href="#bcu_quickcheck">
+<center>
 <img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg">
-</div>
+</center>
+</a>
 
 </div>
 
