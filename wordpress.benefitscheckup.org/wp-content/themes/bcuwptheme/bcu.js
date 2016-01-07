@@ -159,11 +159,30 @@ jQuery(document).ready(function() {
     if (jQuery('#invalidZipLetters').length != 0){
       jQuery('#invalidZipLetters').remove();
     }
-
   }
 
   jQuery('#esiQuickcheckCheckboxes').prepend('<div class="last-column"></div>');
   jQuery('#esiQuickcheckCheckboxes').prepend('<div class="first-column"></div>');
   jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
   jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
+  jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
+
+//  Check if overlay overlay has been set to true
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+  }
+
+  //if the overlay URL parameter is set to true then show the quick check modal.
+  if(getURLParameter("overlay") == "true"){
+    jQuery('#bcu_quickcheck').modal('show')
+  }
+
+  //clears all alerts
+  function clearErrorsOnHide() {
+    jQuery(".alert").remove();
+  }
+
+  //clear all alerts when the modal dialog is closed.
+  jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
+
 });
