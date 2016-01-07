@@ -2,6 +2,21 @@ jQuery(document).ready(function() {
   var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
   var validated = 0;
 
+  /*
+   * Set responsive menu actions.
+   */
+  responsiveMenu();
+
+  $(window).resize(function () {
+    responsiveMenu();
+  });
+
+  $("#esiMenuToggleButton").click(function () {
+    $("#main-nav").toggle();
+  });
+
+
+
   jQuery('#esiQuickcheckResultsButton').on('click', function(e) {
     e.preventDefault();
 
@@ -172,7 +187,7 @@ jQuery(document).ready(function() {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
   }
 
-  //if the overlay URL parameter is set to true then show the quick check modal.
+  //Gets the url parameters
   if(getURLParameter("overlay") == "true"){
     jQuery('#bcu_quickcheck').modal('show')
   }
@@ -186,3 +201,30 @@ jQuery(document).ready(function() {
   jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
 
 });
+
+function responsiveMenu() {
+
+  if ($(window).width() <= 700) {
+
+    $("#esiMenuToggleButton").css("display", "block");
+    $("#getStartedESIButton").appendTo($("h2.feature"));
+    $("#top-bar").css("margin-top", "30px");
+    $("#getStartedESIButtonImg").css("margin-top", "25px");
+    $("#getStartedESIButtonImg").css("margin-bottom", "25px");
+
+    $("#logo.statistics").hide();
+    $("#main-nav").hide();
+
+  }
+
+  else {
+    $("#esiMenuToggleButton").css("display", "none");
+    $("#esiMenuToggleButton").hide();
+    $("#logo.statistics").show();
+    $("#main-nav").show();
+    $("#top-bar").css("margin-top", "0px");
+    $("#getStartedESIButtonImg").css("margin-top", "0px");
+    $("#getStartedESIButtonImg").css("margin-top", "0px");
+  }
+
+}
