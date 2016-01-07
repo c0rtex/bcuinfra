@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
-require_once('_custom/soap_client.php');
-require_once('_custom/displaycontent.php');
-=======
  	require_once('_custom/soap_client.php');
 	require_once('_custom/displaycontent.php');
->>>>>>> bcuQuickcheck
 //echo '<h3>testing</h3>';
 $cats2 = array(
 "income" => "bcu_quickcheck_report_heading_income", 
@@ -14,7 +9,8 @@ $cats2 = array(
 "foodsupp" => "bcu_quickcheck_report_heading_foodsupp",
 "nutrition" => "bcu_quickcheck_report_heading_nutrition",
 "rxgov" => "bcu_quickcheck_report_heading_rx",
-"medicaid" => "bcu_quickcheck_report_heading_medicaid"
+"medicaid" => "bcu_quickcheck_report_heading_medicaid",
+"utility" => "bcu_quickcheck_report_heading_utility"
 );
 //print_r($cats2 );
 
@@ -133,6 +129,11 @@ function age($month, $day, $year){
 						$sectioncode = 'bcu_quickcheck_report_heading_income';
 						$iconcode = 'money';
 						$interested = 'bcuqc_category_income';
+						}
+						elseif ($cat_code == 'utility'){
+						$sectioncode = 'bcu_quickcheck_report_heading_utility';
+						$iconcode = 'signal';
+						$interested = 'bcuqc_category_utility';
 						}
 						$sectiontext = $soapClient->getWPPostByMetaTag($sectioncode);
 						$sectionSummary = $sectiontext[0]["POST_CONTENT"];		
