@@ -1337,7 +1337,7 @@
     </url>
     <url>
         <loc>
-            https://www.benefitscheckup.org/cf/frmwelcome2.cfm?subset_id=19&partner_id=77
+            https://www.benefitscheckup.org/cf/frmwelcome2.cfm?subset_id=19&amp;partner_id=77
         </loc>
         <changefreq>weekly</changefreq>
         <priority>0.00</priority>
@@ -1587,14 +1587,14 @@
     </url>
     <url>
         <loc>
-            https://www.benefitscheckup.org/cf/snap.cfm?partner_id=0&subset_id=19
+            https://www.benefitscheckup.org/cf/snap.cfm?partner_id=0&amp;subset_id=19
         </loc>
         <changefreq>weekly</changefreq>
         <priority>0.00</priority>
     </url>
     <url>
         <loc>
-            https://www.benefitscheckup.org/cf/frmwelcome2.cfm?subset_id=62&partner_id=0
+            https://www.benefitscheckup.org/cf/frmwelcome2.cfm?subset_id=62&amp;partner_id=0
         </loc>
         <changefreq>weekly</changefreq>
         <priority>0.00</priority>
