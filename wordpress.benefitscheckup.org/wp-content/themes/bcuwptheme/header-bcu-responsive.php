@@ -151,9 +151,6 @@
     })(window, document, 'script', 'dataLayer', 'GTM-PHJ4LQ');</script>
 <!-- End Google Tag Manager -->
 
-<button id="esiMenuToggleButton" class="btn"><span id="menuButtonESITextForIE" class="menuButtonESIText">Menu</span> </i> </button>
-
-
 <div class="container" id="top-bar">
     <div class="row">
         <div id="top-logo" class="span12">
