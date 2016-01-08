@@ -172,8 +172,8 @@ jQuery(document).ready(function () {
         }
     }
 
-    jQuery('#esiQuickcheckCheckboxes').prepend('<div class="last-column"></div>');
-    jQuery('#esiQuickcheckCheckboxes').prepend('<div class="first-column"></div>');
+    jQuery('#esiQuickcheckCheckboxes').prepend('<div id="second-column" class="last-column"></div>');
+    jQuery('#esiQuickcheckCheckboxes').prepend('<div id="first-column" class="first-column"></div>');
     jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
     jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
     jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
@@ -203,11 +203,9 @@ jQuery(document).ready(function () {
  * end of the first column.
  */
 function responsiveQcTable() {
-    var secondColumn = $(".second-column");
-    var firstColumnClass = $(".first-column");
     if ($(window).width() <= 480) {
-        console.log("Called?")
-        secondColumn.children().appendTo(firstColumnClass)
+        console.log("Called?");
+        $("#second-column").children().appendTo("#first-column")
     }
     else {
 
