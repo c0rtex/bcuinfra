@@ -369,22 +369,6 @@ function responsiveMenu() {
         $("#getStartedESIButtonImg").css("margin-top", "0px");
     }
 }
-/**
- * Remove the second column from the table and appends the to the
- * end of the first column.
- */
-function responsiveQcTable() {
-    var secondColumn = $(".second-column");
-    var firstColumnClass = $(".first-column");
-    if ($(window).width() <= 480) {
-        console.log("Called?")
-        secondColumn.children().appendTo(firstColumnClass)
-    }
-    else {
-
-    }
-
-}
 
 
 
