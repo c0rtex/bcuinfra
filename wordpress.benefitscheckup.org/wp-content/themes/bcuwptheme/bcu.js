@@ -203,12 +203,19 @@ jQuery(document).ready(function () {
  * end of the first column.
  */
 function responsiveQcTable() {
+    var food = "tr_bcuqc_category_foodsupp";
+    var utility = "tr_bcuqc_category_utility";
+    var taxes = "tr_bcuqc_category_property_taxrelief";
+    var veteran = "tr_bcuqc_category_veteran";
+
     if ($(window).width() <= 480) {
         console.log("Called?");
         $("#second-column").children().appendTo("#first-column")
     }
     else {
-
+        $(food).appendTo("#second-column");
+        $(utility).appendTo("#second-column");
+        $(taxes).appendTo("#second-column");
+        $(veteran).appendTo("#second-column")
     }
-
 }
