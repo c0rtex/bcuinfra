@@ -200,16 +200,16 @@ jQuery(document).ready(function () {
 
 /**
  * Remove the second column from the table and appends the to the
- * end of the first column.
+ * end of the first column. Should resolve small screen text overflow issue.
  */
 function responsiveQcTable() {
+
     var food = "#tr_bcuqc_category_foodsupp";
     var utility = "#tr_bcuqc_category_utility";
     var taxes = "#tr_bcuqc_category_property_taxrelief";
     var veteran = "#tr_bcuqc_category_veteran";
 
     if ($(window).width() <= 480) {
-        console.log("Called?");
         $("#second-column").children().appendTo("#first-column")
     }
     else {
