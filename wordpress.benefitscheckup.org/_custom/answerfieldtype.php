@@ -1001,7 +1001,7 @@ switch ($answerfieldCode) {
         echo '</select>
 		</label></div>';
         break;
-    default:
-        echo '<div class="alert alert-error">Error: No Anwerfield Type!</div>';
+	default:
+       echo '<div class="alert alert-error">Error: No Anwerfield Type!</div>';
 }
 ?>
