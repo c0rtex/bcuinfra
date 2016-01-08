@@ -377,6 +377,7 @@ function responsiveQcTable() {
     var secondColumn = $(".second-column");
     var firstColumnClass = $(".first-column");
     if ($(window).width() <= 480) {
+        console.log("Called?")
         secondColumn.children().appendTo(firstColumnClass)
     }
     else {
