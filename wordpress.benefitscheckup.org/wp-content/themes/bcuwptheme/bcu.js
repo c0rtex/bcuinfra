@@ -2,8 +2,6 @@ jQuery(document).ready(function () {
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
 
-    responsiveQcTable();
-
     $(window).resize(function () {
         responsiveQcTable();
     });
@@ -177,6 +175,8 @@ jQuery(document).ready(function () {
     jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
     jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
     jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
+
+    responsiveQcTable();
 
 //  Check if overlay overlay has been set to true
     function getURLParameter(name) {
