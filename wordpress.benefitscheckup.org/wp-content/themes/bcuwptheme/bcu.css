@@ -1287,6 +1287,10 @@ div.AdvancedText {
     font-size: 31.5px !important;
 }
 
+div#bcu_quickcheck {
+    overflow-y: scroll;
+}
+
 @media (min-width: 768px) {
     #bcu_quickcheck {
         width: 90%;
@@ -1339,7 +1343,7 @@ div.AdvancedText {
 #esiQuickcheckCheckboxes .last-column {
     width: 50%;
     float: left;
-    display : block;
+    display: block;
 }
 
 @media (max-width: 480px) {
@@ -1357,22 +1361,27 @@ div.AdvancedText {
 h2.benefitsCheckUpTitle {
     font-size: 1.8em !important;
     color: #012A5C !important;
-}#esiMenuToggleButton
-{
+}
+
+#esiMenuToggleButton {
     display: none;
     padding: 0;
     margin-bottom: 10px;
-    color:white;
+    color: white;
     background: #f1601b;
     width: 50px;
     height: 50px;
     border: 0px;
     border-radius: 0px;
-    filter: progid:DXImageTransform.Microsoft.Matrix( M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
     zoom: 1;
     top: 20;
     left: 0px;
     float: none;
     position: absolute;
     z-index: 10;
+}
+
+.modal-body {
+    max-height: inherit;
 }
