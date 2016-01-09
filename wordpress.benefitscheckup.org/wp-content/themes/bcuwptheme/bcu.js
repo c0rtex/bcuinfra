@@ -2,21 +2,20 @@ jQuery(document).ready(function () {
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
 
+    responsiveMenu();
+
     $(window).resize(function () {
         responsiveQcTable();
         responsiveMenu();
     });
 
+    $("#esiMenuToggleButton").click(function () {
+        $("#main-nav").toggle();
+    });
+
+
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
-        /*
-         * Set responsive menu actions.
-         */
-        responsiveMenu();
-
-        $(window).resize(function () {
-            responsiveMenu();
-        });
 
         $("#esiMenuToggleButton").click(function () {
             $("#main-nav").toggle();
@@ -194,8 +193,6 @@ jQuery(document).ready(function () {
         jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
 
         responsiveQcTable();
-        responsiveMenu();
-
 //  Check if overlay overlay has been set to true
         function getURLParameter(name) {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
@@ -215,7 +212,7 @@ jQuery(document).ready(function () {
         jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
 
     });
-
+});
     /**
      * Remove the second column from the table and appends the to the
      * end of the first column. Should resolve small screen text overflow issue.
