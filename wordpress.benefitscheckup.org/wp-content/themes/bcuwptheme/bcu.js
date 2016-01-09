@@ -13,6 +13,7 @@ jQuery(document).ready(function () {
         $("#main-nav").toggle();
     });
 
+    checkOverlayParam();
 
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
@@ -201,10 +202,13 @@ jQuery(document).ready(function () {
 
         //clear all alerts when the modal dialog is closed.
         jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
-        jQuery(".modal").on("show.bs.modal", clearErrorsOnHide);
     });
 
-    //  Check if overlay overlay has been set to true
+});
+/**
+ * Check if overlay overlay has been set to true
+ */
+function checkOverlayParam() {
     function getURLParameter(name) {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
     }
@@ -213,7 +217,7 @@ jQuery(document).ready(function () {
     if (getURLParameter("overlay") == "true") {
         jQuery('#bcu_quickcheck').modal('show')
     }
-});
+}
 /**
  * Remove the second column from the table and appends the to the
  * end of the first column. Should resolve small screen text overflow issue.
