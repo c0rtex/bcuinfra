@@ -1339,7 +1339,7 @@ div.AdvancedText {
 #esiQuickcheckCheckboxes .last-column {
     width: 50%;
     float: left;
-    display : block;
+    display: block;
 }
 
 @media (max-width: 480px) {
@@ -1352,6 +1352,14 @@ div.AdvancedText {
     #esiQuickcheckCheckboxes .last-column {
         display: none
     }
+}
+
+div#bcu_quickcheck {
+    overflow-y: scroll;
+}
+
+.modal-body {
+    max-height: inherit;
 }
 
 h2.benefitsCheckUpTitle {
