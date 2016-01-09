@@ -204,7 +204,7 @@ function createColumns() {
     jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
     jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
     jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
-    responsiveMenu();
+    responsiveQcTable();
 }
 
 /**
