@@ -197,14 +197,13 @@ jQuery(document).ready(function () {
         jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
-    //jQuery(".modal").on("show.bs.modal", createColumns);
-
 });
 function createColumns() {
     jQuery("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
     jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
     jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
     jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
+    responsiveQcTable();
 }
 
 /**
@@ -230,7 +229,7 @@ function responsiveQcTable() {
     var utility = "#tr_bcuqc_category_utility";
     var taxes = "#tr_bcuqc_category_property_taxrelief";
     var veteran = "#tr_bcuqc_category_veteran";
-    console.log("Called");
+
     if ($(window).width() <= 480) {
         $("#second-column").children().appendTo("#first-column")
     } else {
