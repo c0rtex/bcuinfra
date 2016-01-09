@@ -187,14 +187,6 @@ jQuery(document).ready(function () {
             }
         }
 
-        jQuery("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
-        jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
-        jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
-        jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(3)").appendTo('.last-column');
-        jQuery("#tr_bcuqc_category_veteran").detach().appendTo('.last-column');
-
-        responsiveQcTable();
-
         //clears all alerts
         function clearErrorsOnHide() {
             jQuery(".alert").remove();
@@ -204,7 +196,18 @@ jQuery(document).ready(function () {
         jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
+    jQuery(".modal").on("show.bs.modal", createColumns);
+
 });
+function createColumns() {
+    jQuery("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
+    jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
+    jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
+    jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(3)").appendTo('.last-column');
+    jQuery("#tr_bcuqc_category_veteran").detach().appendTo('.last-column');
+    responsiveQcTable();
+}
+
 /**
  * Check if overlay overlay has been set to true
  */
