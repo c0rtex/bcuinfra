@@ -153,6 +153,15 @@
 
 <button id="esiMenuToggleButton" class="btn"><span id="menuButtonESITextForIE" class="menuButtonESIText">Menu</span> </i> </button>
 
+<script type="text/javascript">
+    if(!(window.ActiveXObject) && "ActiveXObject" in window)
+    {
+        document.getElementById("menuButtonESITextForIE").setAttribute("style", "margin-left:5px;");
+        if($(window).width() <= 700)
+            document.getElementById("esiMenuToggleButton").setAttribute("style","display:block;");
+    }
+</script>
+
 <div class="container" id="top-bar">
     <div class="row">
         <div id="top-logo" class="span12">
