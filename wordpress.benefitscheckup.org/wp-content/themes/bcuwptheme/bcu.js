@@ -4,6 +4,7 @@ jQuery(document).ready(function () {
 
     $(window).resize(function () {
         responsiveQcTable();
+        responsiveMenu();
     });
 
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
@@ -193,6 +194,7 @@ jQuery(document).ready(function () {
         jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
 
         responsiveQcTable();
+        responsiveMenu();
 
 //  Check if overlay overlay has been set to true
         function getURLParameter(name) {
