@@ -16,6 +16,7 @@ jQuery(document).ready(function () {
     checkOverlayParam();
     createColumns();
 
+
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
 
@@ -203,7 +204,6 @@ function createColumns() {
     jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
     jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
     jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
-    responsiveQcTable();
 }
 
 /**
@@ -233,10 +233,10 @@ function responsiveQcTable() {
     if ($(window).width() <= 480) {
         $("#second-column").children().appendTo("#first-column")
     } else {
-        $(food).appendTo("#second-column");
-        $(utility).appendTo("#second-column");
-        $(taxes).appendTo("#second-column");
-        $(veteran).appendTo("#second-column");
+        $(food).appendTo("#last-column");
+        $(utility).appendTo("#last-column");
+        $(taxes).appendTo("#last-column");
+        $(veteran).appendTo("#last-column");
     }
 }
 
