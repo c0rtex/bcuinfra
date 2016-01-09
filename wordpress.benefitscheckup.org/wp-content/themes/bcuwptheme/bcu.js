@@ -186,8 +186,8 @@ jQuery(document).ready(function () {
             }
         }
 
-        jQuery('#esiQuickcheckCheckboxes').prepend('<div id="last-column" class="last-column"></div>');
-        jQuery('#esiQuickcheckCheckboxes').prepend('<div id="first-column" class="first-column"></div>');
+        jQuery('#esiQuickcheckCheckboxes').prepend("<div id='last-column' class='last-column'></div>");
+        jQuery('#esiQuickcheckCheckboxes').prepend("<div id='first-column' class='first-column'></div>");
         jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(4)').appendTo('.first-column');
         jQuery('#esiQuickcheckCheckboxes > div.checkbox:lt(3)').appendTo('.last-column');
         jQuery('#tr_bcuqc_category_veteran').detach().appendTo('.last-column');
@@ -213,50 +213,50 @@ jQuery(document).ready(function () {
 
     });
 });
-    /**
-     * Remove the second column from the table and appends the to the
-     * end of the first column. Should resolve small screen text overflow issue.
-     */
-    function responsiveQcTable() {
+/**
+ * Remove the second column from the table and appends the to the
+ * end of the first column. Should resolve small screen text overflow issue.
+ */
+function responsiveQcTable() {
 
-        var food = "#tr_bcuqc_category_foodsupp";
-        var utility = "#tr_bcuqc_category_utility";
-        var taxes = "#tr_bcuqc_category_property_taxrelief";
-        var veteran = "#tr_bcuqc_category_veteran";
-        console.log("Called");
-        if ($(window).width() <= 480) {
-            $("#second-column").children().appendTo("#first-column")
-        } else {
-            $(food).appendTo("#second-column");
-            $(utility).appendTo("#second-column");
-            $(taxes).appendTo("#second-column");
-            $(veteran).appendTo("#second-column");
-        }
+    var food = "#tr_bcuqc_category_foodsupp";
+    var utility = "#tr_bcuqc_category_utility";
+    var taxes = "#tr_bcuqc_category_property_taxrelief";
+    var veteran = "#tr_bcuqc_category_veteran";
+    console.log("Called");
+    if ($(window).width() <= 480) {
+        $("#second-column").children().appendTo("#first-column")
+    } else {
+        $(food).appendTo("#second-column");
+        $(utility).appendTo("#second-column");
+        $(taxes).appendTo("#second-column");
+        $(veteran).appendTo("#second-column");
     }
+}
 
-    /**
-     * Adjusts the menu to adjust when medium or smaller screens are being used.
-     */
-    function responsiveMenu() {
+/**
+ * Adjusts the menu to adjust when medium or smaller screens are being used.
+ */
+function responsiveMenu() {
 
-        if ($(window).width() <= 700) {
+    if ($(window).width() <= 700) {
 
-            $("#esiMenuToggleButton").css("display", "block");
-            $("#getStartedESIButton").appendTo($("h2.feature"));
-            $("#top-bar").css("margin-top", "30px");
-            $("#getStartedESIButtonImg").css("margin-top", "25px");
-            $("#getStartedESIButtonImg").css("margin-bottom", "25px");
+        $("#esiMenuToggleButton").css("display", "block");
+        $("#getStartedESIButton").appendTo($("h2.feature"));
+        $("#top-bar").css("margin-top", "30px");
+        $("#getStartedESIButtonImg").css("margin-top", "25px");
+        $("#getStartedESIButtonImg").css("margin-bottom", "25px");
 
-            $("#logo.statistics").hide();
-            $("#main-nav").hide();
+        $("#logo.statistics").hide();
+        $("#main-nav").hide();
 
-        } else {
-            $("#esiMenuToggleButton").css("display", "none");
-            $("#esiMenuToggleButton").hide();
-            $("#logo.statistics").show();
-            $("#main-nav").show();
-            $("#top-bar").css("margin-top", "0px");
-            $("#getStartedESIButtonImg").css("margin-top", "0px");
-            $("#getStartedESIButtonImg").css("margin-top", "0px");
-        }
+    } else {
+        $("#esiMenuToggleButton").css("display", "none");
+        $("#esiMenuToggleButton").hide();
+        $("#logo.statistics").show();
+        $("#main-nav").show();
+        $("#top-bar").css("margin-top", "0px");
+        $("#getStartedESIButtonImg").css("margin-top", "0px");
+        $("#getStartedESIButtonImg").css("margin-top", "0px");
     }
+}
