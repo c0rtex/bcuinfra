@@ -231,7 +231,7 @@ function responsiveQcTable() {
     var veteran = "#tr_bcuqc_category_veteran";
 
     if ($(window).width() <= 480) {
-        $("#second-column").children().appendTo("#first-column")
+        $("#last-column").children().appendTo("#first-column")
     } else {
         $(food).appendTo("#last-column");
         $(utility).appendTo("#last-column");
