@@ -223,7 +223,7 @@ jQuery(document).ready(function () {
         var utility = "#tr_bcuqc_category_utility";
         var taxes = "#tr_bcuqc_category_property_taxrelief";
         var veteran = "#tr_bcuqc_category_veteran";
-
+        console.log("Called");
         if ($(window).width() <= 480) {
             $("#second-column").children().appendTo("#first-column")
         } else {
