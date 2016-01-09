@@ -15,6 +15,8 @@ jQuery(document).ready(function () {
 
     checkOverlayParam();
 
+    createColumns();
+
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
 
@@ -196,7 +198,7 @@ jQuery(document).ready(function () {
         jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
-    jQuery(".modal").on("show.bs.modal", createColumns);
+    //jQuery(".modal").on("show.bs.modal", createColumns);
 
 });
 function createColumns() {
