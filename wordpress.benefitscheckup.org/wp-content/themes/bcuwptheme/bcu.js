@@ -1,6 +1,47 @@
+<<<<<<< HEAD
 jQuery(document).ready(function () {
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
+=======
+jQuery(document).ready(function() {
+  var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
+  var validated = 0;
+
+  /*
+   * Set responsive menu actions.
+   */
+  responsiveMenu();
+
+  $(window).resize(function () {
+    responsiveMenu();
+  });
+
+  $("#esiMenuToggleButton").click(function () {
+    $("#main-nav").toggle();
+  });
+
+
+
+  jQuery('#esiQuickcheckResultsButton').on('click', function(e) {
+    e.preventDefault();
+
+    validated = 1;
+    // Validate specific input parameters
+    removeZipAlerts();
+    jQuery('#invalidInterest').remove();
+    if ($zip_code.val().length != 5) {
+      $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
+      validated = 0;
+    }
+    if (jQuery('#zyxzip_zip_abbrev').val() == '??') {
+      $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
+      validated = 0;
+    }
+    if (!(jQuery('#esiQuickcheckCheckboxes :checkbox:checked').length > 0)) {
+      jQuery('#esiQuickcheckCheckboxes').before('<div id="invalidInterest" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select at least one area of interest.</strong></div>');
+      validated = 0;
+    }
+>>>>>>> bcuVisualChanges
 
     $(window).resize(function () {
         responsiveQcTable();
@@ -196,7 +237,14 @@ jQuery(document).ready(function () {
     //clear all alerts when the modal dialog is closed.
     jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
 
+<<<<<<< HEAD
 });
+=======
+  //Gets the url parameters
+  if(getURLParameter("overlay") == "true"){
+    jQuery('#bcu_quickcheck').modal('show')
+  }
+>>>>>>> bcuVisualChanges
 
 /**
  * Remove the second column from the table and appends the to the
@@ -209,6 +257,7 @@ function responsiveQcTable() {
     var taxes = "#tr_bcuqc_category_property_taxrelief";
     var veteran = "#tr_bcuqc_category_veteran";
 
+<<<<<<< HEAD
     if ($(window).width() <= 480) {
         $("#second-column").children().appendTo("#first-column")
     }
@@ -218,4 +267,33 @@ function responsiveQcTable() {
         $(taxes).appendTo("#second-column");
         $(veteran).appendTo("#second-column")
     }
+=======
+});
+
+function responsiveMenu() {
+
+  if ($(window).width() <= 700) {
+
+    $("#esiMenuToggleButton").css("display", "block");
+    $("#getStartedESIButton").appendTo($("h2.feature"));
+    $("#top-bar").css("margin-top", "30px");
+    $("#getStartedESIButtonImg").css("margin-top", "25px");
+    $("#getStartedESIButtonImg").css("margin-bottom", "25px");
+
+    $("#logo.statistics").hide();
+    $("#main-nav").hide();
+
+  }
+
+  else {
+    $("#esiMenuToggleButton").css("display", "none");
+    $("#esiMenuToggleButton").hide();
+    $("#logo.statistics").show();
+    $("#main-nav").show();
+    $("#top-bar").css("margin-top", "0px");
+    $("#getStartedESIButtonImg").css("margin-top", "0px");
+    $("#getStartedESIButtonImg").css("margin-top", "0px");
+  }
+
+>>>>>>> bcuVisualChanges
 }
