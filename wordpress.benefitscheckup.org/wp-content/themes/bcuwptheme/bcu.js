@@ -266,5 +266,4 @@ function responsiveMenu() {
         $("#getStartedESIButtonImg").css("margin-top", "0px");
         $("#getStartedESIButtonImg").css("margin-top", "0px");
     }
-  }
 }
