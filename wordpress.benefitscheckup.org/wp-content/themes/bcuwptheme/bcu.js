@@ -1,24 +1,27 @@
-jQuery(document).ready(function() {
-  var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
-  var validated = 0;
+jQuery(document).ready(function () {
+    var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
+    var validated = 0;
 
-  /*
-   * Set responsive menu actions.
-   */
-  responsiveMenu();
+    createColumns();
 
-  $(window).resize(function () {
+    checkOverlayParam();
+
+    /*
+     * Set responsive menu actions.
+     */
     responsiveMenu();
-  });
 
-  $("#esiMenuToggleButton").click(function () {
-    $("#main-nav").toggle();
-  });
+    $(window).resize(function () {
+        responsiveMenu();
+    });
+
+    $("#esiMenuToggleButton").click(function () {
+        $("#main-nav").toggle();
+    });
 
 
-
-  jQuery('#esiQuickcheckResultsButton').on('click', function(e) {
-    e.preventDefault();
+    jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
+        e.preventDefault();
 
         $("#esiMenuToggleButton").click(function () {
             $("#main-nav").toggle();
