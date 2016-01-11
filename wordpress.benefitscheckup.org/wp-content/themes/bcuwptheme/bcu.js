@@ -13,6 +13,7 @@ jQuery(document).ready(function () {
 
     $(window).resize(function () {
         responsiveMenu();
+        responsiveQcTable();
     });
 
     $("#esiMenuToggleButton").click(function () {
