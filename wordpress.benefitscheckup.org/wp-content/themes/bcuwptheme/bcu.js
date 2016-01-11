@@ -16,7 +16,6 @@ jQuery(document).ready(function () {
     checkOverlayParam();
     createColumns();
 
-
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
 
