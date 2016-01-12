@@ -1379,10 +1379,13 @@ h2.benefitsCheckUpTitle {
     border-radius: 0px;
     filter: progid:DXImageTransform.Microsoft.Matrix( M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
     zoom: 1;
-    top: 20;
+    top: 20px;
     left: 0px;
     float: none;
     position: absolute;
     z-index: 10;
     color:white;
+}
+.well.modal-body {
+    overflow-y: scroll;
 }

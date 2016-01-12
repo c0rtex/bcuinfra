@@ -556,8 +556,8 @@ padding-left: 10px;
 	position: absolute;
 zoom: 1;
 margin-left: -20px;
-_:-ms-lang(x), .ie10up { margin-left:5px; }
-padding-bottom: 15px
+_:-ms-lang(x) .ie10up { margin-left:5px; }
+padding-bottom: 15px;
 padding-bottom: 15px;
 bottom: 0;
     font-family: calibri,Helvetica,sans-serif;
