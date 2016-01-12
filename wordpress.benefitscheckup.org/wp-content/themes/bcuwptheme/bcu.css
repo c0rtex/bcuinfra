@@ -1367,8 +1367,7 @@ h2.benefitsCheckUpTitle {
     color: #012A5C !important;
 }
 
-#esiMenuToggleButton
-{
+#esiMenuToggleButton {
     display: none;
     padding: 0;
     margin-bottom: 10px;
@@ -1377,15 +1376,22 @@ h2.benefitsCheckUpTitle {
     height: 50px;
     border: 0px;
     border-radius: 0px;
-    filter: progid:DXImageTransform.Microsoft.Matrix( M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
     zoom: 1;
     top: 20px;
     left: 0px;
     float: none;
     position: absolute;
     z-index: 10;
-    color:white;
+    color: white;
 }
+
 .well.modal-body {
     overflow-y: scroll;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
