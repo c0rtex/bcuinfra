@@ -1394,5 +1394,7 @@ h2.benefitsCheckUpTitle {
 .frozenBody {
     overflow-x: hidden;
     overflow-y: hidden;
+    position:fixed;
+    margin:0;
     z-index : -1;
 }
