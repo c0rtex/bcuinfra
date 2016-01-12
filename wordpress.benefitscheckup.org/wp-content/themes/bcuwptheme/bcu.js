@@ -21,9 +21,9 @@ jQuery(document).ready(function () {
         responsiveMenu();
     });
 
-    $("#esiMenuToggleButton").click(function () {
-        $("#main-nav").toggle();
-    });
+    //$("#esiMenuToggleButton").click(function () {
+    //    $("#main-nav").toggle();
+    //});
 
 
     $(".modal").on("shown.bs.modal", function(){
