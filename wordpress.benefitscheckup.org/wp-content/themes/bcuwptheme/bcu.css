@@ -1357,8 +1357,6 @@ div.AdvancedText {
 div#bcu_quickcheck {
     overflow-y: scroll;
     overflow-x: hidden;
-    position:fixed;
-    max-width: 100%;
 }
 
 .modal-body {
@@ -1377,12 +1375,12 @@ h2.benefitsCheckUpTitle {
     background: #f1601b;
     width: 50px;
     height: 50px;
-    border: 0px;
-    border-radius: 0px;
+    border: 0;
+    border-radius: 0;
     filter: progid:DXImageTransform.Microsoft.Matrix(M11=0, M12=0, M21=0, M22=0, sizingMethod='auto expand');
     zoom: 1;
-    top: 20px;
-    left: 0px;
+    /*top: ;*/
+    left: 0;
     float: none;
     position: absolute;
     z-index: 10;
@@ -1391,12 +1389,10 @@ h2.benefitsCheckUpTitle {
 
 .well.modal-body {
     overflow-y: scroll;
-    overflow-x:hidden; !important
-    position : fixed;
-    max-width: 100%;
+    overflow-x:hidden;
 }
 
-html, body {
+.frozenBody {
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
