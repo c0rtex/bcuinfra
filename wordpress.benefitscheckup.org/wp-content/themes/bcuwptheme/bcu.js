@@ -21,6 +21,14 @@ jQuery(document).ready(function () {
     checkOverlayParam();
     createColumns();
 
+    $(".modal").on("shown.bs.modal", function(){
+        $(document.body).addClass("frozenBody")
+    });
+
+    $(".modal").on("hidden.bs.modal", function(){
+        $(document.body).removeClass("frozenBody")
+    });
+
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
 
@@ -195,19 +203,19 @@ jQuery(document).ready(function () {
 
         //clears all alerts
         function clearErrorsOnHide() {
-            jQuery(".alert").remove();
+            $(".alert").remove();
         }
 
         //clear all alerts when the modal dialog is closed.
-        jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
+        $(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
 });
 function createColumns() {
-    jQuery("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
-    jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
-    jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
-    jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
+    $("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
+    $("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
+    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
+    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
     responsiveQcTable();
 }
 
