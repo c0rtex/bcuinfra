@@ -1393,9 +1393,7 @@ h2.benefitsCheckUpTitle {
 }
 
 .frozenBody {
-    max-width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
     position:fixed;
-    margin: 0;
 }
