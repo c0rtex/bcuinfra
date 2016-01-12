@@ -1357,8 +1357,6 @@ div.AdvancedText {
 div#bcu_quickcheck {
     overflow-y: scroll;
     overflow-x: hidden;
-    position:fixed;
-    max-width:100%;
 }
 
 .modal-body {
@@ -1390,14 +1388,12 @@ h2.benefitsCheckUpTitle {
 }
 
 .well.modal-body {
-    max-width:100%;
     overflow-y: scroll;
+    overflow-x:hidden;
 }
 
 .frozenBody {
-    max-width : 100%;
     overflow-x: hidden;
     overflow-y: hidden;
-    position:fixed;
-    margin:0;
+    z-index : -1;
 }
