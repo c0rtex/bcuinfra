@@ -129,7 +129,7 @@
     <link rel="stylesheet" href="<?php echo $dev_url ?>/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
 </head>
 
-<body scroll="no" style="overflow: hidden"  <?php body_class(); ?> data-spy="scroll" data-target=".sidebar-nav">
+<body <?php body_class(); ?> data-spy="scroll" data-target=".sidebar-nav">
 
 
 <!-- Google Tag Manager -->
