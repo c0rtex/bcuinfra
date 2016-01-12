@@ -1355,7 +1355,7 @@ div.AdvancedText {
 }
 
 div#bcu_quickcheck {
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .modal-body {
@@ -1394,4 +1394,5 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    margin: 0;
 }
