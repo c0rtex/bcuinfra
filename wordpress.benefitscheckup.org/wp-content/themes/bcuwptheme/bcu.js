@@ -9,6 +9,11 @@ jQuery(document).ready(function () {
         responsiveMenu();
     });
 
+    $( window ).on("orientationchange", function( event ) {
+        responsiveQcTable();
+        responsiveMenu();
+    });
+
     $("#esiMenuToggleButton").click(function () {
         $("#main-nav").toggle();
     });
