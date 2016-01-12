@@ -1390,7 +1390,6 @@ h2.benefitsCheckUpTitle {
 }
 
 .well.modal-body {
-    position:fixed;
     max-width:100%;
     overflow-y: scroll;
 }
@@ -1401,5 +1400,4 @@ h2.benefitsCheckUpTitle {
     overflow-y: hidden;
     position:fixed;
     margin:0;
-    z-index : -1;
 }
