@@ -1389,7 +1389,6 @@ h2.benefitsCheckUpTitle {
 
 .well.modal-body {
     overflow-y: scroll;
-    overflow-x:hidden;
 }
 
 .frozenBody {
