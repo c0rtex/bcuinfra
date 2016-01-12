@@ -1358,6 +1358,8 @@ div#bcu_quickcheck {
     overflow-y: scroll;
     overflow-x: hidden;
     position:fixed;
+    max-width: 100%;
+
 }
 
 .modal-body {
@@ -1392,6 +1394,7 @@ h2.benefitsCheckUpTitle {
     overflow-y: scroll;
     overflow-x:hidden; !important
     position : fixed;
+    max-width: 100%;
 }
 
 html, body {
