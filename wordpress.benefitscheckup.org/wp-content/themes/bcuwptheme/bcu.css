@@ -1355,7 +1355,8 @@ div.AdvancedText {
 }
 
 div#bcu_quickcheck {
-    overflow-y: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .modal-body {
