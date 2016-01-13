@@ -16,48 +16,32 @@ jQuery(document).ready(function () {
         responsiveQcTable();
     });
 
+    $( window ).on("orientationchange", function( event ) {
+        responsiveQcTable();
+        responsiveMenu();
+    });
+
+    //$("#esiMenuToggleButton").click(function () {
+    //    $("#main-nav").toggle();
+    //});
+
+
+    $(".modal").on("shown.bs.modal", function(){
+        $(document.body).addClass("frozenBody")
+    });
+
+    $(".modal").on("hidden.bs.modal", function(){
+        $(document.body).removeClass("frozenBody")
+    });
+
     $("#esiMenuToggleButton").click(function () {
         $("#main-nav").toggle();
     });
 
-
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
         e.preventDefault();
 
-        $("#esiMenuToggleButton").click(function () {
-            $("#main-nav").toggle();
-        });
-
-
-        jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
-            e.preventDefault();
-
-            validated = 1;
-            // Validate specific input parameters
-            removeZipAlerts();
-            jQuery('#invalidInterest').remove();
-            if ($zip_code.val().length != 5) {
-                $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
-                validated = 0;
-            }
-            if (jQuery('#zyxzip_zip_abbrev').val() == '??') {
-                $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
-                validated = 0;
-            }
-            if (!(jQuery('#esiQuickcheckCheckboxes :checkbox:checked').length > 0)) {
-                jQuery('#esiQuickcheckCheckboxes').before('<div id="invalidInterest" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select at least one area of interest.</strong></div>');
-                validated = 0;
-            }
-
-            if (validated == 0) {
-                // Do not submission if the form fails validation
-                return false;
-            }
-            else {
-                jQuery('form#bcuQuickcheckForm').submit();
-            }
-
-        });
+        trySubmit(e);
 
         // Properly validate the entered ZIP code and link it to a state
         $zip_code.keyup(function () {
@@ -75,7 +59,6 @@ jQuery(document).ready(function () {
                     jQuery(this).val('');
                     return false;
                 }
-                ;
 
                 var threeDigits = jQuery(this).val().substring(0, 3);
 //console.log ("three gidig" + threeDigits);
@@ -195,19 +178,49 @@ jQuery(document).ready(function () {
 
         //clears all alerts
         function clearErrorsOnHide() {
-            jQuery(".alert").remove();
+            $(".alert").remove();
         }
 
+        function trySubmit(e){
+            validated = 1;
+            // Validate specific input parameters
+            removeZipAlerts();
+            jQuery('#invalidInterest').remove();
+            if ($zip_code.val().length != 5) {
+                $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
+                validated = 0;
+            }
+            if (jQuery('#zyxzip_zip_abbrev').val() == '??') {
+                $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
+                validated = 0;
+            }
+            if (!(jQuery('#esiQuickcheckCheckboxes :checkbox:checked').length > 0)) {
+                jQuery('#esiQuickcheckCheckboxes').before('<div id="invalidInterest" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select at least one area of interest.</strong></div>');
+                validated = 0;
+            }
+
+            if (validated == 0) {
+                // Do not submission if the form fails validation
+                return false;
+            }
+            else {
+                jQuery('form#bcuQuickcheckForm').submit();
+            }
+
+
+        }
+
+
         //clear all alerts when the modal dialog is closed.
-        jQuery(".modal").on("hidden.bs.modal", clearErrorsOnHide);
+        $(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
 });
 function createColumns() {
-    jQuery("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
-    jQuery("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
-    jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
-    jQuery("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
+    $("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
+    $("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
+    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
+    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
     responsiveQcTable();
 }
 
