@@ -454,9 +454,11 @@ onChange="if(!startForm) { ga(\'send\', \'event\', \'mqc\', \'MQC Tool Start\', 
 
 	";
 
+/*
     echo '
     	<input type="text" name="zyxzip_zip_abbrev" id="zyxzip_zip_abbrev" size="1" value="" disabled="" style="font-size: 7pt; font-weight: bold; color: rgb(102, 102, 102); background-color: rgb(221, 221, 221); border: 1px dotted black;">
     ';
+*/
     break;
   case 'day':
     $responseType = 1;
