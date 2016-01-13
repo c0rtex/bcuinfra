@@ -10,12 +10,6 @@
 		<loc>https://www.benefitscheckup.org/bcu-quickcheck-report/</loc>
 	</url>
 	<url>
-		<lastmod>2015-12-23T00:08:37Z</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>0.5</priority>
-		<loc>https://www.benefitscheckup.org/testlayout/</loc>
-	</url>
-	<url>
 		<lastmod>2015-08-04T20:55:00Z</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
@@ -34,24 +28,6 @@
 		<loc>https://www.benefitscheckup.org/save-money-on-your-medicare-costs/</loc>
 	</url>
 	<url>
-		<lastmod>2014-10-13T12:59:15Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/mqc-4/</loc>
-	</url>
-	<url>
-		<lastmod>2014-10-13T12:55:30Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/medicare-quickcheck-report/</loc>
-	</url>
-	<url>
-		<lastmod>2014-10-11T23:35:21Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/mqc4-test/</loc>
-	</url>
-	<url>
 		<lastmod>2014-10-13T11:24:35Z</lastmod>
 		<changefreq>yearly</changefreq>
 		<priority>0.1</priority>
@@ -62,42 +38,6 @@
 		<changefreq>monthly</changefreq>
 		<priority>0.3</priority>
 		<loc>https://www.benefitscheckup.org/getsnap/</loc>
-	</url>
-	<url>
-		<lastmod>2013-12-20T02:49:47Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/medicare-quickcheck-coming-soon/</loc>
-	</url>
-	<url>
-		<lastmod>2013-11-19T16:21:36Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/mqc-results-alt/</loc>
-	</url>
-	<url>
-		<lastmod>2013-11-06T01:47:52Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/test-home/</loc>
-	</url>
-	<url>
-		<lastmod>2013-11-06T12:43:39Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/medicarequickcheck-factsheet/</loc>
-	</url>
-	<url>
-		<lastmod>2013-10-30T18:48:37Z</lastmod>
-		<changefreq>yearly</changefreq>
-		<priority>0.1</priority>
-		<loc>https://www.benefitscheckup.org/mqc-test/</loc>
-	</url>
-	<url>
-		<lastmod>2015-09-09T20:54:15Z</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.2</priority>
-		<loc>https://www.benefitscheckup.org/news/news-articles-2013/</loc>
 	</url>
 	<url>
 		<lastmod>2013-05-21T18:57:10Z</lastmod>
@@ -176,30 +116,5 @@
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
 		<loc>https://www.benefitscheckup.org/site-map/</loc>
-	</url>
-	<url>
-		<loc>https://www.benefitscheckup.org/blog/tag/2006/</loc>
-		<priority>0.3</priority>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>https://www.benefitscheckup.org/blog/tag/2007/</loc>
-		<priority>0.3</priority>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>https://www.benefitscheckup.org/blog/tag/2010/</loc>
-		<priority>0.3</priority>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>https://www.benefitscheckup.org/blog/tag/2011/</loc>
-		<priority>0.3</priority>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-		<loc>https://www.benefitscheckup.org/blog/category/news/</loc>
-		<priority>0.3</priority>
-		<changefreq>monthly</changefreq>
 	</url>
 </urlset>
