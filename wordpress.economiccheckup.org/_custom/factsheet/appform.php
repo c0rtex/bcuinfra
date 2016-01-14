@@ -53,7 +53,6 @@ if ($formcount > 0) {
         if ($formtype_id == 3) {
             $isOnlineApp = true;
             $appLink = $file;
-            echo "The link count is" . ++$linkCount;
         } else {
             if (QA) {
                 echo '<li><a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=' . $form_id . '&tgtPartner=77&tgt=/forms/' . $file . '" target="_blank">' . $formTitle . '</a></li>';
