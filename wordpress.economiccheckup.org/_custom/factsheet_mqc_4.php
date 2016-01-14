@@ -56,6 +56,8 @@ if(isset($_GET['shadowID'])){$shadowID = $_GET['shadowID'];}
 
 $programContent_query = $soapClient->getProgramContent($program_id);
 //$programContent_query = restructureWSArray($programContent_query);
+
+
  foreach ( $programContent_query as $progObj) :
 	$program_name = $progObj["PROGRAM_NAME"];
 	$program_desc = $progObj["PROGRAM_DESC"];  
@@ -121,7 +123,7 @@ echo '
  echo '	     <li><a href="'.$program_url.'" target="_blank"><i class="icon-link "></i> Program Website </a></li>';
  } 	
  if ($isOnlineApp){ 
-  echo '	     <li><a href="'.$appLink.'" target="_blank"><i class="icon-laptop "></i> Online Form </a></li>';
+  echo '	     <li><a href="'.$appLink.'" target="_blank"><i class="icon-laptop test-edit"></i> Online Form </a></li>';
  }
  echo '            ';
  if(isset($screeningID)){echo '            <li><a data-toggle="modal" role="button" href="/mqc-results?screeningID='.$screeningID.'&shadowID='.$shadowID.'"><i class="icon-circle-arrow-left "></i> Back to Your Report </a></li>';
