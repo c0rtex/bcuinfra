@@ -39,7 +39,7 @@ if ($formcount > 0) {
     /**
      * A map of online application (if any) links are stored
      * with their keys being the language the link is in.
-     * [LANG, LINK]
+     * [LANG, LINK].
      */
     $onlineAppsLinks = array();
     $linkCount = 0;
@@ -49,16 +49,14 @@ if ($formcount > 0) {
         $formTitle = $formObj->tag_name;
         $form_id = $formObj->form_id;
         $formtype_id = $formObj->formtype_id;
-
         if ($formtype_id == 3) {
             $isOnlineApp = true;
             $appLink = $file;
-            echo "Print : " . $formTitle;
+            array_push($onlineAppsLinks, $formObj);
         } else {
             if (QA) {
                 echo '<li><a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=' . $form_id . '&tgtPartner=77&tgt=/forms/' . $file . '" target="_blank">' . $formTitle . '</a></li>';
             } else {
-
                 echo '<li><a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id=' . $form_id . '&tgtPartner=77&tgt=/forms/' . $file . '" target="_blank">' . $formTitle . '</a></li>';
             }
 
