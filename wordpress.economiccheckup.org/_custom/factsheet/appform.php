@@ -1,11 +1,11 @@
-<?php 
-require_once('_custom/displaycontent.php');   
+<?php
+require_once('_custom/displaycontent.php');
 $query_getForms = "
 SELECT ft.string, t.tag_name,f.form_id,ft.formtype_id
 			FROM program_form pf, form f, form_formtype ft, formtag t
-			WHERE pf.program_id=".$program_id."
+			WHERE pf.program_id=" . $program_id . "
 				AND pf.form_id=f.form_id
-				and (f.state_id is null or f.state_id='".$state_id."')
+				and (f.state_id is null or f.state_id='" . $state_id . "')
 				AND f.form_id=ft.form_id
 				AND ft.formtype_id
 				 in (1,3,4)
@@ -13,19 +13,19 @@ SELECT ft.string, t.tag_name,f.form_id,ft.formtype_id
 				AND f.formtag_id=t.formtag_id
 			ORDER BY pf.sort
 ";
-$getForms_query = $bcudb->get_results($query_getForms);  
+$getForms_query = $bcudb->get_results($query_getForms);
 //print_r($getForms_query);  
-$formcount = 0; 
- foreach ($getForms_query as $formObj) :
-	$formtype_id = $formObj->formtype_id;
-       if ($formtype_id != 3){
-		$formcount ++;
-		//echo "form type:".$formtype_id;
-	}
-  endforeach;
+$formcount = 0;
+foreach ($getForms_query as $formObj) :
+    $formtype_id = $formObj->formtype_id;
+    if ($formtype_id != 3) {
+        $formcount++;
+        //echo "form type:".$formtype_id;
+    }
+endforeach;
 
-if ($formcount > 0) {                      
-echo '
+if ($formcount > 0) {
+    echo '
 <section id="appforms">
                     	<div class="clearfix">
                         	<label for="xlInput"><h4><i class="icon-file-alt "></i> Application Forms</h4>
@@ -33,32 +33,41 @@ echo '
                                     <div class="nav nav-list">
                                     	<ul>
 ';
- $isOnlineApp = false;
- foreach ($getForms_query as $formObj) :
-	$file = $formObj->string;
-	$formTitle = $formObj->tag_name; 
-	$form_id = $formObj->form_id;
-	$formtype_id = $formObj->formtype_id;      
-	
-	if ($formtype_id == 3){
-		$isOnlineApp = true;
-              $appLink = $file;
-	}
-	   				  else {
-if (QA){
- echo '<li><a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id='.$form_id.'&tgtPartner=77&tgt=/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
-}
-else {
 
- echo '<li><a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$form_id.'&tgtPartner=77&tgt=/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
-}
 
-        				  	//echo '<li><a href="/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
-				         }
-					 
- endforeach;
 
- echo ' 
+    /**
+     * A map of online application (if any) links are stored
+     * with their keys being the language the link is in.
+     * [LANG, LINK]
+     */
+    $onlineAppsLinks = array();
+    $linkCount = 0;
+    $isOnlineApp = false;
+    foreach ($getForms_query as $formObj) :
+        $file = $formObj->string;
+        $formTitle = $formObj->tag_name;
+        $form_id = $formObj->form_id;
+        $formtype_id = $formObj->formtype_id;
+
+        if ($formtype_id == 3) {
+            $isOnlineApp = true;
+            $appLink = $file;
+            echo "The link count is" . ++$linkCount;
+        } else {
+            if (QA) {
+                echo '<li><a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=' . $form_id . '&tgtPartner=77&tgt=/forms/' . $file . '" target="_blank">' . $formTitle . '</a></li>';
+            } else {
+
+                echo '<li><a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id=' . $form_id . '&tgtPartner=77&tgt=/forms/' . $file . '" target="_blank">' . $formTitle . '</a></li>';
+            }
+
+            //echo '<li><a href="/forms/'.$file.'" target="_blank">'.$formTitle.'</a></li>';
+        }
+
+    endforeach;
+
+    echo '
                                     	</ul>
                                     </div>
                              	</p>
