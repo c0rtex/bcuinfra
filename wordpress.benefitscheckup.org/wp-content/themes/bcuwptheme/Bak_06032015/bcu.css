@@ -686,3 +686,8 @@ div.AdvancedText {
  #selectAState {
 	  margin-right: 5px;
 }
+h2.benefitsCheckUpTitle
+{
+	font-size : 1.8em !important;
+	color: #012A5C !important;
+}
