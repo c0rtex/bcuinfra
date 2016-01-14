@@ -165,7 +165,17 @@ foreach ($programContent_query as $progObj) :
         echo '	     <li><a href="' . $program_url . '" target="_blank"><i class="icon-link "></i> Program Website </a></li>';
     }
     if ($isOnlineApp) {
-        echo '	     <li><a href="' . $appLink . '" target="_blank"><i class="icon-laptop test-edit-three"></i> Online Form </a></li>';
+
+        //Test code.
+        foreach($onlineAppsLinks as $onlineApp) : {
+            $file = $onlineApp->string;
+            $formTitle = $onlineApp->tag_name;
+            $form_id = $onlineApp->form_id;
+            $formtype_id = $onlineApp->formtype_id;
+
+            echo '	     <li><a href="' . $file . '" target="_blank"><i class="icon-laptop test-edit-three"></i>' . $formTitle . '</a></li>';
+        }
+        endforeach;
     }
     echo '            <li><a data-toggle="modal" role="button" href="#" onClick="javascript:PrintDiv();"><i class="icon-print "></i> Printable Fact Sheet </a></li>';
     echo '
