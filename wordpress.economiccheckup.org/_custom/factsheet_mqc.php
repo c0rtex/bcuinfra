@@ -165,7 +165,7 @@ foreach ($programContent_query as $progObj) :
         echo '	     <li><a href="' . $program_url . '" target="_blank"><i class="icon-link "></i> Program Website </a></li>';
     }
     if ($isOnlineApp) {
-        echo '	     <li><a href="' . $appLink . '" target="_blank"><i class="icon-laptop test-class"></i> Online Form </a></li>';
+        echo '	     <li><a href="' . $appLink . '" target="_blank"><i class="icon-laptop test-edit"></i> Online Form </a></li>';
     }
     echo '            ';
     if (isset($screeningID)) {
