@@ -957,5 +957,5 @@ h2.esiQuickcheckTitle {
 }
 
 div.well.sidebar-nav {
-    width : 100%;
+    width : initial !important;
 }
