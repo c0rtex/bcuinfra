@@ -28,6 +28,18 @@ $query_getSAF = "SELECT a.answerfield, o.option_id, o.option_code, sa.response F
 
 $result = mysql_query($query_getSAF);
 
+
+if (!$result) {
+    echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+    exit;
+}
+
+if (mysql_num_rows($result) == 0) {
+    echo "No rows found, nothing to print so am exiting";
+    exit;
+}
+
+
 while ($AFrow = mysql_fetch_assoc($result)) {
     /* Inside while loop */
     $AF_array[] = $AFrow;
