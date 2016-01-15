@@ -8,7 +8,8 @@ var questionnaireApp = angular.module('questionnaireApp', [
   'helps',
   'validations',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.mask'
 ]);
 
 
@@ -39,11 +40,9 @@ questionnaireApp
 questionnaireApp
     .directive('divAnswerField',function() {
       return {
-        template:"<div ng-include='answer_field_link'></div>",
+        template:"<span ng-include='answer_field_link'></span>",
         link: function(scope, element, attributes, ngModel,ngShow) {
           scope.answer_field_link="templates/answer-field-"+scope.answer_field.type+".html";
-          //scope.$root.div_af["div_"+scope.answer_field.code]=ngModel;
-          //if
         },
         controller: "ValidationController",
         scope: {
