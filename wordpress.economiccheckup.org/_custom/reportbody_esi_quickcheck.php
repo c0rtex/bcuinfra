@@ -28,7 +28,7 @@ $query_getSAF = "SELECT a.answerfield, o.option_id, o.option_code, sa.response F
 
 $result = mysql_query($query_getSAF);
 
-while ($AFrow = mysql_fetch_assoc($result)) {
+while ($AFrow == mysql_fetch_assoc($result)) {
     /* Inside while loop */
     $AF_array[] = $AFrow;
 }
