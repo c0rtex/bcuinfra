@@ -34,6 +34,7 @@ while ($AFrow = mysql_fetch_assoc($result)) {
 }
 
 echo "before print";
+print_r($query_getSAF);
 print_r($AF_array);
 echo "after print";
 
