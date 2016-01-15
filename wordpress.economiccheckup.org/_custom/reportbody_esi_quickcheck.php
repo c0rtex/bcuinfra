@@ -33,7 +33,10 @@ while ($AFrow = mysql_fetch_assoc($result)) {
     $AF_array[] = $AFrow;
 }
 
+echo "before print";
 print_r($AF_array);
+echo "after print";
+
 function searchForId($id, $array)
 {
     foreach ($array as $key => $val) {
