@@ -28,27 +28,10 @@ $query_getSAF = "SELECT a.answerfield, o.option_id, o.option_code, sa.response F
 
 $result = mysql_query($query_getSAF);
 
-
-if (!$result) {
-    echo "Could not successfully run query ($sql) from DB: " . mysql_error();
-    exit;
-}
-
-if (mysql_num_rows($result) == 0) {
-    echo "No rows found, nothing to print so am exiting";
-    exit;
-}
-
-
 while ($AFrow = mysql_fetch_assoc($result)) {
     /* Inside while loop */
     $AF_array[] = $AFrow;
 }
-
-echo "before print";
-print_r($result);
-print_r($AF_array);
-echo "after print";
 
 function searchForId($id, $array)
 {
@@ -59,76 +42,76 @@ function searchForId($id, $array)
     }
     return null;
 }
-
+if(isset($AF_array)){
 //test
-$AFrow_index = searchForId('esi_category_retirement_planning', $AF_array);
-$esi_category_retirement_planning = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_retirement_planning";
-    $esi_category_retirement_planning = true;
-}
-$AFrow_index = searchForId('esi_category_consumer_protection', $AF_array);
-$esi_category_consumer_protection = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_consumer_protection";
-    $esi_category_consumer_protection = true;
-}
+    $AFrow_index = searchForId('esi_category_retirement_planning', $AF_array);
+    $esi_category_retirement_planning = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_retirement_planning";
+        $esi_category_retirement_planning = true;
+    }
+    $AFrow_index = searchForId('esi_category_consumer_protection', $AF_array);
+    $esi_category_consumer_protection = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_consumer_protection";
+        $esi_category_consumer_protection = true;
+    }
 
-$AFrow_index = searchForId('esi_category_credit_debt_management', $AF_array);
-$esi_category_credit_debt_management = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_credit_debt_management";
-    $esi_category_credit_debt_management = true;
-}
-$AFrow_index = searchForId('esi_category_employment_training', $AF_array);
-$esi_category_employment_training = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_employment_training";
-    $esi_category_employment_training = true;
-}
-$AFrow_index = searchForId('esi_category_health_resources', $AF_array);
-$esi_category_health_resources = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_health_resources";
-    $esi_category_health_resources = true;
-}
+    $AFrow_index = searchForId('esi_category_credit_debt_management', $AF_array);
+    $esi_category_credit_debt_management = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_credit_debt_management";
+        $esi_category_credit_debt_management = true;
+    }
+    $AFrow_index = searchForId('esi_category_employment_training', $AF_array);
+    $esi_category_employment_training = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_employment_training";
+        $esi_category_employment_training = true;
+    }
+    $AFrow_index = searchForId('esi_category_health_resources', $AF_array);
+    $esi_category_health_resources = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_health_resources";
+        $esi_category_health_resources = true;
+    }
 
-$AFrow_index = searchForId('esi_category_homeowner_resources', $AF_array);
-$esi_category_homeowner_resources = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_homeowner_resources";
-    $esi_category_homeowner_resources = true;
-}
-$AFrow_index = searchForId('esi_category_legal_resources', $AF_array);
-$esi_category_legal_resources = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_legal_resources";
-    $esi_category_legal_resources = true;
-}
-$AFrow_index = searchForId('esi_category_money_management', $AF_array);
-$esi_category_money_management = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_money_management";
-    $esi_category_money_management = true;
-}
+    $AFrow_index = searchForId('esi_category_homeowner_resources', $AF_array);
+    $esi_category_homeowner_resources = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_homeowner_resources";
+        $esi_category_homeowner_resources = true;
+    }
+    $AFrow_index = searchForId('esi_category_legal_resources', $AF_array);
+    $esi_category_legal_resources = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_legal_resources";
+        $esi_category_legal_resources = true;
+    }
+    $AFrow_index = searchForId('esi_category_money_management', $AF_array);
+    $esi_category_money_management = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_money_management";
+        $esi_category_money_management = true;
+    }
 //esi_category_renter_resources
-$AFrow_index = searchForId('esi_category_renter_resources', $AF_array);
-$esi_category_renter_resources = false;
-if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
-    //echo "testing......................esi_category_renter_resources";
-    $esi_category_renter_resources = true;
-}
+    $AFrow_index = searchForId('esi_category_renter_resources', $AF_array);
+    $esi_category_renter_resources = false;
+    if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) {
+        //echo "testing......................esi_category_renter_resources";
+        $esi_category_renter_resources = true;
+    }
 
 // use the zipcode to detect county
-
-$AFrow_index = searchForId('esi_zip', $AF_array);
-if (isset($AF_array[$AFrow_index]["response"])) {
-    $string_zip = "and z.zipcode = " . $AF_array[$AFrow_index]["response"];
-    $esi_zip = $AF_array[$AFrow_index]["response"];
-} else {
-    $string_zip = "and (1 = 0)";
+    $AFrow_index = searchForId('esi_zip', $AF_array);
+    if (isset($AF_array[$AFrow_index]["response"])) {
+        $string_zip = "and z.zipcode = " . $AF_array[$AFrow_index]["response"];
+        $esi_zip = $AF_array[$AFrow_index]["response"];
+    } else {
+        $string_zip = "and (1 = 0)";
+    }
+    unset ($AFrow_index);
 }
-unset ($AFrow_index);
 // Get County using zip
 $query_getCounty = "select z.zipcode, z.county_id, c.* from county c, zip z where c.county_id = z.county_id " . $string_zip;
 $result2 = mysql_query($query_getCounty);
