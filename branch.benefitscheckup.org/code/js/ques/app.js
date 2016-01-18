@@ -16,12 +16,15 @@ var questionnaireApp = angular.module('questionnaireApp', [
 questionnaireApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-        when('/questionset/:questionSet', {
+        when('/questionset/:questionSet/:questionSubset', {
           templateUrl: 'templates/question-set.html',
           controller: 'QuestionnaireController'
         }).
+        when('/questionset/:questionSet', {
+          redirectTo: '/questionset/:questionSet/1'
+        }).
         otherwise({
-          redirectTo: '/questionset/questionSet1'
+          redirectTo: '/questionset/questionSet1/1'
         });
   }]);
 

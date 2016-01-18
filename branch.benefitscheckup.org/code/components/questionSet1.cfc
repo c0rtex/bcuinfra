@@ -19,7 +19,10 @@
     <cfargument name="org_id" type="numeric" required="no" default="0">
 
     <cfreturn "433,431,13">
+  </cffunction>
 
+  <cffunction name="getNextService">
+    <cfreturn "questionSet2">
   </cffunction>
 
 </cfcomponent>

@@ -177,4 +177,8 @@
 
     </cffunction>
 
+	<cffunction name="getPrevService">
+		<cfreturn "questionSet3">
+	</cffunction>
+
 </cfcomponent>

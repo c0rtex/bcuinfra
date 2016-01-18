@@ -20,7 +20,7 @@
 
 		<cfset _in = this.getQuestionsId(state_id,subset_id,partner_id,org_id)>
 
-		<cfset cf = ormExecuteQuery("from question as q where q.id in (#_in#)")>
+		<cfset cf = ormExecuteQuery("from question as q where q.id in (#_in#) order by sort asc")>
 
 		<cfset retVal = arrayNew(1)>
 
@@ -28,15 +28,29 @@
 			<cfset arrayAppend(retVal,it.toStructure(state_id=state_id,subset_id=subset_id,partner_id=partner_id))>
 		</cfloop>
 
-		<cfset data = serializeJSON(retVal)>
+		<cfset data = structNew()>
+
+		<cfset data.prevService = this.getPrevService()>
+
+		<cfset data.nextService = this.getNextService()>
+
+		<cfset data.questions = retVal>
 
 		<cfif structKeyExists(arguments, "callback")>
-			<cfset data = arguments.callback & "(" & data & ");">
+			<cfset data = arguments.callback & "(" & serializeJSON(data) & ");">
 			<cfelseif structKeyExists(arguments, "jsonp")>
 			<cfset data= "jsonp(" & data & ");">
 		</cfif>
 
 		<cfreturn data>
+	</cffunction>
+
+	<cffunction name="getPrevService">
+		<cfreturn "">
+	</cffunction>
+
+	<cffunction name="getNextService">
+		<cfreturn "">
 	</cffunction>
 
 </cfcomponent>

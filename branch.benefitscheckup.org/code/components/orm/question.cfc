@@ -187,6 +187,6 @@
 		<cfset _in="#_in#,#answerfield_id#">
 	</cfloop>
 
-	<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#")>
+	<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
 	</cffunction>
 </cfcomponent>

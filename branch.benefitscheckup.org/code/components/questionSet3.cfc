@@ -176,4 +176,13 @@
 
     </cffunction>
 
+	<cffunction name="getPrevService">
+		<cfreturn "questionSet2">
+	</cffunction>
+
+	<cffunction name="getNextService">
+		<cfreturn "CreCreacvcxvcvvvvcvxcvv">
+	</cffunction>
+
+
 </cfcomponent>
