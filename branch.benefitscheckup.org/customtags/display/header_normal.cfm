@@ -72,10 +72,11 @@
 <cfparam name="URL.printfriendly" default="false">
 <cfparam name="URL.showOtherWrapper" default="false">
 						
-<cfquery name="getCallout" dataSource="wp_benefitscheckup">
-	SELECT post_content
-	FROM wp_posts
-	WHERE ID = 2185
+<cfquery name="getCallout" dataSource="#application.dbSrc#">
+  select count(s.id) AS c
+        from screening s join oe_org o
+         on s.oe_org_id=o.id
+        where s.subset_id not in (41, 53)
 </cfquery>
 <cfcontent reset="true" />
 <!doctype html>
@@ -203,7 +204,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     	<h1><a target="_blank" href="http://www.ncoa.org"><img src="/wp-content/themes/bcuwptheme/images/logos/ncoa_top.png"  title="National Council on Aging" alt="National Council on Aging" id="topbar" /></a></h1>
        	<a href="/index.php" class="block"><!---<img src="/wp-content/themes/bcuwptheme/images/logos/bcu.png" title="BenefitsCheckUp" alt="BenefitsCheckUp" />---><img src="/wp-content/themes/bcuwptheme/images/logos/bcu.png" title="BenefitsCheckUp" alt="BenefitsCheckUp" /></a>
        	<p>
-			<cfoutput>#getCallout.post_content#</cfoutput>
+			<cfoutput>#getCallout.c#</cfoutput>
 		</p>
 
        
