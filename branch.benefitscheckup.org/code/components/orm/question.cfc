@@ -61,26 +61,30 @@
 		<cfargument name="subset_id" type="any" default="0">
 		<cfargument name="partner_id" type="any" default="0">
 
+		<cfset partnerDiff=true>
+
 		<cfquery name="sqavars" datasource="#application.dbSrc#">
-			SELECT a.answerfield_id
-			FROM question q, question_answerfield qa, (
-				SELECT a.answerfield_id, a.answerfield
-				FROM subset_program_base sp, program p, program_answerfield pa, answerfield a
-				WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
-					AND sp.program_id=p.program_id
-					AND p.active_flag=1
-					AND (p.state_id IS NULL OR p.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
-					AND p.program_id=pa.program_id
-					AND pa.answerfield_id NOT IN (
-						SELECT answerfield_id
-						FROM answerfield_subset_partner
-						WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
-							AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
-							AND background_flag=1
-					)
-					AND pa.answerfield_id=a.answerfield_id
-					AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
-		UNION
+		SELECT a.answerfield_id
+		FROM question q, question_answerfield qa, (
+			SELECT a.answerfield_id, a.answerfield
+			FROM subset_program_base sp, program p, program_answerfield pa, answerfield a
+			WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+				AND sp.program_id=p.program_id
+				AND p.active_flag=1
+				AND (p.state_id IS NULL OR p.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
+				AND p.program_id=pa.program_id
+				AND pa.answerfield_id NOT IN (
+					SELECT answerfield_id
+					FROM answerfield_subset_partner
+					WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
+						AND <cfif partnerDiff>(</cfif>partner_id is null
+			<cfif partnerDiff>
+                or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)				                        </cfif>
+            AND background_flag=1
+            )
+            AND pa.answerfield_id=a.answerfield_id
+            AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
+			UNION
 			SELECT a.answerfield_id, a.answerfield
 			FROM subset_program_base sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
 			WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
@@ -92,14 +96,17 @@
 					SELECT answerfield_id
 					FROM answerfield_subset_partner
 					WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
-						AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
-            			AND background_flag=1
-            		)
-            	AND pa.answerfield_id=ar.left_answerfield_id
-            	AND ar.relationship_id=2
-            	AND ar.right_answerfield_id=a.answerfield_id
-            	AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
-		UNION
+						AND <cfif partnerDiff>(</cfif>partner_id is null
+			<cfif partnerDiff>
+                or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
+						</cfif>
+            AND background_flag=1
+            )
+            AND pa.answerfield_id=ar.left_answerfield_id
+            AND ar.relationship_id=2
+            AND ar.right_answerfield_id=a.answerfield_id
+            AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
+			UNION
 			SELECT a.answerfield_id, a.answerfield
 			FROM subset_program_sum sp, program p, program_answerfield pa, answerfield a
 			WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
@@ -111,12 +118,15 @@
 					SELECT answerfield_id
 					FROM answerfield_subset_partner
 					WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
-						AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
-            			AND background_flag=1
-            		)
-            	AND pa.answerfield_id=a.answerfield_id
-            	AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
-				AND sp.program_id in (
+						AND <cfif partnerDiff>(</cfif>partner_id is null
+			<cfif partnerDiff>
+                or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)				                        </cfif>
+            AND background_flag=1
+            )
+            AND pa.answerfield_id=a.answerfield_id
+            AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
+				and sp.program_id in
+					(
 						select  pp.parent_program_id
 						from program_parent pp, program p, subset_program_base spb
 						where
@@ -124,8 +134,10 @@
 						and pp.program_id = p.program_id
 						and spb.subset_id = #subset_id#
 						and ( p.state_id = '#state_id#' or p.state_id is NULL )
+
 					)
-		UNION
+
+			UNION
 			SELECT a.answerfield_id, a.answerfield
 			FROM subset_program_sum sp, program p, program_answerfield pa, answerfield_relationship ar, answerfield a
 			WHERE sp.subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
@@ -137,24 +149,29 @@
 					SELECT answerfield_id
 					FROM answerfield_subset_partner
 					WHERE subset_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#subset_id#" maxlength="4">
-						AND (partner_id is null or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
-        				AND background_flag=1
-            		)
-				AND pa.answerfield_id=ar.left_answerfield_id
-				AND ar.relationship_id=2
-				AND ar.right_answerfield_id=a.answerfield_id
-				AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
-				and sp.program_id in (
-					select  pp.parent_program_id
-					from program_parent pp, program p, subset_program_base spb
-					where
-					spb.program_id = pp.program_id
-					and pp.program_id = p.program_id
-					and spb.subset_id = #subset_id#
-					and ( p.state_id = '#state_id#' or p.state_id is NULL )
+						AND <cfif partnerDiff>(</cfif>partner_id is null
+			<cfif partnerDiff>
+                or partner_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#partner_id#" maxlength="4">)
+						</cfif>
+            AND background_flag=1
+            )
+            AND pa.answerfield_id=ar.left_answerfield_id
+            AND ar.relationship_id=2
+            AND ar.right_answerfield_id=a.answerfield_id
+            AND (a.state_id IS NULL or a.state_id=<cfqueryparam cfsqltype="cf_sql_varchar" value="#state_id#" maxlength="2">)
+				and sp.program_id in
+					(
+						select  pp.parent_program_id
+						from program_parent pp, program p, subset_program_base spb
+						where
+						spb.program_id = pp.program_id
+						and pp.program_id = p.program_id
+						and spb.subset_id = #subset_id#
+						and ( p.state_id = '#state_id#' or p.state_id is NULL )
 
 					)
-		UNION
+
+			UNION
 			SELECT a.answerfield_id, a.answerfield
 			FROM (
 				select question_id
