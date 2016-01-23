@@ -172,7 +172,7 @@
             <cfset retVal="#retVal#,#build_array.question_id#">
         </cfloop>
 
-        <cfreturn retVal>
+		<cfreturn "q.id in (#retVal#)">
 
     </cffunction>
 
@@ -181,8 +181,7 @@
 	</cffunction>
 
 	<cffunction name="getNextService">
-		<cfreturn "CreCreacvcxvcvvvvcvxcvv">
+		<cfreturn "questionSet4">
 	</cffunction>
-
 
 </cfcomponent>

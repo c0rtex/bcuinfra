@@ -31,21 +31,21 @@ var reloadQuestionSubset = function ($scope, $routeParams) {
 
     if ((from != 0)||($scope.$root.questionSet.PREVSERVICE != "")) {
       if ($scope.$root.questionSubsetNum == 1) {
-        $scope.prevQuestionSetURL = "/questionset/"+$scope.$root.questionSet.PREVSERVICE+"/1000";
+        $scope.$root.prevQuestionSetURL = "/questionset/"+$scope.$root.questionSet.PREVSERVICE+"/1000";
       } else {
-        $scope.prevQuestionSetURL = "/questionset/"+$routeParams.questionSet+"/"+(from/$scope.$root.questionCount);
+        $scope.$root.prevQuestionSetURL = "/questionset/"+$routeParams.questionSet+"/"+(from/$scope.$root.questionCount);
       }
     } else {
-      $scope.prevQuestionSetURL = undefined;
+      $scope.$root.prevQuestionSetURL = undefined;
     }
 
     if ((from+$scope.$root.questionCount>=$scope.$root.questionSet.QUESTIONS.length)&&($scope.$root.questionSet.NEXTSERVICE == "")) {
-      $scope.nextQuestionSetURL = undefined;
+      $scope.$root.nextQuestionSetURL = undefined;
     } else {
       if (from+$scope.$root.questionCount>=$scope.$root.questionSet.QUESTIONS.length) {
-        $scope.nextQuestionSetURL = "/questionset/" + $scope.$root.questionSet.NEXTSERVICE + "/1";
+        $scope.$root.nextQuestionSetURL = "/questionset/" + $scope.$root.questionSet.NEXTSERVICE + "/1";
       } else {
-        $scope.nextQuestionSetURL = "/questionset/" + $routeParams.questionSet + "/" + ($routeParams.questionSubset * 1 + 1);
+        $scope.$root.nextQuestionSetURL = "/questionset/" + $routeParams.questionSet + "/" + ($routeParams.questionSubset * 1 + 1);
       }
     }
 
@@ -56,6 +56,13 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams',
   function($scope, $location, $injector,$routeParams) {
+
+    if (($scope.$root.globalQuestionCounter == undefined)||($scope.$root.prevQuestionSetURL == undefined)) {
+      $scope.$root.globalQuestionCounter=1;
+      $scope.$root.prevQuestionsCount=0;
+    } else {
+
+    }
 
     $scope.$root.questionCount=6;
 
@@ -79,6 +86,17 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
       $scope.$root.questionSetName = $routeParams.questionSet;
       $scope.$root.questionSubsetNum=0;
     }
+
+    $scope.prevQS = function () {
+      $scope.$root.globalQuestionCounter = $scope.$root.globalQuestionCounter - $scope.questions.length-$scope.$root.prevQuestionsCount;
+      $location.url($scope.$root.prevQuestionSetURL);
+    };
+
+    $scope.nextQS = function () {
+      //$scope.$root.globalQuestionCounter = $scope.$root.globalQuestionCounter + $scope.questions.length;
+      $scope.$root.prevQuestionsCount = $scope.questions.length;
+      $location.url($scope.$root.nextQuestionSetURL);
+    };
 
     reloadQuestionSubset($scope,$routeParams);
   }]);

@@ -18,9 +18,7 @@
 		<cfargument name="partner_id" type="numeric" required="no" default="0">
 		<cfargument name="org_id" type="numeric" required="no" default="0">
 
-		<cfset _in = this.getQuestionsId(state_id,subset_id,partner_id,org_id)>
-
-		<cfset cf = ormExecuteQuery("from question as q where q.id in (#_in#) order by sort asc")>
+		<cfset cf = ormExecuteQuery("from question as q where #this.getFilter(state_id,subset_id,partner_id,org_id)# order by sort asc")>
 
 		<cfset retVal = arrayNew(1)>
 
@@ -51,6 +49,14 @@
 
 	<cffunction name="getNextService">
 		<cfreturn "">
+	</cffunction>
+
+	<cffunction name="getFilter">
+		<cfargument name="state_id" type="string" required="no" default="">
+		<cfargument name="subset_id" type="numeric" required="no" default="0">
+		<cfargument name="partner_id" type="numeric" required="no" default="0">
+		<cfargument name="org_id" type="numeric" required="no" default="0">
+		<cfreturn "1=1">
 	</cffunction>
 
 </cfcomponent>

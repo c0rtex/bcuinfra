@@ -13,7 +13,7 @@
   This method is used by method geQuestionSet, implemented in parent component
 --->
 
-	<cffunction name="getQuestionsId">
+	<cffunction name="getFilter">
     <cfargument name="state_id" type="string" required="no" default="">
     <cfargument name="subset_id" type="numeric" required="no" default="0">
     <cfargument name="partner_id" type="numeric" required="no" default="0">
@@ -244,7 +244,7 @@
       <cfset retVal="#retVal#,#build_array.question_id#">
     </cfloop>
 
-    <cfreturn retVal>
+	<cfreturn "q.id in (#retVal#)">
 
   </cffunction>
 

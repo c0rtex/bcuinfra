@@ -34,6 +34,10 @@ questionnaireApp
     .directive('divQuestion', function() {
       return {
         templateUrl:"templates/question.html",
+        link: function (scope) {
+          scope.$root.globalQuestionCounter++;
+          scope.questionCounter=scope.$root.globalQuestionCounter-1;
+        },
         scope:{
           question:'='
         }

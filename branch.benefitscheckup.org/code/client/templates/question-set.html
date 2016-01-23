@@ -2,6 +2,6 @@
     <div-question question="question"/>
 </div>
 
-<input type="button" ng-show="prevQuestionSetURL!= undefined" value="<Previous" ng-click="$location.url(prevQuestionSetURL);">
+<input type="button" ng-show="prevQuestionSetURL!= undefined" value="<Previous" ng-click="prevQS()">
 
-<input type="button" ng-show="nextQuestionSetURL!= undefined" value="Next>" ng-click="$location.url(nextQuestionSetURL);">
+<input type="button" ng-show="nextQuestionSetURL!= undefined" value="Next>" ng-click="nextQS()">

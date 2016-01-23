@@ -39,3 +39,12 @@ services.factory('questionSet4', ['$resource',
                 isArray:false}
         });
     }]);
+
+services.factory('all', ['$resource',
+    function($resource){
+        return $resource('http://localhost/cf/components/customQuestionSet.cfc?method=getQuestionSet&callback=JSON_CALLBACK', {}, {
+            query: {method:'JSONP',
+                params:{subset_id:0,state_id:'',partner_id:0,org_id:0},
+                isArray:false}
+        });
+    }]);

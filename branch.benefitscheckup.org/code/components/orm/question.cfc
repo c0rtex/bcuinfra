@@ -46,7 +46,7 @@
 
 		<cfset retVal["answer_fields"]= arrayNew(1)>
 
-		<cfloop array="#this.getAnswer_fields(state_id=state_id,subset_id=subset_id,partner_id=partner_id)#" index="af">
+		<cfloop array="#this.getAnswer_fields(<!---state_id=state_id,subset_id=subset_id,partner_id=partner_id--->)#" index="af">
 			<cfset arrayAppend(retVal["answer_fields"],af.toStructure())>
 		</cfloop>
 		<cfreturn retVal>
@@ -55,7 +55,7 @@
 <!---
   Method returns filtered questions answer fields based on passed state, subset and partner
 --->
-
+<!---
 	<cffunction name="getAnswer_fields">
 		<cfargument name="state_id" type="string" default="">
 		<cfargument name="subset_id" type="any" default="0">
@@ -206,4 +206,5 @@
 
 	<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
 	</cffunction>
+--->
 </cfcomponent>

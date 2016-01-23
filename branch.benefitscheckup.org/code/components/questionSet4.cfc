@@ -173,7 +173,7 @@
             <cfset retVal="#retVal#,#build_array.question_id#">
         </cfloop>
 
-        <cfreturn retVal>
+		<cfreturn "q.id in (#retVal#)">
 
     </cffunction>
 
