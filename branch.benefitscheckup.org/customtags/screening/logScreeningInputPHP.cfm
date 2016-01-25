@@ -1349,6 +1349,8 @@
 					<cfset databaseval = 0>
 				</cfif>
 				<cfset "session.#databasevarname#" = databaseval>
+                                <cfset rowaccumvar = replace(rowaccumvar,",","","All")>
+                                <cfset databaseval = replace(databaseval,",","","All")>
 				<cfset rowaccumvar = rowaccumvar + databaseval>
 				<cfif element neq 'earned' and element neq 'total_unearned' and element neq 'total_complete' and class neq "ch">
 					<cfset "colaccumvar_#class#_unearned" = Evaluate("colaccumvar_#class#_unearned") + databaseval>
