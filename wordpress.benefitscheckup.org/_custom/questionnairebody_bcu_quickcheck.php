@@ -108,6 +108,9 @@
 
   echo '<p>'.$sectionLegend.'</p>';
 
+  echo '<p> Upper Section </p>'
+
+
   ?>
   <?php  require_once('section_bcu_quickcheck.php');
 
