@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 
-    $("#options_bcuqc_interest_category").children().appendTo("#question_bcuqc_income");
+    $("#options_bcuqc_interest_category").appendTo("#question_bcuqc_income");
 
 
 
