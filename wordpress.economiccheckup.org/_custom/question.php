@@ -86,6 +86,7 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
     $helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
     echo 'Display ID : ' . $titleDisplayID;
     $helpTitle = getDisplayTextbyID($titleDisplayID, $soapClient);
+    echo 'Help Title : ' . $helpTitle;
 
 //$questionHelpText = $questionHelpObj->$helptext;	
 //$questionHelpTitle = $questionHelpObj->$title;	
