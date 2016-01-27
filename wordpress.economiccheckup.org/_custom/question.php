@@ -83,7 +83,7 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
     $displayID = $questionHelpObj->display_id;
     $titleDisplayID = $questionHelpObj->title_display_id;
 
-    $helpText = htmlentities(getDisplayTextbyID($displayID));
+    $helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
     echo 'Display ID : ' . $titleDisplayID;
     $helpTitle = getDisplayTextbyID($titleDisplayID, $soapClient);
 
