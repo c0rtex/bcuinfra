@@ -1399,5 +1399,11 @@ h2.benefitsCheckUpTitle {
 }
 
 #options_bcuqc_income {
-    width : 50%
+    width : 50%;
+    float:left;
+}
+
+#options_bcuqc_interest_category {
+    width : 50%;
+    float : right;
 }
