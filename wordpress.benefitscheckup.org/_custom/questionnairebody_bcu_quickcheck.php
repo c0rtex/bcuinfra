@@ -108,7 +108,7 @@
 
   echo '<p>'.$sectionLegend.'</p>';
 
-  echo '<p> Upper Section </p>'
+  echo '<div id="bcu_upper_section"></div>'
 
 
   ?>
