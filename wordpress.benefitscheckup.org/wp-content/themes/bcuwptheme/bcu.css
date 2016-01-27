@@ -1397,3 +1397,7 @@ h2.benefitsCheckUpTitle {
     overflow-y: hidden;
     z-index : -1;
 }
+
+div#question_bcuqc_income.row-fluid {
+    width : 50%
+}
