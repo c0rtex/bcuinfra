@@ -80,8 +80,11 @@ echo '
 
 foreach ($getQuestionHelp_query as $questionHelpObj):
 
-    $displayID = $questionHelpObj->display_id;
-    $titleDisplayID = $questionHelpObj->title_display_id;
+//    $displayID = $questionHelpObj->display_id;
+//    $titleDisplayID = $questionHelpObj->title_display_id;
+
+    $displayID = $questionHelpObj["DISPLAY_ID"];
+    $titleDisplayID = $questionHelpObj["TITLE_DISPLAY_ID"];
 
     $helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
     echo 'Display ID : ' . $titleDisplayID;
