@@ -81,7 +81,7 @@ echo '
 foreach ($getQuestionHelp_query as $questionHelpObj):
 
     $displayID = $questionHelpObj->display_id;
-    $titleDisplayID = $questionHelpObj->title_display_id;
+    $titleDisplayID = $questionHelpObj->esi_ethnicity;
 
 //    $displayID = $questionHelpObj["DISPLAY_ID"];
 //    $titleDisplayID = $questionHelpObj["TITLE_DISPLAY_ID"];
