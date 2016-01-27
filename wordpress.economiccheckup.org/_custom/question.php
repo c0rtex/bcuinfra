@@ -92,7 +92,8 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 //    echo 'Help Title : ' . $helpTitle;
 
 //$questionHelpText = $questionHelpObj->$helptext;	
-//$questionHelpTitle = $questionHelpObj->$title;	
+//$questionHelpTitle = $questionHelpObj->$title;
+print_r($questionHelpObj);
 //echo 	$questionHelpText;
 
     echo '<a data-content="' . $helpText . '" title="' . $helpTitle . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
