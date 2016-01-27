@@ -46,7 +46,7 @@ function logESIRecs($recsArray, $screeningId)
 function getHelpTitle($help_code)
 {
     switch ($help_code) {
-        case "marital_status_esi" :
+        case "martital_status_esi" :
             return "Marital Status";
         case "esi_ethnicity" :
             return "Ethnicity";
