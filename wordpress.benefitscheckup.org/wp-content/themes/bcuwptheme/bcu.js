@@ -215,6 +215,7 @@ jQuery(document).ready(function () {
         $(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
+    $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
 });
 function createColumns() {
     $("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
