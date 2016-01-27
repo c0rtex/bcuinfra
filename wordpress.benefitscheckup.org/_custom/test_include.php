@@ -520,7 +520,7 @@
                 		</div>
               		</div>
                     <div class="clearfix">
-					  	<label for="normalSelect"><strong>11.</strong>   Sally Including yourself and your spouse (if married), how many people live in your household AND depend on your income for support?  <a data-content="When answering this question, it is very important to include all members of your household (including your spouse) who depend on your income.<br><br>The income guidelines for certain programs and services may be based on the number of people in your household who depend on your income." title="" data-toggle="popover" class="btn btn-mini btn-info" href="#" data-original-title="Help"><i class="icon-question-sign icon-large"></i></a></label>
+					  	<label for="normalSelect"><strong>11.</strong>     Sally Including yourself and your spouse (if married), how many people live in your household AND depend on your income for support?  <a data-content="When answering this question, it is very important to include all members of your household (including your spouse) who depend on your income.<br><br>The income guidelines for certain programs and services may be based on the number of people in your household who depend on your income." title="" data-toggle="popover" class="btn btn-mini btn-info" href="#" data-original-title="Help"><i class="icon-question-sign icon-large"></i></a></label>
                        	<div class="span1">
                         	<div class="input">
                           		<input type="text" name="esi_incomesupport" maxlength="2" class="grid_input" data-source="" data-provide="typeahead" autocomplete="off" class="required">
