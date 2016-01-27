@@ -88,7 +88,10 @@ $helpText = htmlentities(getDisplayTextbyID($displayID));
 $helpTitle = getDisplayTextbyID($titleDisplayID);
 //$questionHelpText = $questionHelpObj->$helptext;	
 //$questionHelpTitle = $questionHelpObj->$title;	
-//echo 	$questionHelpText;						
+//echo 	$questionHelpText;
+
+echo $helpTitle;
+
 echo'									
 									<a data-content="'.$helpText.'" title="'.$helpTitle.'" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';	
