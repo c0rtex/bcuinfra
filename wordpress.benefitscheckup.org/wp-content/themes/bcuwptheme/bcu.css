@@ -1398,6 +1398,6 @@ h2.benefitsCheckUpTitle {
     z-index : -1;
 }
 
-div#question_bcuqc_income.row-fluid {
+#bcu_income_questions {
     width : 50%
 }
