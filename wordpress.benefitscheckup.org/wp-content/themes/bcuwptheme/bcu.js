@@ -1,4 +1,9 @@
 jQuery(document).ready(function () {
+
+    $("#options_bcuqc_interest_category").children().appendTo("#question_bcuqc_income");
+
+
+
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
 
