@@ -77,7 +77,7 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 //$questionHelpTitle = $questionHelpObj->$title;	
 //echo 	$questionHelpText;						
     echo'
-									<a data-content="'.$helpText.'" title="'.$helpTitle.'" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta"></i></a>
+									<a data-content="'.$helpText.'" title="'.$helpTitle.'" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta2"></i></a>
 ';
 endforeach;
 echo'									</label>';
