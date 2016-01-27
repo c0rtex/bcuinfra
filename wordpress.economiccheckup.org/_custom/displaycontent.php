@@ -169,7 +169,6 @@ function getHelpDisplayTextbyCode($helpCode)
     endforeach;
     //$rowCount = $bcudb->num_rows();
     if ($rowCount == 0) {
-        echo $helpCode;
         return getHelpTitle($helpCode);
     } else {
         return $displayText;
