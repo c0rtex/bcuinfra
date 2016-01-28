@@ -1420,3 +1420,16 @@ h2.benefitsCheckUpTitle {
         float: inherit;
     }
 }
+
+@media (max-width: 600px) {
+
+    #options_bcuqc_income {
+        width: 100%;
+        float: inherit;
+    }
+
+    #options_bcuqc_interest_category {
+        width: 100%;
+        float: inherit;
+    }
+}
