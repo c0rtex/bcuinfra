@@ -1447,3 +1447,11 @@ h2.benefitsCheckUpTitle {
         float: inherit;
     }
 }
+
+#question_dob {
+    float : left;
+}
+
+#question_zip {
+    float : left;
+}
