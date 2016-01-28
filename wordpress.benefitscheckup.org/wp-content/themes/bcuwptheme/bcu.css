@@ -1347,6 +1347,20 @@ div.AdvancedText {
     #esiQuickcheckCheckboxes .first-column {
         width: 100%;
         float: left;
+        margin-bottom: 10px;
+    }
+
+    #esiQuickcheckCheckboxes .last-column {
+        display: none
+    }
+}
+
+@media (max-width: 600px) {
+
+    #esiQuickcheckCheckboxes .first-column {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
     }
 
     #esiQuickcheckCheckboxes .last-column {
