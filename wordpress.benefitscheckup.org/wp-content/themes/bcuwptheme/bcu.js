@@ -348,6 +348,7 @@ function reDraw() {
 
     [zipBlock, dobBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
 
-    var interestBlock = $("options_bcuqc_interest_category").parentNode;
+    var interestBlock = $("question_bcuqc_interest_category");
     interestBlock.appendTo(containerBlock);
+    interestBlock.addClass("span6");
 }
