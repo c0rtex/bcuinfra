@@ -165,6 +165,7 @@ function getHelpDisplayTextbyCode($helpCode)
     $rowCount = 0;
     foreach ($getHelpDisplayTextbyCode_query as $textObj) :
         $displayText = $textObj->display_text;
+
         $rowCount++;
     endforeach;
     //$rowCount = $bcudb->num_rows();
@@ -172,10 +173,9 @@ function getHelpDisplayTextbyCode($helpCode)
         return getHelpTitle($helpCode);
     } else {
         echo "The display text was found and it is : " . $displayText;
+        findHelpDefinition($displayText);
         return $displayText;
     }
-
-
 }
 
 function findHelpDefinition($displayText)
@@ -199,6 +199,7 @@ function findHelpDefinition($displayText)
             $defContent = htmlentities(getHelpDisplayTextbyCode($theKey));
             $printLink = '<a title="' . $cleanedLinkTitle . '" data-html="true"  html="true" data-content="' . $defContent . '"  data-placement="top" data-toggle="popover" href="#" data-original-title="' . $cleanedLinkTitle . '">' . $cleanedLinkTitle . '</a>';
             //$printLink =  '<a title="'.$cleanedLinkTitle.'" data-html="true"  html="true" data-content="'.$defContent.'"  data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a>';
+            echo "The print link here" . $printLink;
             return $printLink;
 
         },
