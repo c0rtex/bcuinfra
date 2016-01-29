@@ -4,8 +4,8 @@ jQuery(document).ready(function () {
     $("#options_bcuqc_income").appendTo("#bcu_upper_section");
 
     if (detectIE()){
-        $("#question_dob").appendTo("#bcu_upper_section");
         $("#question_zip").appendTo("#bcu_upper_section");
+        $("#question_dob").appendTo("#bcu_upper_section");
         console.log("Is IE");
     }
 
