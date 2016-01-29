@@ -2,7 +2,8 @@ jQuery(document).ready(function () {
 
     $("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
     $("#options_bcuqc_income").appendTo("#bcu_upper_section");
-
+    $("#question_dob").appendTo("bcu_upper_section");
+    $("#question_zip").appendTo("bcu_upper_section");
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
