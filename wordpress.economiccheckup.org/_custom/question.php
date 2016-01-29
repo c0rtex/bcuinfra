@@ -95,7 +95,7 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 //print_r($questionHelpObj);
 //echo 	$questionHelpText;
 
-    echo '<a data-content="' . $helpText . '" title="' . ucfirst($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
+    echo '<a data-content="' . $helpText . '" title="' . ucwords($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';
 endforeach;
 echo '									</label>';
