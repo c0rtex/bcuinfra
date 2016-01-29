@@ -1460,10 +1460,15 @@ h2.benefitsCheckUpTitle {
     margin-top: 5px;
 }
 
-img#esiQuickcheckResultsButton {
+:-ms-fullscreen, :root .ie11up {
+
+ img#esiQuickcheckResultsButton {
     bottom: -50px;
     right: 25%;
     left: 50%;
     margin-left: -150px;
     position: absolute;
+    }
 }
+
+
