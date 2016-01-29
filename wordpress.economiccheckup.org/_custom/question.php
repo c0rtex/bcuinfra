@@ -36,7 +36,6 @@ $line = preg_replace_callback(
         }
         $defContent = $theKey;
         $defContent = getHelpDisplayTextbyCode($theKey);
-        echo "The cleaned link title". $cleanedLinkTitle;
         $printLink = '<a title="' . $cleanedLinkTitle . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $cleanedLinkTitle . '">' . $cleanedLinkTitle . '</a>';
         return $printLink;
 
@@ -96,7 +95,7 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 //print_r($questionHelpObj);
 //echo 	$questionHelpText;
 
-    echo '<a data-content="' . $helpText . '" title="' . $helpTitle . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
+    echo '<a data-content="' . $helpText . '" title="' . ucfirst($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';
 endforeach;
 echo '									</label>';
