@@ -184,7 +184,7 @@
                 <p><br/>When your results are displayed, you will see a link to send us comments about
                     how EconomicCheckUp has helped you. Please take a moment to provide us with
                     this information. The more we learn about how EconomicCheckUp helps you, the
-                    better we will be able to serve you in the futures.</p>
+                    better we will be able to serve you in the future.</p>
             </div>
     </div>
 
