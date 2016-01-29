@@ -82,18 +82,8 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
     $displayID = $questionHelpObj->display_id;
     $titleDisplayID = $questionHelpObj->help_code;
 
-//    $displayID = $questionHelpObj["DISPLAY_ID"];
-//    $titleDisplayID = $questionHelpObj["TITLE_DISPLAY_ID"];
-
     $helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
-//    echo 'Display ID : ' . $titleDisplayID;
     $helpTitle = getHelpDisplayTextbyCode($titleDisplayID);
-//    echo 'Help Title : ' . $helpTitle;
-
-//$questionHelpText = $questionHelpObj->$helptext;	
-//$questionHelpTitle = $questionHelpObj->$title;
-//print_r($questionHelpObj);
-//echo 	$questionHelpText;
 
     echo '<a data-content="' . $helpText . '" title="' . ucwords($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';
