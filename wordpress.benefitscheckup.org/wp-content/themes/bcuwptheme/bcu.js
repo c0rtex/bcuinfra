@@ -4,11 +4,16 @@ jQuery(document).ready(function () {
     $("#options_bcuqc_income").appendTo("#bcu_upper_section");
 
 
-    $("#question_dob").appendTo("#bcu_upper_section");
-    $("#question_zip").appendTo("#bcu_upper_section");
+    var DOT_NET = ".NET";
 
+    if (! navigator.appVersion.indexOf(DOT_NET) > -1){
 
-    console.log(navigator);
+        $("#question_dob").appendTo("#bcu_upper_section");
+        $("#question_zip").appendTo("#bcu_upper_section");
+        console.log("Is IE");
+    }
+
+    console.log(navigator.appVersion);
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
