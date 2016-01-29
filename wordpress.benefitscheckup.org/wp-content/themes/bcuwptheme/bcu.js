@@ -6,8 +6,8 @@ jQuery(document).ready(function () {
 
     var DOT_NET = ".NET";
 
+    console.log(navigator.appVersion);
     if (! navigator.appVersion.indexOf(DOT_NET) > -1){
-
         $("#question_dob").appendTo("#bcu_upper_section");
         $("#question_zip").appendTo("#bcu_upper_section");
         console.log("Is IE");
