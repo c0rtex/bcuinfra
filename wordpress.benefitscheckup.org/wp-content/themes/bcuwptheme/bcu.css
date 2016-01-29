@@ -1449,13 +1449,21 @@ h2.benefitsCheckUpTitle {
 }
 
 #question_dob {
-    float : left;
+    float: left;
 }
 
 #question_zip {
-    float : left;
+    float: left;
 }
 
 #label_bcuqc_income_3000 {
-    margin-top : 5px;
+    margin-top: 5px;
+}
+
+img#esiQuickcheckResultsButton {
+    bottom: -50px;
+    right: 25%;
+    left: 50%;
+    margin-left: -150px;
+    position: absolute;
 }
