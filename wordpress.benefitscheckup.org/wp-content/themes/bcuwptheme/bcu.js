@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
     $("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
     $("#options_bcuqc_income").appendTo("#bcu_upper_section");
 
-    if (detectIE){
+    if (detectIE()){
         $("#question_dob").appendTo("#bcu_upper_section");
         $("#question_zip").appendTo("#bcu_upper_section");
         console.log("Is IE");
