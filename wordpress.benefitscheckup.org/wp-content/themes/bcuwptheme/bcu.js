@@ -1,4 +1,5 @@
 jQuery(document).ready(function () {
+    reDraw()
 
     //$("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
     //$("#question_dob").appendTo("#bcu_upper_section");
@@ -327,4 +328,27 @@ function detectIE() {
 
     // other browser
     return false;
+}
+
+function appendTo(section) {
+    return function (element) {
+        element.appendTo(section)
+    }
+}
+
+function reDraw() {
+    var leftColumn = "#left_questions_column";
+    var containerBlock = $("#bcu_upper_section");
+
+    var zipBlock = $("#question_zip");
+    var dobBlock = $("#question_dob");
+    var incomeBlock = $("#bcuqc_income_group");
+
+    var leftColumnBlock = $(leftColumn);
+
+    [zipBlock, dobBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
+
+    var interestBlock = $("options_bcuqc_interest_category").parentNode;
+
+    [leftColumnBlock, interestBlock].forEach(appendTo(containerBlock));
 }
