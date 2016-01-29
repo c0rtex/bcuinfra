@@ -170,6 +170,7 @@ else
 $subdomain ='redesign';
 $esiprod = 0;
 }
+echo "Kawabanga";
 echo 'action="https://'.$subdomain.'.benefitscheckup.org/cf/esiprocess.cfm?esiprod='.$esiprod.'"'; ?> 
 method="post" > 
 <?php require_once('section.php') ?>
