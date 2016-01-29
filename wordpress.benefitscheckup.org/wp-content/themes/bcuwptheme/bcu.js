@@ -3,11 +3,7 @@ jQuery(document).ready(function () {
     $("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
     $("#options_bcuqc_income").appendTo("#bcu_upper_section");
 
-
-    var DOT_NET = ".NET";
-
-    console.log(navigator);
-    if (! navigator.appVersion.indexOf(DOT_NET) > -1){
+    if (detectIE){
         $("#question_dob").appendTo("#bcu_upper_section");
         $("#question_zip").appendTo("#bcu_upper_section");
         console.log("Is IE");
@@ -300,4 +296,34 @@ function responsiveMenu() {
         $("#getStartedESIButtonImg").css("margin-top", "0px");
         $("#getStartedESIButtonImg").css("margin-top", "0px");
     }
+}
+
+/**
+ * detect IE
+ * returns version of IE or false, if browser is not Internet Explorer
+ */
+function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+        // Edge (IE 12+) => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
 }
