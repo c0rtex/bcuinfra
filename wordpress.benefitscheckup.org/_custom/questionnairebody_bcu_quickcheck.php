@@ -1,16 +1,16 @@
-<?php 
+<?php
   require_once('soap_client.php');
   $benefitsPost = $soapClient->getWPPostByMetaTag('bcu_quickcheck_homepage_heading_introduction');
   $leadtext = $benefitsPost[0]["POST_CONTENT"];
-  //print_r($benefits ); 
-  
+  //print_r($benefits );
+
  ?>
 
 <h2><?php print $benefitsPost[0]["POST_TITLE"]; ?></h2>
 <p id="feature_paragraph"><?php print $leadtext ?></p>
 
 <p>
-<a id="getStartedBCUButton" href="#bcu_quickcheck" data-toggle="modal" data-target="#bcu_quickcheck">                    
+<a id="getStartedBCUButton" href="#bcu_quickcheck" data-toggle="modal" data-target="#bcu_quickcheck">
 <img id="getStartedBCUQuickcheck" src="/wp-content/uploads/2011/09/getstarted.png"></a></p>
 
 
@@ -108,8 +108,7 @@
 
   echo '<p>'.$sectionLegend.'</p>';
 
-  echo '<div id="bcu_upper_section"></div>'
-
+  echo '<span id="bcu_upper_section" class="span12"><div id="left_questions_column" class="span6"></div></span>';
 
   ?>
   <?php  require_once('section_bcu_quickcheck.php');
@@ -144,5 +143,5 @@ if (isset($_GET['screeningID'])) {
 </div>
 
 
-<?php  require_once('questionnaire/footer_includes.php'); ?> 
+<?php  require_once('questionnaire/footer_includes.php'); ?>
 
