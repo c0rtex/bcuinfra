@@ -76,7 +76,6 @@ switch ($answerfieldCode) {
         break;
 
     case 'checkbox':
-        echo "BOX___________________";
         //set definitions replace text code with link
         $responseType = 3;
         $answerfieldValue = getScreeningAnswerfield($answerfieldID, $screeningID, $responseType);
