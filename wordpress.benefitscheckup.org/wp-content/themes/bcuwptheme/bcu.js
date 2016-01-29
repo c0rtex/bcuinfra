@@ -3,11 +3,12 @@ jQuery(document).ready(function () {
     $("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
     $("#options_bcuqc_income").appendTo("#bcu_upper_section");
 
-    if($browser.msie){
-        $("#question_dob").appendTo("#bcu_upper_section");
-        $("#question_zip").appendTo("#bcu_upper_section");
-    }
 
+    $("#question_dob").appendTo("#bcu_upper_section");
+    $("#question_zip").appendTo("#bcu_upper_section");
+
+
+    console.log(navigator.appCodeName)
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
@@ -26,7 +27,7 @@ jQuery(document).ready(function () {
         responsiveQcTable();
     });
 
-    $( window ).on("orientationchange", function( event ) {
+    $(window).on("orientationchange", function (event) {
         responsiveQcTable();
         responsiveMenu();
     });
@@ -36,11 +37,11 @@ jQuery(document).ready(function () {
     //});
 
 
-    $(".modal").on("shown.bs.modal", function(){
+    $(".modal").on("shown.bs.modal", function () {
         $(document.body).addClass("frozenBody")
     });
 
-    $(".modal").on("hidden.bs.modal", function(){
+    $(".modal").on("hidden.bs.modal", function () {
         $(document.body).removeClass("frozenBody")
     });
 
@@ -191,7 +192,7 @@ jQuery(document).ready(function () {
             $(".alert").remove();
         }
 
-        function trySubmit(e){
+        function trySubmit(e) {
             validated = 1;
             // Validate specific input parameters
             removeZipAlerts();
