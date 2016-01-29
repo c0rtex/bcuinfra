@@ -36,7 +36,7 @@ $defContent = $theKey;
 //$soapClient = new SoapClient($url, array('cache_wsdl' => WSDL_CACHE_NONE));
 $defContent = getHelpDisplayTextbyCode($theKey, $soapClient);
 
- $printLink =  '<a title="'.$cleanedLinkTitle2.'" data-content="'.$defContent.'" data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a> ';
+ $printLink =  '<a title="'.ucwords($cleanedLinkTitle2).'" data-content="'.$defContent.'" data-placement="top" data-toggle="popover" href="#" data-original-title="'.ucwords($cleanedLinkTitle).'">'.$cleanedLinkTitle.'</a> ';
  return $printLink;
 
         },
