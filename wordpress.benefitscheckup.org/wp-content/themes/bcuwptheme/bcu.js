@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
     $("#question_zip").appendTo("#bcu_upper_section");
 
 
-    console.log(navigator.appCodeName)
+    console.log(navigator.appCodeName);
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
