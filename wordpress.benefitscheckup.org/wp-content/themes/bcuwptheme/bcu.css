@@ -1412,41 +1412,41 @@ h2.benefitsCheckUpTitle {
     z-index: -1;
 }
 
-#options_bcuqc_income {
-    width: 48%;
-    float: left;
-}
+/*#options_bcuqc_income {*/
+    /*width: 48%;*/
+    /*float: left;*/
+/*}*/
 
-#options_bcuqc_interest_category {
-    width: 48%;
-    float: right;
-}
+/*#options_bcuqc_interest_category {*/
+    /*width: 48%;*/
+    /*float: right;*/
+/*}*/
 
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {*/
 
-    #options_bcuqc_income {
-        width: 100%;
-        float: inherit;
-    }
+    /*#options_bcuqc_income {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
 
-    #options_bcuqc_interest_category {
-        width: 100%;
-        float: inherit;
-    }
-}
+    /*#options_bcuqc_interest_category {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
+/*}*/
 
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {*/
 
-    #options_bcuqc_income {
-        width: 100%;
-        float: inherit;
-    }
+    /*#options_bcuqc_income {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
 
-    #options_bcuqc_interest_category {
-        width: 100%;
-        float: inherit;
-    }
-}
+    /*#options_bcuqc_interest_category {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
+/*}*/
 
 #question_dob {
     float: left;
