@@ -1417,7 +1417,7 @@ h2.benefitsCheckUpTitle {
     float: left;
 }
 
-#question_zip {
+#options_bcuqc_interest_category {
     width: 48%;
     float: right;
 }
@@ -1429,7 +1429,7 @@ h2.benefitsCheckUpTitle {
         float: inherit;
     }
 
-    #question_zip {
+    #options_bcuqc_interest_category {
         width: 100%;
         float: inherit;
     }
@@ -1442,7 +1442,7 @@ h2.benefitsCheckUpTitle {
         float: inherit;
     }
 
-    #question_zip {
+    #options_bcuqc_interest_category {
         width: 100%;
         float: inherit;
     }
