@@ -36,7 +36,7 @@ $line = preg_replace_callback(
         }
         $defContent = $theKey;
         $defContent = getHelpDisplayTextbyCode($theKey);
-
+        echo "The cleaned link title". $cleanedLinkTitle;
         $printLink = '<a title="' . $cleanedLinkTitle . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $cleanedLinkTitle . '">' . $cleanedLinkTitle . '</a>';
         return $printLink;
 
