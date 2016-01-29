@@ -171,6 +171,7 @@ function getHelpDisplayTextbyCode($helpCode)
     if ($rowCount == 0) {
         return getHelpTitle($helpCode);
     } else {
+        echo "The display text was found and it is : " . $displayText;
         return $displayText;
     }
 
