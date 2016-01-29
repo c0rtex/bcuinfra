@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-    reDraw()
+    reDraw();
 
     //$("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
     //$("#question_dob").appendTo("#bcu_upper_section");
@@ -232,11 +232,11 @@ jQuery(document).ready(function () {
     $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
 });
 function createColumns() {
-    $("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
-    $("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
-    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
-    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
-    responsiveQcTable();
+    //$("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
+    //$("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
+    //$("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
+    //$("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
+    //responsiveQcTable();
 }
 
 /**
