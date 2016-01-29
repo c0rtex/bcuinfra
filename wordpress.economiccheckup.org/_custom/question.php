@@ -36,7 +36,7 @@ $line = preg_replace_callback(
         }
         $defContent = $theKey;
         $defContent = getHelpDisplayTextbyCode($theKey);
-        $printLink = '<a title="' . ucfirst($cleanedLinkTitle) . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $cleanedLinkTitle . '">' . $cleanedLinkTitle . '</a>';
+        $printLink = '<a title="' . ucwords($cleanedLinkTitle) . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $cleanedLinkTitle . '">' . $cleanedLinkTitle . '</a>';
         return $printLink;
 
     },
