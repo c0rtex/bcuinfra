@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 //Get question display text.
-$questionText = getDisplayTextByID ($questionDisplayID, $soapClient); //located in displaycontent_esi_quickcheck
+$questionText = getDisplayTextByID($questionDisplayID, $soapClient); //located in displaycontent_esi_quickcheck
 //$questionString = $questionText;
 //$findA   = '[[';
 //$findB   = ']]';
@@ -11,37 +11,36 @@ $questionText = getDisplayTextByID ($questionDisplayID, $soapClient); //located 
 $line = $questionText;
 //echo $questionText;
 $line = preg_replace_callback(
-        '/\[\[[^\]]*\]\]/' // / is a delimiter denoting start and end of expression
-,
-        function ($matches) use ($soapClient) {
+    '/\[\[[^\]]*\]\]/' // / is a delimiter denoting start and end of expression
+    ,
+    function ($matches) use ($soapClient) {
 
 
-$parts = explode('|', $matches[0]);
-if ( sizeOf($parts) == 2){
- $cleanedLinkTitle = substr ($parts[1], 0, -2);
- $theKey = $cleanedLinkTitle;
- //echo '<h3>size 2:'.$theKey .'</h3>';
-}
-else if (sizeOf($parts) == 3){
- $cleanedLinkTitle = substr ($parts[2], 0, -2);
- $theKey = $parts[1];
-}
+        $parts = explode('|', $matches[0]);
+        if (sizeOf($parts) == 2) {
+            $cleanedLinkTitle = substr($parts[1], 0, -2);
+            $theKey = $cleanedLinkTitle;
+            //echo '<h3>size 2:'.$theKey .'</h3>';
+        } else if (sizeOf($parts) == 3) {
+            $cleanedLinkTitle = substr($parts[2], 0, -2);
+            $theKey = $parts[1];
+        }
 
 //popup upper case first char in each word of title string
 //$cleanedLinkTitle2 = ucwords($cleanedLinkTitle);
-$cleanedLinkTitle2 = getHelpTitleByCode ($theKey, $soapClient);  //corresponds to cleanedLinkTitleDb in displaycontent_mqc.php for the answers
-$defContent = $theKey;
+        $cleanedLinkTitle2 = getHelpTitleByCode($theKey, $soapClient);  //corresponds to cleanedLinkTitleDb in displaycontent_mqc.php for the answers
+        $defContent = $theKey;
 
 //$url = "https://redesign.benefitscheckup.org/util/remotescreening_3_0.cfc?WSDL";
 //$soapClient = new SoapClient($url, array('cache_wsdl' => WSDL_CACHE_NONE));
-$defContent = getHelpDisplayTextbyCode($theKey, $soapClient);
+        $defContent = getHelpDisplayTextbyCode($theKey, $soapClient);
 
- $printLink =  '<a title="'.$cleanedLinkTitle2.'" data-content="'.$defContent.'" data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a> ';
- return $printLink;
+        $printLink = '<a title="' . $cleanedLinkTitle2 . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $cleanedLinkTitle . '">' . $cleanedLinkTitle . '</a> ';
+        return $printLink;
 
-        },
-        $questionText
-    );
+    },
+    $questionText
+);
 
 $questionText = $line;
 
@@ -49,35 +48,34 @@ $getQuestionHelp_query = $soapClient->getQuestionHelp($questionID);
 //$getQuestionHelp_query = restructureWSArray ($getQuestionHelp_query);
 
 //var_dump($getQuestionHelp_query);
-echo'
+echo '
 						<div class="clearfix">
-                        	<div class="esiQuickcheckQuestion" id="question_'.$questionCode.'">
+                        	<div class="esiQuickcheckQuestion" id="question_' . $questionCode . '">
                             	<span class="span1"><strong>';
 
 
 echo '</strong></span>
                                 <span class="span11">					      	
-                                	<label for="normalSelect">'.$questionText;
+                                	<label for="normalSelect">' . $questionText;
 
 foreach ($getQuestionHelp_query as $questionHelpObj):
 
-$displayID = $questionHelpObj["DISPLAY_ID"];
-$titleDisplayID = $questionHelpObj["TITLE_DISPLAY_ID"];
+    $displayID = $questionHelpObj["DISPLAY_ID"];
+    $titleDisplayID = $questionHelpObj["TITLE_DISPLAY_ID"];
 
-$helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
-$helpTitle = getDisplayTextbyID($titleDisplayID, $soapClient);
+    $helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
+    $helpTitle = getDisplayTextbyID($titleDisplayID, $soapClient);
 //$questionHelpText = $questionHelpObj->$helptext;	
 //$questionHelpTitle = $questionHelpObj->$title;	
 //echo 	$questionHelpText;						
-echo'									
-									<a data-content="'.$helpText.'" title="'.$helpTitle.'" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta4"></i></a>
-';	
-endforeach;							
-echo'									</label>';
-									require('_custom/questiontype_esi_quickcheck.php');
-									
-                                    
-echo'                                </span>
+    echo '<a data-content="' . $helpText . '" title="' . $helpTitle . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta4"></i></a>
+';
+endforeach;
+echo '									</label>';
+require('_custom/questiontype_esi_quickcheck.php');
+
+
+echo '                                </span>
                           	</div>
 						</div>
 ';

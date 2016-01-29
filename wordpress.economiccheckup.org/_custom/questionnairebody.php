@@ -163,9 +163,9 @@
                 $subdomain = 'redesign';
                 $esiprod = 0;
             }
-            echo "Kawabanga";
             echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod . '"'; ?>
               method="post">
+            <!-- Run the section generator script -->
             <?php require_once('section.php') ?>
             <div class="printButton">
                 <?php
