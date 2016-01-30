@@ -58,3 +58,14 @@ questionnaireApp
         }
       }
     });
+
+questionnaireApp
+    .directive('textToCompile',function($compile) {
+        return{
+            link: function(scope, element, attributes){
+                var linkFn = $compile(attributes['textToCompile']);
+                var content = linkFn(scope);
+                element.append(content);
+            }
+        }
+    });

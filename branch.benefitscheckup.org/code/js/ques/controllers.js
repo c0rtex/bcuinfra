@@ -20,6 +20,15 @@ var parseLocation = function(location) {
   return obj;
 };
 
+var showHideHelpDef = function(show, divName) {
+  if (show) {
+    $("div#" + divName).show();
+  } else {
+    $("div#" + divName).hide();
+  }
+  return false;
+};
+
 var reloadQuestionSubset = function ($scope, $routeParams) {
   if (($scope.$root.questionSubsetNum != $routeParams.questionSubset)&&($scope.$root.questionSet.QUESTIONS != undefined)) {
     var from = $scope.$root.questionSet.QUESTIONS.length>($routeParams.questionSubset-1)*$scope.$root.questionCount
