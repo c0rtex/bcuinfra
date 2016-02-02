@@ -31,7 +31,7 @@ function getHelpTitleByCode($helpCode)
 	FROM
 	`help`
 	INNER JOIN display_language ON `help`.title_display_id = display_language.display_id
-	WHERE `help`.help_code = $helpCode
+	WHERE `help`.help_code = ". $helpCode . "
 	";
 
     $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
