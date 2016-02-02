@@ -36,6 +36,11 @@ $line = preg_replace_callback(
         }
         $defContent = $theKey;
         $defContent = getHelpDisplayTextbyCode($theKey);
+
+        $testContent = getHelpTitleByCode($theKey);
+        echo "Here TEst";
+        print_r($testContent);
+
         $printLink = '<a title="' . ucwords($cleanedLinkTitle) . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . ucwords($cleanedLinkTitle) . '">' . $cleanedLinkTitle . '</a>';
         return $printLink;
 
@@ -76,7 +81,6 @@ echo '
                             	<div class="span1"><strong>' . $questionNumberTotal . '.</strong></div>
                                 <div class="span11">					      	
                                 	<label for="normalSelect">' . $questionText;
-print_r($getQuestionHelp_query);
 foreach ($getQuestionHelp_query as $questionHelpObj):
 
     $displayID = $questionHelpObj->display_id;
