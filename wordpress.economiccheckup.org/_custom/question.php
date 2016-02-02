@@ -23,8 +23,6 @@ $line = $questionText;
 
 function getHelpTitleByCode($helpCode)
 {
-    echo "here helpcode.";
-    echo $helpCode;
     $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
     $bcudb->show_errors();
     $query_getHelpDisplayTextbyCode = "
@@ -126,7 +124,6 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 
     echo "Here Test_____________";
     print_r(getHelpTitleByCode($titleDisplayID));
-    print_r($questionHelpObj);
     echo '<a data-content="' . $helpText . '" title="' . ucwords($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';
 endforeach;
