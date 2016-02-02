@@ -125,7 +125,7 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 
     echo "Here Test_____________";
     print_r(getHelpTitleByCode($titleDisplayID));
-
+    print_r($questionHelpObj);
     echo '<a data-content="' . $helpText . '" title="' . ucwords($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';
 endforeach;
