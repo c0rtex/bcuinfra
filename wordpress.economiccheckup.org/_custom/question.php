@@ -23,6 +23,7 @@ $line = $questionText;
 
 function getHelpTitleByCode($helpCode)
 {
+    echo $helpCode;
     $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
     $bcudb->show_errors();
     $query_getHelpDisplayTextbyCode = "
