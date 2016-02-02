@@ -27,10 +27,9 @@ function getHelpTitleByCode($helpCode)
     $bcudb->show_errors();
     $query_getHelpDisplayTextbyCode = "
 	SELECT
-	help_data.title_text
+	title_text
 	FROM
 	`help`
-	WHERE `help`.keyword  = '" . $helpCode . "'
 	";
 
     $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
