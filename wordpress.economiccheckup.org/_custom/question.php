@@ -96,7 +96,7 @@ question_help.question_id,
 dl.display_text as helptext,
 dl.display_id,
 dl.language_id,
-dl2.display_text as title
+dl.display_text as title
 FROM
 `help`
 INNER JOIN question_help ON `help`.help_id = question_help.help_id
