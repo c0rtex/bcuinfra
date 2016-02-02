@@ -363,9 +363,9 @@ function isIpad() {
 }
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
-    console.log("the Width is" + $(window).width);
-    console.log("The height is" + $(window).height);
-    if ($(window).width == 768 && $(window).height == 1024) {
+    console.log("the Width is" + $(window).width());
+    console.log("The height is" + $(window).height());
+    if ($(window).width() == 768 && $(window).height() == 1024) {
         console.log("Is ipad sizes");
 
         if ($(window).orientation == 0) { //portrait
