@@ -197,8 +197,9 @@ function findHelpDefinition($displayText)
             $defContent = $theKey;
             echo "HERE BUG____________";
             echo $defContent;
+            $display_title = getHelpTitleByCode($theKey);
             $defContent = htmlentities(getHelpDisplayTextbyCode($theKey));
-            $printLink = '<a title="' . ucwords($cleanedLinkTitle) . '" data-html="true"  html="true" data-content="' . $defContent . '"  data-placement="top" data-toggle="popover" href="#" data-original-title="' . ucwords($cleanedLinkTitle) . '">' . $cleanedLinkTitle . '</a>';
+            $printLink = '<a title="' . $display_title . '" data-html="true"  html="true" data-content="' . $defContent . '"  data-placement="top" data-toggle="popover" href="#" data-original-title="' . $display_title . '">' . $cleanedLinkTitle . '</a>';
             //$printLink =  '<a title="'.$cleanedLinkTitle.'" data-html="true"  html="true" data-content="'.$defContent.'"  data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a>';
             return $printLink;
 
@@ -391,39 +392,41 @@ function getAFValidationShort($answerfield)
     return $validationMessage;
 }
 
-//function getHelpTitleByCode($helpCode)
-//{
-//
-//    $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
-//    $bcudb->show_errors();
-//    $query_getHelpDisplayTextbyCode = "
-//	SELECT
-//	display_language.display_id,
-//	display_language.display_text,
-//	display_language.language_id
-//	FROM
-//	`help`
-//	INNER JOIN display_language ON `help`.title_display_id = display_language.display_id
-//	WHERE `help`.keyword  = '" . $helpCode . "'
-//	and display_language.language_id = 'EN'
-//	";
-//    $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
-//    //$displayText = $bcudb->get_row();
-//    $rowCount = 0;
-//    foreach ($getHelpDisplayTextbyCode_query as $textObj) :
-//        $displayText = $textObj->display_text;
-//        $rowCount++;
-//    endforeach;
-//    //$rowCount = $bcudb->num_rows();
-//    if ($rowCount == 0) {
-//        $displayText = '<h4 class="Alert-Heading">No Content Found: ' . $helpCode . '</h4>';
-//        return $displayText;
-//    } else {
-//
-//        return $displayText;
-//    }
-//
-//}
+function getHelpTitleByCode($helpCode)
+{
+    echo $helpCode;
+    $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
+    $bcudb->show_errors();
+    $query_getHelpDisplayTextbyCode = "
+	SELECT
+	display_language.display_id,
+	display_language.display_text,
+	display_language.language_id
+	FROM
+	`help`
+	INNER JOIN display_language ON `help`.title_display_id = display_language.display_id
+	WHERE `help`.keyword  = '" . $helpCode . "'
+	and display_language.language_id = 'EN'
+	";
+
+    $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
+    //$displayText = $bcudb->get_row();
+    $rowCount = 0;
+    foreach ($getHelpDisplayTextbyCode_query as $textObj) :
+        print_r($textObj);
+        $displayText = $textObj->display_text;
+        $rowCount++;
+    endforeach;
+    //$rowCount = $bcudb->num_rows();
+    if ($rowCount == 0) {
+        $displayText = '<h4 class="Alert-Heading">No Content Found: ' . $helpCode . '</h4>';
+        return $displayText;
+    } else {
+
+        return $displayText;
+    }
+
+}
 
 
 ?>
