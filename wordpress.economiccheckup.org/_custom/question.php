@@ -23,7 +23,8 @@ $line = $questionText;
 
 function getHelpTitleByCode($helpCode)
 {
-
+    echo "here helpcode.";
+    echo $helpCode;
     $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
     $bcudb->show_errors();
     $query_getHelpDisplayTextbyCode = "
@@ -96,7 +97,7 @@ question_help.question_id,
 dl.display_text as helptext,
 dl.display_id,
 dl.language_id,
-dl.display_text as title
+dl2.display_text as title
 FROM
 `help`
 INNER JOIN question_help ON `help`.help_id = question_help.help_id
