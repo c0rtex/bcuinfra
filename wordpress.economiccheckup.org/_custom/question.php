@@ -36,10 +36,12 @@ function getHelpTitleByCode($helpCode)
 	WHERE `help`.keyword  = '" . $helpCode . "'
 	and display_language.language_id = 'EN'
 	";
+
     $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
     //$displayText = $bcudb->get_row();
     $rowCount = 0;
     foreach ($getHelpDisplayTextbyCode_query as $textObj) :
+        echo $textObj;
         $displayText = $textObj->display_text;
         $rowCount++;
     endforeach;
