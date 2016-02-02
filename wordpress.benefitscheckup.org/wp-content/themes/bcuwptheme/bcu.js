@@ -354,19 +354,16 @@ function reDraw() {
 }
 
 function isIpad() {
-    var IS_IPAD = navigator.userAgent.match(/iPad/i) != null;
-    var IS_IPHONE = (navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null);
-    if (IS_IPAD) {
-        IS_IPHONE = false;
-
-    }
-    return IS_IPAD;
+    return (navigator.userAgent.indexOf('iPad') != -1)
 }
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
     console.log("the Width is" + $(window).width());
     console.log("The height is" + $(window).height());
-    if ($(window).width() == 768 && $(window).height() == 1024) {
+    if(isIpad()){
+        console.log("Is IPAD")
+    }
+    if (($(window).width() == 768 && $(window).height() == 1024) || isIpad()) {
         console.log("Is ipad sizes");
         quickCheckModal.addClass("ipad_bcu_modal");
     } else {
