@@ -195,6 +195,8 @@ function findHelpDefinition($displayText)
                 $theKey = $parts[1];
             }
             $defContent = $theKey;
+            echo "HERE BUG____________";
+            echo $defContent;
             $defContent = htmlentities(getHelpDisplayTextbyCode($theKey));
             $printLink = '<a title="' . ucwords($cleanedLinkTitle) . '" data-html="true"  html="true" data-content="' . $defContent . '"  data-placement="top" data-toggle="popover" href="#" data-original-title="' . ucwords($cleanedLinkTitle) . '">' . $cleanedLinkTitle . '</a>';
             //$printLink =  '<a title="'.$cleanedLinkTitle.'" data-html="true"  html="true" data-content="'.$defContent.'"  data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a>';
