@@ -17,11 +17,13 @@ jQuery(document).ready(function () {
     responsiveMenu();
 
     $(window).resize(function () {
+        ipadModalFix();
         responsiveMenu();
         responsiveQcTable();
     });
 
     $(window).on("orientationchange", function (event) {
+        ipadModalFix();
         responsiveQcTable();
         responsiveMenu();
     });
@@ -361,14 +363,13 @@ function isIpad() {
 }
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
-    if (isIpad()) {
+    if ($(window).width == 768 && $(window).width == 1024) {
         if ($(window).orientation == 0) { //portrait
             quickCheckModal.addClass("ipad_bcu_modal");
         }
         else { //landscape
             quickCheckModal.removeClass("ipad_bcu_modal");
         }
-
     }
 
 }
