@@ -1,15 +1,6 @@
 jQuery(document).ready(function () {
     reDraw();
-
-    //$("#options_bcuqc_interest_category").appendTo("#bcu_upper_section");
-    //$("#question_dob").appendTo("#bcu_upper_section");
-    //
-    //
-    //if (detectIE()){
-    //    $("#question_zip").appendTo("#bcu_upper_section");
-    //    $("#options_bcuqc_income").appendTo("#bcu_upper_section");
-    //    console.log("Is IE");
-    //}
+    ipadModalFix();
 
     console.log(navigator.appVersion);
 
@@ -351,4 +342,25 @@ function reDraw() {
     var interestBlock = $("#bcuqc_interest_category_group");
     interestBlock.appendTo(containerBlock);
     interestBlock.addClass("span6");
+}
+function isIpad() {
+    var IS_IPAD = navigator.userAgent.match(/iPad/i) != null;
+    var IS_IPHONE = (navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null);
+    if (IS_IPAD) {
+        IS_IPHONE = false;
+    }
+    return IS_IPAD;
+}
+function ipadModalFix(){
+    var quickCheckModal = $("#bcu_quickcheck");
+    if(isIpad()){
+        if($(window).orientation == 0){ //portrait
+            quickCheckModal.addClass("ipad_bcu_modal");
+        }
+        else { //landscape
+            quickCheckModal.removeClass("ipad_bcu_modal");
+        }
+
+    }
+
 }

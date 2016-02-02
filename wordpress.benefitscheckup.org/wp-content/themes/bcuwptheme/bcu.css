@@ -1464,6 +1464,13 @@ h2.benefitsCheckUpTitle {
     margin-bottom: 10px;
 }
 
+#ipad_bcu_modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10%;
+}
+
 
 
 :-ms-fullscreen, :root .ie11up {
