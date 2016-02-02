@@ -75,7 +75,7 @@ and dl2.language_id = 'EN'
 and dl.language_id = 'EN'
 ";
 $getQuestionHelp_query = $bcudb->get_results($query_getQuestionHelp);
-//var_dump($getQuestionHelp_query);
+
 echo '
 						<div class="clearfix">
                         	<div class="row-fluid" id="row_' . $questionCode . '">
