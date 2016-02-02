@@ -363,7 +363,7 @@ function isIpad() {
 }
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
-    if ($(window).width == 768 && $(window).width == 1024) {
+    if ($(window).width == 768 && $(window).height == 1024) {
         if ($(window).orientation == 0) { //portrait
             quickCheckModal.addClass("ipad_bcu_modal");
         }
