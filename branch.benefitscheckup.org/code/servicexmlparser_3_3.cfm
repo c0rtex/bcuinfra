@@ -1,4 +1,4 @@
-<!-- This script takes an  input xml file from the screenforbenefits.cfc parses the xml and passes the variables into the bcu screening--> <!-- Try and Catch all processing errors --> 
+<!-- This script takes an input xml file from the screenforbenefits.cfc parses the xml and passes the variables into the bcu screening--> <!-- Try and Catch all processing errors --> 
 <cfparam name="testresponse" default="0">
 <cfparam name="request.partner_id" default="14">
 <cfparam name="request.client_id" default="0">
@@ -133,6 +133,25 @@ order by question_code, answerfield
 </cfloop>
 <cfparam name="response_set.esi_category_health_resources" default="">
 	<cfparam name="response_set.esi_rxhelp" default="">
+<cfif current_subset_id eq 93>
+<!-- bcuqc_income -->
+<cfif not isdefined('response_set.bcuqc_income')>
+      <cfset response_set.bcuqc_income = 'bcuqc_income_under'>
+      <cfset response_set.bcuqc_income_under  ="y">
+</cfif>
+<cfif response_set.bcuqc_income eq 'bcuqc_income_1000'>
+	<cfset response_set.bcuqc_income_1000  ="y">
+</cfif>
+<cfif response_set.bcuqc_income eq 'bcuqc_income_1500'>
+	<cfset response_set.bcuqc_income_1500  ="y">
+</cfif>
+<cfif response_set.bcuqc_income eq 'bcuqc_income_2000'>
+	<cfset response_set.bcuqc_income_2000  ="y">
+</cfif>
+<cfif response_set.bcuqc_income eq 'bcuqc_income_3000'>
+	<cfset response_set.bcuqc_income_3000  ="y">
+</cfif>
+</cfif>
 <cfif current_subset_id eq 79>
 	<cfparam name="response_set.mqc_medicare_enroll_disability_no" default="">
 	<cfparam name="response_set.mqc_medicare_enroll_disability_yes" default="">
@@ -686,6 +705,9 @@ order by question_code, answerfield
 </cfif>	
 
 
+
+
+
 <!-- mqc_income -->
 <cfif not isdefined('response_set.mqc_income')>
       <cfset response_set.mqc_income = 'mqc_income_under'>
@@ -800,6 +822,10 @@ order by question_code, answerfield
 		<cfcatch></cfcatch>
 		</cftry>
 	</cfif>
+
+
+
+
 <cfif request.subset_id eq 75 or request.subset_id eq 74 or request.subset_id eq 72 or request.subset_id eq 80 or request.subset_id eq 83 or request.subset_id eq 85 or request.subset_id eq 86 >
 <cfinvoke  
     component="util" 
