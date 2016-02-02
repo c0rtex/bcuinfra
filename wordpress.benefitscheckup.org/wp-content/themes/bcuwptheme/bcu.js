@@ -364,12 +364,15 @@ function isIpad() {
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
     if ($(window).width == 768 && $(window).height == 1024) {
+        console.log("Is ipad sizes");
         if ($(window).orientation == 0) { //portrait
             quickCheckModal.addClass("ipad_bcu_modal");
         }
         else { //landscape
             quickCheckModal.removeClass("ipad_bcu_modal");
         }
+    } else {
+        console.log("Is not i-pad sizes");
     }
 
 }
