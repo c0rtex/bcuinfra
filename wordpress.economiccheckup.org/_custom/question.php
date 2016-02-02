@@ -27,14 +27,10 @@ function getHelpTitleByCode($helpCode)
     $bcudb->show_errors();
     $query_getHelpDisplayTextbyCode = "
 	SELECT
-	display_language.display_id,
-	display_language.display_text,
-	display_language.language_id
+	help_data.title_text
 	FROM
 	`help`
-	INNER JOIN display_language ON `help`.title_display_id = display_language.display_id
 	WHERE `help`.keyword  = '" . $helpCode . "'
-	and display_language.language_id = 'EN'
 	";
 
     $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
