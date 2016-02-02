@@ -73,11 +73,9 @@ $line = preg_replace_callback(
         $defContent = $theKey;
         $defContent = getHelpDisplayTextbyCode($theKey);
 
-        $testContent = getHelpTitleByCode($theKey);
-        echo "Here Test";
-        print_r($testContent);
+        $question_title = getHelpTitleByCode($theKey);
 
-        $printLink = '<a title="' . ucwords($cleanedLinkTitle) . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . ucwords($cleanedLinkTitle) . '">' . $cleanedLinkTitle . '</a>';
+        $printLink = '<a title="' . $question_title . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $question_title . '">' . $question_title . '</a>';
         return $printLink;
 
     },
