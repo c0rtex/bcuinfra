@@ -30,12 +30,19 @@ jQuery(document).ready(function () {
     //    $("#main-nav").toggle();
     //});
 
-
     $(".modal").on("shown.bs.modal", function () {
         $(document.body).addClass("frozenBody")
     });
 
     $(".modal").on("hidden.bs.modal", function () {
+        $(document.body).removeClass("frozenBody")
+    });
+
+    $(".home").on("shown.bs.modal", function () {
+        $(document.body).addClass("frozenBody")
+    });
+
+    $(".home").on("hidden.bs.modal", function () {
         $(document.body).removeClass("frozenBody")
     });
 
@@ -343,6 +350,7 @@ function reDraw() {
     interestBlock.appendTo(containerBlock);
     interestBlock.addClass("span6");
 }
+
 function isIpad() {
     var IS_IPAD = navigator.userAgent.match(/iPad/i) != null;
     var IS_IPHONE = (navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null);
@@ -351,10 +359,10 @@ function isIpad() {
     }
     return IS_IPAD;
 }
-function ipadModalFix(){
+function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
-    if(isIpad()){
-        if($(window).orientation == 0){ //portrait
+    if (isIpad()) {
+        if ($(window).orientation == 0) { //portrait
             quickCheckModal.addClass("ipad_bcu_modal");
         }
         else { //landscape
