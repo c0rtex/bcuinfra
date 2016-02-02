@@ -392,7 +392,6 @@ function getAFValidationShort($answerfield)
 
 function getHelpTitleByCode($helpCode)
 {
-    echo $helpCode;
     $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
     $bcudb->show_errors();
     $query_getHelpDisplayTextbyCode = "
@@ -406,7 +405,6 @@ function getHelpTitleByCode($helpCode)
 	WHERE `help`.keyword  = '" . $helpCode . "'
 	and display_language.language_id = 'EN'
 	";
-
     $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
     //$displayText = $bcudb->get_row();
     $rowCount = 0;
