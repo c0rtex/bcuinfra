@@ -89,10 +89,6 @@ foreach ($getQuestionHelp_query as $questionHelpObj):
 
     $helpText = htmlentities(getDisplayTextbyID($displayID, $soapClient));
     $helpTitle = getHelpDisplayTextbyCode($titleDisplayID);
-    echo "Here BUG_________";
-    echo $displayID;
-    echo $helpText;
-    echo $helpTitle;
     echo '<a data-content="' . $helpText . '" title="' . ucwords($helpTitle) . '" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta1"></i></a>
 ';
 endforeach;
