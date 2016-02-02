@@ -41,7 +41,7 @@ function getHelpTitleByCode($helpCode)
     //$displayText = $bcudb->get_row();
     $rowCount = 0;
     foreach ($getHelpDisplayTextbyCode_query as $textObj) :
-        echo $textObj;
+        print_r($textObj);
         $displayText = $textObj->display_text;
         $rowCount++;
     endforeach;
