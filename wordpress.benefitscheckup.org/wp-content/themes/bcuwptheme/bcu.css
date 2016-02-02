@@ -1464,7 +1464,7 @@ h2.benefitsCheckUpTitle {
     margin-bottom: 10px;
 }
 
-.ipad_bcu_modal {
+div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
     position: absolute; !important
     top: 0; !important
     left: 0; !important
