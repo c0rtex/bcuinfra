@@ -196,6 +196,8 @@ function findHelpDefinition($displayText)
             }
             $defContent = $theKey;
             $defContent = htmlentities(getHelpDisplayTextbyCode($theKey));
+            echo "hERE BUGG()()()($)($)#($)#$";
+            echo $defContent;
             $printLink = '<a title="' . ucwords($cleanedLinkTitle) . '" data-html="true"  html="true" data-content="' . $defContent . '"  data-placement="top" data-toggle="popover" href="#" data-original-title="' . ucwords($cleanedLinkTitle) . '">' . $cleanedLinkTitle . '</a>';
             //$printLink =  '<a title="'.$cleanedLinkTitle.'" data-html="true"  html="true" data-content="'.$defContent.'"  data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a>';
             return $printLink;
@@ -387,6 +389,40 @@ function getAFValidationShort($answerfield)
         $validationMessage = $validationMessagObj->display_text;
     endforeach;
     return $validationMessage;
+}
+
+function getHelpTitleByCode($helpCode)
+{
+
+    $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
+    $bcudb->show_errors();
+    $query_getHelpDisplayTextbyCode = "
+	SELECT
+	display_language.display_id,
+	display_language.display_text,
+	display_language.language_id
+	FROM
+	`help`
+	INNER JOIN display_language ON `help`.title_display_id = display_language.display_id
+	WHERE `help`.keyword  = '" . $helpCode . "'
+	and display_language.language_id = 'EN'
+	";
+    $getHelpDisplayTextbyCode_query = $bcudb->get_results($query_getHelpDisplayTextbyCode);
+    //$displayText = $bcudb->get_row();
+    $rowCount = 0;
+    foreach ($getHelpDisplayTextbyCode_query as $textObj) :
+        $displayText = $textObj->display_text;
+        $rowCount++;
+    endforeach;
+    //$rowCount = $bcudb->num_rows();
+    if ($rowCount == 0) {
+        $displayText = '<h4 class="Alert-Heading">No Content Found: ' . $helpCode . '</h4>';
+        return $displayText;
+    } else {
+
+        return $displayText;
+    }
+
 }
 
 
