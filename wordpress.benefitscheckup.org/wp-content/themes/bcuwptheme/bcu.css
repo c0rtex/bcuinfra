@@ -1465,23 +1465,10 @@ h2.benefitsCheckUpTitle {
 }
 
 .ipad_bcu_modal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 10%;
-}
-
-
-
-:-ms-fullscreen, :root .ie11up {
-
- img#esiQuickcheckResultsButton {
-    bottom: -50px;
-    right: 25%;
-    left: 50%;
-    margin-left: -150px;
-    position: absolute;
-    }
+    position: absolute; !important
+    top: 0; !important
+    left: 0; !important
+    margin-top: 10%; !important
 }
 
 
