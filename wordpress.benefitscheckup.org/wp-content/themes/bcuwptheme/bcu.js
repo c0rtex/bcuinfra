@@ -358,6 +358,7 @@ function isIpad() {
     var IS_IPHONE = (navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null);
     if (IS_IPAD) {
         IS_IPHONE = false;
+
     }
     return IS_IPAD;
 }
@@ -367,14 +368,10 @@ function ipadModalFix() {
     console.log("The height is" + $(window).height());
     if ($(window).width() == 768 && $(window).height() == 1024) {
         console.log("Is ipad sizes");
-
-        if ($(window).orientation == 0) { //portrait
-            quickCheckModal.addClass("ipad_bcu_modal");
-        }
-        else { //landscape
-            quickCheckModal.removeClass("ipad_bcu_modal");
-        }
+        quickCheckModal.addClass("ipad_bcu_modal");
     } else {
+        quickCheckModal.removeClass("ipad_bcu_modal");
+
         console.log("Is not i-pad sizes");
     }
 
