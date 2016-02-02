@@ -1464,7 +1464,7 @@ h2.benefitsCheckUpTitle {
     margin-bottom: 10px;
 }
 
-#ipad_bcu_modal {
+.ipad_bcu_modal {
     position: absolute;
     top: 0;
     left: 0;
