@@ -76,7 +76,7 @@ echo '
                             	<div class="span1"><strong>' . $questionNumberTotal . '.</strong></div>
                                 <div class="span11">					      	
                                 	<label for="normalSelect">' . $questionText;
-
+print_r($query_getQuestionHelp)
 foreach ($getQuestionHelp_query as $questionHelpObj):
 
     $displayID = $questionHelpObj->display_id;
