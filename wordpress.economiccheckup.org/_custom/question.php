@@ -75,7 +75,7 @@ $line = preg_replace_callback(
 
         $question_title = getHelpTitleByCode($theKey);
 
-        $printLink = '<a title="' . $question_title . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $question_title . '">' . $question_title . '</a>';
+        $printLink = '<a title="' . $question_title . '" data-content="' . $defContent . '" data-placement="top" data-toggle="popover" href="#" data-original-title="' . $question_title . '">' . $cleanedLinkTitle . '</a>';
         return $printLink;
 
     },
