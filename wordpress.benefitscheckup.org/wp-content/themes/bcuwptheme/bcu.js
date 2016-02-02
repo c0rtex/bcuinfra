@@ -356,6 +356,9 @@ function reDraw() {
 function isIpad() {
     return (navigator.userAgent.indexOf('iPad') != -1)
 }
+function ipadIsPortrait(){
+    return ($(window).height() > $(window).width())
+}
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
     console.log("the Width is" + $(window).width());
@@ -363,7 +366,7 @@ function ipadModalFix() {
     if(isIpad()){
         console.log("Is IPAD")
     }
-    if (($(window).width() == 768 && $(window).height() == 1024) || isIpad()) {
+    if (($(window).width() == 768 && $(window).height() == 1024) || (isIpad() && ipadIsPortrait())) {
         console.log("Is ipad sizes");
         quickCheckModal.addClass("ipad_bcu_modal");
     } else {
