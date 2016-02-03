@@ -964,3 +964,8 @@ div.well.sidebar-nav {
     padding-left: 5px;
     padding-right: 5px;
 }
+
+#row_esi_healthdisability_question .icon-question-sign {
+    padding-left: 2px;
+    padding-right: 5px;
+}
