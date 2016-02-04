@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Kalam:400,300,700);
 
-* Bootstrap Overrides *
+/* Bootstrap Overrides */
 
 /
 
@@ -1347,6 +1347,20 @@ div.AdvancedText {
     #esiQuickcheckCheckboxes .first-column {
         width: 100%;
         float: left;
+        margin-bottom: 10px;
+    }
+
+    #esiQuickcheckCheckboxes .last-column {
+        display: none
+    }
+}
+
+@media (max-width: 600px) {
+
+    #esiQuickcheckCheckboxes .first-column {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
     }
 
     #esiQuickcheckCheckboxes .last-column {
@@ -1389,11 +1403,72 @@ h2.benefitsCheckUpTitle {
 
 .well.modal-body {
     overflow-y: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .frozenBody {
     overflow-x: hidden;
     overflow-y: hidden;
-    z-index : -1;
+    z-index: -1;
 }
+
+/*#options_bcuqc_income {*/
+    /*width: 48%;*/
+    /*float: left;*/
+/*}*/
+
+/*#options_bcuqc_interest_category {*/
+    /*width: 48%;*/
+    /*float: right;*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+
+    /*#options_bcuqc_income {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
+
+    /*#options_bcuqc_interest_category {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
+/*}*/
+
+/*@media (max-width: 600px) {*/
+
+    /*#options_bcuqc_income {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
+
+    /*#options_bcuqc_interest_category {*/
+        /*width: 100%;*/
+        /*float: inherit;*/
+    /*}*/
+/*}*/
+
+#question_dob {
+    float: left;
+}
+
+#question_zip {
+    float: left;
+}
+
+#label_bcuqc_income_3000 {
+    margin-top: 5px;
+}
+
+#label_bcuqc_income_under {
+    margin-bottom: 10px;
+}
+
+div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
+    position: absolute; !important;
+    top: 0; !important;
+    left: 0; !important;
+    margin-top: 10%; !important;
+}
+
+

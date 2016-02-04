@@ -36,7 +36,7 @@ $defContent = $theKey;
 //$soapClient = new SoapClient($url, array('cache_wsdl' => WSDL_CACHE_NONE));
 $defContent = getHelpDisplayTextbyCode($theKey, $soapClient);
 
- $printLink =  '<a title="'.$cleanedLinkTitle2.'" data-content="'.$defContent.'" data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitle.'">'.$cleanedLinkTitle.'</a> ';
+ $printLink =  '<a title="'.ucwords($cleanedLinkTitle2).'" data-content="'.$defContent.'" data-placement="top" data-toggle="popover" href="#" data-original-title="'.ucwords($cleanedLinkTitle).'">'.$cleanedLinkTitle.'</a> ';
  return $printLink;
 
         },
@@ -77,7 +77,7 @@ $helpTitle = getDisplayTextbyID($titleDisplayID, $soapClient);
 //$questionHelpTitle = $questionHelpObj->$title;	
 //echo 	$questionHelpText;						
 echo'									
-									<a data-content="'.$helpText.'" title="'.$helpTitle.'" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large"></i></a>
+									<a data-content="'.ucwords($helpText).'" title="'.ucwords($helpTitle).'" data-html="true"  data-toggle="popover" href="#" data-original-title="Help"><i class="icon-question-sign icon-large fonta5"></i></a>
 ';	
 endforeach;							
 echo'									</label>';

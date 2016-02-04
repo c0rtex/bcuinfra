@@ -23,9 +23,7 @@ $displayText = "";
 			$displayText = $displayText;
 			return $displayText;
 		}
-
-	
-    }
+	}
 
 
 
@@ -139,7 +137,7 @@ function findHelpDefinition($displayText, $soapClient){
                         //$cleanedLinkTitleDb = "test";
                         
 			$defContent = htmlentities(getHelpDisplayTextbyCode($theKey, $soapClient));
-			$printLink =  '<a title="'.$cleanedLinkTitleDb.'" html="true" data-content="'.$defContent.'"  data-placement="top" data-toggle="popover" href="#" data-original-title="'.$cleanedLinkTitleDb.'">'.$cleanedLinkTitle.'</a>';
+			$printLink =  '<a title="'.ucwords($cleanedLinkTitleDb).'" html="true" data-content="'.$defContent.'"  data-placement="top" data-toggle="popover" href="#" data-original-title="'.ucwords($cleanedLinkTitleDb).'">'.$cleanedLinkTitle.'</a>';
  			return $printLink;
 
         },
