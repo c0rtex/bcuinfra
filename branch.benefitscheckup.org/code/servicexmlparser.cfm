@@ -917,11 +917,14 @@ DUPLICATE SET OF ENTRIES IF THE USER BACKS UP AND RESUBMITS HIS ANSWERS TO THIS 
 		
 		<cfset temp = QuerySetCell(resultset, "screening_status", "Success", rownum)>
 		<cfset temp = #QuerySetCell(resultset, "validation_error", "", rownum)#>
+
+<cfif current_subset_id eq 41>
               <cfif isdefined('getreentry.reentry_number')>
 			<cfset temp = #QuerySetCell(resultset, "reentry_number", getreentry.reentry_number, rownum)#>
                    <cfelse>
                     <cfset temp = QuerySetCell(resultset, "reentry_number", "", rownum)>
 		</cfif>
+</cfif>
 </cfif>
 <!--- cfdump var="#structBCUvars[x]#" --->
 <!--- cfdump var="#resultset#" label="resultset" --->

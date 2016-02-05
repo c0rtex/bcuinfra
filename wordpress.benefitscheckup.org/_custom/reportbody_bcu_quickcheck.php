@@ -65,13 +65,11 @@
                     $sectioncode = 'bcu_quickcheck_report_heading_income';
                     $iconcode = 'money';
                     $interested = 'bcuqc_category_income';
+                } elseif ($cat_code == 'utility') {
+                    $sectioncode = 'bcu_quickcheck_report_heading_utility';
+                    $iconcode = 'signal';
+                    $interested = 'bcuqc_category_utility';
                 }
-
-		elseif ($cat_code == 'utility'){
-						$sectioncode = 'bcu_quickcheck_report_heading_utility';
-						$iconcode = 'signal';
-						$interested = 'bcuqc_category_utility';
-						}
                 //echo $cat_code.$programcategory_id;
                 //echo $sort_id;
                 $thischecked = false;

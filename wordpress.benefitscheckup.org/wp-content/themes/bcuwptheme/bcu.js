@@ -1,4 +1,9 @@
 jQuery(document).ready(function () {
+    reDraw();
+    ipadModalFix();
+
+    console.log(navigator.appVersion);
+
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var validated = 0;
 
@@ -12,11 +17,13 @@ jQuery(document).ready(function () {
     responsiveMenu();
 
     $(window).resize(function () {
+        ipadModalFix();
         responsiveMenu();
         responsiveQcTable();
     });
 
-    $( window ).on("orientationchange", function( event ) {
+    $(window).on("orientationchange", function (event) {
+        ipadModalFix();
         responsiveQcTable();
         responsiveMenu();
     });
@@ -25,12 +32,19 @@ jQuery(document).ready(function () {
     //    $("#main-nav").toggle();
     //});
 
-
-    $(".modal").on("shown.bs.modal", function(){
+    $(".modal").on("shown.bs.modal", function () {
         $(document.body).addClass("frozenBody")
     });
 
-    $(".modal").on("hidden.bs.modal", function(){
+    $(".modal").on("hidden.bs.modal", function () {
+        $(document.body).removeClass("frozenBody")
+    });
+
+    $(".home").on("shown.bs.modal", function () {
+        $(document.body).addClass("frozenBody")
+    });
+
+    $(".home").on("hidden.bs.modal", function () {
         $(document.body).removeClass("frozenBody")
     });
 
@@ -181,7 +195,7 @@ jQuery(document).ready(function () {
             $(".alert").remove();
         }
 
-        function trySubmit(e){
+        function trySubmit(e) {
             validated = 1;
             // Validate specific input parameters
             removeZipAlerts();
@@ -215,13 +229,14 @@ jQuery(document).ready(function () {
         $(".modal").on("hidden.bs.modal", clearErrorsOnHide);
     });
 
+    $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
 });
 function createColumns() {
-    $("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
-    $("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
-    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
-    $("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
-    responsiveQcTable();
+    //$("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
+    //$("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
+    //$("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
+    //$("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
+    //responsiveQcTable();
 }
 
 /**
@@ -283,4 +298,81 @@ function responsiveMenu() {
         $("#getStartedESIButtonImg").css("margin-top", "0px");
         $("#getStartedESIButtonImg").css("margin-top", "0px");
     }
+}
+
+/**
+ * detect IE
+ * returns version of IE or false, if browser is not Internet Explorer
+ */
+function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+        // Edge (IE 12+) => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+}
+
+function appendTo(section) {
+    return function (element) {
+        element.appendTo(section)
+    }
+}
+
+function reDraw() {
+    var leftColumn = "#left_questions_column";
+    var containerBlock = $("#bcu_upper_section");
+
+    var zipBlock = $("#question_zip");
+    var dobBlock = $("#question_dob");
+    var incomeBlock = $("#bcuqc_income_group");
+
+    var leftColumnBlock = $(leftColumn);
+
+    [zipBlock, dobBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
+
+    var interestBlock = $("#bcuqc_interest_category_group");
+    interestBlock.appendTo(containerBlock);
+    interestBlock.addClass("span6");
+}
+
+function isIpad() {
+    return (navigator.userAgent.indexOf('iPad') != -1)
+}
+function ipadIsPortrait(){
+    return ($(window).height() > $(window).width())
+}
+function ipadModalFix() {
+    var quickCheckModal = $("#bcu_quickcheck");
+    console.log("the Width is" + $(window).width());
+    console.log("The height is" + $(window).height());
+    if(isIpad()){
+        console.log("Is IPAD")
+    }
+    if (($(window).width() == 768 && $(window).height() == 1024) || (isIpad() && ipadIsPortrait())) {
+        console.log("Is ipad sizes");
+        quickCheckModal.addClass("ipad_bcu_modal");
+    } else {
+        quickCheckModal.removeClass("ipad_bcu_modal");
+
+        console.log("Is not i-pad sizes");
+    }
+
 }
