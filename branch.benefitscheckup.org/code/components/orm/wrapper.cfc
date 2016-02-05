@@ -86,7 +86,7 @@
     <cfproperty name="TEST5">
     <cfproperty name="wrapper_risk_calculator">
     <cfproperty name="wrapper_show_header">
-    <cfproperty name="wrapper_footer">
+    <cfproperty name="wrapper_show_footer">
     <cfproperty name="wrapper_left_col_ad">
     <cfproperty name="wrapper_menu_ad">
     <cfproperty name="wrapper_as_of">

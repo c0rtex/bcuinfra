@@ -66,7 +66,7 @@ var controllers = angular.module('controllers', []);
 controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams',
   function($scope, $location, $injector,$routeParams) {
 
-    if (($scope.$root.globalQuestionCounter == undefined)||($scope.$root.prevQuestionSetURL == undefined)) {
+    if ($scope.$root.globalQuestionCounter == undefined) {
       $scope.$root.globalQuestionCounter=1;
       $scope.$root.prevQuestionsCount=0;
     } else {
@@ -102,7 +102,6 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
     };
 
     $scope.nextQS = function () {
-      //$scope.$root.globalQuestionCounter = $scope.$root.globalQuestionCounter + $scope.questions.length;
       $scope.$root.prevQuestionsCount = $scope.questions.length;
       $location.url($scope.$root.nextQuestionSetURL);
     };

@@ -17,7 +17,6 @@
     <cfargument name="state_id" type="string" required="no" default="">
     <cfargument name="subset_id" type="numeric" required="no" default="0">
     <cfargument name="partner_id" type="numeric" required="no" default="0">
-    <cfargument name="org_id" type="numeric" required="no" default="0">
 
     <cfquery name="build_array" datasource="#application.dbSrc#">
 			SELECT q.question_id
@@ -208,7 +207,7 @@
 
         AND q.question_id <> 644
         AND q.question_id <> 770
-      <cfif partner_id neq 0 or org_id gt 0>
+      <cfif partner_id neq 0>
           AND q.question_id <> 645
           AND q.question_id <> 646
       </cfif>
@@ -223,10 +222,10 @@
           AND q.question_id <> 714
           AND q.question_id <> 771
       </cfif>
-      <cfif partner_id neq 0 or subset_id neq 0 or org_id neq 0>
+      <cfif partner_id neq 0 or subset_id neq 0>
           AND q.question_id <> 715 and q.question_id <> 794
       </cfif>
-      <cfif (partner_id neq 0 and partner_id neq 58) or subset_id neq 0 or org_id neq 0>
+      <cfif (partner_id neq 0 and partner_id neq 58) or subset_id neq 0>
           AND q.question_id <> 792
       </cfif>
       <cfif partner_id neq 0 and partner_id neq 80>

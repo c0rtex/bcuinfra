@@ -13,11 +13,10 @@
   This method is used by method geQuestionSet, implemented in parent component
 --->
 
-    <cffunction name="getQuestionsId">
+    <cffunction name="getFilter">
         <cfargument name="state_id" type="string" required="no" default="">
         <cfargument name="subset_id" type="numeric" required="no" default="0">
         <cfargument name="partner_id" type="numeric" required="no" default="0">
-        <cfargument name="org_id" type="numeric" required="no" default="0">
 
         <cfquery name="build_array" datasource="#application.dbSrc#">
 			SELECT q.question_id
@@ -160,7 +159,7 @@
             AND q.type is not null
             AND q.question_id=qq.question_id
             AND qq.questioncategory_id=qc.questioncategory_id
-            <cfif partner_id neq 0 or org_id gt 0>
+            <cfif partner_id neq 0>
                 AND q.question_id <> 645
                 AND q.question_id <> 646
             </cfif>
