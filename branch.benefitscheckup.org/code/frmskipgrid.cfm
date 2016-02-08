@@ -502,8 +502,17 @@
 			</cfoutput>
 		<cfelse> <!--- ELSE BIG IF --->
 		<CFIF ISDEFINED('SKIPPEDPAGE')>
+<SCRIPT LANGUAGE="javascript">
+		{
+			alert("Please answer both questions on this page to continue!");
+			history.go(-1);
+		}
+		</SCRIPT>
+               <cfset validationError = 1>
+<!---
 		<FONT class="text1" COLOR="RED" Face="arial"><i>Please answer both questions on this page to continue!</FONT></i>
 		<br>
+--->
 		</cfif>
         <span class="screeningInstructionText">
             <cfif Not IsDefined('session.partner_id') Or session.partner_id neq 5>
