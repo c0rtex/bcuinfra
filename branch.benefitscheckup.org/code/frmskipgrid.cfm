@@ -272,6 +272,15 @@
 		<cfelse> <!--- ELSE BIG IF --->
 		
 			<cfif IsDefined('SKIPPEDPAGE')>
+		<SCRIPT LANGUAGE="javascript">
+		{
+			alert("Please answer both questions on this page to continue!");
+			history.go(-1);
+		}
+		</SCRIPT>
+               <cfset validationError = 1>
+
+<!---
 				<div class="question">
 					<div class="questionHolder questionBar">
 							<p id="error_message">
@@ -279,6 +288,7 @@
 							</p>
 					</div><!-- questionHolder -->
 				</div><!-- question -->	
+--->
 			</cfif>
 			
 			<div class="question">
