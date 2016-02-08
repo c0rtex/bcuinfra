@@ -52,10 +52,6 @@ jQuery(document).ready(function () {
         $("#main-nav").toggle();
     });
 
-    jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
-        e.preventDefault();
-
-        trySubmit(e);
 
         // Properly validate the entered ZIP code and link it to a state
         $zip_code.keyup(function () {
@@ -133,6 +129,25 @@ jQuery(document).ready(function () {
             }
         });
 
+        function removeZipAlerts() {
+            if (jQuery('#invalidZip').length != 0) {
+                jQuery('#invalidZip').remove();
+            }
+            if (jQuery('#invalidZipNumbers').length != 0) {
+                jQuery('#invalidZipNumbers').remove();
+            }
+            if (jQuery('#invalidZipLetters').length != 0) {
+                jQuery('#invalidZipLetters').remove();
+            }
+        }
+
+
+    jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
+        e.preventDefault();
+
+        trySubmit(e);
+
+
         $zip_code.blur(function () {
             var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(jQuery(this).val());
             if (!isValidZip) {
@@ -178,17 +193,6 @@ jQuery(document).ready(function () {
         });
 
 
-        function removeZipAlerts() {
-            if (jQuery('#invalidZip').length != 0) {
-                jQuery('#invalidZip').remove();
-            }
-            if (jQuery('#invalidZipNumbers').length != 0) {
-                jQuery('#invalidZipNumbers').remove();
-            }
-            if (jQuery('#invalidZipLetters').length != 0) {
-                jQuery('#invalidZipLetters').remove();
-            }
-        }
 
         //clears all alerts
         function clearErrorsOnHide() {
