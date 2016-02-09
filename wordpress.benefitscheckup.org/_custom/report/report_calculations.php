@@ -18,7 +18,7 @@ $cats = $soapClient->getSubCats(93);
 //print_r($cats );	
 //echo $screeningID;
 $fields = $soapClient->getAFShadow($screeningID );
-print_r($fields);	
+//print_r($fields);	
 					foreach ($fields as $f => $row)
 					{
 						if ($row["ANSWERFIELD"] == 'zip') {
