@@ -1349,8 +1349,14 @@
 					<cfset databaseval = 0>
 				</cfif>
 				<cfset "session.#databasevarname#" = databaseval>
-                                <cfset rowaccumvar = replace(rowaccumvar,",","","All")>
-                                <cfset databaseval = replace(databaseval,",","","All")>
+	
+<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset databaseval = reReplaceNoCase(databaseval, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
+	<cfset rowaccumvar = ReReplace(rowaccumvar,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset rowaccumvar = reReplaceNoCase(rowaccumvar, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
+							
+
+
 				<cfset rowaccumvar = rowaccumvar + databaseval>
 				<cfif element neq 'earned' and element neq 'total_unearned' and element neq 'total_complete' and class neq "ch">
 					<cfset "colaccumvar_#class#_unearned" = Evaluate("colaccumvar_#class#_unearned") + databaseval>
@@ -1395,6 +1401,12 @@
 				<cfset databaseval = 0>
 			</cfif>
 			<cfset "session.#databasevarname#" = databaseval>
+<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset databaseval = reReplaceNoCase(databaseval, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
+	<cfset rowaccumvar = ReReplace(rowaccumvar,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset rowaccumvar = reReplaceNoCase(rowaccumvar, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
+							
+
 			<cfset rowaccumvar = rowaccumvar + databaseval>
 			<cfif element neq 'life_face' and element neq 'irrevocable' and element neq 'total_complete' and class neq "ch">
 				<cfset "colaccumvar_#class#_complete" = Evaluate("colaccumvar_#class#_complete") + databaseval>
