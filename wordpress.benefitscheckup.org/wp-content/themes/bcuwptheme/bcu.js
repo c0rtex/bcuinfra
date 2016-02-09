@@ -200,6 +200,7 @@ jQuery(document).ready(function () {
         }
 
         function trySubmit(e) {
+console.log("invalid zip: " +  jQuery('#zyxzip_zip_abbrev').val());
             validated = 1;
             // Validate specific input parameters
             removeZipAlerts();

@@ -109,6 +109,7 @@
   echo '<p>'.$sectionLegend.'</p>';
 
   echo '<span id="bcu_upper_section" class="span12"><div id="left_questions_column" class="span6"></div></span>';
+echo '<span id="zyxzip_zip_abbrev" style="display:hidden"></span>';
 
   ?>
   <?php  require_once('section_bcu_quickcheck.php');
