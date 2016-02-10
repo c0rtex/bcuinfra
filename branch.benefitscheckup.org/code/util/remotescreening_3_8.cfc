@@ -30,7 +30,51 @@
 	</cfquery>
         <cfreturn  getSubsetProgramsByCategory>
     </cffunction>
-    
+
+     <cffunction access="remote" name="logQuickCheckProgs" output="false" returntype="string"  hint="Returns programs by subset"  >
+        <!-- pass arguments -->
+        <cfargument name="state_id" type="string" required="yes" >
+	<cfargument name="subset_id" type="numeric" required="yes" >
+	<cfargument name="programcategory_id" type="numeric" required="yes" >
+	<cfargument name="screening_id" type="numeric" required="yes" >
+        <cfset version = "testtestest">
+	<!-- added special msp exception to include in Medicaid Category for report display  -->
+	<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
+			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text from subset_program_sum sps, program p , display_language dl, programcategory pc
+			where subset_id = #subset_id#
+			and p.program_id = sps.program_id
+			and  p.programcategory_id = pc.programcategory_id
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			and active_flag = 1 and exclude_flag = 0
+			and (state_id = '#state_id#' or state_id is null)
+			and pc.programcategory_id = #programcategory_id#
+			<cfif programcategory_id eq 8>
+			union
+			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text
+			from program p , display_language dl
+			where p.program_id = 1930
+			and p.name_display_id = dl.display_id
+			and dl.language_id = 'EN'
+			<cfelse>
+			order by p.sort
+			</cfif>
+			
+	</cfquery>
+	<cfset programlist = "">
+	<cfloop query="getSubsetProgramsByCategory">
+	 <cfset programlist = ListAppend(programlist, getSubsetProgramsByCategory.program_id)>
+	</cfloop>
+	<cfinvoke  
+    		component="util" 
+    		method="logProgramList" returnVariable = "success" 
+    		> 
+		<cfinvokeargument name="screening_id" value="#screening_id#"/> 
+		<cfinvokeargument name="programlist" value="#programlist#"/> 
+	</cfinvoke>
+        <cfreturn  "success">
+    </cffunction>
+
     <cffunction access="remote" name="getSubCats" output="false" returntype="query"  hint="Returns program categories by subset " >
         <!-- pass arguments -->
 	<cfargument name="subset_id" type="numeric" required="yes" >
@@ -182,8 +226,7 @@
         </cfif>
         <cfinvoke method="logAffinityClick" 
 	returnvariable="responseFromService" 
-	timeout = 5
-	webservice="https://#application.serverPath#/util/affinity.cfc?wsdl" >
+	webservice="https://www.benefitscheckup.org/util/affinity.cfc?wsdl" >
 	<cfinvokeargument name="internal_flag" value="1">
 	<cfinvokeargument name="partner_id" value="14">
 	<cfinvokeargument name="partner_session_id" value="#arguments.partner_session_id#">
