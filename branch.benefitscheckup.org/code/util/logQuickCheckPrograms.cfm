@@ -1,50 +1,23 @@
-<cfinvoke  
-    component="util" 
-    method="logProgramList" returnVariable = "success" 
-    > 
-<cfinvokeargument name="screening_id" value="5071284"/> 
-<cfinvokeargument name="programlist" value="55,1930,71,88,99,102,222"/> 
-</cfinvoke> 
+<cfhttp method="get" 
+    url="https://www.benefitscheckup.org/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID=9808746&shadowID=9808746"> 
+</cfhttp>
+<cfoutput>Response Content: <br> 
+        #htmlcodeformat(cfhttp.filecontent)#<br> </cfoutput>
+<cfflush>
+<cfquery name="getquickcheck" datasource="#application.dbSrc#">
+		select screening_id from screening where subset_id = 93
+	</cfquery>
 
-<cfoutput>Sucess:#success#</cfoutput>
-<cfquery name="results10"  datasource="wp_benefitscheckup">
-SELECT * from wp_posts where id in (15221,15386)
-</cfquery><cfdump var="#results10#">
+<cfloop query="getquickcheck">
+<cfhttp method="get" 
+    url="https://www.benefitscheckup.org/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID=#screening_id#&shadowID=#screening_id#"> 
+</cfhttp>
+<cfoutput>https://www.benefitscheckup.org/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID=#screening_id#&shadowID=#screening_id#</cfoutput><br>
 
-<cfquery name="results10"  datasource="wp_benefitscheckup">
-update wp_posts_v3_1 set post_content = 'The Health Insurance Marketplace Open Enrollment Period - your opportunity to shop, compare, and change your health insurance plans online, through the Health Insurance Marketplace - is expectedÂ to begin on November 1, 2016 and endÂ on January 31, 2017 (note: these dates may be subject to change). You can use the Marketplace to shop for a quality health insurance plan, whether you are interested in a private plan (a plan that is not funded by the government), Medicaid, or the Childrenâ€™s Health Insurance Program (CHIP). Even if you already have a Marketplace health insurance plan, the Marketplace can help you to shop for a new plan.Â <a href="https://www.healthcare.gov/">Visit the Health Insurance Marketplace</a>.' where id = 15221
-</cfquery>
-<cfquery name="results10"  datasource="wp_benefitscheckup">
-update wp_posts_v3_1 set post_content = 'The Health Insurance Marketplace Open Enrollment Period - your opportunity to shop, compare, and change your health insurance plans online, through the Health Insurance Marketplace - is expectedÂ to begin on November 1, 2016Â and endÂ on January 31, 2017 (note: these dates may be subject to change).' where id = 15386
-</cfquery>
+<cfflush>
+</cfloop>
+<cfabort>
 
-
-<cfquery name="results10"  datasource="wp_benefitscheckup">
-SELECT * from wp_posts_v3_1 where id in (15221,15386)
-</cfquery><cfdump var="#results10#"><cfabort>
-
-
-<cfquery name="results10" datasource="#application.dbSrc#">
-		Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text from subset_program_sum sps, program p , display_language dl, programcategory pc
-			where subset_id = 0
-			and p.program_id = sps.program_id
-			and  p.programcategory_id = pc.programcategory_id
-			and p.name_display_id = dl.display_id
-			and dl.language_id = 'EN'
-			and active_flag = 1 and exclude_flag = 0
-			and (state_id = 'MN' or state_id is null)
-			and pc.programcategory_id = 8
-			<cfif 1 eq 1>
-			union
-			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text
-			from program p , display_language dl
-			where p.program_id = 1930
-			and p.name_display_id = dl.display_id
-			and dl.language_id = 'EN'
-			<cfelse>
-			order by p.sort
-			</cfif>
-	</cfquery><cfdump var="#results10#"><cfabort>
 <cfquery name="results10"  datasource="#APPLICATION.dbSrc#">
 
 SELECT * from tbl_questions_new q, 
