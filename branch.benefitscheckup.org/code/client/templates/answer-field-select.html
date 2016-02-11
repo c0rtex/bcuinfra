@@ -1,6 +1,5 @@
 <p show-event-handler="" ng-show="" ng-model="$root.div_af[answer_field.code]">
-    <select name="{{answer_field.code}}" ng-model="$root.af[answer_field.code]">
-        <option value="" selected>-- Select One --</option>
-        <option ng-repeat="option in answer_field.options | orderBy:'sort'" value="{{option.code}}">{{option.display}}</option>
-    </select>
+    <select name="{{answer_field.code}}" id="{{answer_field.code}}"
+            ng-options="option.display for option in answer_field.options | orderBy:'sort' track by option.code"
+            ng-model="$root.af[answer_field.code]"></select>
 </p>

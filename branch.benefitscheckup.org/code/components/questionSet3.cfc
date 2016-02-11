@@ -1,5 +1,5 @@
 <!---
-	Template Name: QuestionSet2
+	Template Name: QuestionSet3
 	Component Purpose: Implementation of abstract root component for web services, component returns second question set of questionnaire via web service.
 
 	Data Tables: component doesn't use database tables directly
@@ -13,24 +13,18 @@
   This method is used by method geQuestionSet, implemented in parent component
 --->
 
-	<cffunction name="getFilter">
-    <cfargument name="state_id" type="string" required="no" default="">
-    <cfargument name="subset_id" type="numeric" required="no" default="0">
-    <cfargument name="partner_id" type="numeric" required="no" default="0">
+    <cffunction name="getFilter">
+        <cfargument name="state_id" type="string" required="no" default="">
+        <cfargument name="subset_id" type="numeric" required="no" default="0">
+        <cfargument name="partner_id" type="numeric" required="no" default="0">
 
-    <cfquery name="build_array" datasource="#application.dbSrc#">
+        <cfquery name="build_array" datasource="#application.dbSrc#">
 			SELECT q.question_id
-
 			FROM (
-
 				SELECT q.question_id, q.question_code, qc.questioncategory_code, a.page_id
-
 				FROM (
-
 					SELECT q.question_id, NULL AS page_id
-
 					FROM (
-
 						SELECT pa.answerfield_id
 						FROM subset_program_base sp, program p, program_answerfield pa, answerfield a
 						WHERE sp.subset_id=#subset_id#
@@ -129,130 +123,64 @@
 								and ( p.state_id = '#state_id#' or p.state_id is NULL )
 							)
 
-
-
 					) AS a, question_answerfield qa, question q
-
 					WHERE a.answerfield_id=qa.answerfield_id
-
 							AND <cfif subset_id neq 27 Or partner_id neq 8>qa.question_id NOT IN (
+        SELECT question_id
+        FROM subset_question
+        WHERE subset_id=#subset_id#
+            AND exclude_flag=1
+            )
+            AND </cfif>qa.question_id=q.question_id
+        AND q.exclude_flag=0
+            <cfif subset_id neq 27 Or partner_id neq 8>UNION
+            SELECT q.question_id, sq.page_id
+            FROM subset_question sq, question q
+            WHERE sq.subset_id=#subset_id#
+                AND sq.exclude_flag=0
+                AND sq.question_id=q.question_id
+            </cfif>UNION
+        SELECT q.question_id, NULL AS page_id
+        FROM question q
+        WHERE q.include_flag=1
+        AND q.question_id NOT IN (
+        SELECT question_id
+        FROM subset_question
+        WHERE subset_id=#subset_id#
+            AND exclude_flag=1
+            )
+            ) AS a, question q, questioncategory qc
+            WHERE a.question_id=q.question_id
+            AND q.questioncategory_id=qc.questioncategory_id
+            ) sq, tbl_questions_new q, question qq, questioncategory qc
+            WHERE sq.question_id=q.question_id
+            AND q.client='self'
+            AND q.pri_sec='sec'
+            AND q.type is not null
+            AND q.question_id=qq.question_id
+            AND qq.questioncategory_id=qc.questioncategory_id
+            <cfif partner_id neq 0>
+                AND q.question_id <> 645
+                AND q.question_id <> 646
+            </cfif>
+        </cfquery>
 
-    SELECT question_id
+        <cfset retVal="-100000">
 
-    FROM subset_question
+        <cfloop query="build_array">
+            <cfset retVal="#retVal#,#build_array.question_id#">
+        </cfloop>
 
-    WHERE subset_id=#subset_id#
+		<cfreturn "q.id in (#retVal#)">
 
-        AND exclude_flag=1
-
-        )
-
-        AND </cfif>qa.question_id=q.question_id
-
-    AND q.exclude_flag=0
-
-      <cfif subset_id neq 27 Or partner_id neq 8>UNION
-
-      SELECT q.question_id, sq.page_id
-
-      FROM subset_question sq, question q
-
-      WHERE sq.subset_id=#subset_id#
-
-          AND sq.exclude_flag=0
-
-          AND sq.question_id=q.question_id
-
-      </cfif>UNION
-
-    SELECT q.question_id, NULL AS page_id
-
-    FROM question q
-
-    WHERE q.include_flag=1
-
-    AND q.question_id NOT IN (
-
-    SELECT question_id
-
-    FROM subset_question
-
-    WHERE subset_id=#subset_id#
-
-        AND exclude_flag=1
-
-        )
-
-        ) AS a, question q, questioncategory qc
-
-        WHERE a.question_id=q.question_id
-
-        AND q.questioncategory_id=qc.questioncategory_id
-
-        ) sq, tbl_questions_new q, question qq, questioncategory qc
-
-        WHERE sq.question_id=q.question_id
-
-        AND q.answerfield not in ('zip')
-
-        AND q.client='self'
-
-        AND q.pri_sec='pri'
-
-        AND q.type is not null
-
-        AND q.question_id=qq.question_id
-
-        AND qq.questioncategory_id=qc.questioncategory_id
-
-        AND q.question_id <> 644
-        AND q.question_id <> 770
-      <cfif partner_id neq 0>
-          AND q.question_id <> 645
-          AND q.question_id <> 646
-      </cfif>
-      <cfif subset_id eq 59 or (state_id eq 'VI')>
-          AND q.question_id <> 428
-      </cfif>
-      <cfif subset_id eq 27 or subset_id eq 39>
-          AND q.question_id <> 652
-      </cfif>
-      <cfif subset_id eq 51 or partner_id Neq 76>
-          AND q.question_id <> 713
-          AND q.question_id <> 714
-          AND q.question_id <> 771
-      </cfif>
-      <cfif partner_id neq 0 or subset_id neq 0>
-          AND q.question_id <> 715 and q.question_id <> 794
-      </cfif>
-      <cfif (partner_id neq 0 and partner_id neq 58) or subset_id neq 0>
-          AND q.question_id <> 792
-      </cfif>
-      <cfif partner_id neq 0 and partner_id neq 80>
-          AND q.question_id <> 862
-          and q.question_id <> 863
-      </cfif>
-        AND q.question_id <> 774
-        AND q.question_id <> 795
-        ORDER BY qc.sort, qq.sort
-    </cfquery>
-
-    <cfset retVal="-100000">
-
-    <cfloop query="build_array">
-      <cfset retVal="#retVal#,#build_array.question_id#">
-    </cfloop>
-
-	<cfreturn "q.id in (#retVal#)">
-
-  </cffunction>
+    </cffunction>
 
 	<cffunction name="getPrevService">
-		<cfreturn "questionSet1">
+		<cfreturn "questionSet2">
 	</cffunction>
 
 	<cffunction name="getNextService">
-		<cfreturn "questionSet3">
+		<cfreturn "questionSet4">
 	</cffunction>
 
 </cfcomponent>

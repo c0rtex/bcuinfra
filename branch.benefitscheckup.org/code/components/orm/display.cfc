@@ -23,6 +23,54 @@
 
 	<cffunction name="getDisplay_text">
         <cfset displ=ORMExecuteQuery("from display_language where display_id=:display_id and language_id=:language_id", {display_id=this.getId(), language_id=session.language.getId()})>
-		<cfreturn displ[1].getDisplay_text()>
+		<cfreturn expandTextCodes(displ[1].getDisplay_text())>
 	</cffunction>
+
+	<cffunction name="expandTextCodes">
+		<cfargument name="outstr" default="">
+		<cfset hasCode = false>
+		<cfset getCodeOpen = Find('[[', outstr)>
+		<cfif getCodeOpen>
+			<cfset getCodeClose = Find(']]', outstr, getCodeOpen + 2)>
+			<cfif getCodeClose>
+				<cfset hasCode = true>
+				<cfset getCode = Mid(outstr, getCodeOpen + 2, getCodeClose - getCodeOpen - 2)>
+			</cfif>
+		</cfif>
+		<cfloop condition="hasCode">
+			<cfset commandParams = ListLen(getCode, '|')>
+			<cfset commandCode = ListGetAt(getCode, 1, '|')>
+			<cfset expandedText = "">
+			<cfset defText = "">
+			<cfif commandCode eq "def">
+				<cfif commandParams eq 1>
+					<cfset expandedText = "<span style=""color: red; font-weight: bold;"">[error (def): no term was specified]</span>">
+				<cfelse>
+					<cfif commandParams gt 2>
+						<cfset defText = ListGetAt(getCode, 3, '|')>
+					<cfelse>
+						<cfset defText = ''>
+					</cfif>
+					<cfset defKeyword = ListGetAt(getCode, 2, '|')>
+					<cfset h=ormExecuteQuery("from help as h where h.keyword='#defKeyword#'")>
+					<cfif arraylen(h) neq 0>
+						<cfset expandedText = h[1].getDisplay().getDisplay_text()>
+					</cfif>
+					<cfset expandedText = "<a href onClick=""return showHideHelpDef(true,'#defKeyword#');"">#defText#</a><div id=""#defKeyword#"" style=""display:none;"" >#expandedText#<a href onClick=""return showHideHelpDef(false,'#defKeyword#');"">hide</a></div>">
+				</cfif>
+				<cfset outstr = Replace(outstr, "[[#getCode#]]", expandedText, 'ONE')>
+			</cfif>
+			<cfset hasCode = false>
+			<cfset getCodeOpen = Find('[[', outstr)>
+			<cfif getCodeOpen>
+				<cfset getCodeClose = Find(']]', defText, getCodeOpen + 2)>
+				<cfif getCodeClose>
+					<cfset hasCode = true>
+					<cfset getCode = Mid(outstr, getCodeOpen + 2, getCodeClose - getCodeOpen - 2)>
+				</cfif>
+			</cfif>
+		</cfloop>
+		<cfreturn outstr>
+	</cffunction>
+
 </cfcomponent>
