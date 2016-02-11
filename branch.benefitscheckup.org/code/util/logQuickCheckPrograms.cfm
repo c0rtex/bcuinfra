@@ -1,9 +1,3 @@
-<cfhttp method="get" 
-    url="https://www.benefitscheckup.org/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID=9808746&shadowID=9808746"> 
-</cfhttp>
-<cfoutput>Response Content: <br> 
-        #htmlcodeformat(cfhttp.filecontent)#<br> </cfoutput>
-<cfflush>
 <cfquery name="getquickcheck" datasource="#application.dbSrc#">
 		select screening_id from screening where subset_id = 93
 	</cfquery>
@@ -13,7 +7,6 @@
     url="https://www.benefitscheckup.org/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID=#screening_id#&shadowID=#screening_id#"> 
 </cfhttp>
 <cfoutput>https://www.benefitscheckup.org/bcu-quickcheck-report/?subset_id=93&partner_id=0&screeningID=#screening_id#&shadowID=#screening_id#</cfoutput><br>
-
 <cfflush>
 </cfloop>
 <cfabort>
