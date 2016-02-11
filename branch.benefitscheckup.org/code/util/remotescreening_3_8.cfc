@@ -7,7 +7,8 @@
         <cfset version = "testtestest">
 	<!-- added special msp exception to include in Medicaid Category for report display  -->
 	<cfquery name="getSubsetProgramsByCategory" datasource="#application.dbSrc#">
-			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text from subset_program_sum sps, program p , display_language dl, programcategory pc
+			Select p.program_id, p.programcategory_id, p.program_code, p.LEGACY_PRG_ID, dl.display_text 
+			from subset_program_sum sps, program p , display_language dl, programcategory pc
 			where subset_id = #subset_id#
 			and p.program_id = sps.program_id
 			and  p.programcategory_id = pc.programcategory_id
@@ -31,7 +32,7 @@
         <cfreturn  getSubsetProgramsByCategory>
     </cffunction>
 
-     <cffunction access="remote" name="logQuickCheckProgs" output="false" returntype="string"  hint="Returns programs by subset"  >
+     <cffunction access="remote" name="logQuickCheckProgs" output="false" returntype="query"  hint="logs quickcheck program selections to db"  >
         <!-- pass arguments -->
         <cfargument name="state_id" type="string" required="yes" >
 	<cfargument name="subset_id" type="numeric" required="yes" >
@@ -61,6 +62,7 @@
 			</cfif>
 			
 	</cfquery>
+	<cfset result = querynew("empty")>
 	<cfset programlist = "">
 	<cfloop query="getSubsetProgramsByCategory">
 	 <cfset programlist = ListAppend(programlist, getSubsetProgramsByCategory.program_id)>
@@ -72,7 +74,7 @@
 		<cfinvokeargument name="screening_id" value="#screening_id#"/> 
 		<cfinvokeargument name="programlist" value="#programlist#"/> 
 	</cfinvoke>
-        <cfreturn  "success">
+        <cfreturn  "#result#">
     </cffunction>
 
     <cffunction access="remote" name="getSubCats" output="false" returntype="query"  hint="Returns program categories by subset " >
