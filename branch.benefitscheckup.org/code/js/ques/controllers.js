@@ -61,6 +61,11 @@ var reloadQuestionSubset = function ($scope, $routeParams) {
   }
 };
 
+var months=[{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
+            {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
+            {id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
+
+
 var controllers = angular.module('controllers', []);
 
 controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams',
@@ -71,6 +76,13 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
       $scope.$root.prevQuestionsCount=0;
     } else {
 
+    }
+    $scope.$root.months = months;
+
+    $scope.$root.years= [{id:1899, name:"before 1900"}];
+
+    for (var i=1900;i<=(new Date()).getFullYear();i++) {
+      $scope.$root.years[$scope.$root.years.length]={id:i,name:i};
     }
 
     $scope.$root.questionCount=6;
