@@ -9,7 +9,6 @@ var questionnaireApp = angular.module('questionnaireApp', [
   'validations',
   'ngSanitize',
   'ngRoute',
-  'ui.mask',
   'ui.utils.masks'
 ]);
 
