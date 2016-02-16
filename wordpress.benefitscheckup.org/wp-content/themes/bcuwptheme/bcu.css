@@ -1293,6 +1293,7 @@ div.AdvancedText {
         width: 90%;
         margin-left: -45%;
     }
+	
 
     #bcu_quickcheck .well {
         min-height: 430px !important;
@@ -1465,3 +1466,7 @@ div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
 #bcu_quickcheck.modal {position:absolute !important;}
 
 div#bcu_quickcheck, div#bcu_quickcheck .well.modal-body {overflow:visible !important;}
+
+@media (min-width: 1024px) {
+    #bcu_quickcheck {max-width:900px; left:calc(50% - 450px); margin-left:0;}
+}
