@@ -1,8 +1,5 @@
 jQuery(document).ready(function () {
 
-
-    clearListCookies();
-
     $(document.body).append('<div id="zyxzip_zip_abbrev"></div>');
 
 
