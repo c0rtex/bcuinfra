@@ -7,6 +7,7 @@ $(document).ready(function () {
 
     $("liheap_close").click(function() {
         $("#liheap_modal").modal('hide');
+        console.log("liheap close button");
     });
 
     $(window).resize(function () {
