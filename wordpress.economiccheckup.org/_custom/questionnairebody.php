@@ -487,7 +487,3 @@ if (isset($_GET['screeningID'])) {
         </div>
     </div>
 </div>
-
-
-
-
