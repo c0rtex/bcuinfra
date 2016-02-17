@@ -1,4 +1,8 @@
 jQuery(document).ready(function () {
+
+    $(document.body).append('<div id="zyxzip_zip_abbrev"></div>');
+
+
     reDraw();
     ipadModalFix();
 
@@ -61,11 +65,11 @@ jQuery(document).ready(function () {
 
         e.preventDefault();
 
+        trySubmit($zip_code);
+
         setZipKeyUp($zip_code);
 
         setZipBlur($zip_code);
-
-        trySubmit($zip_code);
 
     });
 
@@ -183,7 +187,6 @@ function setZipKeyUp($zip_code) {
 
             var threeDigits = jQuery(this).val().substring(0, 3);
             if (threeDigits == "006" || threeDigits == "007" || threeDigits == "008" || threeDigits == "009" || threeDigits == "969") {
-
                 if (jQuery('#invalidZip').length == 0) {
 
                     removeZipAlerts();
