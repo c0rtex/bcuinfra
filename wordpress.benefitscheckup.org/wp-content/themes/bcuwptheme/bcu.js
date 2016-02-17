@@ -215,7 +215,10 @@ jQuery(document).ready(function () {
                 jQuery('#esiQuickcheckCheckboxes').before('<div id="invalidInterest" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select at least one area of interest.</strong></div>');
                 validated = 0;
             }
-
+            if(!incomeSelected()){
+                jQuery('#options_bcuqc_income').prepend('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
+                validated = 0;
+            }
             if (validated == 0) {
                 // Do not submission if the form fails validation
                 return false;
@@ -326,16 +329,9 @@ function reDraw() {
     interestBlock.addClass("span6");
 }
 
-function checkRadios() {
+function incomeSelected() {
     var selected = $(".radio:checked");
-    if (!selected.val()) {
-        alert('No income selected!')
-    }
-    else {
-        var selectedValue = selected.val();
-        var selectedName = selected.siblings().text();
-        alert("Income selected is : " + selectedName + "\r\nValue: " + selectedValue);
-    }
+    return !selected.val()
 }
 
 function isIpad() {
