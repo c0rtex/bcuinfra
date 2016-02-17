@@ -326,7 +326,7 @@ function reDraw() {
 
 function incomeSelected() {
     var selected = $(".radio");
-    selected.size();
+    console.log(selected.size());
     return true;
 }
 
