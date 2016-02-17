@@ -263,7 +263,7 @@ if (isset($_GET['screeningID'])) {
         </button>
         <div><h2>Low Income Home Energy Assistance Program (LIHEAP)</h2></div>
     </div>
-    <div class="modal-body well">
+    <div class="modal-body well" style="border-radius=0 !important">
         <div id="liheap_tip">
             <div">
                 <p align="center" class="text1"><strong>Low Income Home Energy Assistance Program (LIHEAP)</strong></p>
