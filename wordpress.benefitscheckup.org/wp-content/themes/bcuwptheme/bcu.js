@@ -323,7 +323,9 @@ function hasIncomeSelected() {
 }
 
 function incomeSelectedAction(){
-    alert("An income has been selected");
+    if(hasIncomeSelected()){
+        $("#invalidIncome").remove();
+    }
 }
 
 function isIpad() {
