@@ -250,14 +250,9 @@
                     </tr>
                 </B>
             </TABLE>
-            <table border="0" cellpadding="0" width="400" class="text1">
-                <TR>
-                    <TD ALIGN="center" height="38" valign="middle">
-                        <INPUT style="font-weight:bold;" class="button" TYPE="button" VALUE="Close"
-                               ONCLICK="window.close();">
-                    </TD>
-                </TR>
-            </table>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
