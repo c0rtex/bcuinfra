@@ -261,7 +261,7 @@ if (isset($_GET['screeningID'])) {
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close <i class="icon-remove"></i>
         </button>
-        <div><h2>Low Income Home Energy Assistance Program (LIHEAP)</h2></div>
+        <div><h3 style="color : #DD4814;">Low Income Home Energy Assistance Program (LIHEAP)</h3></div>
     </div>
     <div id="liheap_block" class="modal-body well" style="border-radius=0 !important">
         <div id="liheap_tip">
