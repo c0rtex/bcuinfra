@@ -326,9 +326,16 @@ function reDraw() {
     interestBlock.addClass("span6");
 }
 
-function checkRadios(){
-    var radios = $("input[class='radio']");
-    console.log(radios.filter(":checked"));
+function checkRadios() {
+    var selected = $(".radio:checked");
+    if (!selected.val()) {
+        alert('No income selected!')
+    }
+    else {
+        var selectedValue = selected.val();
+        var selectedName = selected.siblings().text();
+        alert("Income selected is : " + selectedName + "\r\nValue: " + selectedValue);
+    }
 }
 
 function isIpad() {
