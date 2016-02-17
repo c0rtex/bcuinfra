@@ -5,6 +5,8 @@ $(document).ready(function () {
 
     liheapFix();
 
+    $("#liheap_close").modal('hide');
+
 
     $(window).resize(function () {
         responsiveMenu();
