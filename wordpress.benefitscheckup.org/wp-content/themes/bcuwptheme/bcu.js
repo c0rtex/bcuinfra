@@ -53,6 +53,9 @@ jQuery(document).ready(function () {
 
     setZipBlur($zip_code);
 
+    //clear all alerts when the modal dialog is closed.
+    $(".modal").on("hidden.bs.modal", clearErrors);
+
 
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
 
@@ -60,8 +63,6 @@ jQuery(document).ready(function () {
 
         trySubmit(e);
 
-        //clear all alerts when the modal dialog is closed.
-        $(".modal").on("hidden.bs.modal", clearErrors);
     });
 
     $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
@@ -330,7 +331,7 @@ function ipadModalFix() {
 }
 
 function trySubmit($zip_code) {
-
+    console.log("Try submit call");
     var validated = 1;
     // Validate specific input parameters
     removeZipAlerts();
