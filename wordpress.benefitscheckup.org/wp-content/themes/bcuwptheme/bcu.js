@@ -327,7 +327,7 @@ function reDraw() {
 }
 
 function checkRadios(){
-    var radios = $("input[type='radio']");
+    var radios = $("input[class='radio']");
     console.log(radios.filter(":checked"));
 }
 
