@@ -267,7 +267,7 @@ if (isset($_GET['screeningID'])) {
         <div id="liheap_tip">
             <div">
                 <p align="center" class="text1"><strong>Low Income Home Energy Assistance Program (LIHEAP)</strong></p>
-                <p align="center" class="text1">LIHEAP is a federal program. Your state may call LIHEAP by a different
+                <p align="left" class="text1">LIHEAP is a federal program. Your state may call LIHEAP by a different
                     program name. To find your state LIHEAP program name, see the list below.</p>
             </div>
             <TABLE align="center" style="background-color:#ffffff; font-size:14px;" width="400"
