@@ -62,6 +62,8 @@ jQuery(document).ready(function () {
         e.preventDefault();
 
         trySubmit($zip_code);
+        
+        setZipBlur($zip_code);
 
     });
 
@@ -114,7 +116,7 @@ function removeZipAlerts() {
     }
 }
 
-function setZipBlur($zip_code){
+function setZipBlur($zip_code) {
     $zip_code.blur(function () {
         var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(jQuery(this).val());
         if (!isValidZip) {
@@ -160,7 +162,7 @@ function setZipBlur($zip_code){
 
 }
 
-function setZipKeyUp($zip_code){
+function setZipKeyUp($zip_code) {
     $zip_code.keyup(function () {
         console.log("keyup5");
         console.log($zip_code.val().length);
@@ -178,7 +180,6 @@ function setZipKeyUp($zip_code){
             }
 
             var threeDigits = jQuery(this).val().substring(0, 3);
-//console.log ("three gidig" + threeDigits);
             if (threeDigits == "006" || threeDigits == "007" || threeDigits == "008" || threeDigits == "009" || threeDigits == "969") {
 
                 if (jQuery('#invalidZip').length == 0) {
@@ -198,12 +199,10 @@ function setZipKeyUp($zip_code){
                 cache: false,
                 success: function (StateId) {
                     var newcode = eval('(' + StateId + ')');
-//console.log("invliad zip length "+jQuery('#invalidZip').length);
                     if (!newcode || StateId == 'false') {
                         stcode = '';
                         stname = '';
                         if (jQuery('#invalidZip').length == 0) {
-
                             removeZipAlerts();
                             $zip_code.before('<div id="invalidZip" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> This is an invalid ZIP code. Please try again.</div>');
                         }
@@ -225,7 +224,6 @@ function setZipKeyUp($zip_code){
                             jQuery('#zyxzip_zip_abbrev').css('background', '#ccccff');
                         }
                     }
-                    ;
                 }
             });
         } else {
@@ -237,7 +235,7 @@ function setZipKeyUp($zip_code){
     })
 }
 
-function clearErrors(){
+function clearErrors() {
     $(".alert").remove();
 }
 /**
@@ -294,14 +292,14 @@ function hasIncomeSelected() {
     return $("input[name=bcuqc_income]:checked").val();
 }
 
-function removeIncomeAlerts(){
-    if($("#invalidIncome").length != 0 ){
+function removeIncomeAlerts() {
+    if ($("#invalidIncome").length != 0) {
         $("#invalidIncome").remove();
     }
 }
 
-function incomeSelectedAction(){
-    if(hasIncomeSelected()){
+function incomeSelectedAction() {
+    if (hasIncomeSelected()) {
         removeIncomeAlerts();
     }
 }
@@ -309,9 +307,11 @@ function incomeSelectedAction(){
 function isIpad() {
     return (navigator.userAgent.indexOf('iPad') != -1)
 }
+
 function ipadIsPortrait() {
     return ($(window).height() > $(window).width())
 }
+
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
     console.log("the Width is" + $(window).width());
