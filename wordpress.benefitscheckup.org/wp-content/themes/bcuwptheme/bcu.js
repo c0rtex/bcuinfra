@@ -58,8 +58,6 @@ jQuery(document).ready(function () {
 
         trySubmit(e);
 
-        checkRadios();
-
         // Properly validate the entered ZIP code and link it to a state
         $zip_code.keyup(function () {
             console.log("keyup5");
@@ -331,7 +329,7 @@ function reDraw() {
 
 function incomeSelected() {
     var selected = $(".radio:checked");
-    return !selected.val()
+    return !selected.val();
 }
 
 function isIpad() {
