@@ -261,16 +261,16 @@ if (isset($_GET['screeningID'])) {
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close <i class="icon-remove"></i>
         </button>
-        <div><h2>LIHEAP</h2></div>
+        <div><h2>Low Income Home Energy Assistance Program (LIHEAP)</h2></div>
     </div>
     <div class="modal-body">
         <div id="liheap_tip">
-            <div style="background-color:#ffffff; color:#333333; width:400px;">
+            <div">
                 <p align="center" class="text1"><strong>Low Income Home Energy Assistance Program (LIHEAP)</strong></p>
                 <p align="center" class="text1">LIHEAP is a federal program. Your state may call LIHEAP by a different
                     program name. To find your state LIHEAP program name, see the list below.</p>
             </div>
-            <TABLE align="center" style="background-color:#ffffff; color:#333333; font-size:14px;" width="400"
+            <TABLE align="center" style="background-color:#ffffff; font-size:14px;
                    border="1"
                    cellpadding="1" class="text1">
                 <b>
