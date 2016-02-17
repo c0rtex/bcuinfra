@@ -5,12 +5,6 @@ $(document).ready(function () {
 
     liheapFix();
 
-    $("#liheap_close").click(function() {
-        $("#liheap_modal").css("display", "none");
-        $("#liheap_modal").modal('hide');
-        console.log("liheap close button");
-    });
-
     $(window).resize(function () {
         responsiveMenu();
     });
