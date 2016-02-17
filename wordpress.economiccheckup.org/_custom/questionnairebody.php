@@ -21,7 +21,7 @@
         money management and budgeting, staying healthy, and protecting your financial
         information. All recommendations are designed to meet the unique needs of
         seniors.
-        <a data-toggle="modal" role="button" href="#gettingstarted"
+        <a data-toggle="modal" role="button" href="#liheap_info"
            href="/wp-content/uploads/2013/07/ECU-ChecklistV2.pdf">Before you start, see a list of information you will
             need</a>.
     </p>
