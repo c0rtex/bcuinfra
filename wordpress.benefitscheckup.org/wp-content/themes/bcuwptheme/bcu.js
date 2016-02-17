@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
     var income = $(".radio");
     var validated = 0;
 
-    income.keyup(incomeSelectedAction);
+    income.click(incomeSelectedAction);
 
     checkOverlayParam();
 
