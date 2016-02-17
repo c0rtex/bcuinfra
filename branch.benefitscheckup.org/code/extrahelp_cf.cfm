@@ -21,6 +21,8 @@ FROM display_language
 where display_id = 3463 and language_id = 'EN'
 </cfquery>
 <cfoutput>#getText3.display_text#</cfoutput>
+<!---<p>Not sure if you should apply? Answer a few questions to find out. <a href="frmwelcome2.cfm?subset_id=27&amp;partner_id=<cfoutput>#URL.partner_id#</cfoutput>&sc_partner_id=<cfoutput>#SESSION.sc_partner_id#</cfoutput>">Get Started</a>--->
+<!---</p>--->
 <p>Not sure if you should apply? Answer a few questions to find out. <a href="frmwelcome2.cfm?subset_id=27&amp;partner_id=<cfoutput>#URL.partner_id#</cfoutput>&sc_partner_id=<cfoutput>#SESSION.sc_partner_id#</cfoutput>">Get Started</a>
 </p>
 <p>
