@@ -388,7 +388,7 @@ function responsiveMenu() {
 }
 
 function liheapFix(){
-    $("#liheap_link").attr('data-context', $("#liheap_tip"))
+    $("#liheap_link").attr('data-content', $("#liheap_tip"))
 }
 
 
