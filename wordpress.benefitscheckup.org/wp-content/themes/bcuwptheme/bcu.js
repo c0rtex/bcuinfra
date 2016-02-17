@@ -189,12 +189,6 @@ jQuery(document).ready(function () {
             }
         }
 
-        function removeIncomeAlerts(){
-            if($("#invalidIncome").length != 0 ){
-                $("#invalidIncome").remove();
-            }
-        }
-
 
         function trySubmit(e) {
             validated = 1;
@@ -329,9 +323,15 @@ function hasIncomeSelected() {
     return $("input[name=bcuqc_income]:checked").val();
 }
 
+function removeIncomeAlerts(){
+    if($("#invalidIncome").length != 0 ){
+        $("#invalidIncome").remove();
+    }
+}
+
 function incomeSelectedAction(){
     if(hasIncomeSelected()){
-        $("#invalidIncome").remove();
+        removeIncomeAlerts();
     }
 }
 
