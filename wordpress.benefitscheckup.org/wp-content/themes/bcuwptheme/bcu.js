@@ -330,7 +330,7 @@ function reDraw() {
 function incomeSelected() {
     var selected = $(".radio:checked");
     console.log(selected + "test log");
-    return !selected.val();
+    return selected.val();
 }
 
 function isIpad() {
