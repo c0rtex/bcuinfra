@@ -5,9 +5,10 @@ jQuery(document).ready(function () {
     console.log(navigator.appVersion);
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
+    var income = $(".radio");
     var validated = 0;
 
-    createColumns();
+    income.onkeyup(incomeSelectedAction);
 
     checkOverlayParam();
 
@@ -198,7 +199,6 @@ jQuery(document).ready(function () {
             // Validate specific input parameters
             removeZipAlerts();
             jQuery('#invalidInterest').remove();
-            incomeSelected();
             if ($zip_code.val().length != 5) {
                 $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
                 validated = 0;
@@ -211,10 +211,10 @@ jQuery(document).ready(function () {
                 jQuery('#esiQuickcheckCheckboxes').before('<div id="invalidInterest" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select at least one area of interest.</strong></div>');
                 validated = 0;
             }
-            //if(!incomeSelected()){
-            //    jQuery('#options_bcuqc_income').prepend('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
-                //validated = 0;
-            //}
+            if (!hasIncomeSelected()) {
+                jQuery('#options_bcuqc_income').prepend('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
+                validated = 0;
+            }
             if (validated == 0) {
                 // Do not submission if the form fails validation
                 return false;
@@ -233,13 +233,6 @@ jQuery(document).ready(function () {
 
     $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
 });
-function createColumns() {
-    //$("#esiQuickcheckCheckboxes").prepend("<div id='last-column' class='last-column'></div>");
-    //$("#esiQuickcheckCheckboxes").prepend("<div id='first-column' class='first-column'></div>");
-    //$("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.first-column');
-    //$("#esiQuickcheckCheckboxes > div.checkbox:lt(4)").appendTo('.last-column');
-    //responsiveQcTable();
-}
 
 /**
  * Check if overlay overlay has been set to true
@@ -325,8 +318,12 @@ function reDraw() {
     interestBlock.addClass("span6");
 }
 
-function incomeSelected() {
-    alert($("input[name=bcuqc_income]:checked").val());
+function hasIncomeSelected() {
+    return $("input[name=bcuqc_income]:checked").val();
+}
+
+function incomeSelectedAction(){
+    alert("An income has been selected");
 }
 
 function isIpad() {
