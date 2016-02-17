@@ -270,9 +270,9 @@ if (isset($_GET['screeningID'])) {
                 <p align="left" class="text1">LIHEAP is a federal program. Your state may call LIHEAP by a different
                     program name. To find your state LIHEAP program name, see the list below.</p>
             </div>
-            <TABLE align="center" style="background-color:#ffffff; font-size:14px;" width="400"
+            <TABLE align="center" style="background-color:#ffffff; font-size:14px;"
                    border="1"
-                   cellpadding="1" class="text1">
+                   cellpadding="1" class="text1 table-responsive">
                 <b>
                     <tr>
                         <td><b>State</b></td>
