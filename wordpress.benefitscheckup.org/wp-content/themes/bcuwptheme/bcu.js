@@ -209,7 +209,7 @@ jQuery(document).ready(function () {
                 validated = 0;
             }
             if (!hasIncomeSelected()) {
-                jQuery('#tr_bcuqc_income_3000').before('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
+                jQuery('#tr_bcuqc_income_3000').parent.before('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
                 validated = 0;
             }
             if (validated == 0) {
