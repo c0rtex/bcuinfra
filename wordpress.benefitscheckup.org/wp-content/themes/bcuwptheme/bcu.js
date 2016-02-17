@@ -6,8 +6,6 @@ jQuery(document).ready(function () {
     reDraw();
     ipadModalFix();
 
-    console.log(navigator.appVersion);
-
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var income = $(".radio");
 
@@ -170,10 +168,7 @@ function setZipBlur($zip_code) {
 
 function setZipKeyUp($zip_code) {
     $zip_code.keyup(function () {
-        console.log("keyup5");
-        console.log($zip_code.val().length);
         if (jQuery(this).val().length == 5) {
-            console.log("5");
             var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(jQuery(this).val());
             if (!isValidZip) {
                 //alert('You must enter a valid ZIP code containing all numbers. Please try again');
@@ -319,24 +314,17 @@ function ipadIsPortrait() {
 
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
-    console.log("the Width is" + $(window).width());
-    console.log("The height is" + $(window).height());
     if (isIpad()) {
-        console.log("Is IPAD")
     }
     if (($(window).width() == 768 && $(window).height() == 1024) || (isIpad() && ipadIsPortrait())) {
-        console.log("Is ipad sizes");
         quickCheckModal.addClass("ipad_bcu_modal");
     } else {
         quickCheckModal.removeClass("ipad_bcu_modal");
-
-        console.log("Is not i-pad sizes");
     }
 
 }
 
 function trySubmit($zip_code) {
-    console.log("Try submit call");
     var validated = 1;
     // Validate specific input parameters
     removeZipAlerts();
