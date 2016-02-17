@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     liheapFix();
 
-    $("liheap_close").click(function() {
+    $("#liheap_close").click(function() {
         $("#liheap_modal").modal('hide');
         console.log("liheap close button");
     });
