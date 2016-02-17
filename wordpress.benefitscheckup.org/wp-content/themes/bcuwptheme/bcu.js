@@ -61,9 +61,11 @@ jQuery(document).ready(function () {
 
         e.preventDefault();
 
-        trySubmit($zip_code);
-        
+        setZipKeyUp($zip_code);
+
         setZipBlur($zip_code);
+
+        trySubmit($zip_code);
 
     });
 
