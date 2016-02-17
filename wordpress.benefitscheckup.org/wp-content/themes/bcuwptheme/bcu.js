@@ -28,10 +28,6 @@ jQuery(document).ready(function () {
         responsiveMenu();
     });
 
-    //$("#esiMenuToggleButton").click(function () {
-    //    $("#main-nav").toggle();
-    //});
-
     $(".modal").on("shown.bs.modal", function () {
         $(document.body).addClass("frozenBody")
     });
@@ -51,6 +47,7 @@ jQuery(document).ready(function () {
     $("#esiMenuToggleButton").click(function () {
         $("#main-nav").toggle();
     });
+
 
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
 
@@ -328,7 +325,7 @@ function reDraw() {
 }
 
 function incomeSelected() {
-    var selected = $(".radio:checked");
+    var selected = $("#options_bcuqc_income .radio:checked");
     console.log(selected + "test log");
     return selected.val();
 }
