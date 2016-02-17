@@ -97,3 +97,17 @@ questionnaireApp
             }
         }
     });
+
+questionnaireApp
+    .directive('divVar',function(){
+        return {
+            template:"",
+            link: function (scope,element,attributes) {
+                if (scope.$root.params == undefined) scope.$root.params ={};
+                scope.$root.params[attributes['name']]=attributes['value'];
+            },
+            scope:{
+                question:'='
+            }
+        }
+    });

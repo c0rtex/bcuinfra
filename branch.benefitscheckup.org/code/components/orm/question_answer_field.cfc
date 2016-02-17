@@ -23,7 +23,7 @@
 	<cffunction name="toStructure">
 		<cfargument name="prev_id" type="numeric" default="-1">
 		<cfset qaf = super.toStructure()>
-		<cfif prev_id > -1>
+		<cfif prev_id GREATER THAN -1>
 			<cfset cf=ormExecuteQuery("from screening_answerfield as saf where saf.answer.id=#this.getAnswer().getId()# and saf.screening.id=#prev_id#")>
 			<cfif arraylen(cf) neq 0>
 				<cfset qaf["prev"]=cf[1].toStructure()>

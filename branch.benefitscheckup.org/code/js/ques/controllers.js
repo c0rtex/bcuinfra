@@ -2,10 +2,10 @@
 
 /* Controllers */
 
-var parseLocation = function(location) {
-  var obj = {};
+var parseLocation = function(location, vParams) {
+  var retVal = vParams == undefined ? {} : vParams;
   var params = location.split("#")[0].split("?");
-  if (params.length<2) return obj;
+  if (params.length<2) return retVal;
   var pairs = params[1].split("&");
   var pair;
   var i;
@@ -14,10 +14,12 @@ var parseLocation = function(location) {
     if ( pairs[i] === "" ) continue;
 
     pair = pairs[i].split("=");
-    obj[ decodeURIComponent( pair[0] ) ] = decodeURIComponent( pair[1] );
+    var paramName = decodeURIComponent(pair[0]);
+    var paramValue = decodeURIComponent(pair[1]);
+    if (retVal[paramName] == undefined) retVal[paramName] = paramValue;
   }
 
-  return obj;
+  return retVal;
 };
 
 var showHideHelpDef = function(show, divName) {
@@ -68,8 +70,8 @@ var months=[{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id
 
 var controllers = angular.module('controllers', []);
 
-controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams',
-  function($scope, $location, $injector,$routeParams) {
+controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams','questionSet','screening',
+  function($scope, $location, $injector,$routeParams,questionSet,screening) {
 
     if ($scope.$root.globalQuestionCounter == undefined) {
       $scope.$root.globalQuestionCounter=1;
@@ -96,14 +98,19 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
     if ($scope.$root.questionSubsetNum == undefined) $scope.$root.questionSubsetNum=0;
 
     if ($scope.$root.questionSetName != $routeParams.questionSet) {
-      var params = parseLocation($location.$$absUrl);
-      $scope.$root.questionSet = $injector
-                                  .get($routeParams.questionSet)
-                                    .query(params,
-                                           function() {
-                                               reloadQuestionSubset($scope,$routeParams);
-                                           },
-                                           null);
+      var params = parseLocation($location.$$absUrl,$scope.$root.params);
+      params.questionSet = $routeParams.questionSet;
+      if ($scope.$root.questionSet!=undefined) {
+        if (($scope.$root.questionSet.CFID != undefined) && ($scope.$root.questionSet.CFTOKEN != undefined)) {
+          params.CFID = $scope.$root.questionSet.CFID;
+          params.CFTOKEN = $scope.$root.questionSet.CFTOKEN;
+        }
+      }
+      $scope.$root.questionSet = questionSet.query(params,
+                                                   function() {
+                                                     reloadQuestionSubset($scope,$routeParams);
+                                                   },
+                                                   null);
       $scope.$root.questionSetName = $routeParams.questionSet;
       $scope.$root.questionSubsetNum=0;
     }
@@ -114,8 +121,16 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
     };
 
     $scope.nextQS = function () {
+      params.response = new Array();
+      for (var i=0;i<$scope.questions.length;i++) {
+        for (var j=0;j<$scope.questions[i].answer_fields.length;j++) {
+          params.response[params.response.length]=$scope.$root.af[$scope.questions[i].answer_fields[j].code];
+        }
+      }
+      //screening.save(params);
       $scope.$root.prevQuestionsCount = $scope.questions.length;
       $location.url($scope.$root.nextQuestionSetURL);
+      return false;
     };
 
     reloadQuestionSubset($scope,$routeParams);

@@ -32,6 +32,10 @@
 
 		<cfset data.nextService = this.getNextService()>
 
+		<cfset data.cfid = session.cfid>
+
+		<cfset data.cftoken = session.cftoken>
+
 		<cfset data.questions = retVal>
 
 		<cfif structKeyExists(arguments, "callback")>

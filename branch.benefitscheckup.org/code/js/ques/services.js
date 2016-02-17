@@ -5,44 +5,27 @@
 var services = angular.module('services', ['ngResource']);
 var webServiceURL="http://localhost/cf/components";
 
-services.factory('questionSet1', ['$resource',
+services.factory('questionSet', ['$resource',
   function($resource){
-    return $resource(webServiceURL+'/questionSet1.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {
+    return $resource(webServiceURL+'/:questionSet.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&CFID=:CFID&CFTOKEN=:CFTOKEN&callback=JSON_CALLBACK', {}, {
       query: {method:'JSONP',
-              params:{subset_id:0,state_id:'',partner_id:0,prev_id:0},
+              params:{questionSet:'questionSet1',subset_id:0,state_id:'',partner_id:0,prev_id:0,CFID:0,CFTOKEN:''},
               isArray:false}
     });
-  }]);
+  }
+]);
 
-services.factory('questionSet2', ['$resource',
+services.factory('screening',['$resource',
     function($resource){
-        return $resource(webServiceURL+'/questionSet2.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {
-            query: {method:'JSONP',
-                params:{subset_id:0,state_id:'',partner_id:0,prev_id:0},
-                isArray:false}
+        return $resource(webServiceURL+'/ScreeningService.cfc?method=doScreening', {}, {
+            save: {method:'POST',
+                params:{subset_id:0,state_id:'',partner_id:0,prev_id:0,CFID:0,CFTOKEN:'',response:""}}
         });
-    }]);
+    }
+]);
 
-services.factory('questionSet3', ['$resource',
-    function($resource){
-        return $resource(webServiceURL+'/questionSet3.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {
-            query: {method:'JSONP',
-                params:{subset_id:0,state_id:'',partner_id:0,prev_id:0},
-                isArray:false}
-        });
-    }]);
-
-services.factory('questionSet4', ['$resource',
-    function($resource){
-        return $resource(webServiceURL+'/questionSet4.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {
-            query: {method:'JSONP',
-                params:{subset_id:0,state_id:'',partner_id:0,prev_id:0},
-                isArray:false}
-        });
-    }]);
-
-services.factory('all', ['$resource',
-    function($resource){
+services.factory('all', ['$resource','$scope',
+    function($resource,$scope){
         return $resource(webServiceURL+'/customQuestionSet.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {
             query: {method:'JSONP',
                 params:{subset_id:0,state_id:'',partner_id:0,prev_id:0},
