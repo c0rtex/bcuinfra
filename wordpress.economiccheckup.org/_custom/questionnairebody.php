@@ -29,7 +29,7 @@
 
 <div id="liheap_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="LIHEAP"
      aria-hidden="true" style="display: none;">
-    <div class="modal-body well">
+    <div class="modal-content well">
         <div style="background-color:#ffffff; color:#333333; width:100%; padding:25px;" id="liheap_tip">
             <div style="background-color:#ffffff; color:#333333; width:400px;">
                 <p align="center" class="text1"><strong>Low Income Home Energy Assistance Program (LIHEAP)</strong></p>
@@ -250,9 +250,9 @@
                     </tr>
                 </B>
             </TABLE>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
