@@ -3,6 +3,8 @@ $(document).ready(function () {
 
     responsiveMenu();
 
+    liheapFix();
+
 
     $(window).resize(function () {
         responsiveMenu();
@@ -385,5 +387,8 @@ function responsiveMenu() {
 
 }
 
+function liheapFix(){
+    $("#liheap_link").attr('data-context', $("#liheap_tip"))
+}
 
 
