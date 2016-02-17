@@ -27,9 +27,9 @@
     </p>
 </div>
 
-<div id="esi_quickcheck" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="QuickCheck"
+<div id="liheap_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="LIHEAP"
      aria-hidden="true" style="display: none;">
-    <div class="modal body-wel">
+    <div class="modal-body well">
         <div style="background-color:#ffffff; color:#333333; width:100%; padding:25px;" id="liheap_tip">
             <div style="background-color:#ffffff; color:#333333; width:400px;">
                 <p align="center" class="text1"><strong>Low Income Home Energy Assistance Program (LIHEAP)</strong></p>
