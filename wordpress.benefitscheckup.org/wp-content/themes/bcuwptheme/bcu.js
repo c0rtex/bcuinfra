@@ -189,15 +189,18 @@ jQuery(document).ready(function () {
             }
         }
 
-        //clears all alerts
-        function clearErrorsOnHide() {
-            $(".alert").remove();
+        function removeIncomeAlerts(){
+            if($("#invalidIncome").length != 0 ){
+                $("#invalidIncome").remove();
+            }
         }
+
 
         function trySubmit(e) {
             validated = 1;
             // Validate specific input parameters
             removeZipAlerts();
+            removeIncomeAlerts();
             jQuery('#invalidInterest').remove();
             if ($zip_code.val().length != 5) {
                 $zip_code.before('<div id="invalidZipNumbers" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must enter a valid ZIP code containing all 5 numbers. Please try again.</strong></div>');
@@ -228,7 +231,7 @@ jQuery(document).ready(function () {
 
 
         //clear all alerts when the modal dialog is closed.
-        $(".modal").on("hidden.bs.modal", clearErrorsOnHide);
+        $(".modal").on("hidden.bs.modal", clearErrors);
     });
 
     $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
@@ -268,6 +271,10 @@ function responsiveQcTable() {
     }
 }
 
+
+function clearErrors(){
+    $(".alert").remove();
+}
 /**
  * Adjusts the menu to adjust when medium or smaller screens are being used.
  */
