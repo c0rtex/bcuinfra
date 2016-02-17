@@ -53,9 +53,12 @@ jQuery(document).ready(function () {
     });
 
     jQuery('#esiQuickcheckResultsButton').on('click', function (e) {
+
         e.preventDefault();
 
         trySubmit(e);
+
+        checkRadios();
 
         // Properly validate the entered ZIP code and link it to a state
         $zip_code.keyup(function () {
@@ -300,36 +303,6 @@ function responsiveMenu() {
     }
 }
 
-/**
- * detect IE
- * returns version of IE or false, if browser is not Internet Explorer
- */
-function detectIE() {
-    var ua = window.navigator.userAgent;
-
-    var msie = ua.indexOf('MSIE ');
-    if (msie > 0) {
-        // IE 10 or older => return version number
-        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-    }
-
-    var trident = ua.indexOf('Trident/');
-    if (trident > 0) {
-        // IE 11 => return version number
-        var rv = ua.indexOf('rv:');
-        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-    }
-
-    var edge = ua.indexOf('Edge/');
-    if (edge > 0) {
-        // Edge (IE 12+) => return version number
-        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-    }
-
-    // other browser
-    return false;
-}
-
 function appendTo(section) {
     return function (element) {
         element.appendTo(section)
@@ -353,17 +326,22 @@ function reDraw() {
     interestBlock.addClass("span6");
 }
 
+function checkRadios(){
+    var radios = $("input[type='radio']");
+    console.log(radios.filter(":checked"));
+}
+
 function isIpad() {
     return (navigator.userAgent.indexOf('iPad') != -1)
 }
-function ipadIsPortrait(){
+function ipadIsPortrait() {
     return ($(window).height() > $(window).width())
 }
 function ipadModalFix() {
     var quickCheckModal = $("#bcu_quickcheck");
     console.log("the Width is" + $(window).width());
     console.log("The height is" + $(window).height());
-    if(isIpad()){
+    if (isIpad()) {
         console.log("Is IPAD")
     }
     if (($(window).width() == 768 && $(window).height() == 1024) || (isIpad() && ipadIsPortrait())) {
