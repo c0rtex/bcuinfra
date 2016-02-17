@@ -325,9 +325,13 @@ function reDraw() {
 }
 
 function incomeSelected() {
-    var selected = $("#options_bcuqc_income .radio:checked");
-    console.log(selected + "test log");
+    var selected = $("#options_bcuqc_income .radio .radio:checked");
+    console.log(selected.val() + "test log");
     return selected.val();
+}
+
+function incomeRadioToggled(){
+    $("#options_bcuqc_income .radio")
 }
 
 function isIpad() {
