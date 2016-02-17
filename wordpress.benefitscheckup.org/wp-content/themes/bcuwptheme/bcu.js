@@ -65,10 +65,6 @@ jQuery(document).ready(function () {
 
         trySubmit($zip_code);
 
-        setZipKeyUp($zip_code);
-
-        setZipBlur($zip_code);
-
     });
 
     $("div#question_bcuqc_interest_category.row-fluid").removeAttr('id');
