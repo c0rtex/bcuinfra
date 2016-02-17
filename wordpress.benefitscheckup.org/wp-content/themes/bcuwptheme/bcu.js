@@ -61,7 +61,7 @@ jQuery(document).ready(function () {
 
         e.preventDefault();
 
-        trySubmit(e);
+        trySubmit($zip_code);
 
     });
 
