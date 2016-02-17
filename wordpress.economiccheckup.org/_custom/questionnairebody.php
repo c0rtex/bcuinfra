@@ -261,7 +261,7 @@ if (isset($_GET['screeningID'])) {
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close <i class="icon-remove"></i>
         </button>
-        <div><h2>Getting Started</h2></div>
+        <div><h2>LIHEAP</h2></div>
     </div>
     <div class="modal-body">
         <div id="liheap_tip">
