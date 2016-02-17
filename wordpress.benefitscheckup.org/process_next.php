@@ -56,9 +56,6 @@ else {
 }
 //$screeningresponse_query = restructureWSArray($screeningresponse_query);
 
-print_r($screeningresponse_query);
-echo 'done printing....';
-
 
 //output debug info - response data from service
 //echo "<pre><b>Service Response:</b>";
