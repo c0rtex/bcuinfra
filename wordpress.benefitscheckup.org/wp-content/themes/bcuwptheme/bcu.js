@@ -6,7 +6,6 @@ jQuery(document).ready(function () {
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var income = $(".radio");
-    var validated = 0;
 
     income.click(incomeSelectedAction);
 
@@ -330,8 +329,9 @@ function ipadModalFix() {
 
 }
 
-function trySubmit(e) {
-    validated = 1;
+function trySubmit($zip_code) {
+
+    var validated = 1;
     // Validate specific input parameters
     removeZipAlerts();
     removeIncomeAlerts();
