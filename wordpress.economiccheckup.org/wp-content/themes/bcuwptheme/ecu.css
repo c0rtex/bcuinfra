@@ -969,3 +969,7 @@ div.well.sidebar-nav {
     padding-left: 2px;
     padding-right: 5px;
 }
+
+div#liheap_info.moda.hide.fade.in {
+    border-radius : 0;
+}
