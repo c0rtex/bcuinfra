@@ -4,12 +4,14 @@ $programs = $soapClient->getProgByCat($state_id,93,$programcategory_id);
 $thischecked = false;
 foreach ($fields as $f => $row)
 					{
-						if ($row["ANSWERFIELD"] == $interested) {
+						if (($row["ANSWERFIELD"] == $interested)&&($inc_exclusion != $income_exclusion)) {
 						//$zip = $row["RESPONSE"];
 						//echo "field:".$interested;
-						$thischecked = true;			
+						$thischecked = true;	
 						}
-						
+						elseif (($row["ANSWERFIELD"] == $interested)&&($inc_exclusion = $income_exclusion)) {
+						$total_exclusion = $total_exclusion + $exclusion_val;	
+						}	
 
 					}
 
@@ -22,9 +24,8 @@ if ($thischecked == true) {
 			<div action="" method="get" id="commentForm" class="well cmxform">
 			   <?php echo $sectionSummary ?>
 	  <ol class="nav nav-list">
-	    			
-
 				<?php 
+				$logProgs = $soapClient->logQuickCheckProgs($state_id,93,$programcategory_id,$screeningID);
 				foreach ($programs as $p => $row2)
 					{
 						$prog_title = $row2["DISPLAY_TEXT"];

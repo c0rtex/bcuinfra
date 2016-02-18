@@ -13,7 +13,9 @@ $cats2 = array(
 "utility" => "bcu_quickcheck_report_heading_utility"
 );
 //print_r($cats2 );
-
+$incomeText = $soapClient->getWPPostByMetaTag('bcu_quickcheck_report_heading_ineligble');
+$incomeDisclaimer  = $incomeText[0]["POST_CONTENT"];
+$incomeDisclaimerTitle  = $incomeText[0]["POST_TITLE"];		
 $cats = $soapClient->getSubCats(93);
 //print_r($cats );	
 //echo $screeningID;
@@ -28,6 +30,10 @@ $fields = $soapClient->getAFShadow($screeningID );
 						if ($row["ANSWERFIELD"] == 'county') {
 						$county = $row["RESPONSE"];
 						//echo "county".$county;			
+						}
+						if ($row["ANSWERFIELD"] == 'bcuqc_income_3000') {
+						$income_exclusion = y;
+						//echo "Income Exclusion:".$income_exclusion;			
 						}
 
 					}	
@@ -84,7 +90,7 @@ function age($month, $day, $year){
  }
  return($age);
 }
-//$sectioncode = 'bcu_quickcheck_report_heading_veteran';
+$total_exclusion = 0;
 //show sections and program info
 		foreach ($cats as $c => $row)
 					{
@@ -97,43 +103,59 @@ function age($month, $day, $year){
 						$sectioncode = 'bcu_quickcheck_report_heading_veteran';
 						$iconcode = 'user';
 						$interested = 'bcuqc_category_veteran';
+						$inc_exclusion = 'n';
+						$exclusion_val = 0;
 						}
 						elseif ($cat_code == 'taxrelief'){
 						$sectioncode = 'bcu_quickcheck_report_heading_taxrelief';
 						$iconcode = 'building';
 						$interested = 'bcuqc_category_property_taxrelief';
+						$inc_exclusion = 'n';
+						$exclusion_val = 0;
 						}
 						
 						elseif ($cat_code == 'foodsupp'){
 						$sectioncode = 'bcu_quickcheck_report_heading_foodsupp';
 						$iconcode = 'coffee';
 						$interested = 'bcuqc_category_foodsupp';
+						$inc_exclusion = 'y';
+						$exclusion_val = 1;
 						}
 
 						elseif ($cat_code == 'nutrition'){
 						$sectioncode = 'bcu_quickcheck_report_heading_nutrition';
 						$iconcode = 'heart';
 						$interested = 'bcuqc_category_nutrition';
+						$inc_exclusion = 'y';
+						$exclusion_val = 1;
 						}
 						elseif ($cat_code == 'rxgov'){
 						$sectioncode = 'bcu_quickcheck_report_heading_rx';
 						$iconcode = 'medkit';
 						$interested = 'bcuqc_category_rx';
+						$inc_exclusion = 'y';
+						$exclusion_val = 1;
 						}
 						elseif ($cat_code == 'medicaid'){
 						$sectioncode = 'bcu_quickcheck_report_heading_medicaid';
 						$iconcode = 'ambulance';
 						$interested = 'bcuqc_category_medicaid';
+						$inc_exclusion = 'y';
+						$exclusion_val = 1;
 						}
 						elseif ($cat_code == 'income'){
 						$sectioncode = 'bcu_quickcheck_report_heading_income';
 						$iconcode = 'money';
 						$interested = 'bcuqc_category_income';
+						$inc_exclusion = 'y';
+						$exclusion_val = 1;
 						}
 						elseif ($cat_code == 'utility'){
 						$sectioncode = 'bcu_quickcheck_report_heading_utility';
 						$iconcode = 'signal';
 						$interested = 'bcuqc_category_utility';
+						$inc_exclusion = 'y';
+						$exclusion_val = 1;
 						}
 						$sectiontext = $soapClient->getWPPostByMetaTag($sectioncode);
 						$sectionSummary = $sectiontext[0]["POST_CONTENT"];		
