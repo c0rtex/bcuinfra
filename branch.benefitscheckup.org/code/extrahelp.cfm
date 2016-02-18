@@ -1,7 +1,7 @@
 <!--- Initialize and load any session variable value passed into this page --->
 <!---<cf_sessionLoadVars>--->
 <!--- Set guts --->
-<cf_sessionLoadVars>
+<!---<cf_sessionLoadVars>--->
 <cfset guts = "extrahelp_cf.cfm">
 <cfparam name="session.partner_id" default="0">
 <cf_cacheWrapperQuery query="wrapper" partner_id="#session.partner_id#">
