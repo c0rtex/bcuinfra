@@ -1471,4 +1471,6 @@ div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
     margin-top: 10%; !important;
 }
 
-
+#zyxzip_zip_abbrev {
+    display : none;
+}
