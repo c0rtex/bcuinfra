@@ -8,6 +8,7 @@ WDFWE
 <!---<cf_sessionLoadVars>--->
 <cfset guts = "extrahelp_cf.cfm">
 <cfparam name="session.partner_id" default="0">
+<cfparam name="session.org_id" default="0">
 <cf_cacheWrapperQuery query="wrapper" partner_id="#session.partner_id#">
 
 <cfif trim(wrapper.wrapper_afc) IS NOT "">
