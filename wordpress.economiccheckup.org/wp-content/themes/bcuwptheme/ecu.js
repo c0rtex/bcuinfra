@@ -394,6 +394,11 @@ function liheapFix(){
     $("#liheap_link2").attr('href', "#liheap_info");
     $("#liheap_link2").attr('data-toggle', "modal");
 
+
+    $("input[id^='liheap']").each(function (i, el) {
+        el.attr('href', "#liheap_info");
+        el.attr('data-toggle', "modal");
+    });
 }
 
 
