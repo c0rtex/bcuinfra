@@ -7,9 +7,11 @@ foreach ($fields as $f => $row)
 						if (($row["ANSWERFIELD"] == $interested)&&($inc_exclusion != $income_exclusion)) {
 						//$zip = $row["RESPONSE"];
 						//echo "field:".$interested;
-						$thischecked = true;			
+						$thischecked = true;	
 						}
-						
+						elseif (($row["ANSWERFIELD"] == $interested)&&($inc_exclusion = $income_exclusion)) {
+						$total_exclusion = $total_exclusion + $exclusion_val;	
+						}	
 
 					}
 
