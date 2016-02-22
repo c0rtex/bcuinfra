@@ -1,6 +1,24 @@
 <?php
 
 
+add_action('init', 'session_manager');
+function session_manager() {
+       if (!session_id()) {
+               session_start();
+       }
+}
+
+add_action('wp_logout', 'session_logout');
+function session_logout() {
+        session_destroy();
+}
+
+add_filter('wp_login', 'check_login', 10, 3);
+function check_login() {
+     $_SESSION['authorized']='true'; return $user;
+}
+
+
 //update_option('siteurl','https://redesign.benefitscheckup.org');
 //update_option('home','https://redesign.benefitscheckup.org');
 
