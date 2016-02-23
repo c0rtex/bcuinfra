@@ -1468,7 +1468,7 @@ div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
 div#bcu_quickcheck, div#bcu_quickcheck .well.modal-body {overflow:visible !important;}
 
 @media (min-width: 1024px) {
-    #bcu_quickcheck {max-width:900px; left:calc(50% - 450px); margin-left:0;}
+    #bcu_quickcheck {max-width:910px; left:calc(50% - 450px); margin-left:0;}
 }
 
 #options_zip:before {content: "1: "}
