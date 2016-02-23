@@ -277,9 +277,10 @@ function reDraw() {
 
     var leftColumnBlock = $(leftColumn);
 
-    [zipBlock, dobBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
+    [zipBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
 
     var interestBlock = $("#bcuqc_interest_category_group");
+    dobBlock.prependTo(interestBlock);
     interestBlock.appendTo(containerBlock);
     interestBlock.addClass("span6");
 }
