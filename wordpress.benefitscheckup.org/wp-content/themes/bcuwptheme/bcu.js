@@ -6,6 +6,9 @@ jQuery(document).ready(function () {
     reDraw();
     ipadModalFix();
 
+
+$("#question_bcuqc_income").prepend ('<div class="bcuqc_format">3. </div>');
+
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var income = $(".radio");
 

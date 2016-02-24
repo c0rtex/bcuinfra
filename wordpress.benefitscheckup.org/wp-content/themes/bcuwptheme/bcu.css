@@ -1333,6 +1333,9 @@ div.AdvancedText {
     margin: 0 0 5px;
 }
 
+
+
+
 #esiQuickcheckCheckboxes .first-column {
     width: 50%;
     float: left;
@@ -1463,15 +1466,30 @@ div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
     margin-top: 10%; !important;
 }
 
+#tr_zip {
+margin-top: 2px;
+}
+
 #bcu_quickcheck.modal {position:absolute !important;}
 
 div#bcu_quickcheck, div#bcu_quickcheck .well.modal-body {overflow:visible !important;}
 
 @media (min-width: 1024px) {
-    #bcu_quickcheck {max-width:910px; left:calc(50% - 450px); margin-left:0;}
+    #bcu_quickcheck {max-width:920px; left:calc(50% - 450px); margin-left:0;}
 }
 
-#options_zip:before {content: "1: "}
-#options_dob:before {content: "2: "}
-#options_bcuqc_income:before {content: "3: "}
-#options_bcuqc_interest_category:before  {content: "4: "}
+#options_zip:before {content: "1. "}
+#options_dob:before {content: "2. "}
+/* #options_bcuqc_income:before {content: "3. "} */
+#options_bcuqc_interest_category:before  {content: "4. "}
+
+.bcuqc_format {
+
+margin-bottom: -20px;
+
+}
+
+
+#question_bcuqc_income .span12 {
+margin-left: 17px;
+}
