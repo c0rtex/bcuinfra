@@ -1479,8 +1479,14 @@ div#bcu_quickcheck, div#bcu_quickcheck .well.modal-body {overflow:visible !impor
 }
 
 #options_zip:before {content: "1. "}
+
+@media (min-width: 768px) {
 #options_dob:before {content: "2. "}
 /* #options_bcuqc_income:before {content: "3. "} */
+}
+@media (max-width: 767px) {
+#options_dob:before {content: "3. "}
+}
 #options_bcuqc_interest_category:before  {content: "4. "}
 
 .bcuqc_format {

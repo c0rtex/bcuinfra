@@ -6,8 +6,13 @@ jQuery(document).ready(function () {
     reDraw();
     ipadModalFix();
 
-
+if($(window).width() >= 768) {
 $("#question_bcuqc_income").prepend ('<div class="bcuqc_format">3. </div>');
+}
+else {
+
+$("#question_bcuqc_income").prepend ('<div class="bcuqc_format">2. </div>');
+}
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var income = $(".radio");
