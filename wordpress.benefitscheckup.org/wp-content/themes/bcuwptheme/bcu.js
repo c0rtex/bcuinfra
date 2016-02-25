@@ -2,9 +2,9 @@ jQuery(document).ready(function () {
 
     $(document.body).append('<div id="zyxzip_zip_abbrev"></div>');
 
-
     reDraw();
     ipadModalFix();
+    bcuQcFix ();
 
     var $zip_code = jQuery('#bcuQuickcheckForm input#zip');
     var income = $(".radio");
@@ -22,6 +22,7 @@ jQuery(document).ready(function () {
         ipadModalFix();
         responsiveMenu();
         responsiveQcTable();
+    bcuQcFix ();
     });
 
     $(window).on("orientationchange", function (event) {
@@ -267,6 +268,19 @@ function appendTo(section) {
     }
 }
 
+function bcuQcFix (){
+
+$(".bcuqc_format").remove();
+if($(window).width() >= 768) {
+$("#question_bcuqc_income").prepend ('<div class="bcuqc_format">3. </div>');
+}
+else {
+
+$("#question_bcuqc_income").prepend ('<div class="bcuqc_format">2. </div>');
+}
+
+}
+
 function reDraw() {
     var leftColumn = "#left_questions_column";
     var containerBlock = $("#bcu_upper_section");
@@ -277,9 +291,10 @@ function reDraw() {
 
     var leftColumnBlock = $(leftColumn);
 
-    [zipBlock, dobBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
+    [zipBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
 
     var interestBlock = $("#bcuqc_interest_category_group");
+    dobBlock.prependTo(interestBlock);
     interestBlock.appendTo(containerBlock);
     interestBlock.addClass("span6");
 }
