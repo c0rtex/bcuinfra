@@ -14,10 +14,10 @@
 
 <cfcomponent persistent="true" entityname="question_answer_field" table="question_answerfield" extends="ToStructConverter">
     <cfproperty name="id" fieldtype="id">
-    <cfproperty name="answer" tostructcomponent="" fieldtype="many-to-one" fkcolumn="answerfield_id" cfc="answer_field">
-	<cfproperty name="question" fieldtype="many-to-one" fkcolumn="question_id" cfc="question">
-    <cfproperty name="state" fieldtype="many-to-one" fkcolumn="state_id" cfc="state">
-    <cfproperty name="rule" fieldtype="many-to-one" fkcolumn="rule_id" cfc="rule">
+    <cfproperty name="answer" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="answerfield_id" cfc="answer_field">
+	<cfproperty name="question" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="question_id" cfc="question">
+    <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
+    <cfproperty name="rule" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
     <cfproperty name="sort" tostruct="sort">
 
 	<cffunction name="toStructure">

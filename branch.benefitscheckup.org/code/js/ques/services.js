@@ -15,11 +15,11 @@ services.factory('questionSet', ['$resource',
   }
 ]);
 
-services.factory('screening',['$resource',
+services.factory('Screening',['$resource',
     function($resource){
-        return $resource(webServiceURL+'/ScreeningService.cfc?method=doScreening', {}, {
-            save: {method:'POST',
-                params:{subset_id:0,state_id:'',partner_id:0,prev_id:0,CFID:0,CFTOKEN:'',response:""}}
+        return $resource(webServiceURL+'/ScreeningProcessor.cfc?method=doScreening&CFID=:CFID&CFTOKEN=:CFTOKEN', {}, {
+            save:{method:'POST',
+                 params:{CFID:0,CFTOKEN:''}}
         });
     }
 ]);

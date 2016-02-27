@@ -16,6 +16,6 @@
     <cfproperty name="id" fieldtype="id" column="resultpage_id">
     <cfproperty name="code">
     <cfproperty name="file_name" column="filename">
-    <cfproperty name="display" fieldtype="many-to-one" fkcolumn="display_id" cfc="display">
+    <cfproperty name="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
     <cfproperty name="result_page_name" column="resultpage_desc">
 </cfcomponent>

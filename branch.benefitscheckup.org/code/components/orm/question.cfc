@@ -14,17 +14,17 @@
 
 <cfcomponent persistent="true" entityname="question" table="question" extends="ToStructConverter">
     <cfproperty name="id" tostruct="id" fieldtype="id" column="question_id">
-    <cfproperty name="dep_question" fieldtype="many-to-one" fkcolumn="dep_question_id" cfc="Question">
+    <cfproperty name="dep_question" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="dep_question_id" cfc="Question">
     <cfproperty name="code" tostruct="code" column="question_code">
-    <cfproperty name="question_category" tostructcomponent="" fieldtype="many-to-one"   fkcolumn="questioncategory_id" cfc="question_category">
-    <cfproperty name="question_header" tostructcomponent="" fieldtype="many-to-one" fkcolumn="questionheader_id" cfc="question_header">
-    <cfproperty name="question_type" tostructcomponent="" fieldtype="many-to-one" fkcolumn="questiontype_id" cfc="question_type">
-	<cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" fkcolumn="display_id" cfc="display">
-	<cfproperty name="short_display" tostructdisplay="short_display" fieldtype="many-to-one" fkcolumn="short_display_id" cfc="display">
-	<cfproperty name="spq_display" tostructdisplay="spq_display" fieldtype="many-to-one" fkcolumn="spq_display_id" cfc="display">
-	<cfproperty name="print_display" tostructdisplay="print_display" fieldtype="many-to-one" fkcolumn="print_display_id" cfc="display">
-	<cfproperty name="format" fieldtype="many-to-one" fkcolumn="format_id" cfc="format">
-	<cfproperty name="rule" tostructcomponent="" fieldtype="many-to-one" fkcolumn="rule_id" cfc="rule">
+    <cfproperty name="question_category" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true"   fkcolumn="questioncategory_id" cfc="question_category">
+    <cfproperty name="question_header" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="questionheader_id" cfc="question_header">
+    <cfproperty name="question_type" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="questiontype_id" cfc="question_type">
+	<cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
+	<cfproperty name="short_display" tostructdisplay="short_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="short_display_id" cfc="display">
+	<cfproperty name="spq_display" tostructdisplay="spq_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="spq_display_id" cfc="display">
+	<cfproperty name="print_display" tostructdisplay="print_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="print_display_id" cfc="display">
+	<cfproperty name="format" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="format_id" cfc="format">
+	<cfproperty name="rule" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
 	<cfproperty name="include_flag">
 	<cfproperty name="exclude_flag">
 	<cfproperty name="suppress_qno_flag">

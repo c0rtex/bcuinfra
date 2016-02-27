@@ -70,8 +70,8 @@ var months=[{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id
 
 var controllers = angular.module('controllers', []);
 
-controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams','questionSet','screening',
-  function($scope, $location, $injector,$routeParams,questionSet,screening) {
+controllers.controller('QuestionnaireController', ['$scope','$location','$injector','$routeParams','questionSet','Screening',
+  function($scope, $location, $injector,$routeParams,questionSet,Screening) {
 
     if ($scope.$root.globalQuestionCounter == undefined) {
       $scope.$root.globalQuestionCounter=1;
@@ -121,13 +121,15 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
     };
 
     $scope.nextQS = function () {
-      params.response = new Array();
+      if (params == undefined) params = parseLocation($location.$$absUrl,$scope.$root.params);
+      params.response = {};
       for (var i=0;i<$scope.questions.length;i++) {
         for (var j=0;j<$scope.questions[i].answer_fields.length;j++) {
-          params.response[params.response.length]=$scope.$root.af[$scope.questions[i].answer_fields[j].code];
+          params.response[$scope.questions[i].answer_fields[j].code]=$scope.$root.af[$scope.questions[i].answer_fields[j].code];
         }
       }
-      //screening.save(params);
+
+      (new Screening(params)).$save({CFID:$scope.$root.questionSet.CFID,CFTOKEN:$scope.$root.questionSet.CFTOKEN});
       $scope.$root.prevQuestionsCount = $scope.questions.length;
       $location.url($scope.$root.nextQuestionSetURL);
       return false;

@@ -17,7 +17,7 @@
 	<cfproperty name="code">
 	<cfproperty name="description">
 	<cfproperty name="rule_text" tostruct="rule">
-	<cfproperty name="rx_program" fieldtype="many-to-one" fkcolumn="rx_program_id" cfc="program">
+	<cfproperty name="rx_program" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rx_program_id" cfc="program">
 	<cfproperty name="legacy_pri_sec">
 	<cfproperty name="rule_text_mqc">
 	<cfproperty name="rule_type">

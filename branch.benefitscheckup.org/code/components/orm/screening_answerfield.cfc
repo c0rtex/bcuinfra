@@ -17,7 +17,7 @@
     <cfproperty name="answer" fieldtype="id,many-to-one" fkcolumn="answerfield_id" cfc="answer_field">
     <cfproperty name="response_type" column="responsetype">
     <cfproperty name="response" tostruct="response">
-    <cfproperty name="option" tostructcomponent="option" fieldtype="many-to-one" fkcolumn="option_id" cfc="Option">
+    <cfproperty name="option" tostructcomponent="option" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="option_id" cfc="Option">
     <cfproperty name="page_num" column="pagenum">
     <cfproperty name="retained_flag">
     <cfproperty name="derived_flag">

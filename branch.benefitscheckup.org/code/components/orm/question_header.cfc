@@ -15,7 +15,7 @@
 <cfcomponent persistent="true" entityname="question_header" table="questionheader" extends="ToStructConverter">
 	<cfproperty name="id" fieldtype="id" column="questionheader_id">
 	<cfproperty name="code">
-	<cfproperty name="display" tostructdisplay="header" fieldtype="many-to-one" fkcolumn="display_id" cfc="display">
-	<cfproperty name="question_category" fieldtype="many-to-one" fkcolumn="questioncategory_id" cfc="question_category">
+	<cfproperty name="display" tostructdisplay="header" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
+	<cfproperty name="question_category" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="questioncategory_id" cfc="question_category">
 	<cfproperty name="description">
 </cfcomponent>
