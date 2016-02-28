@@ -19,7 +19,7 @@
                 </cfif>
             </cfif>
 
-            <cfset screening.setLanguage(createObject("component","cf.component.orm.language").getCurrentLanguage())>
+            <cfset screening.setLanguage(createObject("component","cf.components.orm.language").getCurrentLanguage())>
 
             <cfset screening.setCfid(session.cfid)>
 
@@ -50,7 +50,7 @@
            <cfset sa.setScreening(screening)>
            <cfset sa.setAnswer(answerField)>
            <cfset sa.setResponse_type(1)>
-           <cfset sa.setPage_num(1)>
+           <cfset sa.setPage_num(response.pgno)>
            <cfset sa.setSubmit_datetime(Now())>
            <cfswitch expression="#answerField.getAnswer_field_type().getId()#">
                <cfcase value="5">

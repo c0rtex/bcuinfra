@@ -74,6 +74,7 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
   function($scope, $location, $injector,$routeParams,questionSet,Screening) {
 
     if ($scope.$root.globalQuestionCounter == undefined) {
+      $scope.$root.pgno=1;
       $scope.$root.globalQuestionCounter=1;
       $scope.$root.prevQuestionsCount=0;
     } else {
@@ -118,10 +119,12 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
     $scope.prevQS = function () {
       $scope.$root.globalQuestionCounter = $scope.$root.globalQuestionCounter - $scope.questions.length-$scope.$root.prevQuestionsCount;
       $location.url($scope.$root.prevQuestionSetURL);
+      $scope.$root.pgno--;
     };
 
     $scope.nextQS = function () {
       if (params == undefined) params = parseLocation($location.$$absUrl,$scope.$root.params);
+      params.pgno=$scope.$root.pgno;
       params.response = {};
       for (var i=0;i<$scope.questions.length;i++) {
         for (var j=0;j<$scope.questions[i].answer_fields.length;j++) {
@@ -132,6 +135,7 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
       (new Screening(params)).$save({CFID:$scope.$root.questionSet.CFID,CFTOKEN:$scope.$root.questionSet.CFTOKEN});
       $scope.$root.prevQuestionsCount = $scope.questions.length;
       $location.url($scope.$root.nextQuestionSetURL);
+      $scope.$root.pgno++;
       return false;
     };
 
