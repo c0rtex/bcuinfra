@@ -39,15 +39,16 @@
 
 	<cffunction name="toStructure">
 		<cfargument name="state_id" type="string" default="">
-		<cfargument name="subset_id" type="any" default="0">
-		<cfargument name="partner_id" type="any" default="0">
+		<cfargument name="subset_id" type="numeric" default="0">
+		<cfargument name="partner_id" type="numeric" default="0">
+		<cfargument name="prev_id" type="numeric" default="-1">
 
 		<cfset retVal = super.toStructure()>
 
 		<cfset retVal["answer_fields"]= arrayNew(1)>
 
 		<cfloop array="#this.getAnswer_fields(state_id=state_id,subset_id=subset_id,partner_id=partner_id)#" index="af">
-			<cfset arrayAppend(retVal["answer_fields"],af.toStructure())>
+			<cfset arrayAppend(retVal["answer_fields"],af.toStructure(prev_id=prev_id))>
 		</cfloop>
 		<cfreturn retVal>
 	</cffunction>
@@ -58,8 +59,8 @@
 
 	<cffunction name="getAnswer_fields">
 		<cfargument name="state_id" type="string" default="">
-		<cfargument name="subset_id" type="any" default="0">
-		<cfargument name="partner_id" type="any" default="0">
+		<cfargument name="subset_id" type="numeric" default="0">
+		<cfargument name="partner_id" type="numeric" default="0">
 
 		<cfset partnerDiff=CreateObject("component","answer_field_subset_partner").isDifferent(subset_id=subset_id,partner_id=partner_id)>
 
@@ -198,13 +199,13 @@
 				AND qa.answerfield_id=a.answerfield_id
 	</cfquery>
 
-	<cfset _in="-1">
+		<cfset _in="-1">
 
-	<cfloop query="sqavars">
-		<cfset _in="#_in#,#answerfield_id#">
-	</cfloop>
+		<cfloop query="sqavars">
+			<cfset _in="#_in#,#answerfield_id#">
+		</cfloop>
 
-	<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
+		<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
 	</cffunction>
 
 </cfcomponent>
