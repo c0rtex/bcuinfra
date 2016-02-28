@@ -1,4 +1,4 @@
 <p show-event-handler="" ng-show="" ng-model="$root.div_af[answer_field.code]">
     <span data-ng-bind-html="answer_field.display | trustAsHtml"></span>
-    <input type="text" name="{{answer_field.code}}" ng-model="$root.af[answer_field.code]" ui-money-mask>
+    <input type="text" name="{{answer_field.code}}" ng-model="$root.af[answer_field.code]" ui-mask="S99999.99$" ngPattern="[+\d-]\d\d\d\d\d.\d\d">
 </p>

@@ -32,13 +32,9 @@
                     <cfset s=evaluate("this.get#p.name#()")>
                     <cfif !isNull(s)>
                         <cfset s=s.toStructure()>
-                        <cfif p.tostructcomponent neq "">
-                            <cfset retVal["#p.tostructcomponent#"]=s>
-                        <cfelse>
-                            <cfloop collection=#s# item="i">
-                                <cfset retVal["#i#"]=s[i]>
-                            </cfloop>
-                        </cfif>
+                        <cfloop collection=#s# item="i">
+                            <cfset retVal["#p.tostructcomponent##i#"]=s[i]>
+                        </cfloop>
                     </cfif>
                 </cfif>
             </cfloop>

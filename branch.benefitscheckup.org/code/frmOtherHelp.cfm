@@ -8,7 +8,7 @@ REQUIRED: type, keyword
 ============================================---->
 <!--- Output type as title --->
 <cfparam name="type" default="NavTip">
-<cfparam name="Keyword" default="Liheap\">
+<cfparam name="Keyword" default="Liheap">
 
 <link rel="alternate" type="application/rss+xml" title="BenefitsCheckUp &raquo; Feed" href="/feed/" />
 <link rel="alternate" type="application/rss+xml" title="BenefitsCheckUp &raquo; Comments Feed" href="/comments/feed/" />
