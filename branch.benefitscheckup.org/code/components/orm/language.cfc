@@ -22,7 +22,7 @@
 --->
 
     <cffunction name="getDefault">
-        <cfreturn entityload("language",{default_flag=1, active=1},"true")>
+        <cfreturn entityload("language",{default_flag=1, active=1},"true")[1]>
     </cffunction>
 
 <!---
@@ -30,6 +30,11 @@
 --->
 
     <cffunction name="getCurrentLanguage">
-        <cfreturn this.getDefault()>
+        <cfset cl = entityload("language",session.language.getId())>
+        <cfif arraylen(cl) neq 0>
+            <cfreturn cl[1]>
+        <cfelse>
+            <cfreturn this.getDefault()>
+        </cfif>
     </cffunction>
 </cfcomponent>

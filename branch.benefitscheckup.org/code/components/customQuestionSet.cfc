@@ -16,14 +16,14 @@
 		<cfargument name="state_id" type="string" required="no" default="">
 		<cfargument name="subset_id" type="numeric" required="no" default="0">
 		<cfargument name="partner_id" type="numeric" required="no" default="0">
-		<cfargument name="prev_id" type="numeric" required="no" default="0">
+		<cfargument name="prev_id" type="numeric" required="no" default="-1">
 
 		<cfset cf = ormExecuteQuery("from question as q where #this.getFilter(state_id=state_id,subset_id=subset_id,partner_id=partner_id)# order by sort asc")>
 
 		<cfset retVal = arrayNew(1)>
 
 		<cfloop array="#cf#" index="it">
-			<cfset arrayAppend(retVal,it.toStructure(state_id=state_id,subset_id=subset_id,partner_id=partner_id))>
+			<cfset arrayAppend(retVal,it.toStructure(state_id=state_id,subset_id=subset_id,partner_id=partner_id,prev_id=prev_id))>
 		</cfloop>
 
 		<cfset data = structNew()>
@@ -31,6 +31,10 @@
 		<cfset data.prevService = this.getPrevService()>
 
 		<cfset data.nextService = this.getNextService()>
+
+		<cfset data.cfid = session.cfid>
+
+		<cfset data.cftoken = session.cftoken>
 
 		<cfset data.questions = retVal>
 

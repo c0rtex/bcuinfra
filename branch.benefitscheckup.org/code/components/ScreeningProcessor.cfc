@@ -5,12 +5,21 @@
         <cfif arraylen(scArr) eq 0>
             <cfset screening = entityNew("screening")>
 
-            <cfif response.prev_id>
+            <cfif structKeyExists(response,"state_id")>
+                <cfset state = entityload("state",response.state_id)>
+                <cfif arraylen(state) neq 0>
+                    <cfset screening.setPreset_state(state[1])>
+                </cfif>
+            </cfif>
+
+            <cfif structKeyExists(response,"prev_id")>
                 <cfset prev = entityLoad("screening",response.prev_id)>
                 <cfif arraylen(prev) neq 0>
                     <cfset screening.setPrev_screening(prev[1])>
                 </cfif>
             </cfif>
+
+            <cfset screening.setLanguage(createObject("component","cf.component.orm.language").getCurrentLanguage())>
 
             <cfset screening.setCfid(session.cfid)>
 
@@ -34,7 +43,6 @@
             <cfset screening=scArr[1]>
         </cfif>
 
-        <cfdump var="#response.response#">
 
        <cfloop collection="#response.response#" item="answerCode">
            <cfset answerField = entityload("answer_field",{code="#answerCode#"})[1]>
