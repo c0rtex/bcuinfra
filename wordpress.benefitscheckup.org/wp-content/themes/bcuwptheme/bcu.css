@@ -1505,3 +1505,7 @@ margin-left: 17px;
 }
 
 #options_bcuqc_income .radio {padding:15px 0; margin:-17px;}
+
+#tr_bcuqc_income_list select {
+width: 200px;
+}
