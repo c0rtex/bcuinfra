@@ -3,7 +3,7 @@
 /* Controllers */
 
 var parseLocation = function(location, vParams) {
-  var retVal = vParams == undefined ? {} : vParams;
+  var retVal = vParams == undefined ? {} : angular.copy(vParams);
   var params = location.split("#")[0].split("?");
   if (params.length<2) return retVal;
   var pairs = params[1].split("&");
@@ -123,7 +123,7 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
     };
 
     $scope.nextQS = function () {
-      if (params == undefined) params = parseLocation($location.$$absUrl,$scope.$root.params);
+      params = parseLocation($location.$$absUrl,$scope.$root.params);
       params.pgno=$scope.$root.pgno;
       params.response = {};
       for (var i=0;i<$scope.questions.length;i++) {
@@ -132,11 +132,15 @@ controllers.controller('QuestionnaireController', ['$scope','$location','$inject
         }
       }
 
-      (new Screening(params)).$save({CFID:$scope.$root.questionSet.CFID,CFTOKEN:$scope.$root.questionSet.CFTOKEN});
-      $scope.$root.prevQuestionsCount = $scope.questions.length;
-      $location.url($scope.$root.nextQuestionSetURL);
-      $scope.$root.pgno++;
-      return false;
+      params.CFID = $scope.$root.questionSet.CFID;
+      params.CFTOKEN = $scope.$root.questionSet.CFTOKEN;
+
+      Screening.query(params,function() {
+        $scope.$root.prevQuestionsCount = $scope.questions.length;
+        $location.url($scope.$root.nextQuestionSetURL);
+        $scope.$root.pgno++;
+        return false;
+      },null);
     };
 
     reloadQuestionSubset($scope,$routeParams);

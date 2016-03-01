@@ -40,7 +40,7 @@
 
 		<cfif structKeyExists(arguments, "callback")>
 			<cfset data = arguments.callback & "(" & serializeJSON(data) & ");">
-			<cfelseif structKeyExists(arguments, "jsonp")>
+		<cfelseif structKeyExists(arguments, "jsonp")>
 			<cfset data= "jsonp(" & data & ");">
 		</cfif>
 

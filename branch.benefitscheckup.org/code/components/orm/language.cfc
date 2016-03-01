@@ -22,7 +22,7 @@
 --->
 
     <cffunction name="getDefault">
-        <cfreturn entityload("language",{default_flag=1, active=1},"true")[1]>
+        <cfreturn entityload("language",{default_flag=1, active=1},"true")>
     </cffunction>
 
 <!---
