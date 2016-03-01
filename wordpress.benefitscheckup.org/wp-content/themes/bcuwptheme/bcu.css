@@ -1278,9 +1278,14 @@ div.AdvancedText {
     float: right;
 }
 
+
+@media (max-width: 767px) {
 #bcuQuickcheckTitle {
+
     border-bottom: 2px solid #00479d;
     margin-bottom: 7px;
+    padding-bottom: 10px;
+}
 }
 
 #bcu_quickcheck h2.bcuQuickcheckTitle {
