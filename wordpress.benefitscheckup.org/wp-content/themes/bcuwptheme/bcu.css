@@ -1285,7 +1285,7 @@ div.AdvancedText {
 
 #bcu_quickcheck h2.bcuQuickcheckTitle {
     color: #1F419B !important;
-    font-size: 31.5px !important;
+    font-size: 4vw !important;
 }
 
 @media (min-width: 768px) {
@@ -1293,7 +1293,10 @@ div.AdvancedText {
         width: 90%;
         margin-left: -45%;
     }
-	
+	#bcu_quickcheck h2.bcuQuickcheckTitle {
+    color: #1F419B !important;
+    font-size: 31.5px !important;
+}
 
     #bcu_quickcheck .well {
         min-height: 430px !important;
@@ -1495,7 +1498,10 @@ margin-bottom: -20px;
 
 }
 
+.row-fluid, #bcuQuickcheckForm p {margin-bottom:1em;}
 
 #question_bcuqc_income .span12 {
 margin-left: 17px;
 }
+
+#options_bcuqc_income .radio {padding:15px 0; margin:-17px;}
