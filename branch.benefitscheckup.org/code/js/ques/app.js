@@ -17,7 +17,7 @@ questionnaireApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
         when('/questionset/:questionSet/:questionSubset', {
-          templateUrl: 'templates/question-set.html',
+          templateUrl: 'templates/question-set.html?'+(new Date()),
           controller: 'QuestionnaireController'
         }).
         when('/questionset/:questionSet', {
@@ -33,7 +33,7 @@ questionnaireApp.config(['$routeProvider',
 questionnaireApp
     .directive('divQuestion', function() {
       return {
-        templateUrl:"templates/question.html",
+        templateUrl:"templates/question.html?"+(new Date()),
         link: function (scope) {
           scope.$root.globalQuestionCounter++;
           scope.questionCounter=scope.$root.globalQuestionCounter-1;
@@ -49,7 +49,7 @@ questionnaireApp
       return {
         template:"<span ng-include='answer_field_link'></span>",
         link: function(scope, element, attributes, ngModel,ngShow) {
-          scope.answer_field_link="templates/answer-field-"+scope.answer_field.type+".html";
+          scope.answer_field_link="templates/answer-field-"+scope.answer_field.type+".html?"+(new Date());
           if (scope.answer_field.prev != undefined) {
               switch (scope.answer_field.type) {
                   case "select":
