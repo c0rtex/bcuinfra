@@ -24,16 +24,16 @@
 <meta name="msvalidate.01" content="73FAF9EF809DEE2A8BAD7758DB4A3776" />
 
 		<!-- icons & favicons -->
-		<link rel="apple-touch-icon" href="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/library/images/apple-icon-touch.png">
-		<link rel="icon" href="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/favicon.png">
+		<link rel="apple-touch-icon" href="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/library/images/apple-icon-touch.png">
+		<link rel="icon" href="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/favicon.png">
 		<!--[if IE]>
-			<link rel="shortcut icon" href="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/favicon.ico">
+			<link rel="shortcut icon" href="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/favicon.ico">
 		<![endif]-->
 		
 
 
-  	<link rel="pingback" href="http://qa.economiccheckup.org/xmlrpc.php" >
-  	<link rel="canonical" href="http://qa.economiccheckup.org/page-not-found/"  >
+  	<link rel="pingback" href="http://www.economiccheckup.org/xmlrpc.php" >
+  	<link rel="canonical" href="http://www.economiccheckup.org/page-not-found/"  >
   	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   	   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   	   <!--[if lt IE 9]>
@@ -54,27 +54,27 @@
 <!-- All in One SEO Pack 2.2.7.2 by Michael Torbert of Semper Fi Web Design[1769,1795] -->
 <meta name="description" itemprop="description" content="Page Not Found We're sorry, but the page you are looking for cannot be found. Please send us an email to let us know you received this page. If you" />
 
-<link rel="canonical" href="http://qa.economiccheckup.org/page-not-found/" />
+<link rel="canonical" href="http://www.economiccheckup.org/page-not-found/" />
 <!-- /all in one seo pack -->
-<link rel="alternate" type="application/rss+xml" title="EconomicCheckUp.org &raquo; Feed" href="http://qa.economiccheckup.org/feed/" />
-<link rel="alternate" type="application/rss+xml" title="EconomicCheckUp.org &raquo; Comments Feed" href="http://qa.economiccheckup.org/comments/feed/" />
-<link rel='stylesheet' id='wpfb-css'  href='http://qa.economiccheckup.org/wp-content/plugins/wp-filebase/wp-filebase.css?ver=0.3.0.06' type='text/css' media='all' />
-<link rel='stylesheet' id='fancybox-css'  href='http://qa.economiccheckup.org/wp-content/plugins/fancybox-for-wordpress/fancybox/fancybox.css?ver=3.9.9' type='text/css' media='all' />
-<link rel='stylesheet' id='rbcu-stylesheet-css'  href='http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/responsive/css/bootstrap.min.css?ver=3.9.9' type='text/css' media='all' />
-<link rel='stylesheet' id='rbcu-mqc-stylesheet-css'  href='http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/ecu.css?ver=3.9.9' type='text/css' media='all' />
-<link rel='stylesheet' id='ppa-template-css'  href='http://qa.economiccheckup.org/wp-content/plugins/post-page-association-plugin/templates/title-excerpt-thumbnail.css?ver=3.9.9' type='text/css' media='all' />
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-content/plugins/wp-filebase/js/live-admin.js?ver=0.3.0.06'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-content/plugins/fancybox-for-wordpress/fancybox/jquery.fancybox.js?ver=1.3.4'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/responsive/js/bootstrap.min.js?ver=3.9.9'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/mqc.js?ver=3.9.9'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-content/plugins/vslider/js/vslider.js?ver=3.9.9'></script>
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://qa.economiccheckup.org/xmlrpc.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://qa.economiccheckup.org/wp-includes/wlwmanifest.xml" /> 
-<link rel='prev' title='ESI Quickcheck' href='http://qa.economiccheckup.org/esi-quickcheck/' />
+<link rel="alternate" type="application/rss+xml" title="EconomicCheckUp.org &raquo; Feed" href="http://www.economiccheckup.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="EconomicCheckUp.org &raquo; Comments Feed" href="http://www.economiccheckup.org/comments/feed/" />
+<link rel='stylesheet' id='wpfb-css'  href='http://www.economiccheckup.org/wp-content/plugins/wp-filebase/wp-filebase.css?ver=0.3.0.06' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css'  href='http://www.economiccheckup.org/wp-content/plugins/fancybox-for-wordpress/fancybox/fancybox.css?ver=3.9.9' type='text/css' media='all' />
+<link rel='stylesheet' id='rbcu-stylesheet-css'  href='http://www.economiccheckup.org/wp-content/themes/bcuwptheme/responsive/css/bootstrap.min.css?ver=3.9.9' type='text/css' media='all' />
+<link rel='stylesheet' id='rbcu-mqc-stylesheet-css'  href='http://www.economiccheckup.org/wp-content/themes/bcuwptheme/ecu.css?ver=3.9.9' type='text/css' media='all' />
+<link rel='stylesheet' id='ppa-template-css'  href='http://www.economiccheckup.org/wp-content/plugins/post-page-association-plugin/templates/title-excerpt-thumbnail.css?ver=3.9.9' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-content/plugins/wp-filebase/js/live-admin.js?ver=0.3.0.06'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-content/plugins/fancybox-for-wordpress/fancybox/jquery.fancybox.js?ver=1.3.4'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-content/themes/bcuwptheme/responsive/js/bootstrap.min.js?ver=3.9.9'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-content/themes/bcuwptheme/mqc.js?ver=3.9.9'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-content/plugins/vslider/js/vslider.js?ver=3.9.9'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.economiccheckup.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.economiccheckup.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='ESI Quickcheck' href='http://www.economiccheckup.org/esi-quickcheck/' />
 <meta name="generator" content="WordPress 3.9.9" />
-<link rel='shortlink' href='http://qa.economiccheckup.org/?p=16692' />
+<link rel='shortlink' href='http://www.economiccheckup.org/?p=16692' />
 
 <!-- Fancybox for WordPress v3.0.6 -->
 <script type="text/javascript">
@@ -121,8 +121,8 @@ jQuery("a.fancybox").fancybox({
 })
 </script>
 <!-- END Fancybox for WordPress -->
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-includes/js/tw-sack.min.js?ver=1.6.1'></script>
-<script type='text/javascript' src='http://qa.economiccheckup.org/wp-content/plugins/inline-editor/nicEdit.js?ver=0.9r23.ile1'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-includes/js/tw-sack.min.js?ver=1.6.1'></script>
+<script type='text/javascript' src='http://www.economiccheckup.org/wp-content/plugins/inline-editor/nicEdit.js?ver=0.9r23.ile1'></script>
 
 <script type="text/javascript">
 /* <![CDATA[ */
@@ -136,20 +136,20 @@ jQuery("a.fancybox").fancybox({
 	function ileCreateNicEditor(postId) {
 		jQuery.ajax({async:false,
 					 type:"POST",
-					 url:"http://qa.economiccheckup.org/wp-content/plugins/inline-editor/ajax-content.php",
+					 url:"http://www.economiccheckup.org/wp-content/plugins/inline-editor/ajax-content.php",
 					 data:"id="+postId,
 					 success:function(data){
 						jQuery("#ileContent-"+postId).html(data);
 					 }
 					 });
 		ileNicEditor = new nicEditor({fullPanel:true,
-									  iconsPath:"http://qa.economiccheckup.org/wp-content/plugins/inline-editor/nicEditorIcons.gif",
+									  iconsPath:"http://www.economiccheckup.org/wp-content/plugins/inline-editor/nicEditorIcons.gif",
 									  onSave:function(content,id,instance){ileSave(postId,content)}
 									 }).panelInstance("ileContent-"+postId,{hasPanel:true});
 		jQuery("#ileCancelButton"+postId).show();
 	}
 	function ileSave(postId,content){
-		jQuery.post("http://qa.economiccheckup.org/wp-content/plugins/inline-editor/ajax-save.php",
+		jQuery.post("http://www.economiccheckup.org/wp-content/plugins/inline-editor/ajax-save.php",
 					{"id":postId,
 					 "content":content},
 					 function(data){
@@ -163,7 +163,7 @@ jQuery("a.fancybox").fancybox({
 <style type="text/css">
 	.ileClassLoader{left:0;width:98%;text-align:center;position:absolute;z-index:1000;}
 </style>
-<script src="http://qa.economiccheckup.org/wp-content/plugins/wp-chgfontsize/wp-chgfontsize.js" type="text/javascript"></script>
+<script src="http://www.economiccheckup.org/wp-content/plugins/wp-chgfontsize/wp-chgfontsize.js" type="text/javascript"></script>
 
 <!-- Using Simple Yearly Archive Plugin v1.7.2 | http://www.schloebe.de/wordpress/simple-yearly-archive-plugin/ // -->
 
@@ -198,10 +198,10 @@ $("#logo.statistics").hide();
 })
 </script>
             <!-- move into mqc.js? only if it's used in the mqc files and not the ecu files -->
-            <script src="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/application.js"></script>
-            <script src="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/ecu.js"></script>
+            <script src="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/application.js"></script>
+            <script src="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/ecu.js"></script>
 		<script src="/cf/js/infinite-rotator.js" type="text/javascript"></script>
- <script src="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/ecu_liveonly.js"></script>
+ <script src="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/ecu_liveonly.js"></script>
 		
 	     <link rel="stylesheet" href="/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
 <script>
@@ -240,7 +240,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div class="container" id="top-bar">
     	<div class="row">
     		<div id="top-logo" class="span12">
-  				<a target="_blank" href="http://www.ncoa.org"><img src="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/images/ncoa-logo-top.png" alt="National Council on Aging" title="National Council on Aging" alt="National Council on Aging" /></a>
+  				<a target="_blank" href="http://www.ncoa.org"><img src="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/images/ncoa-logo-top.png" alt="National Council on Aging" title="National Council on Aging" alt="National Council on Aging" /></a>
     		</div>
         </div>    
    </div>
@@ -292,7 +292,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				    <div id="main" class="span12" role="main">
 
 					    					
-					    	<div id="ileLoader-16692" class="ileClassLoader"><img src="http://qa.economiccheckup.org/wp-content/plugins/inline-editor/ajax-loader.gif" title="Loading..."/></div><div id="ileContent-16692"><h2>Page Not Found</h2>
+					    	<div id="ileLoader-16692" class="ileClassLoader"><img src="http://www.economiccheckup.org/wp-content/plugins/inline-editor/ajax-loader.gif" title="Loading..."/></div><div id="ileContent-16692"><h2>Page Not Found</h2>
 
 <br />
 <p><strong>We&#8217;re sorry, but the page you are looking for cannot be found.</strong></p>
@@ -323,7 +323,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		ileNicEditor.removeInstance("ileContent-16692");
 		jQuery.ajax({async:false,
 					 type:"POST",
-					 url:"http://qa.economiccheckup.org/wp-content/plugins/inline-editor/ajax-content.php",
+					 url:"http://www.economiccheckup.org/wp-content/plugins/inline-editor/ajax-content.php",
 					 data:"id=16692&filtered=1",
 					 success:function(data){
 						 if (data.search(/<script/i)==-1)
@@ -368,7 +368,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<li><a href="/esi-termsofuse/">Terms of Use</a></li>
 							<li><a href="https://www.surveymonkey.com/s/3V39M9Z">Feedback</a></li>
 							<li><a href="mailto:economiccheckup@ncoa.org">Contact Us</a></li>
-							<li><a target =_blank href="https://oeqa.benefitscheckup.org/oe/?partner_id=77">Partner Login</a></li>
+							<li><a target =_blank href="https://oewww.benefitscheckup.org/oe/?partner_id=77">Partner Login</a></li>
 						</ul>
 				</div>
                 <div id="other" class="span2 sites">
@@ -443,7 +443,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         	<div class="row">
 				
 				<div class="span12">
-			        <a target="_new" href="http://www.ncoa.org/"><img src="http://qa.economiccheckup.org/wp-content/themes/bcuwptheme/images/BCUfooter-ncoa-logo.png" alt="NCOA" title="NCOA"></a><br />
+			        <a target="_new" href="http://www.ncoa.org/"><img src="http://www.economiccheckup.org/wp-content/themes/bcuwptheme/images/BCUfooter-ncoa-logo.png" alt="NCOA" title="NCOA"></a><br />
 
 <p class="esiFooter">251 18th Street South &nbsp;| &nbsp;Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;|&nbsp; 571-527-3900</p>
 			    </div>
