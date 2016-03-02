@@ -14,17 +14,17 @@
 
 <cfcomponent persistent="true" entityname="question" table="question" extends="ToStructConverter">
     <cfproperty name="id" tostruct="id" fieldtype="id" column="question_id">
-    <cfproperty name="dep_question" fieldtype="many-to-one" fkcolumn="dep_question_id" cfc="Question">
+    <cfproperty name="dep_question" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="dep_question_id" cfc="Question">
     <cfproperty name="code" tostruct="code" column="question_code">
-    <cfproperty name="question_category" tostructcomponent="" fieldtype="many-to-one"   fkcolumn="questioncategory_id" cfc="question_category">
-    <cfproperty name="question_header" tostructcomponent="" fieldtype="many-to-one" fkcolumn="questionheader_id" cfc="question_header">
-    <cfproperty name="question_type" tostructcomponent="" fieldtype="many-to-one" fkcolumn="questiontype_id" cfc="question_type">
-	<cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" fkcolumn="display_id" cfc="display">
-	<cfproperty name="short_display" tostructdisplay="short_display" fieldtype="many-to-one" fkcolumn="short_display_id" cfc="display">
-	<cfproperty name="spq_display" tostructdisplay="spq_display" fieldtype="many-to-one" fkcolumn="spq_display_id" cfc="display">
-	<cfproperty name="print_display" tostructdisplay="print_display" fieldtype="many-to-one" fkcolumn="print_display_id" cfc="display">
-	<cfproperty name="format" fieldtype="many-to-one" fkcolumn="format_id" cfc="format">
-	<cfproperty name="rule" tostructcomponent="" fieldtype="many-to-one" fkcolumn="rule_id" cfc="rule">
+    <cfproperty name="question_category" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true"   fkcolumn="questioncategory_id" cfc="question_category">
+    <cfproperty name="question_header" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="questionheader_id" cfc="question_header">
+    <cfproperty name="question_type" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="questiontype_id" cfc="question_type">
+	<cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
+	<cfproperty name="short_display" tostructdisplay="short_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="short_display_id" cfc="display">
+	<cfproperty name="spq_display" tostructdisplay="spq_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="spq_display_id" cfc="display">
+	<cfproperty name="print_display" tostructdisplay="print_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="print_display_id" cfc="display">
+	<cfproperty name="format" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="format_id" cfc="format">
+	<cfproperty name="rule" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
 	<cfproperty name="include_flag">
 	<cfproperty name="exclude_flag">
 	<cfproperty name="suppress_qno_flag">
@@ -39,15 +39,16 @@
 
 	<cffunction name="toStructure">
 		<cfargument name="state_id" type="string" default="">
-		<cfargument name="subset_id" type="any" default="0">
-		<cfargument name="partner_id" type="any" default="0">
+		<cfargument name="subset_id" type="numeric" default="0">
+		<cfargument name="partner_id" type="numeric" default="0">
+		<cfargument name="prev_id" type="numeric" default="-1">
 
 		<cfset retVal = super.toStructure()>
 
 		<cfset retVal["answer_fields"]= arrayNew(1)>
 
 		<cfloop array="#this.getAnswer_fields(state_id=state_id,subset_id=subset_id,partner_id=partner_id)#" index="af">
-			<cfset arrayAppend(retVal["answer_fields"],af.toStructure())>
+			<cfset arrayAppend(retVal["answer_fields"],af.toStructure(prev_id=prev_id))>
 		</cfloop>
 		<cfreturn retVal>
 	</cffunction>
@@ -58,8 +59,8 @@
 
 	<cffunction name="getAnswer_fields">
 		<cfargument name="state_id" type="string" default="">
-		<cfargument name="subset_id" type="any" default="0">
-		<cfargument name="partner_id" type="any" default="0">
+		<cfargument name="subset_id" type="numeric" default="0">
+		<cfargument name="partner_id" type="numeric" default="0">
 
 		<cfset partnerDiff=CreateObject("component","answer_field_subset_partner").isDifferent(subset_id=subset_id,partner_id=partner_id)>
 
@@ -198,13 +199,13 @@
 				AND qa.answerfield_id=a.answerfield_id
 	</cfquery>
 
-	<cfset _in="-1">
+		<cfset _in="-1">
 
-	<cfloop query="sqavars">
-		<cfset _in="#_in#,#answerfield_id#">
-	</cfloop>
+		<cfloop query="sqavars">
+			<cfset _in="#_in#,#answerfield_id#">
+		</cfloop>
 
-	<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
+		<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
 	</cffunction>
 
 </cfcomponent>

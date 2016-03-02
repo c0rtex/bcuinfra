@@ -18,14 +18,14 @@
     <cfproperty name="name" column="partner_name">
     <cfproperty name="url" column="partner_url">
     <cfproperty name="alt_name">
-    <cfproperty name="type" fieldtype="many-to-one" fkcolumn="partnertype_id" cfc="partner_type">
-    <cfproperty name="bcu_display" fieldtype="many-to-one" fkcolumn="bcu_display_id" cfc="display">
+    <cfproperty name="type" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="partnertype_id" cfc="partner_type">
+    <cfproperty name="bcu_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="bcu_display_id" cfc="display">
     <cfproperty name="partner_wrapper">
     <cfproperty name="partner_header">
     <cfproperty name="partner_footer">
     <cfproperty name="partner_css">
     <cfproperty name="partner_titlebar">
-    <cfproperty name="wrapper" fieldtype="many-to-one" fkcolumn="wrapper_id" cfc="wrapper">
+    <cfproperty name="wrapper" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="wrapper_id" cfc="wrapper">
     <cfproperty name="cms_doc_no">
     <cfproperty name="login_only_flag">
     <cfproperty name="report_flag">

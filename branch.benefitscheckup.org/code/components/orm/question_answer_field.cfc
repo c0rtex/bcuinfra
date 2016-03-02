@@ -14,9 +14,22 @@
 
 <cfcomponent persistent="true" entityname="question_answer_field" table="question_answerfield" extends="ToStructConverter">
     <cfproperty name="id" fieldtype="id">
-    <cfproperty name="answer" tostructcomponent="" fieldtype="many-to-one" fkcolumn="answerfield_id" cfc="answer_field">
-	<cfproperty name="question" fieldtype="many-to-one" fkcolumn="question_id" cfc="question">
-    <cfproperty name="state" fieldtype="many-to-one" fkcolumn="state_id" cfc="state">
-    <cfproperty name="rule" fieldtype="many-to-one" fkcolumn="rule_id" cfc="rule">
+    <cfproperty name="answer" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="answerfield_id" cfc="answer_field">
+	<cfproperty name="question" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="question_id" cfc="question">
+    <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
+    <cfproperty name="rule" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
     <cfproperty name="sort" tostruct="sort">
+
+	<cffunction name="toStructure">
+		<cfargument name="prev_id" type="numeric" default="-1">
+		<cfset qaf = super.toStructure()>
+		<cfif prev_id GREATER THAN -1>
+			<cfset cf=ormExecuteQuery("from screening_answerfield as saf where saf.answer.id=#this.getAnswer().getId()# and saf.screening.id=#prev_id#")>
+			<cfif arraylen(cf) neq 0>
+				<cfset qaf["prev"]=cf[1].toStructure()>
+			</cfif>
+		</cfif>
+		<cfreturn qaf>
+	</cffunction>
+
 </cfcomponent>
