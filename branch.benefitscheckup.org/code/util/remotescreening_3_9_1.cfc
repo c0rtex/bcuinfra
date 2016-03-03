@@ -62,20 +62,36 @@
 			</cfif>
 			
 	</cfquery>
-	<cfset result = querynew("empty")>
+		<cfset result = querynew("empty")>
 	<cfset programlist = "">
 	<cfloop query="getSubsetProgramsByCategory">
 	 <cfset programlist = ListAppend(programlist, getSubsetProgramsByCategory.program_id)>
 	</cfloop>
-	<cfinvoke  
-    		component="util" 
-    		method="logProgramList" returnVariable = "success" 
-    		> 
-		<cfinvokeargument name="screening_id" value="#screening_id#"/> 
-		<cfinvokeargument name="programlist" value="#programlist#"/> 
-	</cfinvoke>
-        <cfreturn  "#result#">
-    </cffunction>
+	  <!-- set query values -->
+	<cfset success = true>
+	<cftry>
+	<cfloop  list = "#programlist#"   index="program_id">
+	<cfquery name="programcheck" DATASOURCE="#application.dbSrc#">
+		select count(program_id) as programcount from screening_program 
+		where 
+		program_id = #program_id#
+		and screening_id = #screening_id#
+	</cfquery>
+	<cfif programcheck.programcount eq 0>
+	<cfquery name="insertprograms" DATASOURCE="#application.dbSrc#">
+		INSERT INTO screening_program
+			(screening_id, program_id, unseen_flag, buffer_flag, maybe_flag)
+		VALUES
+			(#screening_id#, #program_id#, 0, 0, 0)
+	</cfquery>
+	<cfelse>
+	<cfset success = false>
+	</cfif>
+	</cfloop>
+	<cfcatch><cfset success = false></cfcatch>
+	</cftry>
+        <cfreturn  "#result#">    
+	</cffunction>
 
     <cffunction access="remote" name="getSubCats" output="false" returntype="query"  hint="Returns program categories by subset " >
         <!-- pass arguments -->

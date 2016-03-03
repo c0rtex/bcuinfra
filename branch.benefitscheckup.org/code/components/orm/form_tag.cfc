@@ -14,6 +14,6 @@
 
 <cfcomponent persistent="true" entityname="form_tag" table="formtag" extends="ToStructConverter">
     <cfproperty name="id" fieldtype="id" column="formtag_id">
-    <cfproperty name="form_class" fieldtype="many-to-one" fkcolumn="formclass_id" cfc="form_class">
+    <cfproperty name="form_class" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="formclass_id" cfc="form_class">
     <cfproperty name="name" column="tag_name">
 </cfcomponent>

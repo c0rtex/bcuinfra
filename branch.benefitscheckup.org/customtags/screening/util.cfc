@@ -31,6 +31,16 @@
 		<cfset lsiAnswer = Abs(DateDiff("yyyy", DateFormat(NOW(), "mm/dd/yyyy"), lsiMakeDOB))>
 		<cfset arguments.responseStruct.dob = lsiAnswer>
 	</cfif>
+	<cfif arguments.responseStruct.dob eq '' and arguments.subset_id eq 93>
+		<cfif arguments.responseStruct.dob_month neq ''>
+			<cfset varMonth = arguments.responseStruct.dob_month>
+		<cfelse>
+			<cfset varMonth = "01">
+		</cfif>
+		<cfset lsiMakeDOB = DateFormat("01" & "/01/" & arguments.responseStruct.dob_year, 'mm/dd/yyyy')>
+		<cfset lsiAnswer = Abs(DateDiff("yyyy", DateFormat(NOW(), "mm/dd/yyyy"), lsiMakeDOB))>
+		<cfset arguments.responseStruct.dob = lsiAnswer>
+	</cfif>
 	<cfif arguments.subset_id eq 83>
 		<cfparam name="RESPONSESTRUCT.esi_category_retirement_planning" default="">
 		<cfparam name="RESPONSESTRUCT.esi_category_money_management" default="">
@@ -42,6 +52,12 @@
 		<cfparam name="RESPONSESTRUCT.esi_category_consumer_protection" default="">
 		<cfparam name="RESPONSESTRUCT.esi_category_legal_resources" default="">
 	</cfif>
+
+
+	<cfif arguments.subset_id eq 93>
+		<cfparam name="RESPONSESTRUCT.bcuqc_income" default="">
+	</cfif>
+
 	<cfloop query="rule_content">       
 	<cfif arguments.debugOutput><cfoutput>#CreateODBCDateTime(Now())#: Starting cacheRulePool code="#rule_content.code#" <br /><br /></cfoutput></cfif>
 			
@@ -239,27 +255,27 @@
      <cfargument name="responseStruct" required="yes">
      <cfargument name="aflist" type="string" required="yes">
      <cfargument name="debug" type="boolean" required="no" default="false">
-<cfparam name="attributes.initvarname" type="string" default="">
-<cfparam name="attributes.varname" type="string" default="">
-<cfparam name="attributes.structname" type="string" default="responseStruct">
-<cfparam name="attributes.aflist" type="string" default="">
-<cfparam name="attributes.loadsession" type="boolean" default="false">
-<cfparam name="attributes.prepopulateWithInput" type="boolean" default="false">
-<cfparam name="attributes.useOptionCodes" type="boolean" default="false">
-<cfparam name="attributes.batch" type="boolean" default="false">
-<cfparam name="application.lsidebug" type="boolean" default="false">
-<cfif arguments.aflist neq ''>
+     <cfparam name="attributes.initvarname" type="string" default="">
+     <cfparam name="attributes.varname" type="string" default="">
+     <cfparam name="attributes.structname" type="string" default="responseStruct">
+     <cfparam name="attributes.aflist" type="string" default="">
+     <cfparam name="attributes.loadsession" type="boolean" default="false">
+     <cfparam name="attributes.prepopulateWithInput" type="boolean" default="false">
+     <cfparam name="attributes.useOptionCodes" type="boolean" default="false">
+     <cfparam name="attributes.batch" type="boolean" default="false">
+     <cfparam name="application.lsidebug" type="boolean" default="false">
+     <cfif arguments.aflist neq ''>
 	<cfset lsiList=arguments.aflist>
 	<cfif arguments.debug><cfset application.lsidebug = false><cfoutput><br>lsiList2: #lsiList#</cfoutput></cfif>
-</cfif>
-<cfif IsDefined('arguments.partner_id')>
-	<cfif #findnocase('s-zip',lsiList)# gt 0 and (arguments.partner_id eq 81 or arguments.partner_id eq 61 or arguments.partner_id eq 63)  and #findnocase('o-pl_agency_list',lsiList)# eq 0 >
-	  <cfset lsiList = lsiList & ',o-pl_agency_list' >
+     </cfif>
+	<cfif IsDefined('arguments.partner_id')>
+		<cfif #findnocase('s-zip',lsiList)# gt 0 and (arguments.partner_id eq 81 or arguments.partner_id eq 61 or arguments.partner_id eq 63)  and #findnocase('o-pl_agency_list',lsiList)# eq 0 >
+	  		<cfset lsiList = lsiList & ',o-pl_agency_list' >
+		</cfif>
+		<cfif #findnocase('s-zip',lsiList)# gt 0 and arguments.partner_id eq 76 and #findnocase('o-fit_counseling_session_type',lsiList)# eq 0>
+	  		<cfset lsiList = lsiList & ',o-fit_counseling_session_type' >
+		</cfif>
 	</cfif>
-	<cfif #findnocase('s-zip',lsiList)# gt 0 and arguments.partner_id eq 76 and #findnocase('o-fit_counseling_session_type',lsiList)# eq 0>
-	  <cfset lsiList = lsiList & ',o-fit_counseling_session_type' >
-	</cfif>
-</cfif>
 <!----Vars to store buexp_sw Validation criteria ---->
 <cfset vMarital = "">
 <cfset vBank = "">
@@ -1095,20 +1111,41 @@
 	</cfif>
 	<cfcatch><cfif arguments.debug><cfoutput><br>Item: #itemID# lsiType: #lsiType# lsiVar: #lsiVar#<br></cfoutput></cfif></cfcatch></cftry>
 </cfloop>
-<cfset lsiDeriveList =  lsiDeriveList & "mqc_birth_month,mqc_birth_year">
-<cfset request.lsiDeriveList = lsiDeriveList >
-<!--- Derive DOB answerfield from DOB_MONTH and DOB_YEAR --->
-<cfif ListFind(lsiDeriveList, 'mqc_birth_month') or ListFind(lsiDeriveList, 'mqc_birth_year')>
-	<cf_handleScreeningAnswerfield action="get" code="mqc_birth_month" element="val" var="lsiMonth">
-	<cf_handleScreeningAnswerfield action="get" code="mqc_birth_year" element="val" var="lsiYear">
-	<cfif lsiMonth eq ''>
+	<cfset lsiDeriveList =  lsiDeriveList & "mqc_birth_month,mqc_birth_year,dob_month,dob_year">
+	<cfset request.lsiDeriveList = lsiDeriveList >
+	<!--- Derive DOB answerfield from DOB_MONTH and DOB_YEAR --->
+	<cfif ListFind(lsiDeriveList, 'mqc_birth_month') or ListFind(lsiDeriveList, 'mqc_birth_year')>
+		<cf_handleScreeningAnswerfield action="get" code="mqc_birth_month" element="val" var="lsiMonth">
+		<cf_handleScreeningAnswerfield action="get" code="mqc_birth_year" element="val" var="lsiYear">
+
+	
+	  <cfif lsiMonth eq ''>
 		<cfset lsiMonth = 1>
-	</cfif>
-	<cfif lsiYear neq ''>
+	  </cfif>
+	  <cfif lsiYear neq ''>
 		<cfset lsiMakeDOB = DateFormat(lsiMonth & "/01/" & lsiYear, 'mm/dd/yyyy')>
 		<cfset lsiAnswer = Abs(DateDiff("yyyy", DateFormat(NOW(), "mm/dd/yyyy"), lsiMakeDOB))>
 		<cfset request.dob = lsiAnswer>
 		<cfinvoke  component="util" method="logScreeningInputDetail" > 
+						<cfinvokeargument name="screening_id" value="#arguments.screening_id#"/> 
+						<cfinvokeargument name="pgno" value="#lsiPgNo#"/> 
+  						<cfinvokeargument name="response_type" value="n"/> 
+  						<cfinvokeargument name="response_var" value="dob"/>
+  						<cfinvokeargument name="response"  value="#lsiAnswer#"/>
+ 						<cfinvokeargument name="timestamp"  value="#lsiDateTime#"/>
+						<cfinvokeargument name="derived_flag"  value="1"/>
+						<cfinvokeargument name="prepopulateWithInput"  value="#attributes.prepopulateWithInput#"/>
+                                         </cfinvoke>
+	<cfelseif isdefined('arguments.responseStruct.dob_month') and isdefined('arguments.responseStruct.dob_year')  and arguments.subset_id eq 93 >
+					<cfif arguments.responseStruct.dob_month neq ''>
+						<cfset varMonth = arguments.responseStruct.dob_month>
+					<cfelse>
+						<cfset varMonth = "01">
+					</cfif>
+					<cfset lsiMakeDOB = DateFormat(varMonth & "/01/" & arguments.responseStruct.dob_year, 'mm/dd/yyyy')>
+					<cfset lsiAnswer = Abs(DateDiff("yyyy", DateFormat(NOW(), "mm/dd/yyyy"), lsiMakeDOB))>
+					<cfset request.dob = lsiAnswer>
+					<cfinvoke  component="util" method="logScreeningInputDetail" > 
 						<cfinvokeargument name="screening_id" value="#arguments.screening_id#"/> 
 						<cfinvokeargument name="pgno" value="#lsiPgNo#"/> 
   						<cfinvokeargument name="response_type" value="n"/> 
@@ -1417,5 +1454,33 @@ WHERE state.state_id = '#state_id#'
 and statetype.statetype_id = 1
 		</cfquery>
         <cfreturn  queryState>
+    </cffunction>
+    <cffunction access="public" name="logProgramList" output="false" returntype="boolean"  hint="Takes a comma separated list of program ids and logs it to db" >
+        <!-- pass arguments -->
+	<cfargument name="screening_id" type="numeric" required="yes" >
+	<cfargument name="programlist" type="string" required="yes" >
+	<cfset success = true>
+	<cftry>
+	<cfloop  list = "#programlist#"   index="program_id">
+	<cfquery name="programcheck" DATASOURCE="#application.dbSrc#">
+		select count(program_id) as programcount from screening_program 
+		where 
+		program_id = #program_id#
+		and screening_id = #screening_id#
+	</cfquery>
+	<cfif programcheck.programcount eq 0>
+	<cfquery name="insertprograms" DATASOURCE="#application.dbSrc#">
+		INSERT INTO screening_program
+			(screening_id, program_id, unseen_flag, buffer_flag, maybe_flag)
+		VALUES
+			(#screening_id#, #program_id#, 0, 0, 0)
+	</cfquery>
+	<cfelse>
+	<cfset success = false>
+	</cfif>
+	</cfloop>
+	<cfcatch><cfset success = false></cfcatch>
+	</cftry>
+        <cfreturn  success>
     </cffunction>
 </cfcomponent>

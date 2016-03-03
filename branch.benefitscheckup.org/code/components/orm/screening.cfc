@@ -13,19 +13,19 @@
 --->
 
 <cfcomponent persistent="true" entityname="screening" table="screening" extends="ToStructConverter">
-    <cfproperty name="id" fieldtype="id" column="screening_id">
-    <cfproperty name="prev_screening" fieldtype="many-to-one" fkcolumn="prev_screening_id" cfc="Screening">
+    <cfproperty name="id" fieldtype="id" column="screening_id" generator="increment">
+    <cfproperty name="prev_screening" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="prev_screening_id" cfc="Screening">
     <cfproperty name="cfid">
     <cfproperty name="cftoken">
-    <cfproperty name="source" fieldtype="many-to-one" fkcolumn="source_id" cfc="Source">
+    <cfproperty name="source" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="source_id" cfc="Source">
     <cfproperty name="org_id">
-    <cfproperty name="partner" fieldtype="many-to-one" fkcolumn="partner_id" cfc="partner">
-    <cfproperty name="subset" fieldtype="many-to-one" fkcolumn="subset_id" cfc="subset">
-	<cfproperty name="language" fieldtype="many-to-one" fkcolumn="language_id" cfc="language">
+    <cfproperty name="partner" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="partner_id" cfc="partner">
+    <cfproperty name="subset" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="subset_id" cfc="subset">
+	<cfproperty name="language" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="language_id" cfc="language">
 	<cfproperty name="access_id">
 	<cfproperty name="client_id">
-	<cfproperty name="user" fieldtype="many-to-one" fkcolumn="user_id" cfc="user">
-	<cfproperty name="preset_state" fieldtype="many-to-one" fkcolumn="preset_state_id" cfc="state">
+	<cfproperty name="user" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="user_id" cfc="user">
+	<cfproperty name="preset_state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="preset_state_id" cfc="state">
 	<cfproperty name="test_flag">
 	<cfproperty name="start_datetime">
 	<cfproperty name="end_datetime">

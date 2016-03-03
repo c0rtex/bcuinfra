@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     $("#esiMenuToggleButton").click(function () {
         $("#main-nav").toggle();
-    });
+    })
 
     $("#esi_incomesupport").keydown(function (e) { //alow numeric input only
         // Allow: backspace, delete, tab, escape, enter and .
