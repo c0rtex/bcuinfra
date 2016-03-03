@@ -302,7 +302,7 @@ function reDraw() {
 }
 
 function hasIncomeSelected() {
-    return $("input[name=bcuqc_income]:checked").val();
+    return $("#select_bcuqc_income_list").val();
 }
 
 function removeIncomeAlerts() {
@@ -356,7 +356,7 @@ function trySubmit($zip_code) {
         validated = 0;
     }
     if (!hasIncomeSelected()) {
-        $('#tr_bcuqc_income_3000').parent().parent().before('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
+        $('#options_bcuqc_income').before('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
         validated = 0;
     }
     if (validated == 0) {
