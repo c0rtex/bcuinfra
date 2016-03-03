@@ -866,6 +866,7 @@ a.go-button {
     border-radius: 10px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
     background: url("images/bg/yl_grdnt_bg.gif") 0 -10px repeat-x;
+	background-size: auto 110%;
 }
 
 #esiForm .btn-group {
@@ -1277,14 +1278,19 @@ div.AdvancedText {
     float: right;
 }
 
+
+@media (max-width: 767px) {
 #bcuQuickcheckTitle {
+
     border-bottom: 2px solid #00479d;
     margin-bottom: 7px;
+    padding-bottom: 10px;
+}
 }
 
 #bcu_quickcheck h2.bcuQuickcheckTitle {
     color: #1F419B !important;
-    font-size: 31.5px !important;
+    font-size: 4vw !important;
 }
 
 @media (min-width: 768px) {
@@ -1292,6 +1298,10 @@ div.AdvancedText {
         width: 90%;
         margin-left: -45%;
     }
+	#bcu_quickcheck h2.bcuQuickcheckTitle {
+    color: #1F419B !important;
+    font-size: 31.5px !important;
+}
 
     #bcu_quickcheck .well {
         min-height: 430px !important;
@@ -1331,6 +1341,9 @@ div.AdvancedText {
     margin: 0 0 5px;
 }
 
+
+
+
 #esiQuickcheckCheckboxes .first-column {
     width: 50%;
     float: left;
@@ -1368,11 +1381,6 @@ div.AdvancedText {
     }
 }
 
-div#bcu_quickcheck {
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
 .modal-body {
     max-height: inherit;
 }
@@ -1399,11 +1407,6 @@ h2.benefitsCheckUpTitle {
     position: absolute;
     z-index: 10;
     color: white;
-}
-
-.well.modal-body {
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 .frozenBody {
@@ -1452,6 +1455,8 @@ h2.benefitsCheckUpTitle {
     float: left;
 }
 
+#question_dob > 
+
 #question_zip {
     float: left;
 }
@@ -1471,4 +1476,34 @@ div#bcu_quickcheck.modal.hide.fade.ipad_bcu_modal.in {
     margin-top: 10%; !important;
 }
 
+#tr_zip {
+margin-top: 2px;
+}
 
+#bcu_quickcheck.modal {position:absolute !important;}
+
+div#bcu_quickcheck, div#bcu_quickcheck .well.modal-body {overflow:visible !important;}
+
+@media (min-width: 1024px) {
+    #bcu_quickcheck {max-width:920px; left:calc(50% - 450px); margin-left:0;}
+}
+
+#options_zip:before {content: "1. "}
+
+#options_dob:before {content: "2. "}
+#options_bcuqc_income:before {content: "3. "}
+#options_bcuqc_interest_category:before  {content: "4. "}
+
+.bcuqc_format {
+
+margin-bottom: -20px;
+
+}
+
+.row-fluid, #bcuQuickcheckForm p {margin-bottom:1em;}
+
+
+
+#tr_bcuqc_income_list select {
+width: 200px;
+}
