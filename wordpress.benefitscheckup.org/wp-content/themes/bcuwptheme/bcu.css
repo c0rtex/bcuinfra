@@ -1461,6 +1461,10 @@ h2.benefitsCheckUpTitle {
     float: left;
 }
 
+input#zip{
+width: 80px;
+}
+
 #label_bcuqc_income_3000 {
     margin-top: 5px;
 }
