@@ -31,8 +31,11 @@ $fields = $soapClient->getAFShadow($screeningID );
 						$county = $row["RESPONSE"];
 						//echo "county".$county;			
 						}
-						if ($row["ANSWERFIELD"] == 'bcuqc_income_3000') {
-						$income_exclusion = y;
+						if ($row["ANSWERFIELD"] == 'bcuqc_income_list') {
+							//echo "bcuqc_income_list:".$row["OPTION_CODE"];
+							if ($row["OPTION_CODE"] == 'bcuqc_income_3000') {
+							$income_exclusion = y;
+							}
 						//echo "Income Exclusion:".$income_exclusion;			
 						}
 

@@ -133,25 +133,7 @@ order by question_code, answerfield
 </cfloop>
 <cfparam name="response_set.esi_category_health_resources" default="">
 	<cfparam name="response_set.esi_rxhelp" default="">
-<cfif current_subset_id eq 93>
-<!-- bcuqc_income -->
-<cfif not isdefined('response_set.bcuqc_income')>
-      <cfset response_set.bcuqc_income = 'bcuqc_income_under'>
-      <cfset response_set.bcuqc_income_under  ="y">
-</cfif>
-<cfif response_set.bcuqc_income eq 'bcuqc_income_1000'>
-	<cfset response_set.bcuqc_income_1000  ="y">
-</cfif>
-<cfif response_set.bcuqc_income eq 'bcuqc_income_1500'>
-	<cfset response_set.bcuqc_income_1500  ="y">
-</cfif>
-<cfif response_set.bcuqc_income eq 'bcuqc_income_2000'>
-	<cfset response_set.bcuqc_income_2000  ="y">
-</cfif>
-<cfif response_set.bcuqc_income eq 'bcuqc_income_3000'>
-	<cfset response_set.bcuqc_income_3000  ="y">
-</cfif>
-</cfif>
+
 <cfif current_subset_id eq 79>
 	<cfparam name="response_set.mqc_medicare_enroll_disability_no" default="">
 	<cfparam name="response_set.mqc_medicare_enroll_disability_yes" default="">
