@@ -270,6 +270,7 @@ function appendTo(section) {
 
 function bcuQcFix (){
 
+/*
 $(".bcuqc_format").remove();
 if($(window).width() >= 768) {
 $("#question_bcuqc_income").prepend ('<div class="bcuqc_format">3. </div>');
@@ -278,6 +279,7 @@ else {
 
 $("#question_bcuqc_income").prepend ('<div class="bcuqc_format">2. </div>');
 }
+*/
 
 }
 
@@ -291,21 +293,16 @@ function reDraw() {
 
     var leftColumnBlock = $(leftColumn);
 
-    [zipBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
+    [zipBlock, dobBlock, incomeBlock].forEach(appendTo(leftColumnBlock));
 
     var interestBlock = $("#bcuqc_interest_category_group");
-    dobBlock.prependTo(interestBlock);
+    //dobBlock.prependTo(interestBlock);
     interestBlock.appendTo(containerBlock);
     interestBlock.addClass("span6");
 }
 
 function hasIncomeSelected() {
-    //return $("input[name=bcuqc_income]:checked").val();
-    //console.log( $("#select_bcuqc_income_list").val());
-    var incomeValue = $("#select_bcuqc_income_list").val();
-    incomeValue = incomeValue.substr(incomeValue.indexOf("-") + 1)
-    //console.log (incomeValue);
-    return incomeValue;
+    return $("#select_bcuqc_income_list").val();
 }
 
 function removeIncomeAlerts() {
@@ -359,7 +356,6 @@ function trySubmit($zip_code) {
         validated = 0;
     }
     if (!hasIncomeSelected()) {
-console.log ("gets here");
         $('#options_bcuqc_income').before('<div id="invalidIncome" class="alert alert-danger alert-bcuQuickCheck"><i class="icon-warning-sign"></i> <strong>You must select an income range.</strong></div>');
         validated = 0;
     }
@@ -393,3 +389,5 @@ function clearListCookies()
     }
     window.location = ""; // TO REFRESH THE PAGE
 }
+
+
