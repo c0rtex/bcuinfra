@@ -382,7 +382,7 @@ onChange="if(!startForm) { ga(\'send\', \'event\', \'mqc\', \'MQC Tool Start\', 
       echo '>';
     }
     echo '			   	<option value="">-- Select --</option>';
-    //require('answerfieldoption_bcu_quickcheck.php');
+    require('answerfieldoption_bcu_quickcheck.php');
     echo		'</select>
 		</div>
 		';
