@@ -14,10 +14,10 @@
 
 <cfcomponent persistent="true" entityname="screening_answerfield" table="screening_answerfield" extends="ToStructConverter">
     <cfproperty name="screening" fieldtype="id,many-to-one" fkcolumn="screening_id" cfc="screening">
-    <cfproperty name="answer_field" fieldtype="id,many-to-one" fkcolumn="answerfield_id" cfc="answer_field">
+    <cfproperty name="answer" fieldtype="id,many-to-one" fkcolumn="answerfield_id" cfc="answer_field">
     <cfproperty name="response_type" column="responsetype">
-    <cfproperty name="response">
-    <cfproperty name="option" fieldtype="many-to-one" fkcolumn="option_id" cfc="Option">
+    <cfproperty name="response" tostruct="response">
+    <cfproperty name="option" tostructcomponent="option" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="option_id" cfc="Option">
     <cfproperty name="page_num" column="pagenum">
     <cfproperty name="retained_flag">
     <cfproperty name="derived_flag">

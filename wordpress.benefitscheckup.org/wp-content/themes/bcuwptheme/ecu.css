@@ -1,4 +1,4 @@
-[@import url(https://fonts.googleapis.com/css?family=Kalam:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Kalam:400,300,700);
 
 * Bootstrap Overrides *
 
@@ -966,6 +966,3 @@ h2.esiQuickcheckTitle {
     margin-left: -20px;
 }
 
-#zyxzip_zip_abbrev {
-    display: none;
-}

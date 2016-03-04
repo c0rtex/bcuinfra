@@ -14,9 +14,9 @@
 
 <cfcomponent persistent="true" entityname="help" table="help" extends="ToStructConverter">
     <cfproperty name="id" fieldtype="id" column="help_id">
-    <cfproperty name="type" fieldtype="many-to-one" fkcolumn="helptype_id" cfc="help_type">
+    <cfproperty name="type" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="helptype_id" cfc="help_type">
     <cfproperty name="code" tostruct="code" column="help_code">
     <cfproperty name="keyword">
-    <cfproperty name="title_display" tostructdisplay="title" fieldtype="many-to-one" fkcolumn="title_display_id" cfc="display">
-    <cfproperty name="display" tostructdisplay="text" fieldtype="many-to-one" fkcolumn="display_id" cfc="display">
+    <cfproperty name="title_display" tostructdisplay="title" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="title_display_id" cfc="display">
+    <cfproperty name="display" tostructdisplay="text" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
 </cfcomponent>

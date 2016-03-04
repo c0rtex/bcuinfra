@@ -14,7 +14,7 @@
 
 <cfcomponent persistent="true" entityname="wrapper" table="wrapper" extends="ToStructConverter">
     <cfproperty name="id" fieldtype="id" column="wrapper_id">
-    <cfproperty name="partner" fieldtype="many-to-one" fkcolumn="wrapper_partner_id" cfc="partner">
+    <cfproperty name="partner" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="wrapper_partner_id" cfc="partner">
     <cfproperty name="wrapper_partner_category">
     <cfproperty name="wrapper_partner_subcategory">
     <cfproperty name="wrapper_type">

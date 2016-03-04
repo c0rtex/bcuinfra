@@ -15,6 +15,6 @@
 <cfcomponent persistent="true" entityname="option" table="option"  extends="ToStructConverter">
     <cfproperty name="id" tostruct="id" fieldtype="id" column="option_id">
     <cfproperty name="code" tostruct="code" column="option_code">
-    <cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" fkcolumn="display_id" cfc="display">
+    <cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
     <cfproperty name="include_flag">
 </cfcomponent>

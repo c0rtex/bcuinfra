@@ -413,8 +413,8 @@ Struct of structs of grantee logos
 <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
 <cfset granteeStruct.granteeAltText = "Korean Community Service Center of Greater Washington">
 <cfset granteeStruct.granteeID = "">
-<cfset granteeStruct.granteeState = "Virginia Korean Community Service Center of Greater Washington">
-<cfset granteeStruct.granteeStateName = "Virginia">
+<cfset granteeStruct.granteeState = "District of Columbia Korean Community Service Center of Greater Washington">
+<cfset granteeStruct.granteeStateName = "District of Columbia">
 <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
 <cfset sortedGrantees =  StructSort(allGranteesStruct, "textnocase", "asc", "granteeState")>
