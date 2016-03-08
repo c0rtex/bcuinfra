@@ -26,7 +26,7 @@
   <cfproperty name="oe_default_value">
   <cfproperty name="required_flag">
   <cfproperty name="rule" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
-  <cfproperty name="validation" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="validation_id" cfc="validation">
+  <cfproperty name="validation" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="validation_id" cfc="validation">
   <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
   <cfproperty name="description" column="answerfield_desc">
   <cfproperty name="event_handlers" fieldtype="one-to-many" cfc="event_handler" fkcolumn="answerfield_id" lazy="extra" cascade="all">
