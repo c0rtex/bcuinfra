@@ -1,3 +1,5 @@
 <select name="{{answer_field.code}}" id="{{answer_field.code}}"
         ng-options="month.name for month in $root.months | orderBy:'id' track by month.id"
-        ng-model="$root.af[answer_field.code]"></select>
+        ng-model="$root.af[answer_field.code]" ng-required="answer_field.required"></select>
+<span ng-show="answer_field.required">*</span>
+

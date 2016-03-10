@@ -24,6 +24,15 @@ services.factory('Screening',['$resource',
     }
 ]);
 
+services.factory('ZipValidator',['$resource',
+    function($resource){
+        return $resource(webServiceURL+'/orm/zip.cfc?method=validateZip&zipCode=:zip&state_id=:state_id&callback=JSON_CALLBACK', {}, {
+            query:{method:'JSONP',
+                params:{zip:"",state_id:''}}
+        });
+    }
+]);
+
 services.factory('all', ['$resource','$scope',
     function($resource,$scope){
         return $resource(webServiceURL+'/customQuestionSet.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {
