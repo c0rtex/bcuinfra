@@ -39,6 +39,6 @@
             <cfreturn "jsonp({result:""#arraylen(validzip) neq 0#""});">
         </cfif>
 
-        <cfreturn {result=arraylen(validzip) neq 0}>
+        <cfreturn "{result:#arraylen(validzip) neq 0#}">
     </cffunction>
 </cfcomponent>
