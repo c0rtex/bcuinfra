@@ -51,7 +51,6 @@
 	</style>
 
 	
-
 <!-- All in One SEO Pack 2.2.7.2 by Michael Torbert of Semper Fi Web Design[1769,1795] -->
 <meta name="description" itemprop="description" content="Page Not Found We're sorry, but the page you are looking for cannot be found. Please send us an email to let us know you received this page. If you" />
 
@@ -251,7 +250,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     		<div id="header_logo" class="span5">
 	              <a href="/esi-home/"><img src="/wp-content/uploads/2014/12/ECU-PNG-Logo-2015.png" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp"  /></a>                  
 	     	</div>
-            <div class="span7 statistics" id="logo" ><p>Since 2010, we've helped thousands of older adults find work, budget their money, and save on daily expenses.</p>
+            <div class="span7 statistics" id="logo" ><p>Since 2010, we’ve helped thousands of older adults find work, budget their money, and save on daily expenses.</p>
                 </div>  
     	</div>
      </div>
@@ -298,9 +297,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 <p><strong>We&#8217;re sorry, but the page you are looking for cannot be found.</strong></p>
 <br />
-<ul><li>Please send us an <a href="mailto:economiccheckup@ncoa.org">email</a> to let us know you received this page. <br /> If you reached this page from another website, please provide us with that website page.<br /><br /></li>
+<ul><li>Please send us an <a href="mailto:support@economiccheckup.org">email</a> to let us know you received this page. <br /> If you reached this page from another website, please provide us with that website page.<br /><br /></li>
 
-<li>To help you make the most of your money, go to <A HREF="http://www.economiccheckup.org">EconomicCheckUp </A>now.</li></ul>
+<li>To help you make the most of your money, click on the <strong>Home</strong> tab now.</li></ul>
 <br />
 
 </div><input id="ileSaveButton-16692" type="button" value="Save editing"/>
