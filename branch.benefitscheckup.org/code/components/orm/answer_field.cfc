@@ -24,25 +24,11 @@
   <cfproperty name="default_value">
   <cfproperty name="spq_default_value">
   <cfproperty name="oe_default_value">
-  <cfproperty name="required_flag">
+  <cfproperty name="required_flag" tostruct="required">
   <cfproperty name="rule" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
-  <cfproperty name="validation" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="validation_id" cfc="validation">
+  <cfproperty name="validation" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="validation_id" cfc="validation">
   <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
   <cfproperty name="description" column="answerfield_desc">
-  <cfproperty name="event_handlers" fieldtype="one-to-many" cfc="event_handler" fkcolumn="answerfield_id" lazy="extra" cascade="all">
   <cfproperty name="options" tostructarray="options" fieldtype="one-to-many" cfc="answer_field_option" fkcolumn="answerfield_id" lazy="extra" cascade="all" orderby="sort">
-
-<!---
-  Overloads toStructure method defined in parent method ToStructConverter. Defines converting event handlers to structure
---->
-
-  <cffunction name="toStructure">
-    <cfset afItem = super.toStructure()>
-      <cfset afItem["event_handlers"]=structNew()>
-      <cfloop array="#this.getEvent_handlers()#" index="eh">
-          <cfset afItem["event_handlers"][eh.getEvent().getCode()] = eh.getHandler()>
-      </cfloop>
-    <cfreturn afItem>
-  </cffunction>
 
 </cfcomponent>
