@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    console.log("this script works at all");
+    console.log("this script works at all test");
 
     responsiveMenu();
 
+    liheapFix();
 
     $(window).resize(function () {
         responsiveMenu();
@@ -385,5 +386,19 @@ function responsiveMenu() {
 
 }
 
+function liheapFix(){
+    $("#liheap_link").attr('href', "#liheap_info");
+    $("#liheap_link").attr('data-toggle', "modal");
+
+
+    $("#liheap_link2").attr('href', "#liheap_info");
+    $("#liheap_link2").attr('data-toggle', "modal");
+
+
+    $('*[id*=liheap_link]:visible').each(function() {
+        $(this).attr('href', "#liheap_info");
+        $(this).attr('data-toggle', "modal");
+    });
+}
 
 
