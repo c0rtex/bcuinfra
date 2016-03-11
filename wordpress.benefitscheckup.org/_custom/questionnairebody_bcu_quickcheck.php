@@ -10,7 +10,7 @@
 <p id="feature_paragraph"><?php print $leadtext ?></p>
 
 <p>
-<a id="getStartedBCUButton" href="#bcu_quickcheck" data-toggle="modal" data-target="#bcu_quickcheck">
+<a id="getStartedBCUButton" href="#bcu_quickcheck" data-toggle="modal" data-target="#bcu_quickcheck" data-backdrop="static" data-keyboard="false">
 <img id="getStartedBCUQuickcheck" src="/wp-content/uploads/2011/09/getstarted.png"></a></p>
 
 
