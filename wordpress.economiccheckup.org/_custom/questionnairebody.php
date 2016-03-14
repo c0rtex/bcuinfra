@@ -196,7 +196,7 @@
             <ol class="nav nav-list">
 
 
-                <li><a data-toggle="modal" role="button" href="#gettingstarted"><i class="icon-book "></i>Getting
+                <li><a data-toggle="modal" data-backdrop="static" role="button" href="#gettingstarted"><i class="icon-book "></i>Getting
                         Started </a></li>
                 <li><a href="/wp-content/uploads/2014/11/EconomicCheckUp-Financial-Worksheet.pdf" target="_blank"> <i
                             class="icon-book "></i>Financial Worksheet</a></li>
