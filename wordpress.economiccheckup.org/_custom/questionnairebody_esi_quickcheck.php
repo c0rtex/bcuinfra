@@ -101,7 +101,7 @@ $sectionLegend = $sectionLegendPost[0]["POST_CONTENT"];
 
 echo '<input type="hidden" name="subset_id" value="'.$subsetID.'">';
  ?>
-					<a id="esiQuickcheckSubmit" href="#esi_quickcheck" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-backdrop="static" data-toggle="modal">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
+					<a id="esiQuickcheckSubmit" href="#esi_quickcheck" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup"  data-toggle="modal" data-backdrop="static">				<center><img id="esiQuickcheckResultsButton" src="/wp-content/uploads/2015/05/ECUGetReportButton.jpg"></center></a>
 
 
 </div> 
