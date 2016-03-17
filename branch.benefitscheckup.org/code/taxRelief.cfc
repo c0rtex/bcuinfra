@@ -59,8 +59,19 @@
 
 		<cfloop query="applyRules">
 		<cfset strRule = applyRules.rule_text >
+                <!---<cfoutput>STRRULE 1 #strRule#</cfoutput> --->
+<cfset strRule = ReplaceNoCase (strRule, "session.county## eq", "session.county## in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.zip## eq", "session.zip## in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.city## eq", "session.city## in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.county## neq", "session.county## not in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.zip## neq", "session.zip## not in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.city## neq", "session.city## not in", "ALL")>
+
+                <!---<cfoutput>STRRULE 2 #strRule#</cfoutput>--->
+
 				<cfset posIn = FindNoCase(' in ', strRule, 1)>
 				<cfset posNotIn = FindNoCase(' not in ', strRule, 1)>
+				<cfset posEq = FindNoCase(' eq ', strRule, 1)>
 				<cfif posNotIn>
 					<cfset posFind = posNotIn>
 					<cfset posLen = 8>
@@ -72,7 +83,7 @@
 				</cfif>
 			   <cfif posFind>
 				  <cfset strItem = Trim(Left(strRule, posFind - 1))>
-				  <cfif showMoreOutput><cfoutput> (#strItem#)</cfoutput></cfif>
+				  <cfif showMoreOutput><cfoutput>(#strItem#)</cfoutput></cfif>
 				  <!--- 03/09/2002 REM  Need to strip the opening '(' --->
 				  <!--- 10/25/2005 BShunn  Also strip apostrophes --->
 				  <cfif Find("('", strItem) eq 1>
