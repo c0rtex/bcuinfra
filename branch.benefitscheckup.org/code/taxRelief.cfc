@@ -135,7 +135,8 @@
 				AND p.active_flag = 1
 				AND z.zipcode = <cfqueryparam value="#taxReliefZip#" CFSQLType="CF_SQL_VARCHAR">
 				AND dl.display_text != ''
-				 and p.program_id not in (1750,1761,1428,1350,1777,63,1019)
+				 <!---and p.program_id not in (1750,1761,1428,1350,1777,63,1019)--->
+                                AND p.program_id in (#prglist#)
 				ORDER BY dl.display_text ASC
 	    	</cfquery>
 	    	
