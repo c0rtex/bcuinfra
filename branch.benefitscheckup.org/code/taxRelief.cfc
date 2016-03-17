@@ -51,7 +51,6 @@
 		INNER JOIN program_rule pr ON pr.program_id = p.program_id
 		LEFT OUTER JOIN rule r ON r.rule_id = pr.rule_id
 		WHERE p.program_id = #getTaxProgramsNoRulesApplied.program_id#
-		AND r.legacy_pri_sec IS NULL
 		</cfquery>
 		<cfif showMoreOutput><cfoutput>zip: #session.zip#</cfoutput>
 
