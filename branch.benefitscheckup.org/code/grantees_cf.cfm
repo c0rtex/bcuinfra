@@ -417,6 +417,129 @@ Struct of structs of grantee logos
 <cfset granteeStruct.granteeStateName = "Virginia">
 <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.wacog.com/BEC">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Western Arizona Council of Governments">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Arizona Western Arizona Council of Governments">
+<cfset granteeStruct.granteeStateName = "Arizona">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.csuchico.edu/chc">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "CSU Chico Research Foundation">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "California CSU Chico Research Foundation">
+<cfset granteeStruct.granteeStateName = "California">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.fhcsd.org/">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Family Health Centers of San Diego">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "California Family Health Centers of San Diego">
+<cfset granteeStruct.granteeStateName = "California">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.maof.org/">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Mexican American Opportunity Foundation">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "California Mexican American Opportunity Foundation">
+<cfset granteeStruct.granteeStateName = "California">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.acfb.org/">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Atlanta Community Food Bank">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Georgia Atlanta Community Food Bank">
+<cfset granteeStruct.granteeStateName = "Georgia">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.ccano.org">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Catholic Charities Archdiocese of New Orleans">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Louisiana Catholic Charities Archdiocese of New Orleans">
+<cfset granteeStruct.granteeStateName = "Louisiana">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.rio-arriba.org/">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Rio Arriba County Health and Human Services Department">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "New Mexico Rio Arriba County Health and Human Services Department">
+<cfset granteeStruct.granteeStateName = "New Mexico">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.threesquare.org">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Three Square">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Nevada Three Square">
+<cfset granteeStruct.granteeStateName = "Nevada">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.asiaohio.org/">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Asian Services in Action, Inc.">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Ohio Asian Services in Action, Inc.">
+<cfset granteeStruct.granteeStateName = "Ohio">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.tnjustice.org">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Tennessee Justice Center">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Tennessee Tennessee Justice Center">
+<cfset granteeStruct.granteeStateName = "Tennessee">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.scstc.org">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Senior Citizen Services of Greater Tarrant County">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Texas Senior Citizen Services of Greater Tarrant County">
+<cfset granteeStruct.granteeStateName = "Texas">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+
 <cfset sortedGrantees =  StructSort(allGranteesStruct, "textnocase", "asc", "granteeState")>
 
 <cfoutput>
