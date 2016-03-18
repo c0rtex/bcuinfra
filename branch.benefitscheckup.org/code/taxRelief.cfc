@@ -58,14 +58,33 @@
 		</cfif>
 
 		<cfloop query="applyRules">
-		<cfset strRule = applyRules.rule_text >
-                <!---<cfoutput>STRRULE 1 #strRule#</cfoutput> --->
+<cfset orRule = "false">
+<cfset orRuleYes = "false">
+		<cfset strRuleOrig = applyRules.rule_text >
+                <!---<cfoutput>STRRULE 1 #strRuleOrig#</cfoutput>  --->
+<cfset strRuleOrig = ReplaceNoCase (strRuleOrig, " or ", ":", "ALL")>
+<cfset strRuleOrig = ReplaceNoCase (strRuleOrig, " OR ", ":", "ALL")>
+                <!---<cfoutput>STRRULE 2 #strRuleOrig#</cfoutput>  --->
+
+<!---<cfoutput>STRRULE 2 LENGTH #listlen(strRuleOrig, ":")#</cfoutput>--->
+
+<cfset ruleListLen = listlen(strRuleOrig, ":")>
+<cfif ruleListLen gt 1> 
+<cfset orRule = "true">
+<cfset orRuleYes = "false"> <!--- default --->
+</cfif>
+
+<cfset ruleCounter = 0 />
+<cfloop index = "strRule" list = #strRuleOrig# delimiters = ":">  
+<cfset ruleCounter ++ />
+                <!---<cfoutput>STRRULE current #strRule#</cfoutput> --->
 <cfset strRule = ReplaceNoCase (strRule, "session.county## eq", "session.county## in", "ALL")>
 <cfset strRule = ReplaceNoCase (strRule, "session.zip## eq", "session.zip## in", "ALL")>
 <cfset strRule = ReplaceNoCase (strRule, "session.city## eq", "session.city## in", "ALL")>
 <cfset strRule = ReplaceNoCase (strRule, "session.county## neq", "session.county## not in", "ALL")>
 <cfset strRule = ReplaceNoCase (strRule, "session.zip## neq", "session.zip## not in", "ALL")>
 <cfset strRule = ReplaceNoCase (strRule, "session.city## neq", "session.city## not in", "ALL")>
+                <!---<cfoutput>STRRULE current after changes #strRule#</cfoutput> --->
 
                 <!---<cfoutput>STRRULE 2 #strRule#</cfoutput>--->
 
@@ -118,16 +137,38 @@
 				  </cfif>
 					<cfif showMoreOutput><cfoutput>#evaluate(strItem)# is in list: #answer# for program #getTaxProgramsNoRulesApplied.program_id#</cfoutput></cfif>
 					<cfif answer eq 'no'>
+                                            <cfif orRule eq 'false'>
+                                                 
 						<cfset prgValue = #listFind(prgList, getTaxProgramsNoRulesApplied.program_id)#>
 
 						<cfset prgList = #listdeleteat(prgList,prgValue)#>
+                                              <cfelse> <!--- orRule is true and answer is no --->
+                                                 <cfif ruleListLen eq ruleCounter> <!--- this is the last element of the or rule --->
+                                                      <cfif orRuleYes neq 'true'> <!--- none of the earlier elements evaled to true --->
+                                                           <cfset prgValue = #listFind(prgList, getTaxProgramsNoRulesApplied.program_id)#>
+
+						            <cfset prgList = #listdeleteat(prgList,prgValue)#>
+
+
+                                                      </cfif>
+
+                                                 </cfif>
+                                            </cfif>
+                                         <cfelse> <!--- the answer is yes --->
+                                            <cfif orRule eq 'true'> <!--- and this is is a yes eval within on orRule --->
+                                                <!---<cfoutput> YESEVAL </cfoutput>--->
+                                                <cfset orRuleYes = 'true'>
+
+                                            </cfif>
 					</cfif>
+                                           
 				</cfif>
 
 
-			
-
 			</cfloop>
+
+
+</cfloop>
 
 			</cfloop>
 		<cfif showMoreOutput><cfoutput><br>Final List: #prgList#</cfoutput></cfif>
