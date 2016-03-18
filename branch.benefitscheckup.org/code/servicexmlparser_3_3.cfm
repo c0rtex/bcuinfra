@@ -230,8 +230,7 @@ order by question_code, answerfield
 		<cfset response_set.mqc_medicare_enroll_benefits_advisor = 'y'>
 	</cfif>
 </cfif>
-	<cfparam name="response_set.esi_category_health_resources" default="">
-	<cfparam name="response_set.esi_rxhelp" default="">
+
 	<cfparam name="response_set.MQC_GROUP_INSURANCE_SELF" default="">
 	<cfparam name="response_set.MQC_GROUP_INSURANCE_SPOUSE" default="">
 	<cfparam name="response_set.MQC_PLANDISCONTINUED" default="">
