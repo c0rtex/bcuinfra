@@ -51,7 +51,6 @@
 		INNER JOIN program_rule pr ON pr.program_id = p.program_id
 		LEFT OUTER JOIN rule r ON r.rule_id = pr.rule_id
 		WHERE p.program_id = #getTaxProgramsNoRulesApplied.program_id#
-		AND r.legacy_pri_sec IS NULL
 		</cfquery>
 		<cfif showMoreOutput><cfoutput>zip: #session.zip#</cfoutput>
 
@@ -59,9 +58,39 @@
 		</cfif>
 
 		<cfloop query="applyRules">
-		<cfset strRule = applyRules.rule_text >
+<cfset orRule = "false">
+<cfset orRuleYes = "false">
+		<cfset strRuleOrig = applyRules.rule_text >
+                <!---<cfoutput>STRRULE 1 #strRuleOrig#</cfoutput>  --->
+<cfset strRuleOrig = ReplaceNoCase (strRuleOrig, " or ", ":", "ALL")>
+<cfset strRuleOrig = ReplaceNoCase (strRuleOrig, " OR ", ":", "ALL")>
+                <!---<cfoutput>STRRULE 2 #strRuleOrig#</cfoutput>  --->
+
+<!---<cfoutput>STRRULE 2 LENGTH #listlen(strRuleOrig, ":")#</cfoutput>--->
+
+<cfset ruleListLen = listlen(strRuleOrig, ":")>
+<cfif ruleListLen gt 1> 
+<cfset orRule = "true">
+<cfset orRuleYes = "false"> <!--- default --->
+</cfif>
+
+<cfset ruleCounter = 0 />
+<cfloop index = "strRule" list = #strRuleOrig# delimiters = ":">  
+<cfset ruleCounter ++ />
+                <!---<cfoutput>STRRULE current #strRule#</cfoutput> --->
+<cfset strRule = ReplaceNoCase (strRule, "session.county## eq", "session.county## in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.zip## eq", "session.zip## in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.city## eq", "session.city## in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.county## neq", "session.county## not in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.zip## neq", "session.zip## not in", "ALL")>
+<cfset strRule = ReplaceNoCase (strRule, "session.city## neq", "session.city## not in", "ALL")>
+                <!---<cfoutput>STRRULE current after changes #strRule#</cfoutput> --->
+
+                <!---<cfoutput>STRRULE 2 #strRule#</cfoutput>--->
+
 				<cfset posIn = FindNoCase(' in ', strRule, 1)>
 				<cfset posNotIn = FindNoCase(' not in ', strRule, 1)>
+				<cfset posEq = FindNoCase(' eq ', strRule, 1)>
 				<cfif posNotIn>
 					<cfset posFind = posNotIn>
 					<cfset posLen = 8>
@@ -73,7 +102,7 @@
 				</cfif>
 			   <cfif posFind>
 				  <cfset strItem = Trim(Left(strRule, posFind - 1))>
-				  <cfif showMoreOutput><cfoutput> (#strItem#)</cfoutput></cfif>
+				  <cfif showMoreOutput><cfoutput>(#strItem#)</cfoutput></cfif>
 				  <!--- 03/09/2002 REM  Need to strip the opening '(' --->
 				  <!--- 10/25/2005 BShunn  Also strip apostrophes --->
 				  <cfif Find("('", strItem) eq 1>
@@ -108,16 +137,38 @@
 				  </cfif>
 					<cfif showMoreOutput><cfoutput>#evaluate(strItem)# is in list: #answer# for program #getTaxProgramsNoRulesApplied.program_id#</cfoutput></cfif>
 					<cfif answer eq 'no'>
+                                            <cfif orRule eq 'false'>
+                                                 
 						<cfset prgValue = #listFind(prgList, getTaxProgramsNoRulesApplied.program_id)#>
 
 						<cfset prgList = #listdeleteat(prgList,prgValue)#>
+                                              <cfelse> <!--- orRule is true and answer is no --->
+                                                 <cfif ruleListLen eq ruleCounter> <!--- this is the last element of the or rule --->
+                                                      <cfif orRuleYes neq 'true'> <!--- none of the earlier elements evaled to true --->
+                                                           <cfset prgValue = #listFind(prgList, getTaxProgramsNoRulesApplied.program_id)#>
+
+						            <cfset prgList = #listdeleteat(prgList,prgValue)#>
+
+
+                                                      </cfif>
+
+                                                 </cfif>
+                                            </cfif>
+                                         <cfelse> <!--- the answer is yes --->
+                                            <cfif orRule eq 'true'> <!--- and this is is a yes eval within on orRule --->
+                                                <!---<cfoutput> YESEVAL </cfoutput>--->
+                                                <cfset orRuleYes = 'true'>
+
+                                            </cfif>
 					</cfif>
+                                           
 				</cfif>
 
 
-			
-
 			</cfloop>
+
+
+</cfloop>
 
 			</cfloop>
 		<cfif showMoreOutput><cfoutput><br>Final List: #prgList#</cfoutput></cfif>
@@ -136,7 +187,8 @@
 				AND p.active_flag = 1
 				AND z.zipcode = <cfqueryparam value="#taxReliefZip#" CFSQLType="CF_SQL_VARCHAR">
 				AND dl.display_text != ''
-				 and p.program_id not in (1750,1761,1428,1350,1777,63,1019)
+				 <!---and p.program_id not in (1750,1761,1428,1350,1777,63,1019)--->
+                                AND p.program_id in (#prglist#)
 				ORDER BY dl.display_text ASC
 	    	</cfquery>
 	    	

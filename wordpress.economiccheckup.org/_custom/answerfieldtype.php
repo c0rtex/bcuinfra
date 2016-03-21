@@ -278,6 +278,7 @@ switch ($answerfieldCode) {
         <div class="input" id="tr_' . $answerfield . '"';
         if ($answerfield == 'esi_other_specify') {
             echo 'style="display: none;"';
+            $answerfieldValue = "Other";
         }
         echo '>	<input type="text" maxwidth="' . $maxLength . '" id="' . $answerfield . '"  class="required" name="' . $answerfield . '" value="' . $answerfieldValue . '" class="required" >&nbsp;' . $answerfieldText . '
 		</label></div>';
