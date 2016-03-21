@@ -36,7 +36,7 @@ angular.module('validations', []).controller("ValidationController",["$scope", "
                     } else if((elem != undefined) && ($rootScope.af.client == undefined)) {
                         elem.addClass("ng-hide");
                     }
-                },100);
+                },1000);
             }
         );
     };

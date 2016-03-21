@@ -3,7 +3,7 @@
 /* Services */
 
 var services = angular.module('services', ['ngResource']);
-var webServiceURL="http://leviathantech.com:8500/cf/components";
+var webServiceURL="http://localhost/cf/components";
 
 services.factory('questionSet', ['$resource',
   function($resource){
