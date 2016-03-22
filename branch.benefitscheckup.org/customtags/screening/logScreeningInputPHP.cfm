@@ -1349,12 +1349,10 @@
 					<cfset databaseval = 0>
 				</cfif>
 				<cfset "session.#databasevarname#" = databaseval>
+                                <cfset rowaccumvar = replace(rowaccumvar,",","","All")>
+                                <cfset databaseval = replace(databaseval,",","","All")>
 	
-<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
-				<cfset databaseval = reReplaceNoCase(databaseval, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
-	<cfset rowaccumvar = ReReplace(rowaccumvar,'\.(.*)','','ALL')> <!--- remove anything after a .--->
-				<cfset rowaccumvar = reReplaceNoCase(rowaccumvar, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
-							
+		
 
 
 				<cfset rowaccumvar = rowaccumvar + databaseval>
