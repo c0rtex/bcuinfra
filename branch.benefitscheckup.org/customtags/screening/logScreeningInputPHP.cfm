@@ -1332,6 +1332,7 @@
 				</cfif>
 				<cfif IsDefined("caller.#attributes.structname#.#databasevarname#")>
 					<cfset databaseval = Evaluate("caller.#attributes.structname#.#databasevarname#")>
+					<cfset databaseval = replace(databaseval,",","","All")>
 					<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="i" response_var="#databasevarname#" response="#databaseval#" approximation_flag="#lsiIncAssApprox#" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 					<cfif databaseval eq '' >
 						<cfset databaseval = 0>
