@@ -751,6 +751,7 @@
 		<cfelseif lsiType eq 'a'>
 			<cfset lsiDeriveAssets = True>
 		<cfelse>
+			<cfset lsiVal = replace(lsiVal,",","","All")>
 			<cfif lsiFlag eq 'a'>
 				<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="#lsiType#" response_var="#lsiTrueVar#" response="#lsiVal#" approximation_flag="1" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 				<cfset lsiIncAssApprox = 1>
@@ -1339,9 +1340,11 @@
 					</cfif>
 				<cfelseif element eq 'total_unearned' and class neq "ch">
 					<cfset databaseval = Evaluate("colaccumvar_#class#_unearned")>
+					<cfset databaseval = replace(databaseval,",","","All")>
 					<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="i" response_var="#databasevarname#" response="#databaseval#" derived_flag="1" approximation_flag="#lsiIncAssApprox#" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 				<cfelseif element eq 'total_complete' and class neq "ch">
 					<cfset databaseval = Evaluate("colaccumvar_#class#_complete")>
+					<cfset databaseval = replace(databaseval,",","","All")>
 					<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="i" response_var="#databasevarname#" response="#databaseval#" derived_flag="1" approximation_flag="#lsiIncAssApprox#" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 				<cfelse>
 					<cfset databaseval = 0>
@@ -1349,13 +1352,11 @@
 				<cfif databaseval eq 'undefined'>
 					<cfset databaseval = 0>
 				</cfif>
-				<cfset "session.#databasevarname#" = databaseval>
-                                <cfset rowaccumvar = replace(rowaccumvar,",","","All")>
-                                <cfset databaseval = replace(databaseval,",","","All")>
+				<cfset rowaccumvar = replace(rowaccumvar,",","","All")>
+                <cfset databaseval = replace(databaseval,",","","All")>
 	
-		
-
-
+				<cfset "session.#databasevarname#" = databaseval>
+                            
 				<cfset rowaccumvar = rowaccumvar + databaseval>
 				<cfif element neq 'earned' and element neq 'total_unearned' and element neq 'total_complete' and class neq "ch">
 					<cfset "colaccumvar_#class#_unearned" = Evaluate("colaccumvar_#class#_unearned") + databaseval>
