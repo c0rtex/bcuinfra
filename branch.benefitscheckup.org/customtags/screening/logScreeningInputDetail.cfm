@@ -137,7 +137,7 @@
 			<cfset responseToSave = 'NULL'>
 		</cfif>
 	</cfif>
-
+	<cftry>
 	<cfquery name="logAnswerfield" datasource="#application.dbSrc#">
 		INSERT INTO screening_answerfield 
 			(screening_id, answerfield_id, responsetype, response, option_id, pagenum,
@@ -157,6 +157,8 @@
 			 #attributes.retained_flag#,#attributes.derived_flag#,#attributes.approximation_flag#, #attributes.encryption_flag#,
 			 #PreserveSingleQuotes(encryptedResponseToSave)#, #lsidTimestamp#)</cfoutput>..<br>
 	</cfif>
+	<cfcatch></cfcatch>
+	</cftry>
 	
 	<cf_handleScreeningAnswerfield action="set" code="#lsidVar#" ins="1">
 </cfif>
