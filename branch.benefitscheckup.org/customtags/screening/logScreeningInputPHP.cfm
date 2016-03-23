@@ -1333,7 +1333,7 @@
 				</cfif>
 				<cfif IsDefined("caller.#attributes.structname#.#databasevarname#")>
 					<cfset databaseval = Evaluate("caller.#attributes.structname#.#databasevarname#")>
-					<cfset databaseval = replace(databaseval,",","","All")>
+					<cfset databaseval = Replace(databaseval, ',', '', 'ALL')>
 					<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="i" response_var="#databasevarname#" response="#databaseval#" approximation_flag="#lsiIncAssApprox#" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 					<cfif databaseval eq '' >
 						<cfset databaseval = 0>
@@ -1341,6 +1341,8 @@
 				<cfelseif element eq 'total_unearned' and class neq "ch">
 					<cfset databaseval = Evaluate("colaccumvar_#class#_unearned")>
 					<cfset databaseval = replace(databaseval,",","","All")>
+					<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+					<cfset databaseval = reReplaceNoCase(databaseval, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
 					<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="i" response_var="#databasevarname#" response="#databaseval#" derived_flag="1" approximation_flag="#lsiIncAssApprox#" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 				<cfelseif element eq 'total_complete' and class neq "ch">
 					<cfset databaseval = Evaluate("colaccumvar_#class#_complete")>
@@ -1353,7 +1355,7 @@
 					<cfset databaseval = 0>
 				</cfif>
 				<cfset rowaccumvar = replace(rowaccumvar,",","","All")>
-                <cfset databaseval = replace(databaseval,",","","All")>
+                		<cfset databaseval = replace(databaseval,",","","All")>
 	
 				<cfset "session.#databasevarname#" = databaseval>
                             
@@ -1390,6 +1392,9 @@
 			</cfif>
 			<cfif IsDefined("caller.#attributes.structname#.#databasevarname#")>
 				<cfset databaseval = Evaluate("caller.#attributes.structname#.#databasevarname#")>
+				<cfset databaseval = Replace(databaseval, ',', '', 'ALL')>
+				<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset databaseval = reReplaceNoCase(databaseval, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
 				<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="a" response_var="#databasevarname#" response="#databaseval#" approximation_flag="#lsiIncAssApprox#" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 				<cfif databaseval eq ''>
 					<cfset databaseval = 0>
@@ -1401,9 +1406,9 @@
 				<cfset databaseval = 0>
 			</cfif>
 			<cfset "session.#databasevarname#" = databaseval>
-<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset databaseval = ReReplace(databaseval,'\.(.*)','','ALL')> <!--- remove anything after a .--->
 				<cfset databaseval = reReplaceNoCase(databaseval, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
-	<cfset rowaccumvar = ReReplace(rowaccumvar,'\.(.*)','','ALL')> <!--- remove anything after a .--->
+				<cfset rowaccumvar = ReReplace(rowaccumvar,'\.(.*)','','ALL')> <!--- remove anything after a .--->
 				<cfset rowaccumvar = reReplaceNoCase(rowaccumvar, '[^[:digit:]]', '', 'ALL') > <!---Lynna Cekova: replace all nonnumeric characters such as $ --->
 							
 
