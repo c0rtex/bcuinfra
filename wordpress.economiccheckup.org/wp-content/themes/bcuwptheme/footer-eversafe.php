@@ -1,5 +1,8 @@
+</div> <!-- end of container -->
+		</div> <!-- end .container -->
+
 <div id="footer">
-		<div class="container">
+		<div class="footer-container">
 			<div class="row">
 				<div class="col-md-4 logos">
 					<a target="blank" title="Elderscan, LLC, Information Technology Services, Columbia, MD" href="https://www.bbb.org/greater-maryland/business-reviews/information-technology-services/elderscan-in-columbia-md-90239055#bbbseal"><img src="https://www.eversafe.com/images/logos/bbbreg.png" alt="Elderscan, LLC, Information Technology Services, Columbia, MD"> </a>
@@ -42,6 +45,19 @@
 			</div>
 		</div>
 	</div>
+<div class="footer-powered">
+Powered by BenefitsCheckUp
+<br>
+Copyright 2016 National Council on Aging
+<br>
+<a id="privacy" href="javascript:help2('privacy.cfm')">BenefitsCheckUp Privacy Policy</a>
+|
+<a href="javascript:help2('/termsofuse.cfm')">BenefitsCheckUp Terms of Use</a>
+
+<br>
+<br>
+</div>
+
 	
 	<!-- Google Code for Remarketing Tag -->
 	<script type="text/javascript">

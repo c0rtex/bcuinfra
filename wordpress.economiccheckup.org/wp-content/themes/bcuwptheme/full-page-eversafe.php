@@ -1,4 +1,4 @@
-<?php /*Template Name: Full Page SNAP*/?> 
+<?php /*Template Name: Full Page Eversafe*/?> 
 <?php get_header(eversafe); ?>
 
 <div id="page" class="subpage <?php if(isset($_GET['fullWidth'])){echo "layout-noRightCol";} else { echo "layout-default";} ?>"><!-- "page" id should remain on every page, swap or extend the "layout-default" class for alternate layouts (class="subpage layout-noRightCol" or class="forum layout-default" -->
