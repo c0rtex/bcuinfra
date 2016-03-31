@@ -248,7 +248,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     		<div id="header_logo" class="span5">
 	              <a href="/esi-home/"><img src="/wp-content/uploads/2014/12/ECU-PNG-Logo-2015.png" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp"  /></a>                  
 	     	</div>
-            <div class="span7 statistics" id="logo" ><p>Since 2010, we’ve helped thousands of older adults find work, budget their money, and save on daily expenses.</p>
+            <div class="span7 statistics" id="logo" ><p>Since 2010, we've helped thousands of older adults find work, budget their money, and save on daily expenses.</p>
                 </div>  
     	</div>
      </div>
