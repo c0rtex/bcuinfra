@@ -159,6 +159,7 @@
 	</cfif>
 	<cfcatch></cfcatch>
 	</cftry>
+	
 	<cf_handleScreeningAnswerfield action="set" code="#lsidVar#" ins="1">
 </cfif>
 <cfif attributes.prepopulateWithInput>
