@@ -2087,10 +2087,13 @@ $debt_recs = array();
 					//echo "debt items:".$req5;
 					//echo "<br>Debt Payment:".$DebtPayment;
 					//echo "<br>Income:".$Income;
-					$debtRatio = $DebtPayment/$Income;
-					if ($Income == 0 && $DebtPayment == 0) {
+					if ($Income == 0 || $DebtPayment == 0) { //was &&, changed to removed division by 0
 						$debtRatio = 0;
 					}
+                                        else {
+
+					$debtRatio = $DebtPayment/$Income;
+                                         }
 					if ($DebtPayment == 0) {
 						$debtRatio = 0;
 					}
