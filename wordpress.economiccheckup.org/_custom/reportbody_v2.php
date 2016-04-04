@@ -2087,16 +2087,13 @@ $debt_recs = array();
 					//echo "debt items:".$req5;
 					//echo "<br>Debt Payment:".$DebtPayment;
 					//echo "<br>Income:".$Income;
-					if ($Income == 0 || $DebtPayment == 0) { //was &&, changed to removed division by 0
-						$debtRatio = 0;
+					if ($Income == 0) { //was &&, changed to removed division by 0
+						$debtRatio = $DebtPayment;
 					}
                                         else {
 
 					$debtRatio = $DebtPayment/$Income;
                                          }
-					if ($DebtPayment == 0) {
-						$debtRatio = 0;
-					}
 					//echo "<br> Debt Ratio:".$debtRatio;
 					if($debtRatio  > .5){$debt_recs["esi_report_debt_management"]["show"] = 1;} 
 					if ($req5 > 0)  {
