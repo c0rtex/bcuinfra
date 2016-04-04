@@ -386,12 +386,12 @@ h1, h2, h3, h4, button {
 }
 
 #content #main h1 {
-    color: #DD4814;
+    color: #009bb1;
     font-weight: normal;
 }
 
 #content #main h2 {
-    color: #003E9C;
+    color: #009bb1;
 }
 
 #content #main h2.successStories {
@@ -669,7 +669,7 @@ legend {
 }
 
 .sidebar-nav legend {
-    color: #DD4814;
+    color: #009bb1;
 }
 
 input, input[disabled] {
@@ -756,7 +756,7 @@ input, input[disabled] {
 /*.page-id-2649 #content #main h2, */
 #content #main h2,
 #content #main div.esi-results h2 {
-    color: #dd4814;
+    color: #009bb1;
     font-weight: normal;
 }
 
@@ -928,6 +928,5 @@ div.well.sidebar-nav {
         text-align: center;
 }
 
-.eversafe-content{
-margin-top: 30px;
+.eversafe-container{
 }

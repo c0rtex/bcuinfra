@@ -9,45 +9,6 @@
 	<meta name="description" content="EverSafe provides seniors and trusted caretakers with improved financial security and peace of mind. EverSafe uses technology to protect against financial abuse." />
 
 	<!-- Segment -->
-	<script type="text/javascript">
-		!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
-			analytics.load("vHLeBeMj38GXZ9eY10k9uHnZE9SFPDP2");
-			analytics.page()
-		}}();
-	</script>
-	
-	<!-- Hotjar Tracking Code for www.eversafe.com -->
-	<script>
-		(function(h,o,t,j,a,r){
-			  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-			  h._hjSettings={hjid:105814,hjsv:5};
-			  a=o.getElementsByTagName('head')[0];
-			  r=o.createElement('script');r.async=1;
-			  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-			  a.appendChild(r);
-		})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-	</script>
-	
-	<!-- AutoPilot -->
-	<script type="text/javascript">(function(){var c=encodeURIComponent,s="SCRIPT",d=document,e=d.createElement(s),t=d.getElementsByTagName(s)[0],p="t="+c(d.title||"")+"&u="+c(d.location.href||"")+"&r="+c(d.referrer||"");e.src="https://api.autopilothq.com/anywhere/0e50b065fd8846d9ae5023709474771ca87c1169c2f94599bf543cd2f168fcb2?"+p;e.type="text/javascript";e.async=true;t.parentNode.insertBefore(e, t);})();(function(){var c=encodeURIComponent,s="SCRIPT",d=document,e=d.createElement(s),t=d.getElementsByTagName(s)[0];e.src="https://api.autopilothq.com/anywhere/aa/0e50b065fd8846d9ae5023709474771ca87c1169c2f94599bf543cd2f168fcb2";e.type="text/javascript";e.async=false;t.parentNode.insertBefore(e, t);window.AutopilotAnywhere={_runQueue:[],run:function(){this._runQueue.push(arguments);}};if(!window.Autopilot) window.Autopilot=window.AutopilotAnywhere;})();</script>
-	
-	<!-- FaceBook -->
-	<script>(function() {
-		var _fbq = window._fbq || (window._fbq = []);
-		if (!_fbq.loaded) {
-			var fbds = document.createElement('script');
-			fbds.async = true;
-			fbds.src = '//connect.facebook.net/en_US/fbds.js';
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(fbds, s);
-			_fbq.loaded = true;
-			 }
-			 _fbq.push(['addPixelId', '1620419691530919']);
-		})();
-		window._fbq = window._fbq || [];
-		window._fbq.push(['track', 'PixelInitialized', {}]);
-	</script>
-	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1620419691530919&amp;ev=PixelInitialized" /></noscript>
 	
 	
 	<meta charset="UTF-8" />
@@ -55,7 +16,6 @@
 	<link rel="icon" type="image/png" href="https://www.eversafe.com/images/favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://www.eversafe.com/index.html" />
 	<meta property="og:site_name" content="EverSafe" />
 	
 	<!-- stylesheets -->
@@ -63,11 +23,13 @@
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/responsive/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/ecu-eversafe.css"/>
 	
 	<!-- javascript -->
 	<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
-	<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script>
+	<!--<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> -->
+            <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
 	<script src="https://www.eversafe.com/js/theme.js?v=1"></script>
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
 	
@@ -93,7 +55,7 @@
 		document.write('<img width="1" height="1" src="' + url + '">');
 	</script></div>
 
-	<header class="navbar navbar-fixed-top navbar-inverse white" role="banner">
+	<header class="navbar navbar-fixed-top navbar-inverse white header-eversafe" role="banner">
 		<div class="container">
 	
 			<div class="log col-md-12 hidden-xs" style="z-index: 10 !important;">
@@ -164,4 +126,4 @@
 	<!-- ###################################################################################### -->
 
 	
-     <div class="container">     
+     <div class="container eversafe-container">     
