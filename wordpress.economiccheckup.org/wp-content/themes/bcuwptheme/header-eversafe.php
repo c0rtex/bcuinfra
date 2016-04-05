@@ -19,11 +19,10 @@
 	<meta property="og:site_name" content="EverSafe" />
 	
 	<!-- stylesheets -->
-	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/compiled/theme.css?v=1"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/eversafetheme.css"/>
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/responsive/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/ecu-eversafe.css"/>
 	
 	<!-- javascript -->

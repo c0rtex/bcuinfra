@@ -107,10 +107,10 @@ switch ($answerfieldCode) {
         if ($answerfieldValue == 'checked') {
             $checked = 'checked';
         }
-        $checkboxV = 'y';
+        $checkboxV = 'y'; //Lynna Cekova: use this for value below when report is fixed
         echo '
 		  <div id="tr_' . $answerfield . '" class="checkbox">
-                <label class="checkbox" id="label_' . $answerfield . '"><input type="checkbox" ' . $checked . ' name="' . $answerfield . '" id="' . $answerfield . '" value="' . $checkboxV . '"';
+                <label class="checkbox" id="label_' . $answerfield . '"><input type="checkbox" ' . $checked . ' name="' . $answerfield . '" id="' . $answerfield . '" value="' . $answerfield . '"';
 //QUESTIONS 11 and 12
 
         if ($answerfield == 'fdstmp_receive' || $answerfield == 'liheap_receive' || $answerfield == 'med_receive' || $answerfield == 'receive_propertytax') { //the first two don't get the class because they use an alt js function for showing/hiding QUESTION 12
