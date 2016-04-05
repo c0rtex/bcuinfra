@@ -17,7 +17,7 @@
     Method converts properties to structure based on special properties attributes, defined in cfproperty tag
 --->
 
-    <cffunction name="toStructure" access="remote" returnFormat="plain">
+    <cffunction name="toStructure">
         <cfset retVal = structNew()>
         <cfset metaData = getMetadata(this)>
         <cfif structKeyExists(metaData,"properties")>
@@ -44,7 +44,6 @@
             </cfloop>
         </cfif>
         <cfreturn retVal>
-        <cfdump var="#getMetadata(this)#">
     </cffunction>
 
 <!---
@@ -75,5 +74,82 @@
         </cfloop>
 
         <cfreturn rv>
+    </cffunction>
+
+    <cffunction name="toDatabaseRepresentation">
+        <cfset retVal = structNew()>
+        <cfset metaData = getMetadata(this)>
+        <cfif structKeyExists(metaData,"properties")>
+            <cfloop array="#metaData.properties#" index="p">
+                <cfif structKeyExists(p,"fieldtype")>
+                    <cfif p.fieldtype eq "id">
+                        <cfif structKeyExists(p,"column")>
+                            <cfset retVal[p.column]=evaluate("this.get#p.name#()")>
+                        <cfelse>
+                            <cfset retVal[p.name]=evaluate("this.get#p.name#()")>
+                        </cfif>
+                    <cfelseif p.fieldtype eq "many-to-one">
+                        <cfset retVal[p.fkcolumn] = this.getPKValue(evaluate("this.get#p.name#()"))>
+                    </cfif>
+                <cfelse>
+                    <cfif structKeyExists(p,"column")>
+                        <cfset retVal[p.column]=evaluate("this.get#p.name#()")>
+                    <cfelse>
+                        <cfset retVal[p.name]=evaluate("this.get#p.name#()")>
+                    </cfif>
+                </cfif>
+            </cfloop>
+        </cfif>
+        <cfreturn retVal>
+    </cffunction>
+
+    <cffunction name="getPKValue">
+        <cfargument name="aObject">
+        <cfif isNull(aObject)>
+            <cfreturn "">
+        </cfif>
+        <cfset mD = getMetadata(aObject)>
+        <cfset aRV = "">
+        <cfloop array="#mD.properties#" index="mDp">
+            <cfif structKeyExists(mDp,"fieldtype")>
+                <cfif mDp.fieldtype eq "id">
+                    <cfset aRV=evaluate("aObject.get#mDp.name#()")>
+                </cfif>
+            </cfif>
+        </cfloop>
+        <cfreturn aRV>
+    </cffunction>
+
+    <cffunction name="returnMetadata">
+        <cfset retVal = structNew()>
+        <cfset metaData = getMetadata(this)>
+        <cfif structKeyExists(metaData,"properties")>
+            <cfloop array="#metaData.properties#" index="p">
+                <cfif structKeyExists(p,"fieldtype")>
+                    <cfif p.fieldtype eq "id">
+                        <cfif structKeyExists(p,"column")>
+                            <cfset retVal[p.column]["name"]=p.name>
+                            <cfset retVal[p.column]["fieldtype"]="id">
+                        <cfelse>
+                            <cfset retVal[p.name]["name"]=p.name>
+                            <cfset retVal[p.name]["fieldtype"]="id">
+                        </cfif>
+                    <cfelseif p.fieldtype eq "many-to-one">
+                        <cfset retVal[p.fkcolumn]["fieldtype"]="many-to-one">
+                        <cfset retVal[p.fkcolumn]["name"]=p.name>
+                        <cfset retVal[p.fkcolumn]["master"]=p.cfc>
+                    </cfif>
+                <cfelse>
+                    <cfif structKeyExists(p,"column")>
+                        <cfset retVal[p.column]["fieldtype"]="">
+                        <cfset retVal[p.column]["name"]=p.name>
+                    <cfelse>
+                        <cfset retVal[p.name]["fieldtype"]="">
+                        <cfset retVal[p.name]["name"]=p.name>
+                    </cfif>
+                </cfif>
+            </cfloop>
+        </cfif>
+        <cfreturn retVal>
     </cffunction>
 </cfcomponent>
