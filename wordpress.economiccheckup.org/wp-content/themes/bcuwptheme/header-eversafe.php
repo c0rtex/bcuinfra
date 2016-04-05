@@ -29,7 +29,7 @@
 	<!-- javascript -->
 	<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
 	<!--<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> -->
-            <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
+            <script type="text/javascript" src="/wp-content/themes/bcuwptheme/responsive/js/bootstrap.min.js"></script>
 	<script src="https://www.eversafe.com/js/theme.js?v=1"></script>
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
 	
