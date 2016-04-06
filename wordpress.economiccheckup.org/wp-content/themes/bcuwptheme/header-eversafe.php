@@ -19,27 +19,36 @@
     <meta property="og:site_name" content="EverSafe" />
 
     <!-- stylesheets -->
-    <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/compiled/theme.css?v=1"/>
+    <!---<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/compiled/theme.css?v=1"/>--->
     <!---<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>--->
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/eversafetheme.css"/>-
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/responsive/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
     <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/responsive/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/ecu-eversafe.css"/>
 
     <!-- javascript -->
-    <script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
+    <!---<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>--->
     <!--<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> -->
+  			<script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>
+            <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/jquery.validate.js"></script>
+
             <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
-    <script src="https://www.eversafe.com/js/theme.js?v=1"></script>
+    <!---<script src="https://www.eversafe.com/js/theme.js?v=1"></script>--->
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
+            <script src="<?php echo get_template_directory_uri(); ?>/application.js"></script>
+            <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
+		<script src="/cf/js/infinite-rotator.js" type="text/javascript"></script>
+ <script src="<?php echo get_template_directory_uri(); ?>/ecu_liveonly.js"></script>
+
 
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src="https://www.eversafe.com/js/riveted.min.js"></script>
-    <script>riveted.init({reportInterval: 5});</script>
-    <script src="https://www.eversafe.com/js/jquery.scrolldepth.min.js"></script>
+    <!---<script src="https://www.eversafe.com/js/riveted.min.js"></script>--->
+    <!---<script>riveted.init({reportInterval: 5});</script>--->
+    <!---<script src="https://www.eversafe.com/js/jquery.scrolldepth.min.js"></script>--->
 </head>
 <body id="features">
 
