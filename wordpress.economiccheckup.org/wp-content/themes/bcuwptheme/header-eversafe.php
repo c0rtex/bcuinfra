@@ -104,9 +104,9 @@
                             <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
-<li><a href="/esi-home" <?php if (is_page("esi-home")) echo "class='current'"; ?>>ECU Home</a></li>
-                    <li><a href="/esi-questions" <?php if (is_page("esi-questions")) echo "class='current'"; ?>>My&nbsp;CheckUp</a></li>
-                    <li><a href="/esi-find-help" <?php if (is_page("esi-find-help")) echo "class='current'"; ?>>ECU Resources</a></li>
+<li><a href="home-eversafe" <?php if (is_page("home-eversafe")) echo "class='current'"; ?>>ECU Home</a></li>
+                    <li><a href="/esi-questions-eversafe" <?php if (is_page("esi-questions")) echo "class='current'"; ?>>My&nbsp;CheckUp</a></li>
+                    <li><a href="/eversafe-find-help" <?php if (is_page("esi-find-help")) echo "class='current'"; ?>>ECU Resources</a></li>
 
                             <!--<li><a href="https://www.eversafe.com/press.html">Press</a></li> -->
                         </ul>
