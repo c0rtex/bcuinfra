@@ -1,7 +1,22 @@
 </div> <!-- end of container -->
 		</div> <!-- end .container -->
+<div class="footer-powered">
+
+EconomicCheckUp&reg; is powered by the National Council on Aging.
+<br>
+&copy;2016 National Council on Aging. All Rights Reserved.
+<br>
+
+<a href="https://www.economiccheckup.org/esi-privacy-policy/">EconomicCheckUp® Privacy Policy </a>
+| 
+<a href="https://www.economiccheckup.org/esi-termsofuse/">EconomicCheckUp® Terms of Use</a>
+
+<br>
+<br>
+</div>
 
 <div id="footer">
+
 		<div class="footer-container">
 			<div class="row">
 				<div class="col-md-4 logos">
@@ -45,18 +60,6 @@
 			</div>
 		</div>
 	</div>
-<div class="footer-powered">
-Powered by BenefitsCheckUp
-<br>
-Copyright 2016 National Council on Aging
-<br>
-<a id="privacy" href="javascript:help2('privacy.cfm')">BenefitsCheckUp Privacy Policy</a>
-|
-<a href="javascript:help2('/termsofuse.cfm')">BenefitsCheckUp Terms of Use</a>
-
-<br>
-<br>
-</div>
 
 	
 	<!-- Google Code for Remarketing Tag -->
