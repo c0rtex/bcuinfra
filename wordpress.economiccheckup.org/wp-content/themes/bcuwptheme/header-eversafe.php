@@ -86,6 +86,14 @@
 
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right">
+	<li class="dropdown hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp <i class="fa fa-chevron-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="/home-eversafe">Home</a></li>
+							<li><a href="/esi-questions-eversafe">MyCheckUp</a></li>
+							<li><a href="/eversafe-find-help">Resources</a></li>
+						</ul>
+					</li>
+
                     <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle"> How It Works </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle"> Pricing </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle"> Family/Advocates </a></li>
@@ -104,9 +112,6 @@
                             <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
-<li><a href="home-eversafe" <?php if (is_page("home-eversafe")) echo "class='current'"; ?>>ECU Home</a></li>
-                    <li><a href="/esi-questions-eversafe" <?php if (is_page("esi-questions")) echo "class='current'"; ?>>My&nbsp;CheckUp</a></li>
-                    <li><a href="/eversafe-find-help" <?php if (is_page("esi-find-help")) echo "class='current'"; ?>>ECU Resources</a></li>
 
                             <!--<li><a href="https://www.eversafe.com/press.html">Press</a></li> -->
                         </ul>
