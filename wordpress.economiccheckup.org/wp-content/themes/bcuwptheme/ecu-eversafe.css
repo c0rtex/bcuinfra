@@ -39,7 +39,7 @@ b, strong {
     border: none;
 }
 
-#header.container {
+#header .container {
     padding-bottom: 1em;
 }
 
@@ -728,7 +728,7 @@ input, input[disabled] {
     max-width: 940px
 }
 
-header.container {
+header .container {
     max-width: 1200px
 }
 
