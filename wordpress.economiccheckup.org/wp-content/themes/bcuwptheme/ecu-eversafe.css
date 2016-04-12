@@ -728,6 +728,10 @@ input, input[disabled] {
     max-width: 940px
 }
 
+header.container {
+    max-width: 1200px
+}
+
 #content #main div.selection-box-container.row {
     margin-left: 0;
 }
