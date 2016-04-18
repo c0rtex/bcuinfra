@@ -5,6 +5,7 @@
 <cfparam name="session.screening.recap" default="0">
 <cfparam name="url.repop" default="false">
 <cfparam name="url.esiprod" default="0">
+<cfparam name="url.eversafe_id" default="0">
 <cfset session.reloadpage = "false">
 <cfset session.SCREENING.PGNO = 2>
 <cfset session.subset_id = 63>
@@ -260,20 +261,38 @@
 	<cfoutput><p>ScreeningID: #session.screening_id# badResponseList: #badResponseList#</p></cfoutput>
 	<cfabort>
   <cfelse>
+      <cfif url.eversafe_id neq 0>
+	<cfif url.esiprod eq 1>
+	<cfoutput><a href="https://www.economiccheckup.org/esi-questions-eversafe?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
+  	<cfelse>
+	<cfoutput><a href="http://qa.economiccheckup.org/esi-questions-eversafe?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
+  	</cfif>
+     <cfelse> <!--- regular ESI --->
 	<cfif url.esiprod eq 1>
 	<cfoutput><a href="https://www.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	<cfelse>
 	<cfoutput><a href="http://qa.economiccheckup.org/esi-questions?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	</cfif>
+     </cfif> <!--- end of Eversafe check --->
   </cfif>
 <cfabort>
 <cfelse>
 	<cfset tmpScreeningID = session.screening_id>
 	<cfinclude template="procESIShadowPHP.cfm">
+      <cfif url.eversafe_id neq 0>
+	<cfif url.esiprod eq 1>
+	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results-eversafe/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+	<cfelse>
+		<cfoutput><meta http-equiv="refresh" content="0;url=http://qa.economiccheckup.org/esi-results-eversafe/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
+	</cfif>
+       <cfelse> <!--- regular ESI --->
 	<cfif url.esiprod eq 1>
 	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	<cfelse>
 		<cfoutput><meta http-equiv="refresh" content="0;url=http://qa.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	</cfif>
+
+
+</cfif>
 </cfif>
  

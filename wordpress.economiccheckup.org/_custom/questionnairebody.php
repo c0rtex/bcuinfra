@@ -164,7 +164,7 @@
                 $subdomain = 'redesign';
                 $esiprod = 0;
             }
-            echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod . '"'; ?>
+            echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod . '&esipl=' . $esipl .'"'; ?>
               method="post">
             <!-- Run the section generator script -->
             <?php require_once('section.php') ?>
