@@ -86,10 +86,10 @@
 
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right">
-	<li class="dropdown hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp <i class="fa fa-chevron-down"></i></a>
+	<li class="dropdown hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp&reg;<i class="fa fa-chevron-down"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="/home-eversafe">Home</a></li>
-							<li><a href="/esi-questions-eversafe">MyCheckUp</a></li>
+							<li><a href="/esi-questions-eversafe">My CheckUp</a></li>
 							<li><a href="/eversafe-find-help">Resources</a></li>
 						</ul>
 					</li>
