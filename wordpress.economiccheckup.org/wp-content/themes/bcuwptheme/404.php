@@ -1,6 +1,4 @@
-
 <!doctype html>
-
 <!--[if lt IE 7]><html lang="en-US" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html lang="en-US" class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html lang="en-US" class="no-js lt-ie9"><![endif]-->
@@ -51,7 +49,6 @@
 	</style>
 
 	
-
 <!-- All in One SEO Pack 2.2.7.2 by Michael Torbert of Semper Fi Web Design[1769,1795] -->
 <meta name="description" itemprop="description" content="Page Not Found We're sorry, but the page you are looking for cannot be found. Please send us an email to let us know you received this page. If you" />
 
@@ -298,9 +295,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <br />
 <p><strong>We&#8217;re sorry, but the page you are looking for cannot be found.</strong></p>
 <br />
-<ul><li>Please send us an <a href="mailto:economiccheckup@ncoa.org">email</a> to let us know you received this page. <br /> If you reached this page from another website, please provide us with that website page.<br /><br /></li>
+<ul><li>Please send us an <a href="mailto:support@economiccheckup.org">email</a> to let us know you received this page. <br /> If you reached this page from another website, please provide us with that website page.<br /><br /></li>
 
-<li>To help you make the most of your money, go to <A HREF="http://www.economiccheckup.org">EconomicCheckUp </A>now.</li></ul>
+<li>To help you make the most of your money, click on the <strong>Home</strong> tab now.</li></ul>
 <br />
 
 </div><input id="ileSaveButton-16692" type="button" value="Save editing"/>

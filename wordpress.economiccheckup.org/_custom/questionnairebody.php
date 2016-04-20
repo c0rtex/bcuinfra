@@ -27,6 +27,7 @@
     </p>
 </div>
 
+
 <div class="span12">
     <div class="span8">
         <?php
@@ -163,7 +164,17 @@
                 $subdomain = 'redesign';
                 $esiprod = 0;
             }
-            echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod . '"'; ?>
+if (isset($_GET["eversafe_id"])){
+            echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod . '&eversafe_id=' . $_GET["eversafe_id"]  .'"'; 
+}
+else {
+            echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod .'"'; 
+
+}
+
+
+
+?>
               method="post">
             <!-- Run the section generator script -->
             <?php require_once('section.php') ?>
@@ -195,7 +206,7 @@
             <ol class="nav nav-list">
 
 
-                <li><a data-toggle="modal" role="button" href="#gettingstarted"><i class="icon-book "></i>Getting
+                <li><a data-toggle="modal" data-backdrop="static" role="button" href="#gettingstarted"><i class="icon-book "></i>Getting
                         Started </a></li>
                 <li><a href="/wp-content/uploads/2014/11/EconomicCheckUp-Financial-Worksheet.pdf" target="_blank"> <i
                             class="icon-book "></i>Financial Worksheet</a></li>
@@ -223,6 +234,7 @@ if (isset($_GET['screeningID'])) {
 }
 ?>
 </form>
+
 <div id="gettingstarted" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Getting Started"
      aria-hidden="true" style="display: none;">
     <div class="modal-header">
@@ -251,4 +263,237 @@ if (isset($_GET['screeningID'])) {
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
     </div>
+</div>
 
+
+<div id="liheap_info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="LIHEAP"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close <i class="icon-remove"></i>
+        </button>
+        <div><h3 style="color : #DD4814;">Low Income Home Energy Assistance Program (LIHEAP)</h3></div>
+    </div>
+    <div id="liheap_block" class="modal-body well" style="border-radius=0 !important">
+        <div id="liheap_tip">
+            <div">
+                <p align="center" class="text1"><strong>Low Income Home Energy Assistance Program (LIHEAP)</strong></p>
+                <p align="left" class="text1">LIHEAP is a federal program. Your state may call LIHEAP by a different
+                    program name. To find your state LIHEAP program name, see the list below.</p>
+            </div>
+            <TABLE align="center" style="background-color:#ffffff; font-size:14px;"
+                   border="1"
+                   cellpadding="1" class="text1 table-responsive">
+                <b>
+                    <tr>
+                        <td><b>State</b></td>
+                        <td><b>LIHEAP Program Names</b></td>
+                    </tr>
+                    <tr>
+                        <td>AK</td>
+                        <td>Heating Assistance Program (HAP)</td>
+                    </tr>
+                    <tr>
+                        <td>AL</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>AR</td>
+                        <td>Home Energy Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>AZ</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>CA</td>
+                        <td>Home Energy Assistance Program (HEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>CO</td>
+                        <td>Low Income Energy Assistance Program (LEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>CT</td>
+                        <td>Connecticut Energy Assistance Program (CEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>DC</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>DE</td>
+                        <td>Delaware Energy Assistance Program (DEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>FL</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>GA</td>
+                        <td>Regular Energy Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>HI</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>IA</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>IL</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>IN</td>
+                        <td>Energy Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>KS</td>
+                        <td>Low Income Energy Assistance Program (LIEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>KY</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>LA</td>
+                        <td>Low Income Home Energy Assistance (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>MA</td>
+                        <td>Low Income Home Energy Assistance (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>MD</td>
+                        <td>Maryland Energy Assistance Program (MEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>ME</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>MI</td>
+                        <td>Home Heating Credit/LIHEAP</td>
+                    </tr>
+                    <tr>
+                        <td>MN</td>
+                        <td>Energy Assistance Program (EAP)</td>
+                    </tr>
+                    <tr>
+                        <td>MO</td>
+                        <td>Low Income Home Energy Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>MS</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>MT</td>
+                        <td>Low Income Energy Assistance Program (LIEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>NC</td>
+                        <td>Low Income Energy Assistance Program (LIEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>ND</td>
+                        <td>Heating Assistance or Low-Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>NE</td>
+                        <td>Low Income Energy Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>NH</td>
+                        <td>Fuel Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>NJ</td>
+                        <td>Home Energy Assistance</td>
+                    </tr>
+                    <tr>
+                        <td>NM</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>NV</td>
+                        <td>Energy Assistance Program (EAP)</td>
+                    </tr>
+                    <tr>
+                        <td>NY</td>
+                        <td>Home Energy Assistance Program (HEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>OH</td>
+                        <td>Home Energy Assistance Program (HEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>OK</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>OR</td>
+                        <td>Low Income Home Energy Assistance (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>PA</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>RI</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>SC</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>SD</td>
+                        <td>The Low Income Energy Assistance Program (LIEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>TN</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>TX</td>
+                        <td>Comprehensive Energy Assistance Program (CEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>UT</td>
+                        <td>Home Energy Assistance Target (HEAT)</td>
+                    </tr>
+                    <tr>
+                        <td>VA</td>
+                        <td>Energy Assistance</td>
+                    </tr>
+                    <tr>
+                        <td>VT</td>
+                        <td>Fuel Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>WA</td>
+                        <td>Low Income Home Energy Assistance Program (LIHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>WI</td>
+                        <td>Wisconsin Home Energy Assistance Program (WHEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>WV</td>
+                        <td>Low Income Energy Assistance Program (LIEAP)</td>
+                    </tr>
+                    <tr>
+                        <td>WY</td>
+                        <td>Low Income Energy Assistance Program (LIEAP)</td>
+                    </tr>
+                </B>
+            </TABLE>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,8 @@ var questionnaireApp = angular.module('questionnaireApp', [
   'validations',
   'ngSanitize',
   'ngRoute',
-  'ui.utils.masks'
+  'ui.utils.masks',
+  'ui.mask'
 ]);
 
 
@@ -50,34 +51,6 @@ questionnaireApp
         template:"<span ng-include='answer_field_link'></span>",
         link: function(scope, element, attributes, ngModel,ngShow) {
           scope.answer_field_link="templates/answer-field-"+scope.answer_field.type+".html?"+(new Date());
-          if (scope.answer_field.prev != undefined) {
-              switch (scope.answer_field.type) {
-                  case "select":
-                      scope.$root.af[scope.answer_field.code]=scope.answer_field.prev.option;
-                      break;
-                  case "gender":
-                      scope.$root.af[scope.answer_field.code]=scope.answer_field.prev.option.id;
-                      break;
-                  case "yn":
-                      scope.$root.af[scope.answer_field.code]=scope.answer_field.prev.option.id;
-                      break;
-                  case "yns":
-                      scope.$root.af[scope.answer_field.code]=scope.answer_field.prev.option.id;
-                      break;
-                  case "checkbox":
-                      scope.$root.af[scope.answer_field.code]=scope.answer_field.prev != undefined;
-                      break;
-                  case "month":
-                      scope.$root.af[scope.answer_field.code]={id:scope.answer_field.prev.response};
-                      break;
-                  case "year":
-                      scope.$root.af[scope.answer_field.code]={id:scope.answer_field.prev.response};
-                      break;
-                  default :
-                      scope.$root.af[scope.answer_field.code]=scope.answer_field.prev.response;
-              }
-
-          }
         },
         controller: "ValidationController",
         scope: {

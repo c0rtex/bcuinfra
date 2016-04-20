@@ -1,7 +1,13 @@
+<form name="questionForm">
+
 <div ng-repeat="question in questions">
     <div-question question="question"/>
 </div>
 
 <input type="button" ng-show="prevQuestionSetURL!= undefined" value="<Previous" ng-click="prevQS()">
 
-<input type="button" ng-show="nextQuestionSetURL!= undefined" value="Next>" ng-click="nextQS()">
+<input type="button" ng-show="(nextQuestionSetURL!= undefined)&&(questionForm.$valid)" value="Next>" ng-click="nextQS()">
+
+* - required fields
+
+</form>

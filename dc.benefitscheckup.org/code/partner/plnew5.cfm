@@ -134,7 +134,7 @@
 	</tr>
 	
 	<tr bgcolor="##2E99AF">
-		<td colspan="2"><strong>Step 5: Advanced Options | <a href="#website_url#/#wrapper_code#" target="#wrapper_code#">preview</a></strong></td>
+		<td colspan="2"><strong>Step 5: Advanced Options | <a href="#application.website_url#/#wrapper_code#" target="#wrapper_code#">preview</a></strong></td>
 	</tr>
 
 	<td bgcolor="##2E99AF" valign="top"><font size="+1"><b>Partner Name</b></font></td>

@@ -1,4 +1,5 @@
-<p show-event-handler="" ng-show="" ng-model="$root.div_af[answer_field.code]">
-    <input type="radio" ng-model="$root.af[answer_field.code]" name="{{answer_field.code}}" ng-value="1">Yes&nbsp
-    <input type="radio" ng-model="$root.af[answer_field.code]" name="{{answer_field.code}}" ng-value="0">No
+<p validator-add="{{answer_field.validation_code}}" ng-model="$root.div_af[answer_field.code]" id="div_{{answer_field.code}}">
+    <input type="radio" ng-model="$root.af[answer_field.code]" name="{{answer_field.code}}" ng-value="1" ng-required="answer_field.required">Yes&nbsp
+    <input type="radio" ng-model="$root.af[answer_field.code]" name="{{answer_field.code}}" ng-value="0" ng-required="answer_field.required">No
+    <span ng-show="answer_field.required">*</span>
 </p>

@@ -1,3 +1,5 @@
-<p show-event-handler="" ng-show="" ng-model="$root.div_af[answer_field.code]">
-    <input type="text" ng-model="$root.af[answer_field.code]" name="zip" size="5" maxlength="5">
+<p validator-add="{{answer_field.validation_code}}" ng-model="$root.div_af[answer_field.code]" id="div_{{answer_field.code}}">
+    <input type="text" ng-model="$root.af[answer_field.code]" name="zip" size="5" maxlength="5" zip-validator ui-number-mask="0" min="0" max="99999" ng-required="answer_field.required">
+    <span ng-show="answer_field.required">*</span>
+    <span ng-show="!zipValid">Zip code doesn't match for current state {{$root.params["state_id"]}}</span>
 </p>

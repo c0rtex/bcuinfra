@@ -131,8 +131,7 @@ order by question_code, answerfield
 </cfif>
 </cfif>
 </cfloop>
-<cfparam name="response_set.esi_category_health_resources" default="">
-	<cfparam name="response_set.esi_rxhelp" default="">
+
 
 <cfif current_subset_id eq 79>
 	<cfparam name="response_set.mqc_medicare_enroll_disability_no" default="">
@@ -230,8 +229,7 @@ order by question_code, answerfield
 		<cfset response_set.mqc_medicare_enroll_benefits_advisor = 'y'>
 	</cfif>
 </cfif>
-	<cfparam name="response_set.esi_category_health_resources" default="">
-	<cfparam name="response_set.esi_rxhelp" default="">
+
 	<cfparam name="response_set.MQC_GROUP_INSURANCE_SELF" default="">
 	<cfparam name="response_set.MQC_GROUP_INSURANCE_SPOUSE" default="">
 	<cfparam name="response_set.MQC_PLANDISCONTINUED" default="">
@@ -608,7 +606,8 @@ order by question_code, answerfield
 <cfparam name="response_set.mqc_covers_healthcare_and_drugs" default="">
 <cfparam name="response_set.mqc_covers_two_medicare_plans" default="">
 <cfparam name="response_set.mqc_covers_healthcare_no_drugs" default="">
-
+<cfparam name="response_set.esi_category_health_resources" default="">
+<cfparam name="response_set.esi_rxhelp" default="">
 <cfif response_set.mqc_plan_network_problem eq 'mqc_plannetwork_bigproblem'>
 	<cfset response_set.mqc_plannetwork_bigproblem  ="y">
 </cfif>
