@@ -29,19 +29,19 @@ select g.code as gcode, g.sort as gsort
 		from question q, question_gridrow qg, gridrow g
 		where q.question_code='incomegrid'
 			and q.question_id=qg.question_id
-			and qg.gridrownothing_id=g.gridrownothing_id
+			and qg.gridrow_id=g.gridrow_id
 			and g.exclude_flag=1
-			and g.gridrownothing_id in (
-				select gridrownothing_id
-				from subset_gridrownothing
+			and g.gridrow_id in (
+				select gridrow_id
+				from subset_gridrow
 				where subset_id=".$subset_id."
 					and exclude_flag=0
 			)
 		order by gsort
 ";
 //$gridrow_query = $bcudb->get_results($query_gridRow);
-//foreach($gridrownothing_query as $gridrownothingObj):
-// $gridCode = $gridrownothingObj->code;
+//foreach($gridrow_query as $gridrowObj):
+// $gridCode = $gridrowObj->code;
 // echo '<h4>'.$gridCode.'</h4>';
 //endforeach;
 
@@ -322,7 +322,7 @@ $answerfieldValue_hh_income_rr_ben_simple  =  getScreeningAnswerfield(5209,$scre
 if ($questionCode == 'esi_grossmonthlyincome_question'){
 echo "
 	<div class='input'>                      	               	  
-    	<div class='rownothing'>					
+    	<div class='row'>					
         	<div class='span2'>
 				<div id='div_income_pri_retire' class='checkbox pull-right'>
 					<label class='checkbox'><input type='checkbox' name='ck_pri_retire' id='ck_income_pri_retire' ".$answerfieldValue_ck_pri_retire." value='y' class='checkboxSubQuestionAdditional'></label> 
@@ -330,28 +330,28 @@ echo "
 			</div>
 			<div class='span9' ><label>Pension / Retirement Benefits</label></div>
 		</div>
-		<div class='rownothing' id='subQuestionAdditional_ck_income_pri_retire' style='display:none'>
-			<div class='rownothing' id='s_income_pri_retire'>
+		<div class='row' id='subQuestionAdditional_ck_income_pri_retire' style='display:none'>
+			<div class='row' id='s_income_pri_retire'>
 				<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
 				<div class='span7 input-prepend input-append'><span class='add-on'>$</span>
 					<input type='text' name='s_income_pri_retire' value='".$answerfieldValue_s_income_pri_retire."' size='10' maxlength='10' onblur='chkDollar(this,value);'>
 					<span class='add-on'>.00</span>
 				</div>
 			</div>
-			<div class='rownothing' id='sp_income_pri_retire' >
+			<div class='row' id='sp_income_pri_retire' >
 				<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_pri_retire' value='".$answerfieldValue_sp_income_pri_retire."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span></label>
 				</div>
 			</div>
-			<div class='rownothing' id='s_sp_income_pri_retire' >
+			<div class='row' id='s_sp_income_pri_retire' >
 				<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_pri_retire_simple' value='".$answerfieldValue_s_sp_income_pri_retire_simple."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span></label></div>
 			</div>
-			<div class='rownothing' id='hh_income_pri_retire' >
+			<div class='row' id='hh_income_pri_retire' >
 				<div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_pri_retire_simple' value='".$answerfieldValue_hh_income_pri_retire_simple."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span></label>
 				</div>
 			</div>
 		</div> <!-- end of subQuestionAdditonal class -->
 	</div>
-	<div class='rownothing subQuestion' >
+	<div class='row subQuestion' >
 		<div class='span2'>
 			<div id='div_ck_income_dividends' class='checkbox pull-right'>
             	<label class='checkbox'><input type='checkbox' name='ck_dividends' id='ck_income_dividends' value='y' ".$answerfieldValue_ck_dividends." class='checkboxSubQuestionAdditional'></label> 
@@ -361,26 +361,26 @@ echo "
 	</div>
 
 	<div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_dividends' style='display:none'>
-		<div class='rownothing' id='s_income_dividends' >
+		<div class='row' id='s_income_dividends' >
 			<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
 				<div class='span7 input-prepend input-append'><span class='add-on'>$</span>
 					<input type='text' name='s_income_dividends' value='".$answerfieldValue_s_income_dividends."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span>
 				</div>
 			</div>
-			<div class='rownothing' id='sp_income_dividends' >
+			<div class='row' id='sp_income_dividends' >
 				<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_dividends' value='".$answerfieldValue_sp_income_dividends."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span></label>
 				</div>
 			</div>
-			<div class='rownothing' id='s_sp_income_dividends' >
+			<div class='row' id='s_sp_income_dividends' >
             	<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_dividends_simple' value='".$answerfieldValue_s_sp_income_dividends_simple."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span></label>
 				</div>
 			</div>
-			<div class='rownothing' id='hh_income_dividends' >
+			<div class='row' id='hh_income_dividends' >
             	<div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_dividends_simple' value='".$answerfieldValue_hh_income_dividends_simple."' size='10' maxlength='10' onblur='chkDollar(this,value);'><span class='add-on'>.00</span></label>
 			</div>
 		</div>
 	</div>
-	<div class='rownothing ' >
+	<div class='row ' >
 		<div class='span2'>
         	<div id='div_ck_income_ssi' class='checkbox pull-right'>
           		<label class='checkbox'><input type='checkbox' name='ck_ssi' id='ck_income_ssi' ".$answerfieldValue_ck_ssi." value='y' class='checkboxSubQuestionAdditional'></label> 
@@ -389,29 +389,29 @@ echo "
 		<div class='span9' ><label>Supplemental Security Income</label></div>
 	</div>
 	<div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_ssi' style='display:none'>
-     	<div class='rownothing' id='s_income_ssi' >
+     	<div class='row' id='s_income_ssi' >
 			<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         	<div class='span7 input-prepend input-append'><span class='add-on'>$</span>
 				<input type='text' name='s_income_ssi' value='".$answerfieldValue_s_income_ssi."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           		<span class='add-on'>.00</span>
 			</div>
       	</div>
-      	<div class='rownothing' id='sp_income_ssi' >
+      	<div class='row' id='sp_income_ssi' >
 			<div class='span4'><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_ssi' value='".$answerfieldValue_sp_income_ssi."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
       		</div>
    		</div>
-    	<div class='rownothing' id='s_sp_income_ssi' >
+    	<div class='row' id='s_sp_income_ssi' >
         	<div class='span4'><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_ssi_simple' value='".$answerfieldValue_s_sp_income_ssi_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
  		</div>
-    	<div class='rownothing' id='hh_income_ssi' >
+    	<div class='row' id='hh_income_ssi' >
         	<div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_ssi_simple' value='".$answerfieldValue_hh_income_ssi_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
 	</div>
-	<div class='rownothing subQuestion' >
+	<div class='row subQuestion' >
 		<div class='span2'>
         	<div id='div_ck_income_ss_disable' class='checkbox pull-right'>
           		<label class='checkbox'><input type='checkbox' name='ck_ss_disable' id='ck_income_ss_disable' value='y' ".$answerfieldValue_ck_ss_disable." class='checkboxSubQuestionAdditional'></label> 
@@ -422,30 +422,30 @@ echo "
     </div>
 	
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_ss_disable' style='display:none'>
-      	<div class='rownothing' id='s_income_ss_disable' >
+      	<div class='row' id='s_income_ss_disable' >
 			<div class='span4'><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         	<div class='span7 input-prepend input-append'><span class='add-on'>$</span>
 				<input type='text' name='s_income_ss_disable' value='".$answerfieldValue_s_income_ss_disable."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           		<span class='add-on'>.00</span>
 			</div>
     	</div>
-      	<div class='rownothing' id='sp_income_ss_disable' >
+      	<div class='row' id='sp_income_ss_disable' >
 			<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_ss_disable' value='".$answerfieldValue_sp_income_ss_disable."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
-      	<div class='rownothing' id='s_sp_income_ss_disable' >
+      	<div class='row' id='s_sp_income_ss_disable' >
         	<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_ss_disable_simple' value='".$answerfieldValue_s_sp_income_ss_disable_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
   		</div>
-      	<div class='rownothing' id='hh_income_ss_disable' >
+      	<div class='row' id='hh_income_ss_disable' >
         	<div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_ss_disable_simple' value='".$answerfieldValue_hh_income_ss_disable_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
 	</div>
-	<div class='rownothing subQuestion' >
+	<div class='row subQuestion' >
 		<div class='span2'>
         	<div id='div_ck_income_ss_retire' class='checkbox pull-right'>
           		<label class='checkbox'><input type='checkbox' name='ck_ss_retire' id='ck_income_ss_retire' value='y' ".$answerfieldValue_ck_ss_retire." class='checkboxSubQuestionAdditional'></label> 
@@ -454,7 +454,7 @@ echo "
 		<div class='span9' ><label>Social Security Retirement / Survivor Benefits</label></div>
 	</div>
 	<div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_ss_retire' style='display:none'>
-      	<div class='rownothing' id='s_income_ss_retire' >
+      	<div class='row' id='s_income_ss_retire' >
 
         	<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         	<div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -463,24 +463,24 @@ echo "
           		<span class='add-on'>.00</span>
 			</div>
     	</div>
-    	<div class='rownothing' id='sp_income_ss_retire' >
+    	<div class='row' id='sp_income_ss_retire' >
 
      		<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_ss_retire' value='".$answerfieldValue_sp_income_ss_retire."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
    		</div>
-   		<div class='rownothing' id='s_sp_income_ss_retire' >
+   		<div class='row' id='s_sp_income_ss_retire' >
         	<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_ss_retire_simple' value='".$answerfieldValue_s_sp_income_ss_retire_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
-      	<div class='rownothing' id='hh_income_ss_retire' >
+      	<div class='row' id='hh_income_ss_retire' >
         	<div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_ss_retire_simple' value='".$answerfieldValue_hh_income_ss_retire_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
 	</div>
 
-	<div class='rownothing subQuestion' >
+	<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_rr_ben' class='checkbox pull-right'>
@@ -494,7 +494,7 @@ echo "
    	</div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_rr_ben' style='display:none'>
-      	<div class='rownothing' id='s_income_rr_ben' >
+      	<div class='row' id='s_income_rr_ben' >
 
         	<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         	<div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -502,22 +502,22 @@ echo "
           		<span class='add-on'>.00</span>
 			</div>
       	</div>
-      	<div class='rownothing' id='sp_income_rr_ben' >
+      	<div class='row' id='sp_income_rr_ben' >
 			<div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div>
 			<div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_rr_ben' value='".$answerfieldValue_sp_income_rr_ben."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
    		</div>
-    	<div class='rownothing' id='s_sp_income_rr_ben' >
+    	<div class='row' id='s_sp_income_rr_ben' >
     		<div class='span4'><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_rr_ben_simple' value='".$answerfieldValue_s_sp_income_rr_ben_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
-      	<div class='rownothing' id='hh_income_rr_ben' >
+      	<div class='row' id='hh_income_rr_ben' >
         	<div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_rr_ben_simple' value='".$answerfieldValue_hh_income_rr_ben_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         	</div>
       	</div>
 	</div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_vet_ben' class='checkbox pull-right'>
@@ -531,7 +531,7 @@ echo "
     </div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_vet_ben' style='display:none'>
-      <div class='rownothing' id='s_income_vet_ben' >
+      <div class='row' id='s_income_vet_ben' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -541,16 +541,16 @@ echo "
 
         </div>
       </div>
-      <div class='rownothing' id='sp_income_vet_ben' >
+      <div class='row' id='sp_income_vet_ben' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_vet_ben' value='".$answerfieldValue_sp_income_vet_ben."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_vet_ben' >
+      <div class='row' id='s_sp_income_vet_ben' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_vet_ben_simple' value='".$answerfieldValue_s_sp_income_vet_ben_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_vet_ben' >
+      <div class='row' id='hh_income_vet_ben' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_vet_ben_simple' value='".$answerfieldValue_hh_income_vet_ben_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -558,7 +558,7 @@ echo "
 
     </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_unemployment' class='checkbox pull-right'>
@@ -572,7 +572,7 @@ echo "
     </div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_unemployment' style='display:none'>
-      <div class='rownothing' id='s_income_unemployment' >
+      <div class='row' id='s_income_unemployment' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -582,16 +582,16 @@ echo "
 
         </div>
       </div>
-      <div class='rownothing' id='sp_income_unemployment' >
+      <div class='row' id='sp_income_unemployment' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_unemployment' value='".$answerfieldValue_sp_income_unemployment."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_unemployment' >
+      <div class='row' id='s_sp_income_unemployment' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_unemployment_simple' value='".$answerfieldValue_s_sp_income_unemployment_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_unemployment' >
+      <div class='row' id='hh_income_unemployment' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_unemployment_simple' value='".$answerfieldValue_hh_income_unemployment_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -599,7 +599,7 @@ echo "
 
     </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_unemploy' class='checkbox pull-right'>
@@ -613,7 +613,7 @@ echo "
     </div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_unemploy' style='display:none'>
-      <div class='rownothing' id='s_income_unemploy' >
+      <div class='row' id='s_income_unemploy' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -623,16 +623,16 @@ echo "
 
         </div>
       </div>
-      <div class='rownothing' id='sp_income_unemploy' >
+      <div class='row' id='sp_income_unemploy' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_unemploy' value='".$answerfieldValue_sp_income_unemploy."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_unemploy' >
+      <div class='row' id='s_sp_income_unemploy' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_unemploy_simple' value='".$answerfieldValue_s_sp_income_unemploy_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_unemploy' >
+      <div class='row' id='hh_income_unemploy' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_unemploy_simple' value='".$answerfieldValue_hh_income_unemploy_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -640,7 +640,7 @@ echo "
 
     </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_tanf' class='checkbox pull-right'>
@@ -654,7 +654,7 @@ echo "
     </div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_tanf' style='display:none'>
-      <div class='rownothing' id='s_income_tanf' >
+      <div class='row' id='s_income_tanf' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -664,16 +664,16 @@ echo "
 
         </div>
       </div>
-      <div class='rownothing' id='sp_income_tanf' >
+      <div class='row' id='sp_income_tanf' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_tanf' value='".$answerfieldValue_sp_income_tanf."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_tanf' >
+      <div class='row' id='s_sp_income_tanf' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_tanf_simple' value='".$answerfieldValue_s_sp_income_tanf_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_tanf' >
+      <div class='row' id='hh_income_tanf' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_tanf_simple' value='".$answerfieldValue_hh_income_tanf_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -681,7 +681,7 @@ echo "
 
     </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_cash_assist' class='checkbox pull-right'>
@@ -695,7 +695,7 @@ echo "
     </div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_cash_assist' style='display:none'>
-      <div class='rownothing' id='s_income_cash_assist' >
+      <div class='row' id='s_income_cash_assist' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -705,16 +705,16 @@ echo "
 
         </div>
       </div>
-      <div class='rownothing' id='sp_income_cash_assist' >
+      <div class='row' id='sp_income_cash_assist' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_cash_assist' value='".$answerfieldValue_sp_income_cash_assist."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_cash_assist' >
+      <div class='row' id='s_sp_income_cash_assist' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_cash_assist_simple' value='".$answerfieldValue_s_sp_income_cash_assist_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_cash_assist' >
+      <div class='row' id='hh_income_cash_assist' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_cash_assist_simple' value='".$answerfieldValue_hh_income_cash_assist_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -722,7 +722,7 @@ echo "
 
     </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
 
       <div class='span2'>
         <div id='div_ck_income_other_nw' class='checkbox pull-right'>
@@ -736,7 +736,7 @@ echo "
     </div>
 
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_other_nw' style='display:none'>
-      <div class='rownothing' id='s_income_other_nw' >
+      <div class='row' id='s_income_other_nw' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
@@ -746,16 +746,16 @@ echo "
 
         </div>
       </div>
-      <div class='rownothing' id='sp_income_other_nw' >
+      <div class='row' id='sp_income_other_nw' >
 
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_other_nw' value='".$answerfieldValue_sp_income_other_nw."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_other_nw' >
+      <div class='row' id='s_sp_income_other_nw' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_other_nw_simple' value='".$answerfieldValue_s_sp_income_other_nw_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_other_nw' >
+      <div class='row' id='hh_income_other_nw' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_other_nw_simple' value='".$answerfieldValue_hh_income_other_nw_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -763,7 +763,7 @@ echo "
 
     </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_income_earned' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_earned' id='ck_income_earned' value='y' ".$answerfieldValue_ck_earned." class='checkboxSubQuestionAdditional'></label> 
@@ -774,28 +774,28 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_income_earned' style='display:none'>
-      <div class='rownothing' id='s_income_earned' >
+      <div class='row' id='s_income_earned' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_income_earned' value='".$answerfieldValue_s_income_earned."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_income_earned' >
+      <div class='row' id='sp_income_earned' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_earned' value='".$answerfieldValue_sp_income_earned."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_earned' >
+      <div class='row' id='s_sp_income_earned' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_earned_simple' value='".$answerfieldValue_s_sp_income_earned_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_earned' >
+      <div class='row' id='hh_income_earned' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_earned_simple' value='".$answerfieldValue_hh_income_earned_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_scsep' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_scsep' id='ck_scsep_receive' value='y' ".$answerfieldValue_ck_scsep." class='checkboxSubQuestionAdditional'></label> 
@@ -807,22 +807,22 @@ echo "
       </div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_scsep_receive' style='display:none'>
-      <div class='rownothing' id='s_income_scsep' >
+      <div class='row' id='s_income_scsep' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_income_scsep' value='".$answerfieldValue_s_income_scsep."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_income_scsep' >
+      <div class='row' id='sp_income_scsep' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_income_scsep' value='".$answerfieldValue_sp_income_scsep."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_income_scsep' >
+      <div class='row' id='s_sp_income_scsep' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_income_scsep_simple' value='".$answerfieldValue_s_sp_income_scsep_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_income_scsep' >
+      <div class='row' id='hh_income_scsep' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_incgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_income_scsep_simple' value='".$answerfieldValue_hh_income_scsep_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -838,7 +838,7 @@ echo "
                         	
                   			
 
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_cash' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_cash' id='ck_asset_cash' value='y' ".$answerfieldValue_ck_cash." class='checkboxSubQuestionAdditional'></label> 
@@ -849,61 +849,61 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_cash' style='display:none'>
-      <div class='rownothing' id='s_asset_cash' >
+      <div class='row' id='s_asset_cash' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_cash' value='".$answerfieldValue_s_asset_cash."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_cash' >
+      <div class='row' id='sp_asset_cash' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_cash' value='".$answerfieldValue_sp_asset_cash."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_cash' >
+      <div class='row' id='s_sp_asset_cash' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_cash_simple' value='".$answerfieldValue_s_sp_asset_cash_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_cash' >
+      <div class='row' id='hh_asset_cash' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_cash_simple' value='".$answerfieldValue_hh_asset_cash_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>
 <!-- Auto 1 -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_auto1' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_auto1' id='ck_asset_auto1' value='y' ".$answerfieldValue_ck_auto1." class='checkboxSubQuestionAdditional'></label> 
         </div>
       </div>
       		<div class='span9' >
-				<label><a title='' data-content='If this is your only vehicle, enter the Blue Book value of your vehicle in this rownothing.  If you have more than one vehicle, enter the Blue Book value of your most valuable vehicle in this rownothing.  If you do not know the Blue Book value of your car, you can go to www.kbb.com to find out.  You should also feel free to estimate, if necessary.' data-placement='top' data-toggle='popover' href='#' data-original-title='Automobile'>Automobile</a></label>
+				<label><a title='' data-content='If this is your only vehicle, enter the Blue Book value of your vehicle in this row.  If you have more than one vehicle, enter the Blue Book value of your most valuable vehicle in this row.  If you do not know the Blue Book value of your car, you can go to www.kbb.com to find out.  You should also feel free to estimate, if necessary.' data-placement='top' data-toggle='popover' href='#' data-original-title='Automobile'>Automobile</a></label>
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_auto1' style='display:none'>
-      <div class='rownothing' id='s_asset_auto1' >
+      <div class='row' id='s_asset_auto1' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_auto1' value='".$answerfieldValue_s_asset_auto1."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_auto1' >
+      <div class='row' id='sp_asset_auto1' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_auto1' value='".$answerfieldValue_sp_asset_auto1."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_auto1' >
+      <div class='row' id='s_sp_asset_auto1' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_auto1_simple' value='".$answerfieldValue_s_sp_asset_auto1_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_auto1' >
+      <div class='row' id='hh_asset_auto1' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_auto1_simple' value='".$answerfieldValue_hh_asset_auto1_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>
 
 <!-- Auto 2 -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_auto2' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_auto2' id='ck_asset_auto2' value='y' ".$answerfieldValue_ck_auto2." class='checkboxSubQuestionAdditional'></label> 
@@ -914,29 +914,29 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_auto2' style='display:none'>
-      <div class='rownothing' id='s_asset_auto2' >
+      <div class='row' id='s_asset_auto2' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_auto2' value='".$answerfieldValue_s_asset_auto2."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_auto2' >
+      <div class='row' id='sp_asset_auto2' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_auto2' value='".$answerfieldValue_sp_asset_auto2."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_auto2' >
+      <div class='row' id='s_sp_asset_auto2' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_auto2_simple' value='".$answerfieldValue_s_sp_asset_auto2_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_auto2' >
+      <div class='row' id='hh_asset_auto2' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_auto2_simple' value='".$answerfieldValue_hh_asset_auto2_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>  
                  
  <!-- home -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_home' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_home' id='ck_asset_home' value='y' ".$answerfieldValue_ck_home." class='checkboxSubQuestionAdditional'></label> 
@@ -947,29 +947,29 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_home' style='display:none'>
-      <div class='rownothing' id='s_asset_home' >
+      <div class='row' id='s_asset_home' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_home' value='".$answerfieldValue_s_asset_home."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_home' >
+      <div class='row' id='sp_asset_home' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_home' value='".$answerfieldValue_sp_asset_home."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_home' >
+      <div class='row' id='s_sp_asset_home' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_home_simple' value='".$answerfieldValue_s_sp_asset_home_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_home' >
+      <div class='row' id='hh_asset_home' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_home_simple' value='".$answerfieldValue_hh_asset_home_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>                			
                         
  <!-- retirement-->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_retirement' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_retirement' id='ck_asset_retirement' value='y' ".$answerfieldValue_ck_retirement." class='checkboxSubQuestionAdditional'></label> 
@@ -980,22 +980,22 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_retirement' style='display:none'>
-      <div class='rownothing' id='s_asset_retirement' >
+      <div class='row' id='s_asset_retirement' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_retirement' value='".$answerfieldValue_s_asset_retirement."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_retirement' >
+      <div class='row' id='sp_asset_retirement' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_retirement' value='".$answerfieldValue_sp_asset_retirement."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_retirement' >
+      <div class='row' id='s_sp_asset_retirement' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_retirement_simple' value='".$answerfieldValue_s_sp_asset_retirement_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_retirement' >
+      <div class='row' id='hh_asset_retirement' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_retirement_simple' value='".$answerfieldValue_hh_asset_retirement_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
@@ -1003,7 +1003,7 @@ echo "
 
 
  <!-- investment -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_stocks' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_stocks' id='ck_asset_stocks' value='y' ".$answerfieldValue_ck_stocks." class='checkboxSubQuestionAdditional'></label> 
@@ -1014,62 +1014,62 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_stocks' style='display:none'>
-      <div class='rownothing' id='s_asset_stocks' >
+      <div class='row' id='s_asset_stocks' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_stocks' value='".$answerfieldValue_s_asset_stocks."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_stocks' >
+      <div class='row' id='sp_asset_stocks' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_stocks' value='".$answerfieldValue_sp_asset_stocks."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_stocks' >
+      <div class='row' id='s_sp_asset_stocks' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_stocks_simple' value='".$answerfieldValue_s_sp_asset_stocks_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_stocks' >
+      <div class='row' id='hh_asset_stocks' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_stocks_simple' value='".$answerfieldValue_hh_asset_stocks_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>       
  
   <!-- life cash -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_life_cash' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_life_cash' id='ck_asset_life_cash' value='y' ".$answerfieldValue_ck_life_cash." class='checkboxSubQuestionAdditional'></label> 
         </div>
       </div>
       		<div class='span9' >
-				<label><a title='' data-content='Include the cash value of your life insurance policy. The cash value is the amount that you may borrownothing from the policy. The insurance company that issued you the life insurance policy can provide you with the cash value amount of the policy.' data-placement='top' data-toggle='popover' href='#' data-original-title='Life Insurance: Cash Value'>Life Insurance: Cash Value</a></label>
+				<label><a title='' data-content='Include the cash value of your life insurance policy. The cash value is the amount that you may borrow from the policy. The insurance company that issued you the life insurance policy can provide you with the cash value amount of the policy.' data-placement='top' data-toggle='popover' href='#' data-original-title='Life Insurance: Cash Value'>Life Insurance: Cash Value</a></label>
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_life_cash' style='display:none'>
-      <div class='rownothing' id='s_asset_life_cash' >
+      <div class='row' id='s_asset_life_cash' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_life_cash' value='".$answerfieldValue_s_asset_life_cash."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_life_cash' >
+      <div class='row' id='sp_asset_life_cash' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_life_cash' value='".$answerfieldValue_sp_asset_life_cash."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_life_cash' >
+      <div class='row' id='s_sp_asset_life_cash' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_life_cash_simple' value='".$answerfieldValue_s_sp_asset_life_cash_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_life_cash' >
+      <div class='row' id='hh_asset_life_cash' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_life_cash_simple' value='".$answerfieldValue_hh_asset_life_cash_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>      
 
  <!-- life face -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_life_face' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_life_face' id='ck_asset_life_face' value='y' ".$answerfieldValue_ck_life_face." class='checkboxSubQuestionAdditional'></label> 
@@ -1080,29 +1080,29 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_life_face' style='display:none'>
-      <div class='rownothing' id='s_asset_life_face' >
+      <div class='row' id='s_asset_life_face' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_life_face' value='".$answerfieldValue_s_asset_life_face."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_life_face' >
+      <div class='row' id='sp_asset_life_face' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_life_face' value='".$answerfieldValue_sp_asset_life_face."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_life_face' >
+      <div class='row' id='s_sp_asset_life_face' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_life_face_simple' value='".$answerfieldValue_s_sp_asset_life_face_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_life_face' >
+      <div class='row' id='hh_asset_life_face' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_life_face_simple' value='".$answerfieldValue_hh_asset_life_face_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>                     			
 
 <!-- Revocable -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_revocable' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_revocable' id='ck_asset_revocable'  value='y' ".$answerfieldValue_ck_revocable." class='checkboxSubQuestionAdditional'></label> 
@@ -1113,29 +1113,29 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_revocable' style='display:none'>
-      <div class='rownothing' id='s_asset_revocable' >
+      <div class='row' id='s_asset_revocable' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_revocable' value='".$answerfieldValue_s_asset_revocable."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_revocable' >
+      <div class='row' id='sp_asset_revocable' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_revocable' value='".$answerfieldValue_sp_asset_revocable."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_revocable' >
+      <div class='row' id='s_sp_asset_revocable' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_revocable_simple' value='".$answerfieldValue_s_sp_asset_revocable_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_revocable' >
+      <div class='row' id='hh_asset_revocable' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_revocable_simple' value='".$answerfieldValue_hh_asset_revocable_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div>                           
           					
 <!-- irrevocable -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_irrevocable' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_irrevocable' id='ck_asset_irrevocable' value='y' ".$answerfieldValue_ck_irrevocable." class='checkboxSubQuestionAdditional'></label> 
@@ -1146,29 +1146,29 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_irrevocable' style='display:none'>
-      <div class='rownothing' id='s_asset_irrevocable' >
+      <div class='row' id='s_asset_irrevocable' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_irrevocable' value='".$answerfieldValue_s_asset_irrevocable."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_irrevocable' >
+      <div class='row' id='sp_asset_irrevocable' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_irrevocable' value='".$answerfieldValue_sp_asset_irrevocable."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_irrevocable' >
+      <div class='row' id='s_sp_asset_irrevocable' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_irrevocable_simple' value='".$answerfieldValue_s_sp_asset_irrevocable_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_irrevocable' >
+      <div class='row' id='hh_asset_irrevocable' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_irrevocable_simple' value='".$answerfieldValue_hh_asset_irrevocable_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
 </div> 						
 
 <!-- 0ther -->
-<div class='rownothing subQuestion' >
+<div class='row subQuestion' >
       <div class='span2'>
         <div id='div_ck_asset_other' class='checkbox pull-right'>
           <label class='checkbox'><input type='checkbox' name='ck_other_a' id='ck_asset_other' value='y' ".$answerfieldValue_ck_other_a." class='checkboxSubQuestionAdditional'></label> 
@@ -1179,22 +1179,22 @@ echo "
 			</div>
  </div>
     <div class='subQuestionAdditional' id='subQuestionAdditional_ck_asset_other' style='display:none'>
-      <div class='rownothing' id='s_asset_other' >
+      <div class='row' id='s_asset_other' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_self."' data-placement='top' data-toggle='popover' href='#' data-original-title='Self'><strong>Self</strong></a></label></div>
         <div class='span7 input-prepend input-append'><span class='add-on'>$</span>
           <input type='text' name='s_asset_other_a' value='".$answerfieldValue_s_asset_other_a."' size='10' maxlength='10' onblur='chkDollar(this, value);'>
           <span class='add-on'>.00</span>
         </div>
       </div>
-      <div class='rownothing' id='sp_asset_other' >
+      <div class='row' id='sp_asset_other' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_spouse."' data-placement='top' data-toggle='popover' href='#' data-original-title='Spouse'><strong>Spouse</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='sp_asset_other_a' value='".$answerfieldValue_sp_asset_other_a."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='s_sp_asset_other' >
+      <div class='row' id='s_sp_asset_other' >
         <div class='span4'  ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_joint."' data-placement='top' data-toggle='popover' href='#' data-original-title='Joint'><strong>Joint</strong></a></label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='s_sp_asset_other_a_simple' value='".$answerfieldValue_s_sp_asset_other_a_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>
-      <div class='rownothing' id='hh_asset_other' >
+      <div class='row' id='hh_asset_other' >
         <div class='span4' ><label for='NormalSelect' class='pull-right'><a title='' data-content='".$def_hint_assetgrid_household."' data-placement='top' data-toggle='popover' href='#' data-original-title='Household'><strong>Household</strong></a>&nbsp;</label></div><div class='span7 input-prepend input-append'><span class='add-on'>$</span><input type='text' name='hh_asset_other_a_simple' value='".$answerfieldValue_hh_asset_other_a_simple."' size='10' maxlength='10' onblur='chkDollar(this, value);'><span class='add-on'>.00</span></label>
         </div>
       </div>

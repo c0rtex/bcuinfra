@@ -80,7 +80,7 @@ echo '
 						<div class="clearfix">
                         	<div class="row-fluid" id="row_' . $questionCode . '">
                             	<div class="span1"><strong>' . $questionNumberTotal . '.</strong></div>
-                                <div class="span11">					      	
+                                <div class="span12">					      	
                                 	<label for="normalSelect">' . $questionText;
 foreach ($getQuestionHelp_query as $questionHelpObj):
 

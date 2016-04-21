@@ -6,6 +6,7 @@
 <cfparam name="url.repop" default="false">
 <cfparam name="url.esiprod" default="0">
 <cfparam name="url.eversafe_id" default="0">
+<cfparam name="url.eversafe" default="0">
 <cfset session.reloadpage = "false">
 <cfset session.SCREENING.PGNO = 2>
 <cfset session.subset_id = 63>
@@ -262,7 +263,7 @@
 	<cfoutput><p>ScreeningID: #session.screening_id# badResponseList: #badResponseList#</p></cfoutput>
 	<cfabort>
   <cfelse>
-      <cfif url.eversafe_id neq 0>
+      <cfif url.eversafe neq 0>
 	<cfif url.esiprod eq 1>
 	<cfoutput><a href="https://www.economiccheckup.org/esi-questions-eversafe?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	<cfelse>
@@ -284,8 +285,9 @@
 <!--- Lynna Cekova: add the Eversafe id together with the screening id into table ecu_eversafe --->
 <cfquery datasource="#application.dbSrc#" name="insertEversafeID">
 insert into ecu_eversafe (screening_id, eversafe_id) values (#tmpScreeningID#, #url.eversafe_id#);
-
 		</cfquery>
+</cfif>
+      <cfif url.eversafe neq 0>
 
 
 	<cfif url.esiprod eq 1>
