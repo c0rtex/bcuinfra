@@ -21,6 +21,8 @@
 <cfset session.test_ID =''>
 <cfset session.language_id = 'EN'>
 
+
+<cfif url.eversafe eq 0>
 <cfoutput>
 <!DOCTYPE html>
 <html lang="en">
@@ -242,6 +244,191 @@
 </body>
 </html> 
 </cfoutput>
+<cfelse>
+<cfoutput>
+<!----EVERSAFE--->
+
+<!-- stylesheets -->
+	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/compiled/theme.css?v=1"/>
+	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>
+	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
+	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
+	
+	<!-- javascript -->
+	<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
+	<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script>
+	<script src="https://www.eversafe.com/js/theme.js?v=1"></script>
+
+
+<div class="hide"><script type="text/javascript">
+		var url = 'https://www.eversafe.com/seam/resource/timage?ts=' + new Date().getTime();
+		url += (window.location.search ? "&" + window.location.search.substring(1) : "");
+		url += '&path=' + unescape(encodeURIComponent(window.location.pathname));
+		document.write('<img width="1" height="1" src="' + url + '">');
+	</script></div>
+
+		<header class="navbar navbar-fixed-top navbar-inverse white header-eversafe" role="banner">
+        <div class="container">
+
+            <div class="log col-md-12 hidden-xs" style="z-index: 10 !important;">
+                <a href="https://www.eversafe.com/static/login.scan"><span class="entypo-key"></span>Log In</a><a class="button button-signup" href="https://www.eversafe.com/pricing.html"
+                    style="padding-top: 4px; padding-bottom: 4px; z-index: 10 !important;" >Free 30-Day Trial</a>
+            </div>
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="homelogo">
+                    <a href="https://www.eversafe.com/index.html" class="navbar-brand"><img src="https://www.eversafe.com/images/logos/logo.png" alt="EverSafe"></a>
+                    <a class="navbar-brand" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
+                    <a class="navbar-brand" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
+
+                    <a href="https://www.eversafe.com/index.html" class="navbar-small"><img src="https://www.eversafe.com/images/logos/logo-i.png" alt="EverSafe"></a>
+                    <a class="navbar-small" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
+                    <a class="navbar-small" href="https://www.eversafe.com/contact-us.html"><span class="entypo-mail"></span></a>
+                </div>
+            </div>
+
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav navbar-right">
+	
+                    <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle"> How It Works </a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle"> Pricing </a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle"> Family/Advocates </a></li>
+                    <li class="dropdown "><a href="##" class="dropdown-toggle" data-toggle="dropdown"> About EverSafe <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.eversafe.com/our-story.html">Our Story</a></li>
+                            <li><a href="https://www.eversafe.com/our-team.html">Our Team</a></li>
+                            <li><a href="https://www.eversafe.com/eversafe-advisory-board.html">Advisory Board</a></li>
+                            <li><a href="https://www.eversafe.com/press.html">Press</a></li>
+                            <li><a href="https://www.eversafe.com/eversafe-appearances.html">EverSafe Appearances</a></li>
+                            <li><a href="https://www.eversafe.com/contact-us.html">Contact us</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="##" class="dropdown-toggle" data-toggle="dropdown"> Resources <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
+                            <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
+                            <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
+
+                            <!--<li><a href="https://www.eversafe.com/press.html">Press</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="visible-xs entypo-key" href="https://www.eversafe.com/static/login.scan">Log In</a></li>
+                    <li class="dropdown"><a class="visible-xs" href="##" onclick="enrollment.startEnrollmentProcess(0); return false;">Sign Up</a></li>
+<li class="dropdown hidden-sm"><a href="##" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp&reg;<i class="fa fa-chevron-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="/home-eversafe">Home</a></li>
+							<li><a href="/esi-questions-eversafe">My CheckUp</a></li>
+							<li><a href="/eversafe-find-help">Resources</a></li>
+						</ul>
+					</li>
+
+                </ul>
+            </nav>
+
+
+        </div>
+    </header>
+
+
+	
+<!--- wait message  --->
+<div class="span12">  
+	<section id="factsheet">  	
+        <div class="body-header-wrapper">	<h2><i class="icon-refresh "></i> Processing Results </h2>	
+            <div class="body-header" style="z-index: 999; position: static; top: 251.5px;">
+                <div class="body-header-inner">
+                    <div class="">
+                            
+                    </div>
+                </div>
+            </div>
+            <div style="display: none; width: 620px; height: 0px; float: none;"></div>
+        </div>
+        <div class="whitewell"><br><br><br>
+            <h4>&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/gears_animated.gif"> &nbsp;&nbsp;&nbsp;&nbsp;We are calculating your results. Please wait. </h4>
+          
+        </div>
+      </section>
+                    
+</div> 
+
+	<div class="footer-powered">
+
+EconomicCheckUp&reg; is powered by the National Council on Aging.
+<br>
+&copy;2016 National Council on Aging. All Rights Reserved.
+<br>
+
+<a href="https://www.economiccheckup.org/esi-privacy-policy/">EconomicCheckUp® Privacy Policy </a>
+| 
+<a href="https://www.economiccheckup.org/esi-termsofuse/">EconomicCheckUp® Terms of Use</a>
+
+<br>
+<br>
+</div>
+
+
+
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 logos">
+					<a target="blank" title="Elderscan, LLC, Information Technology Services, Columbia, MD" href="https://www.bbb.org/greater-maryland/business-reviews/information-technology-services/elderscan-in-columbia-md-90239055##bbbseal"><img src="https://www.eversafe.com/images/logos/bbbreg.png" alt="Elderscan, LLC, Information Technology Services, Columbia, MD"> </a>
+					<a target="blank" href="https://trustsealinfo.websecurity.norton.com/splash?form_file=fdf/splash.fdf&dn=www.eversafe.com&lang=en">	<img src="https://www.eversafe.com/images/logos/norton.png" alt="norton"></a>
+					<a target="blank" href="http://privacy.truste.com/privacy-seal/Elderscan,-LLC/validation?rid=348e0b2a-51cc-48f4-a855-8d591cf833ce">	<img src="https://www.eversafe.com/images/logos/trust.png" alt="truste"></a>
+				</div>
+				<div class="col-md-6 menu">
+					<ul>
+						<li>
+		          			<a href="https://www.eversafe.com/terms.html">Terms of Use</a>
+		        		</li>
+		      			<li>
+		          			<a href="https://www.eversafe.com/security.html">Security</a>
+		        		</li>
+		        		<li>
+		        			<a href="https://www.eversafe.com/privacy.html">Privacy</a>
+		        		</li>
+		        		<li>
+		          			<a href="http://www.eversafe.com/blog/">Blog</a>
+		        		</li>
+						<li>
+		          			<a href="https://www.eversafe.com/contact-us.html">Contact Us</a>
+		        		</li>
+	      			</ul>
+				</div>
+				<div class="col-md-2 social">
+					<a href="https://twitter.com/EverSafeSeniors" target="blank">
+						<img src="https://www.eversafe.com/images/social/social-tw.png" alt="twitter" />
+					</a>
+					<a href="https://www.facebook.com/EverSafeSeniors" target="blank">
+						<img src="https://www.eversafe.com/images/social/fbt.png" alt="facebook" />
+					</a>					
+				</div>
+			</div>
+			<div class="row credits">
+				<div class="col-md-12">
+					
+					Copyright &##0169; 2016 Elderscan, LLC (d/b/a EverSafe) - All Rights Reserved 
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+</cfoutput>
+</cfif>
+
+
 <cfflush>
 <!--- Process Report from wordpress page questionnaire --->
 <!---cf_sessionLoadVarsPHP --->

@@ -1,5 +1,6 @@
 </div> <!-- end of container -->
 		</div> <!-- end .container -->
+<center>
 <div class="footer-powered">
 
 EconomicCheckUp&reg; is powered by the National Council on Aging.
@@ -14,6 +15,7 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 <br>
 <br>
 </div>
+</center>
 
 <div id="footer">
 
