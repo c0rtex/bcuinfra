@@ -8,6 +8,13 @@ $dataBridge2 = $_GET['databridge'];
 
 require_once('displaycontent.php');					 
 
+$esiFactsheet = "esi_factsheet"; //esi factsheet url
+$reportClient = $_SERVER['REQUEST_URI'];
+if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
+$esiFactsheet = "esi-factsheet-eversafe"; //esi factsheet url
+}
+
+
 $functionDebugging = "false"; // Debugging on = true and Debugging off = false
 //TBD - Need to move DB connections to DB help functions
 $bcudb = new wpdb(DB_USER_BCU,DB_PASSWORD_BCU,DB_NAME_BCU,DB_HOST_BCU);
@@ -1071,7 +1078,7 @@ var_dump ($money_recs[$row]);
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1137,7 +1144,7 @@ var_dump ($money_recs[$row]);
 											$programName_query = $bcudb->get_results($query_programName);
 											foreach($programName_query as $programNameObj):
 												$programTitle = $programNameObj->program_title;
-												echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+												echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 											endforeach;
 										}
 										unset($program_id);
@@ -1432,7 +1439,7 @@ var_dump ($housing_recs[$row]);
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1670,7 +1677,7 @@ $health_recs = array();
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1948,7 +1955,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1960,7 +1967,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 							echo "</p>";
 							echo "</div>";
 							if ($title == 'Senior Companion') {
-								echo "<a target='blank' href='/esi-factsheet/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Volunteer - Senior Companion Program (SCP)</a><BR />";
+								echo "<a target='blank' href='/".$esiFactsheet."/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Volunteer - Senior Companion Program (SCP)</a><BR />";
 										
 
 							}
@@ -2008,7 +2015,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 								echo "<div><h4>SCSEP</h4><p>The Senior Community Service Employment Program (SCSEP) can boost your income by helping you return to work. SCSEP offers training and community service jobs for older workers who are eligible. Learn more: 
 								</p>";
 
-								echo "<a target='blank' href='/esi-factsheet/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Employment - Senior Community Service Employment Program (SCSEP)</a><BR />";
+								echo "<a target='blank' href='/".$esiFactsheet."/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Employment - Senior Community Service Employment Program (SCSEP)</a><BR />";
 								
 								echo "</div>";
 							}
@@ -2173,7 +2180,7 @@ $debt_recs = array();
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -2379,7 +2386,7 @@ logESIRecs ($consumer_recs, $screeningID);
 							echo "<h4>" .$title. "</h4>";
 							echo "<p>" .$desc. "</p>";
 							if ($title == 'Legal Services'){
-							echo "<a target='blank' href='/esi-factsheet/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Legal Services and Assistance Programs</a><BR />";
+							echo "<a target='blank' href='/".$esiFactsheet."/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Legal Services and Assistance Programs</a><BR />";
 								
 							}
 							echo "</div>";
@@ -2392,7 +2399,7 @@ logESIRecs ($consumer_recs, $screeningID);
 										while($pnameRow = mysql_fetch_assoc($theResult)){
 											$pname[] = $pnameRow;
 										}
-										echo "<a target='blank' href='/esi-factsheet/?program_id=".$Program_array[$value]["program_id"]."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$pname[0]["display_text"]."</a>";
+										echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$Program_array[$value]["program_id"]."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$pname[0]["display_text"]."</a>";
 										echo "\r\n";
 									}
 									unset($value);
