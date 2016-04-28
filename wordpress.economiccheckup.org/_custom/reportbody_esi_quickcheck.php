@@ -2161,7 +2161,7 @@ echo '
 }
 ?>
                 <br/>
-                <li><a data-toggle="modal" role="button" href="/esi-questions" target="_blank"><i
+                <li><a data-toggle="modal" role="button" href="/<?php echo $questAnswers; ?>" target="_blank"><i
                             class="icon-check "></i> My CheckUp -- for a personalized report</a></li>
             </form>
         </ol>
