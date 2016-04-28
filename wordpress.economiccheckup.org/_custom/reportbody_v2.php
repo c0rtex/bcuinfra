@@ -2487,7 +2487,20 @@ if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with data
  		} ?>
         	<li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/s/3V39M9Z" target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
+
+<?php
+if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
+echo '
+
+            <li><form><a data-toggle="modal" role="button" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Printable Report</a></form></li>
+';
+}
+else {
+echo '
             <li><form><a data-toggle="modal" role="button" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvas(canvasImg, canvasImgCount);"><i class="icon-print "></i> Printable Report</a></form></li>
+';
+}
+?>
 <li>
 <?php
 if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url

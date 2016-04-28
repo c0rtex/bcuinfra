@@ -6,6 +6,24 @@ if (isset($_GET['databridge'])) {
     $dataBridge2 = $_GET['databridge'];
 }
 
+$questAnswers = "esi-questions";
+$esiFactsheet = "esi_factsheet"; //esi factsheet url
+$reportClient = $_SERVER['REQUEST_URI'];
+//if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
+//if (preg_match('#^esi-results-eversafe#', $reportClient) === 1) { //so that urls with parameters are taken care of
+if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
+//echo "YES";
+$esiFactsheet = "esi-factsheet-eversafe"; //esi factsheet url
+$questAnswers = "esi-questions-eversafe";
+}
+else {
+//echo "NO";
+//echo (substr($reportClient, 0, 27));
+}
+
+//echo "TEST ".$reportClient;
+
+
 
 $functionDebugging = "false"; // Debugging on = true and Debugging off = false
 //TBD - Need to move DB connections to DB help functions
@@ -331,7 +349,7 @@ function age($month, $day, $year)
             mentioned below have eligibility requirements that you must meet in order to
             qualify for them.</strong></p>
     <p>
-        Want to dig deeper? Take <a href="/esi-questions/">My CheckUp</a> to get a customized report for your individual
+        Want to dig deeper? Take <a href="/<?php echo $questAnswers; ?>/">My CheckUp</a> to get a customized report for your individual
         situation.
     </p>
     <?php
@@ -1999,8 +2017,19 @@ please check back.";
 
     <br/>
     <div class="printButton printReport">
-        <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i
+<?php
+if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
+        echo '<form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDivEversafe();"><i
                     class="icon-print "></i> Print Your Report</a></form>
+';
+}
+else {
+        echo '<form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i
+                    class="icon-print "></i> Print Your Report</a></form>
+';
+
+}
+?>
     </div>
 
     <?php
@@ -2116,8 +2145,21 @@ please check back.";
                        target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
 
+<?php
+if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
+echo '
+                <li><a data-toggle="modal" role="button" href="#" onClick="PrintDivEversafe();"><i class="icon-print "></i>
+                        Printable Report</a></li>
+';
+}
+else {
+echo '
                 <li><a data-toggle="modal" role="button" href="#" onClick="PrintDiv();"><i class="icon-print "></i>
                         Printable Report</a></li>
+';
+
+}
+?>
                 <br/>
                 <li><a data-toggle="modal" role="button" href="/esi-questions" target="_blank"><i
                             class="icon-check "></i> My CheckUp -- for a personalized report</a></li>

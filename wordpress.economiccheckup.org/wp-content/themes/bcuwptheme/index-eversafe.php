@@ -14,7 +14,7 @@
 				      // move the content below into the custom field editor  ?>
                       			                
 					<h2 class="feature">Am I Making the Most of My Money?</h2>
-					<img src="/wp-content/uploads/2013/08/BCU-images_251x217_top.png" title="Women Smiling" alt="Women Smiling" class="alignright moveup">
+					<img src="/wp-content/uploads/2013/08/BCU-images_251x217_top.png" title="Women Smiling" alt="Women Smiling" class="alignright">
                     <h3>Find out today with an EconomicCheckUp&reg;.</h3>
 <p>Whether you’re retired or still working, it pays to be smart about your income. Discover tips and resources in your community to manage your budget, save money, find work, and set financial goals. It’s free, confidential, and from a trusted source—the nonprofit National Council on Aging.</p><div class="spacer"></div>
 					<a id="getStartedESIButton" href="#esi_quickcheck" class="btn-ga" data-gaCategory="economic-checkup" data-gaAction="start-economic-checkup" data-toggle="modal" data-backdrop="static">				<img id="getStartedESIButtonImg" src="/wp-content/uploads/2014/09/get-started-now.jpg"></a>

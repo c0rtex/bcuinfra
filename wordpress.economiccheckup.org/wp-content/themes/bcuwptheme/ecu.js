@@ -332,6 +332,16 @@ function PrintDiv() {
     $(".printReport").show();
 }
 
+function PrintDivEversafe() {
+    $(".printReport").hide();
+    var divToPrint = document.getElementById('printContent');
+    var popupWin = window.open('', '_blank');
+    popupWin.document.open();
+    popupWin.document.write('<html><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.close();
+    $(".printReport").show();
+}
+
 function PrintDivCanvas(imgCanvas, imgCanvasCount) {
     $(".printReport").hide();
     var divToPrint = document.getElementById('printContent');

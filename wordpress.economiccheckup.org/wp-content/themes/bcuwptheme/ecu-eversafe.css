@@ -440,7 +440,7 @@ h1, h2, h3, h4, button {
 }
 
 #content #top-content h3 {
-    font-size: 1.35em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 
@@ -565,7 +565,7 @@ height: 30px;
     width: auto;
 }
 
-#label_radio_yes_esi_homeinsurance, #label_radio_yes_esi_moving_save_money {
+#label_radio_yes_esi_homeinsurance, #label_radio_yes_esi_moving_save_money, #label_radio_yes_esi_behind_in_rent {
 
 display: inline-block;
 }
@@ -576,7 +576,7 @@ display: inline-block;
 
 }
 
-#label_esi_homeinsurance{
+#label_esi_homeinsurance, #label_esi_behind_in_rent{
 display: block;
 }
 
