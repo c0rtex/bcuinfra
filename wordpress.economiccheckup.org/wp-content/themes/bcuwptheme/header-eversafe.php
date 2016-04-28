@@ -90,7 +90,7 @@
                     <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle"> How It Works </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle"> Pricing </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle"> Family/Advocates </a></li>
-                    <li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown"> About EverSafe <i class="fa fa-chevron-down"></i></a>
+                    <li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown"> About EverSafe </a>
                         <ul class="dropdown-menu">
                             <li><a href="https://www.eversafe.com/our-story.html">Our Story</a></li>
                             <li><a href="https://www.eversafe.com/our-team.html">Our Team</a></li>
@@ -100,7 +100,7 @@
                             <li><a href="https://www.eversafe.com/contact-us.html">Contact us</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Resources <i class="fa fa-chevron-down"></i></a>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Resources </a>
                         <ul class="dropdown-menu">
                             <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>

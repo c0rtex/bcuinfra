@@ -164,7 +164,21 @@
                 $subdomain = 'redesign';
                 $esiprod = 0;
             }
-if ($_SERVER['REQUEST_URI']=='/esi-questions-eversafe/' || $_SERVER['REQUEST_URI']=='/esi-questions-eversafe'){
+
+$mystring = $_SERVER['REQUEST_URI'];
+//echo 'REQ URI '.$mystring;
+$findme   = '?';
+$pos = strpos($mystring, $findme);
+//echo 'POS '.$pos;
+if ($pos !== false){
+$pageName = substr ($mystring, 0, $pos);
+}
+else {
+$pageName = "esi";
+}
+//echo 'PAGENAME '.$pageName;
+
+if ($pageName=='/esi-questions-eversafe/' || $pageName=='/esi-questions-eversafe' || $myString=='esi-questions-eversafe' || $myStrign = 'esi-questions-eversafe/'){
 if (isset($_GET["eversafe_id"])){
             echo 'action="https://' . $subdomain . '.benefitscheckup.org/cf/esiprocess.cfm?esiprod=' . $esiprod . '&eversafe_id=' . $_GET["eversafe_id"]  . '&eversafe=1"'; 
 }

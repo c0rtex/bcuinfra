@@ -388,7 +388,8 @@ b, strong {
 }
 
 #content #main {
-    color: #252525
+    color: #252525;
+    margin-top: 10px;
 }
 
 h1, h2, h3, h4, button {
@@ -573,6 +574,10 @@ display: inline-block;
 
 display: inline-block;
 
+}
+
+#label_esi_homeinsurance{
+display: block;
 }
 
 .radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
