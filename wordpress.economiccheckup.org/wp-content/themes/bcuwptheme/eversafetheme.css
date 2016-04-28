@@ -1,7 +1,6 @@
 /* modules */
 /* this mixin makes possible to add transition to a specific vendor, example: */
 /* -webkit-transition: -webkit-transform 0.5s linear; */
-/*@import url(http://www.eversafe.com/css/bootstrap/bootstrap.min.css); */
 @import url(bootstrap-eversafe.min.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
@@ -484,22 +483,32 @@ a:focus, button:focus {
       -o-transition: color 0.2s linear;
       transition: color 0.2s linear; }
 	  
-	  @media (max-width: 910px) {
-	  .navbar.white .navbar-collapse .navbar-nav > li > a {
-	  font-size: 12px;
-	  padding-right:0px;
-	  }}
-	  
-	    @media (min-width: 911px) {
-	  .navbar.white .navbar-collapse .navbar-nav > li > a {
-	  font-size: 14px;
-	    padding-right:0px;
-	  }}
-	   @media (min-width: 1200px) {
-	  .navbar.white .navbar-collapse .navbar-nav > li > a {
-	  font-size: 18px;
-	  padding-right: 5px;
-	  }}
+	/* Navigation Bar */
+	@media (min-width: 1300px) {
+		.navbar.white .navbar-collapse .navbar-nav > li > a {
+			font-size: 18px;
+			padding-right: 5px;
+		}
+	}
+	@media (max-width: 1300px) {
+		.navbar.white .navbar-collapse .navbar-nav > li > a {
+			font-size: 16px;
+			padding-right: 5px;
+		}
+	}
+	@media (max-width: 1150px) {
+		.navbar.white .navbar-collapse .navbar-nav > li > a {
+			font-size: 14px;
+			padding-right:0px;
+		}
+	}
+	@media (max-width: 1025px) {
+		.navbar.white .navbar-collapse .navbar-nav > li > a {
+			font-size: 12px;
+			padding-right:0px;
+		}
+	}
+
 	  
 	    @media (min-width: 768px) {
 	  .navbar.white .navbar-collapse .navbar-nav   > li >  a.login-home {

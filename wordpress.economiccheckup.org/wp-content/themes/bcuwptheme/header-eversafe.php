@@ -21,11 +21,11 @@
     <!-- stylesheets -->
     <!---<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/compiled/theme.css?v=1"/>--->
     <!---<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>--->
-    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/eversafetheme.css"/>-
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/eversafetheme.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/responsive/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
-    <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/ecu-eversafe.css"/>
+    <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
+	     <link rel="stylesheet" href="/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
 
     <!-- javascript -->
     <!---<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>--->
@@ -86,14 +86,7 @@
 
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right">
-	<li class="dropdown hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp&reg;<i class="fa fa-chevron-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="/home-eversafe">Home</a></li>
-							<li><a href="/esi-questions-eversafe">My CheckUp</a></li>
-							<li><a href="/eversafe-find-help">Resources</a></li>
-						</ul>
-					</li>
-
+	
                     <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle"> How It Works </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle"> Pricing </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle"> Family/Advocates </a></li>
@@ -118,6 +111,14 @@
                     </li>
                     <li class="dropdown"><a class="visible-xs entypo-key" href="https://www.eversafe.com/static/login.scan">Log In</a></li>
                     <li class="dropdown"><a class="visible-xs" href="#" onclick="enrollment.startEnrollmentProcess(0); return false;">Sign Up</a></li>
+<li class="dropdown hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp&reg;<i class="fa fa-chevron-down"></i></a>
+						<ul class="dropdown-menu">
+							<li><a href="/home-eversafe">Home</a></li>
+							<li><a href="/esi-questions-eversafe">My CheckUp</a></li>
+							<li><a href="/eversafe-find-help">Resources</a></li>
+						</ul>
+					</li>
+
                 </ul>
             </nav>
 

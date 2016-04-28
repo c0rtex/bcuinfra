@@ -109,10 +109,16 @@ img.moveup {
 }
 
 #content {
-    font-size: .95em;
+    font-size: 1em;
     line-height: 1.35em;
     padding: .5em;
 }
+
+.small {
+font-size: 0.85em;
+}
+
+
 
 @media (min-width: 50em) {
     #content {
@@ -539,6 +545,53 @@ h1, h2, h3, h4, button {
     font-style: italic
 }
 
+input[type="text"] {
+height: 30px;
+}
+
+.input-append .add-on, .input-prepend .add-on {
+    background-color: #eeeeee;
+    border: 1px solid #ccc;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    height: 30px;
+    line-height: 20px;
+    min-width: 16px;
+    padding: 4px 5px;
+    text-align: center;
+    text-shadow: 0 1px 0 #ffffff;
+    width: auto;
+}
+
+#label_radio_yes_esi_homeinsurance, #label_radio_yes_esi_moving_save_money {
+
+display: inline-block;
+}
+
+#label_radio_no_esi_homeinsurance, #label_radio_no_esi_moving_save_money{
+
+display: inline-block;
+
+}
+
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
+    margin-left: 0;
+}
+
+#label_radio_no_esi_moving_save_money{
+margin-left: 0px;
+}
+
+#label_radio_yes_no_homeinsurance{
+margin-left: 0px;
+}
+
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
+    margin-left: 0;
+}
+
+
 #sidebar li {
     list-style: none;
 }
@@ -793,10 +846,26 @@ header .container {
     height: 17px;
     width: 17px;
     margin-top: 1px;
+    margin-left: 3px;
+    margin-right: 3px;
+
 }
 
 .checkbox input[type="checkbox"] {
     margin-left: -22px;
+}
+
+.radio {
+    margin-top: -5px;
+}
+
+.checkbox {
+    margin-top: 0px;
+}
+
+.checkbox label{
+    margin-top: 0px;
+    display: block;
 }
 
 .pull-right .checkbox input[type="checkbox"] {
@@ -936,6 +1005,24 @@ div.well.sidebar-nav {
         text-align: center;
 }
 
-.eversafe-container{
-   margin-bottom: -20px;
+
+
+
+
+/*header adjustments for small screens */
+@media (max-width: 767px) {
+header, header .container {
+    background-color: #222;
+
 }
+}
+
+
+.row-fluid .span4 {
+    width: 30%;
+}
+
+.row-fluid .span8 {
+    width: 67%;
+}
+

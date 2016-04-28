@@ -6462,3 +6462,14 @@ padding-bottom: 7px;
 .learnmoreModal_inner {
 	margin:20px;
 }
+
+.footer-powered{
+text-align: center;
+}
+
+@media (min-width: 767px) {
+.esiprocess_eversafe{
+margin-left: 100px;
+}
+}
+}

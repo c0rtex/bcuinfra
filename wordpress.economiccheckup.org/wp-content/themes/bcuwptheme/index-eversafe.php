@@ -38,11 +38,11 @@
                     
 <div class="row-fluid" style="clear:both">
 	<div class="span4">
-		<h3><a href="/protecting-yourself-from-scams-swindles/">Protect Yourself from Scams:</a></h3>
+		<h3><a href="/protecting-yourself-from-scams-swindles-eversafe/">Protect Yourself from Scams:</a></h3>
 		<p>Discover how to avoid the most common scams targeting seniors</p>
 	</div>
 	<div class="span4">
-		<h3><a href="/money-management-tools/">Money Saving Tips:</a></h3>
+		<h3><a href="/money-management-tips-eversafe/">Money Saving Tips:</a></h3>
 		<p>Create a budget and see where to cut expenses</p>
 	</div>
 	<div class="span4">
