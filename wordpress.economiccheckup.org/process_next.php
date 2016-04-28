@@ -93,7 +93,15 @@ else {
 
 $link = '/mqc-results-4/?screeningID='.$screening_id.'&shadowID='.$screening_id.'&subset_id='.$subset_id;
 if ($subset_id == 83){
+
+if (isset($_GET["eversafe"])){
+//if (isset($_GET["eversafe_id"])){
+$link = '/eversafe-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
+//}
+}
+else { //reglar esi
 $link = '/esi-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
+}
 }
 //echo '<center><a data-toggle="modal" class="btn btn-large btn-recs" href="'.$link.'">Continue</a></center>';
 header("Location: ".$link);
