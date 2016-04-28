@@ -49,7 +49,7 @@
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans&v1" rel="stylesheet">		
         <link href="/cf/bootswatch/bootstrap/css/bootstrap_esi.min.css" rel="stylesheet">
         <link href="/cf/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-        
+                
        
         
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -253,6 +253,19 @@
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
 	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
+<style>
+
+.footer-powered{
+text-align: center;
+}
+
+@media (min-width: 767px) {
+.esiprocess_eversafe{
+margin-left: 100px;
+}
+}
+</style>
+
 	
 	<!-- javascript -->
 	<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
@@ -337,7 +350,7 @@
 
 	
 <!--- wait message  --->
-<div class="span12">  
+<div class="span12 esiprocess_eversafe">  
 	<section id="factsheet">  	
         <div class="body-header-wrapper">	<h2><i class="icon-refresh "></i> Processing Results </h2>	
             <div class="body-header" style="z-index: 999; position: static; top: 251.5px;">
@@ -357,7 +370,7 @@
                     
 </div> 
 
-	<div class="footer-powered">
+	<div class="footer-powered esiprocess_eversafe">
 
 EconomicCheckUp&reg; is powered by the National Council on Aging.
 <br>

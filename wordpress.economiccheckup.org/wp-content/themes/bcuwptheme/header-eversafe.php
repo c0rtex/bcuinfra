@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/responsive/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/ecu-eversafe.css"/>
     <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
-    <link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
+	     <link rel="stylesheet" href="/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
 
     <!-- javascript -->
     <!---<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>--->

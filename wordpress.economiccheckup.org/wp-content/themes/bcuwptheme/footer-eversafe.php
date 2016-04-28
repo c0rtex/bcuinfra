@@ -8,9 +8,9 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 &copy;2016 National Council on Aging. All Rights Reserved.
 <br>
 
-<a href="https://www.economiccheckup.org/esi-privacy-policy/">EconomicCheckUp® Privacy Policy </a>
+<a href="/eversafe-privacy-policy/">EconomicCheckUp® Privacy Policy </a>
 | 
-<a href="https://www.economiccheckup.org/esi-termsofuse/">EconomicCheckUp® Terms of Use</a>
+<a href="/eversafe-terms-of-use/">EconomicCheckUp® Terms of Use</a>
 
 <br>
 <br>

@@ -8,11 +8,22 @@ $dataBridge2 = $_GET['databridge'];
 
 require_once('displaycontent.php');					 
 
+$questAnswers = "esi-questions";
 $esiFactsheet = "esi_factsheet"; //esi factsheet url
 $reportClient = $_SERVER['REQUEST_URI'];
-if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
+//if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
+//if (preg_match('#^esi-results-eversafe#', $reportClient) === 1) { //so that urls with parameters are taken care of
+if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
+//echo "YES";
 $esiFactsheet = "esi-factsheet-eversafe"; //esi factsheet url
+$questAnswers = "esi-questions-eversafe";
 }
+else {
+//echo "NO";
+//echo (substr($reportClient, 0, 21));
+}
+
+//echo "TEST ".$reportClient;
 
 
 $functionDebugging = "false"; // Debugging on = true and Debugging off = false
@@ -2427,9 +2438,24 @@ echo "There are no recommendations for you at this time; if your situation chang
 <a href="mailto:economiccheckup@ncoa.org">Tell us</a> how it worked for you.</div>
 
 <br/>
+<?php
+
+if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
+echo '
+<div class="printButton printReport">
+            <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
+</div>
+';
+}
+else {
+echo '
 <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvas(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
 </div>
+';
+
+}
+?>
 <?php
 if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
 ?>
@@ -2457,7 +2483,7 @@ if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with data
         </ol><BR>
         <legend><i class="icon-file-alt "></i> Resources</legend>
         <ol class="nav nav-list">
-		<?PHP if(isset($screeningID)){echo '<li><a data-toggle="modal" role="button" href="/esi-questions/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
+		<?PHP if(isset($screeningID)){echo '<li><a data-toggle="modal" role="button" href="/'.$questAnswers.'/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
  		} ?>
         	<li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/s/3V39M9Z" target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
