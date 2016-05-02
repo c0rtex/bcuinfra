@@ -361,7 +361,7 @@ function age($month, $day, $year)
     if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $countyId == '24019' || $countyId == '24043' || $countyId == '24039' || $countyId == '24045' || $countyId == '24047') {
         $dataBridge = true;
     }
-    if ($dataBridge == true && $dataBridge2 != "true") { //user, not agency with databridge=true in url
+    if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 27) == "/eversafe-quickcheck-report") ) { //user, not agency with databridge=true in url
         echo "<p>You can also discuss your report with an <a target=\"_blank\" href=\"/esi-data-bridge?zip=" . $esi_zip . "&county=" . $countyId . "&screeningID=" . $screeningID . "&shadowID=" . $shadowID . "\">aging services office in your area</a> that may be able to help you meet your financial goals/needs.</p>";
     }
     //Lynna Cekova: End of data bridge
@@ -2033,7 +2033,7 @@ else {
     </div>
 
     <?php
-    if ($dataBridge == true && $dataBridge2 != "true") { //user, not agency with databridge=true in url
+    if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 27) == "/eversafe-quickcheck-report")) { //user, not agency with databridge=true in url
         ?>
         <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#"
@@ -2166,7 +2166,7 @@ echo '
             </form>
         </ol>
         <?php
-        if ($dataBridge == true && $dataBridge2 != "true") { //user, not agency with databridge=true in url
+        if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 27) == "/eversafe-quickcheck-report")) { //user, not agency with databridge=true in url
             ?>
             <div class="printButton">
                 <form><a data-toggle="modal" role="button" class="btn" href="#"

@@ -63,7 +63,7 @@
         <div class="container">
 
             <div class="log col-md-12 hidden-xs" style="z-index: 10 !important;">
-                <a href="https://www.eversafe.com/static/login.scan"><span class="entypo-key"></span>Log In</a><a class="button button-signup" href="https://www.eversafe.com/pricing.html"
+                <a href="https://www.eversafe.com/static/login.scan" style="color: #f09e38;" ><span class="entypo-key"></span>Log In</a><a class="button button-signup" href="https://www.eversafe.com/pricing.html"
                     style="padding-top: 4px; padding-bottom: 4px; z-index: 10 !important;" >Free 30-Day Trial</a>
             </div>
 
@@ -84,13 +84,12 @@
                 </div>
             </div>
 
-            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                <ul class="nav navbar-nav navbar-right">
-	
-                    <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle"> How It Works </a></li>
-                    <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle"> Pricing </a></li>
-                    <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle"> Family/Advocates </a></li>
-                    <li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown"> About EverSafe </a>
+           <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav navbar-right" style="font-family: 'Merriweather', Georgia, serif; text-shadow: none;">
+                    <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle" style="text-shadow: none;"> How It Works </a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle" style="text-shadow: none;"> Pricing </a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle" style="text-shadow: none;">Why EverSafe</a></li>
+                    <li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> About Us <i class="icon-chevron-down" style="color: #777; font-size: 8px; vertical-align: middle;"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="https://www.eversafe.com/our-story.html">Our Story</a></li>
                             <li><a href="https://www.eversafe.com/our-team.html">Our Team</a></li>
@@ -100,27 +99,25 @@
                             <li><a href="https://www.eversafe.com/contact-us.html">Contact us</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Resources </a>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> Resources <i class="icon-chevron-down" style="color: #777; font-size: 8px; vertical-align: middle;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
+                            <li><a href="/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
-
-                            <!--<li><a href="https://www.eversafe.com/press.html">Press</a></li> -->
+                            <li><a href="http://qa.economiccheckup.org/eversafe-find-help">NCOA Resources</a>
+<li><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors</a>
+                            <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
                         </ul>
                     </li>
+                    <li class="dropdown"><a href="http://qa.economiccheckup.org/esi-questions-eversafe" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
+                    
                     <li class="dropdown"><a class="visible-xs entypo-key" href="https://www.eversafe.com/static/login.scan">Log In</a></li>
-                    <li class="dropdown"><a class="visible-xs" href="#" onclick="enrollment.startEnrollmentProcess(0); return false;">Sign Up</a></li>
-<li class="dropdown hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> EconomicCheckUp&reg;<i class="fa fa-chevron-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="/home-eversafe">Home</a></li>
-							<li><a href="/esi-questions-eversafe">My CheckUp</a></li>
-							<li><a href="/eversafe-find-help">Resources</a></li>
-						</ul>
-					</li>
-
+                    <li class="dropdown"><a class="visible-xs" href="https://www.eversafe.com/pricing.html">Sign Up</a></li>
                 </ul>
             </nav>
+
+
+ 
 
 
         </div>

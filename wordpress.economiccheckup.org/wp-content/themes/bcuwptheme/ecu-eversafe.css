@@ -1018,6 +1018,11 @@ div.well.sidebar-nav {
 @media (max-width: 767px) {
 header, header .container {
     background-color: #222;
+}
+
+.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
+    margin-right: 0px;
+    margin-left: 0px;
 
 }
 }

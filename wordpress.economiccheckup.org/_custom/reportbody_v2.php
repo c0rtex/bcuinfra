@@ -469,7 +469,7 @@ if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $cou
 <h2>EconomicCheckUp Report</h2>
 <p>This report provides an overview
 of your economic status along with recommendations for services to help you
-with your financial challenges.<?php if ($dataBridge == true) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">Click here to discuss your financial goals and this report with an agency in your community.</a>";}  ?></p>
+with your financial challenges.<?php if ($dataBridge == true && !(substr($reportClient, 0, 21) == "/esi-results-eversafe")) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">Click here to discuss your financial goals and this report with an agency in your community.</a>";}  ?></p>
 <br/>
 </section>
 	<section id="currentstatus"> 
@@ -712,7 +712,7 @@ Boston. <a href=""><a data-toggle="modal" role="button" href="#learnmore">Learn 
 	//Rec - If income > expenses and income > elder index: 
 	echo "<p>While you’re on track with your finances today, it’s important to stay on track. There are many free and trusted programs that can help you manage and meet your financial goals. Let’s get started now!</p>";
 	}
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 21) == "/esi-results-eversafe") ){ //user, not agency with databridge=true in url
 echo "<a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\"><p>Click here to discuss your report with an aging services office in your area that may be able to help you meet your financial goals/needs. </p></a>";
 }
 
@@ -2457,7 +2457,7 @@ echo '
 }
 ?>
 <?php
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 21) == "/esi-results-eversafe")){ //user, not agency with databridge=true in url
 ?>
 <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
@@ -2503,7 +2503,7 @@ echo '
 ?>
 <li>
 <?php
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 21) == "/esi-results-eversafe") ){ //user, not agency with databridge=true in url
 ?>
 <div class="printButton">
             <form><a data-toggle="modal" role="button" class="btn" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
