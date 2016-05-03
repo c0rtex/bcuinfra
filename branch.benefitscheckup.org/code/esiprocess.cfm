@@ -1,4 +1,4 @@
-<cfparam name="page" type="numeric" default="0">
+﻿<cfparam name="page" type="numeric" default="0">
 <cfparam name="edit" type="numeric" default="0">
 <cfparam name="continue" type="numeric" default="0">
 <cfparam name="badResponseList" type="string" default="">
@@ -23,6 +23,7 @@
 
 
 <cfif url.eversafe eq 0>
+<cfset session.partner_id = 142>
 <cfoutput>
 <!DOCTYPE html>
 <html lang="en">
