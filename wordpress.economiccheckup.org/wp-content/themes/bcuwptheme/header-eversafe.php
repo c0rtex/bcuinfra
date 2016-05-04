@@ -28,13 +28,14 @@
 	     <link rel="stylesheet" href="/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
 
     <!-- javascript -->
-    <script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
-    <script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> 
-  			<!--<script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>-->
+    <!--<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script> -->
+  			<script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>
             <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/jquery.validate.js"></script>
-
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
             <!--<script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>-->
-    <!---<script src="https://www.eversafe.com/js/theme.js?v=1"></script>--->
+    <!--<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> -->
+    <!--<script src="https://www.eversafe.com/js/theme.js?v=1"></script>-->
             <script src="<?php echo get_template_directory_uri(); ?>/application.js"></script>
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/ecu_liveonly.js"></script>
@@ -61,9 +62,7 @@
         <div class="container">
 
             <div class="log col-md-12 hidden-xs" style="z-index: 10 !important;">
-                <a href="https://www.eversafe.com/static/login.scan" style="color: #f09e38;" ><span class="entypo-key"></span>Log In</a><a class="button button-signup" href="https://www.eversafe.com/pricing.html"
-                    style="padding-top: 4px; padding-bottom: 4px; z-index: 10 !important;" >Free 30-Day Trial</a>
-            </div>
+                <a href="https://www.eversafe.com/static/login.scan" style="color: #f09e38;" ><span class="entypo-key"></span>Log In</a>            </div>
 
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -102,12 +101,14 @@
                             <li><a href="/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
-                            <li><a href="http://qa.economiccheckup.org/eversafe-find-help">NCOA Resources</a>
+                            <li><a href="/eversafe-find-help">NCOA Resources</a>
 <li><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors</a>
                             <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
+
+                            <li><a href="/home-eversafe">EconomicCheckUp Home</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="http://qa.economiccheckup.org/esi-questions-eversafe" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
+                    <li class="dropdown"><a href="/esi-questions-eversafe" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
                     
                     <li class="dropdown"><a class="visible-xs entypo-key" href="https://www.eversafe.com/static/login.scan">Log In</a></li>
                     <li class="dropdown"><a class="visible-xs" href="https://www.eversafe.com/pricing.html">Sign Up</a></li>
