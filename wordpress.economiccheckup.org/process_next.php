@@ -44,7 +44,12 @@ $screeningresponse_query = $soapClient->doTriage(14,'','0',$answerset_xml,'');
 }
 elseif ($subset_id == 83) {
 //do screening
+if (isset($_GET["eversafe"])){
 $screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
+}
+else {
+$screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
+}
 }
 else {
 //do screening
