@@ -28,17 +28,15 @@
 	     <link rel="stylesheet" href="/wp-content/themes/bootswatch/bootstrap/css/font-awesome.css">
 
     <!-- javascript -->
-    <!---<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>--->
-    <!--<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> -->
-  			<script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>
+    <script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
+    <script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script> 
+  			<!--<script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script>-->
             <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/jquery.validate.js"></script>
 
-            <script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>
+            <!--<script type="text/javascript" src="/wp-content/themes/bootswatch/bootstrap/js/bootstrap.js"></script>-->
     <!---<script src="https://www.eversafe.com/js/theme.js?v=1"></script>--->
-            <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
             <script src="<?php echo get_template_directory_uri(); ?>/application.js"></script>
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
-		<script src="/cf/js/infinite-rotator.js" type="text/javascript"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/ecu_liveonly.js"></script>
 
 
