@@ -116,7 +116,6 @@
         <cfargument name="campaign_id" type="string" required="yes" >
         <cfargument name="response_list" type="string" required="yes"  >
 	<cfargument name="partner_session_id" type="string" required="yes"  >
-	<cfargument name="eversafe_id" type="string" required="no"  >
         <cfset application.response_list = arguments.response_list >
 	<cfparam name="REQUEST.PRG_LIST" default="">
 	
@@ -178,7 +177,6 @@
 	<cfinvokeargument name="ahn_contact_flag" value="0">
 	<cfinvokeargument name="screening_id" value="#screeningresults.screening_id#">
 	<cfinvokeargument name="click_id" value="0">
-	<cfinvokeargument name="eversafe_id" value="#arguments.eversafe_id#">
 	</cfinvoke>
 	</cfif>
 
