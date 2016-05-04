@@ -23,7 +23,6 @@
 
 
 <cfif url.eversafe eq 0>
-<cfset session.partner_id = 142>
 <cfoutput>
 <!DOCTYPE html>
 <html lang="en">
@@ -246,6 +245,7 @@
 </html> 
 </cfoutput>
 <cfelse>
+<cfset session.partner_id = 142>
 <cfoutput>
 <!----EVERSAFE--->
 
