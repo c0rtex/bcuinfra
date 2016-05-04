@@ -180,4 +180,8 @@
 		<cfreturn "questionSet3">
 	</cffunction>
 
+	<cffunction name="getNextService">
+		<cfreturn "programFinder">
+	</cffunction>
+
 </cfcomponent>

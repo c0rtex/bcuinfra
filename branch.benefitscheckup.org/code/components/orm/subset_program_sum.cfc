@@ -1,6 +1,6 @@
 <!---
-	Template Name: AnswerFieldTypeEntity
-	Component Purpose: Component mapped to database table answerfieldtype via object relation mapping framework.
+	Template Name: SubsetProgramEntity
+	Component Purpose: Component mapped to database table subset_program via object relation mapping framework.
 					   Each property of component defines mapping to database table column by using attribute column.
 					   If this attribute isn't defined, than property name set in attribute name equals to database column name.
 					   Fieldtype attribute defines primary (id) or foreign (many-to-one, one-to-many) key.
@@ -8,13 +8,12 @@
 					   cfc attribute contains component entity name which mapped to master database table.
 					   Component extends from ToStructConverter component for serialization purpose.
 
-	Data Tables: answerfieldtype
+	Data Tables: subset_program_sum
 
---->
+!--->
 
-<cfcomponent persistent="true" entityname="answer_field_type" table="answerfieldtype" extends="ToStructConverter">
-  <cfproperty name="id" fieldtype="id" column="answerfieldtype_id" generator="increment">
-  <cfproperty name="code" tostruct="type">
-  <cfproperty name="name">
-  <cfproperty name="description">
+<cfcomponent persistent="true" entityname="subset_program_sum" table="subset_program_sum" extends="ToStructConverter">
+	<cfproperty name="program" fieldtype="id,many-to-one" fkcolumn="program_id" cfc="program">
+	<cfproperty name="subset" fieldtype="id,many-to-one" fkcolumn="subset_id" cfc="subset">
 </cfcomponent>
+

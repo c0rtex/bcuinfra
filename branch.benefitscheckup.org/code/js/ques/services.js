@@ -33,6 +33,15 @@ services.factory('ZipValidator',['$resource',
     }
 ]);
 
+services.factory('programFinder',['$resource',
+    function($resource){
+        return $resource(webServiceURL+'ProgramFinder.cfc?method=proceligibilityByScreening&callback=JSON_CALLBACK', {}, {
+            query:{method:'JSONP',
+                params:{CFID:0,CFTOKEN:''}}
+        });
+    }
+]);
+
 services.factory('all', ['$resource','$scope',
     function($resource,$scope){
         return $resource(webServiceURL+'/customQuestionSet.cfc?method=getQuestionSet&subset_id=:subset_id&state_id=:state_id&partner_id=:partner_id&prev_id=:prev_id&callback=JSON_CALLBACK', {}, {

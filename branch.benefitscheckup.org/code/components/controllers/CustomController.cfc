@@ -58,7 +58,7 @@
             <cfset orderBy = "order by #orderBy#">
         </cfif>
         <cfif filter eq "">
-            <cfset retVal = ormExecuteQuery("from #getMetaData(this).entity# #orderBy#",{offset=offset, maxresults=limit})>
+            <cfset retVal = ormExecuteQuery("from #getMetaData(this).entity# #orderBy#", true, {offset=offset, maxresults=limit})>
         <cfelse>
             <cfset retVal = ormExecuteQuery("from #getMetaData(this).entity# #filter# #orderBy#", filterParams, {offset=offset, maxresults=limit})>
         </cfif>
@@ -69,6 +69,34 @@
             <cfset arrayAppend(os,i.toDatabaseRepresentation())>
         </cfloop>
         <cfreturn this.prepareOutput(os)>
+    </cffunction>
+
+    <cffunction name="save" access="remote" returnformat="plain">
+        <cfargument name="entity" required="yes">
+
+        <cfset entity = deserializeJSON(entity)>
+
+        <cfset aEntity = entityNew(getMetaData(this).entity)>
+
+        <cfset metaData = aEntity.returnMetadata()>
+
+        <cfloop collection="#metaData#" item="i">
+            <cfif structKeyExists(entity,i)>
+                <cfif metaData[i].fieldtype eq "many-to-one">
+                    <cfset mto = entityLoadByPK(metaData[i].master,entity[i])>
+                    <cfif !isNull(mto)>
+                        <cfset evaluate("aEntity.set#metaData[i].name#(mto)")>
+                    </cfif>
+                <cfelse>
+                    <cfset evaluate("aEntity.set#metaData[i].name#(entity[i])")>
+                </cfif>
+            </cfif>
+        </cfloop>
+
+        <cfset entitySave(aEntity)>
+
+        <cfreturn this.prepareOutput([aEntity])>
+
     </cffunction>
 
     <cffunction name="prepareOutput">

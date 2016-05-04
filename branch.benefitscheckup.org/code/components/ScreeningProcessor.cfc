@@ -43,8 +43,12 @@
                 <cfset screening.setSubset(subset[1])>
             </cfif>
 
+            <cfset state = entityload("state",state_id)>
+            <cfif arraylen(state) neq 0>
+                <cfset screening.setPreset_state(state[1])>
+            </cfif>
+
             <cfset entitySave(screening)>
-            <cfset entityMerge(screening)>
         <cfelse>
             <cfset screening=scArr[1]>
         </cfif>

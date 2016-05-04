@@ -20,7 +20,7 @@
   </cffunction>
 
   <cffunction name="getNextService">
-    <cfreturn "questionSet2">
+    <cfreturn "programFinder">
   </cffunction>
 
 </cfcomponent>
