@@ -686,7 +686,7 @@ function age($month, $day, $year)
                         */
                         $desc = $post->post_content;
                         echo "<div>";
-                        if ($title != 'ESI QuickCheck Report') {
+                        if (($title != 'ESI QuickCheck Report') && ($title != 'EverSafe QuickCheck Report')) {
                             echo "<h4>" . $title . "</h4>";
                         }
                         echo "<p>" . $desc . "<BR />";
