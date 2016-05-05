@@ -72,8 +72,8 @@
                 </button>
                 <div class="homelogo">
                     <a href="https://www.eversafe.com/index.html" class="navbar-brand"><img src="https://www.eversafe.com/images/logos/logo.png" alt="EverSafe"></a>
-                    <a class="navbar-brand" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
-                    <a class="navbar-brand" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
+                    <a class="navbar-brand hidden-sm" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
+                    <a class="navbar-brand hidden-sm" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
 
                     <a href="https://www.eversafe.com/index.html" class="navbar-small"><img src="https://www.eversafe.com/images/logos/logo-i.png" alt="EverSafe"></a>
                     <a class="navbar-small" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
@@ -108,7 +108,7 @@
                             <li><a href="/home-eversafe">EconomicCheckUp Home</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="/esi-questions-eversafe" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
+                    <li class="dropdown"><a href="/home-eversafe/?overlay=true" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
                     
                     <li class="dropdown"><a class="visible-xs entypo-key" href="https://www.eversafe.com/static/login.scan">Log In</a></li>
                     <li class="dropdown"><a class="visible-xs" href="https://www.eversafe.com/pricing.html">Sign Up</a></li>

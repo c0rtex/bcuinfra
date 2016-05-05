@@ -55,32 +55,7 @@
                         	
                 </div>
                 
-				<div id="inner-content">
-<div class="row-fluid">
-			
-				    <div id="main" class="span9 col-md-8" role="main">
-
-					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-					    	<?php the_content(); ?>
-					
-					    <?php endwhile; ?>	
-					
-					
-					    <?php else : ?>
-					    
-    						<p>Nothing to see here...</p>
-					
-					    <?php endif; ?>
-					
-				    </div> <!-- end #main -->
-				    
-    				<div class="span3 col-md-4">
-				   		<?php //get_sidebar("connect"); ?>
-				    </div>
-				   </div> 
-				</div> <!-- end #inner-content -->
-
+				
 	<?php //get_sidebar("horizontal"); ?>
 </div>
     
