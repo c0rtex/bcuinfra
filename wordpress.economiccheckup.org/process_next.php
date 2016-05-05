@@ -3,12 +3,12 @@
 //Loop Over Posted Fields, generate XML and Send a request to the soap service to process data for report
 //echo 'Fields Posted: <br>';
 echo "<pre>";
-print_r($_POST);
+//print_r($_POST);
 echo 'debug start:';
 $subset_id = $_POST['subset_id'];
 //echo $subset_id;
 $subsetID = $_POST['subset_id'];
-echo $subset_id;
+//echo $subset_id;
 require_once('_custom/soap_client.php');
 
 //Create simple xml to send to server
@@ -46,9 +46,9 @@ elseif ($subset_id == 83) {
 //do screening
 if (isset($_GET["eversafe"])){
 $screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
-print_r($screeningresponse_query);
-echo 'done printing....Eversafe';
-exit();
+//print_r($screeningresponse_query);
+//echo 'done printing....Eversafe';
+//exit();
 }
 else {
 $screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
