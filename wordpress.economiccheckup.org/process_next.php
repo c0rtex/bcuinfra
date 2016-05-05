@@ -35,7 +35,7 @@ echo "<br>Debug - New XML: </br>";
 echo "<pre>";
 echo $answerset_xml;
 echo "</pre>";
-exit();
+
 
 //Send XML to Web Service to Process Report
 if ($subset_id == 79) {
@@ -46,6 +46,9 @@ elseif ($subset_id == 83) {
 //do screening
 if (isset($_GET["eversafe"])){
 $screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
+print_r($screeningresponse_query);
+echo 'done printing....Eversafe';
+exit();
 }
 else {
 $screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
