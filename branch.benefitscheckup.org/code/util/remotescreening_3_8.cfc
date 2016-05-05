@@ -164,22 +164,7 @@
 	<cfinvokeargument name="click_id" value="0">
 	</cfinvoke>
 	</cfif>
-        <cfif request.partner_id eq 77>
-	<cfinvoke method="logAffinityClickEversafe" 
-	returnvariable="responseFromService" 
-	timeout = 5
-	webservice="https://#application.serverPath#/util/affinity.cfc?wsdl" >
-	<cfinvokeargument name="internal_flag" value="1">
-	<cfinvokeargument name="partner_id" value="14">
-	<cfinvokeargument name="partner_session_id" value="#arguments.partner_session_id#">
-	<cfinvokeargument name="url_id" value="63">
-	<cfinvokeargument name="campaign_id" value="#arguments.campaign_id#">
-	<cfinvokeargument name="ahn_contact_flag" value="0">
-	<cfinvokeargument name="screening_id" value="#screeningresults.screening_id#">
-	<cfinvokeargument name="click_id" value="0">
-	</cfinvoke>
-	</cfif>
-
+        
         <cfreturn  resultset>
     </cffunction>
 

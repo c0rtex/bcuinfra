@@ -926,7 +926,11 @@ h2.esiQuickcheckTitle {
 }
 
 #esi_quickcheck .modal-body {
-    max-height: 450px;
+    max-height: 400px;
+}
+
+#esi_quickcheck.modal {
+    max-height: 400px;
 }
 
 #esiQuickcheckTitle {
