@@ -2,13 +2,13 @@
 // Processing Fields and submit to NCOA MQC web service
 //Loop Over Posted Fields, generate XML and Send a request to the soap service to process data for report
 //echo 'Fields Posted: <br>';
-//echo "<pre>";
-//print_r($_POST);
-//echo 'debug start:';
+echo "<pre>";
+print_r($_POST);
+echo 'debug start:';
 $subset_id = $_POST['subset_id'];
 //echo $subset_id;
 $subsetID = $_POST['subset_id'];
-//echo $subset_id;
+echo $subset_id;
 require_once('_custom/soap_client.php');
 
 //Create simple xml to send to server
@@ -35,7 +35,7 @@ echo "<br>Debug - New XML: </br>";
 echo "<pre>";
 echo $answerset_xml;
 echo "</pre>";
-//exit();
+exit();
 
 //Send XML to Web Service to Process Report
 if ($subset_id == 79) {
@@ -45,10 +45,10 @@ $screeningresponse_query = $soapClient->doTriage(14,'','0',$answerset_xml,'');
 elseif ($subset_id == 83) {
 //do screening
 if (isset($_GET["eversafe"])){
-$screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
+$screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
 }
 else {
-$screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
+$screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
 }
 }
 else {
