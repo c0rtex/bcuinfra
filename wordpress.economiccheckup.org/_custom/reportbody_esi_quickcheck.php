@@ -1050,7 +1050,7 @@ please check back.";
 
                         $desc = $post->post_content;
                         echo "<div>";
-                        if ($title != 'ESI QuickCheck Report') {
+                        if (($title != 'ESI QuickCheck Report') && ($title != 'EverSafe QuickCheck Report')) {
                             echo "<h4>" . $title . "</h4>";
                         }
                         echo "<p>" . $desc . "<BR />";
@@ -1248,7 +1248,7 @@ please check back.";
                         $title = $post->post_title;
                         $desc = $post->post_content;
                         echo "<div>";
-                        if ($title != 'ESI QuickCheck Report') {
+                        if (($title != 'ESI QuickCheck Report') && ($title != 'EverSafe QuickCheck Report')) {
                             echo "<h4>" . $title . "</h4>";
                         }
                         echo "<p>" . $desc . "<BR />";
