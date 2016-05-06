@@ -2,9 +2,9 @@
 // Processing Fields and submit to NCOA MQC web service
 //Loop Over Posted Fields, generate XML and Send a request to the soap service to process data for report
 //echo 'Fields Posted: <br>';
-//echo "<pre>";
+echo "<pre>";
 //print_r($_POST);
-//echo 'debug start:';
+echo 'debug start:';
 $subset_id = $_POST['subset_id'];
 //echo $subset_id;
 $subsetID = $_POST['subset_id'];
@@ -35,7 +35,7 @@ echo "<br>Debug - New XML: </br>";
 echo "<pre>";
 echo $answerset_xml;
 echo "</pre>";
-//exit();
+
 
 //Send XML to Web Service to Process Report
 if ($subset_id == 79) {
@@ -44,7 +44,15 @@ $screeningresponse_query = $soapClient->doTriage(14,'','0',$answerset_xml,'');
 }
 elseif ($subset_id == 83) {
 //do screening
+if (isset($_GET["eversafe"])){
+$screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
+//print_r($screeningresponse_query);
+//echo 'done printing....Eversafe';
+//exit();
+}
+else {
 $screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
+}
 }
 else {
 //do screening
@@ -93,7 +101,15 @@ else {
 
 $link = '/mqc-results-4/?screeningID='.$screening_id.'&shadowID='.$screening_id.'&subset_id='.$subset_id;
 if ($subset_id == 83){
+
+if (isset($_GET["eversafe"])){
+//if (isset($_GET["eversafe_id"])){
+$link = '/eversafe-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
+//}
+}
+else { //reglar esi
 $link = '/esi-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
+}
 }
 //echo '<center><a data-toggle="modal" class="btn btn-large btn-recs" href="'.$link.'">Continue</a></center>';
 header("Location: ".$link);
