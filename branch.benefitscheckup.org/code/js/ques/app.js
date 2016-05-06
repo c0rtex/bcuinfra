@@ -25,7 +25,7 @@ questionnaireApp.config(['$routeProvider',
         when('/questionset/:questionSet', {
           redirectTo: '/questionset/:questionSet/1'
         }).
-        when('/questionset/programFinder/1', {
+        when('/programFinder/1', {
           templateUrl: 'templates/program-set.html?'+(new Date()),
           controller: 'ProgramFinderController'
         }).

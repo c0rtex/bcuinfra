@@ -32,18 +32,21 @@
       <cfif arraylen(scArr) neq 0>
           <cfset this.screening = scArr[1]>
           <cfset this.proceligibility()>
-          <cfset prgs = ormexecutequery("from screening_program where screening=:screening",{screening=this.screening})>
+          <cfset prgs = ormexecutequery("from screening_program sp where sp.screening=:screening order by sp.program.sort",{screening=this.screening})>
           <cfloop array="#prgs#" index="i">
               <cfset arrayAppend(retVal,i.getProgram().toStructure())>
           </cfloop>
       </cfif>
 
+      <cfset data = structNew()>
+      <cfset data.programs=retVal>
+
       <cfif structKeyExists(arguments, "callback")>
-          <cfset retVal = arguments.callback & "(" & serializeJSON(retVal) & ");">
+          <cfset retVal = arguments.callback & "(" & serializeJSON(data) & ");">
       <cfelseif structKeyExists(arguments, "jsonp")>
           <cfset retVal= "jsonp(" & data & ");">
       <cfelse>
-          <cfset retVal = serializeJSON(retVal)>
+          <cfset retVal = serializeJSON(data)>
       </cfif>
 
       <cfreturn retVal>
@@ -168,6 +171,8 @@
 
       <cfset spA = arrayNew(1)>
 
+      <cftransaction>
+
       <cfloop list="#this.prg_list#" index="prg_id">
           <cfset unseenAdjustedVal = unseenVal>
           <cfif unseenVal eq 0>
@@ -229,7 +234,7 @@
           <cfcatch></cfcatch>
           </cftry>
       </cfloop>
-
+      </cftransaction>
       <cfif not IsNull(this.screening.getPartner()) And this.screening.getPartner().getId() eq 5>
           <cfif ListLen(this.prg_list)>
               <cfif this.sa.citizen eq 'Citizen'>
@@ -272,7 +277,11 @@
                           "hh_income_tanf","hh_income_cash_assist","scsep_receive","int_trans_personal","REC_DE_DPAP","REC_IN_HOOSIERRX",
                           "REC_MA_PRESCRIPTIONADVANTAGE","REC_ME_DEL","REC_MO_RXPLAN","REC_NJ_PAAD","REC_NY_EPIC","REC_NV_SENIORRX",
                           "REC_PA_PACE","REC_PA_PACENET","REC_SC_GAPS","REC_RI_RIPAE","REC_VT_VPHARM1","REC_VT_VPHARM2","REC_VT_VPHARM3",
-                          "REC_WI_SENIORCARE","REC_WY_PDAP"]>
+                          "REC_WI_SENIORCARE","REC_WY_PDAP","ch_blind","ch_asset_total_complete","ch_rec_ssi","sp_ss_years","ss_years","rent",
+                          "mortgage","electricity_costs","gas_costs","water_costs","telephone_costs","utility_costs_other","dep_care_costs",
+                          "scsep_inc","hh_disabled","over_60","leg_resident_5years","dep_care","ch_rec_schip","dep_child","property_tax",
+                          "vet_wartime","sp_veteran","vet_sp_died","int_emp","utility_2","S_SP_ASSET_REVOCABLE","S_SP_ASSET_TOTAL_COMPLETE",
+                          "s_sp_asset_auto1","s_sp_asset_home"]>
 
         <cfloop array="#uaForInit#" index="ind">
           <cfif not structKeyExists(this.sa,ind) or this.sa[ind] eq "">
@@ -608,7 +617,7 @@
           <cfset finalfigure = this.sa.s_asset_total_complete - (exclusion + exclusion2 + exclusion3)>
 
           <cfset valToCompare = self>
-      <cfelseif this.sa.marital_stat.getOption().getCode() eq 'married'>
+      <cfelseif this.sa.marital_stat eq 'married'>
           <cfif this.sa.s_sp_asset_life_face LTE 1500>
               <cfset exclusion = this.sa.s_sp_asset_life_cash>
           <cfelse>
@@ -629,18 +638,6 @@
               <cfset exclusion2 = this.sa.s_sp_asset_revocable>
           </cfif>
 
-          <cfif this.sa.s_sp_asset_auto1 EQ ''>
-              <cfset this.sa.s_sp_asset_auto1 = 0>
-          </cfif>
-
-          <cfif this.sa.s_sp_asset_home EQ ''>
-              <cfset session.s_sp_asset_home = 0>
-          </cfif>
-
-          <cfif session.s_sp_asset_total_complete EQ ''>
-              <cfset session.s_sp_asset_total_complete = 0>
-          </cfif>
-
           <cfif exclusion EQ ''>
               <cfset exclusion = 0>
           </cfif>
@@ -649,13 +646,13 @@
               <cfset exclusion2 = 0>
           </cfif>
 
-          <cfset exclusion3 = session.s_sp_asset_auto1 + session.s_sp_asset_home>
+          <cfset exclusion3 = this.sa.s_sp_asset_auto1 + this.sa.s_sp_asset_home>
 
           <cfif exclusion3 EQ ''>
               <cfset exclusion3 = 0>
           </cfif>
 
-          <cfset finalfigure = session.s_sp_asset_total_complete - (exclusion + exclusion2 + exclusion3)>
+          <cfset finalfigure = this.sa.s_sp_asset_total_complete - (exclusion + exclusion2 + exclusion3)>
 
           <cfset valToCompare = self_spouse>
       </cfif>
@@ -774,7 +771,7 @@
           <cfset passState = 'FD'>
       </cfif>
 
-      <cfif this.sa.ch_parent neq 'Y'>
+      <cfif not structKeyExists(this.sa,"CH_PARENT") or this.sa.ch_parent neq 'Y'>
           <cfset answer = this.compareSSILookup(table="child",state=passState,count=childcount,childIncome=childIncomeAdjusted)>
       <cfelseif this.sa.ch_guardian eq 'Y' or this.sa.ch_other eq 'Y'>
           <cfset answer = this.compareSSILookup(table=tableToCheck,state=passState,count=childcount,childIncome=childIncomeAdjusted,parentsIncome=parentsIncomeAdjusted,checkHighIncome="true")>

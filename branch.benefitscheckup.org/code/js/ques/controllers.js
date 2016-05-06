@@ -42,9 +42,9 @@ var reloadQuestionSubset = function ($scope, $routeParams) {
 
     if ((from != 0)||($scope.$root.questionSet.PREVSERVICE != "")) {
       if ($scope.$root.questionSubsetNum == 1) {
-        $scope.$root.prevQuestionSetURL = "/questionset/"+$scope.$root.questionSet.PREVSERVICE+"/1000";
+        $scope.$root.prevQuestionSetURL = $scope.$root.questionSet.PREVSERVICE+"/1000";
       } else {
-        $scope.$root.prevQuestionSetURL = "/questionset/"+$routeParams.questionSet+"/"+(from/$scope.$root.questionCount);
+        $scope.$root.prevQuestionSetURL = $routeParams.questionSet+"/"+(from/$scope.$root.questionCount);
       }
     } else {
       $scope.$root.prevQuestionSetURL = undefined;
@@ -54,9 +54,10 @@ var reloadQuestionSubset = function ($scope, $routeParams) {
       $scope.$root.nextQuestionSetURL = undefined;
     } else {
       if (from+$scope.$root.questionCount>=$scope.$root.questionSet.QUESTIONS.length) {
-        $scope.$root.nextQuestionSetURL = "/questionset/" + $scope.$root.questionSet.NEXTSERVICE + "/1";
+        $scope.$root.nextQuestionSetURL = $scope.$root.questionSet.NEXTSERVICE + "/1";
+        $scope.$root.currentQuestionSetURL = $scope.$root.questionSet.NEXTSERVICE;
       } else {
-        $scope.$root.nextQuestionSetURL = "/questionset/" + $routeParams.questionSet + "/" + ($routeParams.questionSubset * 1 + 1);
+        $scope.$root.nextQuestionSetURL = $scope.$root.currentQuestionSetURL + "/" + ($routeParams.questionSubset * 1 + 1);
       }
     }
 

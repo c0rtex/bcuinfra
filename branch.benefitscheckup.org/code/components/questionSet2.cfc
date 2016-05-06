@@ -248,11 +248,11 @@
   </cffunction>
 
 	<cffunction name="getPrevService">
-		<cfreturn "questionSet1">
+		<cfreturn "/questionset/questionSet1">
 	</cffunction>
 
 	<cffunction name="getNextService">
-		<cfreturn "questionSet3">
+		<cfreturn "/questionset/questionSet3">
 	</cffunction>
 
 </cfcomponent>

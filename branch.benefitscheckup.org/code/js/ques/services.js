@@ -3,7 +3,7 @@
 /* Services */
 
 var services = angular.module('services', ['ngResource']);
-var webServiceURL="http://localhost/cf/components";
+var webServiceURL="http://leviathantech.com:8500/cf/components";
 
 services.factory('questionSet', ['$resource',
   function($resource){
@@ -33,9 +33,9 @@ services.factory('ZipValidator',['$resource',
     }
 ]);
 
-services.factory('programFinder',['$resource',
+services.factory('ProgramFinder',['$resource',
     function($resource){
-        return $resource(webServiceURL+'ProgramFinder.cfc?method=proceligibilityByScreening&callback=JSON_CALLBACK', {}, {
+        return $resource(webServiceURL+'/ProgramFinder.cfc?method=proceligibilityByScreening&CFID=:CFID&CFTOKEN=:CFTOKEN&callback=JSON_CALLBACK', {}, {
             query:{method:'JSONP',
                 params:{CFID:0,CFTOKEN:''}}
         });

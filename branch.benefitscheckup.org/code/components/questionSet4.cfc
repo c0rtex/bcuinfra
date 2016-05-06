@@ -177,11 +177,11 @@
     </cffunction>
 
 	<cffunction name="getPrevService">
-		<cfreturn "questionSet3">
+		<cfreturn "/questionset/questionSet3">
 	</cffunction>
 
 	<cffunction name="getNextService">
-		<cfreturn "programFinder">
+		<cfreturn "/programFinder">
 	</cffunction>
 
 </cfcomponent>
