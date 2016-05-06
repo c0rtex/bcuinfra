@@ -6,6 +6,24 @@ if (isset($_GET['databridge'])) {
     $dataBridge2 = $_GET['databridge'];
 }
 
+$questAnswers = "esi-questions";
+$esiFactsheet = "esi_factsheet"; //esi factsheet url
+$reportClient = $_SERVER['REQUEST_URI'];
+//if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
+//if (preg_match('#^esi-results-eversafe#', $reportClient) === 1) { //so that urls with parameters are taken care of
+if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
+//echo "YES";
+$esiFactsheet = "esi-factsheet-eversafe"; //esi factsheet url
+$questAnswers = "esi-questions-eversafe";
+}
+else {
+//echo "NO";
+//echo (substr($reportClient, 0, 27));
+}
+
+//echo "TEST ".$reportClient;
+
+
 
 $functionDebugging = "false"; // Debugging on = true and Debugging off = false
 //TBD - Need to move DB connections to DB help functions
@@ -331,7 +349,7 @@ function age($month, $day, $year)
             mentioned below have eligibility requirements that you must meet in order to
             qualify for them.</strong></p>
     <p>
-        Want to dig deeper? Take <a href="/esi-questions/">My CheckUp</a> to get a customized report for your individual
+        Want to dig deeper? Take <a href="/<?php echo $questAnswers; ?>/">My CheckUp</a> to get a customized report for your individual
         situation.
     </p>
     <?php
@@ -343,7 +361,7 @@ function age($month, $day, $year)
     if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $countyId == '24019' || $countyId == '24043' || $countyId == '24039' || $countyId == '24045' || $countyId == '24047') {
         $dataBridge = true;
     }
-    if ($dataBridge == true && $dataBridge2 != "true") { //user, not agency with databridge=true in url
+    if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 27) == "/eversafe-quickcheck-report") ) { //user, not agency with databridge=true in url
         echo "<p>You can also discuss your report with an <a target=\"_blank\" href=\"/esi-data-bridge?zip=" . $esi_zip . "&county=" . $countyId . "&screeningID=" . $screeningID . "&shadowID=" . $shadowID . "\">aging services office in your area</a> that may be able to help you meet your financial goals/needs.</p>";
     }
     //Lynna Cekova: End of data bridge
@@ -668,7 +686,7 @@ function age($month, $day, $year)
                         */
                         $desc = $post->post_content;
                         echo "<div>";
-                        if ($title != 'ESI QuickCheck Report') {
+                        if (($title != 'ESI QuickCheck Report') && ($title != 'EverSafe QuickCheck Report')) {
                             echo "<h4>" . $title . "</h4>";
                         }
                         echo "<p>" . $desc . "<BR />";
@@ -1032,7 +1050,7 @@ please check back.";
 
                         $desc = $post->post_content;
                         echo "<div>";
-                        if ($title != 'ESI QuickCheck Report') {
+                        if (($title != 'ESI QuickCheck Report') && ($title != 'EverSafe QuickCheck Report')) {
                             echo "<h4>" . $title . "</h4>";
                         }
                         echo "<p>" . $desc . "<BR />";
@@ -1230,7 +1248,7 @@ please check back.";
                         $title = $post->post_title;
                         $desc = $post->post_content;
                         echo "<div>";
-                        if ($title != 'ESI QuickCheck Report') {
+                        if (($title != 'ESI QuickCheck Report') && ($title != 'EverSafe QuickCheck Report')) {
                             echo "<h4>" . $title . "</h4>";
                         }
                         echo "<p>" . $desc . "<BR />";
@@ -1999,12 +2017,23 @@ please check back.";
 
     <br/>
     <div class="printButton printReport">
-        <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i
+<?php
+if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
+        echo '<form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDivEversafe();"><i
                     class="icon-print "></i> Print Your Report</a></form>
+';
+}
+else {
+        echo '<form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i
+                    class="icon-print "></i> Print Your Report</a></form>
+';
+
+}
+?>
     </div>
 
     <?php
-    if ($dataBridge == true && $dataBridge2 != "true") { //user, not agency with databridge=true in url
+    if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 27) == "/eversafe-quickcheck-report")) { //user, not agency with databridge=true in url
         ?>
         <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#"
@@ -2116,15 +2145,28 @@ please check back.";
                        target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
 
+<?php
+if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
+echo '
+                <li><a data-toggle="modal" role="button" href="#" onClick="PrintDivEversafe();"><i class="icon-print "></i>
+                        Printable Report</a></li>
+';
+}
+else {
+echo '
                 <li><a data-toggle="modal" role="button" href="#" onClick="PrintDiv();"><i class="icon-print "></i>
                         Printable Report</a></li>
+';
+
+}
+?>
                 <br/>
-                <li><a data-toggle="modal" role="button" href="/esi-questions" target="_blank"><i
+                <li><a data-toggle="modal" role="button" href="/<?php echo $questAnswers; ?>" target="_blank"><i
                             class="icon-check "></i> My CheckUp -- for a personalized report</a></li>
             </form>
         </ol>
         <?php
-        if ($dataBridge == true && $dataBridge2 != "true") { //user, not agency with databridge=true in url
+        if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 27) == "/eversafe-quickcheck-report")) { //user, not agency with databridge=true in url
             ?>
             <div class="printButton">
                 <form><a data-toggle="modal" role="button" class="btn" href="#"

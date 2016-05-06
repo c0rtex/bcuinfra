@@ -64,8 +64,42 @@ elseif ($subsetID == 75 ) { // mqc3
 //echo '<form name="mqcForm3" id="mqcForm3" action="/process_mqc.php" method="post" > ';
 echo '<form name="mqcForm3" id="mqcForm3" action="../process_next.php" method="post" > ';
 }
-else { // triage, subset_id 79
+else { // esi quickcheck
+
+
+$mystring = $_SERVER['REQUEST_URI'];
+//echo 'REQ URI '.$mystring;
+$findme   = '?';
+$pos = strpos($mystring, $findme);
+//echo 'POS '.$pos;
+if ($pos !== false){
+$pageName = substr ($mystring, 0, $pos);
+}
+else {
+$pageName = "esi";
+}
+$esiprod = 0;
+//echo 'PAGENAME '.$pageName;
+
+if ($pageName=='/home-eversafe/' || $pageName=='/home-eversafe' || $mystring=='/home-eversafe' || $mystring == '/home-eversafe/'){
+if (isset($_GET["eversafe_id"])){
+echo '<form name="esiQuickcheckForm" id="esiQuickcheckForm" action="../process_next.php?esiprod=' . $esiprod . '&eversafe_id=' . $_GET["eversafe_id"]  . '&eversafe=1" method="post" > ';
+//echo "EVERSAFE with id";
+}
+
+else {
+echo '<form name="esiQuickcheckForm" id="esiQuickcheckForm" action="../process_next.php?esiprod=' . $esiprod . '&eversafe=1" method="post" > ';
+//echo "EVERSAFE with no id";
+
+}
+}
+else { //regular esi
 echo '<form name="esiQuickcheckForm" id="esiQuickcheckForm" action="../process_next.php" method="post" > ';
+//echo "EVERSAFE no";
+
+
+}
+
 }
 
 //Show Intro and legend Section
