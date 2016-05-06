@@ -1,7 +1,24 @@
-</div> <!-- end of container -->
+﻿</div> <!-- end of container -->
 		</div> <!-- end .container -->
+<center>
+<div class="footer-powered">
+
+EconomicCheckUp&reg; is powered by the National Council on Aging.
+<br>
+&copy;2016 National Council on Aging. All Rights Reserved.
+<br>
+
+<a href="/eversafe-privacy-policy/">EconomicCheckUp® Privacy Policy </a>
+| 
+<a href="/eversafe-terms-of-use/">EconomicCheckUp® Terms of Use</a>
+
+<br>
+<br>
+</div>
+</center>
 
 <div id="footer">
+
 		<div class="footer-container">
 			<div class="row">
 				<div class="col-md-4 logos">
@@ -45,18 +62,6 @@
 			</div>
 		</div>
 	</div>
-<div class="footer-powered">
-Powered by BenefitsCheckUp
-<br>
-Copyright 2016 National Council on Aging
-<br>
-<a id="privacy" href="javascript:help2('privacy.cfm')">BenefitsCheckUp Privacy Policy</a>
-|
-<a href="javascript:help2('/termsofuse.cfm')">BenefitsCheckUp Terms of Use</a>
-
-<br>
-<br>
-</div>
 
 	
 	<!-- Google Code for Remarketing Tag -->
@@ -82,6 +87,6 @@ Copyright 2016 National Council on Aging
 		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0042/5201.js?"+Math.floor(new Date().getTime()/3600000);
 		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 	</script>
-
+<?php require('eversafe_tracking.htm'); ?>
 </body>
 </html>
