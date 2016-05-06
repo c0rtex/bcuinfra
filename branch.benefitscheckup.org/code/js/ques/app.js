@@ -8,6 +8,7 @@ var questionnaireApp = angular.module('questionnaireApp', [
   'helps',
   'validations',
   'ngSanitize',
+  'programFinder',
   'ngRoute',
   'ui.utils.masks',
   'ui.mask'
@@ -23,6 +24,10 @@ questionnaireApp.config(['$routeProvider',
         }).
         when('/questionset/:questionSet', {
           redirectTo: '/questionset/:questionSet/1'
+        }).
+        when('/programFinder/1', {
+          templateUrl: 'templates/program-set.html?'+(new Date()),
+          controller: 'ProgramFinderController'
         }).
         otherwise({
           redirectTo: '/questionset/questionSet1/1'

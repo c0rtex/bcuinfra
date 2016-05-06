@@ -13,7 +13,7 @@
 --->
 
 <cfcomponent persistent="true" entityname="answer_field" table="answerfield" extends="ToStructConverter">
-  <cfproperty name="id" tostruct="id" fieldtype="id" column="answerfield_id">
+  <cfproperty name="id" tostruct="id" fieldtype="id" column="answerfield_id" generator="increment">
   <cfproperty name="answer_field_type" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="answerfieldtype_id" cfc="answer_field_type">
   <cfproperty name="code" tostruct="code" column="answerfield">
   <cfproperty name="display" tostructdisplay="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
