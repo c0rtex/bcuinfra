@@ -120,7 +120,7 @@
 	<tr>
 		<td bgcolor="##2E99AF" valign="top"><font size="+1"><b>Partner Code</b></font><br /><font size="-2"><i>required</i></font></td>
 		<td bgcolor="##21ADCB" valign="top">#partner_code#<br />
-		<a href="#website_url#/img/partners/#partner_code#" target="#partner_code#">/img/partners/#partner_code#</a></td>
+		<a href="#application.website_url#/img/partners/#partner_code#" target="#partner_code#">/img/partners/#partner_code#</a></td>
 	</tr>
 	
 	<tr>

@@ -97,7 +97,7 @@
 	</tr>
 	
 	<tr bgcolor="##2E99AF">
-		<td colspan="2"><strong>Step 4: Images | <a href="#website_url#/#wrapper_code#" target="#wrapper_code#">preview</a></strong></td>
+		<td colspan="2"><strong>Step 4: Images | <a href="#application.website_url#/#wrapper_code#" target="#wrapper_code#">preview</a></strong></td>
 	</tr>
 
 	<td bgcolor="##2E99AF" valign="top"><font size="+1"><b>Partner Name</b></font></td>
@@ -107,7 +107,7 @@
 	<tr>
 		<td bgcolor="##2E99AF" valign="top"><font size="+1"><b>Partner Code</b></font></td>
 		<td bgcolor="##21ADCB" valign="top">#partner_code#<br />
-		<a href="#website_url#/img/partners/#partner_code#" target="#partner_code#">/img/partners/#partner_code#</a></td>
+		<a href="#application.website_url#/img/partners/#partner_code#" target="#partner_code#">/img/partners/#partner_code#</a></td>
 	</tr>
 	
 
@@ -118,9 +118,9 @@ white background</i></font></td>
 		#wrapper_logo#
 		<p>
 			<cfif wrapper_link IS "">
-				<img src="#website_url#/#wrapper_logo#" alt="#wrapper_logo_alt_text#" border="1" />
+				<img src="#application.website_url#/#wrapper_logo#" alt="#wrapper_logo_alt_text#" border="1" />
 			<cfelse>
-				<a href="#wrapper_link#" target="#wrapper_link#"><img src="#website_url#/#wrapper_logo#" alt="#wrapper_logo_alt_text#" border="1" /></a>
+				<a href="#wrapper_link#" target="#wrapper_link#"><img src="#application.website_url#/#wrapper_logo#" alt="#wrapper_logo_alt_text#" border="1" /></a>
 			</cfif>
 		</cfif>
 		
@@ -145,7 +145,7 @@ white background</i></font></td>
 		<cfif wrapper_cover_image IS NOT "">
 		#wrapper_cover_image#
 		<p>
-		<img src="#website_url#/#wrapper_cover_image#" alt="" /><br />
+		<img src="#application.website_url#/#wrapper_cover_image#" alt="" /><br />
 		<a href="deletecoverimage.cfm?wrapper_id=#wrapper_id#&partner_id=#partner_id#&return=plnew4">Delete Cover Image</a>
 		</cfif></td>
 	</tr>

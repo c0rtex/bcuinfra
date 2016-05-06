@@ -8,6 +8,24 @@ $dataBridge2 = $_GET['databridge'];
 
 require_once('displaycontent.php');					 
 
+$questAnswers = "esi-questions";
+$esiFactsheet = "esi_factsheet"; //esi factsheet url
+$reportClient = $_SERVER['REQUEST_URI'];
+//if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
+//if (preg_match('#^esi-results-eversafe#', $reportClient) === 1) { //so that urls with parameters are taken care of
+if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
+//echo "YES";
+$esiFactsheet = "esi-factsheet-eversafe"; //esi factsheet url
+$questAnswers = "esi-questions-eversafe";
+}
+else {
+//echo "NO";
+//echo (substr($reportClient, 0, 21));
+}
+
+//echo "TEST ".$reportClient;
+
+
 $functionDebugging = "false"; // Debugging on = true and Debugging off = false
 //TBD - Need to move DB connections to DB help functions
 $bcudb = new wpdb(DB_USER_BCU,DB_PASSWORD_BCU,DB_NAME_BCU,DB_HOST_BCU);
@@ -451,7 +469,7 @@ if ($countyId == '24510' || $countyId == '24031' || $countyId == '24027' || $cou
 <h2>EconomicCheckUp Report</h2>
 <p>This report provides an overview
 of your economic status along with recommendations for services to help you
-with your financial challenges.<?php if ($dataBridge == true) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">Click here to discuss your financial goals and this report with an agency in your community.</a>";}  ?></p>
+with your financial challenges.<?php if ($dataBridge == true && !(substr($reportClient, 0, 21) == "/esi-results-eversafe")) {echo " <a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\">Click here to discuss your financial goals and this report with an agency in your community.</a>";}  ?></p>
 <br/>
 </section>
 	<section id="currentstatus"> 
@@ -694,7 +712,7 @@ Boston. <a href=""><a data-toggle="modal" role="button" href="#learnmore">Learn 
 	//Rec - If income > expenses and income > elder index: 
 	echo "<p>While you’re on track with your finances today, it’s important to stay on track. There are many free and trusted programs that can help you manage and meet your financial goals. Let’s get started now!</p>";
 	}
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 21) == "/esi-results-eversafe") ){ //user, not agency with databridge=true in url
 echo "<a target=\"_blank\" href=\"/esi-data-bridge?zip=".$esi_zip."&county=".$countyId."&screeningID=".$screeningID."&shadowID=".$shadowID."\"><p>Click here to discuss your report with an aging services office in your area that may be able to help you meet your financial goals/needs. </p></a>";
 }
 
@@ -880,7 +898,7 @@ $money_recs["esi_report_food"]["show"] = 1;
 
 					//esi_report_unclaimed_property 15046
 					$AFrow_index = searchForId('esi_retire_unclaimed_property', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] = 'n')){
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] = 'y')){
 
 
 					$money_recs["esi_report_unclaimed_property"]["show"] = 1;
@@ -891,7 +909,7 @@ $money_recs["esi_report_food"]["show"] = 1;
 					
 					// Budget Calculator (post id = 2586, post_code="esi_report_budget_3min")
 					$AFrow_index = searchForId('esi_retire_money_management', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'n')){
+					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'y')){
 
 
 $money_recs["esi_report_budget_3min"]["show"] = 1;
@@ -904,7 +922,7 @@ $money_recs["esi_report_budget_3min"]["show"] = 1;
 					
 					//Create a Budget  (post id = 2592)
 					$AFrow_index = searchForId('esi_retire_money_management', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'n')){
+					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'y')){
 
 
 
@@ -915,7 +933,7 @@ $money_recs["esi_report_cut_spending"]["show"] = 1;
 					
 					//Budgeting Assistance  (post id = 2596)
 					$AFrow_index = searchForId('esi_retire_money_management', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'n')){
+					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'y')){
 
 
 $money_recs["esi_report_budgeting"]["show"] = 1;
@@ -924,7 +942,7 @@ $money_recs["esi_report_budgeting"]["show"] = 1;
 										
 					// Pension Assistance (post id = 2600)
 					$AFrow_index = searchForId('esi_retire_retirement_planning', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'n')){
+					if (isset($AF_array[$AFrow_index]["option_code"])&&($AF_array[$AFrow_index]["option_code"] == 'y')){
 
 
 					$money_recs["esi_report_pension_assitance"]["show"] = 1;
@@ -1071,7 +1089,7 @@ var_dump ($money_recs[$row]);
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1137,7 +1155,7 @@ var_dump ($money_recs[$row]);
 											$programName_query = $bcudb->get_results($query_programName);
 											foreach($programName_query as $programNameObj):
 												$programTitle = $programNameObj->program_title;
-												echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+												echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 											endforeach;
 										}
 										unset($program_id);
@@ -1432,7 +1450,7 @@ var_dump ($housing_recs[$row]);
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1670,7 +1688,7 @@ $health_recs = array();
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1862,14 +1880,14 @@ echo "There are no recommendations for you at this time; if your situation chang
 					$req1 = 1.25*$FPL;
 					$req2 = 0;
 					if (($totalMthlyInc <= $req1) && ($userAge >= 55)){$req2 = 1;}
-					if ((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')) && ($req2 == 1)){$employment_recs["esi_report_scsep"]["show"] = 1;
+					if ((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) && ($req2 == 1)){$employment_recs["esi_report_scsep"]["show"] = 1;
 						$employment_recs_count = ++$employment_recs_count;
 					}
 					//$employment_recs[3]["show"] = 1;
 					// One Stop (postid = 2734)
 					$req3 = 0;
 					if (($totalMthlyInc <= $req1) && ($userAge < 55)){$req3 = 1;}
-					if ((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')) && ($req3 == 1)){$employment_recs["esi_report_one_stop"]["show"] = 1;}
+					if ((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) && ($req3 == 1)){$employment_recs["esi_report_one_stop"]["show"] = 1;}
 					unset($AFrow_index);
 					unset($req1);
 					unset($req2);
@@ -1887,10 +1905,10 @@ echo "There are no recommendations for you at this time; if your situation chang
 					$AFrow_index2 = searchForId('esi_seekingemployment_refresher', $AF_array);
 					$AFrow_index3 = searchForId('esi_seekingemployment_skillsassessment', $AF_array);
 					$AFrow_index4 = searchForId('esi_seekingemployment_techhelp', $AF_array);
-					if (isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'n')){$req1++;}
-					if (isset($AF_array[$AFrow_index2]["option_code"]) && ($AF_array[$AFrow_index2]["option_code"] == 'n')){$req1++;}
-					if (isset($AF_array[$AFrow_index3]["option_code"]) && ($AF_array[$AFrow_index3]["option_code"] == 'n')){$req1++;}
-					if (isset($AF_array[$AFrow_index4]["option_code"]) && ($AF_array[$AFrow_index4]["option_code"] == 'n')){$req1++;}
+					if (isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'y')){$req1++;}
+					if (isset($AF_array[$AFrow_index2]["option_code"]) && ($AF_array[$AFrow_index2]["option_code"] == 'y')){$req1++;}
+					if (isset($AF_array[$AFrow_index3]["option_code"]) && ($AF_array[$AFrow_index3]["option_code"] == 'y')){$req1++;}
+					if (isset($AF_array[$AFrow_index4]["option_code"]) && ($AF_array[$AFrow_index4]["option_code"] == 'y')){$req1++;}
 					$req2 = 2*$FPL;
 					//echo "test:".$req1;
 					if (($req1 > 0) && ($totalMthlyInc <= $req2)){$employment_recs["esi_report_senior_companion"]["show"] = 1;}
@@ -1900,23 +1918,23 @@ echo "There are no recommendations for you at this time; if your situation chang
 					}
 					// Learning Technology (postid = 2742)
 					$AFrow_index = searchForId('esi_seekingemployment_techhelp', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')){$employment_recs["esi_report_learning_technology"]["show"] = 1;}
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){$employment_recs["esi_report_learning_technology"]["show"] = 1;}
 					unset($AFrow_index);
 					
 					// Skills Assessment (postid = 2744)
 					$AFrow_index = searchForId('esi_seekingemployment_skillsassessment', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')){$employment_recs["esi_report_skills_assessment"]["show"] = 1;}
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){$employment_recs["esi_report_skills_assessment"]["show"] = 1;}
 					unset($AFrow_index);
 					//echo "test:".$AF_array[$AFrow_index]["option_code"];
 
 					// Job Training (postid = 2747)
 					$AFrow_index = searchForId('esi_seekingemployment_refresher', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')){$employment_recs["esi_report_job_training"]["show"] = 1;}
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){$employment_recs["esi_report_job_training"]["show"] = 1;}
 					unset($AFrow_index);
 					
 					// Job Search (postid = 2751)
 					$AFrow_index = searchForId('esi_seekingemployment_usehelp', $AF_array);
-					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')){$employment_recs["esi_report_job_search"]["show"] = 1;}
+					if (isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){$employment_recs["esi_report_job_search"]["show"] = 1;}
 					unset($AFrow_index);
 					
 					// Show all 'Employment and Training' Recommendations flagged with show == 1
@@ -1948,7 +1966,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -1960,7 +1978,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 							echo "</p>";
 							echo "</div>";
 							if ($title == 'Senior Companion') {
-								echo "<a target='blank' href='/esi-factsheet/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Volunteer - Senior Companion Program (SCP)</a><BR />";
+								echo "<a target='blank' href='/".$esiFactsheet."/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=144&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Volunteer - Senior Companion Program (SCP)</a><BR />";
 										
 
 							}
@@ -2008,7 +2026,7 @@ echo "There are no recommendations for you at this time; if your situation chang
 								echo "<div><h4>SCSEP</h4><p>The Senior Community Service Employment Program (SCSEP) can boost your income by helping you return to work. SCSEP offers training and community service jobs for older workers who are eligible. Learn more: 
 								</p>";
 
-								echo "<a target='blank' href='/esi-factsheet/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Employment - Senior Community Service Employment Program (SCSEP)</a><BR />";
+								echo "<a target='blank' href='/".$esiFactsheet."/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=148&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Employment - Senior Community Service Employment Program (SCSEP)</a><BR />";
 								
 								echo "</div>";
 							}
@@ -2062,10 +2080,10 @@ $debt_recs = array();
 					$AFrow_index3 = searchForId('esi_debtscenarios_creditors', $AF_array);
 					$AFrow_index4 = searchForId('esi_debtscenarios_bankruptcy', $AF_array);
 					$AFrow_index5 = searchForId('esi_helpbalancing', $AF_array);
-					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'n'))){$req1 = 1;}
-					if((isset($AF_array[$AFrow_index2]["option_code"]) && ($AF_array[$AFrow_index2]["option_code"] == 'n'))){$req2 = 1;}
-					if((isset($AF_array[$AFrow_index3]["option_code"]) && ($AF_array[$AFrow_index3]["option_code"] == 'n'))){$req3 = 1;}
-					if((isset($AF_array[$AFrow_index4]["option_code"]) && ($AF_array[$AFrow_index4]["option_code"] == 'n'))){$req4 = 1;}
+					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'y'))){$req1 = 1;}
+					if((isset($AF_array[$AFrow_index2]["option_code"]) && ($AF_array[$AFrow_index2]["option_code"] == 'y'))){$req2 = 1;}
+					if((isset($AF_array[$AFrow_index3]["option_code"]) && ($AF_array[$AFrow_index3]["option_code"] == 'y'))){$req3 = 1;}
+					if((isset($AF_array[$AFrow_index4]["option_code"]) && ($AF_array[$AFrow_index4]["option_code"] == 'y'))){$req4 = 1;}
 					$req5 = $req1 + $req2 + $req3 + $req4;
 					if ((isset($AF_array[$AFrow_index5]["option_code"]) && ($AF_array[$AFrow_index5]["option_code"] == 'y')) || ($req5 > 0)){$debt_recs["esi_report_credit_report"]["show"] = 1; $debt_recs["esi_report_debt_consolidation"]["show"] = 1;}
 					unset($req1);
@@ -2087,13 +2105,13 @@ $debt_recs = array();
 					//echo "debt items:".$req5;
 					//echo "<br>Debt Payment:".$DebtPayment;
 					//echo "<br>Income:".$Income;
+					if ($Income == 0) { //was &&, changed to removed division by 0
+						$debtRatio = $DebtPayment;
+					}
+                                        else {
+
 					$debtRatio = $DebtPayment/$Income;
-					if ($Income == 0 && $DebtPayment == 0) {
-						$debtRatio = 0;
-					}
-					if ($DebtPayment == 0) {
-						$debtRatio = 0;
-					}
+                                         }
 					//echo "<br> Debt Ratio:".$debtRatio;
 					if($debtRatio  > .5){$debt_recs["esi_report_debt_management"]["show"] = 1;} 
 					if ($req5 > 0)  {
@@ -2137,7 +2155,7 @@ $debt_recs = array();
 					
 					//$debt_recs[4]["show"] = 1;
 					$AFrow_index = searchForId('esi_debtscenarios_bankruptcy', $AF_array);
-					if(isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')){$debt_recs["esi_report_bankrupcy"]["show"] = 1;}
+					if(isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')){$debt_recs["esi_report_bankrupcy"]["show"] = 1;}
 					unset($AFrow_index);
 					
                     // Show all 'Debt and Credit' Recommendations flagged with show == 1
@@ -2173,7 +2191,7 @@ $debt_recs = array();
 										$programName_query = $bcudb->get_results($query_programName);
 										foreach($programName_query as $programNameObj):
 											$programTitle = $programNameObj->program_title;
-											echo "<a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
+											echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=".$program_id."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$programTitle."</a><BR />";
 										endforeach;
 									}
 									unset($program_id);
@@ -2238,9 +2256,9 @@ please check back.";
 					$req1 = 0;
 					$req2 = 0;
 					$req3 = 0;
-					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n'))){$req1 = 1;}
-					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'n'))){$req2 = 1;}
-					if((isset($AF_array[$AFrow_index2]["option_code"]) && ($AF_array[$AFrow_index2]["option_code"] == 'n'))){$req3 = 1;}
+					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))){$req1 = 1;}
+					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'y'))){$req2 = 1;}
+					if((isset($AF_array[$AFrow_index2]["option_code"]) && ($AF_array[$AFrow_index2]["option_code"] == 'y'))){$req3 = 1;}
 					$req4 = $req1 + $req2 + $req3;
 					//if($req4 >= 1){$consumer_recs[0]["show"] = 1;}
 					//echo "legal servcies:".$req4;
@@ -2254,7 +2272,7 @@ please check back.";
 
 
 					$AFrow_index = searchForId('esi_retire_legal_concerns', $AF_array);
-					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n'))){
+					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))){
 					$links_esi_report_legal_services = array();
 					foreach ($Program_array as $i => $row)
 					{
@@ -2299,8 +2317,8 @@ please check back.";
 					$AFrow_index1 = searchForId('esi_retire_legal_concerns', $AF_array);
 					$req1 = 0;
 					$req2 = 0;
-					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n'))){$req1 = 1;}
-					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'n'))){$req2 = 1;}
+					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))){$req1 = 1;}
+					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'y'))){$req2 = 1;}
 					$req3 = $req1 + $req2;
 					if($req3 >= 1){$consumer_recs["esi_report_power_attorney"]["show"] = 1;}
 					//echo "pow:".$req3;
@@ -2315,7 +2333,7 @@ please check back.";
 					$AFrow_index1 = searchForId('esi_helpbalancing', $AF_array);
 					$req1 = 0;
 					$req2 = 0;
-					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n'))){$req1 = 1;}
+					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))){$req1 = 1;}
 					if((isset($AF_array[$AFrow_index1]["option_code"]) && ($AF_array[$AFrow_index1]["option_code"] == 'y'))){$req2 = 1;}
 					$req3 = $req1 + $req2;
 					if($req3 >= 1){$consumer_recs["esi_report_avoiding_scams"]["show"] = 1;}
@@ -2331,12 +2349,12 @@ please check back.";
 																																			 
 					// Writing a Will (postid = 2777)
 					$AFrow_index = searchForId('esi_retire_legal_concerns', $AF_array);
-					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n'))){$consumer_recs["esi_report_writing_will"]["show"] = 1;}
+					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y'))){$consumer_recs["esi_report_writing_will"]["show"] = 1;}
 
 
                                         //Legal Assistance Hotline (postid = 11930, post_code = esi_report_legal_assistance)                                          
 					$AFrow_index = searchForId('esi_retire_legal_concerns', $AF_array);
-					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'n')) && $userAge >= 60){$consumer_recs["esi_report_legal_assistance"]["show"] = 1;}
+					if((isset($AF_array[$AFrow_index]["option_code"]) && ($AF_array[$AFrow_index]["option_code"] == 'y')) && $userAge >= 60){$consumer_recs["esi_report_legal_assistance"]["show"] = 1;}
 
 
 
@@ -2379,7 +2397,7 @@ logESIRecs ($consumer_recs, $screeningID);
 							echo "<h4>" .$title. "</h4>";
 							echo "<p>" .$desc. "</p>";
 							if ($title == 'Legal Services'){
-							echo "<a target='blank' href='/esi-factsheet/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/esi-factsheet/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Legal Services and Assistance Programs</a><BR />";
+							echo "<a target='blank' href='/".$esiFactsheet."/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'><i class='icon-info-sign'></i></a> <a target='blank' href='/".$esiFactsheet."/?program_id=160&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>Legal Services and Assistance Programs</a><BR />";
 								
 							}
 							echo "</div>";
@@ -2392,7 +2410,7 @@ logESIRecs ($consumer_recs, $screeningID);
 										while($pnameRow = mysql_fetch_assoc($theResult)){
 											$pname[] = $pnameRow;
 										}
-										echo "<a target='blank' href='/esi-factsheet/?program_id=".$Program_array[$value]["program_id"]."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$pname[0]["display_text"]."</a>";
+										echo "<a target='blank' href='/".$esiFactsheet."/?program_id=".$Program_array[$value]["program_id"]."&state_id=".$state_id."&county=".$county."&zip=".$esi_zip."&screeningID=".$screeningID."&shadowID=".$shadowID."'>".$pname[0]["display_text"]."</a>";
 										echo "\r\n";
 									}
 									unset($value);
@@ -2420,11 +2438,26 @@ echo "There are no recommendations for you at this time; if your situation chang
 <a href="mailto:economiccheckup@ncoa.org">Tell us</a> how it worked for you.</div>
 
 <br/>
+<?php
+
+if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
+echo '
+<div class="printButton printReport">
+            <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
+</div>
+';
+}
+else {
+echo '
 <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvas(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
 </div>
+';
+
+}
+?>
 <?php
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 21) == "/esi-results-eversafe")){ //user, not agency with databridge=true in url
 ?>
 <div class="printButton printReport">
             <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
@@ -2450,14 +2483,27 @@ if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with data
         </ol><BR>
         <legend><i class="icon-file-alt "></i> Resources</legend>
         <ol class="nav nav-list">
-		<?PHP if(isset($screeningID)){echo '<li><a data-toggle="modal" role="button" href="/esi-questions/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
+		<?PHP if(isset($screeningID)){echo '<li><a data-toggle="modal" role="button" href="/'.$questAnswers.'/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
  		} ?>
         	<li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/s/3V39M9Z" target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
+
+<?php
+if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
+echo '
+
+            <li><form><a data-toggle="modal" role="button" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Printable Report</a></form></li>
+';
+}
+else {
+echo '
             <li><form><a data-toggle="modal" role="button" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvas(canvasImg, canvasImgCount);"><i class="icon-print "></i> Printable Report</a></form></li>
+';
+}
+?>
 <li>
 <?php
-if ($dataBridge == true && $dataBridge2 != "true"){ //user, not agency with databridge=true in url
+if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 21) == "/esi-results-eversafe") ){ //user, not agency with databridge=true in url
 ?>
 <div class="printButton">
             <form><a data-toggle="modal" role="button" class="btn" href="#" onClick="window.open('/esi-data-bridge?zip=<?php echo $esi_zip ?>&county=<?php echo $countyId ?>&screeningID=<?php echo $screeningID ?>&shadowID=<?php echo $shadowID ?>')"></i> Get Help in Your Community</a></form>
