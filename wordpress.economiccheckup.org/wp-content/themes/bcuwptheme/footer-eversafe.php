@@ -1,4 +1,4 @@
-</div> <!-- end of container -->
+﻿</div> <!-- end of container -->
 		</div> <!-- end .container -->
 <center>
 <div class="footer-powered">
@@ -87,6 +87,6 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0042/5201.js?"+Math.floor(new Date().getTime()/3600000);
 		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 	</script>
-
+<?php require('eversafe_tracking.htm'); ?>
 </body>
 </html>
