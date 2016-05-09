@@ -7,11 +7,7 @@ if (isset($_GET['databridge'])) {
 }
 
 $questAnswers = "esi-questions";
-<<<<<<< HEAD
-$esiFactsheet = "esi_factsheet"; //esi factsheet url
-=======
 $esiFactsheet = "esi-factsheet"; //esi factsheet url
->>>>>>> dev
 $reportClient = $_SERVER['REQUEST_URI'];
 //if ($reportClient == "/esi-results-eversafe" || $reportClient == "esi-results-eversafe"){
 //if (preg_match('#^esi-results-eversafe#', $reportClient) === 1) { //so that urls with parameters are taken care of
