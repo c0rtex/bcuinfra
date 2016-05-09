@@ -59,6 +59,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PHJ4LQ');</script>
 <!-- End Google Tag Manager -->
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> dev
     <div class="hide"><script type="text/javascript">
         var url = 'https://www.eversafe.com/seam/resource/timage?ts=' + new Date().getTime();
         url += (window.location.search ? "&" + window.location.search.substring(1) : "");
@@ -112,8 +116,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <li><a href="/eversafe-find-help">NCOA Resources</a>
 <li><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors</a>
                             <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
+<<<<<<< HEAD
 
                             <li><a href="/home-eversafe">EconomicCheckUp Home</a></li>
+=======
+>>>>>>> dev
                         </ul>
                     </li>
                     <li class="dropdown"><a href="/home-eversafe/?overlay=true" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>

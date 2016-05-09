@@ -6,14 +6,15 @@ $esiprod = 0;
 }
 else
 {
-$subdomain = 'www';
-$esiprod = 1;
+//prod values overwritten
+$subdomain = 'redesign';
+$esiprod = 0;
 }
 
-$url = "https://".$subdomain.".benefitscheckup.org/util/remotescreening_3_7.cfc?WSDL";
+$url = "https://".$subdomain.".benefitscheckup.org/util/remotescreening_3_8.cfc?WSDL";
 
 //cache or no cache
-//$soapClient = new CachedSoapClient($url, array('cache_wsdl' => WSDL_CACHE_NONE));
-$soapClient = new CachedSoapClient($url, array('cache_wsdl' => WSDL_CACHE_BOTH), $subsetID, doScreening);
+$soapClient = new CachedSoapClient($url, array('cache_wsdl' => WSDL_CACHE_NONE));
+//$soapClient = new CachedSoapClient($url, array('cache_wsdl' => WSDL_CACHE_BOTH), $subsetID, doScreening);
 
 ?>
