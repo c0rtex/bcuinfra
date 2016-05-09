@@ -1049,3 +1049,13 @@ margin-bottom: 10px;
     font-family: "Merriweather",Georgia,serif;
 }
 
+
+@media (max-width: 979px) {
+header {
+padding-left: 20px;
+padding-right: 20px;
+
+}
+
+}
+

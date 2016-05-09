@@ -15,8 +15,8 @@ and scc.screening_id = ".$screeningID."  order by sc.sort_order;";
 
                                                  }
 
-					echo "<br/>The Money recs </br>".$money_recs_count;
-					var_dump( $money_recs );
+					//echo "<br/>The Money recs </br>".$money_recs_count;
+					//var_dump( $money_recs );
 
 					
 					$housing_recs = array();
