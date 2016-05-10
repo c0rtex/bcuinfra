@@ -81,8 +81,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </button>
                 <div class="homelogo">
                     <a href="https://www.eversafe.com/index.html" class="navbar-brand"><img src="https://www.eversafe.com/images/logos/logo.png" alt="EverSafe"></a>
-                    <a class="navbar-brand hidden-sm" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
-                    <a class="navbar-brand hidden-sm" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
+                    <a class="navbar-brand" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
+                    <a class="navbar-brand" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
 
                     <a href="https://www.eversafe.com/index.html" class="navbar-small"><img src="https://www.eversafe.com/images/logos/logo-i.png" alt="EverSafe"></a>
                     <a class="navbar-small" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
@@ -90,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </div>
 
-           <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+           <nav class="navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right" style="font-family: 'Merriweather', Georgia, serif; text-shadow: none;">
                     <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle" style="text-shadow: none;"> How It Works </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle" style="text-shadow: none;"> Pricing </a></li>
