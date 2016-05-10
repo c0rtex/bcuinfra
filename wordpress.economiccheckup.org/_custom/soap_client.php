@@ -7,7 +7,7 @@ $esiprod = 0;
 else
 {
 //prod values overwritten
-$subdomain = 'redesign';
+$subdomain = 'www';
 $esiprod = 0;
 }
 
