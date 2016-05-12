@@ -210,7 +210,7 @@ Breadcrumb hack for Safari
 	<script src="/cf/ValidationFunctions.js"></script>
 	<script src="/cf/scripts.js"></script>
 	<script src="/cf/textResize.js"></script>
-<cfinclude template="..util/google_data_tracking.cfm">	
+<cfinclude template="../util/google_data_tracking.cfm">	
 </head>
 
 <body class="js">
