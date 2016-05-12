@@ -451,7 +451,7 @@ h1, h2, h3, h4, button {
     color: #00479d;
     line-height: 1em;
     font-weight: normal;
-    font-size: 2.9em;
+    font-size: 2.85em;
 }
 
 #content #main h3 {
@@ -473,7 +473,7 @@ h1, h2, h3, h4, button {
 }
 
 #content #top-content h2.feature {
-    font-size: 2.9em;
+    font-size: 2.85em;
     font-weight: normal;
 }
 
