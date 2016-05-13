@@ -107,7 +107,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> Resources <i class="icon-chevron-down" style="color: #777; font-size: 8px; vertical-align: middle;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
+                            <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
                             <li><a href="/eversafe-find-help">NCOA Resources</a>
