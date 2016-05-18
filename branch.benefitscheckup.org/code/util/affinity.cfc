@@ -7,7 +7,6 @@
         <cfargument name="campaign_id" type="string" required="yes"  >
 	<cfargument name="internal_flag" type="numeric" required="no" default="1"  >
         <cfargument name="ahn_contact_flag" type="numeric" required="no" default="0"  >
-        <cfargument name="eversafe_id" type="numeric" required="no" default="0"  >
         <cfargument name="screening_id" type="numeric" required="no" default="0"  >
         <cfargument name="click_id" type="numeric" required="no" default="0"  >
 		<cfif click_id eq 0 and url_id gt 0 >
