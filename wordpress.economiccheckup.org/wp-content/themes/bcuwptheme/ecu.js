@@ -354,7 +354,7 @@ function PrintDivCanvas(imgCanvas, imgCanvasCount) {
 //console.log("Canvas img printing: "+imgCanvas);
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
 
     popupWin.document.close();
     $(".printReport").show();
@@ -372,7 +372,7 @@ function PrintDivCanvasEversafe(imgCanvas, imgCanvasCount) {
 //console.log("Canvas img printing: "+imgCanvas);
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
 
     popupWin.document.close();
     $(".printReport").show();
@@ -382,16 +382,17 @@ function PrintDivCanvasEversafe(imgCanvas, imgCanvasCount) {
 
 function responsiveMenu() {
 
-    if ($(window).width() <= 700) {
+    //if ($(window).width() <= 700) {
+    if (window.innerWidth <= 700) {
 
         $("#esiMenuToggleButton").css("display", "block");
         $("#getStartedESIButton").appendTo($("h2.feature"));
         $("#top-bar").css("margin-top", "30px");
         $("#getStartedESIButtonImg").css("margin-top", "25px");
         $("#getStartedESIButtonImg").css("margin-bottom", "25px");
-
-        $("#logo.statistics").hide();
-        $("#main-nav").hide();
+//$('.navbar-collapse').toggle();
+//$('.navbar-collapse').collapse();
+        $("#navEversafe").addClass("collapse");
 
     }
 
@@ -434,5 +435,7 @@ function liheapFix(){
         $(this).attr('data-backdrop', "static");
     });
 }
+
+
 
 
