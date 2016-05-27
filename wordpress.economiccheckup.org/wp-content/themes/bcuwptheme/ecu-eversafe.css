@@ -1049,3 +1049,27 @@ margin-bottom: 10px;
     font-family: "Merriweather",Georgia,serif;
 }
 
+
+@media (max-width: 979px) {
+header {
+padding-left: 20px;
+padding-right: 20px;
+
+}
+
+.eversafe-container{
+margin-top: 5px;
+}
+
+}
+
+.homelogo{
+
+    z-index: 1000;
+}
+
+@media (max-width: 900px) {
+.logoIcons
+{ display: none; }
+
+} 

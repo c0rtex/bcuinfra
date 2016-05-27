@@ -1,6 +1,8 @@
 <?PHP
 require_once('displaycontent.php');
 
+$reportClient = $_SERVER['REQUEST_URI'];
+
 $src = '';
 $sr = 1;
 $content_title_override = '';
@@ -177,7 +179,14 @@ foreach ($programContent_query as $progObj) :
         }
         endforeach;
     }
+//echo "TEST ".substr($reportClient, 0, 23);
+if (substr($reportClient, 0, 23) == "/esi-factsheet-eversafe"){
+    echo '            <li><a data-toggle="modal" role="button" href="#" onClick="javascript:PrintDivEversafe();"><i class="icon-print "></i> Printable Fact Sheet </a></li>';
+}
+else {
+
     echo '            <li><a data-toggle="modal" role="button" href="#" onClick="javascript:PrintDiv();"><i class="icon-print "></i> Printable Fact Sheet </a></li>';
+}
     echo '
         </ol>
     </div>

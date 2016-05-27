@@ -130,7 +130,7 @@ function setZipBlur($zip_code) {
         }
 
         jQuery.ajax({
-            url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
+            url: '/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
             datatype: 'json',
             data: 'zipcode=' + jQuery(this).val() + '&state_id=NY',
             cache: false,
@@ -190,7 +190,7 @@ function setZipKeyUp($zip_code) {
 
             var myVal = jQuery(this).val();
             jQuery.ajax({
-                url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
+                url: '/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
                 datatype: 'json',
                 data: 'zipcode=' + myVal,
                 cache: false,

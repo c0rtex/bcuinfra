@@ -1,3 +1,12 @@
+
+//fix for IE not supporting startWith
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function(searchString, position) {
+    position = position || 0;
+    return this.indexOf(searchString, position) === position;
+  };
+}
+
 $(document).ready(function () {
     console.log("this script works at all test");
 
@@ -73,8 +82,14 @@ $(document).ready(function () {
             }
 
             var myVal = $(this).val();
+//console.log("Host "+document.location.hostname);
+var theHost = document.location.hostname;
+var theBcuHost = "www.benefitscheckup.org";
+if (theHost.startsWith("qa")){
+theBcuHost = "redesign.benefitscheckup.org";
+}
             jQuery.ajax({
-                url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
+                url: 'https://'+theBcuHost+'/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
                 datatype: 'json',
                 data: 'zipcode=' + myVal,
                 cache: false,
@@ -85,7 +100,7 @@ $(document).ready(function () {
                         stcode = '';
                         stname = '';
                         if ($('#invalidZip').length == 0) {
-
+                            $("#esiQuickcheckResultsButton").hide();
                             removeZipAlerts();
                             $('#esi_zip').before('<div id="invalidZip" class="alert alert-danger"><i class="icon-warning-sign"></i> This is an invalid ZIP code.  Please try again.</div>');
                         }
@@ -95,6 +110,7 @@ $(document).ready(function () {
                         return false;
                     } else {
 
+                            $("#esiQuickcheckResultsButton").show();
                         removeZipAlerts();
 
                         stcode = newcode.DATA[0][0];
@@ -129,9 +145,13 @@ $(document).ready(function () {
             return false
         }
         ;
-
+var theHost = document.location.hostname;
+var theBcuHost = "www.benefitscheckup.org";
+if (theHost.startsWith("qa")){
+theBcuHost = "redesign.benefitscheckup.org";
+}
         jQuery.ajax({
-            url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
+            url: 'https://'+theBcuHost+'/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
             datatype: 'json',
             data: 'zipcode=' + $(this).val() + '&state_id=NY',
             cache: false,
@@ -354,7 +374,7 @@ function PrintDivCanvas(imgCanvas, imgCanvasCount) {
 //console.log("Canvas img printing: "+imgCanvas);
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
 
     popupWin.document.close();
     $(".printReport").show();
@@ -372,7 +392,7 @@ function PrintDivCanvasEversafe(imgCanvas, imgCanvasCount) {
 //console.log("Canvas img printing: "+imgCanvas);
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
 
     popupWin.document.close();
     $(".printReport").show();
@@ -382,16 +402,17 @@ function PrintDivCanvasEversafe(imgCanvas, imgCanvasCount) {
 
 function responsiveMenu() {
 
-    if ($(window).width() <= 700) {
+    //if ($(window).width() <= 700) {
+    if (window.innerWidth <= 700) {
 
         $("#esiMenuToggleButton").css("display", "block");
         $("#getStartedESIButton").appendTo($("h2.feature"));
         $("#top-bar").css("margin-top", "30px");
         $("#getStartedESIButtonImg").css("margin-top", "25px");
         $("#getStartedESIButtonImg").css("margin-bottom", "25px");
-
-        $("#logo.statistics").hide();
-        $("#main-nav").hide();
+//$('.navbar-collapse').toggle();
+//$('.navbar-collapse').collapse();
+        $("#navEversafe").addClass("collapse");
 
     }
 
@@ -434,5 +455,9 @@ function liheapFix(){
         $(this).attr('data-backdrop', "static");
     });
 }
+
+
+
+
 
 

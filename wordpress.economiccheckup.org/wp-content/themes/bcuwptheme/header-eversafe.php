@@ -50,7 +50,16 @@
     <!---<script src="https://www.eversafe.com/js/jquery.scrolldepth.min.js"></script>--->
 </head>
 <body id="features">
-
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHJ4LQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PHJ4LQ');</script>
+<!-- End Google Tag Manager -->
+ 
     <div class="hide"><script type="text/javascript">
         var url = 'https://www.eversafe.com/seam/resource/timage?ts=' + new Date().getTime();
         url += (window.location.search ? "&" + window.location.search.substring(1) : "");
@@ -65,23 +74,23 @@
                 <a href="https://www.eversafe.com/static/login.scan" style="color: #f09e38;" ><span class="entypo-key"></span>Log In</a>            </div>
 
             <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <button id="eversafe_nav_button" class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <div class="homelogo">
                     <a href="https://www.eversafe.com/index.html" class="navbar-brand"><img src="https://www.eversafe.com/images/logos/logo.png" alt="EverSafe"></a>
-                    <a class="navbar-brand hidden-sm" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
-                    <a class="navbar-brand hidden-sm" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
+                    <a class="navbar-brand logoIcons" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
+                    <a class="navbar-brand logoIcons" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
 
                     <a href="https://www.eversafe.com/index.html" class="navbar-small"><img src="https://www.eversafe.com/images/logos/logo-i.png" alt="EverSafe"></a>
-                    <a class="navbar-small" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
-                    <a class="navbar-small" href="https://www.eversafe.com/contact-us.html"><span class="entypo-mail"></span></a>
+                    <a class="navbar-small logoIcons" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
+                    <a class="navbar-small logoIcons" href="https://www.eversafe.com/contact-us.html"><span class="entypo-mail"></span></a>
                 </div>
             </div>
 
-           <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+           <nav id="navEversafe" class="navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right" style="font-family: 'Merriweather', Georgia, serif; text-shadow: none;">
                     <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle" style="text-shadow: none;"> How It Works </a></li>
                     <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle" style="text-shadow: none;"> Pricing </a></li>
@@ -98,14 +107,12 @@
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> Resources <i class="icon-chevron-down" style="color: #777; font-size: 8px; vertical-align: middle;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
+                            <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
                             <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
                             <li><a href="/eversafe-find-help">NCOA Resources</a>
 <li><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors</a>
                             <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
-
-                            <li><a href="/home-eversafe">EconomicCheckUp Home</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="/home-eversafe/?overlay=true" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
