@@ -37,4 +37,5 @@
     <cfproperty name="inactive_flag">
     <cfproperty name="significant_flag">
     <cfproperty name="childrens_flag">
+    <cfproperty name="subset_program_bases" fieldtype="one-to-many" cfc="subset_program_base" fkcolumn="program_id">
 </cfcomponent>

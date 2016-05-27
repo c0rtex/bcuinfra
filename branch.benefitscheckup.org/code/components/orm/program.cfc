@@ -31,6 +31,7 @@
 	<cfproperty name="supersort">
 	<cfproperty name="sort" tostruct="sort">
 	<cfproperty name="legacy_prg_id">
+	<cfproperty name="tbl_prg_all" fieldtype="one-to-many" cfc="tbl_prg_all" fkColumn="recid">
 	<cfproperty name="legacy_pri_sec">
 
 	<cffunction name="getlegacy">
