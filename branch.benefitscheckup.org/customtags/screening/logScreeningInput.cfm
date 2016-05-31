@@ -8,7 +8,6 @@
 <cfparam name="attributes.useOptionCodes" type="boolean" default="false">
 <cfparam name="attributes.batch" type="boolean" default="false">
 <cfparam name="attributes.debug" type="boolean" default="false">
-
 <cfset application.lsidebug = false>
 <cfif attributes.varname neq ''>
 	<cfset lsiList=Evaluate("caller.#attributes.varname#")>
@@ -137,6 +136,9 @@
 			<cfset lsiVal = ''>
 		</cfif>
 		<cfif attributes.debug><cfoutput><br>LIS VAL2A: 'caller.#attributes.structname#.#lsiVar#' #lsiVal#<br></cfoutput></cfif>
+		<cfif ansObj.type eq 'druglist'>
+		<cfif attributes.debug>druglist is: <cfoutput>#lsiVal#</cfoutput></cfif>	
+		</cfif>
 		<cfif lsiType eq 'o' And ListLen(lsiVal, '-') gt 1>
 			<cfset tmpCode = ListDeleteAt(lsiVal, 1, '-')>
 			<cfif attributes.useOptionCodes>
@@ -836,10 +838,29 @@
                 
 			</cf_loopPoolStruct> ---->
 			<cfset session.selectedDrugs = lsiVal>
+			<cfif attributes.debug>Step 2: session.selectedDrugs:#session.selectedDrugs#</cfif>
 			<cfif lsiVal neq '' and lsiVal neq 'null'>
 				<cfloop index="drugID" list="#lsiVal#">
 					<cf_logScreeningInputDetail pgno="#lsiPgNo#" response_type="c" response_var="#drugID#" response="Y" timestamp="#lsiDateTime#" prepopulateWithInput="#attributes.prepopulateWithInput#">
 					<cfset "session.#drugID#" = 'Y'>
+					<cfif attributes.debug><cfoutput>#drugID#</cfoutput> is Yes</cfif>
+					<cfset drgObj = application.answerfieldPool.getAnswerfield(drugID)>
+					<cfif drgObj.type eq 'generic'>
+					<!--- if generic drug set the brand equivalent as a session var in the rule evaluation  --->
+				
+				 	<CFQUERY NAME="qryGenericDrg" DATASOURCE="#application.dbSrc#">
+				select aa.answerfield
+				from answerfield_relationship ar, answerfield aa
+				where ar.right_answerfield_id=#drgObj.id#
+				and ar.relationship_id=1
+				and ar.left_answerfield_id=aa.answerfield_id
+				 	</CFQUERY>
+				 	<cfloop query="qryGenericDrg">
+						<cfset "session.#answerfield#" = 'Y'>
+					<cfif attributes.debug><cfoutput>brand rx: session.#answerfield#</cfoutput></cfif>
+				 	</cfloop>
+				
+				</cfif>
 				</cfloop>
 			</cfif>
 		<cfelseif lsiType eq 'i'>
@@ -1600,3 +1621,4 @@
 <cfif attributes.initvarname Neq ''>
 	<cfset "caller.#attributes.initvarname#" = ''>
 </cfif>
+<cfif attributes.debug><cfabort></cfif>
