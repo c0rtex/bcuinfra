@@ -1,3 +1,12 @@
+
+//fix for IE not supporting startWith
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function(searchString, position) {
+    position = position || 0;
+    return this.indexOf(searchString, position) === position;
+  };
+}
+
 $(document).ready(function () {
     console.log("this script works at all test");
 
@@ -73,8 +82,14 @@ $(document).ready(function () {
             }
 
             var myVal = $(this).val();
+//console.log("Host "+document.location.hostname);
+var theHost = document.location.hostname;
+var theBcuHost = "www.benefitscheckup.org";
+if (theHost.startsWith("qa")){
+theBcuHost = "redesign.benefitscheckup.org";
+}
             jQuery.ajax({
-                url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
+                url: 'https://'+theBcuHost+'/cf/com/bcu/ZipFunctions.cfc?method=getStateFromZip',
                 datatype: 'json',
                 data: 'zipcode=' + myVal,
                 cache: false,
@@ -85,7 +100,7 @@ $(document).ready(function () {
                         stcode = '';
                         stname = '';
                         if ($('#invalidZip').length == 0) {
-
+                            $("#esiQuickcheckResultsButton").hide();
                             removeZipAlerts();
                             $('#esi_zip').before('<div id="invalidZip" class="alert alert-danger"><i class="icon-warning-sign"></i> This is an invalid ZIP code.  Please try again.</div>');
                         }
@@ -95,6 +110,7 @@ $(document).ready(function () {
                         return false;
                     } else {
 
+                            $("#esiQuickcheckResultsButton").show();
                         removeZipAlerts();
 
                         stcode = newcode.DATA[0][0];
@@ -129,9 +145,13 @@ $(document).ready(function () {
             return false
         }
         ;
-
+var theHost = document.location.hostname;
+var theBcuHost = "www.benefitscheckup.org";
+if (theHost.startsWith("qa")){
+theBcuHost = "redesign.benefitscheckup.org";
+}
         jQuery.ajax({
-            url: 'https://www.benefitscheckup.org/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
+            url: 'https://'+theBcuHost+'/cf/com/bcu/ZipFunctions.cfc?method=isZipInState',
             datatype: 'json',
             data: 'zipcode=' + $(this).val() + '&state_id=NY',
             cache: false,
@@ -435,6 +455,8 @@ function liheapFix(){
         $(this).attr('data-backdrop', "static");
     });
 }
+
+
 
 
 

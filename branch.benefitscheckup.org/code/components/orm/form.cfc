@@ -17,5 +17,7 @@
     <cfproperty name="form_tag" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="formtag_id" cfc="form_tag">
     <cfproperty name="name" column="form_name">
     <cfproperty name="description">
-    <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
+	<cfproperty name="form_form_types" fieldtype="one-to-many" cfc="form_form_type" fkcolumn="form_id" inversejoincolumn="form_id">
+    <cfproperty name="program_forms" fieldtype="one-to-many" cfc="program_form" fkcolumn="form_id" inversejoincolumn="form_id">
+	<cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
 </cfcomponent>
