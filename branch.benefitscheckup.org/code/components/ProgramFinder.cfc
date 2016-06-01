@@ -11,7 +11,7 @@
   <cfproperty name="ynDoBuffer">
   <cfproperty name="subsetRecFlag">
 
-  <cffunction name="dspForms" access="remote" returnformat="plain">
+  <cffunction name="dspForms" access="remote" returnFormat="plain">
       <cfargument name="cat" required="no" default="">
       <cfargument name="st" required="no" default="">
       <cfargument name="ecPrgList" required="no" default="">
@@ -40,7 +40,7 @@
       <cfelseif cat EQ 'STRX'>
           <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=9">
       <cfelseif cat EQ 'Entered' or cat EQ 'PUB'>
-          <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset_id=1">
+          <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1">
       <cfelseif st neq ''>
           <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and f.state.id = '#st#'">
       </cfif>
@@ -84,7 +84,9 @@
           <cfset str.program_id=item[2]>
           <cfset str.prg_id=item[3]>
           <cfset str.prg_nm=item[4]>
-          <cfset str.form_state = item[5]>
+          <cfif arrayIsDefined(item,5)>
+              <cfset str.form_state = item[5]>
+          </cfif>
           <cfset str.form_name=item[6]>
           <cfset str.form_type_code=item[7]>
           <cfset str.form_tag_name=item[8]>
@@ -111,13 +113,13 @@
 
       <cfif structKeyExists(arguments, "callback")>
           <cfset retVal = arguments.callback & "(" & serializeJSON(data) & ");">
-          <cfelseif structKeyExists(arguments, "jsonp")>
+      <cfelseif structKeyExists(arguments, "jsonp")>
           <cfset retVal= "jsonp(" & data & ");">
       <cfelse>
           <cfset retVal = serializeJSON(data)>
       </cfif>
 
-      <cfreturn serializeJSON(retVal)>
+      <cfreturn retVal>
   </cffunction>
 
   <cffunction name="proceligibilityByScreening" access="remote" returnFormat="plain">
