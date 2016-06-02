@@ -86,6 +86,8 @@
           <cfset str.prg_nm=item[4]>
           <cfif arrayIsDefined(item,5)>
               <cfset str.form_state = item[5]>
+          <cfelse>
+              <cfset str.form_state = "ALL">
           </cfif>
           <cfset str.form_name=item[6]>
           <cfset str.form_type_code=item[7]>

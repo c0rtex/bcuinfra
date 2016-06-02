@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<link lang="en" ng-app="programSearchApp">
-<>
+<html lang="en" ng-app="programSearchApp">
+<head>
     <meta charset="utf-8">
     <title>Program search</title>
     <script src="../js/jquery.js"></script>
@@ -9,11 +9,12 @@
     <script src="../js/angular/angular-resource.js"></script>
     <script src="../js/angular/angular-sanitize.js"></script>
     <script src="../js/angular/angular-input-masks-standalone.min.js"></script>
+    <script src="../js/angular/ng-table.js"></script>
     <script src="../js/progs/app.js"></script>
     <script src="../js/progs/services.js"></script>
     <script src="../js/angular/mask.min.js"></script>
-    <script src="../js/angular/ng-table.min.js"></script>
-    <link rel="stylesheet" href="../js/angular/ng-table.min.css">
+    <link rel="stylesheet" href="../js/angular/ng-table.min.css"/>
+    <link rel="stylesheet" href="../js/angular/bootstrap.min.css">
 </head>
 <body>
 <div ng-controller="programFinderController">
@@ -94,19 +95,14 @@
     <p>
         <input type="button" ng-click="onClick()" value="Find">
     </p>
-    <p>
-    {{programs.length}}
-    </p>
-    <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-striped">
+    <table ng-table="tableParams" class="table" show-filter="true">
         <tr ng-repeat="row in $data">
-            <td data-title="'Name'" filter="{name: 'text'}" sortable="'name'">{{row.name}}</td>
-            <td data-title="'Age'" filter="{age: 'number'}" sortable="'age'">{{row.age}}</td>
-            <td data-title="'Money'" filter="{money: 'number'}" sortable="'money'">{{row.money}}</td>
+            <td data-title="'Program Name'" filter="{PRG_NM: 'text'}" sortable="'PRG_NM'">{{row.PRG_NM}}</td>
+            <td data-title="'Application Name'" filter="{FORM_TAG_NAME: 'text'}" sortable="'FORM_TAG_NAME'">{{row.FORM_TAG_NAME}}</td>
+            <td data-title="'State'" filter="{FORM_STATE: 'text'}" sortable="'FORM_STATE'">{{row.FORM_STATE}}</td>
+            <td data-title="'Revision Date'" filter="{FORM_DATE: 'text'}" sortable="'FORM_DATE'">{{row.FORM_DATE}}</td>
         </tr>
     </table>
-    <div ng-repeat="program in programs">
-        {{program.FORM_ID}}
-    </div>
 
 </div>
 </body>
