@@ -1,0 +1,24 @@
+<section class="sales-grid">
+    <div>
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
+    </div>
+    <form class="form-inline col-md-12">
+      <div class="form-group">
+          <label for="self">Self</label>
+          <input type="number" class="form-control" id="self" ng-model="cashequivalent.self" placeholder="$0">
+      </div>
+      <div class="form-group">
+          <label for="spouse">Spouse</label>
+          <input type="number" class="form-control" id="spouse" ng-model="cashequivalent.spouse" placeholder="$0">
+      </div>
+      <div class="form-group">
+          <label for="household">Household</label>
+          <input type="number" class="form-control" id="household" ng-model="cashequivalent.household" placeholder="$0">
+      </div>
+      <div class="form-group total">
+        <label>Total</label>
+        <span class="form-control input-regular">${{cashequivalent.self + cashequivalent.spouse + cashequivalent.household + 0}}</span>
+      </div>
+    </form>
+</section>

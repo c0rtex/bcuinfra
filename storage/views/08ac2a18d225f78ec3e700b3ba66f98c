@@ -1,0 +1,6 @@
+<!-- Default Themosis metabox view -->
+<table class="form-table themosis-metabox">
+    <tbody>
+        <?php echo $__env->renderEach('_themosisMetaboxRow', $__fields, 'field'); ?>
+    </tbody>
+</table>

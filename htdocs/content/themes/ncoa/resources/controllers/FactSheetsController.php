@@ -1,0 +1,20 @@
+<?php 
+
+class FactSheetsController extends BaseController
+{
+	/**
+	 * Returns the home page.
+	 *
+	 * @return Response
+	 */
+	public function index($post, $query)
+	{
+		$fact_sheet_slug = $query->query["p"];
+		
+		return View::make('templates.fact-sheets', [
+			'page_slug' => $fact_sheet_slug,
+			'is_alt' => false
+		]);
+	}
+
+}

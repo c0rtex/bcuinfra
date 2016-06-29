@@ -1,0 +1,98 @@
+<!--Basics-->
+<div class="basics card-panel">
+	<h2>Answer these questions to get more accurate results.</h2>
+	<div class="cta">
+		<strong>Just a reminder</strong> Answer all your questions as your {{screenData.searchingFor}}.
+	</div>
+
+	<section class="radio-group">
+		<label>Are you male or female?</label>
+		<div class="radio">
+			<input type="radio" name="optionsRadios" id="optionsRadios1" value="male" ng-model="questionnaire.gender">
+	  	<label for="optionsRadios1"><span></span>Male</label>
+  	</div>
+  	<div class="radio">
+	    <input type="radio" name="optionsRadios" id="optionsRadios2" value="female" ng-model="questionnaire.gender">
+	  	<label for="optionsRadios2"><span></span>Female</label>
+  	</div>
+  	</section>
+  	<section class="form-group">
+  		<label for="citizenship">What is your U.S. citizenship and/or immigration status?</label>
+	  	<select class="form-control select-choice" ng-init="questionnaire.citizenship = ''" ng-model="questionnaire.citizenship">
+	  		<option value="">-- Select --</option>
+	  		<option>Citizen</option>
+		  	<option>Legal Resident</option>
+		  	<option>Other Qualified Alien</option>
+		  	<option>Other</option>
+		</select>
+	</section>
+	<p>Are you currently receiving benefits from or participating in any of the following public programs? Check all that apply.</p>
+	<section class="form-group checkbox-stacked">
+		<div class="checkbox">
+			<input type="checkbox" value="1" name="basics-cb-1" id="basics-cb-1" ng-model="questionnaire.programs.program_1">
+			<label for="basics-cb-1"><span></span>Medicare (currently enrolled or expect to be within the next 3 months)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="2" name="basics-cb-2" id="basics-cb-2" ng-model="questionnaire.programs.program_2">
+			<label for="basics-cb-2"><span></span>Medicare Prescription Drug Plan (Part D)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="3" name="basics-cb-3" id="basics-cb-3" ng-model="questionnaire.programs.program_3">
+			<label for="basics-cb-3"><span></span>Extra Help/LIS through Medicare Prescription Drug Coverage</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="4" name="basics-cb-4" id="basics-cb-4" ng-model="questionnaire.programs.program_4">
+			<label for="basics-cb-4"><span></span>Medicaid</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="5" name="basics-cb-5" id="basics-cb-5" ng-model="questionnaire.programs.program_5">
+			<label for="basics-cb-5"><span></span>Medicare Savings Programs (QMB, SLMB, or QI)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="6" name="basics-cb-6" id="basics-cb-6" ng-model="questionnaire.programs.program_6">
+			<label for="basics-cb-6"><span></span>Supplemental Nutrition Assistance Program (SNAP)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="7" name="basics-cb-7" id="basics-cb-7" ng-model="questionnaire.programs.program_7">
+			<label for="basics-cb-7"><span></span>Supplemental Security Income (SSI)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="8" name="basics-cb-8" id="basics-cb-8" ng-model="questionnaire.programs.program_8">
+			<label for="basics-cb-8"><span></span>TRICARE</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="9" name="basics-cb-9" id="basics-cb-9" ng-model="questionnaire.programs.program_9">
+			<label for="basics-cb-9"><span></span>Veteran's Health Care Benefits</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="10" name="basics-cb-10" id="basics-cb-10" ng-model="questionnaire.programs.program_10">
+			<label for="basics-cb-10"><span></span>Low Income Home Energy Assistance Program (LIHEAP)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="11" name="basics-cb-11" id="basics-cb-11" ng-model="questionnaire.programs.program_11">
+			<label for="basics-cb-11"><span></span>Public Housing</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="12" name="basics-cb-12" id="basics-cb-12" ng-model="questionnaire.programs.program_12">
+			<label for="basics-cb-12"><span></span>Housing Choice Vouchers (Section 8)</label>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox" value="12" name="basics-cb-12" id="basics-cb-13" ng-model="questionnaire.programs.program_13">
+			<label for="basics-cb-12"><span></span>Senior Community Service Employment Program (SCSEP)</label>
+		</div>
+	</section>
+	<section class="form-group">
+		<label for="citizenship">What is your race or ethnicity?<button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltip.race}}" data-placement="top" class="fa fa-question-circle"></button></label>
+	  	<select class="form-control select-choice" ng-model="questionnaire.race" ng-init="questionnaire.race = ''">
+	  		<option value="">-- Select --</option>
+	  		<option>American Indian or Alaska Native</option>
+		  	<option>Asian or Asian-American</option>
+		  	<option>Black or African-American</option>
+		  	<option>Hispanic, Latino, or Spanish Origin</option>
+		  	<option>Native Hawaiian or Other Pacific Islander</option>
+		  	<option>White</option>
+		  	<option>Other</option>
+		  	<option>Prefer not to say</option>
+		</select>
+	</section>
+</div>

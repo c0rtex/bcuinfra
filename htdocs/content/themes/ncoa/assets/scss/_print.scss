@@ -1,0 +1,26 @@
+@media print {
+  .print-header {
+    margin-top: 40px;
+
+    > hr {
+      padding-top: 10px;
+    }
+
+    > .pull-right {
+      width: 200px;
+      height: 66px;
+      display: table;
+
+      > span {
+        display: table-cell;
+        vertical-align: bottom;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .print-logo {
+    height: 66px;
+    width: 310px;
+  }
+}

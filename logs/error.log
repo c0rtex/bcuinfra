@@ -1,0 +1,10 @@
+[Wed Jun 29 18:36:45.919844 2016] [authz_core:error] [pid 54634] [client ::1:59574] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/
+[Wed Jun 29 18:36:46.095390 2016] [authz_core:error] [pid 54663] [client ::1:59575] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/favicon.ico, referer: http://ncoa.dev/
+[Wed Jun 29 18:50:20.273362 2016] [authz_core:error] [pid 54664] [client ::1:59673] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/
+[Wed Jun 29 19:49:46.089397 2016] [authz_core:error] [pid 54665] [client ::1:59735] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/
+[Wed Jun 29 20:06:06.843777 2016] [authz_core:error] [pid 55189] [client ::1:59920] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/
+[Wed Jun 29 20:06:07.842085 2016] [authz_core:error] [pid 55189] [client ::1:59920] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/
+[Wed Jun 29 20:06:11.330749 2016] [authz_core:error] [pid 55191] [client ::1:59921] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/
+[Wed Jun 29 20:06:12.095331 2016] [authz_core:error] [pid 55189] [client ::1:59920] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/cms
+[Wed Jun 29 20:07:19.205365 2016] [authz_core:error] [pid 55210] [client ::1:59939] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/cms
+[Wed Jun 29 20:07:20.002341 2016] [authz_core:error] [pid 55210] [client ::1:59939] AH01630: client denied by server configuration: /Users/raukasov/ltg/bcudesign/htdocs/cms

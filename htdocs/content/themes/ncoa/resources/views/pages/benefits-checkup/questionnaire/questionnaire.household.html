@@ -1,0 +1,55 @@
+<!--Household-->
+<div class="household card-panel">
+	<h2>You're halfway done! Tell us a little more about your household.</h2>
+	<section class="form-group">
+		<label for="citizenship">In what type of housing do you live?</label>
+	  	<select class="form-control" ng-model="questionnaire.housing" ng-init="questionnaire.housing = ''">
+	  		<option value="">-- Select --</option>
+	  		<option>Own Home</option>
+		  	<option>Own Mobile Home</option>
+		  	<option>Rental</option>
+		  	<option>Boarding Home</option>
+		  	<option>Live with Others</option>
+		  	<option>Nursing Facility</option>
+		  	<option>Assisted Living</option>
+		  	<option>Low-income Housing</option>
+		  	<option>Homeless or Live in a Shelter</option>
+		</select>
+	</section>
+	<section class="form-group">
+		<p>Please provide the following information about your household. Include yourself and your spouse (if married) in each total.</p>
+		<p><strong>Enter the total number of people who are:</strong></p>
+		<section class="checkbox-stacked">
+			<div class="form-stacked">
+				<label for="household">Living in your household</label>
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.household">
+			</div>
+
+			<div class="form-stacked">
+				<label for="dependents">Dependent on you for at least one-half of their financial support</label>
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.dependents">
+			</div>
+
+			<div class="form-stacked">
+				<label for="sixtyolder">60 years old or older</label>
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.sixtyolder">
+			</div>
+
+			<div class="form-stacked">
+				<label for="disabled">Disabled</label>
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.disabled">
+			</div>
+		</section>
+	</section>
+	<section class="radio-group">
+		<label>Do you pay property taxes on your place of residence?</label>
+		<div class="radio">
+	    	<input type="radio" name="optionsPropertyTaxsRadios" id="optionsPropertyTaxsRadios1" value="yes" ng-model="questionnaire.PropertyTaxs">
+			<label for="optionsPropertyTaxsRadios1"><span></span>Yes</label>
+	  	</div>
+	  	<div class="radio">
+	    	<input type="radio" name="optionsPropertyTaxsRadios" id="optionsPropertyTaxsRadios2" value="no" ng-model="questionnaire.PropertyTaxs">
+			<label for="optionsPropertyTaxsRadios2"><span></span>No</label>
+	  	</div>
+  	</section>
+</div>

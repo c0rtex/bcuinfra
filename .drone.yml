@@ -1,0 +1,84 @@
+build: 
+  develop: 
+    auth_config: 
+      email: $$DOCKERHUB_EMAIL
+      password: $$DOCKERHUB_PASS
+      username: $$DOCKERHUB_USER
+    commands: 
+      - cp config/development/.env .
+      - chown -R 777 storage && chmod -R 777 storage && chmod -R 777 htdocs/content/uploads
+      - rm -rf vendor && composer update
+    image: springbox/ncoa:develop
+    when: 
+      branch: develop
+  staging: 
+    auth_config: 
+      email: $$DOCKERHUB_EMAIL
+      password: $$DOCKERHUB_PASS
+      username: $$DOCKERHUB_USER
+    commands: 
+      - cp config/staging/.env .
+      - chown -R 777 storage && chmod -R 777 storage && chmod -R 777 htdocs/content/uploads
+      - rm -rf vendor && composer update
+    image: springbox/ncoa:staging
+    when: 
+      branch: staging
+publish: 
+  docker: 
+    email: $$DOCKERHUB_EMAIL
+    file: Dockerfile.develop
+    insecure: true
+    password: $$DOCKERHUB_PASS
+    repo: springbox/ncoa
+    storage_driver: overlay
+    tag: develop
+    username: $$DOCKERHUB_USER
+    when: 
+      branch: develop
+  docker: 
+    email: $$DOCKERHUB_EMAIL
+    file: Dockerfile.staging
+    insecure: true
+    password: $$DOCKERHUB_PASS
+    repo: springbox/ncoa
+    storage_driver: overlay
+    tag: staging
+    username: $$DOCKERHUB_USER
+    when: 
+      branch: staging
+deploy: 
+  rancher: 
+    access_key: $$RANCHER_API_KEY
+    confirm: true
+    docker_image: springbox/ncoa:develop
+    secret_key: $$RANCHER_API_SECRET
+    service: "ncoa/web"
+    timeout: 6000
+    url: $$RANCHER_URL
+    when: 
+      branch: develop
+  rancher: 
+    access_key: $$RANCHER_API_KEY
+    confirm: true
+    docker_image: springbox/ncoa:staging
+    secret_key: $$RANCHER_API_SECRET
+    service: "ncoa-staging/web"
+    timeout: 6000
+    url: $$RANCHER_URL
+    when: 
+      branch: staging
+notify:
+  slack_blame:
+    token: $$SLACK_TOKEN
+    success:
+      username: "Drone"
+      icon: ":kissing_closed_eyes:"
+      message: "The develop build"
+      image_attachments:
+        - "http://i.imgur.com/TP4PIxc.jpg"
+    failure:
+      username: "Drone"
+      icon: ":scream:"
+      message: "The develop build is broken!"
+      image_attachments:
+        - "http://cdn.meme.am/instances/51000361.jpg"

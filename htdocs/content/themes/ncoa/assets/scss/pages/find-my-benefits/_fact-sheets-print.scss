@@ -1,0 +1,39 @@
+@media print {
+  .page-find-my-benefits > header, .fact-sheets-top, .fact-sheets-top+h1 {
+    display: none;
+  }
+
+  .page-find-my-benefits .clearfix+hr {
+    border-top: none;
+  }
+
+  .page-find-my-benefits {
+    .card-nested {
+      padding: 0px;
+    }
+
+    .icon-block-healthcare, .fact-sheets-icon-block, .fact-sheets-main-apply, .fact-sheet-button-fwd,
+    .fact-sheets-bar, .fact-sheets-link, .site-footer, .fact-sheets-bottom, .results-options:nth-of-type(2) {
+      display: none;
+    }
+
+    .programs-container {
+      display: block;
+      border: none;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .program-header span {
+      padding: 0;
+    }
+
+    .program .program-header span:after {
+      display: none;
+    }
+
+    .program {
+      border: none;
+    }
+  }
+}

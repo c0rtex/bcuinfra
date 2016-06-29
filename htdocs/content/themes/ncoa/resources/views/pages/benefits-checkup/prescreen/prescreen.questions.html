@@ -1,0 +1,134 @@
+<div class="prescreen-questions">
+	<!-- Pre Screen-->
+	<div class="card">
+		<div class="card-nested">
+			<h2 class="page-header">Let's start with some basics.</h2>
+			<form name="prescreen" novalidate>
+				<div class="zip-search question-block">
+					<section>
+						<p class="question-block-icon question-block-title">Searching for benefits provided in</p>
+						<input type="text" name="zipcode" class="form-control" id="zipcode" placeholder="Enter Zip Code" ng-model="prescreen.zipcode" ng-show="isEdit" required zipcode/>
+						<div class="zipcode-formatted" ng-show="isZipValid" ng-hide="isEdit">{{prescreen.zipcode_formatted}}<a ng-click="resetZip()" class="btn-link">Edit</a></div>
+						<p class="error-state" ng-hide="isZipValid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+					</section>
+				</div>
+
+				<div class="search-type question-block">
+					<section>
+						<p class="question-block-icon question-block-title">Who are you completing this search for?</p>
+						<select class="form-control" name="searchFor" ng-model="prescreen.searchfor" ng-change="onStatusChange()">
+							<option ng-option value="" selected>-- choose an option --</option>
+							<option ng-option value="self">Self</option>
+							<option ng-option value="spouse">Spouse</option>
+							<option ng-option value="mother">Mother</option>
+							<option ng-option value="father">Father</option>
+							<option ng-option value="sister">Sister</option>
+							<option ng-option value="brother">Brother</option>
+							<option ng-option value="client">Client</option>
+							<option ng-option value="test-case">Test Case</option>
+							<option ng-option value="other">other</option>
+						</select>
+						<input type="text" name="search-for-other" class="form-control" placeholder="Please enter other type" ng-show="prescreen.searchfor == 'other'" ng-model="prescreen.searchforother" />
+						<div class="cta ng-hide" ng-hide="showCTA">
+							<strong>Okay, great!</strong> Please answer all remaining questions as your {{ prescreen.searchfor != 'other' ? prescreen.searchfor : prescreen.searchforother }}.
+						</div>
+
+					</section>
+				</div>
+
+				<div class="dob question-block" ng-show="prescreen.searchfor">
+					<section>
+						<p class="question-block-icon question-block-title">What is your month and year of birth?</p>
+						<select class="form-control inline" name="dob-month" ng-model="prescreen.month" ng-options="month as month for month in months track by month">
+							<option value="">-- Select Month --</option>
+						</select>
+						<year-drop offset="100" range="117"></year-drop>
+					</section>
+				</div>
+
+				<div class="income question-block" ng-show="prescreen.month && prescreen.year">
+					<section>
+						<p class="question-block-icon question-block-title">What is your gross monthly income?
+						<button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltip}}" data-placement="top" class="glyphicon glyphicon-question-sign"></button></p>
+						<div class="btn-group" role="group" aria-label="Montly Income?">
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == 'Less than $1,000'}" ng-click="prescreen.income = 'Less than $1,000'">Less than $1,000</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == '$1,000 - $1,499'}" ng-click="prescreen.income = '$1,000 - $1,499'">$1,000 - $1,499</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == '$1,500 - $1,999'}" ng-click="prescreen.income = '$1,500 - $1,999'">$1,500 - $1,999</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == '$2,000 - $3,000'}" ng-click="prescreen.income = '$2,000 - $3,000'">$2,000 - $3,000</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == 'More than $3,000'}" ng-click="prescreen.income = 'More than $3,000'">More than $3,000</button>
+						</div>
+					</section>
+				</div>
+
+				<div class="marital-status question-block" ng-show="prescreen.income">
+					<section>
+						<p class="question-block-icon question-block-title">What is your marital status?</p>
+						<div class="btn-group" role="group" aria-label="Montly Income?">
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married'}" ng-click="prescreen.marital_status = 'married'">Married</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married_living_separately'}" ng-click="prescreen.marital_status = 'married_living_separately'">Married Living Separately</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'divorced'}" ng-click="prescreen.marital_status = 'divorced'">Divorced</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'single'}" ng-click="prescreen.marital_status = 'single'">Single</button>
+
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'widowed'}" ng-click="prescreen.marital_status = 'widowed'">Widowed</button>
+						</div>
+					</section>
+				</div>
+
+				<div class="veteran-status question-block" ng-show="prescreen.marital_status">
+					<section>
+						<p class="question-block-icon question-block-title">Are you a veteran?</p>
+						<div class="btn-group" role="group" aria-label="Montly Income?">
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.veteran == 'yes'}" ng-click="prescreen.veteran = 'yes'">Yes</button>
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.veteran == 'no'}" ng-click="prescreen.veteran = 'no'">No</button>
+						</div>
+					</section>
+					<div class="cta" ng-show="prescreen.veteran == 'yes'">
+						Thank you for your service.
+					</div>
+				</div>
+
+				
+
+				<div class="partner-veteran-status question-block" ng-show="showSpouseVeteranStatus()">
+					<section>
+						<p class="question-block-title">Is your spouse (or former spouse) a U.S. veteran?</p>
+						<div class="btn-group" role="group" aria-label="Montly Income?">
+							<button type="button" class="btn btn-default" value="yes" ng-class="{active: prescreen.spouse_veteran_status == 'yes'}" ng-click="prescreen.spouse_veteran_status = 'yes'">Yes</button>
+							<button type="button" class="btn btn-default" value="no" ng-class="{active: prescreen.spouse_veteran_status == 'no'}" ng-click="prescreen.spouse_veteran_status = 'no'">No</button>
+						</div>
+					</section>
+				</div>
+
+				<div class="benefits question-block" ng-show="showBenefits()">
+					<section>
+						<p class="question-block-icon question-block-title">What type of benefits are you interested in?<br />Select as many as you like<br /><a ng-click="selectAll()" class="btn btn-link">{{selectLinkText}}</a></p>
+						<div class="benefits-selector-container">
+							<div class="benefits-selector-repeater" ng-repeat="program in programs" ng-click="addProgram(program.name, $index)" selector>
+								<div class="benefits-selector-checkbox">
+							    <div class="benefits-selector-checkbox-content">
+							      <div class="icon-wrapper">
+							        <img ng-src="{{program.image}}" alt={{ program.name }} />
+							      </div>
+							      <div class="benefits-selector-label">
+							        <div class="label-inner">{{program.name}}</div>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</form>
+		</div>
+		<div class="btns-container clearfix">
+			<button class="btn btn-primary pull-right" ng-disabled="disableSubmit()" ng-click="submitPrescreen()">Get Initial Results</button>
+		</div>
+	</div>
+</div>

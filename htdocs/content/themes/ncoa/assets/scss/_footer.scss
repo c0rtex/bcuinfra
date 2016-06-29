@@ -1,0 +1,364 @@
+.site-footer{
+  background-color: #fcfcfc;
+  font-size: 18px;
+  padding-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+
+  .site-logo{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  hr {
+    margin-bottom: 35px;
+  }
+
+  h4 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: .9em;
+    font-weight: normal;
+  }
+
+  #menu-main-menu {
+    padding: 0px;
+    margin-bottom: 40px;
+
+    li{
+      list-style: none;
+      color: #f37637;
+      line-height: 1.0;
+      padding-bottom: 5px;
+
+      &:before {
+        content: "• ";
+        color: #f37637;
+        left: 13px;
+        position: absolute;
+        padding: 5px 0;
+        font-size: .7em;
+      }
+
+      a{
+        font-size: .8em;
+        font-weight: normal;
+      }
+
+      &>a{
+        color: #f37637;
+        font-size: 1.1em;
+        font-weight: bold;
+        padding: 5px 0;
+        &:hover{
+           background: none;
+          color: #f37637;
+        }
+      }
+    }
+
+    .sub-menu {
+      padding-left: 14px;
+    }
+
+    .menu-item-has-children {
+      border-right: 1px solid #dedede;
+      padding: 0 1% 0 1%;
+      width: 15%;
+      margin: 0 1% 0 0;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+
+      &>a {
+        color: #000;
+        &:hover {
+          color: #f37637;
+        }
+      }
+    }
+    .menu-item-2443 {
+      border-right: 0px;
+      margin-right: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  .social-media-bar {
+    margin-bottom: 20px;
+
+    .footer-donate-tray {
+      float: right;
+      display: inline-block;
+
+      &>a{
+        margin-bottom: 0;
+      }
+    }
+
+    .footer-donate-tray-mobile {
+      text-align: center;
+      margin-top: 1em;
+    }
+  }
+
+  .footer-intro{
+    .col-sm-12{
+      p{
+        text-align: center;
+      }
+    }
+  }
+
+}
+
+
+    footer.site-footer .social-media-bar .footer-social-media-tray {
+      border-right: 1px solid #dedede;
+      display: inline-block;
+      float: left;
+      margin-right: 15px;
+      padding-right: 15px;
+      overflow: hidden; }
+      footer.site-footer .social-media-bar .footer-social-media-tray > a{
+        text-decoration: none;
+
+        &:hover {
+          opacity: .5;
+        }
+      }
+      footer.site-footer .social-media-bar .footer-social-media-tray p {
+        display: inline-block;
+        vertical-align: top;
+        padding-top: 5px;
+        margin-right: 7px; }
+      footer.site-footer .social-media-bar .footer-social-media-tray .footer-facebook-icon {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-fb-icon.svg") no-repeat 0 0;
+        height: 33px;
+        width: 33px;
+        display: inline-block;
+        padding: 0 22px; }
+      footer.site-footer .social-media-bar .footer-social-media-tray .footer-twitter-icon {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-twitter-icon.svg") no-repeat 0 0;
+        height: 33px;
+        width: 33px;
+        display: inline-block;
+        padding: 0 22px; }
+      footer.site-footer .social-media-bar .footer-social-media-tray .footer-linkedin-icon {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-linkedin-icon.svg") no-repeat 0 0;
+        height: 33px;
+        width: 33px;
+        display: inline-block;
+        padding: 0 22px; }
+      footer.site-footer .social-media-bar .footer-social-media-tray .footer-group-icon {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-group-icon.svg") no-repeat 0 0;
+        height: 33px;
+        width: 33px;
+        display: inline-block;
+        padding: 0 22px; }
+      footer.site-footer .social-media-bar .footer-social-media-tray .footer-youtube-icon {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-youtube-icon.svg") no-repeat 0 0;
+        height: 33px;
+        width: 33px;
+        display: inline-block;
+        padding: 0 22px; }
+    footer.site-footer .social-media-bar .footer-enews-tray {
+      display: inline-block;
+      overflow: hidden; }
+      footer.site-footer .social-media-bar .footer-enews-tray p {
+        display: inline-block;
+        vertical-align: top;
+        padding-top: 5px;
+        margin-right: 5px; }
+      footer.site-footer .social-media-bar .footer-enews-tray .footer-enews-icon {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-enews-icon.svg") no-repeat 0 0;
+        height: 33px;
+        width: 33px;
+        display: inline-block;
+        padding: 0 22px;
+        &:hover {
+          opacity: .5;
+          } }
+  footer.site-footer .footer-bottom-wrapper {
+    background: #f3f3f3; }
+    footer.site-footer .footer-bottom-wrapper .footer-aux-site-network {
+      padding-top: 20px; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-site-network h2 {
+        font-size: 1em;
+        font-weight: normal; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-site-network a {
+        color: #f37637;
+        font-size: .8em;
+        text-decoration: none; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-site-network a:hover {
+        color: #f37637; }
+    footer.site-footer .footer-bottom-wrapper #menu-footer-network-of-sites {
+      list-style-type: none;
+      display: inline-block;
+      padding-left: 0px; }
+      footer.site-footer .footer-bottom-wrapper #menu-footer-network-of-sites li {
+        /* display: inline-block; */
+        list-style-type: none;
+        width: 46%;
+        min-width: 160px;
+        padding: 0;
+        margin: 0 1% 0 0; }
+        @media screen and (max-width: 520px) {
+          footer.site-footer .footer-bottom-wrapper #menu-footer-network-of-sites li {
+            width: 100%;
+            display: block;
+            padding: 0;
+              a {
+      text-decoration: none;
+    } } }
+    footer.site-footer .footer-bottom-wrapper .footer-aux-nav {
+      margin-bottom: 10px;
+      background: #dcdcdc; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-nav .site-footer-inner {
+        padding-top: 15px; }
+        footer.site-footer .footer-bottom-wrapper .footer-aux-nav .site-footer-inner hr {
+          display: none; }
+        footer.site-footer .footer-bottom-wrapper .footer-aux-nav .site-footer-inner .purple-btn {
+          vertical-align: top;
+          margin-top: 8px;
+          display: inline-block;
+          margin: 8px 0;
+          padding: 4px 25px; }
+        footer.site-footer .footer-bottom-wrapper .footer-aux-nav .site-footer-inner .purple-btn:after {
+          content: none; }
+        footer.site-footer .footer-bottom-wrapper .footer-aux-nav .site-footer-inner div.navbar-collapse {
+          display: inline-block; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-nav .menu-item a {
+        font-family: calibri, Helvetica, sans-serif;
+        font-size: .9em;
+        color: #323232;
+        margin: 15px 0px 7px 0px;
+        padding: 0; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-nav .menu-item a:hover {
+        background: transparent;
+        color: #f37637; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-nav .menu-item a:after {
+        content: "\2022";
+        color: #fdb813;
+        font-size: 16px;
+        padding: 0 11px 0 11px; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-nav .menu-item-137 a:after {
+        content: none; }
+    footer.site-footer .footer-bottom-wrapper .site-footer-address {
+      margin: 20px 0;
+      font-size: .77em; }
+      footer.site-footer .footer-bottom-wrapper .site-footer-address a {
+        color: #f37637; }
+      footer.site-footer .footer-bottom-wrapper .site-footer-address a:hover {
+        color: #000; }
+  footer.site-footer .trust-icon-container {
+    margin-top: 20px; }
+    footer.site-footer .trust-icon-container .trust-icon {
+      display: inline-block;
+      margin: 10px;
+      vertical-align: bottom; }
+      footer .btn-purple{
+        padding-top:8px;
+      }
+
+@media (min-width: 0px) and (max-width: 767px) {
+  footer.site-footer {
+    padding-top: 0px; }
+    footer.site-footer .footer-intro {
+      display: none; }
+    footer.site-footer .site-footer-inner {
+      padding-top: 23px;
+      text-align: center; }
+      footer.site-footer .site-footer-inner hr {
+        display: visible;
+        margin-top: 25px; }
+    footer.site-footer .footer-bottom-wrapper {
+      background: white; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-site-network {
+        background: #f3f3f3; }
+      footer.site-footer .footer-bottom-wrapper .footer-aux-nav {
+        background: white; }
+        footer.site-footer .footer-bottom-wrapper .footer-aux-nav div.navbar-collapse {
+          display: block; }
+        footer.site-footer .footer-bottom-wrapper .footer-aux-nav #menu-footer-aux li a:after {
+          content: "";
+          color: #f37637; }
+      footer.site-footer .footer-bottom-wrapper .site-footer-address-container {
+        background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-address-bg.jpg") no-repeat 0 0;
+        background-size: cover;
+        min-height: 200px; }
+        footer.site-footer .footer-bottom-wrapper .site-footer-address-container .site-footer-address {
+          color: white;
+          padding: 80px 40px 40px 40px; }
+          footer.site-footer .footer-bottom-wrapper .site-footer-address-container .site-footer-address p {
+            margin: 40px; }
+    footer.site-footer .social-media-bar .footer-enews-tray {
+      display: none; }
+    footer.site-footer .social-media-bar .footer-social-media-tray {
+      border-right: 0px;
+      text-align: center;
+      display: block;
+      padding-right: 0px;
+      padding-top: 20px;
+      margin-right: 0px; }
+      footer.site-footer .social-media-bar .footer-social-media-tray p {
+        margin: 0 0 20px 0;
+        padding: 0px;
+        display: block; }
+  .super-footer {
+    padding-top: 25px;
+  }
+  .menu-footer-network-of-sites-container {
+    padding-top: 21px;
+    padding-bottom: 42px;
+  }
+  footer.site-footer .footer-bottom-wrapper #menu-footer-network-of-sites li {
+    padding-bottom: 13px;
+  }
+
+  footer.site-footer .trust-icon-container {
+    padding-bottom: 28px;
+  }
+}
+
+.super-footer-inner {
+  display: inline-block;
+
+  @media (max-width: $screen-sm-max) {
+    padding-bottom: 20px;
+  }
+}
+
+.super-footer {
+  text-align: center;
+
+  hr {
+    @media (max-width: $screen-sm-max) {
+      display: none;
+    }
+  }
+}
+
+.super-footer-copyright {
+  margin-right: 20px;
+  @media (max-width: $screen-sm-max) {
+    display: block;
+  }
+}
+
+.super-footer-spacer {
+  margin: 0 10px;
+}
+
+.super-footer-link a {
+  text-decoration: none;
+  color: $brand-light-blue;
+  white-space: nowrap;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:hover {
+    color: $brand-light-blue;
+    text-decoration: underline;
+  }
+}

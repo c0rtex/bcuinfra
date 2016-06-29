@@ -1,0 +1,90 @@
+.med-selection-container{
+	border-top:2px solid #ccc;
+	padding-top:20px;
+
+	@media (min-width: $screen-sm-min){
+		padding-top:50px;	
+	}
+}
+
+.ms-selection{
+	
+	@media (min-width: $screen-sm-min){
+		width: 45%;
+		margin-left: 10%;
+		height: 290px;
+		padding-top: 10px;
+	}
+
+	@media (min-width: 1210px){
+		.ms-list{
+			margin-top: 32px;
+		}
+	}
+}
+
+.ms-selectable{
+	@media (min-width: $screen-sm-min){
+		&:after{
+			content: '';
+			width: 2px; 
+			height: 98%;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			background-color: #ccc;
+		}
+	}
+}
+
+.ms-selectable,.ms-selection{
+	display: inline-block;
+	vertical-align: top;
+	width:100%;
+	overflow: hidden;
+	margin-bottom: 20px;
+
+	ul{
+		border:2px solid #ccc;
+		padding: 10px 0;
+		margin:0;
+		height: 300px;
+		overflow: scroll;
+		li{
+			list-style: none;
+			padding:2px 10px;
+			margin:0;
+			cursor: pointer;
+
+			&.ms-hover{
+				background-color: $brand-light-grey;
+			}
+
+			&.selected{
+				background-color: $brand-light-blue;
+				color: #fff;
+			}
+		}
+	}
+
+	.btn{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.form-control{
+		width: 100% !important;
+		margin-bottom: 10px;
+	}
+
+	.h4{
+		font-weight: 700;		
+	}
+
+
+	@media (min-width: $screen-sm-min){
+		width: 45%;
+		height: 470px;
+	}
+	
+}
