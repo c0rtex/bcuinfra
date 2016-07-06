@@ -109,7 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="logo" style="margin-top: 0; margin-right: 0;">
 
-<img src="img/partners/fit/logo2.gif" border="0" alt="Administration on Aging and HUD" title="Administration on Aging and HUD">
+<img src="img/partners/fit/logo2.gif" border="0" alt="HUD" title="HUD">
 
 </div>
 </div>
