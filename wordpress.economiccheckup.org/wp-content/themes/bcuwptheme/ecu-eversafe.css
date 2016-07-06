@@ -1072,4 +1072,12 @@ margin-top: 5px;
 .logoIcons
 { display: none; }
 
+}
+
+#doneButtonEversafeForm{
+display: inline;
 } 
+
+#reportButtonEversafeForm{
+display: inline;
+}

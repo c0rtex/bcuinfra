@@ -2443,7 +2443,13 @@ echo "There are no recommendations for you at this time; if your situation chang
 if (substr($reportClient, 0, 21) == "/esi-results-eversafe"){
 echo '
 <div class="printButton printReport">
-            <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
+            <form id="reportButtonEversafeForm"><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
+<form id="doneButtonEversafeForm">
+
+<a role="button" class="btn btn-large" href="https://www.eversafe.com/?ecuRet=2" style="margin-left: 20px;">Done</a>
+
+</form>
+
 </div>
 ';
 }
