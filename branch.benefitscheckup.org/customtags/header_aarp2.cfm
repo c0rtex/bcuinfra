@@ -224,7 +224,7 @@ div#aarpPartnerToolbar ol, ul, li {
 <cfoutput>
 	<cfset bodyTagMore = ''>
 <title>#title#</title>
-<cfinclude template="../util/google_data_tracking.cfm">	
+<cfinclude template="google_data_tracking.cfm">	
 </head>
 <body #onLoadScript#>
 <!-- Google Tag Manager -->
