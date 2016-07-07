@@ -240,7 +240,7 @@ PAGE. --->
 	</cfif>
 </cfif>
 
-	<cfset goto="/cf/ssatransfer/submitApplicant.php?Screening_id=#preserveSessionID#&CFID=#session.cfid#&CFTOKEN=#session.cftoken#&cfserver=qa">
+	<cfset goto="/cf/ssatransfer/submitApplicant.php?Screening_id=#preserveSessionID#&CFID=#session.cfid#&CFTOKEN=#session.cftoken#&cfserver=www">
 </cfif>
 <!--- DEBUGGING OUTPUT
 <cfoutput>
