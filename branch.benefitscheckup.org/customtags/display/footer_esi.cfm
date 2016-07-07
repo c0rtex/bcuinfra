@@ -97,7 +97,7 @@
 				<div class="span12">
 			        <a target="_new" href="http://www.ncoa.org/"><img id="ncoaImg" src="/wp-content/themes/bcuwptheme/images/BCUfooter-ncoa-logo.png" alt="NCOA" title="NCOA"></a><br />
 
-<p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;|&nbsp; 571-527-3900</p>
+<p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;</p>
 			    </div>
 			
 		
