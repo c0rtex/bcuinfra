@@ -1,9 +1,10 @@
-<?php 
+<?php
 
 class ResourcesController extends BaseController
 {
 	protected $states;
 	protected $categories;
+	protected $programs;
 
 	public function __construct()
     {
@@ -74,18 +75,13 @@ class ResourcesController extends BaseController
 		);
 		
 		$this->categories = array(
-			"Medications",
-			"Healthcare",
-			"Income Assistance",
-			"Food and Nutrition",
-			"Housing and Utilites",
-			"Tax Relief",
-			"Veteran",
-			"Employment",
-			"Transportation",
-			"Education",
-			"Discounts",
-			"Other Assistance"
+			"PAP" => "Patient Assistance Programs",
+			"MSP" => "Medicare Savings Program",
+			"QMB" => "Qualified Medicare Beneficiary",
+			"QI" => "Qualifying Individual",
+			"SLMB" => "Specified Low-Income Medicare",
+			"MED" => "Medicaid",
+			"STRX" => "State Rx"
 		);
     }
 	/**
@@ -108,20 +104,27 @@ class ResourcesController extends BaseController
 
 	public function results($post, $query)
 	{	
-		$total = 19;
 		$page = ($query->query["page"]) ? $query->query["page"] : 1;
 
+		if ($page==1) {
+
+			$constants = Config::get('constants');
+
+			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/cf/components/ProgramFinder.cfc?method=dspForms&cat='.$_REQUEST['category'].'&st='.$_REQUEST['state'])->send();
+		}
+
 		return View::make('templates.resources-results', [
+			'state' => $_REQUEST['state'],
+			'category' => $_REQUEST['category'],
 			'states' => $this->states,
 			'categories' => $this->categories,
-			'total' => $total,
-			'page' => $page
+			'programs' => $response->body
 		]);
 	}
 
 	public function details($post, $query)
 	{	
-		$fact_sheet_slug = $query->query["p"];
+		$fact_sheet_slug = "";//$query->query["p"];
 		return View::make('templates.fact-sheets',[
 			'page_slug' => $fact_sheet_slug,
 			'is_alt' => true

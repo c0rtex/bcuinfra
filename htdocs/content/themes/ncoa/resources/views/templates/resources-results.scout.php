@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
+<script>
+window.programs = {{$programs}};
+</script>
+
 @section('main')
+	<div ncoa-programs>
 	<div class="container resource-results-container">
 		<a href="/results" class="btn-link back-chev"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
 		<h1 class="">Program Details</h1>
@@ -15,26 +20,23 @@
 
 				<div class="search-results">
 					<ul>
-						 <li class="result-item">
-				        	<a href="/results/snap" class="btn-link btn-underline">Medicaid</a>
-				        	<p>Short description of program here. Short description of program. Short description of program here. Short description of program.</p>
-				        </li>
-						@for($i = 0; $i < 10; $i++)
-					        <li class="result-item">
-					        	<a href="/results/details" class="btn-link btn-underline">Program Name</a>
-					        	<p>Short description of program here. Short description of program. Short description of program here. Short description of program.</p>
-					        </li>
-					    @endfor
+						<div ng-repeat="program in currentProgramsList | filter: {PRG_NM : $root.prg_nm_filter}">
+							<li class="result-item">
+				        		<a href="/results/details" class="btn-link btn-underline">@{{program.PRG_NM}}</a>
+				        		<p>@{{program.FORM_TAG_NAME}}</p>
+				        	</li>
+						</div>
 					</ul>
 				</div>
 				<div class="ncoa-pagination-container">
 					<ul class="ncoa-pagination">
-						<li class="page-left"><a href="/resources/results/{{$page}}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
-						<li class="page-nums">{{$page}} of {{$total}}</li>
-						<li class="page-right"><a href="/resources/results/{{$page + 1}}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+						<li class="page-left"><a href="#" ng-click="showPage(currentPage-1)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+						<li class="page-nums">@{{currentPage}} of @{{pageCount}}</li>
+						<li class="page-right"><a href="#" ng-click="showPage(currentPage+1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 @stop
