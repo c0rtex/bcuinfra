@@ -31,6 +31,12 @@
  	</section>';
 	}
     ?>
+    <div>
+<br/>
+<a href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank">Please give us feedback on BenefitsCheckUp. Click here to complete a short satisfaction survey.</a> Thank you!
+</div>
+<br/>
+
     <div class="printButton printReport">
         <form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDiv();"><i
                     class="icon-print "></i> Print Your Report</a></form>
@@ -117,7 +123,7 @@
 
         <legend><i class="icon-file-alt "></i> Resources</legend>
         <ol class="nav nav-list">
-            <li><a data-toggle="modal" role="button" href="mailto:support@benefitscheckup.org" target="_blank"><i
+            <li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank"><i
                         class="icon-edit "></i> Send Us Your Feedback</a></li>
             <li><a data-toggle="modal" role="button" href="#" onClick="PrintDiv();"><i class="icon-print "></i>
                     Printable Report</a></li>

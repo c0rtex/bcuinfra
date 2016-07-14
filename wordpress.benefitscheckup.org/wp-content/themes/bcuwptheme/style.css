@@ -68,8 +68,12 @@ H2
 {
 	font-size: 20px;
 	font-weight: 400;
-	color: #333;
+color: #333;
 	line-height: 24px;
+}
+H2.h2Feedback{
+
+	color: #1E429A;
 }
 H2.titleBar
 {
@@ -1808,6 +1812,10 @@ height: 98px; /*104 and padding */
 width: 273px; /*281 and padding */
 padding: 2px;
 
+}
+
+.surveyMonkeyText{
+font-size: 1.5em;
 }
 
 

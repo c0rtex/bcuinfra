@@ -379,6 +379,14 @@ Espanol    = Espa�ol
 					
 					<!---<td class="text1" valign="top" style="white-space:300px;">--->
 
+<cfif SESSION.partner_id eq 0>
+<div>
+<br/>
+<h2 class="h2Feedback">Feedback</h2>
+<a href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank">Please give us feedback on BenefitsCheckUp. Click here to complete a short satisfaction survey.</a> Thank you!
+</div>
+</cfif>
+
 				</div>
 				<!-- END snap_left_col --></td>
 		</tr>
