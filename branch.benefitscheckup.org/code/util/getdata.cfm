@@ -1,3 +1,20 @@
+<cfquery name="results10"  datasource="#application.dbsrc#">				 
+select * from click 
+where campaign_id is not null
+order by click_datetime desc
+limit 500
+</cfquery><cfdump var="#results10#"><cfabort>
+<cfquery name="results10"  datasource="#application.dbsrc#">				 
+select * from view_tbl_questions_new where question_id = 717 
+limit 5
+</cfquery><cfdump var="#results10#">
+<cfquery name="results10"  datasource="#application.dbsrc#">				 
+select * from tbl_questions_new where question_id = 717 
+limit 5
+</cfquery><cfdump var="#results10#">receive_short
+<cfquery name="results10"  datasource="#application.dbsrc#">				 
+select * from question where question_code like 'receive_short' limit 5
+</cfquery><cfdump var="#results10#"><cfabort>
 <cfinvoke  
     component="util" 
     method="logProgramList" returnVariable = "success" 
@@ -164,7 +181,7 @@ update answerfield set answerfieldtype_id = 6 where answerfield_id = 7324
 </cfquery>
 <cfquery name="results10"  datasource="#application.dbsrc#">				 
 select * from answerfield where answerfield like '%hsa%'
-</cfquery>
+</cfquery>receive_short
 <cfdump var="#results10#"><cfabort>
 
 <cfquery name="results9"  datasource="#APPLICATION.dbSrc#">
