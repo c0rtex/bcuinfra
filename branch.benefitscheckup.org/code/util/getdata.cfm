@@ -1,6 +1,6 @@
 <cfquery name="results10"  datasource="#application.dbsrc#">				 
 select * from click 
-where campaign_id is not null
+where campaign_id <> ''
 order by click_datetime desc
 limit 500
 </cfquery><cfdump var="#results10#"><cfabort>
