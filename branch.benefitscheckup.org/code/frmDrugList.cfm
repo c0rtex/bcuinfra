@@ -1,4 +1,4 @@
-<!----=======================================
+!----=======================================
 DESCRIPTION: these are the two questions that are used for drugs and drug companies.
 CALLED BY: procAsset.cfm
 GOES TO: procDrugQuestions.cfm
@@ -77,7 +77,7 @@ REQUIRED:N/A
 			
 					<div class="question">
 						<div class="questionHolder questionBar">
-							<span class="question_number"><cf_showQuestionNumber>.</span> 			
+							<span class="question_number"><cf_showQuestionNumber increment="false">.</span> 			
 							<cfif isdefined('session.subset_id') and session.subset_id eq '22'>
 								<p>If you are interested in learning about company programs that 
 								can save you money on prescription drugs, you should answer this 
