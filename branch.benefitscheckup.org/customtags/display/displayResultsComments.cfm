@@ -13,7 +13,11 @@
 
 <cfif session.partner_id eq 0>
 	<p>
-<a href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank">Please give us feedback on BenefitsCheckUp. Click here to complete a short satisfaction survey.</a> Thank you!
+<ul>
+<li class="questionBar stripe feedbackSurvey">
+<a class="feedbackSurvey" href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank">Please give us feedback on BenefitsCheckUp. Click here to complete a short satisfaction survey.</a> Thank you!
+</li>
+</ul>
 	</p>
 <cfelse>
 <p>

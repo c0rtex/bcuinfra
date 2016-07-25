@@ -31,8 +31,7 @@
  	</section>';
 	}
     ?>
-    <div>
-<br/>
+    <div class="well feedbackSurvey">
 <a href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank">Please give us feedback on BenefitsCheckUp. Click here to complete a short satisfaction survey.</a> Thank you!
 </div>
 <br/>
