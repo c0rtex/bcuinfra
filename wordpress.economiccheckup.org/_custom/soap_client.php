@@ -1,15 +1,15 @@
 <?PHP
 require_once('CachedSoapClient.php');
-if (QA == 1){
-$subdomain = 'redesign';
-$esiprod = 0;
-}
-else
-{
+//if (QA == 1){
+//$subdomain = 'redesign';
+//$esiprod = 0;
+//}
+//else
+//{
 //prod values overwritten
 $subdomain = 'www';
 $esiprod = 0;
-}
+//}
 
 $url = "https://".$subdomain.".benefitscheckup.org/util/remotescreening_3_8.cfc?WSDL";
 

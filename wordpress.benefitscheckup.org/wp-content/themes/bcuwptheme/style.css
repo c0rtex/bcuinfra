@@ -68,8 +68,12 @@ H2
 {
 	font-size: 20px;
 	font-weight: 400;
-	color: #333;
+color: #333;
 	line-height: 24px;
+}
+H2.h2Feedback{
+
+	color: #1E429A;
 }
 H2.titleBar
 {
@@ -1810,6 +1814,33 @@ padding: 2px;
 
 }
 
+.surveyMonkeyText{
+font-size: 1.5em;
+}
 
+.feedbackSurvey {
+font-size: 1.2em;
+}
 
+.question LI.feedbackSurvey{
+font-size: 1.2em;
+}
+
+A.feedbackSurvey, A:visited.feedbackSurvey {
+
+font-size: 1.2em;
+}
+
+.yellowBox{
+    background: #fef4dc none repeat scroll 0 0;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px 0 10px 10px;
+    margin-top: 10px;
+}
+}
+
+.yellowBox  H2{
+margin-top: -10px;
 

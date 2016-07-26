@@ -240,7 +240,7 @@
                	</div>
 			<div id="footer-primary">
 				<p><a href="http://www.ncoa.org/" target="_blank"><img title="National Council on Aging" alt="National Council on Aging" src="/wp-content/uploads/2011/11/BCUfooter-ncoa-logo.png"></a></p>		
-<p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;|&nbsp; 571-527-3900</p>
+<p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;</p>
 			</div> <!-- end footer-primary -->
 
 		</div> <!-- end sub-wrapper -->

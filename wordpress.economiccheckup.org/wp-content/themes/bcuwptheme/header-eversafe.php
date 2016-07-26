@@ -40,6 +40,8 @@
             <script src="<?php echo get_template_directory_uri(); ?>/ecu.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/ecu_liveonly.js"></script>
 
+<script src="https://www.eversafe.com/js/tracking.js?v=1"></script>
+
 
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

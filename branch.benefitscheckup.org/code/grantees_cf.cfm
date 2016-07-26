@@ -77,17 +77,6 @@ Struct of structs of grantee logos
 
 <cfset granteeStruct = structNew() />
 <cfset granteeStruct.granteeLogo = "">
-<cfset granteeStruct.granteeUrl = "http://www.wiseandhealthyaging.org">
-<cfset granteeStruct.granteeImg = "">
-<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
-<cfset granteeStruct.granteeAltText = "WISE & Healthy Aging">
-<cfset granteeStruct.granteeID = "">
-<cfset granteeStruct.granteeState = "California WISE & Healthy Aging">
-<cfset granteeStruct.granteeStateName = "California">
-<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
-
-<cfset granteeStruct = structNew() />
-<cfset granteeStruct.granteeLogo = "">
 <cfset granteeStruct.granteeUrl = "http://www.centura.org/centura-health-links">
 <cfset granteeStruct.granteeImg = "">
 <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>

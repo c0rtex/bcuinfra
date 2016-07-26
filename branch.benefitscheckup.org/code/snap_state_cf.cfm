@@ -111,6 +111,14 @@ Espanol    = Espa�ol
 		<tr class="noprint">
 			<td colspan="4" style="padding-bottom:8px;">
 				<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<cfif SESSION.partner_id eq 0>
+<div class="yellowBox feedbackSurvey">
+<a class="feedbackSurvey" href="https://www.surveymonkey.com/r/BenefitsCheckUpFeedback" target="_blank">Please give us feedback on BenefitsCheckUp. Click here to complete a short satisfaction survey.</a>
+</div>
+</cfif>
+
+</tr>
 						<tr>
 							<td><span>
 								<cf_sessionPassVars href="snap.cfm?partner_id=#session.partner_id#&sc_partner_id=#SESSION.sc_partner_id#" prev_id="#session.partner_id#" partner_id="#session.partner_id#" org_id="#session.org_id#" class="snapLink">
@@ -379,8 +387,10 @@ Espanol    = Espa�ol
 					
 					<!---<td class="text1" valign="top" style="white-space:300px;">--->
 
+
 				</div>
 				<!-- END snap_left_col --></td>
+
 		</tr>
 		<tr>
 			<td class="text1" valign="bottom"></td>

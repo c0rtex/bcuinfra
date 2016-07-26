@@ -2019,8 +2019,13 @@ please check back.";
     <div class="printButton printReport">
 <?php
 if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
-        echo '<form><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDivEversafe();"><i
+        echo '<form id="reportButtonEversafeForm"><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDivEversafe();"><i
                     class="icon-print "></i> Print Your Report</a></form>
+<form id="doneButtonEversafeForm">
+
+<a role="button" class="btn btn-large" href="https://www.eversafe.com/?ecuRet=1" style="margin-left: 20px;">Done</a>
+
+</form>
 ';
 }
 else {

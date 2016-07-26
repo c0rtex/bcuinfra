@@ -347,7 +347,7 @@ function PrintDiv() {
     var divToPrint = document.getElementById('printContent');
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><body onload="window.print();this.close();"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
     popupWin.document.close();
     $(".printReport").show();
 }
@@ -357,7 +357,7 @@ function PrintDivEversafe() {
     var divToPrint = document.getElementById('printContent');
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><body onload="window.print();this.close();"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
     popupWin.document.close();
     $(".printReport").show();
 }
@@ -374,7 +374,7 @@ function PrintDivCanvas(imgCanvas, imgCanvasCount) {
 //console.log("Canvas img printing: "+imgCanvas);
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print()"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print();this.close();"><img id="logo" alt="EconomicCheckUp" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" src="/wp-content/uploads/2013/08/EconomicCheckUp_NCOA_small.jpg"><BR />' + divToPrint.innerHTML + '</html>');
 
     popupWin.document.close();
     $(".printReport").show();
@@ -392,7 +392,7 @@ function PrintDivCanvasEversafe(imgCanvas, imgCanvasCount) {
 //console.log("Canvas img printing: "+imgCanvas);
     var popupWin = window.open('', '_blank');
     popupWin.document.open();
-    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print()"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
+    popupWin.document.write('<html><head><script src="/wp-content/themes/bootswatch/bootstrap/js/jquery.js"></script></head><body onload="window.print();this.close();"><img alt="EverSafe" src="http://www.eversafe.com/images/logos/logo.png"><BR />' + divToPrint.innerHTML + '</html>');
 
     popupWin.document.close();
     $(".printReport").show();
