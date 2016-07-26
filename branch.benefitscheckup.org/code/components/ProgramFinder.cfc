@@ -45,6 +45,10 @@
           <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and f.state.id = '#st#'">
       </cfif>
 
+      <cfif st neq ''>
+          <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
+      </cfif>
+
       <cfif cat EQ 'DRUG'>
           <cfif isdefined('ecPrgList') and len(ecPrgList) gt 1 >
               <cfset prgIdList = listToArray(ecPrgList,",")>
