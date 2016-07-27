@@ -691,9 +691,11 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 				  		scope.isEdit = false;
 					}else{
 						scope.isZipValid = false;
+						scope.isEdit = true;
 					}
 				}else{
-					scope.isZipValid = false;	
+					scope.isZipValid = false;
+					scope.isEdit = true;
 				}
 			}
 		}
