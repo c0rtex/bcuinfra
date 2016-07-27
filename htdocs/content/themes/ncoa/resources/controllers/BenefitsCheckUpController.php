@@ -9,7 +9,9 @@ class BenefitsCheckUpController extends BaseController
 	 */
 	public function index()
 	{
-		return View::make('templates.benefitscheckup');
+		$constants = Config::get('constants');
+
+		return View::make('templates.benefitscheckup',['webServiceUrl' => $constants['WEB_SERVICE_URL']]);
 	}
 
 }

@@ -13,7 +13,7 @@
 					</section>
 				</div>
 
-				<div class="search-type question-block">
+				<div class="search-type question-block" ng-show="prescreen.zipcode&&isZipValid&&!isEdit">
 					<section>
 						<p class="question-block-icon question-block-title">Who are you completing this search for?</p>
 						<select class="form-control" name="searchFor" ng-model="prescreen.searchfor" ng-change="onStatusChange()">
@@ -25,7 +25,7 @@
 							<option ng-option value="sister">Sister</option>
 							<option ng-option value="brother">Brother</option>
 							<option ng-option value="client">Client</option>
-							<option ng-option value="test-case">Test Case</option>
+							<option ng-option value="test">Test Case</option>
 							<option ng-option value="other">other</option>
 						</select>
 						<input type="text" name="search-for-other" class="form-control" placeholder="Please enter other type" ng-show="prescreen.searchfor == 'other'" ng-model="prescreen.searchforother" />
@@ -39,7 +39,7 @@
 				<div class="dob question-block" ng-show="prescreen.searchfor">
 					<section>
 						<p class="question-block-icon question-block-title">What is your month and year of birth?</p>
-						<select class="form-control inline" name="dob-month" ng-model="prescreen.month" ng-options="month as month for month in months track by month">
+						<select class="form-control inline" name="dob-month" ng-model="prescreen.month" ng-options="month.name for month in months | orderBy:'id' track by month.id">
 							<option value="">-- Select Month --</option>
 						</select>
 						<year-drop offset="100" range="117"></year-drop>
@@ -70,7 +70,7 @@
 						<div class="btn-group" role="group" aria-label="Montly Income?">
 							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married'}" ng-click="prescreen.marital_status = 'married'">Married</button>
 
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married_living_separately'}" ng-click="prescreen.marital_status = 'married_living_separately'">Married Living Separately</button>
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married_living_sep'}" ng-click="prescreen.marital_status = 'married_living_sep'">Married Living Separately</button>
 
 							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'divorced'}" ng-click="prescreen.marital_status = 'divorced'">Divorced</button>
 
@@ -85,11 +85,11 @@
 					<section>
 						<p class="question-block-icon question-block-title">Are you a veteran?</p>
 						<div class="btn-group" role="group" aria-label="Montly Income?">
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.veteran == 'yes'}" ng-click="prescreen.veteran = 'yes'">Yes</button>
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.veteran == 'no'}" ng-click="prescreen.veteran = 'no'">No</button>
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.veteran == 'y'}" ng-click="prescreen.veteran = 'y'">Yes</button>
+							<button type="button" class="btn btn-default" ng-class="{active: prescreen.veteran == 'n'}" ng-click="prescreen.veteran = 'n'">No</button>
 						</div>
 					</section>
-					<div class="cta" ng-show="prescreen.veteran == 'yes'">
+					<div class="cta" ng-show="prescreen.veteran == 'y'">
 						Thank you for your service.
 					</div>
 				</div>
@@ -100,8 +100,8 @@
 					<section>
 						<p class="question-block-title">Is your spouse (or former spouse) a U.S. veteran?</p>
 						<div class="btn-group" role="group" aria-label="Montly Income?">
-							<button type="button" class="btn btn-default" value="yes" ng-class="{active: prescreen.spouse_veteran_status == 'yes'}" ng-click="prescreen.spouse_veteran_status = 'yes'">Yes</button>
-							<button type="button" class="btn btn-default" value="no" ng-class="{active: prescreen.spouse_veteran_status == 'no'}" ng-click="prescreen.spouse_veteran_status = 'no'">No</button>
+							<button type="button" class="btn btn-default" value="yes" ng-class="{active: prescreen.spouse_veteran_status == 'y'}" ng-click="prescreen.spouse_veteran_status = 'y'">Yes</button>
+							<button type="button" class="btn btn-default" value="no" ng-class="{active: prescreen.spouse_veteran_status == 'n'}" ng-click="prescreen.spouse_veteran_status = 'n'">No</button>
 						</div>
 					</section>
 				</div>
@@ -110,7 +110,7 @@
 					<section>
 						<p class="question-block-icon question-block-title">What type of benefits are you interested in?<br />Select as many as you like<br /><a ng-click="selectAll()" class="btn btn-link">{{selectLinkText}}</a></p>
 						<div class="benefits-selector-container">
-							<div class="benefits-selector-repeater" ng-repeat="program in programs" ng-click="addProgram(program.name, $index)" selector>
+							<div class="benefits-selector-repeater" ng-repeat="program in programs" ng-click="addProgram(program.code, $index)" selector>
 								<div class="benefits-selector-checkbox">
 							    <div class="benefits-selector-checkbox-content">
 							      <div class="icon-wrapper">

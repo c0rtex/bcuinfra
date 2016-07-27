@@ -649,12 +649,23 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 			scope.regPattern = "\\d{5}";
 			scope.isZipValid = true;
 			scope.isEdit = false;
-			
 
+
+			if (localStorageService.get('v_zipcode') != undefined) {
+				scope.prescreen.zipcode = localStorageService.get('v_zipcode');
+				localStorageService.remove('v_zipcode');
+				locationFinder.getLocation(scope.prescreen.zipcode).success(function(data, status, headers, config) {
+					validateZip(data);
+				});
+
+			} else {
+				scope.prescreen.zipcode = '';
+			}
+			
 			//Location finder to populate formatted address
-			locationFinder.getLocation(localStorageService.get('zipcode')).success(function(data, status, headers, config) {
-				validateZip(data);
-		    });
+			//locationFinder.getLocation(scope.prescreen.zipcode).success(function(data, status, headers, config) {
+			//	validateZip(data);
+		    //});
 
 			$(elm).focusout(function(){
 				locationFinder.getLocation($(this).val()).success(function(data, status, headers, config) {
@@ -671,10 +682,11 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 				if(data.status == "OK"){
 					if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){				
 						scope.prescreen.zipcode = data.results[0].address_components[0].long_name;
-					
+						scope.prescreen.stateId = data.results[0].address_components[3].short_name;
+
 						//Filter on string to remove USA from return as google returns full formatted address
 				  		scope.prescreen.zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
-				  		localStorageService.set('zipcode', data.results[0].address_components[0].long_name);
+				  		//localStorageService.set('zipcode', data.results[0].address_components[0].long_name);
 				  		scope.isZipValid = true;
 				  		scope.isEdit = false;
 					}else{
@@ -749,50 +761,62 @@ app.factory('BenefitItems', [function(){
 	var BenefitItems = [
 		{
 			name: 'Medications',
+			code: 'bcuqc_category_rx',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg'
 		},
 		{
 			name: 'Healthcare',
+			code: 'bcuqc_category_medicaid',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_health.svg'
 		},
 		{
 			name: 'Income Assistance',
+			code: 'bcuqc_category_income',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_income.svg'
 		},
 		{
 			name: 'Food and Nutrition',
+			code: 'bcuqc_category_nutrition',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg'
 		},
 		{
 			name: 'Housing and Utilities',
+			code: 'bcuqc_category_utility',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg'
 		},
 		{
 			name: 'Tax Relief',
+			code: 'bcuqc_category_property_taxrelief',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_taxRelief.svg'
 		},
 		{
 			name: 'Veteran',
+			code: 'bcuqc_category_veteran',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_veteran.svg'
 		},
 		{
 			name: 'Employment',
+			code: '',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_employment.svg'
 		},
 		{
 			name: 'Transportation',
+			code: '',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_transportation.svg'
 		},
 		{
 			name: 'Education',
+			code: '',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_education.svg'
 		},
 		{
 			name: 'Discounts',
+			code: '',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg'
 		},
 		{
 			name: 'Other Assistance',
+			code: '',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_assistance.svg'
 		}
 	];
@@ -869,6 +893,7 @@ app.factory('Income', [function(){
 
 	return income;
 }]);
+
 app.service('locationFinder', ['$http', function($http){
 	var urlBase = 'http://maps.googleapis.com/maps/api/geocode/json';
 
@@ -876,6 +901,13 @@ app.service('locationFinder', ['$http', function($http){
 		return $http.get(urlBase + '?address=' + zipcode + '&sensor=true');
 	}
 }]);
+
+app.service('startScreening',['$http', function($http){
+	this.post = function (data) {
+		return $http.post(window.webServiceUrl+'/rest/backend/screening/start',data);
+	}
+}]);
+
 app.factory('prescreen', [function(){
 	var prescreenform = {}
 
@@ -893,7 +925,7 @@ app.controller('factSheetsController', ['$scope', '$state', function($scope, $st
 
 }]);
 
-app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, $timeout, $state, BenefitItems){
+app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'startScreening', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, startScreening, $timeout, $state, BenefitItems){
 
 
 	$('.fa-question-circle').popover();
@@ -901,7 +933,10 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 	$scope.showquestions = false;
 	$scope.showCTA = true;
 	$scope.programList = [];
-	$scope.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	$scope.months = [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
+					 {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
+					 {id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
+
 	$scope.tooltip = "<strong>Gross monthly income</strong> is your income before any deductions are taken. Please include yourself and your spouse (if applicable) in your calculations.";
 	$scope.programs = BenefitItems;
 	$scope.selectLinkText = "Select All";
@@ -923,22 +958,46 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 	$scope.submitPrescreen = function(){
 
-		prescreen.zipcode = {
-			"code" : $scope.prescreen.zipcode,
-			"formatted_address": $scope.prescreen.zipcode_formatted
+		prescreen.zip = {
+			"zip" : $scope.prescreen.zipcode,
 		};
-		prescreen.date_of_birth = {
-			"month" : $scope.prescreen.month,
-			"year" : $scope.prescreen.year
+		prescreen.dob = {
+			"dob_month" : $scope.prescreen.month.id,
+			"dob_year" : $scope.prescreen.year
 		};
 
-		prescreen.searchingFor = $scope.prescreen.searchfor;
-		prescreen.income = $scope.prescreen.income;
-		prescreen.marital_status = $scope.prescreen.marital_status;
-		prescreen.veteran = $scope.prescreen.veteran;
-		prescreen.spouse_veteran_status = ($scope.prescreen.spouse_veteran_status) ? $scope.prescreen.spouse_veteran_status : "";
-		prescreen.benefits_categories = $scope.programList;
-		$state.go('prescreen.results');
+		prescreen.state_id = $scope.prescreen.stateId;
+
+		prescreen.client = {
+			"client" : $scope.prescreen.searchfor,
+			"client_other" : $scope.prescreen.searchforother
+		};
+
+		prescreen.bcuqc_income = {
+			"bcuqc_income_list": $scope.prescreen.income
+		};
+
+		prescreen.marital_stat = {
+			"marital_stat" : $scope.prescreen.marital_status
+		};
+
+		prescreen.veteran = {
+			"veteran" : $scope.prescreen.veteran
+		};
+
+		prescreen.sp_veteran = {
+			"sp_veteran" : ($scope.prescreen.spouse_veteran_status) ? $scope.prescreen.spouse_veteran_status : ""
+		};
+
+		prescreen.bcuqc_interest_category = {};
+
+		for (var i=0; i<$scope.programList.length;i++) {
+			prescreen.bcuqc_interest_category[$scope.programList[i]] = 'y';
+		}
+
+		startScreening.post(prescreen).success(function(data, status, headers, config) {
+			$state.go('prescreen.results');
+		});
 	}
 
 	$scope.selectAll = function(){
@@ -1011,8 +1070,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 	$scope.$watch('prescreen.veteran', function(){
 		if(($scope.prescreen.marital_status == "married" ||
-			$scope.prescreen.marital_status == "married_living_separately" ||
-			$scope.prescreen.martial_status == "widowed") && $scope.prescreen.veteran == "no" && !$('.partner-veteran-status').is(":visible")){
+			$scope.prescreen.marital_status == "married_living_sep" ||
+			$scope.prescreen.martial_status == "widowed") && $scope.prescreen.veteran == "n" && !$('.partner-veteran-status').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.partner-veteran-status');
 				$('html,body').animate({
@@ -1020,8 +1079,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 				}, 500);
 			}, 500);
 		}else if(($scope.prescreen.marital_status == "married" ||
-			$scope.prescreen.marital_status == "married_living_separately" ||
-			$scope.prescreen.martial_status == "widowed") && $scope.prescreen.veteran == "yes" && !$('.benefits').is(":visible")){
+			$scope.prescreen.marital_status == "married_living_sep" ||
+			$scope.prescreen.martial_status == "widowed") && $scope.prescreen.veteran == "y" && !$('.benefits').is(":visible")){
 				setTimeout(function(){
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
@@ -1055,13 +1114,13 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 	$scope.showSpouseVeteranStatus = function(){
 
-		return (($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_separately' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'no');
+		return (($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_sep' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'n');
 	}
 
 	$scope.showBenefits = function(){
-		if((($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_separately' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'yes')){
+		if((($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_sep' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'y')){
 			return true;
-		}else if((($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_separately' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'no') && $scope.prescreen.spouse_veteran_status){
+		}else if((($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_sep' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'n') && $scope.prescreen.spouse_veteran_status){
 			return true;
 		}else if(($scope.prescreen.marital_status == 'divorced' || $scope.prescreen.marital_status == 'single') && $scope.prescreen.veteran){
 			return true;
@@ -1226,9 +1285,8 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
 	$scope.findZip = function(zip){
 		locationFinder.getLocation(zip).success(function(data, status, headers, config) {
-			localStorageService.set('zipcode', zip);
+			localStorageService.set('v_zipcode', zip);
 			$window.location.href = '/find-my-benefits';
-			
    	 	});
 	}
 
