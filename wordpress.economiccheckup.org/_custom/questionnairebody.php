@@ -202,14 +202,21 @@ else {
             <div class="printButton">
                 <?php
 
+if (isset($_GET["eversafe_read_only"])){
+if ($_GET["eversafe_read_only"] == 'true'){
+$eversafeReadOnly = true;
+}
+}
+
                 //if ($dataBridge != "true") { //Lynna Cekova, commented out as per new requirements
+if (!($pageName=='/esi-questions-eversafe/' || $pageName=='/esi-questions-eversafe' || $mystring=='/esi-questions-eversafe' || $mystring == '/esi-questions-eversafe/') || (!$eversafeReadOnly == true && ($pageName=='/esi-questions-eversafe/' || $pageName=='/esi-questions-eversafe' || $mystring=='/esi-questions-eversafe' || $mystring == '/esi-questions-eversafe/'))){
                 ?>
                 <button class="btn btn-large btn btn-ga" data-gaCategory="economic-checkup"
                         data-gaAction="end-econimic-checkup" id="view_results" type="submit" value="View Your Report"><i
                         class="icon-chevron-right"></i><i class="icon-chevron-right"></i> View Your Report
                 </button>
                 <?php
-                //}
+                }
                 ?>
             </div>
             <div>
