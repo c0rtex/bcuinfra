@@ -27,7 +27,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       data: {
         next: "questionnaire.basics",
         prev: "prescreen.results"
-      }
+	  }
     })
     .state('questionnaire', {
       url: "/questionnaire",
@@ -543,7 +543,7 @@ app.directive('profile', ['prescreen', '$state', function (prescreen, $state) {
 	  restrict: 'A',	  
 	  templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html',
 	  link: function (scope, element, attr) {
-	  	scope.screenData = prescreen;
+	  	scope.screenData = prescreen.screenData;
 	  	scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
 	  }
 	}
@@ -682,7 +682,12 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 				if(data.status == "OK"){
 					if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){				
 						scope.prescreen.zipcode = data.results[0].address_components[0].long_name;
-						scope.prescreen.stateId = data.results[0].address_components[3].short_name;
+						for (var i=1;i<data.results[0].address_components.length;i++) {
+							if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
+								scope.prescreen.stateId = data.results[0].address_components[i].short_name;
+								continue;
+							}
+						}
 
 						//Filter on string to remove USA from return as google returns full formatted address
 				  		scope.prescreen.zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
@@ -911,7 +916,7 @@ app.service('startScreening',['$http', function($http){
 }]);
 
 app.factory('prescreen', [function(){
-	var prescreenform = {}
+	var prescreenform = {};
 
 	return prescreenform;
 }]);
@@ -942,6 +947,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 	$scope.tooltip = "<strong>Gross monthly income</strong> is your income before any deductions are taken. Please include yourself and your spouse (if applicable) in your calculations.";
 	$scope.programs = BenefitItems;
 	$scope.selectLinkText = "Select All";
+	prescreen.screenData = {};
 	
 
 	$scope.onStatusChange = function(){
@@ -958,46 +964,60 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	}
 
-	$scope.submitPrescreen = function(){
+	$scope.submitPrescreen = function() {
 
-		prescreen.zip = {
+		prescreen.screenData = {};
+
+		prescreen.screenData.formatted_address = $scope.prescreen.zipcode_formatted;
+
+		prescreen.screenData.
+
+		prescreen.screenData.date_of_birth = {
+			"month": $scope.prescreen.month.name,
+			"year": $scope.prescreen.year
+		};
+
+		prescreen.request = {};
+
+		prescreen.request.zip = {
 			"zip" : $scope.prescreen.zipcode,
 		};
-		prescreen.dob = {
+		prescreen.request.dob = {
 			"dob_month" : $scope.prescreen.month.id,
 			"dob_year" : $scope.prescreen.year
 		};
 
-		prescreen.state_id = $scope.prescreen.stateId;
+		prescreen.request.state_id = $scope.prescreen.stateId;
 
-		prescreen.client = {
+		prescreen.request.client = {
 			"client" : $scope.prescreen.searchfor,
 			"client_other" : $scope.prescreen.searchforother
 		};
 
-		prescreen.bcuqc_income = {
+		prescreen.request.bcuqc_income = {
 			"bcuqc_income_list": $scope.prescreen.income
 		};
 
-		prescreen.marital_stat = {
+		prescreen.request.marital_stat = {
 			"marital_stat" : $scope.prescreen.marital_status
 		};
 
-		prescreen.veteran = {
+		prescreen.request.veteran = {
 			"veteran" : $scope.prescreen.veteran
 		};
 
-		prescreen.sp_veteran = {
+		prescreen.request.sp_veteran = {
 			"sp_veteran" : ($scope.prescreen.spouse_veteran_status) ? $scope.prescreen.spouse_veteran_status : ""
 		};
 
-		prescreen.bcuqc_interest_category = {};
+		prescreen.request.bcuqc_interest_category = {};
 
 		for (var i=0; i<$scope.programList.length;i++) {
-			prescreen.bcuqc_interest_category[$scope.programList[i]] = 'y';
+			prescreen.request.bcuqc_interest_category[$scope.programList[i]] = 'y';
 		}
 
-		startScreening.post(prescreen).success(function(data, status, headers, config) {
+		startScreening.post(prescreen.request).success(function(data, status, headers, config) {
+			prescreen.results = data;
 			$state.go('prescreen.results');
 		});
 	}
@@ -1157,7 +1177,13 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
 	  value: 0,
 	});
 
-	od.update(48);
+	var foundCount = 0;
+
+	for (category in prescreen.results.found_programs) {
+		foundCount = foundCount + prescreen.results.found_programs[category].count;
+	}
+
+	od.update(foundCount);
 }]);
 
 
@@ -1268,7 +1294,7 @@ app.controller('questionnaireLoaderController', ['$scope', '$state', function($s
 	});
 	
 }]);
-app.controller('questionnaireResultsController', ['$scope', '$state', function($scope, $state){
+app.controller('questionnaireResultsController', ['$scope', '$state', 'prescreen', function($scope, $state, prescreen){
 	var el = document.querySelector('.odometer');
 
 	od = new Odometer({
@@ -1276,9 +1302,14 @@ app.controller('questionnaireResultsController', ['$scope', '$state', function($
 	  value: 0
 	});
 
-	od.update(18); 
+	var foundCount = 0;
 
-	
+	for (category in prescreen.results.found_programs) {
+		foundCount = foundCount + prescreen.results.found_programs[category].count;
+	}
+
+	od.update(foundCount);
+
 	
 	document.querySelector('.page-wrapper h1').scrollIntoView();
 
