@@ -16,21 +16,12 @@
 				<div class="search-type question-block" ng-show="prescreen.zipcode&&isZipValid&&!isEdit">
 					<section>
 						<p class="question-block-icon question-block-title">Who are you completing this search for?</p>
-						<select class="form-control" name="searchFor" ng-model="prescreen.searchfor" ng-change="onStatusChange()">
-							<option ng-option value="" selected>-- choose an option --</option>
-							<option ng-option value="self">Self</option>
-							<option ng-option value="spouse">Spouse</option>
-							<option ng-option value="mother">Mother</option>
-							<option ng-option value="father">Father</option>
-							<option ng-option value="sister">Sister</option>
-							<option ng-option value="brother">Brother</option>
-							<option ng-option value="client">Client</option>
-							<option ng-option value="test">Test Case</option>
-							<option ng-option value="other">other</option>
+						<select class="form-control" name="searchFor" ng-model="prescreen.searchfor" ng-options="searchfor.name for searchfor in searchfors track by searchfor.id" ng-change="onStatusChange()">
+							<option value="">-- choose an option --</option>
 						</select>
 						<input type="text" name="search-for-other" class="form-control" placeholder="Please enter other type" ng-show="prescreen.searchfor == 'other'" ng-model="prescreen.searchforother" />
 						<div class="cta ng-hide" ng-hide="showCTA">
-							<strong>Okay, great!</strong> Please answer all remaining questions as your {{ prescreen.searchfor != 'other' ? prescreen.searchfor : prescreen.searchforother }}.
+							<strong>Okay, great!</strong> Please answer all remaining questions as your {{ prescreen.searchfor.id != 'other' ? prescreen.searchfor.name : prescreen.searchforother }}.
 						</div>
 
 					</section>
@@ -67,7 +58,8 @@
 				<div class="marital-status question-block" ng-show="prescreen.income">
 					<section>
 						<p class="question-block-icon question-block-title">What is your marital status?</p>
-						<div class="btn-group" role="group" aria-label="Montly Income?">
+						<div class="btn-group" role="group" aria-label="Montly Income?" ng-repeat="marital_status in maritalStatuses track by marital_status.id">
+
 							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married'}" ng-click="prescreen.marital_status = 'married'">Married</button>
 
 							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married_living_sep'}" ng-click="prescreen.marital_status = 'married_living_sep'">Married Living Separately</button>
