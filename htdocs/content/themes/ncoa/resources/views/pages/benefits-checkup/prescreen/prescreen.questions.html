@@ -58,17 +58,8 @@
 				<div class="marital-status question-block" ng-show="prescreen.income">
 					<section>
 						<p class="question-block-icon question-block-title">What is your marital status?</p>
-						<div class="btn-group" role="group" aria-label="Montly Income?" ng-repeat="marital_status in maritalStatuses track by marital_status.id">
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married'}" ng-click="prescreen.marital_status = 'married'">Married</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'married_living_sep'}" ng-click="prescreen.marital_status = 'married_living_sep'">Married Living Separately</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'divorced'}" ng-click="prescreen.marital_status = 'divorced'">Divorced</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'single'}" ng-click="prescreen.marital_status = 'single'">Single</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status == 'widowed'}" ng-click="prescreen.marital_status = 'widowed'">Widowed</button>
+						<div class="btn-group" role="group" aria-label="Montly Income?">
+							<button ng-repeat="marital_status in maritalStatuses track by marital_status.id" type="button" class="btn btn-default" ng-class="{active: prescreen.marital_status.id == marital_status.id}" ng-click="prescreen.marital_status = marital_status">{{marital_status.name}}</button>
 						</div>
 					</section>
 				</div>
@@ -102,7 +93,7 @@
 					<section>
 						<p class="question-block-icon question-block-title">What type of benefits are you interested in?<br />Select as many as you like<br /><a ng-click="selectAll()" class="btn btn-link">{{selectLinkText}}</a></p>
 						<div class="benefits-selector-container">
-							<div class="benefits-selector-repeater" ng-repeat="program in programs" ng-click="addProgram(program.code, $index)" selector>
+							<div class="benefits-selector-repeater" ng-repeat="program in programs" ng-click="addProgram(program)" selector>
 								<div class="benefits-selector-checkbox">
 							    <div class="benefits-selector-checkbox-content">
 							      <div class="icon-wrapper">

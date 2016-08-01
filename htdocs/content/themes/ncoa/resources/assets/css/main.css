@@ -8732,15 +8732,55 @@ grid:last-child .sales-grid {
     .program.active .program-header span:after {
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg); }
-  .program.medicine .program-header span {
+
+  .program.bcuqc_category_rx .program-header span {
     background: url(../images/categories/category_medicine.svg) no-repeat left center;
     background-size: 55px; }
-  .program.health .program-header span {
+
+  .program.bcuqc_category_medicaid .program-header span {
     background: url(../images/categories/category_health.svg) no-repeat left center;
     background-size: 55px; }
-  .program.meals .program-header span {
+
+  .program.bcuqc_category_income .program-header span {
+    background: url(../images/categories/category_income.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_nutrition .program-header span {
     background: url(../images/categories/category_food.svg) no-repeat left center;
     background-size: 55px; }
+
+  .program.bcuqc_category_utility .program-header span {
+    background: url(../images/categories/category_housing.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_property_taxrelief .program-header span {
+    background: url(../images/categories/category_taxRelief.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_veteran .program-header span {
+    background: url(../images/categories/category_veteran.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_1 .program-header span {
+    background: url(../images/categories/category_employment.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_2 .program-header span {
+    background: url(../images/categories/category_transportation.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_3 .program-header span {
+    background: url(../images/categories/category_education.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_4 .program-header span {
+    background: url(../images/categories/category_discounts.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_5 .program-header span {
+    background: url(../images/categories/category_assistance.svg) no-repeat left center;
+    background-size: 55px; }
+
   .program.program-no-icon .program-header span {
     padding: 20px 0 20px 15px; }
     @media (min-width: 480px) {
