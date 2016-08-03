@@ -922,6 +922,12 @@ app.service('startScreening',['$http', function($http){
 	}
 }]);
 
+app.service('prescreenQuestions',['$http', function ($http) {
+	this.get = function() {
+		return $http.get(window.webServiceUrl+'/rest/backend/questionnaire/prescreen');
+	}
+}]);
+
 app.factory('prescreen', [function(){
 	var prescreenform = {};
 
@@ -1199,10 +1205,14 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 }]);
 
-app.controller('preScreenInitalController', ['$scope', '$state', function($scope, $state){
+app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', function($scope, $state, prescreenQuestions){
 
-	if($state.current.name == "prescreen")
-		$state.transitionTo('prescreen.questions');
+	prescreenQuestions.get().success(function(data, status, headers, config) {
+		localStorageService.set('v_zipcode', zip);
+		$window.location.href = '/find-my-benefits';
+		if($state.current.name == "prescreen")
+			$state.transitionTo('prescreen.questions');
+	});
 }]);
 app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){	
 	$('.fa-question-circle').popover();

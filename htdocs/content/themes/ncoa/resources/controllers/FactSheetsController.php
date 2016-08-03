@@ -9,7 +9,7 @@ class FactSheetsController extends BaseController
 	 */
 	public function index($post, $query)
 	{
-		$fact_sheet_slug = $query->query["p"];
+		$fact_sheet_slug = $query->query["name"];
 		
 		return View::make('templates.fact-sheets', [
 			'page_slug' => $fact_sheet_slug,
