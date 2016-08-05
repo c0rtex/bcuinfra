@@ -17,7 +17,18 @@ programSearchApp.controller("programFinderController",['$scope','programFinder',
         $scope.programs = [];
         $scope.onClick = function() {
             $scope.programs = programFinder.query({"cat":$scope.cat,"st":$scope.st},function(data) {
-                $scope.tableParams = new NgTableParams({},{dataset: $scope.programs});
+                $scope.tableParams = new NgTableParams({
+                    // initial grouping
+                    group: {
+                        PRG_NM: "desc"
+                    }
+                }, {
+                    dataset: $scope.programs,
+                    groupOptions: {
+                        isExpanded: false
+                    }
+                });
+                //$scope.tableParams = new NgTableParams({},{dataset: $scope.programs});
             },function(data) {
                 $scope.programs=data;
             });

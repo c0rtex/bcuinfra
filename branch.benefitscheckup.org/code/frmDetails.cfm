@@ -4,13 +4,7 @@
 	<cfif isdefined('url.state_id')>
 		<cfparam name="session.state_id" default="#url.state_id#">
 	</cfif>
-	<!----
-	DESCRIPTION: shows description of programs, entry points, and required materials
-	CALLED BY: frmEligibility.cfm
-	GOES TO: N/A
-	REQUIRED: prg_id  sent via the URL.
-	---->
-	
+
 	<cfparam name="src" type="string" default="">
 	<cfparam name="sr" type="numeric" default="1">
 	<cfparam name="url.reportType" type="string" default="">
@@ -22,14 +16,7 @@
 	  <cfelse>
 	  <cfset language_id = 'EN'>
 	</cfif>
-	<cfoutput> 
-	  <!--- current language_id: #language_id#<br /> ---> 
-	  <!--- <form id="testLang" action="#cgi.ALL_HTTP#" method="post">
-	    	<input type="radio" id="lang" name="lang" value="EN" />EN<br />
-	        <input type="radio" id="lang" name="lang" value="ES" />ES<br />
-	        <input type="submit" value="submit" />
-	    </form> ---> 
-	</cfoutput>
+
 	<cfif Not IsDefined('session.st')>
 	  <cfset session.state_id = url.stat_id>
 	  <cfset session.st = session.state_id>
@@ -57,7 +44,6 @@
 	  <cfset intFontSize="3">
 	  <cfelse>
 	  <cfset boolReport="FALSE">
-	  <cf_tagheader show_title="yes" content_title_override="#content_title_override#" guts="frmDetails.cfm" popupwarning="1">
 	  <cfset intCellPad="12">
 	  <cfset intFontSize="4">
 	</cfif>
@@ -104,21 +90,7 @@
 		<style>
 			#pageTip{ top:30px !important; display: none;}
 		</style>
-	
-			<div class="question">
-				<div class="questionHolder questionBar">
-					<div id="pageTip" class="helpTip">
-						<h2><cf_displayText group="site" code="site_questionnaire_instructions_title"></h2>
-                       	<p><cf_displayText group="site" code="site_questionnaire_instructions_body"></p>
-                        <cfif IsDefined('session.partner_id') And session.partner_id eq 6>
-                            <br /><br />
-                            <a href="javascript:help2('neededinfo-rx.cfm')">Click here</a> 
-                            to see if you need to gather any information before you begin.<br />
-                        </cfif>
-					</div><!-- pageTip -->
-				</div><!-- questionHolder -->
-			</div><!-- question -->	
-			
+
 		<cfif IsDefined('session.sessionHasDied') and session.sessionHasDied>
 		  	<div class="question">
 				<div class="questionHolder questionBar">
@@ -126,35 +98,9 @@
 		  		</div><!-- questionHolder -->
 			</div><!-- question -->	
 		</cfif>
-	
-		<cfoutput>
-			<cfif SESSION.partner_id EQ 0 or session.partner_id eq 77 >
-				<div class="question">
-					<div class="questionHolder questionBar">
-						<cfif src eq 'eforms'>
-							<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
-						<cfelseif src eq 'elig' and sr eq 77>
-								<a href="/cf/taxRelief2.cfm?partner_id=77&taxReliefZip=#passZip#"><img src="img/backToRelief.gif" alt="Back to Tax Relief Programs" border="0" /></a>
-						<cfelseif src eq 'elig' and sr eq 2  >
-							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
-						<cfelseif src eq 'elig' >
-							<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
-						<cfelseif src eq 'ec'>
-							<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
-						<cfelseif url.ReportType neq "">
-							<a href="frmRecommend.cfm?ReportType=#url.ReportType#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
-						<cfelseif src neq 'frame'>
-							<a href="frmRecommend.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
-						</cfif>
-						<cfif SESSION.partner_id EQ 0 or session.partner_id eq 77 >
-							<img  src="img/print_this_page.gif" alt="Print this Page" onclick="self.print();" border="0" /> 
-						</cfif>
-			 	 	</div><!-- questionHolder -->
-				</div><!-- question -->	
-			 </cfif>
-		</cfoutput>
-	
-	
+
+
+
 		<div class="question">
 			<div class="questionHolder questionBar">
 
@@ -165,7 +111,7 @@
 			<cfelse>
 				<cfset passCounty = ''>
 			</cfif>
-	
+
 			<cfif IsDefined('url.st')>
 				<cfset passState = url.st>
 			<cfelseif IsDefined('url.state_id')>
@@ -183,36 +129,11 @@
 				<cfset passZip = ''>
 			</cfif>
 
-		
+
 				<cf_displayprogramdetail language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#" getWebResources="TRUE">
 			</div><!-- questionHolder -->
-		</div><!-- question -->	
-				
-		<cfoutput>
-			<cfif SESSION.partner_id EQ 0>
-				<div class="question">
-					<div class="questionHolder questionBar" style="margin-left:-75px !important">
-						<cfif src eq 'eforms'>
-							<cf_buttons gotext="Back to Application Guide" gourl="frmAccess.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#">
-						<cfelseif src eq 'elig' and sr eq 2 >
-							<a href="/quickcheck-report/?screeningID=#url.screeningID#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
-						<cfelseif src eq 'elig'>
-							<a href="frmeligibility.cfm?sr=#sr#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backToResults.gif" alt="Back to Results" border="0" /></a> 
-						<cfelseif src eq 'ec'>
-							<img src="img/backToAFC.gif" alt="Back to Application Forms Center" border="0"onclick="javascript:history.go(-1)" />
-						<cfelseif url.ReportType neq "">
-							<a href="frmRecommend.cfm?ReportType=#url.ReportType#&cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
-						<cfelseif src neq 'frame'>
-							<a href="frmRecommend.cfm?cfid=#session.cfid#&cftoken=#session.cftoken#"><img src="img/backtorecommendations.gif" alt="Back to Recommendations" border="0" /></a>
-						</cfif>
-						<cfif SESSION.partner_id EQ 0>
-							<img  src="img/print_this_page.gif" alt="Print this Page" onclick="self.print();" border="0" /> 
-						</cfif>
-			 	 	</div><!-- questionHolder -->
-				</div><!-- question -->	
-			 </cfif>
-		</cfoutput>
-		
+		</div><!-- question -->
+
 	  <cfif src neq 'frame'>
 	    <cfif IsDefined('session.partner_id') And session.partner_id eq 5>
 	      <cfif IsDefined('session.randomname') And session.randomname neq ''>
@@ -227,19 +148,12 @@
 	  </cfif>
 	
 	</div>  
-	
-	<cf_tagfooter>
+
 	</cfprocessingdirective>
 <cfelse>
 	<!--- PL Begins HERE --->
 	<cfprocessingdirective suppresswhitespace="Yes"> 
 	
-	<!----
-	DESCRIPTION: shows description of programs, entry points, and required materials
-	CALLED BY: frmEligibility.cfm
-	GOES TO: N/A
-	REQUIRED: prg_id  sent via the URL.
-	---->
 	<cfparam name="session.partner_id" default = "0">
 	<cfparam name="src" type="string" default="">
 	<cfparam name="sr" type="numeric" default="1">
@@ -253,12 +167,7 @@
 		<cfset language_id = 'EN'>
 	</cfif>
 	<cfoutput> 
-		<!--- current language_id: #language_id#<br /> ---> 
-		<!--- <form id="testLang" action="#cgi.ALL_HTTP#" method="post">
-	    	<input type="radio" id="lang" name="lang" value="EN" />EN<br />
-	        <input type="radio" id="lang" name="lang" value="ES" />ES<br />
-	        <input type="submit" value="submit" />
-	    </form> ---> 
+
 	</cfoutput>
 	<cfif Not IsDefined('session.st')>
 		<cfset session.state_id = url.state_id>
@@ -287,7 +196,6 @@
 		<cfset intFontSize="3">
 		<cfelse>
 		<cfset boolReport="FALSE">
-		<cf_tagheader show_title="yes" content_title_override="#content_title_override#" guts="frmDetails.cfm" popupwarning="1">
 		<cfset intCellPad="12">
 		<cfset intFontSize="4">
 	</cfif>
@@ -385,9 +293,6 @@
 		</cfif>
 		<cf_displayprogramdetail language_id="#language_id#" prg_id="#prg_id#" mode="#passMode#" source="#src#" report_type="#url.reportType#" number="#passNumber#" county="#passCounty#" state_id="#passState#" zip="#passZip#">
 		
-		<!--- 02/24/2002 REM  A new attribute that will be passed if this page is called as a 
-		tag from the report writer--if it is, we bypass the buttons and bottom text, and output the
-		HTML comment we need for the PDF generator to force a page break.  --->
 		<cfif boolReport>
 			</td>
 			</tr>

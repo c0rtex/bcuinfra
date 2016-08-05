@@ -9,10 +9,12 @@
         <cfreturn serializeJSON(screening_answers)>
     </cffunction>
 
-    <cffunction name="startScreening" access="remote" restpath="/start" returnType="String" httpMethod="POST">
+    <cffunction name="savePrescreen" access="remote" restpath="/start" returnType="String" httpMethod="POST">
         <cfargument name="body" type="String">
 
         <cfset prescreen = deserializeJSON(body)>
+
+        <cftransaction>
 
         <cfset screening = entityNew("screening")>
 
@@ -39,10 +41,9 @@
             </cfif>
         </cfloop>
 
+        </cftransaction>
 
-
-        <cfreturn serializeJSON(screening)>
-
+        <cfreturn "{""screening"":#serializeJSON(screening)#,""found_programs"":#createObject("component","bcu.rest.Programs").getExisting(screening.getId())#}">
     </cffunction>
 
     <cffunction name="saveScreeningAnswerfield">

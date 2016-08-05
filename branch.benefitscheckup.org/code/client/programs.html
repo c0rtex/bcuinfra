@@ -95,13 +95,36 @@
     <p>
         <input type="button" ng-click="onClick()" value="Find">
     </p>
-    <table ng-table="tableParams" class="table" show-filter="true">
-        <tr ng-repeat="row in $data">
-            <td data-title="'Program Name'" filter="{PRG_NM: 'text'}" sortable="'PRG_NM'">{{row.PRG_NM}}</td>
-            <td data-title="'Application Name'" filter="{FORM_TAG_NAME: 'text'}" sortable="'FORM_TAG_NAME'">{{row.FORM_TAG_NAME}}</td>
-            <td data-title="'State'" filter="{FORM_STATE: 'text'}" sortable="'FORM_STATE'">{{row.FORM_STATE}}</td>
-            <td data-title="'Revision Date'" filter="{FORM_DATE: 'text'}" sortable="'FORM_DATE'">{{row.FORM_DATE}}</td>
+    <table ng-table="tableParams" class="table table-condensed table-bordered table-hover" show-filter="true">
+        <colgroup>
+            <col width="60%" />
+            <col width="20%" />
+            <col width="20%" />
+        </colgroup>
+
+        <tr class="ng-table-group" ng-repeat-start="group in $groups">
+            <td colspan="3">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                    <strong>{{ group.value }}</strong>
+                </a>
+            </td>
         </tr>
+        <tr ng-hide="group.$hideRows" ng-repeat="row in group.data" ng-repeat-end>
+            <td sortable="'PRG_NM'" filter="{PRG_NM: 'text'}" data-title="'Program Name'" groupable="'PRG_NM'" ng-if="false">
+                {{row.PRG_NM}}
+            </td>
+            <td sortable="'FORM_TAG_NAME'" filter="{FORM_TAG_NAME: 'text'}" data-title="'Application Name'" groupable="'FORM_TAG_NAME'">
+                {{row.FORM_TAG_NAME}}
+            </td>
+            <td sortable="'FORM_STATE'" filter="{FORM_STATE: 'text'}" data-title="'State'" groupable="'FORM_STATE'">
+                {{row.FORM_STATE}}
+            </td>
+            <td sortable="'FORM_DATE'" filter="{FORM_DATE: 'text'}" data-title="'Revision date'">
+                {{row.FORM_DATE}}
+            </td>
+        </tr>
+
     </table>
 
 </div>
