@@ -42,15 +42,7 @@
 						<p class="question-block-icon question-block-title">What is your gross monthly income?
 						<button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltip}}" data-placement="top" class="glyphicon glyphicon-question-sign"></button></p>
 						<div class="btn-group" role="group" aria-label="Montly Income?">
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == 'Less than $1,000'}" ng-click="prescreen.income = 'Less than $1,000'">Less than $1,000</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == '$1,000 - $1,499'}" ng-click="prescreen.income = '$1,000 - $1,499'">$1,000 - $1,499</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == '$1,500 - $1,999'}" ng-click="prescreen.income = '$1,500 - $1,999'">$1,500 - $1,999</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == '$2,000 - $3,000'}" ng-click="prescreen.income = '$2,000 - $3,000'">$2,000 - $3,000</button>
-
-							<button type="button" class="btn btn-default" ng-class="{active: prescreen.income == 'More than $3,000'}" ng-click="prescreen.income = 'More than $3,000'">More than $3,000</button>
+							<button ng-repeat="income in incomes track by income.id" type="button" class="btn btn-default" ng-class="{active: prescreen.income.id == income.id}" ng-click="prescreen.income = income">{{income.name}}</button>
 						</div>
 					</section>
 				</div>

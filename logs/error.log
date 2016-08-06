@@ -1085,3 +1085,38 @@
 [Wed Jul 13 21:12:56.994724 2016] [:error] [pid 1373] [client ::1:50164] WordPress database error Table 'bcudesign.wp_posts' doesn't exist for query SELECT * FROM wp_posts WHERE ID = 1 LIMIT 1 made by wp_install, wp_install_maybe_enable_pretty_permalinks, get_permalink, get_post, WP_Post::get_instance, referer: http://ncoa.dev/cms/wp-admin/install.php
 [Wed Jul 13 21:12:56.996124 2016] [:error] [pid 1373] [client ::1:50164] WordPress database error Table 'bcudesign.wp_options' doesn't exist for query INSERT INTO `wp_options` (`option_name`, `option_value`, `autoload`) VALUES ('rewrite_rules', '', 'yes') ON DUPLICATE KEY UPDATE `option_name` = VALUES(`option_name`), `option_value` = VALUES(`option_value`), `autoload` = VALUES(`autoload`) made by wp_install, wp_install_maybe_enable_pretty_permalinks, WP_Rewrite->flush_rules, update_option, add_option, referer: http://ncoa.dev/cms/wp-admin/install.php
 [Wed Jul 13 21:12:56.998008 2016] [:error] [pid 1373] [client ::1:50164] WordPress database error Table 'bcudesign.wp_options' doesn't exist for query INSERT INTO `wp_options` (`option_name`, `option_value`, `autoload`) VALUES ('rewrite_rules', '', 'yes') ON DUPLICATE KEY UPDATE `option_name` = VALUES(`option_name`), `option_value` = VALUES(`option_value`), `autoload` = VALUES(`autoload`) made by wp_install, flush_rewrite_rules, WP_Rewrite->flush_rules, update_option, add_option, referer: http://ncoa.dev/cms/wp-admin/install.php
+[Tue Aug 02 19:31:32.775565 2016] [:error] [pid 286] [client ::1:54547] PHP Warning:  mysqli_real_connect(): (HY000/2002): Connection refused in /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php on line 1490
+[Tue Aug 02 19:31:32.776042 2016] [:error] [pid 286] [client ::1:54547] PHP Stack trace:
+[Tue Aug 02 19:31:32.776111 2016] [:error] [pid 286] [client ::1:54547] PHP   1. {main}() /Users/raukasov/ltg/bcudesign/htdocs/index.php:0
+[Tue Aug 02 19:31:32.776121 2016] [:error] [pid 286] [client ::1:54547] PHP   2. require() /Users/raukasov/ltg/bcudesign/htdocs/index.php:11
+[Tue Aug 02 19:31:32.776139 2016] [:error] [pid 286] [client ::1:54547] PHP   3. require_once() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-blog-header.php:13
+[Tue Aug 02 19:31:32.776146 2016] [:error] [pid 286] [client ::1:54547] PHP   4. require_once() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-load.php:42
+[Tue Aug 02 19:31:32.776152 2016] [:error] [pid 286] [client ::1:54547] PHP   5. require_once() /Users/raukasov/ltg/bcudesign/htdocs/wp-config.php:16
+[Tue Aug 02 19:31:32.776159 2016] [:error] [pid 286] [client ::1:54547] PHP   6. require_wp_db() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-settings.php:88
+[Tue Aug 02 19:31:32.776167 2016] [:error] [pid 286] [client ::1:54547] PHP   7. wpdb->__construct() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/load.php:371
+[Tue Aug 02 19:31:32.776176 2016] [:error] [pid 286] [client ::1:54547] PHP   8. wpdb->db_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:658
+[Tue Aug 02 19:31:32.776183 2016] [:error] [pid 286] [client ::1:54547] PHP   9. mysqli_real_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:1490
+[Tue Aug 02 19:31:32.779707 2016] [:error] [pid 286] [client ::1:54547] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php on line 1520
+[Tue Aug 02 19:31:32.779739 2016] [:error] [pid 286] [client ::1:54547] PHP Stack trace:
+[Tue Aug 02 19:31:32.779748 2016] [:error] [pid 286] [client ::1:54547] PHP   1. {main}() /Users/raukasov/ltg/bcudesign/htdocs/index.php:0
+[Tue Aug 02 19:31:32.779756 2016] [:error] [pid 286] [client ::1:54547] PHP   2. require() /Users/raukasov/ltg/bcudesign/htdocs/index.php:11
+[Tue Aug 02 19:31:32.779763 2016] [:error] [pid 286] [client ::1:54547] PHP   3. require_once() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-blog-header.php:13
+[Tue Aug 02 19:31:32.779770 2016] [:error] [pid 286] [client ::1:54547] PHP   4. require_once() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-load.php:42
+[Tue Aug 02 19:31:32.779777 2016] [:error] [pid 286] [client ::1:54547] PHP   5. require_once() /Users/raukasov/ltg/bcudesign/htdocs/wp-config.php:16
+[Tue Aug 02 19:31:32.779784 2016] [:error] [pid 286] [client ::1:54547] PHP   6. require_wp_db() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-settings.php:88
+[Tue Aug 02 19:31:32.779792 2016] [:error] [pid 286] [client ::1:54547] PHP   7. wpdb->__construct() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/load.php:371
+[Tue Aug 02 19:31:32.779801 2016] [:error] [pid 286] [client ::1:54547] PHP   8. wpdb->db_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:658
+[Tue Aug 02 19:31:32.779809 2016] [:error] [pid 286] [client ::1:54547] PHP   9. wpdb->db_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:1515
+[Tue Aug 02 19:31:32.779816 2016] [:error] [pid 286] [client ::1:54547] PHP  10. mysql_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:1520
+[Tue Aug 02 19:31:32.781099 2016] [:error] [pid 286] [client ::1:54547] PHP Warning:  mysql_connect(): Connection refused in /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php on line 1520
+[Tue Aug 02 19:31:32.781110 2016] [:error] [pid 286] [client ::1:54547] PHP Stack trace:
+[Tue Aug 02 19:31:32.781118 2016] [:error] [pid 286] [client ::1:54547] PHP   1. {main}() /Users/raukasov/ltg/bcudesign/htdocs/index.php:0
+[Tue Aug 02 19:31:32.781125 2016] [:error] [pid 286] [client ::1:54547] PHP   2. require() /Users/raukasov/ltg/bcudesign/htdocs/index.php:11
+[Tue Aug 02 19:31:32.781132 2016] [:error] [pid 286] [client ::1:54547] PHP   3. require_once() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-blog-header.php:13
+[Tue Aug 02 19:31:32.781138 2016] [:error] [pid 286] [client ::1:54547] PHP   4. require_once() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-load.php:42
+[Tue Aug 02 19:31:32.781144 2016] [:error] [pid 286] [client ::1:54547] PHP   5. require_once() /Users/raukasov/ltg/bcudesign/htdocs/wp-config.php:16
+[Tue Aug 02 19:31:32.781160 2016] [:error] [pid 286] [client ::1:54547] PHP   6. require_wp_db() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-settings.php:88
+[Tue Aug 02 19:31:32.781168 2016] [:error] [pid 286] [client ::1:54547] PHP   7. wpdb->__construct() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/load.php:371
+[Tue Aug 02 19:31:32.781176 2016] [:error] [pid 286] [client ::1:54547] PHP   8. wpdb->db_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:658
+[Tue Aug 02 19:31:32.781183 2016] [:error] [pid 286] [client ::1:54547] PHP   9. wpdb->db_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:1515
+[Tue Aug 02 19:31:32.781190 2016] [:error] [pid 286] [client ::1:54547] PHP  10. mysql_connect() /Users/raukasov/ltg/bcudesign/htdocs/cms/wp-includes/wp-db.php:1520

@@ -918,7 +918,7 @@ app.service('locationFinder', ['$http', function($http){
 
 app.service('startScreening',['$http', function($http){
 	this.post = function (data) {
-		return $http.post(window.webServiceUrl+'/rest/backend/screening/start',data);
+		return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data);
 	}
 }]);
 
@@ -973,6 +973,11 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 							  {id:"single",             name:"Single"},
 							  {id:"widowed",            name:"Widowed"}];
 
+	$scope.incomes = [{id:"bcuqc_income_under", name:"Less than $1,000"},
+		              {id:"bcuqc_income_1000",  name:"Between $1,000 and $1,499"},
+					  {id:"bcuqc_income_1500",  name:"Between $1,500 and $1,999"},
+					  {id:"bcuqc_income_2000",  name:"Between $2,000 and $3,000"},
+					  {id:"bcuqc_income_3000",  name:"More than $3,000"}];
 
 	$scope.tooltip = "<strong>Gross monthly income</strong> is your income before any deductions are taken. Please include yourself and your spouse (if applicable) in your calculations.";
 	$scope.programs = BenefitItems;
@@ -1035,7 +1040,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		};
 
 		prescreen.request.bcuqc_income = {
-			"bcuqc_income_list": $scope.prescreen.income
+			"bcuqc_income_list": $scope.prescreen.income.id
 		};
 
 		prescreen.request.marital_stat = {
@@ -1208,8 +1213,6 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', function($scope, $state, prescreenQuestions){
 
 	prescreenQuestions.get().success(function(data, status, headers, config) {
-		localStorageService.set('v_zipcode', zip);
-		$window.location.href = '/find-my-benefits';
 		if($state.current.name == "prescreen")
 			$state.transitionTo('prescreen.questions');
 	});
