@@ -1,5 +1,5 @@
 <div class="other-income-grid card-panel">
 	<h4 class="step">Finances: Part 5 of 5</h4>
 	<h2>Tell us more about your assets.</h2>	
-	<grid class="sales-grid" title="{{asset.title}}" description="{{asset.description}}" ng-repeat="asset in questionnaire.assets | filter:{selected: true}"></grid>
+	<grid class="sales-grid" title="{{asset.title}}" code="{{asset.code}}" type="2" description="{{asset.description}}" ng-repeat="asset in questionnaire.assets | filter:{selected: true}"></grid>
 </div>

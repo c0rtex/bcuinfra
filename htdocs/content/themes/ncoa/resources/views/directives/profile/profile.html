@@ -15,7 +15,7 @@
 		<li><strong>Location: </strong>{{screenData.formatted_address}}</li>
 		<li><strong>Relationship to You: </strong>{{screenData.searchingFor}}</li>
 		<li><strong>Date of Birth: </strong>{{screenData.date_of_birth.month}} {{screenData.date_of_birth.year}}</li>
-		<li><strong>Marital status: </strong>{{screenData.marital_status}}</li>
+		<li><strong>Marital status: </strong>{{screenData.marital_status.name}}</li>
 		<li><strong>Veteran: </strong>{{screenData.veteran}}</li>
 		<li class="categoreis"><strong>Benefits Categories: </strong>
 			<span ng-repeat="benefit in screenData.benefits_categories">{{benefit}}</span>

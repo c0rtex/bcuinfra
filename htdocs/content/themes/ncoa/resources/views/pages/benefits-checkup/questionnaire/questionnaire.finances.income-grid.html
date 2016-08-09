@@ -1,5 +1,5 @@
 <div class="other-income-grid card-panel">
 	<h4 class="step">Finances: Part 3 of 5</h4>
 	<h2>Tell us more about your income.</h2>	
-	<grid class="sales-grid" title="{{income.title}}" description="{{income.description}}" ng-repeat="income in questionnaire.incomes | filter:{selected: true}"></grid>
+	<grid class="sales-grid" code="{{income.code}}" type="1" title="{{income.title}}" description="{{income.description}}" ng-repeat="income in questionnaire.incomes | filter:{selected: true}"></grid>
 </div>
