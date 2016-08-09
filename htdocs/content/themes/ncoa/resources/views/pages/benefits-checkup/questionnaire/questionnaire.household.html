@@ -4,8 +4,9 @@
 
 	<section class="form-group">
 		<label for="citizenship">In what type of housing do you live?</label>
-	  	<select class="form-control" ng-options="housing.name for housing in housings track by housing.id" ng-model="questionnaire.household.housing.housing">
+	  	<select class="form-control" ng-model="questionnaire.request.housing">
 	  		<option value="">-- Select --</option>
+			<option ng-repeat="housing in housings" value="{{housing.id}}">{{housing.name}}</option>
 		</select>
 	</section>
 
@@ -15,33 +16,33 @@
 		<section class="checkbox-stacked">
 			<div class="form-stacked">
 				<label for="household">Living in your household</label>
-				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.household.no_hh_members.no_hh_members">
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.request.no_hh_members">
 			</div>
 
 			<div class="form-stacked">
 				<label for="dependents">Dependent on you for at least one-half of their financial support</label>
-				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.household.no_hh_members.hh_depend">
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.request.hh_depend">
 			</div>
 
 			<div class="form-stacked">
 				<label for="sixtyolder">60 years old or older</label>
-				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.household.no_hh_members.over_60">
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.request.over_60">
 			</div>
 
 			<div class="form-stacked">
 				<label for="disabled">Disabled</label>
-				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.household.no_hh_members.hh_disabled">
+				<input type="text" class="form-control" placeholder="Number of people" ng-model="questionnaire.request.hh_disabled">
 			</div>
 		</section>
 	</section>
 	<section class="radio-group">
 		<label>Do you pay property taxes on your place of residence?</label>
 		<div class="radio">
-	    	<input type="radio" name="optionsPropertyTaxsRadios" id="optionsPropertyTaxsRadios1" value="y" ng-model="questionnaire.household.property_tax">
+	    	<input type="radio" name="optionsPropertyTaxsRadios" id="optionsPropertyTaxsRadios1" value="y" ng-model="questionnaire.request.property_tax">
 			<label for="optionsPropertyTaxsRadios1"><span></span>Yes</label>
 	  	</div>
 	  	<div class="radio">
-	    	<input type="radio" name="optionsPropertyTaxsRadios" id="optionsPropertyTaxsRadios2" value="n" ng-model="questionnaire.household.property_tax">
+	    	<input type="radio" name="optionsPropertyTaxsRadios" id="optionsPropertyTaxsRadios2" value="n" ng-model="questionnaire.request.property_tax">
 			<label for="optionsPropertyTaxsRadios2"><span></span>No</label>
 	  	</div>
   	</section>

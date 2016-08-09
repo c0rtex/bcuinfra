@@ -501,7 +501,7 @@ app.directive('ncoaPrograms',[function(){
 
 }]);
 
-app.directive('pageSwitch',['$state', 'Income','$filter', function($state, Income, $filter){
+app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', function($state, Income, $filter, saveScreening){
 	return {
 		link: function(scope, elm){
 			
@@ -509,7 +509,27 @@ app.directive('pageSwitch',['$state', 'Income','$filter', function($state, Incom
 			scope.nextState = $state.current.data.next;
 			
 			scope.switchPage = function(stateName){
-				$state.go(stateName);
+				if (scope.questionnaire.request != undefined) {
+
+					scope.pgno = scope.pgno == undefined ? 1 : scope.pgno + 1;
+
+					var request = {};
+					if (scope.screening != undefined) {
+						request.screening = scope.screening;
+					}
+
+					request.pgno=scope.pgno;
+					request.prescreen =scope.prevScreening;
+					request.answers = scope.questionnaire.request;
+
+					saveScreening.post(request).success(function(data, status, headers, config) {
+						scope.screening = data;
+						scope.questionnaire.request = undefined;
+						$state.go(stateName);
+					});
+				} else {
+					$state.go(stateName);
+				}
 			}
 
 
@@ -2767,6 +2787,12 @@ app.service('savePrescreen',['$http', function($http){
 	}
 }]);
 
+app.service('saveScreening',['$http', function($http){
+	this.post = function (data) {
+		return $http.post(window.webServiceUrl+'/rest/backend/screening/saveScreening',data);
+	}
+}]);
+
 app.service('prescreenQuestions',['$http', function ($http) {
 	this.get = function() {
 		return $http.get(window.webServiceUrl+'/rest/backend/questionnaire/prescreen');
@@ -3101,7 +3127,7 @@ app.controller('questionnaireBasicController', ['$scope','$state', 'questionnair
 					   {id:"receive_lis",         name:"Extra Help/LIS through Medicare Prescription Drug Coverage"},
 					   {id:"med_receive",         name:"Medicaid"},
 					   {id:"receive_msp",         name:"Medicare Savings Programs (QMB, SLMB, or QI)"},
-					   {id:"snap__receive",       name:"Supplemental Nutrition Assistance Program (SNAP)"},
+					   {id:"snap_receive",        name:"Supplemental Nutrition Assistance Program (SNAP)"},
 					   {id:"ssi_receive",         name:"Supplemental Security Income (SSI)"},
 					   {id:"rec_tricare",         name:"TRICARE"},
 					   {id:"receive_va",          name:"Veteran's Health Care Benefits"},

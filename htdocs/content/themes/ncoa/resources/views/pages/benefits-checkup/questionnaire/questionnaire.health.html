@@ -21,52 +21,53 @@
 
 	<section class="form-group">
 		<label for="citizenship">Have you been told by your doctor or health care provider that you have any of the following chronic conditions: arthritis, asthma, emphysema, bronchitis, cancer, depression, anxiety, diabetes, heart disease, high blood pressure, stroke, osteoporosis, or HIV/AIDS?</label>
-	  	<select class="form-control" ng-options="chronicCondition.name for chronicCondition in chronicConditions track by chronicCondition.id" ng-model="questionnaire.health.chronic_condition.chronic_condition">
+	  	<select class="form-control" ng-model="questionnaire.request.chronic_condition">
 			<option value="">-- Select --</option>
+			<option ng-repeat="chronicCondition in chronicConditions" value="{{chronicCondition.id}}">{{chronicCondition.name}}</option>
 		</select>
 	</section>
 
 	<section class="radio-group">
 		<label>Have you had an eye exam by a Medical Eye Doctor (Ophthalmologist) in the last three years?</label>
 		<div class="radio">
-	    	<input type="radio" name="optionsRadios" id="eyeRadios1" value="y" ng-model="questionnaire.health.eyecare.eyecare">
+	    	<input type="radio" name="optionsRadios" id="eyeRadios1" value="y" ng-model="questionnaire.request.eyecare">
 		    <label for="eyeRadios1"><span></span>Yes</label>
 	  	</div>
 	  	<div class="radio">
-	    	<input type="radio" name="optionsRadios" id="eyeRadios2" value="n" ng-model="questionnaire.health.eyecare.eyecare">
+	    	<input type="radio" name="optionsRadios" id="eyeRadios2" value="n" ng-model="questionnaire.request.eyecare">
 		    <label for="eyeRadios2"><span></span>No</label>
 	  	</div>
   	</section>
   	<section class="radio-group" ng-hide="true">
 		<label>Do you or your spouse (if married) have a condition that seriously limits your ability to work or take care of yourself?</label>
 		<div class="radio">
-	    	<input type="radio" name="optionsSpouseConditionsRadios" id="optionsSpouseConditionsRadios1" value="y" ng-model="questionnaire.health.disabled.disabled">
+	    	<input type="radio" name="optionsSpouseConditionsRadios" id="optionsSpouseConditionsRadios1" value="y" ng-model="questionnaire.request.disabled">
 	    	<label for="optionsSpouseConditionsRadios1"><span></span>Yes</label>
 	  	</div>
 	  	<div class="radio">
-	    	<input type="radio" name="optionsSpouseConditionsRadios" id="optionsSpouseConditionsRadios2" value="n" ng-model="questionnaire.health.disabled.disabled">
+	    	<input type="radio" name="optionsSpouseConditionsRadios" id="optionsSpouseConditionsRadios2" value="n" ng-model="questionnaire.request.disabled">
 	    	<label for="optionsSpouseConditionsRadios2"><span></span>No</label>
 	  	</div>
   	</section>
   	<section class="radio-group">
 		<label>Are you legally blind?</label>
 		<div class="radio">
-	    	<input type="radio" name="optionsBlindRadios" id="optionsBlindRadios1" value="y" ng-model="questionnaire.health.blind.blind">
+	    	<input type="radio" name="optionsBlindRadios" id="optionsBlindRadios1" value="y" ng-model="questionnaire.request.blind">
 				<label for="optionsBlindRadios1"><span></span>Yes</label>
 	  	</div>
 	  	<div class="radio">
-	    	<input type="radio" name="optionsBlindRadios" id="optionsBlindRadios2" value="n" ng-model="questionnaire.health.blind.blind">
+	    	<input type="radio" name="optionsBlindRadios" id="optionsBlindRadios2" value="n" ng-model="questionnaire.request.blind">
 				<label for="optionsBlindRadios2"><span></span>No</label>
 	  	</div>
   	</section>
   	<section class="radio-group">
 		<label>Are you dependent on family members or others for care?</label>
 		<div class="radio">
-	    	<input type="radio" name="optionsDependentFamilyCareRadios" id="optionsDependentFamilyCareRadios1" value="y" ng-model="questionnaire.health.dep_care.dep_care">
+	    	<input type="radio" name="optionsDependentFamilyCareRadios" id="optionsDependentFamilyCareRadios1" value="y" ng-model="questionnaire.request.dep_care">
 		    <label for="optionsDependentFamilyCareRadios1"><span></span>Yes</label>
 	  	</div>
 	  	<div class="radio">
-	    	<input type="radio" name="optionsDependentFamilyCareRadios" id="optionsDependentFamilyCareRadios2" value="n" ng-model="questionnaire.health.dep_care.dep_care">
+	    	<input type="radio" name="optionsDependentFamilyCareRadios" id="optionsDependentFamilyCareRadios2" value="n" ng-model="questionnaire.request.dep_care">
 		    <label for="optionsDependentFamilyCareRadios2"><span></span>No</label>
 	  	</div>
   	</section>
