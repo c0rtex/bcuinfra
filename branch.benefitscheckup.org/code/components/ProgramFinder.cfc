@@ -1,4 +1,4 @@
-<cfcomponent>
+<cfcomponent name="ProgramFinder">
 
   <cfproperty name="incomeTables">
   <cfproperty name="mxAssetVals">
@@ -10,6 +10,10 @@
   <cfproperty name="selectedDrugs">
   <cfproperty name="ynDoBuffer">
   <cfproperty name="subsetRecFlag">
+
+  <cffunction name="init" access="public" output="false" returntype="ProgramFinder" hint="constructor">
+      <cfreturn this>
+  </cffunction>
 
   <cffunction name="dspForms" access="remote" returnFormat="plain">
       <cfargument name="cat" required="no" default="">
@@ -155,6 +159,7 @@
           </cfloop>
       </cfif>
 
+
       <cfset data = structNew()>
       <cfset data.programs=retVal>
 
@@ -243,7 +248,7 @@
       <cfset this.sa.zipradius = 100>
 
       <cfif not isNull(this.screening.getSubset()) And this.screening.getSubset().getId() gt 0>
-          <cfquery name="helperPrg" datasource="#application.dbSrc#">
+          <cfquery name="helperPrg" datasource="dbSrc">
 		    SELECT p.prg_id AS helper_prg_id
 		    FROM subset_program_base spb RIGHT OUTER JOIN subset_program_sum sps
 				ON spb.subset_id=sps.subset_id AND spb.program_id=sps.program_id
@@ -284,11 +289,10 @@
           <cfset unseenVal = 0>
       </cfif>
 
-      <cf_loadApplicationVars hashname="prgvars">
+      <!---<cf_loadApplicationVars hashname="prgvars">--->
 
       <cfset spA = arrayNew(1)>
 
-      <cftransaction>
 
       <cfloop list="#this.prg_list#" index="prg_id">
           <cfset unseenAdjustedVal = unseenVal>
@@ -298,6 +302,7 @@
               </cfif>
           </cfif>
           <cftry>
+              <cftransaction>
               <cfset sp = entityNew("screening_program")>
               <cfset sp.setScreening(this.screening)>
               <cfset sp.setProgram(entityLoadByPK("program",StructFind(application.prgvars,replaceNoCase(prg_id,"'","","all"))))>
@@ -305,13 +310,17 @@
               <cfset sp.setBuffer_flag(0)>
               <cfset sp.setMaybe_flag(0)>
               <cfset entitySave(sp)>
+              </cftransaction>
               <cfset arrayAppend(spa,sp)>
-          <cfcatch></cfcatch>
+          <cfcatch>
+              <cfreturn "Error 1">
+          </cfcatch>
           </cftry>
       </cfloop>
 
       <cfif structKeyExists(this.sa,'wantchips') and this.sa.wantchips eq 'Y'>
           <cftry>
+              <cftransaction>
               <cfset sp = entityNew("screening_program")>
               <cfset sp.setScreening(this.screening)>
               <cfset sp.setProgram(entityLoadByPK("program",StructFind(application.prgvars, '103-309-2191-FD-FD')))>
@@ -320,12 +329,16 @@
               <cfset sp.setMaybe_flag(0)>
               <cfset entitySave(sp)>
               <cfset arrayAppend(spa,sp)>
-          <cfcatch></cfcatch>
+              </cftransaction>
+          <cfcatch>
+              <cfreturn "Error 2">
+          </cfcatch>
           </cftry>
       </cfif>
 
       <cfif this.genericdrugs eq 'Y'>
           <cftry>
+              <cftransaction>
               <cfset sp = entityNew("screening_program")>
               <cfset sp.setScreening(this.screening)>
               <cfset sp.setProgram(entityLoadByPK("program",StructFind(application.prgvars, 'XXX-311-2387-FD-FD')))>
@@ -334,12 +347,16 @@
               <cfset sp.setMaybe_flag(0)>
               <cfset entitySave(sp)>
               <cfset arrayAppend(spa,sp)>
-          <cfcatch></cfcatch>
+              </cftransaction>
+          <cfcatch>
+              <cfreturn "Error 3">
+          </cfcatch>
           </cftry>
       </cfif>
 
       <cfloop list="#this.buff_list#" index="prg_id">
           <cftry>
+              <cftransaction>
               <cfset sp = entityNew("screening_program")>
               <cfset sp.setScreening(this.screening)>
               <cfset sp.setProgram(entityLoadByPK("program",StructFind(application.prgvars,replaceNoCase(prg_id,"'","","all"))))>
@@ -348,10 +365,13 @@
               <cfset sp.setMaybe_flag(0)>
               <cfset entitySave(sp)>
               <cfset arrayAppend(spa,sp)>
-          <cfcatch></cfcatch>
+              </cftransaction>
+          <cfcatch>
+              <cfreturn "Error 4">
+          </cfcatch>
           </cftry>
       </cfloop>
-      </cftransaction>
+
       <cfif not IsNull(this.screening.getPartner()) And this.screening.getPartner().getId() eq 5>
           <cfif ListLen(this.prg_list)>
               <cfif this.sa.citizen eq 'Citizen'>
@@ -429,7 +449,6 @@
       <cfset loopindex = 0>
 
       <cfset querySubsetProgram = ormexecutequery("from subset_program_sum sps join sps.program p where sps.subset=:subset and p.active_flag=1 and (p.state=:state or p.state is null) order by p.sort",{subset=this.screening.getSubset(),state=this.screening.getPreset_state()})>
-
 
       <cfloop array="#querySubsetProgram#" index="i">
           <cfset loopindex = loopindex + 1>
@@ -594,7 +613,9 @@
               </cfloop>
           </cfif>
       </cfloop>
+
       <cfset test1 = FINDNOCASE("no", test, 1)>
+
       <cfif test1 EQ 0 and oldid neq ''>
           <cfset tmp_prg_list = ListAppend(tmp_prg_list, "#oldid#")>
       </cfif>
