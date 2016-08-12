@@ -15,5 +15,6 @@
 <cfcomponent persistent="true" entityname="subset_program_sum" table="subset_program_sum" extends="ToStructConverter">
 	<cfproperty name="program" fieldtype="id,many-to-one" fkcolumn="program_id" cfc="program">
 	<cfproperty name="subset" fieldtype="id,many-to-one" fkcolumn="subset_id" cfc="subset">
+	<cfproperty name="tbl_prg_all" fieldtype="many-to-one" fkcolumn="program_id" cfc="tbl_prg_all" insert="false" update="false">
 </cfcomponent>
 
