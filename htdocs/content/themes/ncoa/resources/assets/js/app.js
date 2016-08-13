@@ -586,6 +586,7 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 					saveScreening.post(request).success(function(data, status, headers, config) {
 						if (toState.name == "questionnaire.loader") {
 							scope.screening = data.screening;
+							scope.found_programs = data.found_programs;
 						} else {
 							scope.screening = data;
 						}
@@ -5072,7 +5073,13 @@ app.controller('questionnaireResultsController', ['$scope', '$state', function($
 		value: 0
 	});
 
-	od.update(17);
+	var odValue = 0;
+
+	for (var i=0; i<$scope.$parent.found_programs.length;i++) {
+		odValue = odValue + $scope.$parent.found_programs[i].count;
+	}
+
+	od.update(odValue);
 
 
 	document.querySelector('.page-wrapper h1').scrollIntoView();
