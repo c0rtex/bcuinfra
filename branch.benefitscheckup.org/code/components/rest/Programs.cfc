@@ -976,11 +976,11 @@
             <cfset helperPrg = ormExecuteQuery("select p.prg_id from subset_program_base spb right outer join spb.subset_program_sum sps inner join sps.tbl_prg_all p  where sps.subset.id=? and spb.subset is null order by p.prg_id",[screening.getSubset().getId()])>
 
              <cfloop array="#helperPrg#" index="i">
-                <cfset helperIndex = ListFind(sa.prg_list, "'#i[1]#'")>
+                <cfset helperIndex = ListFind(sa.prg_list, "'#i#'")>
                 <cfif helperIndex gt 0>
                     <cfset sa.prg_list = ListDeleteAt(sa.prg_list, helperIndex)>
                 </cfif>
-                <cfset helperIndex = ListFind(sa.buff_list, "'#i[1]#'")>
+                <cfset helperIndex = ListFind(sa.buff_list, "'#i#'")>
                 <cfif helperIndex gt 0>
                     <cfset sa.buff_list = ListDeleteAt(sa.buff_list, helperIndex)>
                 </cfif>
