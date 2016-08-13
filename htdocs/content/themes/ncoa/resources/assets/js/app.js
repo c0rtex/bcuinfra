@@ -509,27 +509,7 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 			scope.nextState = $state.current.data.next;
 			
 			scope.switchPage = function(stateName){
-				if (scope.questionnaire.request != undefined) {
-
-					scope.pgno = scope.pgno == undefined ? 1 : scope.pgno + 1;
-
-					var request = {};
-					if (scope.screening != undefined) {
-						request.screening = scope.screening;
-					}
-
-					request.pgno=scope.pgno;
-					request.prescreen =scope.prevScreening;
-					request.answers = scope.questionnaire.request;
-
-					saveScreening.post(request).success(function(data, status, headers, config) {
-						scope.screening = data;
-						scope.questionnaire.request = undefined;
-						$state.go(stateName);
-					});
-				} else {
-					$state.go(stateName);
-				}
+				$state.go(stateName);
 			}
 
 
@@ -556,29 +536,68 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 			*/
 			scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
 
+				var statusChangeProc = function() {
+					var incomes = $filter('filter')(scope.questionnaire.incomes, {selected: true});
+					var assets = $filter('filter')(scope.questionnaire.assets, {selected: true});
 
-				var incomes = $filter('filter')(scope.questionnaire.incomes, {selected: true});
-				var assets = $filter('filter')(scope.questionnaire.assets, {selected: true});				
+					if(fromState.name == "questionnaire.finances-income" && toState.name == "questionnaire.finances-income-grid" && incomes.length == 0){
+						event.preventDefault();
+						$state.transitionTo('questionnaire.finances-assets');
+					}else if(fromState.name == "questionnaire.finances-assets" && toState.name == "questionnaire.finances-income-grid" && incomes.length == 0){
+						event.preventDefault();
+						$state.transitionTo('questionnaire.finances-income');
+					}else if(fromState.name == "questionnaire.finances-assets" && toState.name == "questionnaire.finances-assets-grid" && assets.length == 0){
+						event.preventDefault();
+						$state.transitionTo('questionnaire.loader');
+					}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.finances-assets-grid" && assets.length == 0){
+						event.preventDefault();
+						$state.transitionTo('questionnaire.finances-assets');
+					}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.loader" && assets.length != 0){
+						event.preventDefault();
+						$state.transitionTo('questionnaire.finances-assets-grid');
+					}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.loader" && assets.length == 0){
+						event.preventDefault();
+						$state.transitionTo('questionnaire.finances-assets');
+					}
+				};
 
-				if(fromState.name == "questionnaire.finances-income" && toState.name == "questionnaire.finances-income-grid" && incomes.length == 0){
-					event.preventDefault(); 
-					$state.transitionTo('questionnaire.finances-assets');
-				}else if(fromState.name == "questionnaire.finances-assets" && toState.name == "questionnaire.finances-income-grid" && incomes.length == 0){
-					event.preventDefault(); 
-					$state.transitionTo('questionnaire.finances-income');
-				}else if(fromState.name == "questionnaire.finances-assets" && toState.name == "questionnaire.finances-assets-grid" && assets.length == 0){
-					event.preventDefault(); 
-					$state.transitionTo('questionnaire.loader');
-				}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.finances-assets-grid" && assets.length == 0){
-					event.preventDefault(); 
-					$state.transitionTo('questionnaire.finances-assets');
-				}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.loader" && assets.length != 0){
-					event.preventDefault(); 
-					$state.transitionTo('questionnaire.finances-assets-grid');
-				}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.loader" && assets.length == 0){
-					event.preventDefault(); 
-					$state.transitionTo('questionnaire.finances-assets');
+				if ((scope.questionnaire.request != undefined)||(toState.name == "questionnaire.loader")) {
+
+					scope.pgno = scope.pgno == undefined ? 1 : scope.pgno + 1;
+
+					var request = {};
+					if (scope.screening != undefined) {
+						request.screening = scope.screening;
+					}
+
+					request.pgno=scope.pgno;
+					request.prescreen =scope.prevScreening;
+
+					if (scope.questionnaire.request!= undefined) {
+						request.answers = scope.questionnaire.request;
+					} else {
+						request.answers = {};
+					}
+
+					if (toState.name == "questionnaire.loader") {
+						request.lastSet="true";
+					}
+
+					saveScreening.post(request).success(function(data, status, headers, config) {
+						if (toState.name == "questionnaire.loader") {
+							scope.screening = data.screening;
+						} else {
+							scope.screening = data;
+						}
+						scope.questionnaire.request = undefined;
+						statusChangeProc();
+					});
+				} else {
+					statusChangeProc();
 				}
+
+
+
 			});
 
 
@@ -2899,6 +2918,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		request.dob_month = $scope.prescreen.month.id;
 		request.dob_year = $scope.prescreen.year;
 		request.state_id = $scope.prescreen.stateId;
+		request.st = $scope.prescreen.stateId;
 
 		request.client = $scope.prescreen.searchfor.id;
 
