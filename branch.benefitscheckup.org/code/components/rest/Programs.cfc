@@ -1008,53 +1008,101 @@
 
 
         <cftransaction>
-        <cfloop list="#sa.prg_list#" index="prg_id">
-            <cfset unseenAdjustedVal = unseenVal>
-            <cfif unseenVal eq 0>
-                <cfif Mid(prg_id, Find('-', prg_id) + 1, Find('-', prg_id, Find('-', prg_id) + 1) - Find('-', prg_id) - 1) eq '333'>
-                    <cfset unseenAdjustedVal = 1>
+            <cfloop list="#sa.prg_list#" index="prg_id">
+                <cfset unseenAdjustedVal = unseenVal>
+                <cfif unseenVal eq 0>
+                    <cfif Mid(prg_id, Find('-', prg_id) + 1, Find('-', prg_id, Find('-', prg_id) + 1) - Find('-', prg_id) - 1) eq '333'>
+                        <cfset unseenAdjustedVal = 1>
+                    </cfif>
+                </cfif>
+
+                <cfset tblPrg = entityload("tbl_prg_all",{prg_id=replaceNoCase(prg_id,"'","","all")})>
+                <cfif arraylen(tblPrg) eq 0>
+                    <cfset tblPrg = entityload("program",{legacy_prg_id=replaceNoCase(prg_id,"'","","all")})>
+                    <cfif arraylen(tblPrg) neq 0>
+                        <cfset program = tblPrg[1]>
+                    </cfif>
+                <cfelse>
+                    <cfset program = tblPrg[1].getProgram()>
+                </cfif>
+
+                <cfif arraylen(tblPrg) neq 0>
+                    <cfset insertprogram = entityNew("screening_program")>
+                    <cfset insertprogram.setScreening(screening)>
+                    <cfset insertprogram.setProgram(program)>
+                    <cfset insertprogram.setUnseen_flag(unseenAdjustedVal)>
+                    <cfset insertprogram.setBuffer_flag(0)>
+                    <cfset insertprogram.setMaybe_flag(0)>
+                <cfset entitySave(insertprogram)>
+                </cfif>
+            </cfloop>
+
+            <cfif structKeyExists(sa,'wantchips') and sa.wantchips eq 'y'>
+                <cfset tblPrg = entityload("tbl_prg_all",{prg_id='103-309-2191-FD-FD'})>
+                <cfif arraylen(tblPrg) eq 0>
+                    <cfset tblPrg = entityload("program",{legacy_prg_id='103-309-2191-FD-FD'})>
+                    <cfif arraylen(tblPrg) neq 0>
+                        <cfset program = tblPrg[1]>
+                    </cfif>
+                <cfelse>
+                    <cfset program = tblPrg[1].getProgram()>
+                </cfif>
+
+                <cfif arraylen(tblPrg) neq 0>
+                    <cfset insertchips = entityNew("screening_program")>
+                    <cfset insertchips.setScreening(screening)>
+                    <cfset insertchips.setProgram(program)>
+                    <cfset insertchips.setUnseen_flag(unseenVal)>
+                    <cfset insertchips.setBuffer_flag(0)>
+                    <cfset insertchips.setMaybe_flag(0)>
+                    <cfset entitySave(insertchips)>
                 </cfif>
             </cfif>
 
-            <cfset insertprogram = entityNew("screening_program")>
-            <cfset insertprogram.setScreening(screening)>
-            <cfset insertprogram.setProgram(entityload("tbl_prg_all",{prg_id=replaceNoCase(prg_id,"'","","all")})[1].getProgram())>
-            <cfset insertprogram.setUnseen_flag(unseenAdjustedVal)>
-            <cfset insertprogram.setBuffer_flag(0)>
-            <cfset insertprogram.setMaybe_flag(0)>
-            <cfset entitySave(insertprogram)>
-        </cfloop>
+            <cfif sa.genericdrugs eq 'y'>
+                <cfset tblPrg = entityload("tbl_prg_all",{prg_id='XXX-311-2387-FD-FD'})>
+                <cfif arraylen(tblPrg) eq 0>
+                    <cfset tblPrg = entityload("program",{legacy_prg_id='XXX-311-2387-FD-FD'})>
+                    <cfif arraylen(tblPrg) neq 0>
+                        <cfset program = tblPrg[1]>
+                    </cfif>
+                <cfelse>
+                    <cfset program = tblPrg[1].getProgram()>
+                </cfif>
 
-        <cfif structKeyExists(sa,'wantchips') and sa.wantchips eq 'y'>
-            <cfset insertchips = entityNew("screening_program")>
-            <cfset insertchips.setScreening(screening)>
-            <cfset insertchips.setProgram(entityload("tbl_prg_all",{prg_id='103-309-2191-FD-FD'})[1].getProgram())>
-            <cfset insertchips.setUnseen_flag(unseenVal)>
-            <cfset insertchips.setBuffer_flag(0)>
-            <cfset insertchips.setMaybe_flag(0)>
-            <cfset entitySave(insertchips)>
-        </cfif>
+                <cfif arraylen(tblPrg) neq 0>
+                    <cfset insertgeneric = entityNew("screening_program")>
+                    <cfset insertgeneric.setScreening(screening)>
+                    <cfset insertgeneric.setProgram(program)>
+                    <cfset insertgeneric.setUnseen_flag(unseenVal)>
+                    <cfset insertgeneric.setBuffer_flag(0)>
+                    <cfset insertgeneric.setMaybe_flag(0)>
+                    <cfset entitySave(insertgeneric)>
+                </cfif>
+            </cfif>
 
-        <cfif sa.genericdrugs eq 'y'>
-            <cfset insertgeneric = entityNew("screening_program")>
-            <cfset insertgeneric.setScreening(screening)>
-            <cfset insertgeneric.setProgram(entityload("tbl_prg_all",{prg_id='XXX-311-2387-FD-FD'})[1].getProgram())>
-            <cfset insertgeneric.setUnseen_flag(unseenVal)>
-            <cfset insertgeneric.setBuffer_flag(0)>
-            <cfset insertgeneric.setMaybe_flag(0)>
-            <cfset entitySave(insertgeneric)>
-        </cfif>
+            <cfloop list="#sa.buff_list#" index="prg_id">
 
-        <cfloop list="#sa.buff_list#" index="prg_id">
-            <cfset insertbuffers = entityNew("screening_program")>
-            <cfset insertbuffers.setScreening(screening)>
-            <cfset insertbuffers.setProgram(entityload("tbl_prg_all",{prg_id=replaceNoCase(prg_id,"'","","all")})[1].getProgram())>
-            <cfset insertbuffers.setUnseen_flag(unseenVal)>
-            <cfset insertbuffers.setBuffer_flag(1)>
-            <cfset insertbuffers.setMaybe_flag(0)>
-            <cfset entitySave(insertbuffers)>
-        </cfloop>
+                <cfset tblPrg = entityload("tbl_prg_all",{prg_id=replaceNoCase(prg_id,"'","","all")})>
+                <cfif arraylen(tblPrg) eq 0>
+                    <cfset tblPrg = entityload("program",{legacy_prg_id=replaceNoCase(prg_id,"'","","all")})>
+                    <cfif arraylen(tblPrg) neq 0>
+                        <cfset program = tblPrg[1]>
+                    </cfif>
+                <cfelse>
+                    <cfset program = tblPrg[1].getProgram()>
+                </cfif>
 
+                <cfif arraylen(tblPrg) neq 0>
+                    <cfset insertbuffers = entityNew("screening_program")>
+                    <cfset insertbuffers.setScreening(screening)>
+                    <cfset insertbuffers.setProgram(program)>
+                    <cfset insertbuffers.setUnseen_flag(unseenVal)>
+                    <cfset insertbuffers.setBuffer_flag(1)>
+                    <cfset insertbuffers.setMaybe_flag(0)>
+                    <cfset entitySave(insertbuffers)>
+                </cfif>
+            </cfloop>
        </cftransaction>
         <cfreturn this.calculatedForScreening(screening.getId())>
     </cffunction>
