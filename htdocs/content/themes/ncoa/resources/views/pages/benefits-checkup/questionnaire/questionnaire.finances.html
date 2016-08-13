@@ -8,48 +8,48 @@
 			<section class="checkbox-stacked">
 				<div class="form-stacked">
 					<label for="household">Rent</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.rent">
+					<input id="household" type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.rent">
 				</div>
 
 				<div class="form-stacked">
 					<label for="dependents">Mortgage</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.mortgage">
+					<input id="dependents" type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.mortgage">
 				</div>
 
 				<div class="form-stacked">
 					<label for="sixtyolder">Electricity</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.electricity_costs">
+					<input id="sixtyolder" type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.electricity_costs">
 				</div>
 
 				<div class="form-stacked">
 					<label for="disabled">Gas</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.gas_costs">
+					<input id="disabled" type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.gas_costs">
 				</div>
 
 				<div class="form-stacked">
 					<label for="disabled">Water</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.water_costs">
+					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.water_costs">
 				</div>
 
 				<div class="form-stacked">
 					<label for="disabled">Telephone</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.telephone_costs">
+					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.telephone_costs">
 				</div>
 
 				<div class="form-stacked">
 					<label for="disabled">Other Utilities</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.utility_costs_other">
+					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.utility_costs_other">
 				</div>
 
 				<div class="form-stacked">
 					<label for="disabled">Dependent Care</label>
-					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.dep_care_costs">
+					<input type="text" class="form-control" placeholder="$0" ng-model="questionnaire.request.finances.dep_care_costs">
 				</div>
 			</section>
 			<br />
 			<div class="form-group">
 	    		<label for="monthly_spending">How much money do you spend, on a monthly basis, for medical expenses that are not covered by health insurance?</label>
-		    	<input type="text" class="form-control" id="monthly_spending" placeholder="$0" ng-model="questionnaire.request.med_costs">
+		    	<input type="text" class="form-control" id="monthly_spending" placeholder="$0" ng-model="questionnaire.request.finances.med_costs">
 	  		</div>
 		</section>
   	</div>

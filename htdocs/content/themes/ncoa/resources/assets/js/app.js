@@ -342,7 +342,8 @@ app.directive('grid', [function () {
 	  	title: "@",
 	  	description: "@",
 		code: "@",
-		type: "@"
+		type: "@",
+		request: "@"
 	  },
 	  templateUrl: '/content/themes/ncoa/resources/views/directives/grid/grid-tpl.html?'+(new Date()),
 	  link: function (scope, element, attr) {
@@ -508,7 +509,9 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 			scope.preState = $state.current.data.prev;
 			scope.nextState = $state.current.data.next;
 			
-			scope.switchPage = function(stateName){
+			scope.switchPage = function(stateName,iterator){
+				scope.pgno = scope.pgno == undefined ? 1 : scope.pgno + iterator;
+				if (scope.pgno<1) scope.pgno = 1;
 				$state.go(stateName);
 			}
 
@@ -561,9 +564,9 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 					}
 				};
 
-				if ((scope.questionnaire.request != undefined)||(toState.name == "questionnaire.loader")) {
+				var prefix = fromState.name.replace("questionnaire.","");
 
-					scope.pgno = scope.pgno == undefined ? 1 : scope.pgno + 1;
+				if ((scope.questionnaire.request[prefix] != undefined)||(toState.name == "questionnaire.loader")) {
 
 					var request = {};
 					if (scope.screening != undefined) {
@@ -573,8 +576,8 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 					request.pgno=scope.pgno;
 					request.prescreen =scope.prevScreening;
 
-					if (scope.questionnaire.request!= undefined) {
-						request.answers = scope.questionnaire.request;
+					if (scope.questionnaire.request[prefix]!= undefined) {
+						request.answers = scope.questionnaire.request[prefix];
 					} else {
 						request.answers = {};
 					}
@@ -590,7 +593,6 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 						} else {
 							scope.screening = data;
 						}
-						scope.questionnaire.request = undefined;
 						statusChangeProc();
 					});
 				} else {
@@ -613,6 +615,25 @@ app.directive('profile', ['prescreen', '$state', function (prescreen, $state) {
 	  	scope.screenData = prescreen.screenData;
 		scope.prevScreening = prescreen.results.screening;
 	  	scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
+
+		scope.grossIncomes = function() {
+			var retVal = 0;
+			if (scope.questionnaire.request["finances-income-grid"] != undefined) {
+				for(key in scope.questionnaire.request["finances-income-grid"]) {
+					retVal = retVal + scope.questionnaire.request["finances-income-grid"][key];
+				}
+			}
+			return retVal;
+		}
+
+		scope.categories = function() {
+			var retVal="";
+			for (var i=0;i<scope.screenData.benefits_categories.length;i++) {
+				retVal = retVal + scope.screenData.benefits_categories[i]+", ";
+			}
+			return retVal.substr(0,retVal.length-2)
+		}
+
 	  }
 	}
 }]);

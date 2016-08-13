@@ -8,14 +8,14 @@
 	<section class="radio-group">
 		<label>Are you male or female?</label>
 		<div class="radio" ng-repeat="gender in genders track by gender.id">
-			<input type="radio" name="optionsRadios" id="{{gender.id}}" ng-value="gender.id" ng-model="questionnaire.request.gender">
+			<input type="radio" name="optionsRadios" id="{{gender.id}}" ng-value="gender.id" ng-model="questionnaire.request.basics.gender">
 	  	<label for="{{gender.id}}"><span></span>{{gender.name}}</label>
   	</div>
   	</section>
 
   	<section class="form-group">
   		<label for="citizenship">What is your U.S. citizenship and/or immigration status?</label>
-	  	<select class="form-control select-choice" ng-model="questionnaire.request.citizen">
+	  	<select id="citizenship" class="form-control select-choice" ng-model="questionnaire.request.basics.citizen">
 	  		<option value="">-- Select --</option>
 			<option ng-repeat="citizen in citizens" value="{{citizen.id}}">{{citizen.name}}</option>
 		</select>
@@ -24,17 +24,17 @@
 	<p>Are you currently receiving benefits from or participating in any of the following public programs? Check all that apply.</p>
 	<section class="form-group checkbox-stacked">
 		<div class="checkbox" ng-repeat="receive in receives track by receive.id">
-			<input type="checkbox" ng-value="y" name="{{receive.id}}" id="{{receive.id}}" ng-model="questionnaire.request[receive.id]">
+			<input type="checkbox" ng-value="y" name="{{receive.id}}" id="{{receive.id}}" ng-model="questionnaire.request.basics[receive.id]">
 			<label for="{{receive.id}}"><span></span>{{receive.name}}</label>
 		</div>
 	</section>
 
 	<section class="form-group">
-		<label for="citizenship">What is your race or ethnicity?<button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltip.race}}" data-placement="top" class="fa fa-question-circle"></button></label>
-	  	<select class="form-control select-choice" ng-model="questionnaire.request.race">
+		<label for="race">What is your race or ethnicity?<button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltip.race}}" data-placement="top" class="fa fa-question-circle"></button></label>
+	  	<select id="race" class="form-control select-choice" ng-model="questionnaire.request.basics.race">
 	  		<option value="">-- Select --</option>
 			<option ng-repeat="race in races" value="{{race.id}}">{{race.name}}</option>
 		</select>
-		<input style="margin-top: 10px;" type="text" name="race-for-other" class="form-control" placeholder="Please enter other race" ng-show="questionnaire.request.race == 'other_race'" ng-model="questionnaire.request.other_race" />
+		<input style="margin-top: 10px;" type="text" name="race-for-other" class="form-control" placeholder="Please enter other race" ng-show="questionnaire.request.race == 'other_race'" ng-model="questionnaire.request.basics.other_race" />
 	</section>
 </div>
