@@ -2,7 +2,7 @@
     <cfset categories = structNew()>
     <cfset categories['bcuqc_category_income'] = ["income"]>
     <cfset categories['bcuqc_category_medicaid'] = ["medicaid"]>
-    <cfset categories['bcuqc_category_rx'] = ["medicare","medications"]>
+    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxco"]>
     <cfset categories['bcuqc_category_property_taxrelief'] = ["taxrelief","taxrelief_other"]>
     <cfset categories['bcuqc_category_veteran'] = ["veteran"]>
     <cfset categories['bcuqc_category_nutrition'] = ["nutrition"]>
@@ -53,7 +53,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state.id=? and p.active_flag=1",[sa.st])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
@@ -796,7 +796,7 @@
                                 <cfset strConvertedRule = ReplaceNoCase(strRule, strStructMem, valStructMem)>
                                 <cfset answer = this.ynSpendDown(strConvertedRule,true)>
                             <cfelse>
-                                <cfset answer = this.ynSpendDown(strConvertedRule,false)>
+                                <cfset answer = this.ynSpendDown(strRule,false)>
                             </cfif>
                         </cfif>
                     <cfelse>
