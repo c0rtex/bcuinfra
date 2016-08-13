@@ -810,7 +810,11 @@
                                     <cfset eVal = Evaluate(variableName)>
                                     <cfelseif FindNoCase('session.', variableName) eq 1>
                                     <cfset newVariableName = RemoveChars(variableName, 1, 8)>
-                                    <cfset eVal = sa["#newVariableName#"]>
+                                    <cfif structKeyExists(sa,newVariableName)>
+                                        <cfset eVal = sa[newVariableName]>
+                                    <cfelse>
+                                        <cfset eval = 0>
+                                    </cfif>
                                 <cfelse>
                                     <cfset eVal = 0>
                                 </cfif>
