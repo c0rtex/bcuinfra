@@ -53,7 +53,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state.id=? and p.active_flag=1",[sa.st])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
@@ -753,7 +753,7 @@
                     <cfelseif FINDNOCASE("MXASSET", strRule, 1) NEQ 0>
                         <cfset strTable = Replace(strRule,"(","","ALL")>
                         <cfset strTable = Trim(ReplaceNoCase(strTable,"MXASSET)","","ALL"))>
-                        <cfset getMxAssetVals = ormexecutequery("SELECT single, couple FROM tbl_mx_asset where st=? and tbl_nm=?",[screening.getPreset_state(),strTable])>
+                        <cfset getMxAssetVals = ormexecutequery("SELECT single, couple FROM tbl_mx_asset where state=? and tbl_nm=?",[screening.getPreset_state(),strTable])>
 
                         <cfif structKeyExists(sa,'skipassets') and sa.skipassets EQ "n">
                             <cfif getMxAssetVals[1][1] GTE 1000000>
@@ -770,7 +770,7 @@
                         <cfelse>
                             <cfset strTable = Replace(strRule,"(","","ALL")>
                             <cfset strTable = Trim(ReplaceNoCase(strTable,"MXINCOME)","","ALL"))>
-                            <cfset getMxIncVals = ormexecutequery("SELECT single_max, single_min, couple_max, couple_min FROM tbl_mx_income WHERE st.id=? and tbl_nm=?",[sa.st,strTable])>
+                            <cfset getMxIncVals = ormexecutequery("SELECT single_max, single_min, couple_max, couple_min FROM tbl_mx_income WHERE state.id=? and tbl_nm=?",[sa.st,strTable])>
                             <cfset answer = this.ynMedicareBuyInInc(getMxIncVals[1][1],getMxIncVals[1][2],getMxIncVals[1][3],getMxIncVals[1][4])>
                         </cfif>
                     <cfelseif FINDNOCASE("childstatessiinc", strRule, 1) NEQ 0>
@@ -1092,7 +1092,8 @@
             "scsep_inc","hh_disabled","over_60","leg_resident_5years","dep_care","ch_rec_schip","dep_child","property_tax",
             "vet_wartime","sp_veteran","vet_sp_died","int_emp","utility_2","S_SP_ASSET_REVOCABLE","S_SP_ASSET_TOTAL_COMPLETE",
             "s_sp_asset_auto1","s_sp_asset_home","city","med_costs","Citizen","hh_asset_auto1","hh_asset_home","hh_asset_life_cash",
-            "hh_asset_retirement","med_receive","ssi_receive","disabled","medicare_receive","rec_tricare","receive_va"]>
+            "hh_asset_retirement","med_receive","ssi_receive","disabled","medicare_receive","rec_tricare","receive_va","tricare",
+            "chip","int_assistech","int_medicare","s_income_ss_disable","s_sp_income_ss_disable"]>
 
         <cfloop array="#uaForInit#" index="ind">
             <cfif not structKeyExists(sa,ind) or sa[ind] eq "">
