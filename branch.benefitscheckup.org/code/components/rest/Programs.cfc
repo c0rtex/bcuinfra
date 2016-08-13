@@ -11,7 +11,7 @@
 
     <cfset sa = structNew()>
 
-    <cfset ynDoBuffer = true>
+    <cfset ynDoBuffer = false>
 
     <cffunction name="categoriesToGroups" returnType="String">
         <cfset groupBy = "">
@@ -1092,7 +1092,7 @@
             "scsep_inc","hh_disabled","over_60","leg_resident_5years","dep_care","ch_rec_schip","dep_child","property_tax",
             "vet_wartime","sp_veteran","vet_sp_died","int_emp","utility_2","S_SP_ASSET_REVOCABLE","S_SP_ASSET_TOTAL_COMPLETE",
             "s_sp_asset_auto1","s_sp_asset_home","city","med_costs","Citizen","hh_asset_auto1","hh_asset_home","hh_asset_life_cash",
-            "hh_asset_retirement","med_receive","ssi_receive","disabled"]>
+            "hh_asset_retirement","med_receive","ssi_receive","disabled","medicare_receive","rec_tricare","receive_va"]>
 
         <cfloop array="#uaForInit#" index="ind">
             <cfif not structKeyExists(sa,ind) or sa[ind] eq "">
