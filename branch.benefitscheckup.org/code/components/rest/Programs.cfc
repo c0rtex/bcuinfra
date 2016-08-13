@@ -336,7 +336,7 @@
             <cfset s_sp_low = 0>
         </cfif>
 
-        <cfset table = FINDNOCASE("table", rule, 1)>
+        <cfset table = FINDNOCASE("table", strRule, 1)>
 
         <cfif table EQ 0>
             <cfif ynDoBuffer>
