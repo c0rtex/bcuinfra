@@ -334,7 +334,7 @@
               <li><span class="modal-section-title">Location: {{screenData.formatted_address}}</span></li>
               <li><span class="modal-section-title">Relationship to You: {{screenData.searchingFor}}</span></li>
               <li><span class="modal-section-title">Date of Birth: {{screenData.date_of_birth.month}} {{screenData.date_of_birth.year}}</span></li>
-              <li><span class="modal-section-title">Gross Monthly Income: {{grossIncomes()}}</span></li>
+              <li><span class="modal-section-title">Gross Monthly Income: {{grossIncomes(true)}}</span></li>
             </ul>
           </div>
           <div class="col-md-6">
@@ -352,8 +352,8 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li><span class="modal-section-title">Chronic Conditions: {{questionnaire.request.health.chronic_condition}}</span></li>
-              <li><span class="modal-section-title">Your Medications: {{}}</span></li>
+              <li><span class="modal-section-title">Chronic Conditions: {{cronicConditions()}}</span></li>
+              <li><span class="modal-section-title">Your Medications: {{drugs()}}</span></li>
             </ul>
           </div>
         </div>
@@ -364,9 +364,9 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li><span class="modal-section-title">People in Household: {{questionnaire.request.household.no_hh_members}}</span></li>
-              <li><span class="modal-section-title">People 60 years or Older: {{questionnaire.request.household.over_60}}</span></li>
-              <li><span class="modal-section-title">People with a Disability: {{questionnaire.request.household.hh_disabled}}</span></li>
+              <li><span class="modal-section-title">People in Household: {{questionnaire.request.household.no_hh_members == undefined ? 0 :questionnaire.request.household.no_hh_members}}</span></li>
+              <li><span class="modal-section-title">People 60 years or Older: {{questionnaire.request.household.over_60 == undefined ? 0: questionnaire.request.household.over_60}}</span></li>
+              <li><span class="modal-section-title">People with a Disability: {{questionnaire.request.household.hh_disabled == undefined ? 0: questionnaire.request.household.hh_disabled}}</span></li>
             </ul>
           </div>
         </div>
@@ -377,10 +377,10 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li><span class="modal-section-title">Your Total Assets:</span></li>
-              <li><span class="modal-section-title">Spouse's Total Assets:</span></li>
-              <li><span class="modal-section-title">Household's Total Assets:</span></li>
-              <li><span class="modal-section-title">Total Monthly Income:</span></li>
+              <li><span class="modal-section-title">Your Total Assets: {{assets('s_asset_')}}</span></li>
+              <li><span class="modal-section-title">Spouse's Total Assets: {{assets('sp_asset_')}}</span></li>
+              <li><span class="modal-section-title">Household's Total Assets: {{assets('hh_asset_')}}</span></li>
+              <li><span class="modal-section-title">Total Monthly Income: {{grossIncomes(false)}}</span></li>
             </ul>
           </div>
         </div>

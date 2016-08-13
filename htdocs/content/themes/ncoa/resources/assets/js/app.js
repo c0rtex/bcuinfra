@@ -607,7 +607,7 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 		}
 	}
 }]);
-app.directive('profile', ['prescreen', '$state', function (prescreen, $state) {
+app.directive('profile', ['prescreen', '$state', 'CronicConditions', function (prescreen, $state, CronicConditions) {
 	return {
 	  restrict: 'A',	  
 	  templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
@@ -616,15 +616,52 @@ app.directive('profile', ['prescreen', '$state', function (prescreen, $state) {
 		scope.prevScreening = prescreen.results.screening;
 	  	scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
 
-		scope.grossIncomes = function() {
+		scope.grossIncomes = function(self) {
 			var retVal = 0;
-			if (scope.questionnaire.request["finances-income-grid"] != undefined) {
-				for(key in scope.questionnaire.request["finances-income-grid"]) {
+			try {
+				for (key in scope.questionnaire.request["finances-income-grid"]) {
+					if (self || key.indexOf("s_income_")>-1)
 					retVal = retVal + scope.questionnaire.request["finances-income-grid"][key];
 				}
+			} catch (e) {
+				retVal = 0;
 			}
 			return retVal;
 		}
+
+		scope.cronicConditions = function() {
+			try {
+				return CronicConditions.getByCode(scope.questionnaire.request.health.chronic_condition == undefined ? "" : scope.questionnaire.request.health.chronic_condition);
+			} catch (e) {
+				return "";
+			}
+		}
+
+		scope.drugs = function () {
+			var retVal = "";
+			try {
+				for (var i=0; i<scope.questionnaire.request.health.drugs.length; i++) {
+					retVal = retVal + scope.questionnaire.request.health.drugs[i]+", ";
+				}
+
+			} catch (e) {
+				retVal = ""
+			}
+			return retVal.substr(0,retVal.length-2);
+		}
+
+		scope.assets = function(person) {
+			var retVal = 0;
+			try {
+				for (key in scope.questionnaire.request["finances-assets-grid"]) {
+					if (key.indexOf(person)>-1)
+						retVal = retVal + scope.questionnaire.request["finances-assets-grid"][key];
+				}
+			} catch (e) {
+				retVal = 0;
+			}
+			return retVal;
+		};
 
 		scope.categories = function() {
 			var retVal="";
@@ -794,6 +831,19 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 			}
 		}
 	}
+}]);
+
+app.factory('CronicConditions', [function(){
+	var cronicConditions = [{id:"chroniccondition_no",     name:"No Chronic Conditions"},
+		{id:"chroniccondition_1",      name:"One Chronic Condition"},
+		{id:"chroniccondition_2_more", name:"Two or More Chronic Conditions"}];
+
+	cronicConditions.getByCode = function(code) {
+		for (var i=0;i<cronicConditions.length;i++) {
+			if (cronicConditions[i].id == code) return cronicConditions[i].name;
+		}
+		return "";
+	};
 }]);
 
 app.factory('Asset', [function(){
@@ -3219,9 +3269,9 @@ app.controller('questionnaireFinancesController', ['$scope','Income', 'Asset', '
 	
 
 }]);
-app.controller('questionnaireHealthController', ['$scope', 'questionnaire', function($scope, questionnaire){
+app.controller('questionnaireHealthController', ['$scope', 'questionnaire', 'CronicConditions', function($scope, questionnaire, CronicConditions){
 	
-	$scope.drugs = [{id:'g1', name:'abacavir sulfate'},
+	/*$scope.drugs = [{id:'g1', name:'abacavir sulfate'},
 		{id:'g744', name:'abacavir sulfate/lamivudine'},
 		{id:'g2', name:'abacavir sulfate/lamivudine/zidovudine'},
 		{id:'gen_abac1', name:'abacavir, dolutegravir, and lamivudine'},
@@ -5000,11 +5050,9 @@ app.controller('questionnaireHealthController', ['$scope', 'questionnaire', func
 		{id:'dn_zypr3', name:'Zyprexa Relprevv (olanzapine) Extended release injectible suspension'},
 		{id:'dn_ZYPR2', name:'Zyprexa Zydis (olanzaprine) Orally Disintegrating Tablets'},
 		{id:'dn_zyti1', name:'Zytiga (abiraterone acetate)'},
-		{id:'dn_ZYVO1', name:'Zyvox Tablets (linezolid) '},];
+		{id:'dn_ZYVO1', name:'Zyvox Tablets (linezolid) '},];*/
 
-	$scope.chronicConditions = [{id:"chroniccondition_no",     name:"No Chronic Conditions"},
-								{id:"chroniccondition_1",      name:"One Chronic Condition"},
-								{id:"chroniccondition_2_more", name:"Two or More Chronic Conditions"}];
+	$scope.chronicConditions = CronicConditions;
 
 
 
