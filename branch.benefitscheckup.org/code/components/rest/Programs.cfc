@@ -53,7 +53,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state.id=? and p.active_flag=1",[sa.st])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
@@ -1092,7 +1092,7 @@
             "scsep_inc","hh_disabled","over_60","leg_resident_5years","dep_care","ch_rec_schip","dep_child","property_tax",
             "vet_wartime","sp_veteran","vet_sp_died","int_emp","utility_2","S_SP_ASSET_REVOCABLE","S_SP_ASSET_TOTAL_COMPLETE",
             "s_sp_asset_auto1","s_sp_asset_home","city","med_costs","Citizen","hh_asset_auto1","hh_asset_home","hh_asset_life_cash",
-            "hh_asset_retirement","med_receive","ssi_receive"]>
+            "hh_asset_retirement","med_receive","ssi_receive","disabled"]>
 
         <cfloop array="#uaForInit#" index="ind">
             <cfif not structKeyExists(sa,ind) or sa[ind] eq "">
