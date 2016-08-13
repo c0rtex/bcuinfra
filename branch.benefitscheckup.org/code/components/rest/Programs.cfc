@@ -585,7 +585,7 @@
     <cffunction name="ynPrgFind">
         <cfargument name="rule">
 
-        <cfset StrFullRule = rule>
+        <cfset var StrFullRule = replaceNoCase(rule,"session","sa","ALL")>
 
         <cfloop index="count" from="1" to="10">
             <cfset CharNumP = FindNoCase("prg",StrFullRule,1)>
