@@ -586,6 +586,19 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 						request.lastSet="true";
 					}
 
+					if (prefix == "finances-income-grid") {
+						for (i in scope.questionnaire.request['income-totals']) {
+							request.answers[i] = scope.questionnaire.request['income-totals'][i];
+						}
+
+					}
+
+					if (prefix == "finances-assets-grid") {
+						for (i in scope.questionnaire.request['assets-totals']) {
+							request.answers[i] = scope.questionnaire.request['assets-totals'][i];
+						}
+					}
+
 					saveScreening.post(request).success(function(data, status, headers, config) {
 						if (toState.name == "questionnaire.loader") {
 							scope.screening = data.screening;
@@ -997,67 +1010,80 @@ app.factory('Income', [function(){
 		{
 			title: 'Social Security Retirement and Survivor Benefits',
 			code: 'ss_retire',
+			unearned: true,
 			description: 'Income you get from Social Security.'
 		},
 		{
 			title: 'Social Security Disability',
 			code: 'ss_disable',
-			description: 'Social Security Disability Insurance (SSDI) is a cash benefit you and certain members of your family may get if you worked long enough and paid Social Security taxes.'	
+			unearned: true,
+			description: 'Social Security Disability Insurance (SSDI) is a cash benefit you and certain members of your family may get if you worked long enough and paid Social Security taxes.'
 		},
 		{
 			title: 'Supplemental Security Income',
 			code: 'ssi',
+			unearned: true,
 			description: 'Supplemental Security Income (SSI) is a cash benefit you may get if you have limited income and resources, and are 65 years of age or older, disabled or blind.'	
 		},
 		{
 			title: 'Pension and Retirement Benefits',
 			code: 'pri_retire',
-			description: 'A Pension or Retirement Benefit is a fixed amount of money based on the number of years you worked and how much you earned at jobs you have had.'	
+			unearned: true,
+			description: 'A Pension or Retirement Benefit is a fixed amount of money based on the number of years you worked and how much you earned at jobs you have had.'
 		},
 		{
 			title: 'Work Income',
 			code: 'earned',
-			description: 'Income you get from a job.'	
+			unearned: false,
+			description: 'Income you get from a job.'
 		},
 		{
 			title: 'Dividends and Interest',
 			code: 'dividends',
+			unearned: true,
 			description: 'Dividends are amounts of money, stock, or other property paid to you by a corporation. Interest income includes money you get from savings you have in banks, credit unions, and other organizations.'
 		},
 		{
 			title: 'Veteran Benefits',
 			code: 'vet_ben',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		},
 		{
 			title: 'Cash Assistance',
 			code: 'cash_assist',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		},
 		{
 			title: 'TANF',
 			code: 'tanf',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		},
 		{
 			title: 'Unemployment Insurance',
 			code: 'unemployment',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		},
 		{
 			title: 'Railroad Retirement Benefits',
 			code: 'rr_ben',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		},
 		{
 			title: 'Workers Compensation',
 			code: 'unemploy',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		},
 		{
 			title: 'Other Non Work Income',
 			code: 'other_nw',
-			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'	
+			unearned: true,
+			description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
 		}
 	];
 
@@ -1065,6 +1091,12 @@ app.factory('Income', [function(){
 		return _incomes;
 	}
 
+	income.isUnearned = function(code) {
+		for(var i in _incomes) {
+			if (_incomes[i].code == code) return _incomes[i].unearned;
+		}
+		return true;
+	}
 
 	return income;
 }]);
@@ -2858,7 +2890,7 @@ app.factory('Drugs',[function() {
 		}
 	}
 
-	drug.nameByCode = function(code) {
+	drugs.nameByCode = function(code) {
 		for(var i=0;i<drugs.length;i++) {
 			if (drugs[i].id==code) return drugs[i].name;
 		}
@@ -3257,12 +3289,46 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 	
 	$scope.questionnaire = questionnaire;
 
+	$scope.questionnaire.request = {};
+
 	if($state.current.name == "questionnaire")
 		$state.transitionTo('questionnaire.basics');
 	
 }]);
 app.controller('questionnaireFinancesController', ['$scope','Income', 'Asset', '$state', function($scope, Income, Asset, $state){
 	
+
+	$scope.income_total = function(type) {
+		var retValTotal = 0;
+		var retValUnearned = 0;
+		for (i in $scope.questionnaire.request['finances-income-grid']) {
+			var pos = i.indexOf(type);
+			if (pos==0) {
+				retValTotal = retValTotal + $scope.questionnaire.request['finances-income-grid'][i];
+				if (Income.isUnearned(i.replace(type,""))) {
+					retValUnearned = retValUnearned + $scope.questionnaire.request['finances-income-grid'][i];
+				}
+			}
+		}
+		if ($scope.questionnaire.request['income-totals'] == undefined) $scope.questionnaire.request['income-totals'] = {};
+		$scope.questionnaire.request['income-totals'][type+"total_complete"] = retValTotal;
+		$scope.questionnaire.request['income-totals'][type+"total_unearned"] = retValUnearned;
+		return retValTotal;
+	}
+
+
+	$scope.assets_total = function(type) {
+		var retVal = 0;
+		for (i in $scope.questionnaire.request['finances-assets-grid']) {
+			var pos = i.indexOf(type);
+			if (pos==0) {
+				retVal = retVal + $scope.questionnaire.request['finances-assets-grid'][i];
+			}
+		}
+		if ($scope.questionnaire.request['assets-totals'] == undefined) $scope.questionnaire.request['assets-totals'] = {};
+		$scope.questionnaire.request['assets-totals'][type+"total_complete"] = retVal;
+		return retVal;
+	}
 
 	$scope.setIncomeSelected = function(index){
 		if($scope.questionnaire.incomes[index].selected == undefined)

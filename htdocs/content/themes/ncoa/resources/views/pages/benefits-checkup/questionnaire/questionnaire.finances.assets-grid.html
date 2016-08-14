@@ -2,4 +2,8 @@
 	<h4 class="step">Finances: Part 5 of 5</h4>
 	<h2>Tell us more about your assets.</h2>	
 	<grid class="sales-grid" request="finances-assets-grid" title="{{asset.title}}" code="{{asset.code}}" type="2" description="{{asset.description}}" ng-repeat="asset in questionnaire.assets | filter:{selected: true}"></grid>
+	<input type="hidden" ng-value="assets_total('s_asset_')" name="s_asset_complete">
+	<input type="hidden" ng-value="assets_total('sp_asset_')" name="sp_asset_total_complete">
+	<input type="hidden" ng-value="assets_total('s_sp_asset_')" name="s_sp_asset_total_complete">
+	<input type="hidden" ng-value="assets_total('hh_asset_')" name="hh_asset_total_complete">
 </div>
