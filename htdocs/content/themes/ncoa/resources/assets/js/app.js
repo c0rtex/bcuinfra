@@ -387,8 +387,10 @@ app.directive('medicationSelector',['Drugs', function(Drugs){
 		templateUrl: '/content/themes/ncoa/resources/views/directives/med-selector/medication-selector.html?'+(new Date()),
 		link: function(scope, elm){
 
-			for(var i=0; i<Drugs.length; i++) {
-				var option = $("<option/>",{value:Drugs[i].id, text:Drugs[i].name});
+			var drugs = Drugs.getDrugs();
+
+			for(var i=0; i<drugs.length; i++) {
+				var option = $("<option/>",{value:drugs[i].id, text:drugs[i].name});
 				option.appendTo($("#multiselect"));
 			}
 
@@ -587,14 +589,14 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 					}
 
 					if (prefix == "finances-income-grid") {
-						for (i in scope.questionnaire.request['income-totals']) {
+						for (var i in scope.questionnaire.request['income-totals']) {
 							request.answers[i] = scope.questionnaire.request['income-totals'][i];
 						}
 
 					}
 
 					if (prefix == "finances-assets-grid") {
-						for (i in scope.questionnaire.request['assets-totals']) {
+						for (var i in scope.questionnaire.request['assets-totals']) {
 							request.answers[i] = scope.questionnaire.request['assets-totals'][i];
 						}
 					}
@@ -632,7 +634,7 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
 		scope.grossIncomes = function(self) {
 			var retVal = 0;
 			try {
-				for (key in scope.questionnaire.request["finances-income-grid"]) {
+				for (var key in scope.questionnaire.request["finances-income-grid"]) {
 					if (self || key.indexOf("s_income_")>-1)
 					retVal = retVal + Drugs.nameByCode(scope.questionnaire.request["finances-income-grid"][key]);
 				}
@@ -666,7 +668,7 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
 		scope.assets = function(person) {
 			var retVal = 0;
 			try {
-				for (key in scope.questionnaire.request["finances-assets-grid"]) {
+				for (var key in scope.questionnaire.request["finances-assets-grid"]) {
 					if (key.indexOf(person)>-1)
 						retVal = retVal + scope.questionnaire.request["finances-assets-grid"][key];
 				}
@@ -847,13 +849,20 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 }]);
 
 app.factory('CronicConditions', [function(){
-	var cronicConditions = [{id:"chroniccondition_no",     name:"No Chronic Conditions"},
+
+	var cronicConditions = {};
+
+	var _cronicConditions = [{id:"chroniccondition_no",     name:"No Chronic Conditions"},
 		{id:"chroniccondition_1",      name:"One Chronic Condition"},
 		{id:"chroniccondition_2_more", name:"Two or More Chronic Conditions"}];
 
+	cronicConditions.getCronicConditions = function() {
+		return _cronicConditions;
+	};
+
 	cronicConditions.getByCode = function(code) {
-		for (var i=0;i<cronicConditions.length;i++) {
-			if (cronicConditions[i].id == code) return cronicConditions[i].name;
+		for (var i=0;i<_cronicConditions.length;i++) {
+			if (_cronicConditions[i].id == code) return _cronicConditions[i].name;
 		}
 		return "";
 	};
@@ -930,7 +939,10 @@ app.factory('Asset', [function(){
 	return asset;
 }]);
 app.factory('BenefitItems', [function(){
-	var BenefitItems = [
+
+	var BenefitItems = {};
+
+	var _BenefitItems = [
 		{
 			name: 'Medications',
 			code: 'bcuqc_category_rx',
@@ -993,9 +1005,13 @@ app.factory('BenefitItems', [function(){
 		}
 	];
 
+	BenefitItems.getBenefitItems = function() {
+		return _BenefitItems;
+	};
+
 	BenefitItems.getByCode = function(code) {
-		for(var i=0;i<BenefitItems.length;i++) {
-			if (BenefitItems[i].code == code) return BenefitItems[i];
+		for(var i=0;i<_BenefitItems.length;i++) {
+			if (_BenefitItems[i].code == code) return _BenefitItems[i];
 		}
 		return undefined;
 	}
@@ -1101,7 +1117,10 @@ app.factory('Income', [function(){
 	return income;
 }]);
 app.factory('Drugs',[function() {
-	var drugs = [{id:'g1', name:'abacavir sulfate'},
+
+	var Drugs = {};
+
+	var _drugs = [{id:'g1', name:'abacavir sulfate'},
 		{id:'g744', name:'abacavir sulfate/lamivudine'},
 		{id:'g2', name:'abacavir sulfate/lamivudine/zidovudine'},
 		{id:'gen_abac1', name:'abacavir, dolutegravir, and lamivudine'},
@@ -2882,26 +2901,25 @@ app.factory('Drugs',[function() {
 		{id:'dn_zyti1', name:'Zytiga (abiraterone acetate)'},
 		{id:'dn_ZYVO1', name:'Zyvox Tablets (linezolid) '}];
 
-	drugs.codesByNames = {};
-
-	for (var i=0;i<drugs.length;i++) {
-		if (drugs.codesByNames[drugs[i].name] == undefined) {
-			drugs.codesByNames[drugs[i].name] = drugs[i].id;
-		}
+	Drugs.getDrugs = function() {
+		return _drugs;
 	}
 
-	drugs.nameByCode = function(code) {
-		for(var i=0;i<drugs.length;i++) {
-			if (drugs[i].id==code) return drugs[i].name;
+	Drugs.nameByCode = function(code) {
+		for(var i=0;i<_drugs.length;i++) {
+			if (_drugs[i].id==code) return _drugs[i].name;
 		}
 		return "";
 	};
 
-	drugs.codeByName = function(name) {
-		return drugs.codesByNames[name];
+	Drugs.codeByName = function(name) {
+		for(var i=0;i<_drugs.length;i++) {
+			if (_drugs[i].name==name) return _drugs[i].id;
+		}
+		return "";
 	}
 
-	return drugs;
+	return Drugs;
 }]);
 
 
@@ -2983,7 +3001,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 					  {id:"bcuqc_income_3000",  name:"More than $3,000"}];
 
 	$scope.tooltip = "<strong>Gross monthly income</strong> is your income before any deductions are taken. Please include yourself and your spouse (if applicable) in your calculations.";
-	$scope.programs = BenefitItems;
+	$scope.programs = BenefitItems.getBenefitItems();
 	$scope.selectLinkText = "Select All";
 	
 
@@ -3026,7 +3044,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 		prescreen.screenData.benefits_categories = [];
 
-		for (programCatCode in $scope.programList) {
+		for (var programCatCode in $scope.programList) {
 			prescreen.screenData.benefits_categories.push($scope.programList[programCatCode].name);
 		}
 
@@ -3055,7 +3073,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 			request.sp_veteran = $scope.prescreen.spouse_veteran_status;
 		}
 
-		for (programCatCode in $scope.programList) {
+		for (var programCatCode in $scope.programList) {
 			request[programCatCode] = 'y';
 		}
 
@@ -3295,13 +3313,13 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 		$state.transitionTo('questionnaire.basics');
 	
 }]);
-app.controller('questionnaireFinancesController', ['$scope','Income', 'Asset', '$state', function($scope, Income, Asset, $state){
+app.controller('questionnaireFinancesController', ['$scope','Income', function($scope, Income){
 	
 
 	$scope.income_total = function(type) {
 		var retValTotal = 0;
 		var retValUnearned = 0;
-		for (i in $scope.questionnaire.request['finances-income-grid']) {
+		for (var i in $scope.questionnaire.request['finances-income-grid']) {
 			var pos = i.indexOf(type);
 			if (pos==0) {
 				retValTotal = retValTotal + $scope.questionnaire.request['finances-income-grid'][i];
@@ -3319,7 +3337,7 @@ app.controller('questionnaireFinancesController', ['$scope','Income', 'Asset', '
 
 	$scope.assets_total = function(type) {
 		var retVal = 0;
-		for (i in $scope.questionnaire.request['finances-assets-grid']) {
+		for (var i in $scope.questionnaire.request['finances-assets-grid']) {
 			var pos = i.indexOf(type);
 			if (pos==0) {
 				retVal = retVal + $scope.questionnaire.request['finances-assets-grid'][i];
@@ -3350,11 +3368,11 @@ app.controller('questionnaireFinancesController', ['$scope','Income', 'Asset', '
 	
 
 }]);
-app.controller('questionnaireHealthController', ['$scope', 'questionnaire', 'Drugs', 'CronicConditions', function($scope, questionnaire, Drugs, CronicConditions){
+app.controller('questionnaireHealthController', ['$scope', 'questionnaire', /*'Drugs',*/ 'CronicConditions', function($scope, questionnaire, /*Drugs,*/ CronicConditions){
 	
-	$scope.drugs = Drugs;
+	//$scope.drugs = Drugs.getDrugs();
 
-	$scope.chronicConditions = CronicConditions;
+	$scope.chronicConditions = CronicConditions.getCronicConditions();
 
 
 
@@ -4922,7 +4940,7 @@ function dynamicAddEvent(id){
       var hash = 0, i, character;
       if (value.length == 0) return hash;
       var ls = 0;
-      for (i = 0, ls = value.length; i < ls; i++) {
+      for (var i = 0, ls = value.length; i < ls; i++) {
         character  = value.charCodeAt(i);
         hash  = ((hash<<5)-hash)+character;
         hash |= 0; // Convert to 32bit integer
