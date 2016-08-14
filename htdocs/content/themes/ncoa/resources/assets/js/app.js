@@ -504,7 +504,7 @@ app.directive('ncoaPrograms',[function(){
 
 }]);
 
-app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', function($state, Income, $filter, saveScreening){
+app.directive('pageSwitch',['$state', 'Income','$filter', 'questionnaire', 'saveScreening', function($state, Income, $filter, questionnaire, saveScreening){
 	return {
 		link: function(scope, elm){
 			
@@ -572,11 +572,11 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 
 					var request = {};
 					if (scope.screening != undefined) {
-						request.screening = scope.screening;
+						request.screening = scope.questionnaire.screening;
 					}
 
 					request.pgno=scope.pgno;
-					request.prescreen =scope.prevScreening;
+					request.prescreen =scope.questionnaire.prevScreening;
 
 					if (scope.questionnaire.request[prefix]!= undefined) {
 						request.answers = scope.questionnaire.request[prefix];
@@ -603,21 +603,23 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 
 					saveScreening.post(request).success(function(data, status, headers, config) {
 						if (toState.name == "questionnaire.loader") {
-							scope.screening = data.screening;
-							scope.found_programs = data.found_programs;
-							scope.key_programs = [];
-							for (var i=0;i<scope.found_programs.length;i++) {
-								for (var j=0;j<scope.found_programs[i].programs.length;j++) {
-									if (scope.found_programs[i].programs[j].key_program) {
-										var program = scope.found_programs[i].programs[j];
-										program.category = scope.found_programs[i].category;
-										scope.key_programs.push(program);
+							scope.questionnaire.screening = data.screening;
+							scope.questionnaire.found_programs = data.found_programs;
+							scope.questionnaire.key_programs = [];
+							for (var i=0;i<scope.questionnaire.found_programs.length;i++) {
+								for (var j=0;j<scope.questionnaire.found_programs[i].programs.length;j++) {
+									if (scope.questionnaire.found_programs[i].programs[j].key_program) {
+										var program = scope.questionnaire.found_programs[i].programs[j];
+										program.category = scope.questionnaire.found_programs[i].category;
+										scope.questionnaire.key_programs.push(program);
 									}
 								}
 							}
+							questionnaire = scope.questionnaire;
 							$state.transitionTo('questionnaire.results');
 						} else {
-							scope.screening = data;
+							scope.questionnaire.screening = data;
+							questionnaire = scope.questionnaire;
 						}
 						statusChangeProc();
 					});
@@ -639,7 +641,7 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
 	  templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
 	  link: function (scope, element, attr) {
 	  	scope.screenData = prescreen.screenData;
-		scope.prevScreening = prescreen.results.screening;
+		scope.questionnaire.prevScreening = prescreen.results.screening;
 	  	scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
 
 		scope.cronicConditions = function() {
@@ -2939,6 +2941,7 @@ app.factory('prescreen', [function(){
 
 	return prescreenform;
 }]);
+
 app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 	var questionnaire = {}
 
@@ -3290,10 +3293,9 @@ app.controller('questionnaireBasicController', ['$scope','$state', 'questionnair
 }]);
 app.controller('questionnaireController', ['$scope','$state', 'questionnaire', function($scope, $state, questionnaire){
 	
-	if ($scope.questionnaire == undefined) {
+	$scope.questionnaire = questionnaire;
 
-		$scope.questionnaire = questionnaire;
-
+	if ($scope.questionnaire.request == undefined) {
 		$scope.questionnaire.request = {};
 	}
 
@@ -3308,8 +3310,7 @@ app.controller('questionnaireFinancesController', ['$scope','Income', function($
 		var retValTotal = 0;
 		var retValUnearned = 0;
 		for (var i in $scope.questionnaire.request['finances-income-grid']) {
-			var pos = i.indexOf(type);
-			if (pos==0) {
+			if ((i.indexOf(type)==0) && (i.indexOf('total_complete')==-1) && (i.indexOf('total_unearned')==-1)) {
 				retValTotal = retValTotal + $scope.questionnaire.request['finances-income-grid'][i];
 				if (Income.isUnearned(i.replace(type,""))) {
 					retValUnearned = retValUnearned + $scope.questionnaire.request['finances-income-grid'][i];
@@ -3326,8 +3327,7 @@ app.controller('questionnaireFinancesController', ['$scope','Income', function($
 	$scope.assets_total = function(type) {
 		var retVal = 0;
 		for (var i in $scope.questionnaire.request['finances-assets-grid']) {
-			var pos = i.indexOf(type);
-			if (pos==0) {
+			if ((i.indexOf(type)==0) && (i.indexOf('total_complete')==-1)) {
 				retVal = retVal + $scope.questionnaire.request['finances-assets-grid'][i];
 			}
 		}
@@ -3432,7 +3432,13 @@ app.directive("divKeyProgram",[function() {
 			program:"=program"
 		},
 		link: function(scope,element) {
-			scope.someValue = "";
+			scope.subString = function(string) {
+				if (string.length>70) {
+					return string.substring(0,70)+"...";
+				} else {
+					return string;
+				}
+			}
 		}
 	}
 }]);
@@ -3460,8 +3466,8 @@ app.controller('questionnaireResultsController', ['$scope', '$state', function($
 
 	var odValue = 0;
 
-	for (var i=0; i<$scope.$parent.found_programs.length;i++) {
-		odValue = odValue + $scope.$parent.found_programs[i].count;
+	for (var i=0; i<$scope.$parent.questionnaire.found_programs.length;i++) {
+		odValue = odValue + $scope.$parent.questionnaire.found_programs[i].count;
 	}
 
 	od.update(odValue);
