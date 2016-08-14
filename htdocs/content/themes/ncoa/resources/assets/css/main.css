@@ -10092,12 +10092,43 @@ grid:last-child .sales-grid {
     color: #323232;
     line-height: 1.222em;
     margin-top: 15px; }
-  .questionnaire .program-card .icon-healthcare {
-    background: url(../images/categories/category_health.svg) no-repeat top center; }
-  .questionnaire .program-card .icon-medication {
+
+  .questionnaire .program-card .bcuqc_category_rx {
     background: url(../images/categories/category_medicine.svg) no-repeat top center; }
-  .questionnaire .program-card .icon-meals {
+
+  .questionnaire .program-card .bcuqc_category_medicaid {
+    background: url(../images/categories/category_health.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_income {
+    background: url(../images/categories/category_income.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_nutrition {
     background: url(../images/categories/category_food.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_utility {
+    background: url(../images/categories/category_housing.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_property_taxrelief {
+    background: url(../images/categories/category_taxRelief.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_veteran {
+    background: url(../images/categories/category_veteran.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_1 {
+    background: url(../images/categories/category_employment.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_2 {
+    background: url(../images/categories/category_transportation.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_3 {
+    background: url(../images/categories/category_education.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_4 {
+    background: url(../images/categories/category_discounts.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_5 {
+    background: url(../images/categories/category_assistance.svg) no-repeat top center; }
+
   @media (min-width: 768px) {
     .questionnaire .program-card {
       width: 48%;

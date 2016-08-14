@@ -334,7 +334,7 @@
               <li><span class="modal-section-title">Location: {{screenData.formatted_address}}</span></li>
               <li><span class="modal-section-title">Relationship to You: {{screenData.searchingFor}}</span></li>
               <li><span class="modal-section-title">Date of Birth: {{screenData.date_of_birth.month}} {{screenData.date_of_birth.year}}</span></li>
-              <li><span class="modal-section-title">Gross Monthly Income: {{grossIncomes(false)}}</span></li>
+              <li><span class="modal-section-title">Gross Monthly Income: {{questionnaire.request['income-totals'].s_income_total_complete}}</span></li>
             </ul>
           </div>
           <div class="col-md-6">
@@ -377,10 +377,10 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li><span class="modal-section-title">Your Total Assets: {{assets('s_asset_')}}</span></li>
-              <li><span class="modal-section-title">Spouse's Total Assets: {{assets('sp_asset_')}}</span></li>
-              <li><span class="modal-section-title">Household's Total Assets: {{assets('hh_asset_')}}</span></li>
-              <li><span class="modal-section-title">Total Monthly Income: {{grossIncomes(true)}}</span></li>
+              <li><span class="modal-section-title">Your Total Assets: {{questionnaire.request['assets-totals'].s_asset_total_complete}}</span></li>
+              <li><span class="modal-section-title">Spouse's Total Assets: {{questionnaire.request['assets-totals'].sp_asset_total_complete}}</span></li>
+              <li><span class="modal-section-title">Household's Total Assets: {{questionnaire.request['assets-totals'].hh_asset_total_complete}}</span></li>
+              <li><span class="modal-section-title">Total Monthly Income: {{questionnaire.request['income-totals'].s_income_total_complete+questionnaire.request['income-totals'].sp_income_total_complete+questionnaire.request['income-totals'].s_sp_income_total_complete+questionnaire.request['income-totals'].hh_income_total_complete}}</span></li>
             </ul>
           </div>
         </div>

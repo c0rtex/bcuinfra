@@ -12,28 +12,13 @@
 	</div>
 	<p>Select a program to learn more and apply.</p>
 
-	<h3><strong>Key Programs</strong></h3>
-	<p>These 4 programs are where we recommend you start, because they could give you the best cost savings.</p>
-	<div class="program-card card hover-shade" ui-sref="fact-sheets">
-		<h3 class="program-card-icon icon-healthcare">Medicaid</h3>
-		<p>Short description of program here. Short description of program</p>
-		<a ui-sref="fact-sheets" class="btn btn-link">Learn More and Apply</a>
-	</div>
-	<div class="program-card card hover-shade" ui-sref="fact-sheets">
-		<h3 class="program-card-icon icon-medication">LIS Medicare Extra Help</h3>
-		<p>Short description of program here. Short description of program</p>
-		<a ui-sref="fact-sheets" class="btn btn-link">Learn More and Apply</a>
-	</div>
-	<div class="program-card card hover-shade" ui-sref="fact-sheets">
-		<h3 class="program-card-icon icon-healthcare">Medicare Savings Program (MSP)</h3>
-		<p>Short description of program here. Short description of program</p>
-		<a ui-sref="fact-sheets" class="btn btn-link">Learn More and Apply</a>
-	</div>
-	<div class="program-card card hover-shade" ui-sref="fact-sheets">
-		<h3 class="program-card-icon icon-meals">Supplemental Nutrition Assistance Program (SNAP)</h3>
-		<p>Short description of program here. Short description of program</p>
-		<a ui-sref="fact-sheets" class="btn btn-link">Learn More and Apply</a>
-	</div>
+	<span ng-if="$parent.key_programs.length>0">
+		<h3><strong>Key Programs</strong></h3>
+		<p>These {{$parent.key_programs.length}} programs are where we recommend you start, because they could give you the best cost savings.</p>
+		<span ng-repeat="program in $parent.key_programs">
+			<div-key-program program="program"></div-key-program>
+		</span>
+	</span>
 
 	<h3><strong>More Benefit Programs</strong></h3>
 	<p>Select a category to see the benefits you may qualify for.</p>

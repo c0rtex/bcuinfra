@@ -605,6 +605,17 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'saveScreening', funct
 						if (toState.name == "questionnaire.loader") {
 							scope.screening = data.screening;
 							scope.found_programs = data.found_programs;
+							scope.key_programs = [];
+							for (var i=0;i<scope.found_programs.length;i++) {
+								for (var j=0;j<scope.found_programs[i].programs.length;j++) {
+									if (scope.found_programs[i].programs[j].key_program) {
+										var program = scope.found_programs[i].programs[j];
+										program.category = scope.found_programs[i].category;
+										scope.key_programs.push(program);
+									}
+								}
+							}
+							$state.transitionTo('questionnaire.results');
 						} else {
 							scope.screening = data;
 						}
@@ -631,19 +642,6 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
 		scope.prevScreening = prescreen.results.screening;
 	  	scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
 
-		scope.grossIncomes = function(self) {
-			var retVal = 0;
-			try {
-				for (var key in scope.questionnaire.request["finances-income-grid"]) {
-					if (self || key.indexOf("s_income_")>-1)
-					retVal = retVal + Drugs.nameByCode(scope.questionnaire.request["finances-income-grid"][key]);
-				}
-			} catch (e) {
-				retVal = 0;
-			}
-			return retVal;
-		}
-
 		scope.cronicConditions = function() {
 			try {
 				return CronicConditions.getByCode(scope.questionnaire.request.health.chronic_condition == undefined ? "" : scope.questionnaire.request.health.chronic_condition);
@@ -656,7 +654,7 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
 			var retVal = "";
 			try {
 				for (var i=0; i<scope.questionnaire.request.health.drugs.length; i++) {
-					retVal = retVal + scope.questionnaire.request.health.drugs[i]+", ";
+					retVal = retVal + Drugs.nameByCode(scope.questionnaire.request.health.drugs[i])+", ";
 				}
 
 			} catch (e) {
@@ -664,19 +662,6 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
 			}
 			return retVal.substr(0,retVal.length-2);
 		}
-
-		scope.assets = function(person) {
-			var retVal = 0;
-			try {
-				for (var key in scope.questionnaire.request["finances-assets-grid"]) {
-					if (key.indexOf(person)>-1)
-						retVal = retVal + scope.questionnaire.request["finances-assets-grid"][key];
-				}
-			} catch (e) {
-				retVal = 0;
-			}
-			return retVal;
-		};
 
 		scope.categories = function() {
 			var retVal="";
@@ -3305,9 +3290,12 @@ app.controller('questionnaireBasicController', ['$scope','$state', 'questionnair
 }]);
 app.controller('questionnaireController', ['$scope','$state', 'questionnaire', function($scope, $state, questionnaire){
 	
-	$scope.questionnaire = questionnaire;
+	if ($scope.questionnaire == undefined) {
 
-	$scope.questionnaire.request = {};
+		$scope.questionnaire = questionnaire;
+
+		$scope.questionnaire.request = {};
+	}
 
 	if($state.current.name == "questionnaire")
 		$state.transitionTo('questionnaire.basics');
@@ -3394,11 +3382,6 @@ app.controller('questionnaireLoaderController', ['$scope', '$state', function($s
 	$('.btns-container').hide();
 	$('.card-nested').addClass('loader');
 
-	setTimeout(function(){		
-		$state.transitionTo('questionnaire.results');
-	}, 8000);		
-	
-
 	$scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
 		$('.btns-container').show();
 		$('.card-nested').removeClass('loader');
@@ -3431,12 +3414,25 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 app.directive('divProgramsCategory',['BenefitItems', function(BenefitItems) {
 	return {
 		restrict: 'E',
-		templateUrl:'/content/themes/ncoa/resources/views/pages/benefits-checkup/programs/programs.category.html?'+(new Date()),
+		templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
 		link: function(scope, element) {
 			scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
 		},
 		scope: {
 			found_program:"=foundProgram"
+		}
+	}
+}]);
+
+app.directive("divKeyProgram",[function() {
+	return {
+		restrict: 'E',
+		templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.key-program.html?'+(new Date()),
+		scope: {
+			program:"=program"
+		},
+		link: function(scope,element) {
+			scope.someValue = "";
 		}
 	}
 }]);
