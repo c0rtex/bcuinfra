@@ -571,7 +571,7 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'questionnaire', 'save
 				if ((scope.questionnaire.request[prefix] != undefined)||(toState.name == "questionnaire.loader")) {
 
 					var request = {};
-					if (scope.screening != undefined) {
+					if (scope.questionnaire.screening != undefined) {
 						request.screening = scope.questionnaire.screening;
 					}
 

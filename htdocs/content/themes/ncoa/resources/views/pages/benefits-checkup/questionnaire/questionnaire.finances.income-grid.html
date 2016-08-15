@@ -1,8 +1,39 @@
 <div class="other-income-grid card-panel">
 	<h4 class="step">Finances: Part 3 of 5</h4>
-	<h2>Tell us more about your income.</h2>	
+	<h2>Tell us more about your income.</h2>
+	<section class="sales-grid">
+		<div>
+			<h3>Total</h3>
+		</div>
+		<form class="form-inline col-md-12">
+			<div class="form-group total">
+				<label>Self</label>
+				<span class="form-control input-regular">${{questionnaire.request['income-totals'].s_income_total_complete}}</span>
+			</div>
+      <span ng-if="screenData.marital_status.id=='married'||$parent.$parent.$parent.screenData.marital_status.id=='widowed'||$parent.$parent.$parent.screenData.marital_status.id==''">
+			<div class="form-group total">
+				<label>Spose</label>
+				<span class="form-control input-regular">${{questionnaire.request['income-totals'].sp_income_total_complete}}</span>
+			</div>
+			<div class="form-group total">
+				<label>Joint</label>
+				<span class="form-control input-regular">${{questionnaire.request['income-totals'].s_sp_income_total_complete}}</span>
+			</div>
+      </span>
+
+			<div class="form-group total">
+				<label>Household</label>
+				<span class="form-control input-regular">${{questionnaire.request['income-totals'].hh_income_total_complete}}</span>
+			</div>
+			<div class="form-group total">
+				<label>Total incomes</label>
+				<span class="form-control input-regular">${{questionnaire.request['income-totals'].s_income_total_complete+questionnaire.request['income-totals'].sp_income_total_complete+questionnaire.request['income-totals'].s_sp_income_total_complete+questionnaire.request['income-totals'].hh_income_total_complete}}</span>
+			</div>
+		</form>
+	</section>
+
 	<grid class="sales-grid" request="finances-income-grid" code="{{income.code}}" type="1" title="{{income.title}}" description="{{income.description}}" ng-repeat="income in questionnaire.incomes | filter:{selected: true}"></grid>
-	<input type="hidden" ng-value="income_total('s_income_')" name="s_income_complete">
+	<input type="hidden" ng-value="income_total('s_income_')" name="s_income_total_complete">
 	<input type="hidden" ng-value="income_total('sp_income_')" name="sp_income_total_complete">
 	<input type="hidden" ng-value="income_total('s_sp_income_')" name="s_sp_income_total_complete">
 	<input type="hidden" ng-value="income_total('hh_income_')" name="hh_income_total_complete">

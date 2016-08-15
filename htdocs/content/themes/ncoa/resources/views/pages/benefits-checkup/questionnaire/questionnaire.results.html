@@ -10,13 +10,13 @@
 	<div class="results-tally">
 		There are <span class="odometer">0</span> <strong>benefit programs</strong> you may qualify for.
 	</div>
-	<span ng-if="$parent.questionnaire.key_programs.length>0">
+	<span ng-if="$parent.questionnaire.found_programs.length>0">
 		<p>Select a program to learn more and apply.</p>
-
-		<h3><strong>Key Programs</strong></h3>
-		<p>These {{$parent.questionnaire.key_programs.length}} programs are where we recommend you start, because they could give you the best cost savings.</p>
-		<div-key-program class="program-card card hover-shade" ui-sref="fact-sheets" ng-repeat="program in $parent.questionnaire.key_programs" program="program"></div-key-program>
-
+		<span ng-if="$parent.questionnaire.key_programs.length>0">
+			<h3><strong>Key Programs</strong></h3>
+			<p>These {{$parent.questionnaire.key_programs.length}} programs are where we recommend you start, because they could give you the best cost savings.</p>
+			<div-key-program class="program-card card hover-shade" ui-sref="fact-sheets" ng-repeat="program in $parent.questionnaire.key_programs" program="program"></div-key-program>
+		</span>
 		<h3><strong>More Benefit Programs</strong></h3>
 		<p>Select a category to see the benefits you may qualify for.</p>
 		<div class="more-benefits">
