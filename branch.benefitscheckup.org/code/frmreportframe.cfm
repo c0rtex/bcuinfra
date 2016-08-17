@@ -20,12 +20,7 @@
 	<cfoutput>
 	<table border="0" cellspacing="0" cellpadding="5">
 		<tr>
-			<td valign="middle">
-			<form>
-				<input type="button" value="Print Your Report" onClick="#jscode#">
-			</form>
-			</td>
-			<cfif not (IsDefined('session.regeneratedReport') and session.regeneratedReport eq 1)>
+						<cfif not (IsDefined('session.regeneratedReport') and session.regeneratedReport eq 1)>
 			<cfif session.partner_id neq 55 >
 			<td valign="middle">
 			<form action="frmeligibility.cfm?CFID=#session.cfid#&CFTOKEN=#session.cftoken#" method="post" target="_top">
