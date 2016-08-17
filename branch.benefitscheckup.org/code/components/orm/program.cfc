@@ -18,8 +18,8 @@
 	<cfproperty name="program_group" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="programgroup_id" cfc="program_group">
 	<cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
 	<cfproperty name="code" tostruct="code" column="program_code">
-	<cfproperty name="name_display" tostructdisplay="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="name_display_id" cfc="display">
-	<cfproperty name="desc_display" tostructdisplay="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="desc_display_id" cfc="display">
+	<cfproperty name="name_display" tostructdisplay="name_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="name_display_id" cfc="display">
+	<cfproperty name="desc_display" tostructdisplay="desc_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="desc_display_id" cfc="display">
 	<cfproperty name="url" tostruct="url">
 	<cfproperty name="exclude_flag">
 	<cfproperty name="significant_flag">

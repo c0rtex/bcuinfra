@@ -15,4 +15,5 @@
 <cfcomponent persistent="true" entityname="subset_program_base" table="subset_program_base" extends="ToStructConverter">
     <cfproperty name="program" fieldtype="id,many-to-one" fkcolumn="program_id" cfc="program">
     <cfproperty name="subset" fieldtype="id,many-to-one" fkcolumn="subset_id" cfc="subset">
+	<cfproperty name="subset_program_sum" fieldtype="one-to-many" missingRowIgnored="true" fkcolumn="program_id,subset_id" inversejoincolumn="program_id,subset_id" cfc="subset_program_sum">
 </cfcomponent>

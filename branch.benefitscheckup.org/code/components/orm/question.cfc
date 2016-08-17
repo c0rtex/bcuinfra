@@ -64,7 +64,7 @@
 
 		<cfset partnerDiff=CreateObject("component","answer_field_subset_partner").isDifferent(subset_id=subset_id,partner_id=partner_id)>
 
-		<cfquery name="sqavars" datasource="#application.dbSrc#">
+		<cfquery name="sqavars" datasource="dbSrc">
 		SELECT a.answerfield_id
 		FROM question q, question_answerfield qa, (
 			SELECT a.answerfield_id, a.answerfield

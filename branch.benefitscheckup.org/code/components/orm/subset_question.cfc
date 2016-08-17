@@ -1,5 +1,5 @@
 <!---
-	Template Name: SubsetProgramEntity
+	Template Name: SubsetQuestionEntity
 	Component Purpose: Component mapped to database table subset_program via object relation mapping framework.
 					   Each property of component defines mapping to database table column by using attribute column.
 					   If this attribute isn't defined, than property name set in attribute name equals to database column name.
@@ -8,13 +8,17 @@
 					   cfc attribute contains component entity name which mapped to master database table.
 					   Component extends from ToStructConverter component for serialization purpose.
 
-	Data Tables: subset_program_sum
+	Data Tables: subset_question
 
 !--->
 
-<cfcomponent persistent="true" entityname="subset_program_sum" table="subset_program_sum" extends="ToStructConverter">
-	<cfproperty name="program" fieldtype="id,many-to-one" fkcolumn="program_id" cfc="program">
-	<cfproperty name="subset" fieldtype="id,many-to-one" fkcolumn="subset_id" cfc="subset">
-	<cfproperty name="tbl_prg_all" fieldtype="many-to-one" fkcolumn="program_id" cfc="tbl_prg_all" insert="false" update="false">
+<cfcomponent persistent="true" entityname="subset_question" table="subset_question" extends="ToStructConverter">
+    <cfproperty name="id" fieldtype="id">
+    <cfproperty name="subset" fieldtype="many-to-one" fkcolumn="subset_id" cfc="subset">
+    <cfproperty name="question" fieldtype="many-to-one" fkcolumn="question_id" cfc="question">
+    <cfproperty name="page_id">
+    <cfproperty name="required_flag">
+    <cfproperty name="exclude_flag">
+    <cfproperty name="options_flag">
+    <cfproperty name="sort">
 </cfcomponent>
-
