@@ -969,3 +969,42 @@ div.well.sidebar-nav {
     padding-left: 2px;
     padding-right: 5px;
 }
+
+	.kh-parent{
+		max-width:1000px;
+		margin:auto;
+		display:block;
+	}
+	
+	.kh-img-responsive{
+		width:100%;
+	}
+	
+	.kh-thirds{
+		float:left;
+		width:28%;
+		padding:0 .5%;
+	}
+	
+	.kh-arrows{
+		float:left;
+		margin-top:11%;
+		width:5%;
+		padding:0 .5%;
+	}
+
+.kh-halfs {
+    float: left;
+    padding: 0 0.5%;
+    width: 48%;
+}
+
+@media (max-width: 800px){
+	.kh-thirds{
+		width:100%;
+		padding-bottom:10%;
+	}
+	.kh-arrows{
+		display:none;
+	}
+}
