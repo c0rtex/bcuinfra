@@ -126,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <li><a href="http://www.eversafe.com/blog/<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">EverSafe Blog</a></li>
                             <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">General News</a>
                             <li><a href="/eversafe-find-help">NCOA Resources</a>
-<li><a href="/eversafe-employment-resources/" target="_blank">Find Jobs for Seniors</a>
+<li><a href="/eversafe-employment-resources/">Find Jobs for Seniors</a>
                             <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
                         </ul>
                     </li>
