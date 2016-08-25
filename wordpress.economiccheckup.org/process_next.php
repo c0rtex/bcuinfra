@@ -45,13 +45,24 @@ $screeningresponse_query = $soapClient->doTriage(14,'','0',$answerset_xml,'');
 elseif ($subset_id == 83) {
 //do screening
 if (isset($_GET["eversafe"])){
+if (isset($_GET["eversafe_id"])){
+
+echo "EVERSAFE with id";
+echo "<br/>";
+echo $_GET["eversafe_id"];
+$screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,$_GET["eversafe_id"]);
+}
+else {
+echo "EVERSAFE with no id";
 $screeningresponse_query = $soapClient->doScreening(142,'',0,$answerset_xml,'');
+}
 //print_r($screeningresponse_query);
 //echo 'done printing....Eversafe';
 //exit();
 }
 else {
 $screeningresponse_query = $soapClient->doScreening(77,'',0,$answerset_xml,'');
+echo "EVERSAFE No";
 }
 }
 else {
@@ -103,9 +114,12 @@ $link = '/mqc-results-4/?screeningID='.$screening_id.'&shadowID='.$screening_id.
 if ($subset_id == 83){
 
 if (isset($_GET["eversafe"])){
-//if (isset($_GET["eversafe_id"])){
-$link = '/eversafe-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;
-//}
+if (isset($_GET["eversafe_id"])){
+$link = '/eversafe-quickcheck-report/?subset_id=83&partner_id=142&screeningID='.$screening_id.'&shadowID='.$screening_id.'&eversafe_id='.$_GET["eversafe_id"];
+}
+else {
+$link = '/eversafe-quickcheck-report/?subset_id=83&partner_id=142&screeningID='.$screening_id.'&shadowID='.$screening_id;
+}
 }
 else { //reglar esi
 $link = '/esi-quickcheck-report/?subset_id=83&partner_id=77&screeningID='.$screening_id.'&shadowID='.$screening_id;

@@ -1,4 +1,4 @@
-﻿<cfparam name="page" type="numeric" default="0">
+<cfparam name="page" type="numeric" default="0">
 <cfparam name="edit" type="numeric" default="0">
 <cfparam name="continue" type="numeric" default="0">
 <cfparam name="badResponseList" type="string" default="">
@@ -6,33 +6,25 @@
 <cfparam name="url.repop" default="false">
 <cfparam name="url.esiprod" default="0">
 <cfparam name="url.eversafe_id" default="0">
-<cfparam name="url.eversafe" default="0">
 <cfset session.reloadpage = "false">
 <cfset session.SCREENING.PGNO = 2>
 <cfset session.subset_id = 63>
 <cfset session.org_id = 0>
 <cfset session.partner_id = 77>
 <cfset session.source_id = 1>
-<cfif url.eversafe_id neq 0>
-<cfset session.client_id=url.eversafe_id>
-<cfelse>
 <cfset session.client_id=''>
-</cfif>
 <cfset session.user_id =''>
 <cfset session.prev_id  =''>
 <cfset session.access_id  =''>
 <cfset session.STATE_ID =''>
 <cfset session.test_ID =''>
 <cfset session.language_id = 'EN'>
-
-	<cfif url.esiprod eq 1>
-<cfset theUrl = "www">
-<cfelse>
-<cfset theUrl = "qa">
-
+<cfif url.eversafe_id neq 0>
+<cfoutput>Eversafe 0 up</cfoutput>
+       <cfelse> <!--- regular ESI --->
+<cfoutput>Eversafe not 0 up </cfoutput>
 </cfif>
 
-<cfif url.eversafe eq 0>
 <cfoutput>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +51,7 @@
 		<link href="https://fonts.googleapis.com/css?family=PT+Sans&v1" rel="stylesheet">		
         <link href="/cf/bootswatch/bootstrap/css/bootstrap_esi.min.css" rel="stylesheet">
         <link href="/cf/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-                
+        
        
         
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -142,7 +134,7 @@
             <div style="display: none; width: 620px; height: 0px; float: none;"></div>
         </div>
         <div class="whitewell"><br><br><br>
-            <h4>&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/gears_animated.gif"> &nbsp;&nbsp;&nbsp;&nbsp;We are calculating your results. Please wait. </h4>
+            <h4>&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/gears_animated.gif"> &nbsp;&nbsp;&nbsp;&nbsp;We are calculating your results. Please wait. Everafe. <cfoutput>url.eversafe_id</cfoutput></h4>
           
         </div>
       </section>
@@ -244,7 +236,7 @@
                	</div>
 			<div id="footer-primary">
 				<p><a href="http://www.ncoa.org/" target="_blank"><img title="National Council on Aging" alt="National Council on Aging" src="/wp-content/uploads/2011/11/BCUfooter-ncoa-logo.png"></a></p>		
-<p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;</p>
+<p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;|&nbsp; 571-527-3900</p>
 			</div> <!-- end footer-primary -->
 
 		</div> <!-- end sub-wrapper -->
@@ -254,201 +246,6 @@
 </body>
 </html> 
 </cfoutput>
-<cfelse>
-<cfset session.partner_id = 142>
-<cfoutput>
-<!----EVERSAFE--->
-
-<!-- stylesheets -->
-	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/compiled/theme.css?v=1"/>
-	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/animate.css?v=1"/>
-	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/entypo.css?v=1">
-	<link rel="stylesheet" type="text/css" href="https://www.eversafe.com/css/vendor/font-awesome.min.css?v=1"/>
-<style>
-
-.footer-powered{
-text-align: center;
-}
-
-@media (min-width: 767px) {
-.esiprocess_eversafe{
-margin-left: 100px;
-}
-}
-</style>
-
-	
-	<!-- javascript -->
-	<script src="https://www.eversafe.com/scripts/jquery/jquery-1.10.2.min.js?v=1"></script>
-	<script src="https://www.eversafe.com/js/bootstrap/bootstrap.min.js?v=1"></script>
-	<script src="https://www.eversafe.com/js/theme.js?v=1"></script>
-
-
-<div class="hide"><script type="text/javascript">
-		var url = 'https://www.eversafe.com/seam/resource/timage?ts=' + new Date().getTime();
-		url += (window.location.search ? "&" + window.location.search.substring(1) : "");
-		url += '&path=' + unescape(encodeURIComponent(window.location.pathname));
-		document.write('<img width="1" height="1" src="' + url + '">');
-	</script></div>
-
-		<header class="navbar navbar-fixed-top navbar-inverse white header-eversafe" role="banner">
-        <div class="container">
-
-            <div class="log col-md-12 hidden-xs" style="z-index: 10 !important;">
-                <a href="https://www.eversafe.com/static/login.scan" style="color: ##f09e38;" ><span class="entypo-key"></span>Log In</a>            </div>
-
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="homelogo">
-                    <a href="https://www.eversafe.com/index.html" class="navbar-brand"><img src="https://www.eversafe.com/images/logos/logo.png" alt="EverSafe"></a>
-                    <a class="navbar-brand" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
-                    <a class="navbar-brand" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
-
-                    <a href="https://www.eversafe.com/index.html" class="navbar-small"><img src="https://www.eversafe.com/images/logos/logo-i.png" alt="EverSafe"></a>
-                    <a class="navbar-small" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
-                    <a class="navbar-small" href="https://www.eversafe.com/contact-us.html"><span class="entypo-mail"></span></a>
-                </div>
-            </div>
-
-           <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                <ul class="nav navbar-nav navbar-right" style="font-family: 'Merriweather', Georgia, serif; text-shadow: none;">
-                    <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle" style="text-shadow: none;"> How It Works </a></li>
-                    <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle" style="text-shadow: none;"> Pricing </a></li>
-                    <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle" style="text-shadow: none;">Why EverSafe</a></li>
-                    <li class="dropdown "><a href="##" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> About Us <i class="icon-chevron-down" style="color: ##777; font-size: 8px; vertical-align: middle;"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://www.eversafe.com/our-story.html">Our Story</a></li>
-                            <li><a href="https://www.eversafe.com/our-team.html">Our Team</a></li>
-                            <li><a href="https://www.eversafe.com/eversafe-advisory-board.html">Advisory Board</a></li>
-                            <li><a href="https://www.eversafe.com/press.html">Press</a></li>
-                            <li><a href="https://www.eversafe.com/eversafe-appearances.html">EverSafe Appearances</a></li>
-                            <li><a href="https://www.eversafe.com/contact-us.html">Contact us</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="##" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> Resources <i class="icon-chevron-down" style="color: ##777; font-size: 8px; vertical-align: middle;"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
-                            <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
-                            <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
-                            <li><a href="http://#theUrl#.economiccheckup.org/eversafe-find-help">NCOA Resources</a>
-<li><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors</a>
-                            <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
-<li><a href="http://#theUrl#.economiccheckup.org/home-eversafe">EconomicCheckUp Home</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="http://#theUrl#.economiccheckup.org/esi-questions-eversafe" style="text-shadow: none;">EconomicCheckUp<span style="font-size: 0.8em">&reg;</span></a></li>
-                    
-                    <li class="dropdown"><a class="visible-xs entypo-key" href="https://www.eversafe.com/static/login.scan">Log In</a></li>
-                    <li class="dropdown"><a class="visible-xs" href="https://www.eversafe.com/pricing.html">Sign Up</a></li>
-                </ul>
-            </nav>
-
-
- 
-
-
-        </div>
-    </header>
-
-
-	
-<!--- wait message  --->
-<div class="span12 esiprocess_eversafe">  
-	<section id="factsheet">  	
-        <div class="body-header-wrapper">	<h2><i class="icon-refresh "></i> Processing Results </h2>	
-            <div class="body-header" style="z-index: 999; position: static; top: 251.5px;">
-                <div class="body-header-inner">
-                    <div class="">
-                            
-                    </div>
-                </div>
-            </div>
-            <div style="display: none; width: 620px; height: 0px; float: none;"></div>
-        </div>
-        <div class="whitewell"><br><br><br>
-            <h4>&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/gears_animated.gif"> &nbsp;&nbsp;&nbsp;&nbsp;We are calculating your results. Please wait. </h4>
-          
-        </div>
-      </section>
-                    
-</div> 
-
-	<div class="footer-powered esiprocess_eversafe">
-
-EconomicCheckUp&reg; is powered by the National Council on Aging.
-<br>
-&copy;2016 National Council on Aging. All Rights Reserved.
-<br>
-
-<a href="https://www.economiccheckup.org/esi-privacy-policy/">EconomicCheckUp® Privacy Policy </a>
-| 
-<a href="https://www.economiccheckup.org/esi-termsofuse/">EconomicCheckUp® Terms of Use</a>
-
-<br>
-<br>
-</div>
-
-
-
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 logos">
-					<a target="blank" title="Elderscan, LLC, Information Technology Services, Columbia, MD" href="https://www.bbb.org/greater-maryland/business-reviews/information-technology-services/elderscan-in-columbia-md-90239055##bbbseal"><img src="https://www.eversafe.com/images/logos/bbbreg.png" alt="Elderscan, LLC, Information Technology Services, Columbia, MD"> </a>
-					<a target="blank" href="https://trustsealinfo.websecurity.norton.com/splash?form_file=fdf/splash.fdf&dn=www.eversafe.com&lang=en">	<img src="https://www.eversafe.com/images/logos/norton.png" alt="norton"></a>
-					<a target="blank" href="http://privacy.truste.com/privacy-seal/Elderscan,-LLC/validation?rid=348e0b2a-51cc-48f4-a855-8d591cf833ce">	<img src="https://www.eversafe.com/images/logos/trust.png" alt="truste"></a>
-				</div>
-				<div class="col-md-6 menu">
-					<ul>
-						<li>
-		          			<a href="https://www.eversafe.com/terms.html">Terms of Use</a>
-		        		</li>
-		      			<li>
-		          			<a href="https://www.eversafe.com/security.html">Security</a>
-		        		</li>
-		        		<li>
-		        			<a href="https://www.eversafe.com/privacy.html">Privacy</a>
-		        		</li>
-		        		<li>
-		          			<a href="http://www.eversafe.com/blog/">Blog</a>
-		        		</li>
-						<li>
-		          			<a href="https://www.eversafe.com/contact-us.html">Contact Us</a>
-		        		</li>
-	      			</ul>
-				</div>
-				<div class="col-md-2 social">
-					<a href="https://twitter.com/EverSafeSeniors" target="blank">
-						<img src="https://www.eversafe.com/images/social/social-tw.png" alt="twitter" />
-					</a>
-					<a href="https://www.facebook.com/EverSafeSeniors" target="blank">
-						<img src="https://www.eversafe.com/images/social/fbt.png" alt="facebook" />
-					</a>					
-				</div>
-			</div>
-			<div class="row credits">
-				<div class="col-md-12">
-					
-					Copyright &##0169; 2016 Elderscan, LLC (d/b/a EverSafe) - All Rights Reserved 
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-</cfoutput>
-</cfif>
-
-
 <cfflush>
 <!--- Process Report from wordpress page questionnaire --->
 <!---cf_sessionLoadVarsPHP --->
@@ -470,7 +267,7 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 	<cfoutput><p>ScreeningID: #session.screening_id# badResponseList: #badResponseList#</p></cfoutput>
 	<cfabort>
   <cfelse>
-      <cfif url.eversafe neq 0>
+      <cfif url.eversafe_id neq 0>
 	<cfif url.esiprod eq 1>
 	<cfoutput><a href="https://www.economiccheckup.org/esi-questions-eversafe?badresponselist=#badResponseList#&screeningID=#session.screening_id#">test</a></cfoutput>
   	<cfelse>
@@ -489,34 +286,23 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 	<cfset tmpScreeningID = session.screening_id>
 	<cfinclude template="procESIShadowPHP.cfm">
       <cfif url.eversafe_id neq 0>
-<!--- Lynna Cekova: add the Eversafe id together with the screening id into table ecu_eversafe 
-<cfquery datasource="#application.dbSrc#" name="insertEversafeID">
-insert into ecu_eversafe (screening_id, eversafe_id) values (#tmpScreeningID#, #url.eversafe_id#);
-		</cfquery> --->
-</cfif>
-      <cfif url.eversafe neq 0>
-
-
+<!---
 	<cfif url.esiprod eq 1>
-      <cfif url.eversafe_id neq 0>
-	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results-eversafe/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#&eversafe_id=#url.eversafe_id#"></cfoutput>
-<cfelse>
-
 	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results-eversafe/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
-</cfif>
 	<cfelse>
-      <cfif url.eversafe_id neq 0>
-	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results-eversafe/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#&eversafe_id=#url.eversafe_id#"></cfoutput>
-<cfelse>
 		<cfoutput><meta http-equiv="refresh" content="0;url=http://qa.economiccheckup.org/esi-results-eversafe/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
-</cfif>
 	</cfif>
+--->
+<cfoutput>Eversafe 0 </cfoutput>
        <cfelse> <!--- regular ESI --->
+<!--
 	<cfif url.esiprod eq 1>
 	<cfoutput><meta http-equiv="refresh" content="0;url=https://www.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	<cfelse>
 		<cfoutput><meta http-equiv="refresh" content="0;url=http://qa.economiccheckup.org/esi-results/?screeningID=#tmpScreeningID#&shadowID=#session.screening_id#"></cfoutput>
 	</cfif>
+--->
+<cfoutput>Eversafe not 0 </cfoutput>
 
 </cfif>
 </cfif>

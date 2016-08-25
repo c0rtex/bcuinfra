@@ -349,7 +349,7 @@ function age($month, $day, $year)
             mentioned below have eligibility requirements that you must meet in order to
             qualify for them.</strong></p>
     <p>
-        Want to dig deeper? Take <a href="/<?php echo $questAnswers; ?>/">My CheckUp</a> to get a customized report for your individual
+        Want to dig deeper? Take <a href="/<?php echo $questAnswers; ?>/<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">My CheckUp</a> to get a customized report for your individual
         situation.
     </p>
     <?php
@@ -2018,13 +2018,27 @@ please check back.";
     <br/>
     <div class="printButton printReport">
 <?php
+if (isset($_GET["eversafe_read_only"])){
+if ($_GET["eversafe_read_only"] == 'true'){
+$eversafeReadOnly = true;
+}
+}
 if (substr($reportClient, 0, 27) == "/eversafe-quickcheck-report"){
         echo '<form id="reportButtonEversafeForm"><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="javascript:PrintDivEversafe();"><i
                     class="icon-print "></i> Print Your Report</a></form>
 <form id="doneButtonEversafeForm">
+';
+if(!$eversafeReadOnly == true) {
+echo '
+<a role="button" class="btn btn-large" href="https://www.eversafe.com/?ecuRet=2';
+if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }
+echo '
+" style="margin-left: 20px;">Done</a>
+';
+}
 
-<a role="button" class="btn btn-large" href="https://www.eversafe.com/?ecuRet=1" style="margin-left: 20px;">Done</a>
 
+echo '
 </form>
 ';
 }
@@ -2166,7 +2180,7 @@ echo '
 }
 ?>
                 <br/>
-                <li><a data-toggle="modal" role="button" href="/<?php echo $questAnswers; ?>" target="_blank"><i
+                <li><a data-toggle="modal" role="button" href="/<?php echo $questAnswers; ?><?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>" target="_blank"><i
                             class="icon-check "></i> My CheckUp -- for a personalized report</a></li>
             </form>
         </ol>

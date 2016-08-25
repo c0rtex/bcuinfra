@@ -11,6 +11,7 @@
 <cfparam name="SESSION.esi_debtestimate" default="0">
 <cfparam name="session.esi_dependgrandchild" default="n">
 <cfparam name="eligibleForDebtManagement" default="false">
+<cfparam name="SESSION.client_id" default="0">
 <cfset calcIncome = SESSION.esi_grossmonthlyincome * .2>
 <cfset functionDebugging = false>
 <cfset esiSiteArray = ArrayNew(1)>

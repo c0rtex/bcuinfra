@@ -121,7 +121,7 @@
 	
         <!-- evaluate stuff extra -->
         <cfset org_id = "">
-        <cfset client_id = "">
+        <cfset client_id = arguments.partner_session_id>
         <cfset program_list = "">
         <cfset language_id = "2" >
         <cfset screening_id = "" >
@@ -129,6 +129,7 @@
 	<cfset request.partner_id = arguments.partner_id >
         <cfset request.partner_screening_id = arguments.partner_screening_id >
         <cfset request.campaign_id = arguments.campaign_id >
+        <cfset request.client_id = arguments.partner_session_id >
         <!--Set Default Result Values -->
         <cfset testresults = arraynew(1)>
         <cfset resultset = QueryNew("screening_id,partner_screening_id,partner_id,campaign_id, org_id,subset_id,client_id,report_url,validation_error,program_list,screening_status,reentry_number,date_time,program_title,state_id","integer,varchar,integer,varchar,integer,integer,varchar,varchar,varchar,varchar,varchar,integer,date,varchar,varchar")>
