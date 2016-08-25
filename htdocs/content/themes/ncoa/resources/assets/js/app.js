@@ -2958,6 +2958,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 
 	$('.fa-question-circle').popover();
+	$scope.questions = prescreen.questions;
 	$scope.canContinue = true;
 	$scope.showquestions = false;
 	$scope.showCTA = true;
@@ -3214,12 +3215,12 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 }]);
 
-app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', function($scope, $state, prescreenQuestions){
+app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', 'prescreen', function($scope, $state, prescreenQuestions, prescreen){
 
-	//prescreenQuestions.get().success(function(data, status, headers, config) {
-		if($state.current.name == "prescreen")
-			$state.transitionTo('prescreen.questions');
-	//});
+	prescreenQuestions.get().success(function(data, status, headers, config) {
+		prescreen.questions = data;
+		if($state.current.name == "prescreen") $state.transitionTo('prescreen.questions');
+	});
 }]);
 app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){	
 	$('.fa-question-circle').popover();
