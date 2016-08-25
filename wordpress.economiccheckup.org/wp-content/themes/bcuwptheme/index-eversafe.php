@@ -46,7 +46,7 @@
 		<p>Create a budget and see where to cut expenses</p>
 	</div>
 	<div class="span4">
-		<h3><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors:</a></h3>
+		<h3><a href="/eversafe-employment-resources/">Find Jobs for Seniors:</a></h3>
 		<p>Define your skills, get training, and land a job</p>
 	</div>
 </div>
