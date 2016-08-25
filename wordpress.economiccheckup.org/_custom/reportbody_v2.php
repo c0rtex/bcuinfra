@@ -679,10 +679,7 @@ canvasImg = theCanvas.toDataURL("image/png");
                     	</body>
               		</html><br><small>
 * Basic needs means the amount needed to cover basic necessities. Basic
-necessities include housing, health care, transportation, and food. This
-measure was calculated using the Elder Index designed by Wider Opportunities
-for Women and the Gerontology Institute at the University of Massachusetts
-Boston. <a href=""><a data-toggle="modal" role="button" href="#learnmore">Learn more about the Elder Index.</a>
+necessities include housing, health care, transportation, and food. This measure was calculated using the Elder Index developed by the Gerontology Institute at the University of Massachusetts Boston and Wider Opportunities for Women, and maintained through a partnership with the National Council on Aging (NCOA). <a href=""><a data-toggle="modal" role="button" href="#learnmore">Learn more about the Elder Index.</a>
 </small>
               	</div>
             </div>
@@ -2445,8 +2442,31 @@ echo '
 <div class="printButton printReport">
             <form id="reportButtonEversafeForm"><a data-toggle="modal" role="button" class="btn btn-large" href="#" onClick="canvasImgCount = canvasImgCount + 1;javascript:PrintDivCanvasEversafe(canvasImg, canvasImgCount);"><i class="icon-print "></i> Print Your Report</a></form>
 <form id="doneButtonEversafeForm">
+'; 
 
-<a role="button" class="btn btn-large" href="https://www.eversafe.com/?ecuRet=2" style="margin-left: 20px;">Done</a>
+//echo "eversafe read only</br>";
+//echo $eversafeReadOnly;
+if (isset($_GET["eversafe_read_only"])){
+//echo 'At least it exists</br>';
+if ($_GET["eversafe_read_only"] == 'true'){
+$eversafeReadOnly = true;
+//echo 'At it is what it should be</br>';
+}
+}
+
+if(!$eversafeReadOnly == true) {
+echo '
+<a role="button" class="btn btn-large" href="https://www.eversafe.com/?ecuRet=2';
+if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }
+echo '
+" style="margin-left: 20px;">Done</a>
+';
+}
+else {
+//echo 'whatever is this';
+}
+
+echo '
 
 </form>
 
@@ -2489,7 +2509,16 @@ if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 
         </ol><BR>
         <legend><i class="icon-file-alt "></i> Resources</legend>
         <ol class="nav nav-list">
-		<?PHP if(isset($screeningID)){echo '<li><a data-toggle="modal" role="button" href="/'.$questAnswers.'/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
+<?php
+if (isset($_GET["eversafe_read_only"])){
+if ($_GET["eversafe_read_only"] == 'true'){
+$eversafeReadOnly = true;
+}
+}
+?>
+
+		<?PHP if(isset($screeningID) && (!substr($reportClient, 0, 21) == "/esi-results-eversafe" || (substr($reportClient, 0, 21) == "/esi-results-eversafe" && !$eversafeReadOnly == true) )){
+echo '<li><a data-toggle="modal" role="button" href="/'.$questAnswers.'/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
  		} ?>
         	<li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/s/3V39M9Z" target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
@@ -2531,13 +2560,8 @@ if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 
   <div class="learnmoreModal_outer">
     <h2>Elder Index</h2>
     <div id="infobox" class="whitewell learnmoreModal_inner">
-Your measure of economic security was calculated using the Elder Index. You can
-find more on the Elder Index methodology designed by Wider Opportunities for
-Women and the Gerontology Institute at the University of Massachusetts Boston
-here: <a href="http://www.basiceconomicsecurity.org" target="_blank">www.basiceconomicsecurity.org</a>. 
+Your measure of economic security was calculated using the Elder Index. You can find more on the Elder Index methodology developed by the Gerontology Institute at the University of Massachusetts Boston and Wider Opportunities for Women, and maintained through a partnership with the National Council on Aging (NCOA) here: <a href="http://www.basiceconomicsecurity.org" target="_blank">www.basiceconomicsecurity.org</a>. 
     		
-    	<div align="center" class="clearfix"><br><br><a target="_blank" href="http://www.wowonline.org"><img border="0" alt="Wider Opportunities for Women" title="Wider Opportunities for Women" src="https://www.benefitscheckup.org/cf/img/partners/economicsecurity/logo_wow.png"></a>
-      	</div>
 
 	
     </div>

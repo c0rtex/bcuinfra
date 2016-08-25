@@ -1,5 +1,18 @@
 ﻿</div> <!-- end of container -->
 		</div> <!-- end .container -->
+
+<?php
+//add the eversafe_id, if it exists, to the session so that it can be added to the links
+if (isset($_GET["eversafe_id"])) {
+    if (!isset($_SESSION["eversafe_id"])) {
+        $_SESSION["eversafe_id"] = $_GET["eversafe_id"];
+    }
+}
+//echo "Eversafe header SESSION ID<br/>";
+//echo $_SESSION["eversafe_id"];
+
+?>
+
 <center>
 <div class="footer-powered">
 
@@ -29,19 +42,19 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 				<div class="col-md-6 menu">
 					<ul>
 						<li>
-		          			<a href="https://www.eversafe.com/terms.html">Terms of Use</a>
+		          			<a href="https://www.eversafe.com/terms.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Terms of Use</a>
 		        		</li>
 		      			<li>
-		          			<a href="https://www.eversafe.com/security.html">Security</a>
+		          			<a href="https://www.eversafe.com/security.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Security</a>
 		        		</li>
 		        		<li>
-		        			<a href="https://www.eversafe.com/privacy.html">Privacy</a>
+		        			<a href="https://www.eversafe.com/privacy.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Privacy</a>
 		        		</li>
 		        		<li>
-		          			<a href="http://www.eversafe.com/blog/">Blog</a>
+		          			<a href="http://www.eversafe.com/blog/<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Blog</a>
 		        		</li>
 						<li>
-		          			<a href="https://www.eversafe.com/contact-us.html">Contact Us</a>
+		          			<a href="https://www.eversafe.com/contact-us.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Contact Us</a>
 		        		</li>
 	      			</ul>
 				</div>

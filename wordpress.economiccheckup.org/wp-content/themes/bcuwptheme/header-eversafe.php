@@ -1,6 +1,18 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 
+<?php
+//add the eversafe_id, if it exists, to the session so that it can be added to the links
+if (isset($_GET["eversafe_id"])) {
+    if (!isset($_SESSION["eversafe_id"])) {
+        $_SESSION["eversafe_id"] = $_GET["eversafe_id"];
+    }
+}
+
+//echo "Eversafe header SESSION ID<br/>";
+//echo $_SESSION["eversafe_id"];
+?>
+
 <head>
     <title>EverSafe</title>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -73,7 +85,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="container">
 
             <div class="log col-md-12 hidden-xs" style="z-index: 10 !important;">
-                <a href="https://www.eversafe.com/static/login.scan" style="color: #f09e38;" ><span class="entypo-key"></span>Log In</a>            </div>
+                <a href="https://www.eversafe.com/static/login.scan<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>" style="color: #f09e38;" ><span class="entypo-key"></span>Log In</a>            </div>
+    
 
             <div class="navbar-header">
                 <button id="eversafe_nav_button" class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -84,7 +97,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="homelogo">
                     <a href="https://www.eversafe.com/index.html" class="navbar-brand"><img src="https://www.eversafe.com/images/logos/logo.png" alt="EverSafe"></a>
                     <a class="navbar-brand logoIcons" href="https://www.eversafe.com/index.html"><span title="Home" class="entypo-house"></span></a>
-                    <a class="navbar-brand logoIcons" href="https://www.eversafe.com/contact-us.html"><span title="Contact Us" class="entypo-mail"></span></a>
+                    <a class="navbar-brand logoIcons" href="https://www.eversafe.com/contact-us.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>"><span title="Contact Us" class="entypo-mail"></span></a>
 
                     <a href="https://www.eversafe.com/index.html" class="navbar-small"><img src="https://www.eversafe.com/images/logos/logo-i.png" alt="EverSafe"></a>
                     <a class="navbar-small logoIcons" href="https://www.eversafe.com/index.html"><span class="entypo-house"></span></a>
@@ -94,24 +107,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
            <nav id="navEversafe" class="navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right" style="font-family: 'Merriweather', Georgia, serif; text-shadow: none;">
-                    <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html" class="dropdown-toggle" style="text-shadow: none;"> How It Works </a></li>
-                    <li class="dropdown "><a href="https://www.eversafe.com/pricing.html" class="dropdown-toggle" style="text-shadow: none;"> Pricing </a></li>
-                    <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html" class="dropdown-toggle" style="text-shadow: none;">Why EverSafe</a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/how-it-works.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>" class="dropdown-toggle" style="text-shadow: none;"> How It Works </a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/pricing.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>" class="dropdown-toggle" style="text-shadow: none;"> Pricing </a></li>
+                    <li class="dropdown "><a href="https://www.eversafe.com/trusted-advocates.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>" class="dropdown-toggle" style="text-shadow: none;">Why EverSafe</a></li>
                     <li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> About Us <i class="icon-chevron-down" style="color: #777; font-size: 8px; vertical-align: middle;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://www.eversafe.com/our-story.html">Our Story</a></li>
-                            <li><a href="https://www.eversafe.com/our-team.html">Our Team</a></li>
-                            <li><a href="https://www.eversafe.com/eversafe-advisory-board.html">Advisory Board</a></li>
-                            <li><a href="https://www.eversafe.com/press.html">Press</a></li>
-                            <li><a href="https://www.eversafe.com/eversafe-appearances.html">EverSafe Appearances</a></li>
+                            <li><a href="https://www.eversafe.com/our-story.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Our Story</a></li>
+                            <li><a href="https://www.eversafe.com/our-team.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Our Team</a></li>
+                            <li><a href="https://www.eversafe.com/eversafe-advisory-board.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Advisory Board</a></li>
+                            <li><a href="https://www.eversafe.com/press.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Press</a></li>
+                            <li><a href="https://www.eversafe.com/eversafe-appearances.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">EverSafe Appearances</a></li>
                             <li><a href="https://www.eversafe.com/contact-us.html">Contact us</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-shadow: none;"> Resources <i class="icon-chevron-down" style="color: #777; font-size: 8px; vertical-align: middle;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html">Elder Financial Abuse</a></li>
-                            <li><a href="http://www.eversafe.com/blog/">EverSafe Blog</a></li>
-                            <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news">General News</a>
+                            <li><a href="https://www.eversafe.com/elder-financial-abuse/overview.html<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">Elder Financial Abuse</a></li>
+                            <li><a href="http://www.eversafe.com/blog/<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">EverSafe Blog</a></li>
+                            <li><a href="https://www.eversafe.com/blog/elder-financial-abuse-in-the-news<?php if (isset($_SESSION["eversafe_id"])){echo '?eversafe_id='.$_SESSION["eversafe_id"]; }?>">General News</a>
                             <li><a href="/eversafe-find-help">NCOA Resources</a>
 <li><a href="http://www.ncoajobsource.org/" target="_blank">Find Jobs for Seniors</a>
                             <li><a href="https://calculator.benefitscheckup.org/calculators/make-a-budget-in-3-min" target="_blank">Budget Calculator</a>
