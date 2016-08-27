@@ -1,0 +1,8 @@
+<div class="marital-status question-block" ng-show="$root.prescreen.income">
+    <section>
+        <p class="question-block-icon question-block-title">What is your marital status?</p>
+        <div class="btn-group" role="group" aria-label="Montly Income?">
+            <button ng-repeat="marital_status in question.answer_fields[0].options track by marital_status.code" type="button" class="btn btn-default" ng-class="{active: $root.prescreen.marital_status.code == marital_status.code}" ng-click="$root.prescreen.marital_status = marital_status">{{marital_status.display}}</button>
+        </div>
+    </section>
+</div>

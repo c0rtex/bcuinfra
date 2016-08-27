@@ -1,0 +1,13 @@
+<div class="search-type question-block" ng-show="$root.prescreen.zipcode&&$root.prescreen.isZipValid&&!$root.prescreen.isEdit">
+    <section>
+        <p class="question-block-icon question-block-title">Who are you completing this search for?</p>
+        <select class="form-control" name="searchFor" ng-model="$root.prescreen.searchfor" ng-options="searchfor.display for searchfor in question.answer_fields[0].options track by searchfor.code" ng-change="onStatusChange()">
+            <option value="">-- choose an option --</option>
+        </select>
+        <input type="text" name="search-for-other" class="form-control" placeholder="Please enter other type" ng-show="$root.prescreen.searchfor.code == 'other'" ng-model="$root.prescreen.searchforother" />
+        <div class="cta ng-hide" ng-hide="$root.prescreen.showCTA">
+            <strong>Okay, great!</strong> Please answer all remaining questions as your {{ $root.prescreen.searchfor.code != 'other' ? $root.prescreen.searchfor.display : $root.prescreen.searchforother }}.
+        </div>
+
+    </section>
+</div>

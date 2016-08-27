@@ -1,0 +1,8 @@
+<div class="zip-search question-block">
+    <section>
+        <p class="question-block-icon question-block-title">Searching for benefits provided in</p>
+        <input type="text" name="zipcode" class="form-control" id="zipcode" placeholder="Enter Zip Code" ng-model="$root.prescreen.zip" ng-show="$root.prescreen.isEdit" required zipcode/>
+        <div class="zipcode-formatted" ng-show="$root.prescreen.isZipValid" ng-hide="$root.prescreen.isEdit">{{$root.prescreen.zipcode_formatted}}<a ng-click="resetZip()" class="btn-link">Edit</a></div>
+        <p class="error-state" ng-hide="$root.prescreen.isZipValid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+    </section>
+</div>

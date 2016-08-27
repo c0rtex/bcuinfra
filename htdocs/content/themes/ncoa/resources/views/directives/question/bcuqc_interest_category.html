@@ -1,0 +1,19 @@
+<div class="benefits question-block" ng-show="showBenefits()">
+    <section>
+        <p class="question-block-icon question-block-title">What type of benefits are you interested in?<br />Select as many as you like<br /><a ng-click="selectAll()" class="btn btn-link">{{selectLinkText}}</a></p>
+        <div class="benefits-selector-container">
+            <div class="benefits-selector-repeater" ng-repeat="program in programs" ng-click="addProgram(program)" selector>
+                <div class="benefits-selector-checkbox">
+                    <div class="benefits-selector-checkbox-content">
+                        <div class="icon-wrapper">
+                            <img ng-src="{{program.image}}" alt={{ program.name }} />
+                        </div>
+                        <div class="benefits-selector-label">
+                            <div class="label-inner">{{program.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

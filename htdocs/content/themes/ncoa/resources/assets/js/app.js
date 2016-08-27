@@ -687,6 +687,41 @@ app.directive('slideDown',[function(){
 		}
 	}
 }]);
+
+app.factory('questionTemplates',[function() {
+
+	var directivePath = "/content/themes/ncoa/resources/views/directives/question/";
+
+	var questionTemplates = {"zip":directivePath+"zip.html",
+							 "client":directivePath+"client.html",
+							 "veteran":directivePath+"veteran.html",
+							 "dob":directivePath+"dob.html",
+							 "marital_stat":directivePath+"marital_stat.html",
+							 "bcuqc_income":directivePath+"bcuqc_income.html",
+							 "bcuqc_interest_category":directivePath+"bcuqc_interest_category.html",
+							 "sp_veteran":directivePath+"sp_veteran.html"};
+
+	return questionTemplates;
+}]);
+
+app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
+	return {
+		restrict: 'E',
+		template:"<span ng-include='question_template_link'></span>",
+		link: function(scope,element) {
+			if (questionTemplates[scope.question.code] == undefined) {
+				scope.question_template_link = 'question.html?' + (new Date());
+			} else {
+				scope.question_template_link = questionTemplates[scope.question.code] + '?' + (new Date());
+			}
+		},
+		scope: {
+			question:"="
+		},
+		controller: "questionController"
+	}
+}]);
+
 app.directive('textSizeChanger', ['$document', 'localStorageService', function ($document, localStorageService) {
 	return {
 	  restrict: 'E',
@@ -739,10 +774,10 @@ app.directive('yearDrop',function(){
     }
     return {
         restrict: 'E',
-        template: '<select class="form-control inline" name="dob-year" ng-model="prescreen.year" ng-options="y for y in years"></select>',
+        template: '<select class="form-control inline" name="dob-year" ng-model="$root.prescreen.year" ng-options="y for y in years"></select>',
         link: function(scope,element,attrs){
-            scope.years = getYears(+attrs.offset, +attrs.range);            
-            scope.prescreen.year = scope.years[66];
+            scope.years = getYears(+attrs.offset, +attrs.range);
+            scope.$root.prescreen.year = scope.years[66];
         }
     }    
 });
@@ -769,25 +804,26 @@ app.directive('stateSelection',function(){
         }
     }    
 });
+
 app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  function(locationFinder, $filter, localStorageService){
 
 	return {
 		link: function(scope, elm){
 
 			scope.regPattern = "\\d{5}";
-			scope.isZipValid = true;
-			scope.isEdit = false;
+			scope.$root.prescreen.isZipValid = true;
+			scope.$root.prescreen.isEdit = false;
 
 
 			if (localStorageService.get('v_zipcode') != undefined) {
-				scope.prescreen.zipcode = localStorageService.get('v_zipcode');
+				scope.$root.prescreen.zipcode = localStorageService.get('v_zipcode');
 				localStorageService.remove('v_zipcode');
-				locationFinder.getLocation(scope.prescreen.zipcode).success(function(data, status, headers, config) {
+				locationFinder.getLocation(scope.$root.prescreen.zipcode).success(function(data, status, headers, config) {
 					validateZip(data);
 				});
 
 			} else {
-				scope.prescreen.zipcode = '';
+				scope.$root.prescreen.zipcode = '';
 			}
 			
 			//Location finder to populate formatted address
@@ -802,33 +838,33 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 			});
 
 			scope.resetZip = function(){
-				scope.isEdit = true;				
+				scope.$root.prescreen.isEdit = true;
 				$('#zipcode').focus();
 			}
 
 			function validateZip(data){
 				if(data.status == "OK"){
 					if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){				
-						scope.prescreen.zipcode = data.results[0].address_components[0].long_name;
+						scope.$root.prescreen.zipcode = data.results[0].address_components[0].long_name;
 						for (var i=1;i<data.results[0].address_components.length;i++) {
 							if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
-								scope.prescreen.stateId = data.results[0].address_components[i].short_name;
+								scope.$root.prescreen.stateId = data.results[0].address_components[i].short_name;
 								continue;
 							}
 						}
 
 						//Filter on string to remove USA from return as google returns full formatted address
-				  		scope.prescreen.zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
+				  		scope.$root.prescreen.zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
 				  		//localStorageService.set('zipcode', data.results[0].address_components[0].long_name);
-				  		scope.isZipValid = true;
-				  		scope.isEdit = false;
+				  		scope.$root.prescreen.isZipValid = true;
+				  		scope.$root.prescreen.isEdit = false;
 					}else{
-						scope.isZipValid = false;
-						scope.isEdit = true;
+						scope.$root.prescreen.isZipValid = false;
+						scope.$root.prescreen.isEdit = true;
 					}
 				}else{
-					scope.isZipValid = false;
-					scope.isEdit = true;
+					scope.$root.prescreen.isZipValid = false;
+					scope.$root.prescreen.isEdit = true;
 				}
 			}
 		}
@@ -2954,115 +2990,142 @@ app.controller('factSheetsController', ['$scope', '$state', function($scope, $st
 
 }]);
 
-app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
+app.controller('questionController',['$scope', 'BenefitItems', function($scope, BenefitItems){
 
-
-	$('.fa-question-circle').popover();
-	$scope.questions = prescreen.questions;
-	$scope.canContinue = true;
-	$scope.showquestions = false;
-	$scope.showCTA = true;
-	$scope.programList = {};
 	$scope.months = [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
-					 {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
-					 {id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
-
-	$scope.searchfors = [{id:"self",   name:"Self"},
-						{id:"spouse",  name:"Spouse"},
-						{id:"mother",  name:"Mother"},
-						{id:"father",  name:"Father"},
-						{id:"sister",  name:"Sister"},
-						{id:"brother", name:"Brother"},
-						{id:"client",  name:"Client"},
-						{id:"test",    name:"Test Case"},
-						{id:"other",   name:"Other"}];
-
-	$scope.maritalStatuses = [{id:"married",            name:"Married"},
-							  {id:"married_living_sep", name:"Married Living Separately"},
-							  {id:"divorced",           name:"Divorced"},
-							  {id:"single",             name:"Single"},
-							  {id:"widowed",            name:"Widowed"}];
-
-	$scope.incomes = [{id:"bcuqc_income_under", name:"Less than $1,000"},
-		              {id:"bcuqc_income_1000",  name:"Between $1,000 and $1,499"},
-					  {id:"bcuqc_income_1500",  name:"Between $1,500 and $1,999"},
-					  {id:"bcuqc_income_2000",  name:"Between $2,000 and $3,000"},
-					  {id:"bcuqc_income_3000",  name:"More than $3,000"}];
+		{id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
+		{id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
 
 	$scope.tooltip = "<strong>Gross monthly income</strong> is your income before any deductions are taken. Please include yourself and your spouse (if applicable) in your calculations.";
 	$scope.programs = BenefitItems.getBenefitItems();
 	$scope.selectLinkText = "Select All";
-	
+
 
 	$scope.onStatusChange = function(){
-		$scope.showCTA = ($scope.prescreen.searchfor == '' || $scope.prescreen.searchfor == 'self');
+		$scope.$root.prescreen.showCTA = ($scope.$root.prescreen.searchfor.code == '' || $scope.$root.prescreen.searchfor.code == 'self');
+	}
+
+	$scope.showSpouseVeteranStatus = function(){
+		if ($scope.$root.prescreen.marital_status == undefined) {
+			return false;
+		} else {
+			return (($scope.$root.prescreen.marital_status.code == 'married' || $scope.$root.prescreen.marital_status.code == 'married_living_sep' || $scope.$root.prescreen.marital_status.code == 'widowed') && $scope.$root.prescreen.veteran == 'n');
+		}
+	}
+
+	$scope.showBenefits = function(){
+		if ($scope.$root.prescreen.marital_status == undefined) {
+			return false;
+		} else {
+			if ((($scope.$root.prescreen.marital_status.code == 'married' || $scope.$root.prescreen.marital_status.code == 'married_living_sep' || $scope.$root.prescreen.marital_status.code == 'widowed') && $scope.$root.prescreen.veteran == 'y')) {
+				return true;
+			} else if ((($scope.$root.prescreen.marital_status.code == 'married' || $scope.$root.prescreen.marital_status.code == 'married_living_sep' || $scope.$root.prescreen.marital_status.code == 'widowed') && $scope.$root.prescreen.veteran == 'n') && $scope.$root.prescreen.spouse_veteran_status) {
+				return true;
+			} else if (($scope.$root.prescreen.marital_status.code == 'divorced' || $scope.$root.prescreen.marital_status.code == 'single') && $scope.$root.prescreen.veteran) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	$scope.addProgram = function(program){
 
-		var benefitindex = $scope.programList[program.code];
+		var benefitindex = $scope.$root.prescreen.programList[program.code];
 		if(benefitindex == undefined){
-			$scope.programList[program.code] = program;
+			$scope.$root.prescreen.programList[program.code] = program;
 		}else{
-			delete $scope.programList[program.code];
+			delete $scope.$root.prescreen.programList[program.code];
 		}
 
-		if ((Object.keys($scope.programList).length == 12)) {
+		if ((Object.keys($scope.$root.prescreen.programList).length == 12)) {
 			$scope.selectLinkText = "Deselect All";
 		} else {
 			$scope.selectLinkText = "Select All";
 		}
 	}
 
+	$scope.selectAll = function(){
+		if(Object.keys($scope.$root.prescreen.programList).length == 12){
+			$scope.$root.prescreen.programList = {};
+			$('.benefits-selector-repeater').removeClass('checked');
+			$scope.selectLinkText = "Select All";
+		}else if(Object.keys($scope.$root.prescreen.programList).length >= 0){
+			$scope.$root.prescreen.programList = {};
+			for (var i=0;i<$scope.programs.length;i++) {
+				$scope.$root.prescreen.programList[$scope.programs[i].code] = $scope.programs[i];
+			}
+			$('.benefits-selector-repeater').addClass('checked');
+			$scope.selectLinkText = "Deselect All";
+		}
+	}
+
+}]);
+
+app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
+
+	if(prescreen.questions == undefined) $state.transitionTo('prescreen');
+
+	if ($scope.$root.prescreen == undefined) {
+		$scope.$root.prescreen = {};
+		$scope.$root.prescreen.programList = {};
+	}
+
+	$('.glyphicon-question-sign').popover();
+	$scope.questions = prescreen.questions;
+	$scope.canContinue = true;
+	$scope.showquestions = false;
+	$scope.$root.prescreen.showCTA = true;
+
 	$scope.submitPrescreen = function() {
 
 		prescreen.screenData = {};
 
-		prescreen.screenData.formatted_address = $scope.prescreen.zipcode_formatted;
+		prescreen.screenData.formatted_address = $scope.$root.prescreen.zipcode_formatted;
 
-		prescreen.screenData.searchingFor = $scope.prescreen.searchfor.name;
+		prescreen.screenData.searchingFor = $scope.$root.prescreen.searchfor.display;
 
 		prescreen.screenData.date_of_birth = {
-			"month": $scope.prescreen.month.name,
-			"year": $scope.prescreen.year
+			"month": $scope.$root.prescreen.month.name,
+			"year": $scope.$root.prescreen.year
 		};
 
-		prescreen.screenData.marital_status = $scope.prescreen.marital_status;
+		prescreen.screenData.marital_status = $scope.$root.prescreen.marital_status;
 
-		prescreen.screenData.veteran = (($scope.prescreen.veteran == "y") || ($scope.prescreen.spouse_veteran_status == "y")) ? "Yes" : "No";
+		prescreen.screenData.veteran = (($scope.$root.prescreen.veteran == "y") || ($scope.$root.prescreen.spouse_veteran_status == "y")) ? "Yes" : "No";
 
 		prescreen.screenData.benefits_categories = [];
 
-		for (var programCatCode in $scope.programList) {
-			prescreen.screenData.benefits_categories.push($scope.programList[programCatCode].name);
+		for (var programCatCode in $scope.$root.prescreen.programList) {
+			prescreen.screenData.benefits_categories.push($scope.$root.prescreen.programList[programCatCode].name);
 		}
 
 
 		var request = {};
 
-		request.zip = $scope.prescreen.zipcode;
-		request.dob_month = $scope.prescreen.month.id;
-		request.dob_year = $scope.prescreen.year;
-		request.state_id = $scope.prescreen.stateId;
-		request.st = $scope.prescreen.stateId;
+		request.zip = $scope.$root.prescreen.zipcode;
+		request.dob_month = $scope.$root.prescreen.month.id;
+		request.dob_year = $scope.$root.prescreen.year;
+		request.state_id = $scope.$root.prescreen.stateId;
+		request.st = $scope.$root.prescreen.stateId;
 
-		request.client = $scope.prescreen.searchfor.id;
+		request.client = $scope.$root.prescreen.searchfor.code;
 
-		if (($scope.prescreen.searchforother != undefined)&&($scope.prescreen.searchforother != '')) {
-			request.client_other = $scope.prescreen.searchforother;
+		if (($scope.$root.prescreen.searchforother != undefined)&&($scope.$root.prescreen.searchforother != '')) {
+			request.client_other = $scope.$root.prescreen.searchforother;
 		}
 
-		request.bcuqc_income_list = $scope.prescreen.income.id;
+		request.bcuqc_income_list = $scope.$root.prescreen.income.code;
 
-		request.marital_stat = $scope.prescreen.marital_status.id;
+		request.marital_stat = $scope.$root.prescreen.marital_status.code;
 
-		request.veteran = $scope.prescreen.veteran;
+		request.veteran = $scope.$root.prescreen.veteran;
 
-		if (($scope.prescreen.spouse_veteran_status != undefined)&&($scope.prescreen.spouse_veteran_status != '')) {
-			request.sp_veteran = $scope.prescreen.spouse_veteran_status;
+		if (($scope.$root.prescreen.spouse_veteran_status != undefined)&&($scope.$root.prescreen.spouse_veteran_status != '')) {
+			request.sp_veteran = $scope.$root.prescreen.spouse_veteran_status;
 		}
 
-		for (var programCatCode in $scope.programList) {
+		for (var programCatCode in $scope.$root.prescreen.programList) {
 			request[programCatCode] = 'y';
 		}
 
@@ -3072,25 +3135,9 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		});
 	}
 
-	$scope.selectAll = function(){
-
-		if(Object.keys($scope.programList).length == 12){
-			$scope.programList = {};
-			$('.benefits-selector-repeater').removeClass('checked');
-			$scope.selectLinkText = "Select All";
-		}else if(Object.keys($scope.programList).length >= 0){
-			$scope.programList = {};
-			for (var i=0;i<$scope.programs.length;i++) {
-				$scope.programList[$scope.programs[i].code] = $scope.programs[i];
-			}
-			$('.benefits-selector-repeater').addClass('checked');
-			$scope.selectLinkText = "Deselect All";
-		}
-	}
-
-	$scope.$watch('prescreen.searchfor', function(){
-		if(!$('.dob').is(":visible")){
-			setTimeout(function(){
+	$scope.$watch('$root.prescreen.searchfor', function(){
+		if (($scope.$root.prescreen.searchfor != undefined) && (!$('.dob').is(":visible"))) {
+			setTimeout(function () {
 				var test = document.querySelector('.dob');
 				$('html,body').animate({
 					scrollTop: $(test).offset().top + 'px'
@@ -3099,8 +3146,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	});
 
-	$scope.$watch('prescreen.year', function(){
-		if($scope.prescreen.month != undefined && !$('.income').is(":visible")){
+	$scope.$watch('$root.prescreen.year', function(){
+		if($scope.$root.prescreen.month != undefined && !$('.income').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.income');
 				$('html,body').animate({
@@ -3110,8 +3157,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	});
 
-	$scope.$watch('prescreen.month', function(){
-		if($scope.prescreen.year != undefined && !$('.income').is(":visible")){
+	$scope.$watch('$root.prescreen.month', function(){
+		if($scope.$root.prescreen.year != undefined && !$('.income').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.income');
 				$('html,body').animate({
@@ -3121,8 +3168,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	});
 
-	$scope.$watch('prescreen.income', function(){
-		if(!$('.marital-status').is(":visible")){
+	$scope.$watch('$root.prescreen.income', function(){
+		if(($scope.$root.prescreen.income != undefined) && !$('.marital-status').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.marital-status');
 				$('html,body').animate({
@@ -3132,8 +3179,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	});
 
-	$scope.$watch('prescreen.marital_status', function(){
-		if(!$('.veteran-status').is(":visible")){
+	$scope.$watch('$root.prescreen.marital_status', function(){
+		if(($scope.$root.prescreen.marital_status != undefined) && !$('.veteran-status').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.veteran-status');
 				$('html,body').animate({
@@ -3143,27 +3190,27 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	});
 
-	$scope.$watch('prescreen.veteran', function(){
-		if ($scope.prescreen.marital_status != undefined) {
-			if (($scope.prescreen.marital_status.id == "married" ||
-				$scope.prescreen.marital_status.id == "married_living_sep" ||
-				$scope.prescreen.marital_status.id == "widowed") && $scope.prescreen.veteran == "n" && !$('.partner-veteran-status').is(":visible")) {
+	$scope.$watch('$root.prescreen.veteran', function(){
+		if ($scope.$root.prescreen.marital_status != undefined) {
+			if (($scope.$root.prescreen.marital_status.code == "married" ||
+				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
+				$scope.$root.prescreen.marital_status.code == "widowed") && $scope.$root.prescreen.veteran == "n" && !$('.partner-veteran-status').is(":visible")) {
 				setTimeout(function () {
 					var test = document.querySelector('.partner-veteran-status');
 					$('html,body').animate({
 						scrollTop: $(test).offset().top + 'px'
 					}, 500);
 				}, 500);
-			} else if (($scope.prescreen.marital_status.id == "married" ||
-				$scope.prescreen.marital_status.id == "married_living_sep" ||
-				$scope.prescreen.marital_status.id == "widowed") && $scope.prescreen.veteran == "y" && !$('.benefits').is(":visible")) {
+			} else if (($scope.$root.prescreen.marital_status.code == "married" ||
+				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
+				$scope.$root.prescreen.marital_status.code == "widowed") && $scope.$root.prescreen.veteran == "y" && !$('.benefits').is(":visible")) {
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
 						scrollTop: $(test).offset().top + 'px'
 					}, 500);
 				}, 500);
-			} else if (($scope.prescreen.marital_status.id == "divorced" || $scope.prescreen.marital_status.id == "single") && !$('.benefits').is(":visible")) {
+			} else if (($scope.$root.prescreen.marital_status.code == "divorced" || $scope.$root.prescreen.marital_status.code == "single") && !$('.benefits').is(":visible")) {
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
@@ -3174,8 +3221,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		}
 	});
 
-	$scope.$watch('prescreen.spouse_veteran_status', function(){
-		if(!$('.benefits').is(":visible")){
+	$scope.$watch('$root.prescreen.spouse_veteran_status', function(){
+		if(($scope.$root.prescreen.spouse_veteran_status != undefined) && !$('.benefits').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.benefits');
 				$('html,body').animate({
@@ -3186,32 +3233,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 	});
 
 	$scope.disableSubmit = function(){
-		return (Object.keys($scope.programList).length == 0);
+		return (Object.keys($scope.$root.prescreen.programList).length == 0);
 	};
-
-	$scope.showSpouseVeteranStatus = function(){
-		if ($scope.prescreen.marital_status == undefined) {
-			return false;
-		} else {
-			return (($scope.prescreen.marital_status.id == 'married' || $scope.prescreen.marital_status.id == 'married_living_sep' || $scope.prescreen.marital_status.id == 'widowed') && $scope.prescreen.veteran == 'n');
-		}
-	}
-
-	$scope.showBenefits = function(){
-		if ($scope.prescreen.marital_status == undefined) {
-			return false;
-		} else {
-			if ((($scope.prescreen.marital_status.id == 'married' || $scope.prescreen.marital_status == 'married_living_sep' || $scope.prescreen.marital_status.id == 'widowed') && $scope.prescreen.veteran == 'y')) {
-				return true;
-			} else if ((($scope.prescreen.marital_status.id == 'married' || $scope.prescreen.marital_status.id == 'married_living_sep' || $scope.prescreen.marital_status.id == 'widowed') && $scope.prescreen.veteran == 'n') && $scope.prescreen.spouse_veteran_status) {
-				return true;
-			} else if (($scope.prescreen.marital_status.id == 'divorced' || $scope.prescreen.marital_status.id == 'single') && $scope.prescreen.veteran) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
 
 }]);
 
@@ -3222,7 +3245,8 @@ app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuest
 		if($state.current.name == "prescreen") $state.transitionTo('prescreen.questions');
 	});
 }]);
-app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){	
+app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){
+
 	$('.fa-question-circle').popover();
 	
 	document.querySelector('.page-wrapper').scrollIntoView();

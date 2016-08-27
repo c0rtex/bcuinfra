@@ -1,0 +1,9 @@
+<div class="partner-veteran-status question-block" ng-show="showSpouseVeteranStatus()">
+    <section>
+        <p class="question-block-title">Is your spouse (or former spouse) a U.S. veteran?</p>
+        <div class="btn-group" role="group" aria-label="Montly Income?">
+            <button type="button" class="btn btn-default" value="yes" ng-class="{active: $root.prescreen.spouse_veteran_status == 'y'}" ng-click="$root.prescreen.spouse_veteran_status = 'y'">Yes</button>
+            <button type="button" class="btn btn-default" value="no" ng-class="{active: $root.prescreen.spouse_veteran_status == 'n'}" ng-click="$root.prescreen.spouse_veteran_status = 'n'">No</button>
+        </div>
+    </section>
+</div>
