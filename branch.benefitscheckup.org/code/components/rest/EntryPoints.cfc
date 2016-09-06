@@ -1,16 +1,20 @@
 <cfcomponent rest="true" restpath="/entryPoints">
 
-    <cffunction name="forProgram" access="remote" restpath="/forProgram/{programCode}" returnType="String" httpMethod="POST">
-        <cfargument name="programCode" required="true" restargsource="Path" type="numeric"/>
-        <cfargument name="body" type="String" default="">
-        <cfif body eq "">
-            <cfset params = structNew()>
-        <cfelse>
-        <cfset params = deserializeJSON(body)>
-        </cfif>
+    <cffunction name="forProgram" access="remote" restpath="/forProgram/{programCode}/" returnType="String" httpMethod="GET">
+        <cfargument name="programCode" required="true" restargsource="Path" type="string"/>
+
+        <cfset params = structNew()>
         <cfset this.setDefaultParams()>
 
-        <cfset pobj = entityLoadByPK("program",programId)>
+        <cfset retVal = arrayNew(1)>
+
+        <cfset pobj = entityload("program",{code=programCode})>
+
+        <cfif (arraylen(pobj) neq 0)>
+            <cfset pobj = pobj[1]>
+        <cfelse>
+            <cfreturn serializeJSON(retVal)>
+        </cfif>
 
         <cfset epgroup = ormExecuteQuery("select pepg.entry_point_group,
                                                  pepg.sort,
@@ -27,8 +31,6 @@
 
         <cfset prgprox = ormExecuteQuery("select p from program_proximity pp join pp.proximity p where pp.program=? order by pp.sort",[pobj])>
 
-        <cfset retVal = arrayNew(1)>
-
         <cfset methodSucceeded = false>
         <cfloop array="#epgroup#" index="erpgi">
             <cfif not methodSucceeded>
@@ -38,7 +40,7 @@
                 <cfif erpgi[3] eq 1>
                     <cfset methodSucceeded = true>
 
-                    <cfset arrayAppend(retVal,entityLoadByPK("entry_point",erpgi[4]))>
+                    <cfset arrayAppend(retVal,this.formatEntryPoint(entityLoadByPK("entry_point",erpgi[4])))>
                 <cfelse>
                     <cfif params.proximityOverride is "county">
                         <cfset this.proximityCountyOverride(erpgi[1])>
@@ -116,7 +118,7 @@
         <cfelse>
             <cfset var success = true>
             <cfloop array="#ep#" index="epi">
-                <cfset arrayAppend(retVal,epi[1])>
+                <cfset arrayAppend(retVal,this.formatEntryPoint(epi[1]))>
             </cfloop>
         </cfif>
         <cfset methodSucceeded = success>
@@ -145,7 +147,7 @@
         <cfelse>
             <cfset var success = true>
             <cfloop array="#ep#" index="epi">
-                <cfset arrayAppend(retVal,epi[1])>
+                <cfset arrayAppend(retVal,this.formatEntryPoint(epi[1]))>
             </cfloop>
         </cfif>
         <cfset methodSucceeded = success>
@@ -174,7 +176,7 @@
         <cfelse>
             <cfset var success = true>
             <cfloop array="#ep#" index="epi">
-                <cfset arrayAppend(retVal,epi[1])>
+                <cfset arrayAppend(retVal,this.formatEntryPoint(epi[1]))>
             </cfloop>
         </cfif>
         <cfset methodSucceeded = success>
@@ -204,7 +206,7 @@
         <cfelse>
             <cfset success = true>
             <cfloop array="#ep#" index="epi">
-                <cfset arrayAppend(retVal,epi[1])>
+                <cfset arrayAppend(retVal,this.formatEntryPoint(epi[1]))>
             </cfloop>
         </cfif>
 
@@ -231,7 +233,7 @@
         <cfelse>
             <cfset var success = true>
             <cfloop array="#ep#" index="epi">
-                <cfset arrayAppend(retVal,epi[1])>
+                <cfset arrayAppend(retVal,this.formatEntryPoint(epi[1]))>
             </cfloop>
         </cfif>
         <cfset methodSucceeded = success>
@@ -257,10 +259,69 @@
         <cfelse>
             <cfset var success = true>
             <cfloop array="#ep#" index="epi">
-                <cfset arrayAppend(retVal,epi)>
+                <cfset arrayAppend(retVal,this.formatEntryPoint(epi))>
             </cfloop>
         </cfif>
         <cfset methodSucceeded = success>
+    </cffunction>
+
+    <cffunction name="formatEntryPoint">
+        <cfargument name="entryPoint">
+        <!---select e.code, e.name, e.subname, e.address1, e.address2, e.address3,
+        e.city, e.state_id, e.zipcode, e.zipcode_plus4, e.email, e.url,
+        e.contact_title, e.contact_first, e.contact_middle, e.contact_last,
+        e.contact_suffix, dh.display_code hours_code, di.display_code info_code
+        from entrypoint e left outer join display dh
+        on e.hours_display_id=dh.display_id
+        left outer join display di
+        on e.info_display_id=di.display_id
+        where e.entrypoint_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#attributes.entrypoint_id#" maxlength="6">
+		and e.active_flag=1--->
+        <cfset var rtVl = structNew()>
+        <cfset rtVl["code"] = entryPoint.getCode()>
+        <cfset rtVl["name"] = entryPoint.getName()>
+        <cfset rtVl["subname"] = entryPoint.getSub_name()>
+        <cfset rtVl["address1"] = entryPoint.getAddress1()>
+        <cfset rtVl["address2"] = entryPoint.getAddress2()>
+        <cfset rtVl["address3"] = entryPoint.getAddress3()>
+        <cfset rtVl["city"] = entryPoint.getCity()>
+
+        <cfif isnull(entryPoint.getState())>
+            <cfset rtVl["state"] = "">
+        <cfelse>
+            <cfset rtVl["state"] = entryPoint.getState().getId()>
+        </cfif>
+
+        <cfset rtVl["zipcode"] = entryPoint.getZipcode()>
+        <cfset rtVl["zipcode_plus4"] = entryPoint.getZipcode_plus4()>
+        <cfset rtVl["email"] = entryPoint.getEmail()>
+        <cfset rtVl["url"] = entryPoint.getUrl()>
+        <cfset rtVl["contact_title"] = entryPoint.getContact_title()>
+        <cfset rtVl["contact_first"] = entryPoint.getContact_first()>
+        <cfset rtVl["contact_middle"] = entryPoint.getContact_middle()>
+        <cfset rtVl["contact_last"] = entryPoint.getContact_last()>
+        <cfset rtVl["contact_suffix"] = entryPoint.getContact_suffix()>
+
+        <cfif isnull(entryPoint.getHours_display())>
+            <cfset rtVl["hours"] = "">
+        <cfelse>
+            <cfset rtVl["hours"] = entryPoint.getHours_display().getDisplay_text()>
+        </cfif>
+
+        <cfif isnull(entryPoint.getInfo_display())>
+            <cfset rtVl["info"] = "">
+        <cfelse>
+            <cfset rtVl["info"] = entryPoint.getInfo_display().getDisplay_text()>
+        </cfif>
+        <cfset rtVl["phones"] = arrayNew(1)>
+        <cfloop array="#rtVl["phones"]#" index="ind">
+            <cfset phone = structNew()>
+            <cfset phone["number"] = ind.getNumber()>
+            <cfset phone["type"] = ind.getType().getDisplay_text()>
+            <cfset arrayAppend(rtVl["phones"],phone)>
+        </cfloop>
+
+        <cfreturn rtVl>
     </cffunction>
 
 </cfcomponent>

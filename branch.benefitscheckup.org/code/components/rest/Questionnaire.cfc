@@ -31,7 +31,7 @@
 
     </cffunction>
 
-    <cffunction name="screening" access="remote" restpath="/screening/{superCategoryCode}/{stateId}" returnType="String" httpMethod="GET">
+    <cffunction name="screening" access="remote" restpath="/{superCategoryCode}/{stateId}" returnType="String" httpMethod="GET">
         <cfargument name="superCategoryCode" required="true" restargsource="Path" type="string"/>
         <cfargument name="stateId" required="true" restargsource="Path" type="string"/>
 
