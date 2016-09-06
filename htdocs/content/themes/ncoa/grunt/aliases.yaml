@@ -1,0 +1,23 @@
+build-css:
+- 'sass:dist'
+- 'autoprefixer:dev'
+
+build:
+- 'copy'
+- 'build-css'
+- 'concat:libs'
+- 'concat:app'
+- 'watch'
+
+build-styleguide:
+- 'sass:styleguide'
+- 'autoprefixer:styleguide'
+- 'concat:styleguide'
+
+styleguide:
+- 'copy'
+- 'build-styleguide'
+- 'watch:styleguide'
+
+default:
+- 'build'

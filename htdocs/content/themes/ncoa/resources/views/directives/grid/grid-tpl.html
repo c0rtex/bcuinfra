@@ -1,0 +1,32 @@
+<section class="sales-grid">
+    <div>
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
+    </div>
+    <form class="form-inline col-md-12">
+      <div class="form-group">
+          <label for="self">Self</label>
+          <input type="number" class="form-control" id="self" ng-model="$parent.$parent.$parent.questionnaire.request[request][self_code+code]" placeholder="$0">
+      </div>
+
+      <span ng-if="$parent.$parent.$parent.screenData.marital_status.id=='married'||$parent.$parent.$parent.screenData.marital_status.id=='widowed'||$parent.$parent.$parent.screenData.marital_status.id==''">
+          <div class="form-group">
+              <label for="spouse">Spouse</label>
+              <input type="number" class="form-control" id="spouse" ng-model="$parent.$parent.$parent.questionnaire.request[request][spouse_code+code]" placeholder="$0">
+          </div>
+          <div class="form-group">
+              <label for="household">Joint</label>
+              <input type="number" class="form-control" id="joint" ng-model="$parent.$parent.$parent.questionnaire.request[request][joint_code+code]" placeholder="$0">
+          </div>
+      </span>
+
+      <div class="form-group">
+          <label for="household">Household</label>
+          <input type="number" class="form-control" id="household" ng-model="$parent.$parent.$parent.questionnaire.request[request][household_code+code]" placeholder="$0">
+      </div>
+      <div class="form-group total">
+        <label>Total</label>
+        <span class="form-control input-regular">${{$parent.$parent.$parent.questionnaire.request[request][self_code+code] + $parent.$parent.$parent.questionnaire.request[request][spouse_code+code] + $parent.$parent.$parent.questionnaire.request[request][joint_code+code] + $parent.$parent.$parent.questionnaire.request[request][household_code+code] + 0}}</span>
+      </div>
+    </form>
+</section>

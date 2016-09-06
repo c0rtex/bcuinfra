@@ -1,0 +1,19 @@
+<h1>Find My Benefits</h1>
+<div class="card questionnaire">
+	<div class="card-nested">
+		<div breadcrumb class="breadcrumbs" ng-hide="hideBreadCrumbs"></div>
+		<div class="row">
+			<div class="col-sm-12 col-md-9">
+				<!-- Views -->
+				<div ui-view></div>
+			</div>
+
+			<!-- Profile Section-->
+			<div class="col-md-3 col-sm-12 profile-section" profile></div>
+		</div>
+	</div>
+	<div class="btns-container clearfix" page-switch>
+		<button class="btn btn-link btn-back pull-left" ng-click="switchPage(preState,-1)">Back</button>
+		<button class="btn btn-primary pull-right" ng-hide="isResults" ng-click="switchPage(nextState,1)">Continue</button>
+	</div>
+</div>

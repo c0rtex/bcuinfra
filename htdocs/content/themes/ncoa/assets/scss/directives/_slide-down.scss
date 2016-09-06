@@ -1,0 +1,132 @@
+.program{
+    background-image: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 50%);
+    border: 2px solid $grey-accent;
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+    .program-header{
+      padding: 0 20px;
+
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+
+      span{
+        font-family: "interface",sans-serif;
+        padding:15px 0 10px 70px;
+        font-weight: 700;
+        display: block;
+        font-size: 1.222em;
+        color: #333333;
+        line-height: 1.3;
+
+        &:after{
+          content: '\e080';
+          font-family: 'Glyphicons Halflings';
+          display: inline-block;
+          float: right;
+          color: $brand-light-blue;
+          transform: rotate(90deg);
+          transition: transform 200ms linear;
+          vertical-align: middle;
+        }
+
+        @media (min-width: $screen-xs-min){
+          padding:30px 0 20px 70px;
+          line-height: 1.667em;
+        }
+      }
+
+      &:hover{
+        cursor:pointer;
+      }
+    }
+
+    &.active{
+      .program-header{
+        background-color: $light-grey-bg;
+        span:after{
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    &.medicine{
+      .program-header span{
+        background:url(../images/categories/category_medicine.svg) no-repeat left center;
+        background-size: 55px;
+      }
+    }
+
+    &.health{
+      .program-header span{
+        background:url(../images/categories/category_health.svg) no-repeat left center;
+        background-size: 55px;
+      }
+    }
+
+    &.meals{
+      .program-header span{
+        background:url(../images/categories/category_food.svg) no-repeat left center;
+        background-size: 55px;
+      }
+    }
+
+    &.program-no-icon {
+      .program-header span {
+        padding: 20px 0 20px 15px;
+
+        @media (min-width: $screen-xs-min){
+          padding:20px 0 20px 0;
+        }
+      }
+    }
+  }
+
+  .programs-container{
+    background: $light-grey-bg;
+    display: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    &.program-p {
+      padding: 20px 20px 20px 20px;
+      border-top: 2px solid $grey-accent;
+    }
+  }
+
+  .programs{
+    border-top:2px solid #ccc;
+    margin:0;
+    padding:10px 20px;
+
+    li{
+      list-style: none;
+    }
+
+    h4{
+      font-family: "interface",sans-serif;
+      font-weight: 700;
+      font-size: 1em;
+      color: #323232;
+      line-height: 1.222em;
+    }
+
+    @media (min-width: $screen-md-min){
+      li{
+        display: inline-block;
+        &:first-child{
+          vertical-align: middle;
+          padding-right:20px;
+          width:70%;
+        }
+
+        &:last-child{
+          vertical-align: bottom;
+          width: 30%;
+          text-align: right;
+          margin-left: -5px;
+        }
+      }
+    }
+  }

@@ -1,0 +1,14 @@
+<div class="other-income card-panel">
+	<h4 class="step">Finances: Part 4 of 5</h4>
+  <h2>Tell us more about your assets.</h2>
+	<div>
+		<p>Do you have any of these other types of assets? Check all that apply.</p>
+  	<div class="checkbox-stacked">
+  		<div class="checkbox" ng-repeat="asset in questionnaire.assets">
+  			<input type="checkbox" name="{{asset.title}}" id="asset-cb-{{$index}}" ng-checked="asset.selected == true" ng-click="setAssetsSelected($index)">
+        <label for="asset-cb-{{$index}}"><span></span>{{asset.title}}</label>
+		  </div>
+  	</div>
+  	<p>If you do not have these types of assets, click Continue to move on.</p>
+	</div>
+</div>

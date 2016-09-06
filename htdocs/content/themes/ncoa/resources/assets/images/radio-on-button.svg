@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+    <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+    <title>radio-selected</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M13.1184211,26 C20.2981228,26 26.1184211,20.1797017 26.1184211,13 C26.1184211,5.82029825 20.2981228,0 13.1184211,0 C5.93871931,0 0.118421053,5.82029825 0.118421053,13 C0.118421053,20.1797017 5.93871931,26 13.1184211,26 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="26" height="26" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="radio-selected">
+            <g id="Radio-Background">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use stroke="#BBBBBB" mask="url(#mask-3)" stroke-width="4" xlink:href="#path-1"></use>
+            </g>
+            <path d="M13.1184211,21 C17.5366991,21 21.1184211,17.418278 21.1184211,13 C21.1184211,8.581722 17.5366991,5 13.1184211,5 C8.70014305,5 5.11842105,8.581722 5.11842105,13 C5.11842105,17.418278 8.70014305,21 13.1184211,21 Z" id="Radio-Circle" fill="#1F3D7C"></path>
+        </g>
+    </g>
+</svg>

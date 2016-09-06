@@ -1,0 +1,64 @@
+@extends('layouts.main')
+
+@section('main')
+	@loop
+	<div class="container-fluid sponsors-hero">
+		<div class="row">
+			<div class="col-xs-12 col-md-8 col-md-offset-2">
+				<h1>{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</h1>
+				<p>{{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid sponsors-gallery">
+		<div class="row">
+			<div class="container">
+				<div class="row">
+					<div class="sponsor-featured col-xs-12">
+						@foreach($featured as $key => $value)
+							<div class="featured-item">
+								<div class="col-sm-6 col-md-4 col-md-offset-2">
+									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+								</div>
+								<div class="col-md-5 featured-text">
+									<p>{{ $value->post_excerpt }}</p>
+								</div>
+							</div>
+						@endforeach
+					</div>
+
+					@foreach($sponsors as $key => $value)
+						<div class="col-xs-12 col-sm-6 col-md-3 sponsor-items">
+							<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+						</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="blue-gradient-background cta-full container-fluid">
+		<h1>{{ Meta::get(Loop::id(), $key = 'cta-title', $single = true) }}</h1>
+		<p>{{ Meta::get(Loop::id(), $key = 'cta-body-copy', $single = true) }}</p>
+		<button class="btn btn-primary">{{ Meta::get(Loop::id(), $key = 'cta-button-text', $single = true) }}</button>
+	</div>
+	<section class="connected-cta container-fluid">
+		<div class="connected-container">
+			<div class="stay-connected col-xs-12 col-sm-6 col-md-6">
+				<h3>Stay Connected</h3>
+				<p>Receive emails about how to stay healthy, secure, and independent.</p>
+				<a href="#" class="btn btn-tertiary">Subscribe to Newsletter</a>
+			</div>
+			<div class="spread-the-word col-xs-12 col-sm-6 col-md-6">
+				<h3>Spread the Word</h3>
+				<p>Let others know about the benefits they could be receiving</p>
+				<ul class="social-jewlery">
+					<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	@endloop
+@stop

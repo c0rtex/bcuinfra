@@ -1,0 +1,20 @@
+<!--Results-->
+<div class="results card-panel">
+	<h2 class="page-header">Here are you initial results...</h2>
+	<div class="results-tally">
+		There are <span class="odometer">0</span> <strong>benefit programs</strong> that match your basic details.
+	</div>
+	
+	<div class="cta-yellow">
+		<p><span class="orange-bold">Please note!</span> The accuracy of these results is low. <a ui-sref="questionnaire.basics" class="btn-link underline normal">Continue BenefitsCheckUp questionnaire</a> to get the most accurate list of benefits you'd be likely to receive.</p>
+	</div>
+
+	
+	<p>Select a category to see the benefits you may qualify for.</p>
+	<div class="more-benefits">
+		<span ng-repeat="found_program in found_programs">
+			<div-programs-category found_program="found_program"></div-programs-category>
+		</span>
+	</div>
+	<p>Select a program from above to learn more and apply. You can also choose to save your results or view and edit your search details.</p>
+</div>

@@ -1,0 +1,267 @@
+.prescreen-questions{
+
+	.cta{		
+		display:inline-block;
+		padding:20px;
+		border-radius:5px;		
+		margin:15px 0 0;
+		font-size:0.889em;
+		background-color: #F1FCF0;
+		strong{
+			color: #317C60;
+		}
+	}
+
+	input[type="text"],select{
+		margin:0 auto;
+		transition: width 500ms ease;
+
+		@media (min-width: $screen-md-min){
+			width:45%;
+		}
+	}
+
+	.question-block{
+		text-align: center;
+		margin-bottom: 50px;	
+
+		.question-block-icon{
+			padding-top: 55px;
+			margin-bottom: 15px;	
+			background-repeat: no-repeat;
+			background-position: top center;		
+			background-size: 45px 45px;
+		}
+
+		.question-block-title{
+			margin-bottom: 15px;
+			font-size:21px;
+		}
+	}
+
+	.btn-group{
+		@media (max-width: $screen-sm-max){
+
+			.btn{
+				&:first-child:not(:last-child):not(.dropdown-toggle){
+					border-top-right-radius: 6px;
+					border-top-left-radius: 6px;
+					border-bottom-left-radius:0px;
+				}
+				&:last-child{
+					border-top-right-radius: 0px;
+					border-bottom-left-radius: 6px;
+				}
+			}
+
+			button{
+				float: none;
+			}
+		}
+	}
+
+	.zip-search{
+			
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_location.svg);
+		}
+
+		.zipcode-formatted{
+			@extend .form-control;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 700;
+			border:none;
+			background-color: #f6f6f6;
+			box-shadow:none;
+			text-align: left;
+			height:45px;
+			padding:14px;			
+			margin:0 auto;
+			position:relative;
+			transition: width 500ms ease;
+			font-size:1em;
+			line-height: 1;
+
+			a{
+				position: absolute;
+				right:10px;
+				top:50%;
+				transform: translateY(-50%);
+				color:$brand-light-blue;	
+				
+					
+				&:hover{
+					cursor: pointer;
+				}
+			}
+
+			@media (min-width: $screen-md-min){
+				width:45%;
+			}
+		}
+	}
+
+	.search-type{		
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_profile.svg);
+		}
+
+		input{
+			margin-top:10px;
+		}
+	}
+
+	
+
+	.dob{
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_birthday.svg);
+		}
+		select{
+
+			margin-bottom: 15px;
+			@media (min-width: $screen-md-min){
+				width:30%;
+			}
+		}
+	}
+
+	.income{
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_income.svg);
+		}
+	}
+
+	.marital-status{
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_maritalStatus.svg);
+		}
+	}
+
+	.veteran-status{
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_veteran.svg);
+		}
+	}
+
+	.benefits{
+		.question-block-icon{
+			background-image: url(../images/prescreen/Prescreen_categories.svg);
+		}
+
+		.btn-link{
+			text-transform: capitalize;
+			font-size:0.889em;
+			text-decoration: underline;
+		}
+	}
+
+	.veteran-status,.partner-veteran-status{
+		.btn{
+			width:80px;
+		}
+	}
+	
+	/**Benefits Selectors**/
+	.benefits-selector-container{
+		display: flex;
+		flex-wrap: wrap;
+		margin:0 auto;	
+		max-width: 640px;
+		justify-content: center;
+		
+		@media (min-width: 360px){
+			justify-content: space-between;
+		}
+
+	}
+
+	.benefits-selector-checkbox{
+  		height:125px;
+	  	width:140px;
+	  	text-align:center;
+	  	position:relative;
+	  	border:none;
+	  	padding-left:0;
+	  	padding-right:0;
+	  	margin-bottom:20px;
+	  	cursor:pointer;
+	  	border-radius:6px;
+
+	  	&:after{
+	  		content: '';
+	  		position: absolute;
+	  		top:0;
+	  		left: 0;
+	  		width: 100%;
+	  		height: 100%;
+	  		background-color:#000;
+	  		opacity: 0;
+	  		transition: opacity 500ms ease;	
+		}
+	  
+	  	&:hover{
+			&:after{
+				opacity: .15;
+			}	
+	  	}
+	}
+
+	.benefits-selector-checkbox-content{
+	  	padding:15px 10px 10px;
+	  	transition:300ms linear background-color;
+	  	border:1px solid $brand-light-grey;	  
+	  	box-shadow:0 0px 1px rgba(0,0,0,.2);
+	  	height:100%;
+	  	border-radius:6px;
+	  	color:#515356;
+
+	  
+	  	.icon-wrapper{	    
+	    	font-size:40px;
+	    	img{
+	      		width:50px;	      
+	    	}
+	  	}
+	  
+	  	.benefits-selector-label{
+	    	display:table;
+	    	width:100%;
+	    
+	    	.label-inner{
+		      	display:table-cell;
+		      	width:100%;
+		      	height:30px;
+		      	text-align:center;
+		      	vertical-align:middle;
+		      	font-size:0.889em;
+		      	font-family: "interface",sans-serif;
+				font-weight: 700;
+	  			line-height: 1;
+	  			padding-top:10px;
+	    	}
+	  	}
+	}
+
+	.checked{
+  		.benefits-selector-checkbox-content{
+	    	background: $brand-light-blue;
+	    	color:#fff;
+	  	}
+
+	  	.icon-wrapper{
+	    	&:before{
+    			font-family: 'Glyphicons Halflings';
+	      		content: '\e013';
+	      		background-color:#fff;
+	      		border-radius: 100%;
+	      		padding:10px 14px;
+	      		color:$brand-light-blue;	
+	      		font-size:20px;      
+	    	}
+	    	img{
+	      		display:none;
+	    	}
+	  	}
+	}
+}

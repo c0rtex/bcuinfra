@@ -1,0 +1,57 @@
+@extends('layouts.main')
+
+@section('main')
+	<span id="map-tip"></span>
+	<div class="container fact-sheet-alt">
+		<div class="page-top-headline">
+			<a href="/results" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
+			<h1>Program Details</h1>
+		</div>
+		<div class="card">
+			<div class="card-nested row">
+				<div class="col-xs-12">
+					<div class="fact-sheet-icon-hdr">
+		          		<span class="icon-block-healthcare pull-left"></span>
+			          	<div class="pull-left">
+			            	<div class="fact-sheets-header fact-sheets-top-header">Food &amp; Nutrition</div>
+			            	<div class="fact-sheets-header fact-sheets-bottom-header">Supplemental Nutrition Assistance Program (SNAP)</div>
+			          	</div>
+		          	</div>
+		        </div>
+
+				<div class="col-md-9">
+					<p>The Supplemental Nutrition Assistance Program (SNAP) (the new name for the federal Food Stamp Program) helps low-income individuals and families buy the food they need for good health. Although SNAP is the national name, your state may use a different name.</p>
+					<p>Use this map to learn more about SNAP and find application froms to apply for this benefit</p>
+
+					{{ Form::open('/resources/details', 'post', false, [
+							'class' => 'form-inline state-selection'
+						])
+					}}
+						<p class="bold">Select your state from the map or list to find out more.</p>
+					  	<div class="form-group">
+					    	<label class="sr-only" for="state-selection">Select State</label>
+				      		<select class="form-control" id="state-selection" ng-model="mapState" ng-change="stateChange()" state-selection>
+						        <option value="">-- Select --</option>
+						  		@foreach($states as $key => $value)
+								    <option value="{{ $key }}">{{ $value }}</option>
+								@endforeach
+							</select>
+					  	</div>
+				  		<button type="submit" class="btn btn-primary">Continue</button>
+					{{ Form::close() }}
+				</div>
+				<div class="col-md-3 col-sm-12">
+					<div class="results-options">
+			          <span class="fact-sheets-know">Did You Know?</span>
+			          Over <span class="fact-sheets-emphasis">50,000 people</span> in the United States are receiving benefits from SNAP today!
+			        </div>
+				</div>
+
+				<div class="col-xs-12">
+					@include('partials.map')
+				</div>
+	      	</div>
+		</div>
+	</div>
+
+@stop

@@ -1,0 +1,9 @@
+<div class="income question-block" ng-show="$root.prescreen.month && $root.prescreen.year">
+    <section>
+        <p class="question-block-icon question-block-title">What is your gross monthly income?
+            <button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltip}}" data-placement="top" class="glyphicon glyphicon-question-sign"></button></p>
+        <div class="btn-group" role="group" aria-label="Montly Income?">
+            <button ng-repeat="income in question.answer_fields[0].options track by income.code" type="button" class="btn btn-default" ng-class="{active: $root.prescreen.income.code == income.code}" ng-click="$root.prescreen.income = income">{{income.display}}</button>
+        </div>
+    </section>
+</div>

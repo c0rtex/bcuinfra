@@ -1,0 +1,83 @@
+.page-white-label-homepage {
+
+  .find-my-benefits-content {
+    p {
+      color: white;
+      padding-bottom: 10px;
+    }
+  }
+
+  .white-label-container {
+    @media (max-width: $screen-xs-max) {
+      margin-top: 10px;
+    }
+  }
+
+  .white-label-section {
+    h3 {
+      color: $brand-light-blue;
+      @extend .bold;
+    }
+
+    margin: 20px 0 20px 0;
+
+    > div {
+      margin: 20px 0 20px 0;
+      padding: 10px 60px 10px 60px;
+      border-top:2px solid #ccc;
+      position: relative;
+
+      &:after{
+        @media (min-width: $screen-sm-min) {
+          content: '';
+          width: 2px;
+          height: 100%;
+          position: absolute;
+          top: 20px;
+          right:0;
+          background-color: $grey-accent;
+        }
+      }
+
+      &:nth-child(odd){
+        clear: both;
+      }
+
+      &:nth-child(even){
+        &:after{
+          display: none;
+        }
+      }
+
+      &:nth-child(1),&:nth-child(2){
+        border-top:none;
+      }
+
+      a{
+        padding-top: 10px;
+      }
+
+
+
+      @media (max-width: $screen-xs-max) {
+        border-top:none;
+        border-bottom: 2px $grey-accent solid;
+        padding: 10px 10px 30px 10px;
+        margin: 0;
+      }
+    }
+
+    border-bottom: 2px $grey-accent solid;
+    text-align: center;
+
+    @media (max-width: $screen-xs-max) {
+      border-bottom: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
