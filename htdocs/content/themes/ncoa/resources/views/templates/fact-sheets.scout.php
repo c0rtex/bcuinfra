@@ -89,11 +89,21 @@
           @foreach(Meta::get(Loop::id(), $key = 'faqs-list', $single = true) as $key => $value)
             <section slide-down class="program program-no-icon">
               <div class="program-header"><span>{{ $value["question"] }}</span></div>
-                <div class="programs-container program-p">
-                  <p>
-                    {{ $value["answer"] }}
-                  </p>
+              @if(strpos($value["answer"], 'entrypoints'))
+              @foreach($entry_points as $ekey => $evalue)
+              <div class="programs-container program-p">
+                <p>
+                  {{ $evalue->print_name }}
+                </p>
+             </div>
+              @endforeach
+              @else
+              <div class="programs-container program-p">
+                <p>
+                  {{ $value["answer"] }}
+                </p>
               </div>
+              @endif
             </section>
           @endforeach
           </div>
