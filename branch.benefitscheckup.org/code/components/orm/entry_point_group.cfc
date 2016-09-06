@@ -17,5 +17,6 @@
     <cfproperty name="name">
     <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
     <cfproperty name="active_flag">
+	<cfproperty name="entry_points" fieldtype="many-to-many"  linktable="entrypoint_entrypointgroup" fkcolumn="entrypointgroup_id" inversejoincolumn="entrypoint_id" cfc="entry_point">
     <cfproperty name="notes">
 </cfcomponent>
