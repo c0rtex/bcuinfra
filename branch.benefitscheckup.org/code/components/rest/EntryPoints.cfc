@@ -277,8 +277,73 @@
         on e.info_display_id=di.display_id
         where e.entrypoint_id=<cfqueryparam cfsqltype="cf_sql_integer" value="#attributes.entrypoint_id#" maxlength="6">
 		and e.active_flag=1--->
+
+        <cfset outstr = "<b>#entryPoint.getName()#</b><br />">
+
+        <cfif not isNull(entryPoint.getSub_name())>
+            <cfset outstr = outstr & "#entryPoint.getSub_name()#<br />">
+        </cfif>
+
+        <cfif not isNull(entryPoint.getAddress1())>
+            <cfset outstr = outstr & "#entryPoint.getAddress1()#<br />">
+        </cfif>
+
+        <cfif not isNull(entryPoint.getAddress2())>
+            <cfset outstr = outstr & "#entryPoint.getAddress2()#<br />">
+        </cfif>
+
+        <cfif not isNull(entryPoint.getAddress3())>
+            <cfset outstr = outstr & "#entryPoint.getAddress3()#<br />">
+        </cfif>
+
+        <cfif not isNull(entryPoint.getCity()) and not isNull(entryPoint.getState())>
+            <cfset outstr = outstr & "#entryPoint.getCity()#, #entryPoint.getState().getId()#">
+            <cfif not isNull(entryPoint.getZipcode())>
+                <cfset outstr = outstr & " #entryPoint.getZipcode()#">
+                <cfif not isNull(entryPoint.getZipcode_plus4()) and trim(entryPoint.getZipcode_plus4()) neq ''>
+                    <cfset outstr = outstr & "-#entryPoint.getZipcode_plus4()#">
+                </cfif>
+            </cfif>
+            <cfset outstr = outstr & "<br />">
+        </cfif>
+
+        <cfloop array="#entryPoint.getPhones()#" index="ind">
+            <cfset outstr = outstr & "#ind.getPhone_type().getDisplay().getDisplay_text()#: #ind.getNumber()#<br/>">
+        </cfloop>
+
+        <cfif not isNull(entryPoint.getEmail())>
+            <cfset outstr = outstr & "Email: <a href=""mailto:#entryPoint.getEmail()#"">#entryPoint.getEmail()#</a><br />">
+        </cfif>
+
+        <cfif not isNull(entryPoint.getUrl())>
+            <cfset outstr = outstr & "Website: <a href=""#entryPoint.getUrl()#"" target=""_blank"">#entryPoint.getUrl()#</a><br />">
+        </cfif>
+
+        <!--- <cfif not isNull(entryPoint.getHours_display())>
+            <cf_displayText group="ephours" code="#ep.hours_code#" stripTags="#isPrintMode#" var="ephours" alt="&nbsp;">
+            <cfif ephours neq '' and ephours neq '&nbsp;'>
+                <cf_displayText group="site" code="site_ep_hours" var="eptext">
+                <cfset outstr = outstr & "#eptext#: #ephours#<br />">
+            </cfif>
+        </cfif>
+
+        <cfif ep.contact_title neq '' or ep.contact_first neq '' or ep.contact_middle neq '' or ep.contact_last neq '' or ep.contact_suffix neq ''>
+            <cf_displayText group="site" code="site_ep_contact" var="eptext">
+            <cfset outstr = outstr & "#eptext#: #ep.contact_title# #ep.contact_first# #ep.contact_middle# #ep.contact_last# #ep.contact_suffix#<br />">
+        </cfif>
+
+        <cfif ep.info_code neq ''>
+            <cf_displayText group="epinfo" code="#ep.info_code#" stripTags="#isPrintMode#" var="epinfo" alt="&nbsp;">
+            <cfif epinfo neq '' and epinfo neq '&nbsp;'>
+                <cf_displayText group="site" code="site_ep_more_info" var="eptext">
+                <cfset outstr = outstr & "#eptext#: #epinfo#<br />">
+            </cfif>
+        </cfif>--->
+
+
         <cfset var rtVl = structNew()>
         <cfset rtVl["code"] = entryPoint.getCode()>
+        <cfset rtVl["print_name"] = outstr>
         <cfset rtVl["name"] = entryPoint.getName()>
         <cfset rtVl["subname"] = entryPoint.getSub_name()>
         <cfset rtVl["address1"] = entryPoint.getAddress1()>
@@ -314,10 +379,10 @@
             <cfset rtVl["info"] = entryPoint.getInfo_display().getDisplay_text()>
         </cfif>
         <cfset rtVl["phones"] = arrayNew(1)>
-        <cfloop array="#rtVl["phones"]#" index="ind">
+        <cfloop array="#entryPoint.getPhones()#" index="ind">
             <cfset phone = structNew()>
             <cfset phone["number"] = ind.getNumber()>
-            <cfset phone["type"] = ind.getType().getDisplay_text()>
+            <cfset phone["type"] = ind.getPhone_type().getDisplay().getDisplay_text()>
             <cfset arrayAppend(rtVl["phones"],phone)>
         </cfloop>
 

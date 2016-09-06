@@ -40,5 +40,5 @@
     <cfproperty name="counties" fieldtype="many-to-many" linktable="entrypoint_county" fkcolumn="entrypoint_id" inversejoincolumn="county_id" cfc="county">
     <cfproperty name="cities" fieldtype="many-to-many" linktable="entrypoint_city" fkcolumn="entrypoint_id" inversejoincolumn="city_id" cfc="city">
     <cfproperty name="zips" fieldtype="many-to-many" linktable="entrypoint_zip" fkcolumn="entrypoint_id" inversejoincolumn="zipcode" cfc="zip">
-    <cfproperty name="phones" fieldtype="one-to-many" linktable="phone" fkcolumn="entrypoint_id" cfc="phone">
+    <cfproperty name="phones" fieldtype="one-to-many" fkcolumn="entrypoint_id" cfc="phone">
 </cfcomponent>
