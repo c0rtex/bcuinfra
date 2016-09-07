@@ -1,6 +1,6 @@
 <cfcomponent name="ProgramFinder">
 
-  <cfproperty name="incomeTables">
+  <!---<cfproperty name="incomeTables">
   <cfproperty name="mxAssetVals">
   <cfproperty name="mxIncVals">
   <cfproperty name="sa">
@@ -9,11 +9,11 @@
   <cfproperty name="buff_list">
   <cfproperty name="selectedDrugs">
   <cfproperty name="ynDoBuffer">
-  <cfproperty name="subsetRecFlag">
+  <cfproperty name="subsetRecFlag">--->
 
-  <cffunction name="init" access="public" output="false" returntype="ProgramFinder" hint="constructor">
+  <!---<cffunction name="init" access="public" output="false" returntype="ProgramFinder" hint="constructor">
       <cfreturn this>
-  </cffunction>
+  </cffunction>--->
 
   <cffunction name="dspForms" access="remote" returnFormat="plain">
       <cfargument name="cat" required="no" default="">
@@ -132,7 +132,7 @@
       <cfreturn retVal>
   </cffunction>
 
-  <cffunction name="proceligibilityByScreening" access="remote" returnFormat="plain">
+  <!---<cffunction name="proceligibilityByScreening" access="remote" returnFormat="plain">
       <cfargument name="screening_id"required="no" default="">
       <cfargument name="ynDoBuffer" required="no" default="false">
       <cfargument name="subsetRecFlag" required="no" default="0">
@@ -1139,7 +1139,7 @@
               <cfreturn EVALUATE(Rule)>
           </cfif>
       </cfif>
-  </cffunction>
+  </cffunction>--->
 
 </cfcomponent>
 

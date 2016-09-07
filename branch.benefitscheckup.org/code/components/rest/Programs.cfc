@@ -706,8 +706,6 @@
 
     </cffunction>
 
-
-
     <cffunction name="testRules">
         <cfset this.getIncomeTables()>
         <cfset testPrograms = "">
@@ -901,7 +899,6 @@
             <cfset sa.buff_list = tmp_prg_list>
         </cfif>
     </cffunction>
-
 
     <cffunction name="calcForScreening" access="remote" restpath="/calcForScreening/{screeningId}" returnType="String" httpMethod="GET">
         <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
@@ -1153,6 +1150,116 @@
             </cfif>
         </cfloop>
     </cffunction>
+
+    <cffunction name="dspForms" access="remote" restpath="/findResources" returnType="String" httpMethod="GET">
+        <cfargument name="cat" required="no" restargsource="query" default="">
+        <cfargument name="st" required="no" restargsource="query" default="">
+        <cfargument name="ecPrgList" required="no" restargsource="query" default="">
+        <cfargument name="sortorder" required="no" restargsource="query" default="">
+        <cfargument name="sortby" required="no" restargsource="query" default="">
+
+        <cfset qryFormsQuery = "select distinct(f.id),p.id,p.prg_id,p.prg_nm,f.state.id,f.name,ft.code,ftg.name,fft.string,fft.entry_date,fft.form_date,p.cat_id,fft.form_type.id,p.st,pf.sort from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.tbl_prg_all p join p.subset_program_bases sp">
+        <cfset qryFormsQuery = "#qryFormsQuery# where ft.id <> 2 and (p.inactive_flag = 0 or p.inactive_flag is null)">
+
+        <cfif cat EQ 'PAP'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=19 and p.cat_id = 331">
+            <cfelseif cat EQ 'MSP'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and p.cat_id = 309">
+            <cfelseif cat EQ 'QMB'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and (  p.prg_id = '103-309-1031-FD-FD' or  p.prg_id = '103-309-2681-AZ-ST')">
+            <cfelseif cat EQ 'QI'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and (  p.prg_id = '103-309-1071-FD-FD' or p.prg_id = '103-309-2683-AZ-ST' )">
+            <cfelseif cat EQ 'SLMB'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and ( p.prg_id = '103-309-1032-FD-FD' or p.prg_id = '103-309-2682-AZ-ST')">
+            <cfelseif cat EQ 'MEDAPROV'>
+            <cfset qryFormsQuery = "#qryFormsQuery#   and sp.subset.id=12">
+            <cfelseif cat EQ 'MED'>
+            <cfset qryFormsQuery = "#qryFormsQuery#   and sp.subset.id=8">
+            <cfelseif cat EQ 'OTH'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and p.cat_id = 332">
+            <cfelseif cat EQ 'STRX'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=9">
+            <cfelseif cat EQ 'Entered' or cat EQ 'PUB'>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1">
+            <cfelseif st neq ''>
+            <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=1 and f.state.id = '#st#'">
+        </cfif>
+
+        <cfif st neq ''>
+            <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
+        </cfif>
+
+        <cfif cat EQ 'DRUG'>
+            <cfif isdefined('ecPrgList') and len(ecPrgList) gt 1 >
+                <cfset prgIdList = listToArray(ecPrgList,",")>
+                <cfset prgList = "'1'">
+                <cfloop array="#prgIdList#" index="item">
+                    <cfset prgList = "#prgList#,'#trim(item)#'">
+                </cfloop>
+                <cfset qryFormsQuery = "#qryFormsQuery# and (sp.subset.id=1 or sp.subset.id=19) and p.prg_id IN (#prgList#)">
+            <cfelse>
+                <cfset qryFormsQuery = "#qryFormsQuery# and sp.subset.id=10000">
+            </cfif>
+        </cfif>
+
+        <cfif sortorder neq '' and sortby neq ''>
+            <cfset qryFormsQuery = "#qryFormsQuery# order by #sortby# #sortorder#, pf.sort">
+            <cfelseif st neq '' >
+            <cfset qryFormsQuery = "#qryFormsQuery# order by p.prg_nm,p.cat_id, pf.sort">
+            <cfelseif cat eq 'PUB'>
+            <cfset qryFormsQuery = "#qryFormsQuery# order by  p.prg_nm, pf.sort">
+            <cfelseif cat eq 'ENTERED'>
+            <cfset qryFormsQuery = "#qryFormsQuery# order by p.prg_nm, pf.sort">
+            <cfelseif cat eq 'DRUG'>
+            <cfset qryFormsQuery = "#qryFormsQuery# order by p.cat_id asc, p.prg_nm, pf.sort">
+            <cfelseif cat EQ 'SLMB' or cat EQ 'QMB' or cat EQ 'QI' or cat EQ 'MED' or cat EQ 'MSP' or cat EQ 'STRX'>
+            <cfset qryFormsQuery = "#qryFormsQuery# order by p.st, p.prg_nm, pf.sort">
+        <cfelse>
+            <cfset qryFormsQuery = "#qryFormsQuery# order by p.prg_nm, pf.sort">
+        </cfif>
+
+        <cfset query = ormExecuteQuery(qryFormsQuery)>
+
+        <cfset data = arrayNew(1)>
+
+        <cfloop array="#query#" index="item">
+            <cfset str = structNew()>
+            <cfset str.form_id = item[1]>
+            <cfset str.program_id=item[2]>
+            <cfset str.prg_id=item[3]>
+            <cfset str.prg_nm=item[4]>
+            <cfif arrayIsDefined(item,5)>
+                <cfset str.form_state = item[5]>
+            <cfelse>
+                <cfset str.form_state = "ALL">
+            </cfif>
+            <cfset str.form_name=item[6]>
+            <cfset str.form_type_code=item[7]>
+            <cfset str.form_tag_name=item[8]>
+            <cfset str.form_file=item[9]>
+
+            <cfif arrayIsDefined(item,10)>
+                <cfset str.entry_date=dateFormat(item[10],"yyyy-mm-dd")>
+            <cfelse>
+                <cfset str.entry_date="">
+            </cfif>
+
+            <cfif arrayIsDefined(item,11)>
+                <cfset str.form_date=dateFormat(item[11],"yyyy-mm-dd")>
+            <cfelse>
+                <cfset str.form_date="">
+            </cfif>
+
+            <cfset str.cat_id=item[12]>
+            <cfset str.form_type_id=item[13]>
+            <cfset str.program_state=item[14]>
+            <cfset str.sort=item[15]>
+            <cfset arrayAppend(data,str)>
+        </cfloop>
+
+        <cfreturn serializeJSON(data)>
+    </cffunction>
+
 
 
 </cfcomponent>
