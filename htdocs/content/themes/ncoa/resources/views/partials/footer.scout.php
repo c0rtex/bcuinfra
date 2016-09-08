@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="site-logo">
-                <a href="http://ncoa.reingolddev.com/" title="NCOA" rel="home">
-                    <img width="177" height="60" src="http://ncoa.reingolddev.com/wp-content/uploads/ncoa-logo-177x60.png" class="header-logo" alt="NCOA" srcset="http://ncoa.reingolddev.com/wp-content/uploads/ncoa-logo-177x60.png 177w, http://ncoa.reingolddev.com/wp-content/uploads/ncoa-logo-300x102.png 300w, http://ncoa.reingolddev.com/wp-content/uploads/ncoa-logo-230x78.png 230w, http://ncoa.reingolddev.com/wp-content/uploads/ncoa-logo.png 310w" sizes="(max-width: 177px) 100vw, 177px">
+                <a href="http://ncoa.org" title="NCOA" rel="home">
+                    <img width="177" height="60" src="/content/uploads/2016/09/ncoa-logo-177x60.png" class="header-logo" alt="NCOA"  sizes="(max-width: 177px) 100vw, 177px">
                 </a>
             </div>
 
