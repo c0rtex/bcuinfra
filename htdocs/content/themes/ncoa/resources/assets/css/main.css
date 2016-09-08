@@ -1512,7 +1512,7 @@ pre {
       width: 970px; } }
   @media (min-width: 1200px) {
     .container {
-      width: 1170px; } }
+      width: 1350px; } }
 
 .container-fluid {
   margin-right: auto;
@@ -8412,7 +8412,8 @@ footer .btn-purple {
   background: #F9F9F9;
   border: 2px solid #CCCCCC;
   padding: 15px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  width: 290px;}
   .results-options .result-options-list {
     color: #1888de; }
     .results-options .result-options-list li {
