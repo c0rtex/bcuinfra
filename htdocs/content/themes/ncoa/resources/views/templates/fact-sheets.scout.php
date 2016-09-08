@@ -119,10 +119,17 @@
 
             @if ($app_forms)
             @foreach($app_forms as $ekey => $evalue)
+            @if(strpos($evalue->url, 'http')===0)
+            <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+            </a>
+            @else
             <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
               <span class="fa fa-file fact-sheets-icon"></span>
-              {{ $evalue->caption }}
+              <span style="white-space: pre-line">{{ $evalue->caption }}</span>
             </a>
+            @endif
+
             @endforeach
             @endif
 
