@@ -111,31 +111,24 @@
       </div>
 
       <div class="col-md-3 hidden-xs hidden-sm">
-        <div class="results-options">
-          <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
-          <br />
-          {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
-        </div>
         @if(!$is_alt)
           <div class="results-options">
             <span class="fact-sheets-side-header">Quick Links</span>
             
-            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-side-apply">{{ Meta::get(Loop::id(), $key = 'button-title', $single = true) }}</a>
+            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-side-apply">Apply Online</a>
 
-            <a href="{{ Meta::get(Loop::id(), $key = 'english-url', $single = true) }}" class="btn btn-link fact-sheets-side-link">
+            @if ($app_forms)
+            @foreach($app_forms as $ekey => $evalue)
+            <div>
+            <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
               <span class="fa fa-file fact-sheets-icon"></span>
-              {{ Meta::get(Loop::id(), $key = 'english-title', $single = true) }}
+              {{ $evalue->caption }}
             </a>
-            
-            <a href="{{ Meta::get(Loop::id(), $key = 'spanish-url', $single = true) }}" class="btn btn-link fact-sheets-side-link">
-              <span class="fa fa-file fact-sheets-icon"></span>
-              {{ Meta::get(Loop::id(), $key = 'spanish-title', $single = true) }}
-            </a>
-            
-            <a href="{{ Meta::get(Loop::id(), $key = 'more-languages-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-              {{ Meta::get(Loop::id(), $key = 'more-languages', $single = true) }}
-            </a>
-            
+              </div>
+            @endforeach
+            @endif
+
+
             <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
             
           </div>
