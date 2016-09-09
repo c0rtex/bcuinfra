@@ -3533,7 +3533,7 @@ var map_config = {
 	},
 	'map_1':{
 		'hover': 'ALABAMA', //state hover content
-		'url':'/resources/details', //Goto URL
+		'url':'/fact-sheets/factsheet_nutrition_al_snap_program/', //Goto URL
 		'target':'same_window', //open link in new window:new_window, open in current window:same_window, or none for nothing.
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D', //state's color when mouse hover
@@ -3542,7 +3542,7 @@ var map_config = {
 	},
 	'map_2':{
 		'hover': 'ALASKA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ak_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3551,7 +3551,7 @@ var map_config = {
 	},
 	'map_3':{
 		'hover': 'ARIZONA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_az_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3560,7 +3560,7 @@ var map_config = {
 	},
 	'map_4':{
 		'hover': 'ARKANSAS',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ar_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3569,7 +3569,7 @@ var map_config = {
 	},
 	'map_5':{
 		'hover': 'CALIFORNIA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ca_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3578,7 +3578,7 @@ var map_config = {
 	},
 	'map_6':{
 		'hover': 'COLORADO',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_co_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3587,7 +3587,7 @@ var map_config = {
 	},
 	'map_7':{
 		'hover': 'CONNECTICUT',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ct_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3596,7 +3596,7 @@ var map_config = {
 	},
 	'map_8':{
 		'hover': 'DELAWARE',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_de_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3605,7 +3605,7 @@ var map_config = {
 	},
 	'map_9':{
 		'hover': 'FLORIDA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_fl_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3614,7 +3614,7 @@ var map_config = {
 	},
 	'map_10':{
 		'hover': 'GEORGIA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ga_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3623,7 +3623,7 @@ var map_config = {
 	},
 	'map_11':{
 		'hover': 'HAWAII',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_hi_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3632,7 +3632,7 @@ var map_config = {
 	},
 	'map_12':{
 		'hover': 'IDAHO',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_id_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3641,7 +3641,7 @@ var map_config = {
 	},
 	'map_13':{
 		'hover': 'ILLINOIS',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_il_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3650,7 +3650,7 @@ var map_config = {
 	},
 	'map_14':{
 		'hover': 'INDIANA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_in_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3659,7 +3659,7 @@ var map_config = {
 	},
 	'map_15':{
 		'hover': 'IOWA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ia_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3668,7 +3668,7 @@ var map_config = {
 	},
 	'map_16':{
 		'hover': 'KANSAS',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ks_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3677,7 +3677,7 @@ var map_config = {
 	},
 	'map_17':{
 		'hover': 'KENTUCKY',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ky_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3686,7 +3686,7 @@ var map_config = {
 	},
 	'map_18':{
 		'hover': 'LOUISIANA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_la_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3695,7 +3695,7 @@ var map_config = {
 	},
 	'map_19':{
 		'hover': 'MAINE',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_me_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3704,7 +3704,7 @@ var map_config = {
 	},
 	'map_20':{
 		'hover': 'MARYLAND',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_md_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3713,7 +3713,7 @@ var map_config = {
 	},
 	'map_21':{
 		'hover': 'MASSACHUSETTS',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ma_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3722,7 +3722,7 @@ var map_config = {
 	},
 	'map_22':{
 		'hover': 'MICHIGAN',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_mi_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3731,7 +3731,7 @@ var map_config = {
 	},
 	'map_23':{
 		'hover': 'MINNESOTA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_mn_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3740,7 +3740,7 @@ var map_config = {
 	},
 	'map_24':{
 		'hover': 'MISSISSIPPI',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ms_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3749,7 +3749,7 @@ var map_config = {
 	},
 	'map_25':{
 		'hover': 'MISSOURI',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_mo_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3758,7 +3758,7 @@ var map_config = {
 	},
 	'map_26':{
 		'hover': 'MONTANA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_mt_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3767,7 +3767,7 @@ var map_config = {
 	},
 	'map_27':{
 		'hover': 'NEBRASKA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ne_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3776,7 +3776,7 @@ var map_config = {
 	},
 	'map_28':{
 		'hover': 'NEVADA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_nv_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3785,7 +3785,7 @@ var map_config = {
 	},
 	'map_29':{
 		'hover': 'NEW HAMPSHIRE',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_nh_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3794,7 +3794,7 @@ var map_config = {
 	},
 	'map_30':{
 		'hover': 'NEW JERSEY',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_nj_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3803,7 +3803,7 @@ var map_config = {
 	},
 	'map_31':{
 		'hover': 'NEW MEXICO',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_nm_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3812,7 +3812,7 @@ var map_config = {
 	},
 	'map_32':{
 		'hover': 'NEW YORK',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ny_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3821,7 +3821,7 @@ var map_config = {
 	},
 	'map_33':{
 		'hover': 'NORTH CAROLINA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_nc_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3830,7 +3830,7 @@ var map_config = {
 	},
 	'map_34':{
 		'hover': 'NORTH DAKOTA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_nd_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3839,7 +3839,7 @@ var map_config = {
 	},
 	'map_35':{
 		'hover': 'OHIO',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_oh_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3848,7 +3848,7 @@ var map_config = {
 	},
 	'map_36':{
 		'hover': 'OKLAHOMA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ok_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3857,7 +3857,7 @@ var map_config = {
 	},
 	'map_37':{
 		'hover': 'OREGON',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_or_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3866,7 +3866,7 @@ var map_config = {
 	},
 	'map_38':{
 		'hover': 'PENNSYLVANIA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_pa_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3875,7 +3875,7 @@ var map_config = {
 	},
 	'map_39':{
 		'hover': 'RHODE ISLAND',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ri_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3884,7 +3884,7 @@ var map_config = {
 	},
 	'map_40':{
 		'hover': 'SOUTH CAROLINA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_sc_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3893,7 +3893,7 @@ var map_config = {
 	},
 	'map_41':{
 		'hover': 'SOUTH DAKOTA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_sd_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3902,7 +3902,7 @@ var map_config = {
 	},
 	'map_42':{
 		'hover': 'TENNESSEE',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_tn_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3911,7 +3911,7 @@ var map_config = {
 	},
 	'map_43':{
 		'hover': 'In Texas, over <strong>333,000 people</strong> are using SNAP to stretch their grocery budget. Are you?',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_tx_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3920,7 +3920,7 @@ var map_config = {
 	},
 	'map_44':{
 		'hover': 'UTAH',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_ut_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3929,7 +3929,7 @@ var map_config = {
 	},
 	'map_45':{
 		'hover': 'VERMONT',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_vt_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3938,7 +3938,7 @@ var map_config = {
 	},
 	'map_46':{
 		'hover': 'VIRGINIA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_va_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3947,7 +3947,7 @@ var map_config = {
 	},
 	'map_47':{
 		'hover': 'WASHINGTON',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_wa_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3956,7 +3956,7 @@ var map_config = {
 	},
 	'map_48':{
 		'hover': 'WEST VIRGINIA',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_wv_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3965,7 +3965,7 @@ var map_config = {
 	},
 	'map_49':{
 		'hover': 'WISCONSIN',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_wi_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3974,7 +3974,7 @@ var map_config = {
 	},
 	'map_50':{
 		'hover': 'WYOMING',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_wy_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3983,7 +3983,7 @@ var map_config = {
 	},
 	'map_51':{
 		'hover': 'Puerto Rico',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_pr_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -3992,7 +3992,7 @@ var map_config = {
 	},
 	'map_52':{
 		'hover': 'Guam',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_gu_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
@@ -4001,7 +4001,7 @@ var map_config = {
 	},
 	'map_53':{
 		'hover': 'Virgin Islands',
-		'url':'/resources/details',
+		'url':'/fact-sheets/factsheet_nutrition_vi_snap_program/',
 		'target':'same_window',
 		'upColor':'#1888de', //state's color when page loads
 		'overColor':'#1F3D7D',
