@@ -3505,7 +3505,6 @@ app.controller('questionnaireResultsController', ['$scope', '$state', function($
 
 app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', '$state', function($scope, $http, $window, localStorageService, locationFinder, $state){	
 
-	$scope.isZipValid = true;
 
 	$scope.findZip = function(zip){
 		locationFinder.getLocation(zip).success(function(data, status, headers, config) {
@@ -3514,7 +3513,7 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 				localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
 				$window.location.href = '/find-my-benefits';
 			} else {
-				$scope.isZipValid=false;
+				$scope.isZipInvalid=true;
 			}
    	 	});
 	}
