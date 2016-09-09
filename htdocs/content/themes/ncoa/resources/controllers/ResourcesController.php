@@ -110,12 +110,12 @@ class ResourcesController extends BaseController
 
 			$constants = Config::get('constants');
 
-			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/findPrograms/findResources?cat='.$_REQUEST['category'].'&st='.$_REQUEST['state'])->send();
+			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/findPrograms/findResources?cat=PAP'./*$_REQUEST['category'].*/'&st='.$_REQUEST['state'])->send();
 		}
 
 		return View::make('templates.resources-results', [
 			'state' => $_REQUEST['state'],
-			'category' => $_REQUEST['category'],
+			'category' => /*$_REQUEST['category']*/'PAP',
 			'states' => $this->states,
 			'categories' => $this->categories,
 			'programs' => $response->body
