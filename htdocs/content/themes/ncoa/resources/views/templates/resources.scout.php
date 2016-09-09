@@ -10,6 +10,22 @@
 					<h3>{{ Meta::get(Loop::id(), $key = 'searchbox-headline', $single = true) }}</h3>
 					<p>{{ Meta::get(Loop::id(), $key = 'searchbox-body', $single = true) }}</p>	
 					@include('partials.resources-search')
+					<div class="bene-container">
+						@foreach($keycategories as $key => $value)
+						
+							<div class="benefits-selector-checkbox">
+							    <div class="benefits-selector-checkbox-content">
+						      		<div class="icon-wrapper">
+							        	<img src="<?php echo wp_get_attachment_image_src($keycategories[$key]["category-icon"])[0] ?>">
+							      	</div>
+							      	<div class="benefits-selector-label">
+							        	<div class="label-inner ng-binding">{{ $keycategories[$key]["category-title"] }}</div>
+							      	</div>
+							    </div>
+						  	</div>
+					  	
+						@endforeach
+				  	</div>
 				</div>
 
 				<div class="grey-background card-row">
@@ -34,26 +50,7 @@
 					</div>			 				
 				</div>
 
-				<div class="grey-background card-row">
-					<h3>{{ Meta::get(Loop::id(), $key = 'categories-headline', $single = true) }}</h3>
-					<p>{{ Meta::get(Loop::id(), $key = 'categories-body', $single = true) }}</p>
-					<div class="bene-container">
-						@foreach($keycategories as $key => $value)
-						
-							<div class="benefits-selector-checkbox">
-							    <div class="benefits-selector-checkbox-content">
-						      		<div class="icon-wrapper">
-							        	<img src="<?php echo wp_get_attachment_image_src($keycategories[$key]["category-icon"])[0] ?>">
-							      	</div>
-							      	<div class="benefits-selector-label">
-							        	<div class="label-inner ng-binding">{{ $keycategories[$key]["category-title"] }}</div>
-							      	</div>
-							    </div>
-						  	</div>
-					  	
-						@endforeach
-				  	</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>
