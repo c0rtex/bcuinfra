@@ -67,13 +67,18 @@ class ResourcesController extends BaseController
 		);
 		
 		$this->categories = array(
-			"PAP" => "Patient Assistance Programs",
-			"MSP" => "Medicare Savings Program",
-			"QMB" => "Qualified Medicare Beneficiary",
-			"QI" => "Qualifying Individual",
-			"SLMB" => "Specified Low-Income Medicare",
-			"MED" => "Medicaid",
-			"STRX" => "State Rx"
+			"110" => "medication",
+			"107" => "healthcare",
+			"109" => "income",
+			"179" =>  "foodnutrition",
+			"108" => "housingutility",
+			"111" => "taxrelief",
+			"113" => "veteran",
+			"105" => "employment",
+			"112" => "transportation",
+			"104" => "education",
+			"103" => "discount",
+			"102" => "otherassistance"
 		);
     }
 	/**
@@ -102,12 +107,14 @@ class ResourcesController extends BaseController
 
 			$constants = Config::get('constants');
 
-			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/findPrograms/findResources?cat=PAP'./*$_REQUEST['category'].*/'&st='.$_REQUEST['state'])->send();
+			$category = $this->categories[$_REQUEST['category']];
+
+			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/findPrograms/findResources?cat='.$category.'&st='.$_REQUEST['state'])->send();
 		}
 
 		return View::make('templates.resources-results', [
 			'state' => $_REQUEST['state'],
-			'category' => /*$_REQUEST['category']*/'PAP',
+			'category' => $category,
 			'states' => $this->states,
 			'categories' => $this->categories,
 			'programs' => $response->body

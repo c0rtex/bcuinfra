@@ -31,4 +31,5 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" name="category" value="@{{category}}">
 {{ Form::close() }}
