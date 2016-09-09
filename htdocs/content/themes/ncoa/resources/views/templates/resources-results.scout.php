@@ -7,7 +7,7 @@ window.programs = {{$programs}};
 @section('main')
 	<div ncoa-programs>
 	<div class="container resource-results-container">
-		<a href="/results" class="btn-link back-chev"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
+		<a href="/resources" class="btn-link back-chev"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
 		<h1 class="">Program Details</h1>
 		<div class="card">
 			<div class="card-nested">
@@ -22,7 +22,7 @@ window.programs = {{$programs}};
 					<ul>
 						<div ng-repeat="program in currentProgramsList | filter: {PRG_NM : $root.prg_nm_filter}">
 							<li class="result-item">
-				        		<a href="/results/details" class="btn-link btn-underline">@{{program.PRG_NM}}</a>
+				        		<a href="/fact-sheets/factsheet_@{{program.CODE}}" class="btn-link btn-underline">@{{program.PRG_NM}}</a>
 				        		<p>@{{program.FORM_TAG_NAME}}</p>
 				        	</li>
 						</div>
