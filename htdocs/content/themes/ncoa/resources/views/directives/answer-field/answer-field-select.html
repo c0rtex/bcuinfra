@@ -1,0 +1,6 @@
+<p validator-add="{{answer_field.validation_code}}" ng-model="$root.div_af[answer_field.code]" id="div_{{answer_field.code}}">
+    <select name="{{answer_field.code}}" id="{{answer_field.code}}"
+            ng-options="option.display for option in answer_field.options | orderBy:'sort' track by option.code"
+            ng-model="$root.af[answer_field.code]" ng-required="answer_field.required"></select>
+    <span ng-show="answer_field.required">*</span>
+</p>

@@ -25,11 +25,16 @@ class FactSheetsController extends BaseController
 
 		$appForms = json_decode($appForms->body);
 
+		$requiredMaterials = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/materials/required/forProgram/'.$program_code)->send();
+
+		$requiredMaterials = json_decode($requiredMaterials->body);
+
 		return View::make('templates.fact-sheets', [
 			'page_slug' => $fact_sheet_slug,
 			'entry_points' => $entryPoints,
 			'app_forms' => $appForms,
 			'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
+			'required_materials' => $requiredMaterials,
 			'is_alt' => false
 		]);
 	}

@@ -12,7 +12,7 @@
 </header>
 
 <div class="card-header">
-  <a href="javascript:history.back()" class="btn-link btn-back">Back to Results</a>
+  <a ui-sref="questionnaire.results" class="btn-link btn-back">Back to Results</a>
   <h1>Fact Sheet</h1>
 </div>
 
@@ -57,15 +57,7 @@
         @if(!$is_alt)
           <hr class="fact-sheets-hr" />
 
-          <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
-
-        <h3 class="bold-h3">What Youll Need...</h3>
-        <ul class="fact-sheets-list">
-          @foreach($required_materials as $ekey => $evalue)
-          <li><a href="" target="_blank">{{$evalue->title}}</a></li>
-          @endforeach
-        </ul>
-        <a class="btn-link fact-sheet-button-fwd fact-sheets-link" href="#">Learn More</a>
+          {{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}
 
           <div class="fact-sheets-main-apply">
             <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary">{{ Meta::get(Loop::id(), $key = 'button-title', $single = true) }}</a>
@@ -97,21 +89,11 @@
           @foreach(Meta::get(Loop::id(), $key = 'faqs-list', $single = true) as $key => $value)
             <section slide-down class="program program-no-icon">
               <div class="program-header"><span>{{ $value["question"] }}</span></div>
-              @if(strpos($value["answer"], 'entrypoints'))
-              @foreach($entry_points as $ekey => $evalue)
-              <div class="programs-container program-p">
-                <p>
-                  {{ $evalue->print_name }}
-                </p>
-             </div>
-              @endforeach
-              @else
-              <div class="programs-container program-p">
-                <p>
-                  {{ $value["answer"] }}
-                </p>
+                <div class="programs-container program-p">
+                  <p>
+                    {{ $value["answer"] }}
+                  </p>
               </div>
-              @endif
             </section>
           @endforeach
           </div>
@@ -119,29 +101,31 @@
       </div>
 
       <div class="col-md-3 hidden-xs hidden-sm">
+        <div class="results-options">
+          <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
+          <br />
+          {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
+        </div>
         @if(!$is_alt)
           <div class="results-options">
             <span class="fact-sheets-side-header">Quick Links</span>
             
-            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-side-apply">Apply Online</a>
+            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-side-apply">{{ Meta::get(Loop::id(), $key = 'button-title', $single = true) }}</a>
 
-            @if ($app_forms)
-            @foreach($app_forms as $ekey => $evalue)
-            @if(strpos($evalue->url, 'http')===0)
-            <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-            </a>
-            @else
-            <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+            <a href="{{ Meta::get(Loop::id(), $key = 'english-url', $single = true) }}" class="btn btn-link fact-sheets-side-link">
               <span class="fa fa-file fact-sheets-icon"></span>
-              <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+              {{ Meta::get(Loop::id(), $key = 'english-title', $single = true) }}
             </a>
-            @endif
-
-            @endforeach
-            @endif
-
-
+            
+            <a href="{{ Meta::get(Loop::id(), $key = 'spanish-url', $single = true) }}" class="btn btn-link fact-sheets-side-link">
+              <span class="fa fa-file fact-sheets-icon"></span>
+              {{ Meta::get(Loop::id(), $key = 'spanish-title', $single = true) }}
+            </a>
+            
+            <a href="{{ Meta::get(Loop::id(), $key = 'more-languages-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+              {{ Meta::get(Loop::id(), $key = 'more-languages', $single = true) }}
+            </a>
+            
             <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
             
           </div>
