@@ -12,7 +12,6 @@ class ResourcesController extends BaseController
         $this->states = array(
 			'AL'=>'ALABAMA',
 			'AK'=>'ALASKA',
-			'AS'=>'AMERICAN SAMOA',
 			'AZ'=>'ARIZONA',
 			'AR'=>'ARKANSAS',
 			'CA'=>'CALIFORNIA',
@@ -20,10 +19,8 @@ class ResourcesController extends BaseController
 			'CT'=>'CONNECTICUT',
 			'DE'=>'DELAWARE',
 			'DC'=>'DISTRICT OF COLUMBIA',
-			'FM'=>'FEDERATED STATES OF MICRONESIA',
 			'FL'=>'FLORIDA',
 			'GA'=>'GEORGIA',
-			'GU'=>'GUAM GU',
 			'HI'=>'HAWAII',
 			'ID'=>'IDAHO',
 			'IL'=>'ILLINOIS',
@@ -33,7 +30,6 @@ class ResourcesController extends BaseController
 			'KY'=>'KENTUCKY',
 			'LA'=>'LOUISIANA',
 			'ME'=>'MAINE',
-			'MH'=>'MARSHALL ISLANDS',
 			'MD'=>'MARYLAND',
 			'MA'=>'MASSACHUSETTS',
 			'MI'=>'MICHIGAN',
@@ -49,7 +45,6 @@ class ResourcesController extends BaseController
 			'NY'=>'NEW YORK',
 			'NC'=>'NORTH CAROLINA',
 			'ND'=>'NORTH DAKOTA',
-			'MP'=>'NORTHERN MARIANA ISLANDS',
 			'OH'=>'OHIO',
 			'OK'=>'OKLAHOMA',
 			'OR'=>'OREGON',
@@ -68,10 +63,7 @@ class ResourcesController extends BaseController
 			'WA'=>'WASHINGTON',
 			'WV'=>'WEST VIRGINIA',
 			'WI'=>'WISCONSIN',
-			'WY'=>'WYOMING',
-			'AE'=>'ARMED FORCES AFRICA \ CANADA \ EUROPE \ MIDDLE EAST',
-			'AA'=>'ARMED FORCES AMERICA (EXCEPT CANADA)',
-			'AP'=>'ARMED FORCES PACIFIC'
+			'WY'=>'WYOMING'
 		);
 		
 		$this->categories = array(
@@ -110,12 +102,12 @@ class ResourcesController extends BaseController
 
 			$constants = Config::get('constants');
 
-			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/cf/components/ProgramFinder.cfc?method=dspForms&cat='.$_REQUEST['category'].'&st='.$_REQUEST['state'])->send();
+			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/findPrograms/findResources?cat=PAP'./*$_REQUEST['category'].*/'&st='.$_REQUEST['state'])->send();
 		}
 
 		return View::make('templates.resources-results', [
 			'state' => $_REQUEST['state'],
-			'category' => $_REQUEST['category'],
+			'category' => /*$_REQUEST['category']*/'PAP',
 			'states' => $this->states,
 			'categories' => $this->categories,
 			'programs' => $response->body
