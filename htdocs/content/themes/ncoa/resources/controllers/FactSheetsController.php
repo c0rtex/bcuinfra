@@ -21,9 +21,15 @@ class FactSheetsController extends BaseController
 
 		$entryPoints = json_decode($entryPoints->body);
 
+		$appForms = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/forms/appForms/forProgram/'.$program_code)->send();
+
+		$appForms = json_decode($appForms->body);
+
 		return View::make('templates.fact-sheets', [
 			'page_slug' => $fact_sheet_slug,
 			'entry_points' => $entryPoints,
+			'app_forms' => $appForms,
+			'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
 			'is_alt' => false
 		]);
 	}

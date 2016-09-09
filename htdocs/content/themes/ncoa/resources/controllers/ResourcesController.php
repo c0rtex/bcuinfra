@@ -110,7 +110,7 @@ class ResourcesController extends BaseController
 
 			$constants = Config::get('constants');
 
-			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/cf/components/ProgramFinder.cfc?method=dspForms&cat='.$_REQUEST['category'].'&st='.$_REQUEST['state'])->send();
+			$response = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/findPrograms/findResources?cat='.$_REQUEST['category'].'&st='.$_REQUEST['state'])->send();
 		}
 
 		return View::make('templates.resources-results', [
