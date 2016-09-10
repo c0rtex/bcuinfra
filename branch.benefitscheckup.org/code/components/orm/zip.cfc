@@ -17,6 +17,7 @@
     <cfproperty name="latitude">
     <cfproperty name="longitude">
     <cfproperty name="valid">
+    <cfproperty name="prefered_cities" fieldtype="many-to-many" linktable="view_city_zip_preferred" fkcolumn="zipcode" inversejoincolumn="city_id" cfc="city">
 
     <cffunction name="getStateFromZip" access="remote" returnFormat="plain">
         <cfargument name="zipCode" type="string" required="yes">

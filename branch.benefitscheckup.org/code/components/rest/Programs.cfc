@@ -2,7 +2,7 @@
     <cfset categories = structNew()>
     <cfset categories['bcuqc_category_income'] = ["income"]>
     <cfset categories['bcuqc_category_medicaid'] = ["medicaid"]>
-    <cfset categories['bcuqc_category_rx'] = ["medicare","medications"]>
+    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxco"]>
     <cfset categories['bcuqc_category_property_taxrelief'] = ["taxrelief","taxrelief_other"]>
     <cfset categories['bcuqc_category_veteran'] = ["veteran"]>
     <cfset categories['bcuqc_category_nutrition'] = ["nutrition"]>
@@ -53,7 +53,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state.id=? and p.active_flag=1",[sa.st])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
@@ -73,7 +73,7 @@
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programs = ormExecuteQuery("select p,#this.categoriesToGroups()# as category from screening_program sp join sp.program p join p.program_category pc where sp.screening=?",[screening])>
+        <cfset programs = ormExecuteQuery("select p,#this.categoriesToGroups()# as category from screening_program sp join sp.program p join p.program_category pc where sp.screening=? order by p.key_program, p.sort",[screening])>
 
 
         <cfset programsByCategories = structNew()>
@@ -585,7 +585,7 @@
     <cffunction name="ynPrgFind">
         <cfargument name="rule">
 
-        <cfset StrFullRule = rule>
+        <cfset var StrFullRule = replaceNoCase(rule,"session","sa","ALL")>
 
         <cfloop index="count" from="1" to="10">
             <cfset CharNumP = FindNoCase("prg",StrFullRule,1)>
@@ -706,8 +706,6 @@
 
     </cffunction>
 
-
-
     <cffunction name="testRules">
         <cfset this.getIncomeTables()>
         <cfset testPrograms = "">
@@ -796,7 +794,7 @@
                                 <cfset strConvertedRule = ReplaceNoCase(strRule, strStructMem, valStructMem)>
                                 <cfset answer = this.ynSpendDown(strConvertedRule,true)>
                             <cfelse>
-                                <cfset answer = this.ynSpendDown(strConvertedRule,false)>
+                                <cfset answer = this.ynSpendDown(strRule,false)>
                             </cfif>
                         </cfif>
                     <cfelse>
@@ -901,7 +899,6 @@
             <cfset sa.buff_list = tmp_prg_list>
         </cfif>
     </cffunction>
-
 
     <cffunction name="calcForScreening" access="remote" restpath="/calcForScreening/{screeningId}" returnType="String" httpMethod="GET">
         <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
@@ -1153,6 +1150,33 @@
             </cfif>
         </cfloop>
     </cffunction>
+
+    <cffunction name="dspForms" access="remote" restpath="/findResources" returnType="String" httpMethod="GET">
+        <cfargument name="cat" required="no" restargsource="query" default="">
+        <cfargument name="st" required="no" restargsource="query" default="">
+
+        <cfset qryFormsQuery = "select distinct p.prg_nm,ftg.name,pr.code from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.program_category pc join pc.super_category psc join pr.tbl_prg_all p join p.subset_program_bases sp">
+        <cfset qryFormsQuery = "#qryFormsQuery# where ft.id <> 2 and (p.inactive_flag = 0 or p.inactive_flag is null) and psc.code=?">
+
+        <cfif st neq ''>
+            <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
+        </cfif>
+
+        <cfset query = ormExecuteQuery(qryFormsQuery,[cat])>
+
+        <cfset data = arrayNew(1)>
+
+        <cfloop array="#query#" index="item">
+            <cfset str = structNew()>
+            <cfset str.prg_nm=item[1]>
+            <cfset str.form_tag_name=item[2]>
+            <cfset str.code=item[3]>
+            <cfset arrayAppend(data,str)>
+        </cfloop>
+
+        <cfreturn serializeJSON(data)>
+    </cffunction>
+
 
 
 </cfcomponent>

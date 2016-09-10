@@ -33,6 +33,8 @@
 	<cfproperty name="legacy_prg_id">
 	<cfproperty name="tbl_prg_all" fieldtype="one-to-many" cfc="tbl_prg_all" fkColumn="recid">
 	<cfproperty name="legacy_pri_sec">
+	<cfproperty name="key_program" tostruct="key_program" column="keyprogram_flag">
+	<cfproperty name="short_desc" tostruct="short_desc">
 
 	<cffunction name="getlegacy">
 		<cfif this.getlegacy_prg_id() eq ''>

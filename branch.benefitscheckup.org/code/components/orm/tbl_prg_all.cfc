@@ -38,4 +38,5 @@
     <cfproperty name="significant_flag">
     <cfproperty name="childrens_flag">
     <cfproperty name="program" fieldtype="many-to-one" fkcolumn="recId" cfc="program" insert="false" update="false">
+    <cfproperty name="subset_program_bases" fieldtype="one-to-many" cfc="subset_program_base" fkcolumn="program_id">
 </cfcomponent>

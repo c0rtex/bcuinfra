@@ -1,11 +1,30 @@
-<cfcomponent>
-    <cffunction name="doScreening" access="remote" returnFormat="plain">
+<!---
+header('Access-Control-Allow-Origin: http://sub.example.com');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Headers: Accept, X-Requested-With');
+// without credentials we can use * for origin
+header('Access-Control-Allow-Credentials: true');
+header('HTTP/1.1 200 OK', true);
+--->
+<!---<cfheader name = "Access-Control-Allow-Methods" value = "GET, POST, PUT, DELETE">
+<cfheader name = "Access-Control-Allow-Headers" value = "Accept, X-Requested-With">
+<cfheader name = "Access-Control-Allow-Credentials" value = "true">
+<cfheader name = "HTTP/1.1 200 OK" value = "">--->
+
+<cfcomponent rest="true" rest>
+
+    <cfheader name="Access-Control-Allow-Origin" value="*">
+
+    <cffunction name="doScreening" access="remote" returntype="Struct">
         <cfargument name="state_id" type="string" required="no" default="">
         <cfargument name="subset_id" type="numeric" required="yes" default="0">
         <cfargument name="partner_id" type="numeric" required="yes" default="0">
         <cfargument name="prev_id" type="numeric" required="no" default="-1">
         <cfargument name="response" type="any" required="yes" default="">
         <cfargument name="pgno" type="numeric" required="no" default="1">
+
+        <cfheader name="Access-Control-Allow-Origin" value="*">
+
         <cfset resp = deserializeJSON(response)>
         <cfset scArr = entityload("screening",{cfid=session.cfid, cftoken="#session.cftoken#"})>
         <cfif arraylen(scArr) eq 0>

@@ -132,7 +132,7 @@
       <cfreturn retVal>
   </cffunction>
 
-  <cffunction name="proceligibilityByScreening" access="remote" returnFormat="plain">
+  <!---<cffunction name="proceligibilityByScreening" access="remote" returnFormat="plain">
       <cfargument name="screening_id"required="no" default="">
       <cfargument name="ynDoBuffer" required="no" default="false">
       <cfargument name="subsetRecFlag" required="no" default="0">
@@ -1139,7 +1139,7 @@
               <cfreturn EVALUATE(Rule)>
           </cfif>
       </cfif>
-  </cffunction>
+  </cffunction>--->
 
 </cfcomponent>
 

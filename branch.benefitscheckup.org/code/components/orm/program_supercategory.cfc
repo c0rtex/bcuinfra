@@ -1,5 +1,5 @@
 <!---
-	Template Name: ProgramCategoryEntity
+	Template Name: ProgramSuperCategoryEntity
 	Component Purpose: Component mapped to database table programcategory via object relation mapping framework.
 					   Each property of component defines mapping to database table column by using attribute column.
 					   If this attribute isn't defined, than property name set in attribute name equals to database column name.
@@ -8,16 +8,12 @@
 					   cfc attribute contains component entity name which mapped to master database table.
 					   Component extends from ToStructConverter component for serialization purpose.
 
-	Data Tables: programcategory
+	Data Tables: programsupercategory
 
 --->
 
-<cfcomponent persistent="true" entityname="program_category" table="programcategory" extends="ToStructConverter">
-	<cfproperty name="id" fieldtype="id" column="programcategory_id">
-	<cfproperty name="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
-	<cfproperty name="code">
-	<cfproperty name="description">
-	<cfproperty name="legacy_code">
-	<cfproperty name="sort">
-	<cfproperty name="super_category" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="supercategory_id" cfc="program_supercategory">
+<cfcomponent persistent="true" entityname="program_supercategory" table="programsupercategory" extends="ToStructConverter">
+    <cfproperty name="id" fieldtype="id" column="supercategory_id">
+    <cfproperty name="code" column="categorycode">
+    <cfproperty name="name" column="category_name">
 </cfcomponent>
