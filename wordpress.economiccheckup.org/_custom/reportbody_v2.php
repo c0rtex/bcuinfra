@@ -2517,9 +2517,9 @@ $eversafeReadOnly = true;
 }
 ?>
 
-		<?PHP if(isset($screeningID) && (!substr($reportClient, 0, 21) == "/esi-results-eversafe" || (substr($reportClient, 0, 21) == "/esi-results-eversafe" && !$eversafeReadOnly == true) )){
+		<?PHP //if(isset($screeningID) && (!substr($reportClient, 0, 21) == "/esi-results-eversafe" || (substr($reportClient, 0, 21) == "/esi-results-eversafe" && !$eversafeReadOnly == true) )){
 echo '<li><a data-toggle="modal" role="button" href="/'.$questAnswers.'/?screeningID='.$screeningID.'"><i class="icon-reply "></i> Want to Change Answers? </a></li>';
- 		} ?>
+ 		//} ?>
         	<li><a data-toggle="modal" role="button" href="https://www.surveymonkey.com/s/3V39M9Z" target="_blank"><i class="icon-user "></i> Send Us Your Feedback</a></li>
 
 
