@@ -1,1 +1,0 @@
-<cflocation url="http://#session.oeservername#/?p=can" AddToken="No">

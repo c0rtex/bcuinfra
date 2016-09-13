@@ -1,1 +1,0 @@
-<cfinclude template="articles/#article_id#.cfm">

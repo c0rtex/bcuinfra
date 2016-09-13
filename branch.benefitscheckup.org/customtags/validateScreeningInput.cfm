@@ -1,1 +1,0 @@
-<!--- not currently used, but portions of newlogScreeningInput may be broken out and placed here eventually --->
