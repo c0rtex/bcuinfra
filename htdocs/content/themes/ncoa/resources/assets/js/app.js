@@ -3507,6 +3507,14 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
 
 	$scope.findZip = function(zip){
+
+		if (zip.length != 5) {
+			$scope.isZipInvalid=true;
+			return;
+		} else {
+			$scope.isZipInvalid=false;
+		}
+
 		locationFinder.getLocation(zip).success(function(data, status, headers, config) {
 
 			if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){

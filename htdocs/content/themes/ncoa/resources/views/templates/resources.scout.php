@@ -13,7 +13,7 @@
 					<div class="bene-container">
 						@foreach($keycategories as $key => $value)
 						
-							<div class="benefits-selector-checkbox">
+							<div class="benefits-selector-checkbox" ng-class="{checked: category == {{$keycategories[$key]['category-icon']}}}" ng-click="category = {{$keycategories[$key]['category-icon']}}">
 							    <div class="benefits-selector-checkbox-content">
 						      		<div class="icon-wrapper">
 							        	<img src="<?php echo wp_get_attachment_image_src($keycategories[$key]["category-icon"])[0] ?>">

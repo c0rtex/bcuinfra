@@ -4,7 +4,7 @@
 	<span id="map-tip"></span>
 	<div class="container fact-sheet-alt">
 		<div class="page-top-headline">
-			<a href="/results" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
+			<a href="/resources" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
 			<h1>Program Details</h1>
 		</div>
 		<div class="card">
@@ -43,7 +43,7 @@
 				<div class="col-md-3 col-sm-12">
 					<div class="results-options">
 			          <span class="fact-sheets-know">Did You Know?</span>
-			          Over <span class="fact-sheets-emphasis">50,000 people</span> in the United States are receiving benefits from SNAP today!
+			          <span class="fact-sheets-emphasis">Millions of people</span> in the United States are receiving benefits from SNAP today!
 			        </div>
 				</div>
 

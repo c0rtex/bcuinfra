@@ -10,5 +10,6 @@ return [
 	* and key's value is the constant VALUE.
 	*/
 	'THEME_VERSION'	=> '1.0.0',
-	'WEB_SERVICE_URL' => 'http://leviathantech.com:8500'
+	'WEB_SERVICE_URL' => 'http://leviathantech.com:8500',
+	'APPLICATION_FORMS_URL' => 'https://www.benefitscheckup.org/forms/'
 ];

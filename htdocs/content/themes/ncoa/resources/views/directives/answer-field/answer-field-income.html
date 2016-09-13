@@ -1,0 +1,5 @@
+<p validator-add="{{answer_field.validation_code}}" ng-model="$root.div_af[answer_field.code]" id="div_{{answer_field.code}}">
+    <span data-ng-bind-html="answer_field.display | trustAsHtml"></span>
+    <input type="text" name="{{answer_field.code}}" ng-model="$root.af[answer_field.code]" ui-money-mask ng-required="answer_field.required">
+    <span ng-show="answer_field.required">*</span>
+</p>

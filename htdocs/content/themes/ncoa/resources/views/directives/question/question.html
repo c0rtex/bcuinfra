@@ -1,0 +1,15 @@
+<section class="form-group">
+    <label for="citizenship">{{question.display}}</label>
+    <select id="citizenship" class="form-control select-choice" ng-model="questionnaire.request.basics.citizen">
+        <option value="">-- Select --</option>
+        <option ng-repeat="citizen in citizens" value="{{citizen.id}}">{{citizen.name}}</option>
+    </select>
+</section>
+
+
+<p>{{questionCounter}}</p>
+    <span data-ng-bind-html="question.display"></span><div-helps ng-if="question.helps.length>0" help="question.helps[0]"></div-helps>
+    <span ng-repeat="answer_field in question.answer_fields | orderBy:'sort'" ng-controller="ValidationController">
+        <div-answer-field ng-attr-answer-field="answer_field"/>
+    </span>
+    <p/>
