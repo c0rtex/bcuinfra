@@ -13,15 +13,19 @@ class FactSheetsController extends BaseController
 
 		$program_code = Meta::get($query->queried_object_id, 'program_code');
 
-		$program_state =  Meta::get($query->queried_object_id, 'program_state_id');
-
 		$constants = Config::get('constants');
 
 		$entryPoints = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/entryPoints/forProgram/'.$program_code)->send();
 
 		$entryPoints = json_decode($entryPoints->body);
 
-		$appForms = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/forms/appForms/forProgram/'.$program_code)->send();
+		if (array_key_exists('state',$_REQUEST)) {
+			$program_state = $_REQUEST['state'];
+		} else {
+			$program_state =  Meta::get($query->queried_object_id, 'program_state_id');
+		}
+
+		$appForms = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/forms/appForms/forProgram/'.$program_code.'/?stateId='.$program_state)->send();
 
 		$appForms = json_decode($appForms->body);
 
