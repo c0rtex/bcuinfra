@@ -1,1 +1,0 @@
-<cf_buildPage pos="end">

@@ -1,9 +1,0 @@
-
-/*font size is 16px*/
-#wrapper { font-size: 140%; }
-
-/*Add styles below for anything that gets "messed up" with the increase in font size */
-
-/*Indicates Active font-size for this stylesheet*/
-#text-size a.ts_small {font-weight: normal; color: #535050; text-decoration: none;}
-#text-size a.ts_large {font-weight: bold; color: #000; text-decoration: underline;}

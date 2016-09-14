@@ -43,7 +43,9 @@ class SponsorsModel
         $query = new WP_Query([
             'post_type'         => 'ncoa-sponsors',
             'posts_per_page'    => -1,
-            'post_status'       => 'publish'
+            'post_status'       => 'publish',
+            'orderby'=> 'title', 
+            'order' => 'ASC'
         ]);
 
         return $query->get_posts();

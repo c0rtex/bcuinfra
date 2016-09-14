@@ -1,63 +1,0 @@
-body {    font-family: Trebuchet MS, Helvetica, Arial, sans-serif;    font-size: 14px;    color: #000000;    background-color: #FFFFFF;    margin:0 0px;     padding:0px;  }table {    font-size: 14px; }#copyright {  font-size: 10px;   text-align: center;
-  margin-left:5px;
-  padding-bottom:10px;}
-
-#copyrightMain {
-  font-size: 10px; 
-  text-align: center;
-  margin-left:5px;
-}#textsize {  font-size: 14px;  font-weight: bold;  clear: both;   padding-top: 25px;  padding-right: 25px;  padding-bottom: 25px;
-  text-align: center;
-  margin-left:5px;
- }
- 
- #textsizeMain {
-  font-size: 14px;
-  font-weight: bold;
-  clear: both; 
-  padding-top: 25px;
-  padding-right: 25px;
-  padding-bottom: 25px;
-  text-align: center;
-  margin-left:5px;
- }.requiredText {    font-weight: bold;    font-size: 12px;    color: #660000;  }
-.optionalText {
-    font-weight: bold;
-    font-size: 12px;
-    color: #000000;  
-}
-.attentionText {    font-weight: bold;    font-size: 12px;    color: #FF0000;  }  .ERROR {    font-weight: bold;    font-size: 14px;    color: #FF3300;  }.WARNING {    font-weight: bold;    font-size: 14px;    color: #FF3300;  }.INFORMATION {    font-weight: bold;    font-size: 14px;    color: #33CC00;  }h1 {         font-size: 18px;    font-weight: bold;    color: #052C6A;    white-space: nowrap;}.h1black {       font-size: 18px;  font-weight: bold;  color: #000000;} h2 {     font-size: 16px;  font-weight: bold;  color: #052C6A;}  caption {     font-size: 16px;  font-weight: bold;  color: #052C6A;} .h2black {       font-size: 16px;  font-weight: bold;  color: #000000;} .h2white {           font-size: 16px;      font-weight: bold;      color: #FFFFFF;  } h3 {     font-size: 14px;  font-weight: bold;  color: #000000;}.h3black {       font-size: 14px;  font-weight: bold;  color: #000000;}.h3white {       font-size: 14px;  font-weight: bold;  color: #FFFFFF;} h4 {     font-size: 10px;  font-weight: bold;  color: #000000;}.breadcrumbLink { 	font-weight: bold;     font-size: 10px;       color: #660000;    text-decoration:none;}.buttonText {    font-size: 14px;    color: #000000;  }  .tableText {    font-size: 14px;    color: #000000;  }  .smallButtonText {    font-size: 10px;    color: #000000;  }  .smallBold {     font-size: 12px;  font-weight: bold;  color: #000000;}
-
-.small {   
-  font-size: 12px;
-}.smallBlueBold {     font-size: 12px;  font-weight: bold;  color: #000099;}.smallHeaderTextBold {     font-size: 12px;  font-weight: bold;  color: #FFFFFF;}
-.large {   
-  font-size: 16px;
-}
-.largeHeaderTextBold {     font-size: 16px;  font-weight: bold;  color: #FFFFFF;}#discussionSummaryLinks {  background-color: #052C6A;   font-size: 14px;  font-weight: bold;  color: #FFFFFF;}td.discussionSummary {   background-color: #052C6A;   font-size: 14px;  font-weight: bold;  color: #FFFFFF;}th.discussionSummary {   background-color: #052C6A;   font-size: 14px;  font-weight: bold;  color: #FFFFFF;}
-
-#noLinkEmailSmall {
-  font-size: 12px;
-  font-weight: bold;
-  color: #FFFFFF;
-  text-decoration:none;
-  color: #FFFFFF;
-} #noLinkEmail {  font-size: 10px;  font-weight: bold;  color: #FFFFFF;  text-decoration:none;  color: #FFFFFF;} #small{     font-size: 10px;} input {  font-size: 14px;  font-weight: bold;}textarea {  font-size: 14px;  font-weight: bold}option {  font-size: 14px;}a.greenbutton {    background-color: #009900;     font-weight: bold;    font-size: 16px;    padding: 8px 16px;    border-top: 1px solid white;    border-right: 1px solid black;    border-bottom: 1px solid black;    border-left: 1px solid white;    text-align: center;    min-width: 95px;    color: #FFFFFF; }a.orangebutton {    background-color: #FF9900;     font-weight: bold;    font-size: 16px;    padding: 8px 16px;    border-top: 1px solid white;    border-right: 1px solid black;    border-bottom: 1px solid black;    border-left: 1px solid white;    text-align: center;    min-width: 95px;    color: #FFFFFF; }a.bluebutton {    background-color: #052C6A;     font-weight: bold;    font-size: 16px;    padding: 8px 16px;    border-top: 1px solid white;    border-right: 1px solid black;    border-bottom: 1px solid black;    border-left: 1px solid white;    text-align: center;    min-width: 95px;    color: #FFFFFF; }a.mediumWhiteLink {      font-size: 16px;      font-weight: bold;      color: #FFFFFF;      text-decoration:underline;}table.button { height: 40px;}
-td.button { height: 80px;}#mainSUNavLinks {  font-size:11px;}   #secondarySUNavLinks {  margin:0px 0px 0px 0px;  padding:0px 0px 0px 0px;  position:relative;  height:30px;  border-bottom:1px #052C6A solid;  border-left:1px #052C6A solid;  border-right:1px #052C6A solid;  border-top: 1px #052C6A solid;  background-color: #9EB5D4;  z-index:1;  font-size:11px;}#secondarySUNavLinks li {  margin: 0px 0px 0px 0px;   padding: 0px 0px 0px 0px;   display: inline;  list-style-type: none;  }#mainNavLinks {  margin:0px 0px 0px 0px;  padding:20px 0px 0px 0px;  position:relative;  background-color: #FFFFFF;  z-index:2;  font-size:13px;}   #mainNavLinks li {  margin: 0px -5px 0px 0px;   padding: 0px 0px 0px 0px;   display: inline;  list-style-type: none;  }#secondaryNavLinks {  margin:2px 0px 0px 0px;  padding:0px 0px 0px 0px;  position:relative;  height:30px;  border-bottom:1px #052C6A solid;  border-left:1px #052C6A solid;  border-right:1px #052C6A solid;  border-top: 1px #052C6A solid;  background-color: #9EB5D4;  z-index:1;  font-size:11px;} #tertiaryNavLinks {  margin:2px 0px 0px 5px;  padding:0px 0px 0px 0px;  position:relative;  height:30px;  background-color: #FFFFFF;  z-index:0;  font-size:11px;}td.messageNavigation {   border: 1px solid #052C6A;  font-size: 14px;}td.messageNavigationActive {   border: 1px solid #052C6A;  font-size: 14px;  background-color: #052C6A;}td.messageNavigationInactive {   border: 1px solid #052C6A;  font-size: 14px;  background-color: #CCCCCC;}.messageCenterHighlight {   font-size: 14px;  background-color: #FF0000;  color: #FFFFFF;  font-weight: bold;  padding:5px 5px 5px 5px;}a.messageCenterHighlightLink {       font-size: 14px;      color: #FFFFFF;      text-decoration:none;      background-color: #FF0000;      font-weight: bold;}a.largeGrayLink {      font-size: 16px;      font-weight: bold;      color: #666666;      text-decoration:none;}a.largeWhiteLink {      font-size: 16px;      font-weight: bold;      color: #FFFFFF;      text-decoration:none;}
-
-.ntitle {
-	font-size: 16pt; 
-	font-weight: bold;
-}
-.nsizesmall {
-	font-size: 8pt; 
-}
-.nsizesmallbold {
-	font-size: 8pt; 
-	font-weight: bold;
-}
-.nfacts td, .nfacts p  {
-	font-family: arial;
-	font-size: 10pt;
-	padding: 1px;
-}
