@@ -2961,7 +2961,7 @@ app.factory('Drugs',[function() {
 
 
 app.service('locationFinder', ['$http', function($http){
-	var urlBase = 'http://maps.googleapis.com/maps/api/geocode/json';
+	var urlBase = '//maps.googleapis.com/maps/api/geocode/json';
 
 	this.getLocation = function(zipcode){
 		return $http.get(urlBase + '?address=' + zipcode + '&sensor=true');
@@ -2970,13 +2970,23 @@ app.service('locationFinder', ['$http', function($http){
 
 app.service('savePrescreen',['$http', function($http){
 	this.post = function (data) {
-		return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data);
+		return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data,{
+			headers:
+			{
+				'Content-Type': 'text/plain; charset=UTF-8'
+			}
+		});
 	}
 }]);
 
 app.service('saveScreening',['$http', function($http){
 	this.post = function (data) {
-		return $http.post(window.webServiceUrl+'/rest/backend/screening/saveScreening',data);
+		return $http.post(window.webServiceUrl+'/rest/backend/screening/saveScreening',data,{
+			headers:
+			{
+				'Content-Type': 'text/plain; charset=UTF-8'
+			}
+		});
 	}
 }]);
 
