@@ -826,37 +826,34 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 
 			scope.regPattern = "\\d{5}";
 			scope.$root.prescreen.isZipValid = true;
-			scope.$root.prescreen.isEdit = false;
+			scope.$root.prescreen.isValidating = false;
+
+			scope.updateZip = function(){
+				scope.$root.prescreen.isValidating = true;
+				locationFinder.getLocation(scope.$root.prescreen.zip).success(function(data, status, headers, config) {
+					validateZip(data);
+					scope.$root.prescreen.isValidating = false;
+				});
+			};
 
 
 			if (localStorageService.get('v_zipcode') != undefined) {
-				scope.$root.prescreen.zipcode = localStorageService.get('v_zipcode');
+				scope.$root.prescreen.zip = localStorageService.get('v_zipcode');
 				localStorageService.remove('v_zipcode');
-				locationFinder.getLocation(scope.$root.prescreen.zipcode).success(function(data, status, headers, config) {
-					validateZip(data);
-				});
-
-			} else {
-				scope.$root.prescreen.zipcode = '';
+				scope.updateZip();
 			}
 			
-			//Location finder to populate formatted address
-			//locationFinder.getLocation(scope.prescreen.zipcode).success(function(data, status, headers, config) {
-			//	validateZip(data);
-		    //});
-
-			$(elm).focusout(function(){
-				locationFinder.getLocation($(this).val()).success(function(data, status, headers, config) {
-					validateZip(data);
-			    });
-			});
-
 			scope.resetZip = function(){
 				scope.$root.prescreen.isEdit = true;
 				$('#zipcode').focus();
 			}
 
 			function validateZip(data){
+				if (scope.$root.prescreen.zip.length != 5) {
+					scope.$root.prescreen.isZipValid = false;
+					//scope.$root.prescreen.isEdit = true;
+					return;
+				}
 				if(data.status == "OK"){
 					if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){				
 						scope.$root.prescreen.zipcode = data.results[0].address_components[0].long_name;
@@ -871,14 +868,14 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 				  		scope.$root.prescreen.zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
 				  		//localStorageService.set('zipcode', data.results[0].address_components[0].long_name);
 				  		scope.$root.prescreen.isZipValid = true;
-				  		scope.$root.prescreen.isEdit = false;
+				  		//scope.$root.prescreen.isEdit = false;
 					}else{
 						scope.$root.prescreen.isZipValid = false;
-						scope.$root.prescreen.isEdit = true;
+						//scope.$root.prescreen.isEdit = true;
 					}
 				}else{
 					scope.$root.prescreen.isZipValid = false;
-					scope.$root.prescreen.isEdit = true;
+					//scope.$root.prescreen.isEdit = true;
 				}
 			}
 		}
