@@ -1,6 +1,6 @@
 <div class="search-type question-block" ng-show="$root.prescreen.zipcode&&$root.prescreen.isZipValid&&!$root.prescreen.isEdit">
     <section>
-        <p class="question-block-icon question-block-title">Who are you completing this search for?</p>
+        <p class="question-block-icon question-block-title">Who are you completing this search for?<button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <select class="form-control" name="searchFor" ng-model="$root.prescreen.searchfor" ng-options="searchfor.display for searchfor in question.answer_fields[0].options track by searchfor.code" ng-change="onStatusChange()">
             <option value="">-- choose an option --</option>
         </select>
