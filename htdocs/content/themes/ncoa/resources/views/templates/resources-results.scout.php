@@ -22,7 +22,7 @@ window.programs = {{$programs}};
 					<ul>
 						<div ng-repeat="program in currentProgramsList | filter: {PRG_NM : $root.prg_nm_filter}">
 							<li class="result-item">
-				        		<a href="/fact-sheets/factsheet_@{{program.CODE}}" class="btn-link btn-underline">@{{program.PRG_NM}}</a>
+				        		<a ng-href="/fact-sheets/factsheet_@{{program.CODE}}?state={{$state}}" class="btn-link btn-underline">@{{program.PRG_NM}}</a>
 				        		<p>@{{program.FORM_TAG_NAME}}</p>
 				        	</li>
 						</div>

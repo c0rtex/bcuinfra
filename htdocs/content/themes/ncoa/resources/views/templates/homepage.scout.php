@@ -8,8 +8,8 @@
 				<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
 					<h1>{{ Meta::get(Loop::id(), $key = 'headline', $single = true) }}</h1>
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
-						<input type="text" class="form-control" placeholder="Enter ZIP Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
+						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+						<button ng-click="findZip(zipcode)" class="btn btn-primary">Update Zip Code</button>
 						<p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
 					<h5>Find My Benefits</h5>
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
-						<input type="text" class="form-control" placeholder="Enter ZIP Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>						
 					</div>
 				</div>
