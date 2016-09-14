@@ -7844,7 +7844,6 @@ header {
     header .header-cta:after {
       content: '';
       display: block;
-      background: url(https://www.ncoa.org/wp-content/uploads/ncoa-logo-230x78.png) no-repeat center center;
       background-size: contain;
       width: 100%;
       height: 46px;

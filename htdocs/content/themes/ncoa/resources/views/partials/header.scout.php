@@ -9,8 +9,11 @@
 			</h1>
 
 			@if(Option::get('global-settings', 'showHeaderCTA') == '0')
-				<div class="pull-right header-cta hidden-xs">
+				<div class="pull-right header-cta-ncoaLogo hidden-xs">
 					<a tabindex="2" href="#" class="btn btn-purple">Sign Up for Newsletter</a>
+
+				<span><a tabindex="3" href="http://www.ncoa.org"><img width="150px" src="{{themosis_assets()}}/images/ncoa-logo.png" class="ncoaLogo" alt="National Council on Aging" /></a></span>
+
 				</div>
 			@endif
 		</div>
