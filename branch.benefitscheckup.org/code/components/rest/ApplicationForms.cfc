@@ -1,7 +1,8 @@
 <cfcomponent rest="true" restpath="/forms">
 
-    <cffunction name="forProgram" access="remote" restpath="/appForms/forProgram/{programCode}/" returnType="String" httpMethod="GET">
+    <cffunction name="forProgram" access="remote" restpath="/appForms/forProgram/{programCode}" returnType="String" httpMethod="GET">
         <cfargument name="programCode" required="true" restargsource="Path" type="string"/>
+        <cfargument name="stateId" required="false" restargsource="Query" default="" type="string"/>
 
         <!---SELECT ft.string, t.tag_name,f.form_id
         FROM program_form pf, form f, form_formtype ft, formtag t
@@ -22,17 +23,33 @@
             <cfreturn serializeJSON(retVal)>
         </cfif>
 
-        <cfset forms = ormExecuteQuery("select fft.string,
-                                               ft.name,
-                                               f.id,
-                                               ftp.code
-                                        from program_form pf join
-                                             pf.form f join
-                                             f.form_form_types fft join
-                                             f.form_tag ft join
-                                             fft.form_type ftp
-                                        where pf.program=? and
-                                              fft.active=1",[pobj])>
+        <cfset state = entityLoadByPK("state",stateId)>
+
+        <cfif !isNull(state)>
+            <cfset forms = ormExecuteQuery("select fft.string,
+                                                   ft.name,
+                                                   f.id,
+                                                   ftp.code
+                                            from program_form pf join
+                                                 pf.form f join
+                                                 f.form_form_types fft join
+                                                 f.form_tag ft join
+                                                 fft.form_type ftp
+                                            where pf.program=? and
+                                                  fft.active=1 and (f.state=? or f.state is null)",[pobj,state])>
+        <cfelse>
+            <cfset forms = ormExecuteQuery("select fft.string,
+                                                   ft.name,
+                                                   f.id,
+                                                   ftp.code
+                                            from program_form pf join
+                                                 pf.form f join
+                                                 f.form_form_types fft join
+                                                 f.form_tag ft join
+                                                 fft.form_type ftp
+                                            where pf.program=? and
+                                                  fft.active=1",[pobj])>
+        </cfif>
 
         <cfloop array="#forms#" index="i">
             <cfset item = structNew()>
