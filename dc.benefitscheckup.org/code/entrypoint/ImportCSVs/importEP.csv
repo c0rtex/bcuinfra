@@ -1,3 +1,0 @@
-entrypointgroup_id,entrypoint_id,name,subname,address1,address2,address3,city,state_id,zipcode,zipcode_plus4,email,url,hours_display_id,hours,info_display_id,info,contact_title,contact_first,contact_middle,contact_last,contact_suffix,privatephone,notes,voice,fax,tty,toll_free,translation,spanish,active_flag
-134,1,MH-Federal VA Regional Offices,,8810 Rio San Diego Dr.,,,San Diego,CA,92108,,,,8319,,8320,,,,,,,,test record,(701) 252-5900,(701) 252-5903,,,,,1
-134,2,Federal VA Regional Offices,,"1301 Clay Street, Room 1300 North",,,Oakland,CA,94612,,,,8321,,8322,,,,,,,,test record,,,,TOLL-FREE: (800) 827-1000,,,1

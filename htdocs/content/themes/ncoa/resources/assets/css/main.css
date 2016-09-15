@@ -7844,7 +7844,6 @@ header {
     header .header-cta:after {
       content: '';
       display: block;
-      background: url(https://www.ncoa.org/wp-content/uploads/ncoa-logo-230x78.png) no-repeat center center;
       background-size: contain;
       width: 100%;
       height: 46px;
@@ -10729,3 +10728,13 @@ grid:last-child .sales-grid {
 
 .checked .icon-wrapper img {
   display: none; }
+
+
+/*remove the arrows from the income and asset grid input boxes*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

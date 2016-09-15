@@ -1,1 +1,0 @@
-<cfcookie name="bcuSurvey" value="1" expires="never" domain=".benefitscheckup.org" path="/">

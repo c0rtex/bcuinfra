@@ -1,4 +1,0 @@
-<root> 
-		<p name="Newark" link="javascript:showOffices('locator_city.cfm?city=Newark&state=nj&program_id=579');" type="font1" x="66" y="-91" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" /> 
-		<p name="Camden" link="javascript:showOffices('locator_city.cfm?city=Camden&state=nj&program_id=579');" type="font1" x="-43" y="38" x_h="0.2" y_h="-0.1" info="" frame="" img="" symbol="arrow1" />
-	</root>

@@ -1,1 +1,0 @@
-<cfset session.partner_id=22><cflocation url="http://aarpkb.dev.benefitscheckup.org/medicaid_locator.cfm" AddToken="No">

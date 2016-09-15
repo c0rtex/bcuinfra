@@ -1,6 +1,6 @@
 <div class="veteran-status question-block" ng-show="$root.prescreen.marital_status">
     <section>
-        <p class="question-block-icon question-block-title">Are you a veteran?</p>
+        <p class="question-block-icon question-block-title">Are you a veteran?<button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <div class="btn-group" role="group" aria-label="Montly Income?">
             <button type="button" class="btn btn-default" ng-class="{active: $root.prescreen.veteran == 'y'}" ng-click="$root.prescreen.veteran = 'y'">Yes</button>
             <button type="button" class="btn btn-default" ng-class="{active: $root.prescreen.veteran == 'n'}" ng-click="$root.prescreen.veteran = 'n'">No</button>

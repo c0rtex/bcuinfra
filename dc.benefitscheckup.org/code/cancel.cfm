@@ -1,1 +1,0 @@
-<input type="button" value="Cancel" onClick="history.go(-1)">

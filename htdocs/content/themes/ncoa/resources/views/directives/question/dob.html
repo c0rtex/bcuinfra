@@ -1,6 +1,6 @@
 <div class="dob question-block" ng-show="$root.prescreen.searchfor">
     <section>
-        <p class="question-block-icon question-block-title">What is your month and year of birth?</p>
+        <p class="question-block-icon question-block-title">What is your month and year of birth?<button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <select class="form-control inline" name="dob-month" ng-model="$root.prescreen.month" ng-options="month.name for month in months | orderBy:'id' track by month.id">
             <option value="">-- Select Month --</option>
         </select>
