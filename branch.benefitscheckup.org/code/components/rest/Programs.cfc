@@ -1155,7 +1155,7 @@
         <cfargument name="cat" required="no" restargsource="query" default="">
         <cfargument name="st" required="no" restargsource="query" default="">
 
-        <cfset qryFormsQuery = "select distinct p.prg_nm,ftg.name,pr.code from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.program_category pc join pc.super_category psc join pr.tbl_prg_all p join p.subset_program_bases sp">
+        <cfset qryFormsQuery = "select distinct p.prg_nm,pr.short_desc,pr.code from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.program_category pc join pc.super_category psc join pr.tbl_prg_all p join p.subset_program_bases sp">
         <cfset qryFormsQuery = "#qryFormsQuery# where ft.id <> 2 and (p.inactive_flag = 0 or p.inactive_flag is null) and psc.code=?">
 
         <cfif st neq ''>
@@ -1169,7 +1169,7 @@
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
             <cfset str.prg_nm=item[1]>
-            <cfset str.form_tag_name=item[2]>
+            <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
         </cfloop>
