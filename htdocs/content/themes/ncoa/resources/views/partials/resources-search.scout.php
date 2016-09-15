@@ -23,12 +23,7 @@
         </select>
 	</div>
 	<div class="form-group col-md-2">
-		<button class="btn btn-primary" ng-click="processForm(form, $event)">Find</button>
-	</div>
-	<div class="col-xs-6 error-state-form" ng-show="error">
-		<div class="cta-red">
-			<strong>Error!</strong> Please choose a category or state.
-		</div>
+		<button class="btn btn-primary" ng-disabled="state=='' || state==undefined || category==''" ng-click="processForm(form, $event)">Find</button>
 	</div>
 </div>
 <input type="hidden" name="category" value="@{{category}}">
