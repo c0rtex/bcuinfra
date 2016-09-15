@@ -3463,6 +3463,7 @@ app.directive('divProgramsCategory',['BenefitItems', function(BenefitItems) {
 		templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
 		link: function(scope, element) {
 			scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
+			scope.stateId = scope.$root.prescreen.stateId;
 		},
 		scope: {
 			found_program:"=foundProgram"
