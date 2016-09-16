@@ -851,7 +851,9 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 			function validateZip(data){
 				if (scope.$root.prescreen.zip.length != 5) {
 					scope.$root.prescreen.isZipValid = false;
-					//scope.$root.prescreen.isEdit = true;
+					scope.$parent.zipCodeCheckResult = "Error!"
+					scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
+					scope.$parent.zipCodeUpdated=true;
 					return;
 				}
 				if(data.status == "OK"){
@@ -864,19 +866,21 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 							}
 						}
 
-						//Filter on string to remove USA from return as google returns full formatted address
 				  		scope.$root.prescreen.zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
-				  		//localStorageService.set('zipcode', data.results[0].address_components[0].long_name);
 				  		scope.$root.prescreen.isZipValid = true;
-				  		//scope.$root.prescreen.isEdit = false;
+						scope.$parent.zipCodeCheckResult = "Success!"
+						scope.$parent.zipCodeDescription = scope.$root.prescreen.zipcode_formatted;
 					}else{
 						scope.$root.prescreen.isZipValid = false;
-						//scope.$root.prescreen.isEdit = true;
+						scope.$parent.zipCodeCheckResult = "Error!"
+						scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
 					}
 				}else{
 					scope.$root.prescreen.isZipValid = false;
-					//scope.$root.prescreen.isEdit = true;
+					scope.$parent.zipCodeCheckResult = "Error!"
+					scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
 				}
+				scope.$parent.zipCodeUpdated=true;
 			}
 		}
 	}

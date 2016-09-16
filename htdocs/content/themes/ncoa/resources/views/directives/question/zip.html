@@ -3,9 +3,11 @@
         <p class="question-block-icon question-block-title">Searching for benefits provided in<button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <div class="zip-code form-inline">
             <input type="text" name="zipcode" class="form-control" id="zipcode" placeholder="Enter Zip Code" ng-model="$root.prescreen.zip" required zipcode/>
-            <button ng-disabled="scope.$root.prescreen.isValidating" ng-click="updateZip()" class="btn btn-primary">Update Zip Code</button>
+            <button ng-disabled="scope.$root.prescreen.isValidating" ng-click="updateZip()" class="btn btn-secondary">Update Zip Code</button>
         </div>
-        <p class="error-state" ng-hide="$root.prescreen.isZipValid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+        <p ng-show="zipCodeUpdated" ng-class="{'correct-state':$root.prescreen.isZipValid,'error-state':!$root.prescreen.isZipValid}"><strong>{{zipCodeCheckResult}}</strong> {{zipCodeDescription}}</p>
+        <!---<p class="correct-state" ng-show="$root.prescreen.isZipValid && ">Correct zip code!<br/><strong>{{$root.prescreen.zipcode_formatted}}</strong></p>
+        <p class="error-state" ng-hide="$root.prescreen.isZipValid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>--->
     </section>
 </div>
 
