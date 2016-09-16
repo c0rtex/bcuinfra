@@ -65,26 +65,8 @@
           <li><a href="" target="_blank">{{$evalue->title}}</a></li>
           @endforeach
         </ul>
-        <a class="btn-link fact-sheet-button-fwd fact-sheets-link" href="#">Learn More</a>
-
-          <div class="fact-sheets-main-apply">
-            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary">{{ Meta::get(Loop::id(), $key = 'button-title', $single = true) }}</a>
-          </div>
-    
-
-          <a href="{{ Meta::get(Loop::id(), $key = 'english-url', $single = true) }}" class="btn btn-link fact-sheets-link">
-            <span class="fa fa-file fact-sheets-icon"></span>
-            {{ Meta::get(Loop::id(), $key = 'english-title', $single = true) }}
-          </a>
-          <span class="fact-sheets-bar">|</span>
-          <a href="{{ Meta::get(Loop::id(), $key = 'spanish-url', $single = true) }}" class="btn btn-link fact-sheets-link">
-            <span class="fa fa-file fact-sheets-icon"></span>
-            {{ Meta::get(Loop::id(), $key = 'spanish-title', $single = true) }}
-          </a>
-          <span class="fact-sheets-bar">|</span>
-          <a href="{{ Meta::get(Loop::id(), $key = 'more-languages-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-link">
-            {{ Meta::get(Loop::id(), $key = 'more-languages', $single = true) }}
-          </a>
+      
+          
       
         
           <hr class="fact-sheets-hr" />
@@ -142,7 +124,7 @@
             @endif
 
 
-            <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
+            <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" target="_new" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
             
           </div>
         @endif
@@ -196,7 +178,7 @@
       @if(!$is_alt)
           
         <div>
-          <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
+          <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" target="_new" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
         </div>
 
         <hr class="fact-sheets-hr" />
