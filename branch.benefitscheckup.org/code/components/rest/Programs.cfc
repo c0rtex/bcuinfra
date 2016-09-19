@@ -821,6 +821,8 @@
                                 </cfif>
                                 <cfif Not IsNumeric(eVal) Or (IsNumeric(eVal) And Len(eVal) gt 1 And Left(eVal, 1) eq '0')>
                                     <cfset eVal = "'#eVal#'">
+                                <cfelse>
+                                    <cfset eVal = toString(eVal)>
                                 </cfif>
                                 <cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')>
                             <cfelse>
