@@ -105,7 +105,19 @@
           <div class="results-options">
             <span class="fact-sheets-side-header">Quick Links</span>
             
-            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-side-apply">Apply Online</a>
+<?php 
+
+$programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
+
+if (!empty($programUrl)) {           
+
+echo '
+
+<a href="'.$programUrl.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>
+
+';
+}
+?>
 
             @if ($app_forms)
             @foreach($app_forms as $ekey => $evalue)
@@ -123,8 +135,6 @@
             @endforeach
             @endif
 
-
-            <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" target="_new" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
             
           </div>
         @endif
