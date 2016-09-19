@@ -7516,6 +7516,7 @@ button[data-toggle="popover"] {
 .error-state {
   margin: 10px 0;
   background-color: #fcf3f3;
+  color: black;
   border-radius: 6px;
   display: inline-block;
   padding: 20px; }
