@@ -73,7 +73,7 @@
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programs = ormExecuteQuery("select p, sc.code as category from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by p.key_program, p.sort",[screening])>
+        <cfset programs = ormExecuteQuery("select p,#this.categoriesToGroups()# as category from screening_program sp join sp.program p join p.program_category pc where sp.screening=? order by p.key_program, p.sort",[screening])>
 
 
         <cfset programsByCategories = structNew()>
