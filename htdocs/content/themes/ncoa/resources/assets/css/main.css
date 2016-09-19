@@ -7516,16 +7516,34 @@ button[data-toggle="popover"] {
 .error-state {
   margin: 10px 0;
   background-color: #fcf3f3;
+  color: black;
   border-radius: 6px;
   display: inline-block;
   padding: 20px; }
   .error-state strong {
     font-weight: 700;
     color: red; }
-  .error-state.ng-hide-add {
+ .error-state.ng-hide-add {
     animation: 0.5s slide-up ease; }
   .error-state.ng-hide-remove {
     animation: 0.5s slide-down ease; }
+
+
+.correct-state {
+  display: inline-block;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 10px 0;
+  background-color: #F1FCF0;
+}
+
+.correct-state strong{
+  font-weight: 700;
+  color: green;
+}
+.correct-state.ng-show-add { animation:0.5s slide-up ease; }
+.correct-state.ng-show-remove { animation:0.5s slide-down ease; }
+
 
 body {
   line-height: 1.3;

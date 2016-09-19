@@ -114,7 +114,7 @@ class ResourcesController extends BaseController
 
 		return View::make('templates.resources-results', [
 			'state' => $_REQUEST['state'],
-			'category' => $category,
+			'category' => $_REQUEST['category'],
 			'states' => $this->states,
 			'categories' => $this->categories,
 			'programs' => $response->body
