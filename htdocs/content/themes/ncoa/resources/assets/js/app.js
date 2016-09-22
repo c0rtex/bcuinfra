@@ -3273,6 +3273,8 @@ app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuest
 app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){
 
 	$('.fa-question-circle').popover();
+
+
 	
 	document.querySelector('.page-wrapper').scrollIntoView();
 	
@@ -5058,5 +5060,7 @@ function dynamicAddEvent(id){
       }
     });
 };
+
+    $('[data-toggle="popover"]').popover();   
 
 }(window.jQuery);
