@@ -5082,9 +5082,11 @@ var newhtml = oldhtml.replace(/href=['"]callto:/gi,'href="tel:')
 newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
     if ($3) return $1;
     else if ($4) return $2+$4+$5+$6;
-    else return $2+"<a href='tel:"+$5.replace(spechars,"")+"'>"+$5+"</a>"+$6; });
+    else return $2+"<a href='tel:"+$5.replace(spechars,"")+"' onclick=\"_gaq.push(['_trackEvent','Phone Call Tracking','Click/Touch']);\" >"+$5+"</a>"+$6; });
 return newhtml;
 }
+
+
  
 //http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
 
