@@ -33,6 +33,7 @@
 					<p>{{ Meta::get(Loop::id(), $key = 'program-body', $single = true) }}</p>
 					<div id="selected-programs" class="bene-container">
 						@foreach($programs as $key => $value)
+<a href="{{ $programs[$key]["program-link"] }}" class="btn-link">
 							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 								<div class="bene-panel">
 							      	<div class="icon-wrapper">
@@ -41,11 +42,14 @@
 							      	<div class="benefits-selector-label">
 							        	<div class="label-inner">
 							        		{{ $programs[$key]["program-title"] }}
-							        		<a href="{{ $programs[$key]["program-link"] }}" class="btn-link">Learn More</a>
+<div class="btn-link">
+							        		Learn More
+</div>
 							        	</div>
 							      	</div>
 								</div>
 							</div>
+</a>
 						@endforeach
 					</div>			 				
 				</div>
