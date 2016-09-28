@@ -36,7 +36,8 @@
                                                  f.form_tag ft join
                                                  fft.form_type ftp
                                             where pf.program=? and
-                                                  fft.active=1 and (f.state=? or f.state is null)",[pobj,state])>
+                                                  fft.active=1 and (f.state=? or f.state is null)
+					    ORDER BY pf.sort",[pobj,state])>
         <cfelse>
             <cfset forms = ormExecuteQuery("select fft.string,
                                                    ft.name,
@@ -48,7 +49,8 @@
                                                  f.form_tag ft join
                                                  fft.form_type ftp
                                             where pf.program=? and
-                                                  fft.active=1",[pobj])>
+                                                  fft.active=1
+					    ORDER BY pf.sort",[pobj])>
         </cfif>
 
         <cfloop array="#forms#" index="i">
