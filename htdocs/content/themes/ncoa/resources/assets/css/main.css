@@ -10767,3 +10767,10 @@ margin-top: 20px;
 #selected-programs{
 display: block;
 }
+
+/*hide the input placeholders upon input focus*/
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
