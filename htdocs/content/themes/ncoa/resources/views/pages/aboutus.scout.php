@@ -63,8 +63,8 @@
         <h1>Discover your benefits today.</h1>
           <div class="zip-code form-inline" ng-controller="zipCodeController">
             <input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-            <button ng-click="findZip(zipcode)" class="btn btn-primary">Update Zip Code</button>
-            <p class="error-state" ng-class="{ 'error-state-valid': isValid}">Please enter a valid zipcode in the United States</p>
+            <button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
+            <p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
           </div>
       </div>
     </div>

@@ -5,7 +5,9 @@
             <input type="text" name="zipcode" class="form-control" id="zipcode" placeholder="Enter Zip Code" ng-model="$root.prescreen.zip" required zipcode/>
             <button ng-disabled="scope.$root.prescreen.isValidating" ng-click="updateZip()" class="btn btn-secondary">Update Zip Code</button>
         </div>
-        <p class="error-state" ng-hide="$root.prescreen.isZipValid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+        <p ng-show="zipCodeUpdated" ng-class="{'correct-state':$root.prescreen.isZipValid,'error-state':!$root.prescreen.isZipValid}"><strong>{{zipCodeCheckResult}}</strong> {{zipCodeDescription}}</p>
+        <!---<p class="correct-state" ng-show="$root.prescreen.isZipValid && ">Correct zip code!<br/><strong>{{$root.prescreen.zipcode_formatted}}</strong></p>
+        <p class="error-state" ng-hide="$root.prescreen.isZipValid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>--->
     </section>
 </div>
 
