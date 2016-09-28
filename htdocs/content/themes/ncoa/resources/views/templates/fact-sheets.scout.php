@@ -11,6 +11,13 @@
   <hr class="fact-sheets-hr">
 </header>
 
+
+<script>
+
+
+
+</script>
+
 <div class="card-header">
   <a href="javascript:history.back()" class="btn-link btn-back">Back to Results</a>
   <h1>Fact Sheet</h1>
@@ -48,7 +55,9 @@
         <div class="clearfix"></div>
         <hr class="fact-sheets-hr" />
 
+<div id="factsheetContent">
         {{ Loop::content() }}
+</div>
 
         @if($is_alt)
           {{ Meta::get(Loop::id(), $key = 'requirement-info-alt', $single = true) }}
@@ -61,8 +70,10 @@
 
         <h3 class="bold-h3">What Youll Need...</h3>
         <ul class="fact-sheets-list">
+#
           @foreach($required_materials as $ekey => $evalue)
-          <li><a href="" target="_blank">{{$evalue->title}}</a></li>
+
+          <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
           @endforeach
         </ul>
       
@@ -101,15 +112,59 @@
       </div>
 
       <div class="col-md-3 hidden-xs hidden-sm">
+        <div class="results-options">
+          <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
+          <br />
+          {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
+        </div>
         @if(!$is_alt)
           <div class="results-options">
             <span class="fact-sheets-side-header">Quick Links</span>
             
-            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-side-apply">Apply Online</a>
+<?php 
+
+$programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
+
+if (!empty($programUrl)) {           
+
+echo '
+
+<a href="'.$programUrl.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>
+
+';
+}
+?>
 
             @if ($app_forms)
+            <?php $pos=1 ?>
             @foreach($app_forms as $ekey => $evalue)
+            
+            <?php $pos++ ?>
+
+            @if ($pos === 4)
+
+<!-- Trigger the modal with a button -->
+<a href data-toggle="modal" data-target="#myModal">See More</a>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">More Applications</h4>
+      </div>
+      <div class="modal-body">
+
+
+
+      
+            @endif
+
             @if(strpos($evalue->url, 'http')===0)
+
             <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
             </a>
@@ -120,11 +175,23 @@
             </a>
             @endif
 
+            
+            
             @endforeach
+            @if ($pos >= 4)
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+            @endif
             @endif
 
-
-            <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" target="_new" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
             
           </div>
         @endif

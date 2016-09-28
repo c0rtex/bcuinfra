@@ -31,7 +31,7 @@
 				<div class="grey-background card-row">
 					<h3>{{ Meta::get(Loop::id(), $key = 'program-headline', $single = true) }}</h3>
 					<p>{{ Meta::get(Loop::id(), $key = 'program-body', $single = true) }}</p>
-					<div class="bene-container">
+					<div id="selected-programs" class="bene-container">
 						@foreach($programs as $key => $value)
 							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 								<div class="bene-panel">

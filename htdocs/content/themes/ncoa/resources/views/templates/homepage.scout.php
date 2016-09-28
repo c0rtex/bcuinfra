@@ -9,7 +9,7 @@
 					<h1>{{ Meta::get(Loop::id(), $key = 'headline', $single = true) }}</h1>
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find my Benefits</button>
+						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
 						<p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
 					</div>
 				</div>
@@ -55,7 +55,8 @@
 					<h5>Find My Benefits</h5>
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>						
+						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
+						<p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
 					</div>
 				</div>
 			</section>

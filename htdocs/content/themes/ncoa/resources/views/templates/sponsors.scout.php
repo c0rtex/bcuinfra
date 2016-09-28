@@ -40,7 +40,8 @@
 	<div class="blue-gradient-background cta-full container-fluid">
 		<h1>{{ Meta::get(Loop::id(), $key = 'cta-title', $single = true) }}</h1>
 		<p>{{ Meta::get(Loop::id(), $key = 'cta-body-copy', $single = true) }}</p>
-		<button class="btn btn-primary">{{ Meta::get(Loop::id(), $key = 'cta-button-text', $single = true) }}</button>
+		<a href="https://www.ncoa.org/get-involved/?_ga=1.122751939.930424655.1455291130" target="_blank" class="btn btn-primary">{{ Meta::get(Loop::id(), $key = 'cta-button-text', $single = true) }}</a>
+
 	</div>
 	<section class="connected-cta container-fluid">
 		<div class="connected-container">
