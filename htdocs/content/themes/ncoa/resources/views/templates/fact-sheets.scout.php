@@ -112,11 +112,13 @@
       </div>
 
       <div class="col-md-3 hidden-xs hidden-sm">
+        @if(strlen(Meta::get(Loop::id(), $key = 'body-copy', $single = true))>0)
         <div class="results-options">
           <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
           <br />
           {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
         </div>
+        @endif
         @if(!$is_alt)
           <div class="results-options">
             <span class="fact-sheets-side-header">Quick Links</span>
