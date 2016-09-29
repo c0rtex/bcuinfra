@@ -146,7 +146,7 @@ echo '
             @if ($pos === 4)
 
 <!-- Trigger the modal with a button -->
-<a href data-toggle="modal" data-target="#myModal">See More</a>
+<a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
