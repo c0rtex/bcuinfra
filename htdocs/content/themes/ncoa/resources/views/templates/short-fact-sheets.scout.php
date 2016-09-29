@@ -69,7 +69,8 @@
                     <p>
                         If you would like more information and to find out if you meet the program guidelines, please answe a few more questions.
                     </p>
-                        <a state-change ng-click="completeFQ()" class="btn btn-primary">Complete Full Questionnaire</a>
+                    <a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
+                    <a ng-show="prescreenAnswered" ng-click="completeFQ()" class="btn btn-primary">Complete Full Questionnaire</a>
                     <hr class="fact-sheets-hr" />
 
                     <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->

@@ -3014,13 +3014,10 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 }]);
 app.controller('factSheetsController', ['$scope', '$state', 'prescreen', function($scope, $state, prescreen) {
 
+	$scope.prescreenAnswered = prescreen.length != 0;
 	$scope.completeFQ = function (url) {
-		if (prescreen.length == 0) {
-			$state.go('prescreen');
-		} else {
 			$state.go('questionnaire');
-		}
-	};
+		};
 }]);
 
 app.controller('questionController',['$scope', 'BenefitItems', function($scope, BenefitItems){
