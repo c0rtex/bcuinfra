@@ -128,16 +128,17 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         prev: ""
       }
     })
-    .state('fact-sheets', {
-      url: '/fact-sheets',
-      templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/fact-sheets/fact-sheets.html?'+(new Date()),
+    .state('fact-sheets-short', {
+	  url: "/fact-sheets-short/:programCode/:stateId",
+      templateUrl: function($stateParams) {
+		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y";
+	  },
       controller: 'factSheetsController',
-      data: {
-        next: '',
-        prev: ''
-      }
-    });
-
+	  data:{
+	    next: "",
+		prev: ""
+	  }
+	});
 }]);
 
 app.directive('selector',[function(){
@@ -3011,8 +3012,15 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 
 	return questionnaire;
 }]);
-app.controller('factSheetsController', ['$scope', '$state', function($scope, $state){
+app.controller('factSheetsController', ['$scope', '$state', 'prescreen', function($scope, $state, prescreen) {
 
+	$scope.completeFQ = function (url) {
+		if (prescreen.length == 0) {
+			$state.go('prescreen');
+		} else {
+			$state.go('questionnaire');
+		}
+	};
 }]);
 
 app.controller('questionController',['$scope', 'BenefitItems', function($scope, BenefitItems){
@@ -3156,6 +3164,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 		savePrescreen.post(request).success(function(data, status, headers, config) {
 			prescreen.results = data;
+
 			$state.go('prescreen.results');
 		});
 	}
@@ -5078,7 +5087,7 @@ var phonereg = new RegExp("((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'
  
 function ReplacePhoneNumbers(oldhtml) {
 //Created by Jon Meck at LunaMetrics.com - Version 1.0
-var newhtml = oldhtml.replace(/href=['"]callto:/gi,'href="tel:')
+var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
 newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
     if ($3) return $1;
     else if ($4) return $2+$4+$5+$6;

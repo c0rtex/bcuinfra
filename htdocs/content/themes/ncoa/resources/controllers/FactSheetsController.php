@@ -15,14 +15,10 @@ class FactSheetsController extends BaseController
 
 		$constants = Config::get('constants');
 
-		$entryPoints = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/entryPoints/forProgram/'.$program_code)->send();
-
-		$entryPoints = json_decode($entryPoints->body);
-
-		if (array_key_exists('state',$_REQUEST)) {
+		if (array_key_exists('state', $_REQUEST)) {
 			$program_state = $_REQUEST['state'];
 		} else {
-			$program_state =  Meta::get($query->queried_object_id, 'program_state_id');
+			$program_state = Meta::get($query->queried_object_id, 'program_state_id');
 		}
 
 		$appForms = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/forms/appForms/forProgram/'.$program_code.'/?stateId='.$program_state)->send();
@@ -33,14 +29,29 @@ class FactSheetsController extends BaseController
 
 		$requiredMaterials = json_decode($requiredMaterials->body);
 
-		return View::make('templates.fact-sheets', [
-			'page_slug' => $fact_sheet_slug,
-			'entry_points' => $entryPoints,
-			'app_forms' => $appForms,
-			'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
-			'required_materials' => $requiredMaterials,
-			'is_alt' => false
-		]);
+		if (array_key_exists('short',$_REQUEST)) {
+			return View::make('templates.short-fact-sheets', [
+				'page_slug' => $fact_sheet_slug,
+				'app_forms' => $appForms,
+				'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
+				'required_materials' => $requiredMaterials,
+				'is_alt' => false
+			]);
+		} else {
+
+			$entryPoints = \Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/entryPoints/forProgram/' . $program_code)->send();
+
+			$entryPoints = json_decode($entryPoints->body);
+
+			return View::make('templates.fact-sheets', [
+				'page_slug' => $fact_sheet_slug,
+				'entry_points' => $entryPoints,
+				'app_forms' => $appForms,
+				'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
+				'required_materials' => $requiredMaterials,
+				'is_alt' => false
+			]);
+		}
 	}
 
 }
