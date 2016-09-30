@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends($layout)
 
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
@@ -168,4 +168,5 @@
         </h3> -->
     </div>
     @endquery
+    </div>
     @stop

@@ -131,7 +131,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     .state('fact-sheets-short', {
 	  url: "/fact-sheets-short/:programCode/:stateId",
       templateUrl: function($stateParams) {
-		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y";
+		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y&short_layout=y";
 	  },
       controller: 'factSheetsController',
 	  data:{

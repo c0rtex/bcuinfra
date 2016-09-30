@@ -25,9 +25,17 @@ class FactSheetsController extends BaseController
 		$requiredMaterials = json_decode($requiredMaterials->body);
 
 		if (array_key_exists('short',$_REQUEST)) {
+
+			if (array_key_exists("short_layout",$_REQUEST)) {
+				$layout = "layouts.short";
+			} else {
+				$layout = "layouts.main";
+			}
+
 			return View::make('templates.short-fact-sheets', [
 				'page_slug' => $fact_sheet_slug,
 				'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
+				'layout' => $layout,
 				'required_materials' => $requiredMaterials,
 				'is_alt' => false
 			]);
