@@ -65,12 +65,13 @@
 
                     @if(!$is_alt)
                     <hr class="fact-sheets-hr" />
-                    <h3 class="bold-h3">More information</h3>
+                    <h3 class="bold-h3">How do I get more information?</h3>
                     <p>
-                        If you would like more information and to find out if you meet the program guidelines, please answe a few more questions.
+                        If you would like more information and to find out if you meet the program guidelines, please answer a few more questions.
                     </p>
-                    <a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
-                    <a ng-show="prescreenAnswered" ng-click="completeFQ()" class="btn btn-primary">Complete Full Questionnaire</a>
+                    <complete-questionnaire/>
+                    <!--<a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
+                    <a ng-show="prescreenAnswered" ng-click="completeFQ()" class="btn btn-primary">Complete Full Questionnaire</a>-->
                     <hr class="fact-sheets-hr" />
 
                     <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->

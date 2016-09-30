@@ -141,6 +141,30 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	});
 }]);
 
+app.directive('completeQuestionnaire',['$state','$window','prescreen',function($state,$window,prescreen) {
+	return {
+		restrict: "E",
+		template: '<a ng-click="completeFQ()" class="btn btn-primary">{{caption}}</a>',
+		replace:true,
+		link: function(scope,elm) {
+			var prescreenAnswered = Object.keys(prescreen).length != 0;
+			if (prescreenAnswered) {
+				scope.caption = "Complete Full Questionnaire";
+			} else {
+				scope.caption = "Start Questionnaire";
+			}
+
+			scope.completeFQ = function (url) {
+				if (prescreenAnswered) {
+					$state.go('questionnaire');
+				} else {
+					$window.location.href = '/find-my-benefits';
+				}
+			};
+		}
+	};
+}]);
+
 app.directive('selector',[function(){
 	return {
 		link: function(scope, elm){
@@ -3014,10 +3038,6 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 }]);
 app.controller('factSheetsController', ['$scope', '$state', 'prescreen', function($scope, $state, prescreen) {
 
-	$scope.prescreenAnswered = prescreen.length != 0;
-	$scope.completeFQ = function (url) {
-			$state.go('questionnaire');
-		};
 }]);
 
 app.controller('questionController',['$scope', 'BenefitItems', function($scope, BenefitItems){
