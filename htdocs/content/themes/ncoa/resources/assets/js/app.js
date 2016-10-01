@@ -178,7 +178,7 @@ app.directive('selector',[function(){
 		}
 	}
 }]);
-app.directive('benefitsSlider',[function(){
+app.directive('benefitsSlider',['$window','localStorageService',function($window,localStorageService){
 	return {
 		restrict: 'A',
 		link: function(scope, elm){
@@ -188,6 +188,11 @@ app.directive('benefitsSlider',[function(){
 			var length = $navs.length;
 			var activeClass = 'benefits-slider-active';
 			var currentIndex = 0;
+
+			scope.findBenefits = function(category) {
+				localStorageService.set('interested_category',category);
+				$window.location.href= 'find-my-benefits';
+			};
 
 			function getIndex(currentId) {
 				var index;
@@ -729,7 +734,7 @@ app.factory('questionTemplates',[function() {
 	return questionTemplates;
 }]);
 
-app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
+app.directive('questionDiv',['questionTemplates', 'localStorageService', 'BenefitItems', function(questionTemplates, localStorageService, BenefitItems) {
 	return {
 		restrict: 'E',
 		template:"<span ng-include='question_template_link'></span>",
@@ -737,6 +742,17 @@ app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
 			if (questionTemplates[scope.question.code] == undefined) {
 				scope.question_template_link = 'question.html?' + (new Date());
 			} else {
+				if ((localStorageService.get("interested_category") != undefined)&&(scope.question.code == "bcuqc_interest_category")) {
+					if (localStorageService.get("interested_category") == "and_more") {
+						scope.addProgram(BenefitItems.getByCode("un_prg_2"));
+						scope.addProgram(BenefitItems.getByCode("un_prg_3"));
+						scope.addProgram(BenefitItems.getByCode("un_prg_4"));
+						scope.addProgram(BenefitItems.getByCode("un_prg_5"));
+					} else {
+						scope.addProgram(BenefitItems.getByCode(localStorageService.get("interested_category")));
+					}
+					localStorageService.remove("interested_category");
+				}
 				scope.question_template_link = questionTemplates[scope.question.code] + '?' + (new Date());
 			}
 		},
@@ -747,7 +763,7 @@ app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
 	}
 }]);
 
-app.directive('script', function() {
+app.directive('script',['localStorageService', function(localStorageService) {
 	return {
 		restrict: 'E',
 		scope: false,
@@ -759,7 +775,7 @@ app.directive('script', function() {
 			}
 		}
 	};
-});
+}]);
 
 app.directive('textSizeChanger', ['$document', 'localStorageService', function ($document, localStorageService) {
 	return {
@@ -3095,6 +3111,10 @@ app.controller('questionController',['$scope', 'BenefitItems', function($scope, 
 		}
 	}
 
+	$scope.programAdded = function(programCode) {
+		return $scope.$root.prescreen.programList[programCode] != undefined;
+	}
+
 	$scope.selectAll = function(){
 		if(Object.keys($scope.$root.prescreen.programList).length == 12){
 			$scope.$root.prescreen.programList = {};
@@ -3115,6 +3135,8 @@ app.controller('questionController',['$scope', 'BenefitItems', function($scope, 
 app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
 
 	if(prescreen.questions == undefined) $state.transitionTo('prescreen');
+
+	$scope.sibmitDisabled = true;
 
 	if ($scope.$root.prescreen == undefined) {
 		$scope.$root.prescreen = {};
@@ -3255,6 +3277,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 			} else if (($scope.$root.prescreen.marital_status.code == "married" ||
 				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
 				$scope.$root.prescreen.marital_status.code == "widowed") && $scope.$root.prescreen.veteran == "y" && !$('.benefits').is(":visible")) {
+				$scope.sibmitDisabled = false;
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
@@ -3262,6 +3285,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 					}, 500);
 				}, 500);
 			} else if (($scope.$root.prescreen.marital_status.code == "divorced" || $scope.$root.prescreen.marital_status.code == "single") && !$('.benefits').is(":visible")) {
+				$scope.sibmitDisabled = false;
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
@@ -3274,6 +3298,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 	$scope.$watch('$root.prescreen.spouse_veteran_status', function(){
 		if(($scope.$root.prescreen.spouse_veteran_status != undefined) && !$('.benefits').is(":visible")){
+			$scope.sibmitDisabled = false;
 			setTimeout(function(){
 				var test = document.querySelector('.benefits');
 				$('html,body').animate({
@@ -3284,7 +3309,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 	});
 
 	$scope.disableSubmit = function(){
-		return (Object.keys($scope.$root.prescreen.programList).length == 0);
+			return $scope.sibmitDisabled || Object.keys($scope.$root.prescreen.programList).length == 0;
 	};
 
 }]);

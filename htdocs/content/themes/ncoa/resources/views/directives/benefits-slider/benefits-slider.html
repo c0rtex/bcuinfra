@@ -96,7 +96,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg" alt="medicine"> Medications</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_rx')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -114,7 +114,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_health.svg" alt="health"> Healthcare</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_medicaid')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -130,9 +130,9 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
-				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_income.svg" alt="income"> Income Assistance</h3>
+				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_income.svg" alt="income">Income Assistance</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_income')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -150,7 +150,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_food.svg" alt="food"> Food &amp; Nutrition</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_nutrition')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -168,7 +168,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_housing.svg" alt="housing"> Housing &amp; Utilities</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_utility')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -186,7 +186,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_taxRelief.svg" alt="tax relief"> Tax Relief</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_property_taxrelief')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -204,7 +204,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_veteran.svg" alt="veteran"> Veteran</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('bcuqc_category_veteran')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -222,7 +222,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_employment.svg" alt="employment"> Employment</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('un_prg_1')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>
@@ -241,7 +241,7 @@
 			<div class="col-md-6 col-sm-12">
 				<h3><img class="benefits-slider-header-img" src="/content/themes/ncoa/resources/assets/images/categories/category_more.svg" alt="more"> And More</h3>
 				<p>You may be eligible for pograms that save money on <span class="bold">medications and other health care costs.</span> People who have applied for these benefits <span class="bold">save up to $240 annually</span> in assistance.</p>
-				<button class="btn btn-tertiary">Find My Benefits</button>
+				<button ng-click="findBenefits('and_more')" class="btn btn-tertiary">Find My Benefits</button>
 			</div>
 			<div class="benefits-slider-divider col-md-6">
 				<h4 class="bold">Examples of Medications Programs</h4>

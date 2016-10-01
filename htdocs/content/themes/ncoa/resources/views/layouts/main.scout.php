@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">	
-	<script src="https://use.fontawesome.com/7683b69978.js"></script>
+	<script src="<?php echo themosis_assets() ?>/js/7683b69978.js"></script>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

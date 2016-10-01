@@ -19,6 +19,6 @@
 	</div>
 	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/libs.js"></script>
 	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/styleguide.js"></script>
-	<script src="https://use.fontawesome.com/7683b69978.js"></script>
+	<script src="<?php echo themosis_assets() ?>/js/7683b69978.js"></script>
 </body>
 </html>
