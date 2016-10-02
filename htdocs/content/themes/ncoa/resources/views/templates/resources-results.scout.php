@@ -18,6 +18,7 @@ window.programs = {{$programs}};
 					@include('partials.resources-search')
 				</div>
 
+				@if(strlen($programs) > 2)
 				<div class="search-results">
 					<ul>
 						<div ng-repeat="program in currentProgramsList | filter: {PRG_NM : $root.prg_nm_filter}">
@@ -35,6 +36,13 @@ window.programs = {{$programs}};
 						<li class="page-right"><a href="#" ng-click="showPage(currentPage+1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
+				@else
+				<div class="search-results">
+					<p>
+						There are no programs available for the state and/or category you selected. Please try another search criteria.
+					</p>
+				</div>
+				@endif
 			</div>
 		</div>
 	</div>
