@@ -879,11 +879,16 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 
 
 			if (localStorageService.get('v_zipcode') != undefined) {
+				scope.zipCodeLabel = "Update Zip Code";
 				scope.$root.prescreen.zip = localStorageService.get('v_zipcode');
 				localStorageService.remove('v_zipcode');
 				scope.updateZip();
+			} else {
+				scope.zipCodeLabel = "Find Zip Code";
 			}
-			
+
+
+
 			scope.resetZip = function(){
 				scope.$root.prescreen.isEdit = true;
 				$('#zipcode').focus();
@@ -903,6 +908,7 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 						for (var i=1;i<data.results[0].address_components.length;i++) {
 							if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
 								scope.$root.prescreen.stateId = data.results[0].address_components[i].short_name;
+								scope.zipCodeLabel = "Update Zip Code";
 								continue;
 							}
 						}
