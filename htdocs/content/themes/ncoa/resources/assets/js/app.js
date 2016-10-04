@@ -5062,8 +5062,23 @@ function dynamicAddEvent(id){
 };
 
 //Lynna Cekova: popovers 
-    $('[data-toggle="popover"]').popover();   
+    $('[data-toggle="popover"]')
+     .popover()
+     .click(function(e) {
+      console.log("test this");
+        e.preventDefault()
+	var el = this;
+      //$(el).popover('show');
+      $(".popover > h3").append('<span class="close icon icon-remove"></span>')
+                        .find('.close').on('click', function(e) {
+                            e.preventDefault();
+                            $(el).popover('hide');
+                        }
+       );
 
+     });   
+
+ 
 
 //Lynna Cekova: click to call
 

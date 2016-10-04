@@ -12,9 +12,9 @@
                     <span class="super-footer-spacer">|</span>
                     <span class="super-footer-link"><a href="#">Terms of Use</a></span>
                     <span class="super-footer-spacer">|</span>
-                    <span class="super-footer-link"><a href="#">Feedback</a></span>
+                    <span class="super-footer-link"><a href="mailto:comments@benefitscheckup.org">Feedback</a></span>
                     <span class="super-footer-spacer">|</span>
-                    <span class="super-footer-link"><a href="#">Partner Login</a></span>
+                    <span class="super-footer-link"><a href="/welcome-partner-login-page/">Partner Login</a></span>
                 </div>
                 <hr />
             </div>
