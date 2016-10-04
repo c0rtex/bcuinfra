@@ -26,7 +26,7 @@
             </div>
             <div class="footer-enews-tray">
                 <p>Sign Up for Enews</p>
-                <a class="footer-enews-icon" href="/about-ncoa/sign-up/"></a>
+                <a class="footer-enews-icon" href="http://go.ncoa.org/BCUsignup"></a>
             </div>
 
             <div class="footer-donate-tray">
@@ -78,10 +78,10 @@
             </div>
                             <div class="footer-enews-tray">
                     <p>Sign Up for Enews</p>
-                    <a class="footer-enews-icon" href="/about-ncoa/sign-up/"></a>
+                    <a class="footer-enews-icon" href="http://go.ncoa.org/BCUsignup"></a>
                 </div>
 
-<div class="footer-donate-tray-mobile"><a class="btn btn-purple" href="/get-involved/give-to-ncoa/donate/">Donate</a></div>
+<div class="footer-donate-tray-mobile"><a class="btn btn-purple" href="http://www.ncoa.org/Donate?_ga=1.168889193.930424655.1455291130">Donate</a></div>
         </div>
     </div>
 </div>
