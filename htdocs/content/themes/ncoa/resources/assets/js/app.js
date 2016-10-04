@@ -128,16 +128,41 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         prev: ""
       }
     })
-    .state('fact-sheets', {
-      url: '/fact-sheets',
-      templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/fact-sheets/fact-sheets.html?'+(new Date()),
+    .state('fact-sheets-short', {
+	  url: "/fact-sheets-short/:programCode/:stateId",
+      templateUrl: function($stateParams) {
+		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y&short_layout=y";
+	  },
       controller: 'factSheetsController',
-      data: {
-        next: '',
-        prev: ''
-      }
-    });
+	  data:{
+	    next: "",
+		prev: ""
+	  }
+	});
+}]);
 
+app.directive('completeQuestionnaire',['$state','$window','prescreen',function($state,$window,prescreen) {
+	return {
+		restrict: "E",
+		template: '<a ng-click="completeFQ()" class="btn btn-primary">{{caption}}</a>',
+		replace:true,
+		link: function(scope,elm) {
+			var prescreenAnswered = Object.keys(prescreen).length != 0;
+			if (prescreenAnswered) {
+				scope.caption = "Complete Full Questionnaire";
+			} else {
+				scope.caption = "Start Questionnaire";
+			}
+
+			scope.completeFQ = function (url) {
+				if (prescreenAnswered) {
+					$state.go('questionnaire');
+				} else {
+					$window.location.href = '/find-my-benefits';
+				}
+			};
+		}
+	};
 }]);
 
 app.directive('selector',[function(){
@@ -153,7 +178,7 @@ app.directive('selector',[function(){
 		}
 	}
 }]);
-app.directive('benefitsSlider',[function(){
+app.directive('benefitsSlider',['$window','localStorageService',function($window,localStorageService){
 	return {
 		restrict: 'A',
 		link: function(scope, elm){
@@ -163,6 +188,11 @@ app.directive('benefitsSlider',[function(){
 			var length = $navs.length;
 			var activeClass = 'benefits-slider-active';
 			var currentIndex = 0;
+
+			scope.findBenefits = function(category) {
+				localStorageService.set('interested_category',category);
+				$window.location.href= 'find-my-benefits';
+			};
 
 			function getIndex(currentId) {
 				var index;
@@ -704,7 +734,7 @@ app.factory('questionTemplates',[function() {
 	return questionTemplates;
 }]);
 
-app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
+app.directive('questionDiv',['questionTemplates', 'localStorageService', 'BenefitItems', function(questionTemplates, localStorageService, BenefitItems) {
 	return {
 		restrict: 'E',
 		template:"<span ng-include='question_template_link'></span>",
@@ -712,6 +742,17 @@ app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
 			if (questionTemplates[scope.question.code] == undefined) {
 				scope.question_template_link = 'question.html?' + (new Date());
 			} else {
+				if ((localStorageService.get("interested_category") != undefined)&&(scope.question.code == "bcuqc_interest_category")) {
+					if (localStorageService.get("interested_category") == "and_more") {
+						scope.addProgram(BenefitItems.getByCode("un_prg_2"));
+						scope.addProgram(BenefitItems.getByCode("un_prg_3"));
+						scope.addProgram(BenefitItems.getByCode("un_prg_4"));
+						scope.addProgram(BenefitItems.getByCode("un_prg_5"));
+					} else {
+						scope.addProgram(BenefitItems.getByCode(localStorageService.get("interested_category")));
+					}
+					localStorageService.remove("interested_category");
+				}
 				scope.question_template_link = questionTemplates[scope.question.code] + '?' + (new Date());
 			}
 		},
@@ -722,7 +763,7 @@ app.directive('questionDiv',['questionTemplates',function(questionTemplates) {
 	}
 }]);
 
-app.directive('script', function() {
+app.directive('script',['localStorageService', function(localStorageService) {
 	return {
 		restrict: 'E',
 		scope: false,
@@ -734,7 +775,7 @@ app.directive('script', function() {
 			}
 		}
 	};
-});
+}]);
 
 app.directive('textSizeChanger', ['$document', 'localStorageService', function ($document, localStorageService) {
 	return {
@@ -838,11 +879,16 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 
 
 			if (localStorageService.get('v_zipcode') != undefined) {
+				scope.zipCodeLabel = "Update Zip Code";
 				scope.$root.prescreen.zip = localStorageService.get('v_zipcode');
 				localStorageService.remove('v_zipcode');
 				scope.updateZip();
+			} else {
+				scope.zipCodeLabel = "Find Zip Code";
 			}
-			
+
+
+
 			scope.resetZip = function(){
 				scope.$root.prescreen.isEdit = true;
 				$('#zipcode').focus();
@@ -862,6 +908,7 @@ app.directive('zipcode',['locationFinder', '$filter', 'localStorageService',  fu
 						for (var i=1;i<data.results[0].address_components.length;i++) {
 							if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
 								scope.$root.prescreen.stateId = data.results[0].address_components[i].short_name;
+								scope.zipCodeLabel = "Update Zip Code";
 								continue;
 							}
 						}
@@ -3011,7 +3058,7 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 
 	return questionnaire;
 }]);
-app.controller('factSheetsController', ['$scope', '$state', function($scope, $state){
+app.controller('factSheetsController', ['$scope', '$state', 'prescreen', function($scope, $state, prescreen) {
 
 }]);
 
@@ -3070,6 +3117,10 @@ app.controller('questionController',['$scope', 'BenefitItems', function($scope, 
 		}
 	}
 
+	$scope.programAdded = function(programCode) {
+		return $scope.$root.prescreen.programList[programCode] != undefined;
+	}
+
 	$scope.selectAll = function(){
 		if(Object.keys($scope.$root.prescreen.programList).length == 12){
 			$scope.$root.prescreen.programList = {};
@@ -3090,6 +3141,8 @@ app.controller('questionController',['$scope', 'BenefitItems', function($scope, 
 app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
 
 	if(prescreen.questions == undefined) $state.transitionTo('prescreen');
+
+	$scope.sibmitDisabled = true;
 
 	if ($scope.$root.prescreen == undefined) {
 		$scope.$root.prescreen = {};
@@ -3156,6 +3209,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 		savePrescreen.post(request).success(function(data, status, headers, config) {
 			prescreen.results = data;
+
 			$state.go('prescreen.results');
 		});
 	}
@@ -3229,6 +3283,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 			} else if (($scope.$root.prescreen.marital_status.code == "married" ||
 				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
 				$scope.$root.prescreen.marital_status.code == "widowed") && $scope.$root.prescreen.veteran == "y" && !$('.benefits').is(":visible")) {
+				$scope.sibmitDisabled = false;
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
@@ -3236,6 +3291,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 					}, 500);
 				}, 500);
 			} else if (($scope.$root.prescreen.marital_status.code == "divorced" || $scope.$root.prescreen.marital_status.code == "single") && !$('.benefits').is(":visible")) {
+				$scope.sibmitDisabled = false;
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
 					$('html,body').animate({
@@ -3248,6 +3304,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 	$scope.$watch('$root.prescreen.spouse_veteran_status', function(){
 		if(($scope.$root.prescreen.spouse_veteran_status != undefined) && !$('.benefits').is(":visible")){
+			$scope.sibmitDisabled = false;
 			setTimeout(function(){
 				var test = document.querySelector('.benefits');
 				$('html,body').animate({
@@ -3258,7 +3315,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 	});
 
 	$scope.disableSubmit = function(){
-		return (Object.keys($scope.$root.prescreen.programList).length == 0);
+			return $scope.sibmitDisabled || Object.keys($scope.$root.prescreen.programList).length == 0;
 	};
 
 }]);
@@ -5093,7 +5150,7 @@ var phonereg = new RegExp("((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'
  
 function ReplacePhoneNumbers(oldhtml) {
 //Created by Jon Meck at LunaMetrics.com - Version 1.0
-var newhtml = oldhtml.replace(/href=['"]callto:/gi,'href="tel:')
+var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
 newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
     if ($3) return $1;
     else if ($4) return $2+$4+$5+$6;
