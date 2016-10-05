@@ -1,13 +1,20 @@
 <cfcomponent rest="true" restpath="/findPrograms">
     <cfset categories = structNew()>
     <cfset categories['bcuqc_category_income'] = ["income"]>
-    <cfset categories['bcuqc_category_medicaid'] = ["medicaid"]>
-    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxco"]>
+    <cfset categories['bcuqc_category_medicaid'] = ["medicaid","health","homecare"]>
+    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxco","rxgov","rxcard"]>
     <cfset categories['bcuqc_category_property_taxrelief'] = ["taxrelief","taxrelief_other"]>
     <cfset categories['bcuqc_category_veteran'] = ["veteran"]>
-    <cfset categories['bcuqc_category_nutrition'] = ["nutrition"]>
-    <cfset categories['bcuqc_category_foodsupp'] = ["foodsupp"]>
-    <cfset categories['bcuqc_category_utility'] = ["utility"]>
+    <cfset categories['bcuqc_category_nutrition'] = ["nutrition","foodsupp"]>
+    <cfset categories['bcuqc_category_utility'] = ["utility","housing","insurance","homerepair"]>
+
+    <!---New Fields For New PreScreen --->
+    <cfset categories['bcuqc_category_employment'] = ["employment","volunteer"]>
+    <cfset categories['bcuqc_category_transportation'] = ["transportation"]>
+    <cfset categories['bcuqc_category_education'] = ["education"]>
+    <cfset categories['bcuqc_category_discounts'] = ["discounts"]>
+    <cfset categories['bcuqc_category_other_assistance'] = ["assistance","counseling","info","legal","advocacy"]>
+
 
     <cfset sa = structNew()>
 
