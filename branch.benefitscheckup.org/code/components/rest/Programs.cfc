@@ -1164,6 +1164,9 @@
             <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
         </cfif>
 
+	<!--- sort order by program then form sort --->
+	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
+
         <cfset query = ormExecuteQuery(qryFormsQuery,[cat])>
 
         <cfset data = arrayNew(1)>
