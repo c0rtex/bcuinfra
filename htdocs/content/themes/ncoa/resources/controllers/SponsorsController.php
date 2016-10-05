@@ -10,8 +10,8 @@ class SponsorsController extends BaseController
 	public function index()
 	{
 		return View::make('templates.sponsors',[
-			'sponsors' => SponsorsModel::nonFeatured(),
-			'featured' => SponsorsModel::featured()
+			'sponsors' => SponsorsModel::queryNonFeaturedSponosrs(),
+			'featured' => SponsorsModel::queryFeaturedSponsors()
 		]);
 	}
 

@@ -30,7 +30,11 @@
 
 					@foreach($sponsors as $key => $value)
 						<div class="col-xs-12 col-sm-6 col-md-3 sponsor-items">
-							<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+							@if(Meta::get($value->ID, $key = 'sponsor-url', $single = true) != "")
+								<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+							@else
+								<?php echo get_the_post_thumbnail($value->ID, 'full') ?>
+							@endif
 						</div>
 					@endforeach
 				</div>
