@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700);
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -43,6 +43,10 @@ audio:not([controls]) {
 [hidden],
 template {
   display: none; }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 
 a {
   background-color: transparent; }
@@ -1073,6 +1077,7 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -2284,6 +2289,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -2813,6 +2819,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -5108,7 +5115,10 @@ button.close {
 
 .modal-body {
   position: relative;
-  padding: 15px; }
+  padding: 15px; 
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
 
 .modal-footer {
   padding: 15px;
@@ -7513,16 +7523,34 @@ button[data-toggle="popover"] {
 .error-state {
   margin: 10px 0;
   background-color: #fcf3f3;
+  color: black;
   border-radius: 6px;
   display: inline-block;
   padding: 20px; }
   .error-state strong {
     font-weight: 700;
     color: red; }
-  .error-state.ng-hide-add {
+ .error-state.ng-hide-add {
     animation: 0.5s slide-up ease; }
   .error-state.ng-hide-remove {
     animation: 0.5s slide-down ease; }
+
+
+.correct-state {
+  display: inline-block;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 10px 0;
+  background-color: #F1FCF0;
+}
+
+.correct-state strong{
+  font-weight: 700;
+  color: green;
+}
+.correct-state.ng-show-add { animation:0.5s slide-up ease; }
+.correct-state.ng-show-remove { animation:0.5s slide-down ease; }
+
 
 body {
   line-height: 1.3;
@@ -7800,10 +7828,12 @@ header {
         header .header-logo a {
           width: auto; } }
     header .header-logo img {
-      width: 300px; }
+      //width: 300px; 
+    }
       @media (min-width: 992px) {
         header .header-logo img {
-          width: 310px; } }
+          //width: 310px; 
+          } }
     header .header-logo.white-label {
       width: 100%;
       text-align: center; }
@@ -7841,7 +7871,6 @@ header {
     header .header-cta:after {
       content: '';
       display: block;
-      background: url(https://www.ncoa.org/wp-content/uploads/ncoa-logo-230x78.png) no-repeat center center;
       background-size: contain;
       width: 100%;
       height: 46px;
@@ -8334,7 +8363,7 @@ footer .btn-purple {
 
 @media screen and (min-width: 1281px) {
   #map_base svg {
-    height: 792px; } }
+    height: 900px; } }
 
 #map-tip {
   font-family: 'Open Sans', sans-serif;
@@ -8409,7 +8438,8 @@ footer .btn-purple {
   background: #F9F9F9;
   border: 2px solid #CCCCCC;
   padding: 15px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  width: 290px;}
   .results-options .result-options-list {
     color: #1888de; }
     .results-options .result-options-list li {
@@ -8729,15 +8759,55 @@ grid:last-child .sales-grid {
     .program.active .program-header span:after {
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg); }
-  .program.medicine .program-header span {
+
+  .program.bcuqc_category_rx .program-header span {
     background: url(../images/categories/category_medicine.svg) no-repeat left center;
     background-size: 55px; }
-  .program.health .program-header span {
+
+  .program.bcuqc_category_medicaid .program-header span {
     background: url(../images/categories/category_health.svg) no-repeat left center;
     background-size: 55px; }
-  .program.meals .program-header span {
+
+  .program.bcuqc_category_income .program-header span {
+    background: url(../images/categories/category_income.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_nutrition .program-header span {
     background: url(../images/categories/category_food.svg) no-repeat left center;
     background-size: 55px; }
+
+  .program.bcuqc_category_utility .program-header span {
+    background: url(../images/categories/category_housing.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_property_taxrelief .program-header span {
+    background: url(../images/categories/category_taxRelief.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_veteran .program-header span {
+    background: url(../images/categories/category_veteran.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_1 .program-header span {
+    background: url(../images/categories/category_employment.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_2 .program-header span {
+    background: url(../images/categories/category_transportation.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_3 .program-header span {
+    background: url(../images/categories/category_education.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_4 .program-header span {
+    background: url(../images/categories/category_discounts.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.un_prg_5 .program-header span {
+    background: url(../images/categories/category_assistance.svg) no-repeat left center;
+    background-size: 55px; }
+
   .program.program-no-icon .program-header span {
     padding: 20px 0 20px 15px; }
     @media (min-width: 480px) {
@@ -9286,6 +9356,16 @@ grid:last-child .sales-grid {
     border-right: 2px solid #ccc; }
     .home .better-way-benefits .benefits-item:last-child, .page-white-label-homepage .better-way-benefits .benefits-item:last-child {
       border: none; }
+  
+  .home .better-way-benefits .benefits-item .title-icon{
+    padding-top:0;
+  }
+  .home .better-way-benefits .benefits-item .title-icon img{
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
   @media (min-width: 992px) {
     .home .better-way-benefits, .page-white-label-homepage .better-way-benefits {
       padding-top: 50px;
@@ -9371,10 +9451,8 @@ grid:last-child .sales-grid {
     margin-right: 10px;
     padding: 10px 0; }
     .ncoa-carousel .item a {
-      display: block;
-      padding: 0 10px; }
+      display: block; }
     .ncoa-carousel .item img {
-      width: 100%;
       max-height: 104px;
       margin: 0 auto; }
     .ncoa-carousel .item p {
@@ -9516,8 +9594,6 @@ grid:last-child .sales-grid {
     .page-resources .card-nested .bene-container, .page-results .card-nested .bene-container {
       -ms-flex-pack: justify;
           justify-content: space-between; } }
-  .page-resources .card-nested .bene-container#selected-programs, .page-results .card-nested .bene-container#selected-programs {
-    display: block; }
 
 .page-resources .card-nested .benefits-selector-checkbox, .page-results .card-nested .benefits-selector-checkbox {
   height: 125px;
@@ -9707,19 +9783,18 @@ grid:last-child .sales-grid {
       margin-bottom: 0; }
     .page-sponsors .sponsor-featured .featured-item .featured-text, .page-sponsor .sponsor-featured .featured-item .featured-text {
       position: relative; }
-      @media (min-width: 992px) {
+      /*@media (min-width: 992px) {
         .page-sponsors .sponsor-featured .featured-item .featured-text p, .page-sponsor .sponsor-featured .featured-item .featured-text p {
           position: absolute;
           top: 50%;
           -ms-transform: translateY(-50%);
-              transform: translateY(-50%); } }
+              transform: translateY(-50%); } }*/
       @media (min-width: 992px) {
         .page-sponsors .sponsor-featured .featured-item .featured-text, .page-sponsor .sponsor-featured .featured-item .featured-text {
           height: 100%; } }
     @media (min-width: 992px) {
       .page-sponsors .sponsor-featured .featured-item, .page-sponsor .sponsor-featured .featured-item {
-        height: 136px;
-        min-height: 136px; } }
+        height: 136px; } }
 
 .page-sponsors .sponsors-gallery, .page-sponsor .sponsors-gallery {
   background: #fff; }
@@ -10052,12 +10127,43 @@ grid:last-child .sales-grid {
     color: #323232;
     line-height: 1.222em;
     margin-top: 15px; }
-  .questionnaire .program-card .icon-healthcare {
-    background: url(../images/categories/category_health.svg) no-repeat top center; }
-  .questionnaire .program-card .icon-medication {
+
+  .questionnaire .program-card .bcuqc_category_rx {
     background: url(../images/categories/category_medicine.svg) no-repeat top center; }
-  .questionnaire .program-card .icon-meals {
+
+  .questionnaire .program-card .bcuqc_category_medicaid {
+    background: url(../images/categories/category_health.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_income {
+    background: url(../images/categories/category_income.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_nutrition {
     background: url(../images/categories/category_food.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_utility {
+    background: url(../images/categories/category_housing.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_property_taxrelief {
+    background: url(../images/categories/category_taxRelief.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_veteran {
+    background: url(../images/categories/category_veteran.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_1 {
+    background: url(../images/categories/category_employment.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_2 {
+    background: url(../images/categories/category_transportation.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_3 {
+    background: url(../images/categories/category_education.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_4 {
+    background: url(../images/categories/category_discounts.svg) no-repeat top center; }
+
+  .questionnaire .program-card .un_prg_5 {
+    background: url(../images/categories/category_assistance.svg) no-repeat top center; }
+
   @media (min-width: 768px) {
     .questionnaire .program-card {
       width: 48%;
@@ -10103,14 +10209,14 @@ grid:last-child .sales-grid {
 .mobile-padding {
   padding: 0 7px !important; }
 
-.icon-block {
+.icon-block-healthcare {
+  background: url(../images/categories/category_health.svg) no-repeat top center;
   display: block;
+  width: 60px;
+  height: 60px;
   margin-right: 10px; }
-  .icon-block img {
-    width: 60px;
-    height: 60px; }
   @media (max-width: 991px) {
-    .icon-block {
+    .icon-block-healthcare {
       margin-left: 5px; } }
 
 .fact-sheets-top-header {
@@ -10120,6 +10226,11 @@ grid:last-child .sales-grid {
 .fact-sheets-header {
   padding: 0px;
   margin: 0px; }
+
+  .icon-block img{
+    width: 60px;
+    height: 60px;
+  }
 
 .fact-sheets-bottom-header {
   font-size: 36px; }
@@ -10657,3 +10768,28 @@ grid:last-child .sales-grid {
 
 .checked .icon-wrapper img {
   display: none; }
+
+
+/*remove the arrows from the income and asset grid input boxes*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.header-cta-ncoaLogo{
+margin-top: 20px;
+}
+
+#selected-programs{
+display: block;
+}
+
+/*hide the input placeholders upon input focus*/
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */

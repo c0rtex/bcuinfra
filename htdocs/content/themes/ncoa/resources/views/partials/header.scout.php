@@ -5,7 +5,11 @@
 				<a tabindex="1" href="/" class="logo">
 					{{ 
 						wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
-							array('title' => get_the_title(Option::get('global-settings', 'main-logo')))) 
+							array(
+								'title' => get_the_title(Option::get('global-settings', 'main-logo')),
+								'width' => Option::get('global-settings', 'main-logo-width'),
+								'height' => Option::get('global-settings', 'main-logo-height')
+							)) 
 					}}
 				</a>
 				@if(Option::get('global-settings', 'whitelabel') == '0')
