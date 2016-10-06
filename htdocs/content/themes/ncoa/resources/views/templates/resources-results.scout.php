@@ -11,7 +11,7 @@ window.programs = {{$programs}};
 		<h1 class="">Program Details</h1>
 		<div class="card">
 			<div class="card-nested">
-				<h2 class="page-header">What can we help you find</h2>
+				<h2 class="page-header">Here are search results...</h2>
 				<div class="light-grey-background-rounded card-row">
 					<h3>Search Benefit Program</h3>
 					<p>Enter any search details, and we'll give you a list of relevant benefit programs.</p>
@@ -38,9 +38,7 @@ window.programs = {{$programs}};
 				</div>
 				@else
 				<div class="search-results">
-					<p>
-						There are no programs available for the state and/or category you selected. Please try another search criteria.
-					</p>
+					<p>There are no programs available for the options you selected. Please try another search criteria.</p>
 				</div>
 				@endif
 			</div>
