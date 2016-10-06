@@ -116,6 +116,10 @@
 			@media (min-width: 662px){
 				justify-content: space-between;
 			}
+
+			&#selected-programs{
+				display:block;
+			}
 		}
 
 		.benefits-selector-checkbox{

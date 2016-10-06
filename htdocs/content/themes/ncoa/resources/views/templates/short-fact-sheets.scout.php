@@ -24,9 +24,9 @@
                     <!-- Views -->
                     <div>
                         <span class="icon-block pull-left">
-                            <?php 
-                                  echo wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full') 
-                                ?>
+                            {{
+                                wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full', array('title' => 'Loop::id()')) 
+                            }}
                         </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>

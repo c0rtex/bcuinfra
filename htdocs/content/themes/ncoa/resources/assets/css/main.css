@@ -1511,7 +1511,7 @@ pre {
       width: 970px; } }
   @media (min-width: 1200px) {
     .container {
-      width: 1170px; } }
+      width: 1350px; } }
 
 .container-fluid {
   margin-right: auto;
@@ -9516,6 +9516,8 @@ grid:last-child .sales-grid {
     .page-resources .card-nested .bene-container, .page-results .card-nested .bene-container {
       -ms-flex-pack: justify;
           justify-content: space-between; } }
+  .page-resources .card-nested .bene-container#selected-programs, .page-results .card-nested .bene-container#selected-programs {
+    display: block; }
 
 .page-resources .card-nested .benefits-selector-checkbox, .page-results .card-nested .benefits-selector-checkbox {
   height: 125px;
@@ -10243,8 +10245,8 @@ grid:last-child .sales-grid {
 .about-us-banner-header {
   background-repeat: no-repeat;
   background-color: #F3F8FC;
-  background-position: bottom left;
-  background-size: 50%;
+  background-position: 0 -44px;
+  background-size: auto 115%;
   height: 300px; }
   @media (max-width: 767px) {
     .about-us-banner-header {

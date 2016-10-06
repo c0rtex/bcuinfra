@@ -11,7 +11,10 @@
 				<div>
 					<div class="benefits-slider-icon-container">
 						<div class="benefits-slider-icon {{{ ($key == 1) ? 'benefits-slider-active' : '' }}}">
-							<?php echo wp_get_attachment_image($benefitsItems[$key]["icon"], 'full') ?>
+							{{
+								wp_get_attachment_image($benefitsItems[$key]["icon"], 'full', false,
+								array('title' => get_the_title($benefitsItems[$key]["icon"]))) 
+							}}
 						</div>
 					</div>
 					<br>
@@ -27,7 +30,14 @@
 				<div class="row {{{ ($key == 1) ? 'benefits-slider-active' : '' }}}">
 					<div class="col-md-6 col-sm-12">
 						<h3>
-							<?php echo wp_get_attachment_image($benefitsItems[$key]["icon"], 'full', false, array('class' => 'benefits-slider-header-img')) ?>
+							{{
+								wp_get_attachment_image($benefitsItems[$key]["icon"], 'full', false,
+								array(
+									'title' => get_the_title($benefitsItems[$key]["icon"]),
+									'class' => 'benefits-slider-header-img'
+								)) 
+							}}
+
 							{{ $benefitsItems[$key]["name"] }}
 						</h3>
 						{{ $benefitsItems[$key]["left-content"] }}

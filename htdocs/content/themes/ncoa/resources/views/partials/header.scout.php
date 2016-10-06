@@ -2,9 +2,19 @@
 	<section class="container">
 		<div class="clearfix">
 			<h1 class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">	
-				<a tabindex="1" href="/" class="logo"><?php echo wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full') ?></a>
+				<a tabindex="1" href="/" class="logo">
+					{{ 
+						wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
+							array('title' => get_the_title(Option::get('global-settings', 'main-logo')))) 
+					}}
+				</a>
 				@if(Option::get('global-settings', 'whitelabel') == '0')
-					<a href="#" class="whitelabel-logo"><img src="<?php echo wp_get_attachment_image_src(Option::get('global-settings', 'whitelabel-logo'), 'thumbnail')[0] ?>" /></a>
+					<a href="#" class="whitelabel-logo">
+						{{
+							wp_get_attachment_image(Option::get('global-settings', 'whitelabel-logo'), 'full', false,
+							array('title' => get_the_title(Option::get('global-settings', 'whitelabel-logo')))) 
+						}}
+					</a>
 				@endif
 			</h1>
 
