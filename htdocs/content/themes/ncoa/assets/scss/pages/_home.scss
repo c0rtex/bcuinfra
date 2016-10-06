@@ -291,11 +291,13 @@
 
 		a{
 			display: block;
+			padding:0 10px;
 		}
 
 		img{
 			width: 100%;
-			height: auto;
+			//height: auto;
+			max-height: 104px;
 			margin:0 auto;
 		}
 

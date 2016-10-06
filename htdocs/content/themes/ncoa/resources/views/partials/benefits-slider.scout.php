@@ -11,7 +11,7 @@
 				<div>
 					<div class="benefits-slider-icon-container">
 						<div class="benefits-slider-icon {{{ ($key == 1) ? 'benefits-slider-active' : '' }}}">
-							<img src="<?php echo wp_get_attachment_image_src($benefitsItems[$key]["icon"], 'full')[0] ?>" alt="{{ $benefitsItems[$key]["name"] }}">
+							<?php echo wp_get_attachment_image($benefitsItems[$key]["icon"], 'full') ?>
 						</div>
 					</div>
 					<br>
@@ -26,7 +26,10 @@
 			@foreach($benefitsItems as $key => $value)
 				<div class="row {{{ ($key == 1) ? 'benefits-slider-active' : '' }}}">
 					<div class="col-md-6 col-sm-12">
-						<h3><img class="benefits-slider-header-img" src="<?php echo wp_get_attachment_image_src($benefitsItems[$key]["icon"], 'full')[0] ?>" alt="{{ $benefitsItems[$key]["name"] }}"> {{ $benefitsItems[$key]["name"] }}</h3>
+						<h3>
+							<?php echo wp_get_attachment_image($benefitsItems[$key]["icon"], 'full', false, array('class' => 'benefits-slider-header-img')) ?>
+							{{ $benefitsItems[$key]["name"] }}
+						</h3>
 						{{ $benefitsItems[$key]["left-content"] }}
 					</div>
 					<div class="benefits-slider-divider col-md-6">

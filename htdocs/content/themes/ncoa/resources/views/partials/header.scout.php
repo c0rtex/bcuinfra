@@ -1,8 +1,8 @@
 <header class="container-fluid">
 	<section class="container">
 		<div class="clearfix">
-			<h1 class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
-				<a tabindex="1" href="/" class="logo"><img src="{{themosis_assets()}}/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" /></a>
+			<h1 class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">	
+				<a tabindex="1" href="/" class="logo"><?php echo wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full') ?></a>
 				@if(Option::get('global-settings', 'whitelabel') == '0')
 					<a href="#" class="whitelabel-logo"><img src="<?php echo wp_get_attachment_image_src(Option::get('global-settings', 'whitelabel-logo'), 'thumbnail')[0] ?>" /></a>
 				@endif

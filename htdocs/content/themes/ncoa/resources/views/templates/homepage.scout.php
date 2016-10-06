@@ -19,7 +19,7 @@
 			<section class="testimonials row">
 				@foreach($testimonials as $key => $value)
 					<figure class="testimonial col-xs-12 col-sm-4">
-						<img src="<?php echo wp_get_attachment_image_src($testimonials[$key]["testimonial-image"], 'full')[0] ?>" />
+						<img src="<?php echo wp_get_attachment_image_src($testimonials[$key]["testimonial-image"], 'full')[0] ?>" alt="<?php echo get_post_meta($testimonials[$key]["testimonial-image"], '_wp_attachment_image_alt')[0] ?>" />
 						<figcaption>
 							<p>"{{ $testimonials[$key]["testimonial-quote"] }}"</p>
 							<span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
@@ -68,7 +68,11 @@
 					<div class="ncoa-carousel-container" ncoa-carousel>
 						@foreach($sponsors as $key => $value)
 							<div class="item">
-								<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+								@if(Meta::get($value->ID, $key = 'sponsor-url', $single = true) != "")
+									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+								@else
+									<?php echo get_the_post_thumbnail($value->ID, 'full') ?>
+								@endif
 							</div>
 						@endforeach
 					</div>

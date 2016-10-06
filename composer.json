@@ -97,7 +97,8 @@
 		"wpackagist-plugin/wordpress-seo": "3.2.5",
 		"wpackagist-plugin/oasis-workflow": "2.2",
 		"wpackagist-plugin/svg-support": "2.2.3.2",
-		"wpackagist-plugin/members": "1.1.1"
+		"wpackagist-plugin/members": "1.1.1",
+		"nategood/httpful": "*"
 	},
 	"extra":{
 		"installer-paths":{

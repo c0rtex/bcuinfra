@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700);
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -43,10 +43,6 @@ audio:not([controls]) {
 [hidden],
 template {
   display: none; }
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
 
 a {
   background-color: transparent; }
@@ -1077,7 +1073,6 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1516,7 +1511,7 @@ pre {
       width: 970px; } }
   @media (min-width: 1200px) {
     .container {
-      width: 1350px; } }
+      width: 1170px; } }
 
 .container-fluid {
   margin-right: auto;
@@ -2289,7 +2284,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -2819,7 +2813,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -5115,10 +5108,7 @@ button.close {
 
 .modal-body {
   position: relative;
-  padding: 15px; 
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-}
+  padding: 15px; }
 
 .modal-footer {
   padding: 15px;
@@ -7523,34 +7513,16 @@ button[data-toggle="popover"] {
 .error-state {
   margin: 10px 0;
   background-color: #fcf3f3;
-  color: black;
   border-radius: 6px;
   display: inline-block;
   padding: 20px; }
   .error-state strong {
     font-weight: 700;
     color: red; }
- .error-state.ng-hide-add {
+  .error-state.ng-hide-add {
     animation: 0.5s slide-up ease; }
   .error-state.ng-hide-remove {
     animation: 0.5s slide-down ease; }
-
-
-.correct-state {
-  display: inline-block;
-  padding: 20px;
-  border-radius: 6px;
-  margin: 10px 0;
-  background-color: #F1FCF0;
-}
-
-.correct-state strong{
-  font-weight: 700;
-  color: green;
-}
-.correct-state.ng-show-add { animation:0.5s slide-up ease; }
-.correct-state.ng-show-remove { animation:0.5s slide-down ease; }
-
 
 body {
   line-height: 1.3;
@@ -7869,6 +7841,7 @@ header {
     header .header-cta:after {
       content: '';
       display: block;
+      background: url(https://www.ncoa.org/wp-content/uploads/ncoa-logo-230x78.png) no-repeat center center;
       background-size: contain;
       width: 100%;
       height: 46px;
@@ -8361,7 +8334,7 @@ footer .btn-purple {
 
 @media screen and (min-width: 1281px) {
   #map_base svg {
-    height: 900px; } }
+    height: 792px; } }
 
 #map-tip {
   font-family: 'Open Sans', sans-serif;
@@ -8436,8 +8409,7 @@ footer .btn-purple {
   background: #F9F9F9;
   border: 2px solid #CCCCCC;
   padding: 15px;
-  margin-bottom: 40px;
-  width: 290px;}
+  margin-bottom: 40px; }
   .results-options .result-options-list {
     color: #1888de; }
     .results-options .result-options-list li {
@@ -8757,55 +8729,15 @@ grid:last-child .sales-grid {
     .program.active .program-header span:after {
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg); }
-
-  .program.bcuqc_category_rx .program-header span {
+  .program.medicine .program-header span {
     background: url(../images/categories/category_medicine.svg) no-repeat left center;
     background-size: 55px; }
-
-  .program.bcuqc_category_medicaid .program-header span {
+  .program.health .program-header span {
     background: url(../images/categories/category_health.svg) no-repeat left center;
     background-size: 55px; }
-
-  .program.bcuqc_category_income .program-header span {
-    background: url(../images/categories/category_income.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.bcuqc_category_nutrition .program-header span {
+  .program.meals .program-header span {
     background: url(../images/categories/category_food.svg) no-repeat left center;
     background-size: 55px; }
-
-  .program.bcuqc_category_utility .program-header span {
-    background: url(../images/categories/category_housing.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.bcuqc_category_property_taxrelief .program-header span {
-    background: url(../images/categories/category_taxRelief.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.bcuqc_category_veteran .program-header span {
-    background: url(../images/categories/category_veteran.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.un_prg_1 .program-header span {
-    background: url(../images/categories/category_employment.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.un_prg_2 .program-header span {
-    background: url(../images/categories/category_transportation.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.un_prg_3 .program-header span {
-    background: url(../images/categories/category_education.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.un_prg_4 .program-header span {
-    background: url(../images/categories/category_discounts.svg) no-repeat left center;
-    background-size: 55px; }
-
-  .program.un_prg_5 .program-header span {
-    background: url(../images/categories/category_assistance.svg) no-repeat left center;
-    background-size: 55px; }
-
   .program.program-no-icon .program-header span {
     padding: 20px 0 20px 15px; }
     @media (min-width: 480px) {
@@ -9439,10 +9371,11 @@ grid:last-child .sales-grid {
     margin-right: 10px;
     padding: 10px 0; }
     .ncoa-carousel .item a {
-      display: block; }
+      display: block;
+      padding: 0 10px; }
     .ncoa-carousel .item img {
       width: 100%;
-      height: auto;
+      max-height: 104px;
       margin: 0 auto; }
     .ncoa-carousel .item p {
       margin: 0; }
@@ -9758,8 +9691,7 @@ grid:last-child .sales-grid {
     .page-sponsors .sponsor-featured .featured-item a, .page-sponsor .sponsor-featured .featured-item a {
       display: block; }
     .page-sponsors .sponsor-featured .featured-item img, .page-sponsor .sponsor-featured .featured-item img {
-      width: 100%;
-      height: auto;
+      height: 100%;
       transition: width 500ms ease; }
       @media (min-width: 480px) and (max-width: 992px) {
         .page-sponsors .sponsor-featured .featured-item img, .page-sponsor .sponsor-featured .featured-item img {
@@ -9784,7 +9716,8 @@ grid:last-child .sales-grid {
           height: 100%; } }
     @media (min-width: 992px) {
       .page-sponsors .sponsor-featured .featured-item, .page-sponsor .sponsor-featured .featured-item {
-        height: 136px; } }
+        height: 136px;
+        min-height: 136px; } }
 
 .page-sponsors .sponsors-gallery, .page-sponsor .sponsors-gallery {
   background: #fff; }
@@ -10117,43 +10050,12 @@ grid:last-child .sales-grid {
     color: #323232;
     line-height: 1.222em;
     margin-top: 15px; }
-
-  .questionnaire .program-card .bcuqc_category_rx {
-    background: url(../images/categories/category_medicine.svg) no-repeat top center; }
-
-  .questionnaire .program-card .bcuqc_category_medicaid {
+  .questionnaire .program-card .icon-healthcare {
     background: url(../images/categories/category_health.svg) no-repeat top center; }
-
-  .questionnaire .program-card .bcuqc_category_income {
-    background: url(../images/categories/category_income.svg) no-repeat top center; }
-
-  .questionnaire .program-card .bcuqc_category_nutrition {
+  .questionnaire .program-card .icon-medication {
+    background: url(../images/categories/category_medicine.svg) no-repeat top center; }
+  .questionnaire .program-card .icon-meals {
     background: url(../images/categories/category_food.svg) no-repeat top center; }
-
-  .questionnaire .program-card .bcuqc_category_utility {
-    background: url(../images/categories/category_housing.svg) no-repeat top center; }
-
-  .questionnaire .program-card .bcuqc_category_property_taxrelief {
-    background: url(../images/categories/category_taxRelief.svg) no-repeat top center; }
-
-  .questionnaire .program-card .bcuqc_category_veteran {
-    background: url(../images/categories/category_veteran.svg) no-repeat top center; }
-
-  .questionnaire .program-card .un_prg_1 {
-    background: url(../images/categories/category_employment.svg) no-repeat top center; }
-
-  .questionnaire .program-card .un_prg_2 {
-    background: url(../images/categories/category_transportation.svg) no-repeat top center; }
-
-  .questionnaire .program-card .un_prg_3 {
-    background: url(../images/categories/category_education.svg) no-repeat top center; }
-
-  .questionnaire .program-card .un_prg_4 {
-    background: url(../images/categories/category_discounts.svg) no-repeat top center; }
-
-  .questionnaire .program-card .un_prg_5 {
-    background: url(../images/categories/category_assistance.svg) no-repeat top center; }
-
   @media (min-width: 768px) {
     .questionnaire .program-card {
       width: 48%;
@@ -10199,14 +10101,14 @@ grid:last-child .sales-grid {
 .mobile-padding {
   padding: 0 7px !important; }
 
-.icon-block-healthcare {
-  background: url(../images/categories/category_health.svg) no-repeat top center;
+.icon-block {
   display: block;
-  width: 60px;
-  height: 60px;
   margin-right: 10px; }
+  .icon-block img {
+    width: 60px;
+    height: 60px; }
   @media (max-width: 991px) {
-    .icon-block-healthcare {
+    .icon-block {
       margin-left: 5px; } }
 
 .fact-sheets-top-header {
@@ -10753,28 +10655,3 @@ grid:last-child .sales-grid {
 
 .checked .icon-wrapper img {
   display: none; }
-
-
-/*remove the arrows from the income and asset grid input boxes*/
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
-}
-
-.header-cta-ncoaLogo{
-margin-top: 20px;
-}
-
-#selected-programs{
-display: block;
-}
-
-/*hide the input placeholders upon input focus*/
-
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
-input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */

@@ -16,7 +16,7 @@
 							<div class="benefits-selector-checkbox" ng-class="{checked: category == {{$keycategories[$key]['category-icon']}}}" ng-click="category = {{$keycategories[$key]['category-icon']}}">
 							    <div class="benefits-selector-checkbox-content">
 						      		<div class="icon-wrapper">
-							        	<img src="<?php echo wp_get_attachment_image_src($keycategories[$key]["category-icon"])[0] ?>">
+										<?php echo wp_get_attachment_image($keycategories[$key]["category-icon"], 'full') ?>
 							      	</div>
 							      	<div class="benefits-selector-label">
 							        	<div class="label-inner ng-binding">{{ $keycategories[$key]["category-title"] }}</div>
@@ -37,7 +37,7 @@
 							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 								<div class="bene-panel">
 							      	<div class="icon-wrapper">
-							        	<img src="<?php echo wp_get_attachment_image_src($programs[$key]["program-icon"])[0] ?>" /> 
+							      		<?php echo wp_get_attachment_image($programs[$key]["program-icon"], 'full') ?>
 							      	</div>
 							      	<div class="benefits-selector-label">
 							        	<div class="label-inner">

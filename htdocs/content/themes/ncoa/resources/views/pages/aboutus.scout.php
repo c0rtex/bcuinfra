@@ -15,7 +15,7 @@
       @if($key%2 == 1)
         <div class="row about-section">
           <div class="col-md-4">
-            <img class="circle-img about-left-img" alt="placeholder" src="<?php echo wp_get_attachment_image_src($bodySection[$key]["body-item-icon"], 'full')[0] ?>" />
+            <?php echo wp_get_attachment_image($bodySection[$key]["body-item-icon"], 'full', false, array('class' => 'circle-img about-left-img')) ?>
           </div>
           <div class="about-content col-md-8">
             <h2>{{ $bodySection[$key]["body-item-headline"] }}</h2>
@@ -25,14 +25,14 @@
       @else
         <div class="row about-section">
           <div class="col-md-4 about-mobile-column">
-            <img class="circle-img" alt="placeholder" src="<?php echo wp_get_attachment_image_src($bodySection[$key]["body-item-icon"], 'full')[0] ?>" />
+            <?php echo wp_get_attachment_image($bodySection[$key]["body-item-icon"], 'full', false, array('class' => 'circle-img about-left-img')) ?>
           </div>
           <div class="about-content col-md-8">
             <h2>{{ $bodySection[$key]["body-item-headline"]  }}</h2>
             {{ $bodySection[$key]["body-item-copy"]  }}
           </div>
           <div class="col-md-4 about-desktop-column">
-            <img class="circle-img" alt="placeholder" src="<?php echo wp_get_attachment_image_src($bodySection[$key]["body-item-icon"], 'full')[0] ?>" />
+            <?php echo wp_get_attachment_image($bodySection[$key]["body-item-icon"], 'full', false, array('class' => 'circle-img about-left-img')) ?>
           </div>
         </div>
       @endif

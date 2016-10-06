@@ -11,6 +11,7 @@ $page = Page::make('global-settings', 'Global Settings')->set([
 
 $sections[] = Section::make('whitelable-setting', 'White Label Settings');
 $settings["whitelable-setting"] = [
+	Field::media('main-logo'),
 	Field::radio('whitelabel', ['yes','no']),
 	Field::radio('showHeaderCTA', ['yes','no']),
 	Field::media('whitelabel-logo')

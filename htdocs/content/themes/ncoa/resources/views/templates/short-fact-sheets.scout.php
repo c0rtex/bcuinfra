@@ -11,13 +11,6 @@
         <hr class="fact-sheets-hr">
     </header>
 
-
-    <script>
-
-
-
-    </script>
-
     <div class="card-header">
         <a href="javascript:history.back()" class="btn-link btn-back">Back to Results</a>
         <h1>Fact Sheet</h1>
@@ -30,7 +23,11 @@
                 <div class="col-md-9 hidden-xs hidden-sm">
                     <!-- Views -->
                     <div>
-                        <span class="icon-block-healthcare pull-left"></span>
+                        <span class="icon-block pull-left">
+                            <?php 
+                                  echo wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full') 
+                                ?>
+                        </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
