@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:400,700);
+@import 'variables';
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 @import '../../node_modules/bootstrap-tokenfield/dist/css/bootstrap-tokenfield';
 @import '../../node_modules/odometer/themes/odometer-theme-default';
@@ -7,7 +8,6 @@ $slick-loader-path: "../images/";
 @import '../../node_modules/slick-carousel/slick/slick.scss';
 @import '../../node_modules/slick-carousel/slick/slick-theme.scss';
 
-@import 'variables';
 @import 'buttons';
 @import 'text-size-changer';
 @import 'jquery-ui';
