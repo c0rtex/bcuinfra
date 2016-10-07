@@ -131,14 +131,20 @@
 
 $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
 
-if (!empty($programUrl)) {           
+//if (!empty($programUrl)) {           
+
+
+foreach($app_forms as $ekey => $evalue){
+if(strpos($evalue->url, 'http')===0){
 
 echo '
 
-<a href="'.$programUrl.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>
-
+<a href="'.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>
 ';
+break;
 }
+}
+//}
 ?>
 
             @if ($app_forms)
