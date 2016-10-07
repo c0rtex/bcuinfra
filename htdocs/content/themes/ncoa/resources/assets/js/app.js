@@ -720,7 +720,7 @@ app.directive('slideDown',[function(){
 
 app.factory('questionTemplates',[function() {
 
-	var directivePath = "/content/themes/ncoa/resources/views/directives/question/";
+	var directivePath = "/content/themes/ncoa/resources/views/directives/question/"; 
 
 	var questionTemplates = {"zip":directivePath+"zip.html",
 							 "client":directivePath+"client.html",
