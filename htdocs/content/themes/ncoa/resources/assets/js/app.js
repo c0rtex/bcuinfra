@@ -3614,6 +3614,9 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 }]);
 
 
+app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+
+
 
 var map_config = {
 	'default':{
@@ -5175,3 +5178,5 @@ $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
 
 
 }(window.jQuery);
+
+

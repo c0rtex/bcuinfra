@@ -6,7 +6,8 @@
     <div class="programs-container">
         <ul class="programs" ng-repeat="program in found_program.programs">
             <li>
-                <h4>{{program.name_display}}</h4>
+              <h4 ng-bind-html="program.name_display | unsafe"></h4>
+
                 <div-program-desc program_desc="program.short_desc"></div-program-desc>
             </li>
             <li>
@@ -15,3 +16,4 @@
         </ul>
      </div>
 </section>
+                
