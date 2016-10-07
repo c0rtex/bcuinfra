@@ -44,6 +44,10 @@ audio:not([controls]) {
 template {
   display: none; }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 a {
   background-color: transparent; }
 
@@ -7824,10 +7828,12 @@ header {
         header .header-logo a {
           width: auto; } }
     header .header-logo img {
-      width: 300px; }
+      //width: 300px; 
+    }
       @media (min-width: 992px) {
         header .header-logo img {
-          width: 310px; } }
+          //width: 310px; 
+          } }
     header .header-logo.white-label {
       width: 100%;
       text-align: center; }
@@ -9350,6 +9356,16 @@ grid:last-child .sales-grid {
     border-right: 2px solid #ccc; }
     .home .better-way-benefits .benefits-item:last-child, .page-white-label-homepage .better-way-benefits .benefits-item:last-child {
       border: none; }
+  
+  .home .better-way-benefits .benefits-item .title-icon{
+    padding-top:0;
+  }
+  .home .better-way-benefits .benefits-item .title-icon img{
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
   @media (min-width: 992px) {
     .home .better-way-benefits, .page-white-label-homepage .better-way-benefits {
       padding-top: 50px;
@@ -9437,8 +9453,7 @@ grid:last-child .sales-grid {
     .ncoa-carousel .item a {
       display: block; }
     .ncoa-carousel .item img {
-      width: 100%;
-      height: auto;
+      max-height: 104px;
       margin: 0 auto; }
     .ncoa-carousel .item p {
       margin: 0; }
@@ -9754,8 +9769,7 @@ grid:last-child .sales-grid {
     .page-sponsors .sponsor-featured .featured-item a, .page-sponsor .sponsor-featured .featured-item a {
       display: block; }
     .page-sponsors .sponsor-featured .featured-item img, .page-sponsor .sponsor-featured .featured-item img {
-      width: 100%;
-      height: auto;
+      height: 100%;
       transition: width 500ms ease; }
       @media (min-width: 480px) and (max-width: 992px) {
         .page-sponsors .sponsor-featured .featured-item img, .page-sponsor .sponsor-featured .featured-item img {
@@ -9769,12 +9783,12 @@ grid:last-child .sales-grid {
       margin-bottom: 0; }
     .page-sponsors .sponsor-featured .featured-item .featured-text, .page-sponsor .sponsor-featured .featured-item .featured-text {
       position: relative; }
-      @media (min-width: 992px) {
+      /*@media (min-width: 992px) {
         .page-sponsors .sponsor-featured .featured-item .featured-text p, .page-sponsor .sponsor-featured .featured-item .featured-text p {
           position: absolute;
           top: 50%;
           -ms-transform: translateY(-50%);
-              transform: translateY(-50%); } }
+              transform: translateY(-50%); } }*/
       @media (min-width: 992px) {
         .page-sponsors .sponsor-featured .featured-item .featured-text, .page-sponsor .sponsor-featured .featured-item .featured-text {
           height: 100%; } }
@@ -10213,6 +10227,11 @@ grid:last-child .sales-grid {
   padding: 0px;
   margin: 0px; }
 
+  .icon-block img{
+    width: 60px;
+    height: 60px;
+  }
+
 .fact-sheets-bottom-header {
   font-size: 36px; }
 
@@ -10337,8 +10356,8 @@ grid:last-child .sales-grid {
 .about-us-banner-header {
   background-repeat: no-repeat;
   background-color: #F3F8FC;
-  background-position: bottom left;
-  background-size: 50%;
+  background-position: 0 -44px;
+  background-size: auto 115%;
   height: 300px; }
   @media (max-width: 767px) {
     .about-us-banner-header {

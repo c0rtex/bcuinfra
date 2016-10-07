@@ -13,6 +13,7 @@ class AboutUsController extends BaseController
 
     $bodySection = Meta::get(get_the_ID(), $key = 'body-item', $single = true);
     $worksSection = Meta::get(get_the_ID(), $key = 'work-item', $single = true);
+    
 
     return View::make('pages.aboutus',[
     	'heroImage' => $heroImage,

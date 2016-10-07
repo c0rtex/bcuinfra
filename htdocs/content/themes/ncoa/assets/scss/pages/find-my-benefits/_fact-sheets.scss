@@ -16,12 +16,15 @@
   padding: 0 7px !important;
 }
 
-.icon-block-healthcare{
-  background:url(../images/categories/category_health.svg) no-repeat top center;
+.icon-block{
+  //background:url(../images/categories/category_health.svg) no-repeat top center;
   display: block;
-  width: 60px;
-  height: 60px;
   margin-right: 10px;
+
+  img{
+    width: 60px;
+    height: 60px;
+  }
 
   @media (max-width: $screen-sm-max) {
     margin-left: 5px;

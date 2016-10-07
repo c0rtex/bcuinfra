@@ -11,13 +11,6 @@
         <hr class="fact-sheets-hr">
     </header>
 
-
-    <script>
-
-
-
-    </script>
-
     <div class="card-header">
         <a href="javascript:history.back()" class="btn-link btn-back">Back to Search Results</a>
         <h1>Fact Sheet</h1>
@@ -30,7 +23,11 @@
                 <div class="col-md-9 hidden-xs hidden-sm">
                     <!-- Views -->
                     <div>
-                        <span class="icon-block-healthcare pull-left"></span>
+                        <span class="icon-block pull-left">
+                            {{
+                                wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full', array('title' => 'Loop::id()')) 
+                            }}
+                        </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
@@ -82,6 +79,16 @@
                         <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
                         @endforeach
                     </ul>
+                    @endif
+                </div>
+
+                <div class="col-md-3 hidden-xs hidden-sm">
+                    @if(strlen(Meta::get(Loop::id(), $key = 'body-copy', $single = true))>0)
+                    <div class="results-options">
+                        <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
+                        <br />
+                        {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
+                    </div>
                     @endif
                 </div>
 

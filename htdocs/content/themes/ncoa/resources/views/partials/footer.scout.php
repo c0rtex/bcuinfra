@@ -18,11 +18,11 @@
         <div class="col-sm-12">
             <div class="footer-social-media-tray">
                 <p>Connect with us on:</p>
-                <a class="footer-facebook-icon" href="http://www.facebook.com/NCOAging">&nbsp;</a>
-                <a class="footer-twitter-icon" href="http://www.twitter.com/NCOAging">&nbsp;</a>
-                <a class="footer-linkedin-icon" href="http://www.linkedin.com/company/216832">&nbsp;</a>
-                <a class="footer-group-icon" href="http://www.ncoacrossroads.org/">&nbsp;</a>
-                <a class="footer-youtube-icon" href="http://www.youtube.com/ncoaging">&nbsp;</a>
+                <a class="footer-facebook-icon" title="Facebook" href="http://www.facebook.com/NCOAging">&nbsp;</a>
+                <a class="footer-twitter-icon" title="Twitter" href="http://www.twitter.com/NCOAging">&nbsp;</a>
+                <a class="footer-linkedin-icon" title="Linkedin" href="http://www.linkedin.com/company/216832">&nbsp;</a>
+                <a class="footer-group-icon" title="NCOA Crossroads" href="http://www.ncoacrossroads.org/">&nbsp;</a>
+                <a class="footer-youtube-icon" title="Youtube" href="http://www.youtube.com/ncoaging">&nbsp;</a>
             </div>
             <div class="footer-enews-tray">
                 <p>Sign Up for Enews</p>
@@ -46,12 +46,12 @@
 <li id="menu-item-368" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-368"><a href="http://www.mymedicarematters.org">My Medicare Matters®</a></li>
 </ul></div>            </div>
             <div class="trust-icon-container col-md-12 col-lg-8">
-                <a href="http://www.charitynavigator.org/index.cfm?bay=search.summary&amp;orgid=4174#.VXHZRM9Viko" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-charity-navigator.png" alt="Charity Navigator"></a>
-                <a href="http://give.org/charity-reviews/national/elderly/national-council-on-aging-in-arlington-va-3133" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-bbb.png" alt="Better Business Bureau Accredited Charity"></a>
-                <a href="http://greatnonprofits.org/org/national-council-on-aging" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-great-nonprofits.png" alt="2014 Top Rated Non Profit"></a>
-                <a href="http://www.opm.gov/combined-federal-campaign/" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-cfc.png" alt="Combined Federal Campaign Approved Charity"></a>
-                <a href="https://www.charitywatch.org/ratings-and-metrics/national-council-on-aging/503" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-charity-watch.png" title="Charity Watch" alt="Charity Watch Approved Charity"></a>
-                <a target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-ima-award.png" title="IMA Award" alt="Interactive Media Award Winner Best in Class 2015"></a>
+                <a href="http://www.charitynavigator.org/index.cfm?bay=search.summary&amp;orgid=4174#.VXHZRM9Viko" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-charity-navigator.png" alt="Charity Navigator" title="Charity Navigator"></a>
+                <a href="http://give.org/charity-reviews/national/elderly/national-council-on-aging-in-arlington-va-3133" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-bbb.png" alt="Better Business Bureau Accredited Charity" title="Better Business Bureau Accredited Charity"></a>
+                <a href="http://greatnonprofits.org/org/national-council-on-aging" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-great-nonprofits.png" alt="2014 Top Rated Non Profit" title="2014 Top Rated Non Profit"></a>
+                <a href="http://www.opm.gov/combined-federal-campaign/" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-cfc.png" alt="Combined Federal Campaign Approved Charity" title="Combined Federal Campaign Approved Charity"></a>
+                <a href="https://www.charitywatch.org/ratings-and-metrics/national-council-on-aging/503" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-charity-watch.png" title="Charity Watch" alt="Charity Watch Approved Charity" title="Charity Watch Approved Charity"></a>
+                <a target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-ima-award.png" title="IMA Award" alt="Interactive Media Award Winner Best in Class 2015" title="Interactive Media Award Winner Best in Class 2015"></a>
 
             </div>
         </div>
@@ -66,15 +66,15 @@
             <div class="footer-social-media-tray">
                 <p>Connect with us on:</p>
 
-<a class="footer-facebook-icon" href="http://www.facebook.com/NCOAging"></a>
+<a class="footer-facebook-icon" href="http://www.facebook.com/NCOAging" title="Facebook"></a>
 
-<a class="footer-twitter-icon" href="http://www.twitter.com/NCOAging"></a>
+<a class="footer-twitter-icon" href="http://www.twitter.com/NCOAging" title="Twitter"></a>
 
-<a class="footer-linkedin-icon" href="http://www.linkedin.com/company/216832"></a>
+<a class="footer-linkedin-icon" href="http://www.linkedin.com/company/216832" title="Linkedin"></a>
 
-<a class="footer-group-icon" href="http://www.ncoacrossroads.org/"></a>
+<a class="footer-group-icon" href="http://www.ncoacrossroads.org/" title="NCOA Crossroads"></a>
 
-<a class="footer-youtube-icon" href="http://www.youtube.com/ncoaging"></a>
+<a class="footer-youtube-icon" href="http://www.youtube.com/ncoaging" title="Youtube"></a>
             </div>
                             <div class="footer-enews-tray">
                     <p>Sign Up for Enews</p>

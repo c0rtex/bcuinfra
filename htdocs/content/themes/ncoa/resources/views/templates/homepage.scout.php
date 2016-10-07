@@ -10,7 +10,7 @@
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
-						<p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
 					</div>
 				</div>
 			</section>
@@ -19,7 +19,10 @@
 			<section class="testimonials row">
 				@foreach($testimonials as $key => $value)
 					<figure class="testimonial col-xs-12 col-sm-4">
-						<img src="<?php echo wp_get_attachment_image_src($testimonials[$key]["testimonial-image"], 'full')[0] ?>" />
+						{{
+							wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
+							array('title' => get_the_title($testimonials[$key]["testimonial-image"]))) 
+						}}
 						<figcaption>
 							<p>"{{ $testimonials[$key]["testimonial-quote"] }}"</p>
 							<span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
@@ -43,7 +46,13 @@
 				</div>
 				@foreach($betterwaysection as $key => $value)
 					<div class="benefits-item col-xs-12 col-sm-4">
-						<h4 class="title-icon" style="background-image: url(<?php echo wp_get_attachment_image_src($betterwaysection[$key]["benefit-icon"], 'full')[0] ?>)">{{ $betterwaysection[$key]["benefit-title"] }}</h4>
+						<h4 class="title-icon">
+							{{
+								wp_get_attachment_image($betterwaysection[$key]["benefit-icon"], 'full', false,
+									array('title' => get_the_title($betterwaysection[$key]["benefit-icon"]))) 	
+							}}
+							{{ $betterwaysection[$key]["benefit-title"] }}
+						</h4>
 						<p>{{ $betterwaysection[$key]["benefit-copy"] }}</p>
 					</div>
 				@endforeach
@@ -56,7 +65,7 @@
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
-						<p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
 					</div>
 				</div>
 			</section>
@@ -68,7 +77,19 @@
 					<div class="ncoa-carousel-container" ncoa-carousel>
 						@foreach($sponsors as $key => $value)
 							<div class="item">
-								<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+								@if(Meta::get($value->ID, $key = 'sponsor-url', $single = true) != "")
+									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}">
+										{{
+											get_the_post_thumbnail($value->ID, 'full', 
+												array('title' => get_the_title($value->ID)))
+										}}
+									</a>
+								@else
+									{{
+										get_the_post_thumbnail($value->ID, 'full', 
+											array('title' => get_the_title($value->ID)))
+									}}
+								@endif
 							</div>
 						@endforeach
 					</div>
@@ -96,9 +117,9 @@
 						<h3>Spread the Word</h3>
 						<p>Let others know about the benefits they could be receiving</p>
 						<ul class="social-jewlery">
-							<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+							<li><a href="#" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>

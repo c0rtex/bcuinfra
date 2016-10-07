@@ -15,7 +15,15 @@
       @if($key%2 == 1)
         <div class="row about-section">
           <div class="col-md-4">
-            <img class="circle-img about-left-img" alt="placeholder" src="<?php echo wp_get_attachment_image_src($bodySection[$key]["body-item-icon"], 'full')[0] ?>" />
+            {{
+                wp_get_attachment_image($bodySection[$key]["body-item-icon"], 'full', false,
+                  array(
+                    'title' => get_the_title($bodySection[$key]["body-item-icon"]),
+                    'class' => 'circle-img about-left-img'
+                  )
+                )
+            }}
+            
           </div>
           <div class="about-content col-md-8">
             <h2>{{ $bodySection[$key]["body-item-headline"] }}</h2>
@@ -25,14 +33,28 @@
       @else
         <div class="row about-section">
           <div class="col-md-4 about-mobile-column">
-            <img class="circle-img" alt="placeholder" src="<?php echo wp_get_attachment_image_src($bodySection[$key]["body-item-icon"], 'full')[0] ?>" />
+            {{
+                wp_get_attachment_image($bodySection[$key]["body-item-icon"], 'full', false,
+                  array(
+                    'title' => get_the_title($bodySection[$key]["body-item-icon"]),
+                    'class' => 'circle-img about-left-img'
+                  )
+                )
+            }}
           </div>
           <div class="about-content col-md-8">
             <h2>{{ $bodySection[$key]["body-item-headline"]  }}</h2>
             {{ $bodySection[$key]["body-item-copy"]  }}
           </div>
           <div class="col-md-4 about-desktop-column">
-            <img class="circle-img" alt="placeholder" src="<?php echo wp_get_attachment_image_src($bodySection[$key]["body-item-icon"], 'full')[0] ?>" />
+            {{
+                wp_get_attachment_image($bodySection[$key]["body-item-icon"], 'full', false,
+                  array(
+                    'title' => get_the_title($bodySection[$key]["body-item-icon"]),
+                    'class' => 'circle-img about-left-img'
+                  )
+                )
+            }}
           </div>
         </div>
       @endif
@@ -47,7 +69,14 @@
         @foreach($worksSection as $key => $value)
           <div class="col-md-4 about-step-section">
             <div>
-              <img class="about-us-step" src="<?php echo wp_get_attachment_image_src($worksSection[$key]["work-item-icon"], 'full')[0] ?>">
+              {{
+                wp_get_attachment_image($worksSection[$key]["work-item-icon"], 'full', false,
+                  array(
+                    'title' => get_the_title($worksSection[$key]["work-item-icon"]),
+                    'class' => 'about-us-step'
+                  )
+                )
+              }}
               <h3>{{ $worksSection[$key]["work-item-headline"] }}</h3>
               <p>
                 {{$worksSection[$key]["work-item-copy"]}}
@@ -64,7 +93,7 @@
           <div class="zip-code form-inline" ng-controller="zipCodeController">
             <input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
             <button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
-            <p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+            <p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
           </div>
       </div>
     </div>
@@ -80,9 +109,9 @@
           <h3>Spread the Word</h3>
           <p>Let others know about the benefits they could be receiving</p>
           <ul class="social-jewlery">
-            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            <li><a href="#" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
           </ul>
         </div>
       </div>

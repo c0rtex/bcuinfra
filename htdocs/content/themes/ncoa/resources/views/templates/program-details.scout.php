@@ -52,7 +52,7 @@
 						<div class="zip-code form-inline" ng-controller="zipCodeController">
 							<input type="text" class="form-control" aria-label="Zipcode" placeholder="Enter Zip Code" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 							<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
-							<p class="error-state" ng-class="{ 'error-state-valid': isValid}">Please enter a valid zipcode in the United States</p>
+							<p class="error-state" ng-cloak ng-class="{ 'error-state-valid': isValid}">Please enter a valid zipcode in the United States</p>
 						</div>
 					</div>
 				</div>

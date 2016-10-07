@@ -720,7 +720,7 @@ app.directive('slideDown',[function(){
 
 app.factory('questionTemplates',[function() {
 
-	var directivePath = "/content/themes/ncoa/resources/views/directives/question/";
+	var directivePath = "/content/themes/ncoa/resources/views/directives/question/"; 
 
 	var questionTemplates = {"zip":directivePath+"zip.html",
 							 "client":directivePath+"client.html",
@@ -744,10 +744,10 @@ app.directive('questionDiv',['questionTemplates', 'localStorageService', 'Benefi
 			} else {
 				if ((localStorageService.get("interested_category") != undefined)&&(scope.question.code == "bcuqc_interest_category")) {
 					if (localStorageService.get("interested_category") == "and_more") {
-						scope.addProgram(BenefitItems.getByCode("un_prg_2"));
-						scope.addProgram(BenefitItems.getByCode("un_prg_3"));
-						scope.addProgram(BenefitItems.getByCode("un_prg_4"));
-						scope.addProgram(BenefitItems.getByCode("un_prg_5"));
+						scope.addProgram(BenefitItems.getByCode("bcuqc_category_transportation"));
+						scope.addProgram(BenefitItems.getByCode("bcuqc_category_education"));
+						scope.addProgram(BenefitItems.getByCode("bcuqc_category_discounts"));
+						scope.addProgram(BenefitItems.getByCode("bcuqc_category_other_assistance"));
 					} else {
 						scope.addProgram(BenefitItems.getByCode(localStorageService.get("interested_category")));
 					}
@@ -1065,27 +1065,27 @@ app.factory('BenefitItems', [function(){
 		},
 		{
 			name: 'Employment',
-			code: 'un_prg_1',
+			code: 'bcuqc_category_employment',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_employment.svg'
 		},
 		{
 			name: 'Transportation',
-			code: 'un_prg_2',
+			code: 'bcuqc_category_transportation',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_transportation.svg'
 		},
 		{
 			name: 'Education',
-			code: 'un_prg_3',
+			code: 'bcuqc_category_education',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_education.svg'
 		},
 		{
 			name: 'Discounts',
-			code: 'un_prg_4',
+			code: 'bcuqc_category_discounts',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg'
 		},
 		{
 			name: 'Other Assistance',
-			code: 'un_prg_5',
+			code: 'bcuqc_category_other_assistance',
 			image: '/content/themes/ncoa/resources/assets/images/categories/category_assistance.svg'
 		}
 	];

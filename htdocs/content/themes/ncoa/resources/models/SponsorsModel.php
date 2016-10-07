@@ -10,36 +10,6 @@ class SponsorsModel
     */
     public static function all()
     {   
-        return static::querySponsors();
-    }
-
-    public static function featured(){
-        $featuredSponsors = array();
-        $featured = static::querySponsors();        
-
-        foreach ($featured as $key => $value) {
-            $isFeatured = Meta::get($value->ID, $key = 'featured', $single = true);
-            if(gettype($isFeatured) == "string")
-               array_push($featuredSponsors, $value);
-        }
-
-        return $featuredSponsors;
-    }
-
-    public static function nonFeatured(){
-        $nonfeaturedSponsors = array();
-        $featured = static::querySponsors();        
-
-        foreach ($featured as $key => $value) {
-            $isFeatured = Meta::get($value->ID, $key = 'featured', $single = true);
-            if(gettype($isFeatured) == "array")
-               array_push($nonfeaturedSponsors, $value);
-        }
-
-        return $nonfeaturedSponsors;
-    }
-
-    private static function querySponsors(){
         $query = new WP_Query([
             'post_type'         => 'ncoa-sponsors',
             'posts_per_page'    => -1,
@@ -50,6 +20,55 @@ class SponsorsModel
 
         return $query->get_posts();
     }
+
+
+    /**
+     * Return a list of all Featued Sponosrs
+     * 
+     * @return array
+    */
+    public static function queryFeaturedSponsors(){
+        $query = new WP_Query([
+            'post_type'         => 'ncoa-sponsors',
+            'posts_per_page'    => -1,
+            'post_status'       => 'publish',
+            'meta_query'        => array(
+                                        array(
+                                            'key' => 'featured',
+                                            'value' => '0'
+                                        )
+                                    ),
+            'orderby'=> 'title', 
+            'order' => 'ASC'
+        ]);
+
+        return $query->get_posts();
+    }
+
+    /**
+     * Return a list of all Non Featued Sponosrs by their menu order in WP Admin
+     * 
+     * @return array
+    */
+
+    public static function queryNonFeaturedSponosrs(){
+        $query = new WP_Query([
+            'post_type'         => 'ncoa-sponsors',
+            'posts_per_page'    => -1,
+            'meta_query'        => array(
+                                        array(
+                                            'key' => 'featured',
+                                            'value' => 'a:0:{}'  // This is how WP is inserting non checked values :(
+                                        )
+                                    ),
+            'orderby'           => 'menu_order',
+            'order'             => 'ASC'
+        ]);
+
+        return $query->get_posts();
+    }
+
+    
 }
 
 ?>
