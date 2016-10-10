@@ -30,14 +30,14 @@
 	<cfproperty name="suppress_qno_flag">
 	<cfproperty name="spq_exclude_flag">
 	<cfproperty name="sort" tostruct="sort">
-	<cfproperty name="answer_fields" fieldtype="one-to-many" cfc="question_answer_field" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
+	<cfproperty name="answer_fields" tostructarray="answer_fields" fieldtype="one-to-many" cfc="question_answer_field" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
 	<cfproperty name="helps" tostructarray="helps" fieldtype="one-to-many" cfc="question_help" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
 
 <!---
   Inherited toStructure method defined in parent method ToStructConverter. Filter questions answer fields based on passed state, subset and partner
 --->
 
-	<cffunction name="toStructure">
+<!---	<cffunction name="toStructure">
 		<cfargument name="state_id" type="string" default="">
 		<cfargument name="subset_id" type="numeric" default="0">
 		<cfargument name="partner_id" type="numeric" default="0">
@@ -51,13 +51,13 @@
 			<cfset arrayAppend(retVal["answer_fields"],af.toStructure(prev_id=prev_id))>
 		</cfloop>
 		<cfreturn retVal>
-	</cffunction>
+	</cffunction>--->
 
 <!---
   Method returns filtered questions answer fields based on passed state, subset and partner
 --->
 
-	<cffunction name="getAnswer_fields">
+<!---	<cffunction name="getAnswer_fields">
 		<cfargument name="state_id" type="string" default="">
 		<cfargument name="subset_id" type="numeric" default="0">
 		<cfargument name="partner_id" type="numeric" default="0">
@@ -206,6 +206,6 @@
 		</cfloop>
 
 		<cfreturn ormExecuteQuery("from question_answer_field as qaf where qaf.answer.id in (#_in#) and qaf.question.id=#this.getId()#  order by sort asc")>
-	</cffunction>
+	</cffunction>--->
 
 </cfcomponent>

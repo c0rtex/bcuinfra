@@ -56,7 +56,7 @@
 					<cfif arraylen(h) neq 0>
 						<cfset expandedText = h[1].getDisplay().getDisplay_text()>
 					</cfif>
-					<cfset expandedText = "<a href onClick=""return showHideHelpDef(true,'#defKeyword#');"">#defText#</a><div id=""#defKeyword#"" style=""display:none;"" >#expandedText#<a href onClick=""return showHideHelpDef(false,'#defKeyword#');"">hide</a></div>">
+					<cfset expandedText = "<a href='##' onClick='return false' data-html='true' data-trigger='click' data-placement='top' data-toggle='popover' class='popover-help' data-content='#expandedText#'>#defText#</a> <script type='text/javascript-lazy'>$('.popover-help').popover();</script>">
 				</cfif>
 				<cfset outstr = Replace(outstr, "[[#getCode#]]", expandedText, 'ONE')>
 			</cfif>

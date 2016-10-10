@@ -76,9 +76,12 @@
 
 
         <cfset retVal = arrayNew(1)>
+        <cfset display = createObject("component","bcu.orm.display")>
 
         <cfloop array="#questions#" index="i">
-            <cfset arrayAppend(retVal,i.toStructure())>
+            <cfset strct = i.toStructure()>
+            <cfset strct["display"] = display.expandTextCodes(strct["display"])>
+            <cfset arrayAppend(retVal,strct)>
         </cfloop>
 
         <cfreturn serializeJSON(retVal)>

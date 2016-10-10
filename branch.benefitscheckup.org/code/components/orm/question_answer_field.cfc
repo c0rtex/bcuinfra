@@ -20,7 +20,7 @@
     <cfproperty name="rule" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
     <cfproperty name="sort" tostruct="sort">
 
-	<cffunction name="toStructure">
+	<!---<cffunction name="toStructure">
 		<cfargument name="prev_id" type="numeric" default="-1">
 		<cfset qaf = super.toStructure()>
 		<cfif prev_id GREATER THAN -1>
@@ -30,6 +30,6 @@
 			</cfif>
 		</cfif>
 		<cfreturn qaf>
-	</cffunction>
+	</cffunction>--->
 
 </cfcomponent>
