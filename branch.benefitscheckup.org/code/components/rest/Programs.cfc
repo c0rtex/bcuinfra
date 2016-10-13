@@ -2,7 +2,7 @@
     <cfset categories = structNew()>
     <cfset categories['bcuqc_category_income'] = ["income"]>
     <cfset categories['bcuqc_category_medicaid'] = ["medicaid","health","homecare"]>
-    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxco","rxgov","rxcard"]>
+    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxgov"]><!--- rxco,rxcard removed from results --->
     <cfset categories['bcuqc_category_property_taxrelief'] = ["taxrelief","taxrelief_other"]>
     <cfset categories['bcuqc_category_veteran'] = ["veteran"]>
     <cfset categories['bcuqc_category_nutrition'] = ["nutrition","foodsupp"]>
