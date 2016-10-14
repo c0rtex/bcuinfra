@@ -81,9 +81,96 @@
         <cfloop array="#questions#" index="i">
             <cfset strct = i.toStructure()>
             <cfset strct["display"] = display.expandTextCodes(strct["display"])>
+
+            <cfswitch expression="#i.getCode()#">
+
+                <cfcase value="drugs">
+                    <cfset strct["answer_fields"] = this.getDrugList()>
+                </cfcase>
+
+                <cfcase value="incomegrid">
+                    <cfset strct["answer_fields"] = this.getIncomeAnswerfields()>
+                </cfcase>
+
+                <cfcase value="assetgrid">
+                    <cfset strct["answer_fields"] = this.getAssetAnswerfields()>
+                </cfcase>
+
+            </cfswitch>
+
             <cfset arrayAppend(retVal,strct)>
         </cfloop>
 
         <cfreturn serializeJSON(retVal)>
     </cffunction>
+
+    <cffunction name="getAssetAnswerfields">
+        <cfset assets = ormExecuteQuery("from xassettype where exclude_flag=0 order by sort")>
+        <cfset var retArray = arrayNew(1)>
+        <cfloop array="#assets#" index="a">
+            <cfset var retStrct = structNew()>
+            <cfset retStrct["code"] = a.getVarname()>
+            <cfset retStrct["display"] = a.getName()>
+            <cfset retStrct["required"] = "0">
+            <cfset retStrct["sort"] = a.getSort()>
+            <cfset retStrct["id"] = a.getId()>
+            <cfset retStrct["type"] = "grid">
+            <cfset var helps = ormExecuteQuery("from help where keyword=?",[a.getDefinition()])>
+            <cfif arraylen(helps) gt 0>
+                <cfset retStrct["description"] = helps[1].getDisplay().getDisplay_text()>
+            <cfelse>
+                <cfset retStrct["description"] = "">
+            </cfif>
+            <cfset arrayAppend(retArray,retStrct)>
+        </cfloop>
+        <cfreturn retArray>
+    </cffunction>
+
+    <cffunction name="getIncomeAnswerfields">
+        <cfset incomes = ormExecuteQuery("from xincometype where exclude_flag=0 order by sort")>
+        <cfset var retArray = arrayNew(1)>
+        <cfloop array="#incomes#" index="a">
+            <cfset var retStrct = structNew()>
+            <cfset retStrct["code"] = a.getVarname()>
+            <cfset retStrct["display"] = a.getName()>
+            <cfset retStrct["required"] = "0">
+            <cfset retStrct["sort"] = a.getSort()>
+            <cfset retStrct["id"] = a.getId()>
+            <cfset retStrct["type"] = "grid">
+            <cfset var helps = ormExecuteQuery("from help where keyword=?",[a.getDefinition()])>
+            <cfif arraylen(helps) gt 0>
+                <cfset retStrct["description"] = helps[1].getDisplay().getDisplay_text()>
+            <cfelse>
+                <cfset retStrct["description"] = "">
+            </cfif>
+            <cfset arrayAppend(retArray,retStrct)>
+        </cfloop>
+        <cfreturn retArray>
+    </cffunction>
+
+    <cffunction name="getDrugList">
+        <cfset drg = ormExecuteQuery("select distinct af from program_answer_field paf right join paf.answer_field af where af.answer_field_type.id=13 and paf.answer_field is not null")>
+        <cfset var retArray = arrayNew(1)>
+        <cfloop array="#drg#" index="d">
+            <cfset var option = structNew()>
+            <cfset option["code"]=d.getCode()>
+            <cfset option["display"]=d.getDisplay().getDisplay_text()>
+            <cfset arrayAppend(retArray,option)>
+        </cfloop>
+        <cfset drg = ormExecuteQuery("from answer_field af where af.answer_field_type.id=14")>
+        <cfloop array="#drg#" index="d">
+            <cfset var option = structNew()>
+            <cfset option["code"]=d.getCode()>
+            <cfset option["display"]=d.getDisplay().getDisplay_text()>
+            <cfset arrayAppend(retArray,option)>
+        </cfloop>
+        <cfset var retVal = structNew()>
+        <cfset retVal["type"]="druglist">
+        <cfset retVal["options"] = retArray>
+        <cfset retVal["count"] = arraylen(retArray)>
+        <cfset var retArray = arrayNew(1)>
+        <cfset arrayAppend(retArray,retVal)>
+        <cfreturn retArray>
+    </cffunction>
+
 </cfcomponent>
