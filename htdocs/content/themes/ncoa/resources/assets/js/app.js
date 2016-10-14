@@ -5128,13 +5128,16 @@ function dynamicAddEvent(id){
       console.log("test this");
         e.preventDefault()
 	var el = this;
-      //$(el).popover('show');
-      $(".popover > h3").append('<span class="close icon icon-remove"></span>')
+      $(el).popover('show');
+      $(".popover > h3").append('<span id="closeButton" class="close icon icon-remove">X</span>')
                         .find('.close').on('click', function(e) {
                             e.preventDefault();
                             $(el).popover('hide');
                         }
        );
+
+      $(".popover > h3").show();
+      $("#closeButton").show();
 
      });   
 
