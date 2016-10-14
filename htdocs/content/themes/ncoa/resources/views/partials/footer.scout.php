@@ -30,7 +30,7 @@
             </div>
 
             <div class="footer-donate-tray">
-                <a class="btn btn-purple" href="/get-involved/give-to-ncoa/donate/">Donate</a>
+                <a class="btn btn-purple" href="http://www.ncoa.org/Donate">Donate</a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -48,7 +48,7 @@
             <div class="trust-icon-container col-md-12 col-lg-8">
                 <a href="http://www.charitynavigator.org/index.cfm?bay=search.summary&amp;orgid=4174#.VXHZRM9Viko" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-charity-navigator.png" alt="Charity Navigator" title="Charity Navigator"></a>
                 <a href="http://give.org/charity-reviews/national/elderly/national-council-on-aging-in-arlington-va-3133" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-bbb.png" alt="Better Business Bureau Accredited Charity" title="Better Business Bureau Accredited Charity"></a>
-                <a href="http://greatnonprofits.org/org/national-council-on-aging" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-great-nonprofits.png" alt="2014 Top Rated Non Profit" title="2014 Top Rated Non Profit"></a>
+                <a href="http://greatnonprofits.org/org/national-council-on-aging" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-great-nonprofits.png" alt="2015 Top-Rated Non Profit" title="2014 Top Rated Non Profit"></a>
                 <a href="http://www.opm.gov/combined-federal-campaign/" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-cfc.png" alt="Combined Federal Campaign Approved Charity" title="Combined Federal Campaign Approved Charity"></a>
                 <a href="https://www.charitywatch.org/ratings-and-metrics/national-council-on-aging/503" target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-charity-watch.png" title="Charity Watch" alt="Charity Watch Approved Charity" title="Charity Watch Approved Charity"></a>
                 <a target="_blank" class="trust-icon"><img src="https://www.ncoa.org/wp-content/themes/ncoa2015/images/trust-icon-ima-award.png" title="IMA Award" alt="Interactive Media Award Winner Best in Class 2015" title="Interactive Media Award Winner Best in Class 2015"></a>

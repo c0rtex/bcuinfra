@@ -109,10 +109,11 @@
           <h3>Spread the Word</h3>
           <p>Let others know about the benefits they could be receiving</p>
           <ul class="social-jewlery">
-            <li><a href="#" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-            <li><a href="#" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="#" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-          </ul>
+					<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				</ul>
+
         </div>
       </div>
     </section>
