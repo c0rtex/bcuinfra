@@ -73,7 +73,7 @@
 
                     <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
 
-                    <h3 class="bold-h3">What Youll Need...</h3>
+                    <h3 class="bold-h3">What You'll Need...</h3>
                     <ul class="fact-sheets-list">
                         @foreach($required_materials as $ekey => $evalue)
                         <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
