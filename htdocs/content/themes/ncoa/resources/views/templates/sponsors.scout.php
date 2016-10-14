@@ -52,16 +52,17 @@
 			<div class="stay-connected col-xs-12 col-sm-6 col-md-6">
 				<h3>Stay Connected</h3>
 				<p>Receive emails about how to stay healthy, secure, and independent.</p>
-				<a href="#" class="btn btn-tertiary">Subscribe to Newsletter</a>
+				<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Subscribe to Newsletter</a>
 			</div>
 			<div class="spread-the-word col-xs-12 col-sm-6 col-md-6">
 				<h3>Spread the Word</h3>
 				<p>Let others know about the benefits they could be receiving</p>
 				<ul class="social-jewlery">
-					<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				</ul>
+							<li><a href="https://www.ncoa.org/get-involved/contact-us/email/" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.facebook.com/NCOAging" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="https://twitter.com/NCOAging" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						</ul>
+
 			</div>
 		</div>
 	</section>

@@ -72,9 +72,8 @@
 
           <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
 
-        <h3 class="bold-h3">What Youll Need...</h3>
+        <h3 class="bold-h3">What You'll Need...</h3>
         <ul class="fact-sheets-list">
-#
           @foreach($required_materials as $ekey => $evalue)
 
           <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
@@ -153,10 +152,30 @@ break;
             
             <?php $pos++ ?>
 
-            @if ($pos === 4)
 
+@if(strpos($evalue->url, 'http')===0)
+
+            <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+            </a>
+            @else
+            <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+              <span class="fa fa-file fact-sheets-icon"></span>
+              <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+            </a>
+            @endif
+
+
+            @if ($pos === 3)
 <!-- Trigger the modal with a button -->
 <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
+
+
+@if (!empty($programUrl))
+</br>
+
+<a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
+@endif
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -166,15 +185,19 @@ break;
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">More Applications</h4>
+        <h4 class="modal-title">Application Forms</h4>
       </div>
       <div class="modal-body">
 
 
 
+<?php break;?>
       
             @endif
 
+            @endforeach
+
+            @foreach($app_forms as $ekey => $evalue) <!--Lynna Cekova: starting the loop again in order to print all application forms in the modal, not just the remaining ones -->
             @if(strpos($evalue->url, 'http')===0)
 
             <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
@@ -190,7 +213,7 @@ break;
             
             
             @endforeach
-            @if ($pos >= 4)
+            @if ($pos >= 3)
 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
