@@ -1536,8 +1536,7 @@ order by section_code, sort_order
 
 	</cfquery>
 	<cfset x = 0>
-	<cfset wp_db_version = 'wp_posts_v3_1' >
-	<cfset wp_db_version = 'wp_posts' >
+	<cfset wp_db_version = 'wp_posts_v3_2' >
 	<cfif screening_id lt 5 >
 		<cfset wp_db_version = 'wp_posts_v2_0' >
 	</cfif>
