@@ -4,8 +4,12 @@
 		<div breadcrumb class="breadcrumbs" ng-hide="hideBreadCrumbs"></div>
 		<div class="row">
 			<div class="col-sm-12 col-md-9">
-				<!-- Views -->
-				<div ui-view></div>
+				<h2>Answer these questions to get more accurate results.</h2>
+				<div class="cta">
+					<strong>Just a reminder</strong> Answer all your questions as your {{screenData.searchingFor}}.
+				</div>
+				<question ng-repeat="question in questions[index]" question="question"></question>
+				<p class="error-state" ng-show="wrongLink"><strong>Error!</strong> Please add category and state to url</p>
 			</div>
 
 			<!-- Profile Section-->
