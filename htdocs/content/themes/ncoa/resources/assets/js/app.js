@@ -570,7 +570,7 @@ app.directive('ncoaCarousel', [function(){
 		}
 	}
 }]);
-app.directive('grid', [function () {
+app.directive('grid', ['$state',function ($state) {
 	return {
 	  restrict: 'E',
 	  scope: {
@@ -582,6 +582,8 @@ app.directive('grid', [function () {
 	  },
 	  templateUrl: '/content/themes/ncoa/resources/views/directives/grid/grid-tpl.html?'+(new Date()),
 	  link: function (scope, element, attr) {
+
+		  scope.category = $state.params.category;
 
 		  switch (parseInt(scope.type)) {
 			  case 1:
@@ -757,7 +759,8 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'questionnaire', 'save
 				if (stateName == "prescreen.results") {
 					$state.go(stateName);
 				} else {
-					$state.transitionTo("screening",{"category":stateName,"state":scope.$root.prescreen.stateId});
+					var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
+					$state.transitionTo("screening",{"category":stateName,"state":stateId});
 				}
 			}
 
@@ -979,11 +982,12 @@ app.directive('question',['questionTemplates', 'localStorageService', 'BenefitIt
 	}
 }]);
 
-app.directive('answerfield',[function(){
+app.directive('answerfield',['$state', function($state){
 	return {
 		template:"<span ng-include='answer_field_link'></span>",
 		link: function(scope, element, attributes, ngModel,ngShow) {
 			scope.answer_field_link="/content/themes/ncoa/resources/views/directives/answer-field/"+scope.answer_field.type+".html?"+(new Date());
+			scope.category = $state.params.category;
 		},
 		scope: {
 			answer_field:"=answerField"
@@ -1715,16 +1719,22 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 }]);
 
 app.controller('screeningController', ['$scope', '$state', 'screeningQuestions', function($scope, $state, screeningQuestions){
-	if ($scope.questions == undefined) $scope.questions = {};
-
-	$scope.currentState = $state.params.category;
+	if ($scope.$root.screening == undefined) {
+		$scope.$root.screening = {};
+		$scope.$root.screening.answers = {};
+		$scope.$root.screening.questions = {};
+	}
 
 	if (($state.params.category != undefined) && ($state.params.state != undefined)) {
 
-		$scope.index = $state.params.category + "_" + $state.params.state;
+		$scope.category = $state.params.category;
+
+		if ($scope.$root.screening.answers[$state.params.category] == undefined) {
+			$scope.$root.screening.answers[$state.params.category] = {};
+		}
 
 		screeningQuestions.get($state.params.category,$state.params.state).success(function(data){
-			$scope.questions[$state.params.category+"_"+$state.params.state] = data;
+			$scope.$root.screening.questions[$state.params.category] = data;
 		});
 	} else {
 		$state.transitionTo('screening',{category:"basics",state:$scope.$root.prescreen.stateId});

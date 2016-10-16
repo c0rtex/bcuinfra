@@ -1,4 +1,4 @@
 <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default" ng-class="{active: yn_af == 'y'}" ng-click="yn_af = 'y'">Yes</button>
-    <button type="button" class="btn btn-default" ng-class="{active: yn_af == 'n'}" ng-click="yn_af = 'n'">No</button>
+    <button type="button" class="btn btn-default" ng-class="{active: $root.screening.answers[category][answer_field.code] == 'y'}" ng-click="$root.screening.answers[category][answer_field.code] = 'y'">Yes</button>
+    <button type="button" class="btn btn-default" ng-class="{active: $root.screening.answers[category][answer_field.code] == 'n'}" ng-click="$root.screening.answers[category][answer_field.code] = 'n'">No</button>
 </div>
