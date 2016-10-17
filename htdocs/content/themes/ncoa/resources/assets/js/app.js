@@ -1516,7 +1516,10 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		if ($scope.$root.prescreen.marital_status != undefined) {
 			if (($scope.$root.prescreen.marital_status.code == "married" ||
 				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
-				$scope.$root.prescreen.marital_status.code == "widowed") && $scope.$root.prescreen.veteran == "n" && !$('.partner-veteran-status').is(":visible")) {
+				$scope.$root.prescreen.marital_status.code == "widowed") && 
+				$scope.$root.prescreen.veteran == "n" && 
+				!$('.partner-veteran-status').is(":visible")) {
+				
 				setTimeout(function () {
 					var test = document.querySelector('.partner-veteran-status');
 					$('html,body').animate({
@@ -1525,7 +1528,23 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 				}, 500);
 			} else if (($scope.$root.prescreen.marital_status.code == "married" ||
 				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
-				$scope.$root.prescreen.marital_status.code == "widowed") && $scope.$root.prescreen.veteran == "y" && !$('.benefits').is(":visible")) {
+				$scope.$root.prescreen.marital_status.code == "widowed") && 
+				$scope.$root.prescreen.veteran == "y" && 
+				!$('.benefits').is(":visible")) {
+				
+				$scope.sibmitDisabled = false;
+				setTimeout(function () {
+					var test = document.querySelector('.veteran-status .cta');
+					$('html,body').animate({
+						scrollTop: $(test).offset().top-10 + 'px'
+					}, 500);
+				}, 500);
+			} else if (($scope.$root.prescreen.marital_status.code == "married" ||
+				$scope.$root.prescreen.marital_status.code == "married_living_sep" ||
+				$scope.$root.prescreen.marital_status.code == "widowed") && 
+				$scope.$root.prescreen.veteran == "n" && 
+				!$('.benefits').is(":visible")) {
+				
 				$scope.sibmitDisabled = false;
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');
@@ -1533,7 +1552,25 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 						scrollTop: $(test).offset().top-100 + 'px'
 					}, 500);
 				}, 500);
-			} else if (($scope.$root.prescreen.marital_status.code == "divorced" || $scope.$root.prescreen.marital_status.code == "single") && !$('.benefits').is(":visible")) {
+			} else if ((
+				$scope.$root.prescreen.marital_status.code == "divorced" || 
+				$scope.$root.prescreen.marital_status.code == "single") && 
+				$scope.$root.prescreen.veteran == "y" &&
+				!$('.benefits').is(":visible")) {
+				
+				$scope.sibmitDisabled = false;
+				setTimeout(function () {
+					var test = document.querySelector('.veteran-status .cta');
+					$('html,body').animate({
+						scrollTop: $(test).offset().top-10 + 'px'
+					}, 500);
+				}, 500);
+			} else if ((
+				$scope.$root.prescreen.marital_status.code == "divorced" || 
+				$scope.$root.prescreen.marital_status.code == "single") && 
+				$scope.$root.prescreen.veteran == "n" &&
+				!$('.benefits').is(":visible")) {
+				
 				$scope.sibmitDisabled = false;
 				setTimeout(function () {
 					var test = document.querySelector('.benefits');

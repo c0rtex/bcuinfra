@@ -8348,6 +8348,18 @@ footer .btn-purple {
   margin: 0; }
   #map_base svg text {
     font-weight: 700; }
+  #map_base svg #regions #map_51{
+    transform: translate3d(165px,160px,0);
+    -ms-transform: translate3d(165px,160px,0);
+  }
+  #map_base svg #regions #map_52{
+    transform: translate3d(140px, 160px, 0px);
+     -ms-transform: translate3d(140px, 160px, 0px);
+  }
+  #map_base svg #regions #map_53{
+    transform: translate3d(325px,145px,0);
+    -ms-transform: translate3d(325px,145px,0);
+  }
 
 @media screen and (max-width: 979px) and (min-width: 768px) {
   #map_base svg {
