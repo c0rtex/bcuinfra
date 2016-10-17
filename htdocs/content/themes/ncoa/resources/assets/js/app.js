@@ -743,9 +743,9 @@ app.directive('ncoaPrograms',[function(){
 
 }]);
 
-app.directive('pageSwitch',['$state', 'Income','$filter', 'questionnaire', 'saveScreening', 'ScreeningRoutes', function($state, Income, $filter, questionnaire, saveScreening, ScreeningRoutes){
+app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($state, prescreen, screening, saveScreening, ScreeningRoutes){
 	return {
-		link: function(scope, elm){
+		link: function (scope, elm) {
 
 			if ($state.params.category == undefined) {
 				scope.prev = "prescreen.results";
@@ -754,141 +754,70 @@ app.directive('pageSwitch',['$state', 'Income','$filter', 'questionnaire', 'save
 				scope.prev = ScreeningRoutes[$state.params.category].prev;
 				scope.next = ScreeningRoutes[$state.params.category].next;
 			}
-			
-			scope.switchPage = function(stateName){
-				if (stateName == "prescreen.results") {
-					$state.go(stateName);
+
+			scope.switchPage = function (stateName) {
+				if ((stateName == "prescreen.results")||(stateName == "screening-start")) {
+					$state.transitionTo(stateName);
 				} else {
-					var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
-					$state.transitionTo("screening",{"category":stateName,"state":stateId});
-				}
-			}
 
-
-			/*
-			** When page is changed successfully then populate all options and links with from and to states to go to.
-			*/
-			scope.$on('$stateChangeSuccess', function() {
-				scope.preState = ('data' in $state.current ) ? $state.current.data.prev : '';
-				scope.nextState = ('data' in $state.current ) ? $state.current.data.next : '';
-				scope.currentState = $state.current.name.split(".")[1];
-				scope.isResults = ($state.current.name.split(".")[1] == "results");
-				scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
-
-				if(document.querySelector('.page-wrapper h1'))
-					document.querySelector('.page-wrapper h1').scrollIntoView();
-				// else
-				// 	document.querySelector('.page').scrollIntoView();
-			});
-
-
-			/*
-			** Will watch the changing of state and look for the fincances questions to make sure that if they choose items for the sales grid then it will show that panel if not move to the next panel. This will 
-			** also catch if they go back from the results page they won't get the loader again.
-			*/
-			scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-
-				var statusChangeProc = function() {
-					var incomes = $filter('filter')(scope.questionnaire.incomes, {selected: true});
-					var assets = $filter('filter')(scope.questionnaire.assets, {selected: true});
-
-					if(fromState.name == "questionnaire.finances-income" && toState.name == "questionnaire.finances-income-grid" && incomes.length == 0){
-						event.preventDefault();
-						$state.transitionTo('questionnaire.finances-assets');
-					}else if(fromState.name == "questionnaire.finances-assets" && toState.name == "questionnaire.finances-income-grid" && incomes.length == 0){
-						event.preventDefault();
-						$state.transitionTo('questionnaire.finances-income');
-					}else if(fromState.name == "questionnaire.finances-assets" && toState.name == "questionnaire.finances-assets-grid" && assets.length == 0){
-						event.preventDefault();
-						$state.transitionTo('questionnaire.loader');
-					}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.finances-assets-grid" && assets.length == 0){
-						event.preventDefault();
-						$state.transitionTo('questionnaire.finances-assets');
-					}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.loader" && assets.length != 0){
-						event.preventDefault();
-						$state.transitionTo('questionnaire.finances-assets-grid');
-					}else if(fromState.name == "questionnaire.results" && toState.name == "questionnaire.loader" && assets.length == 0){
-						event.preventDefault();
-						$state.transitionTo('questionnaire.finances-assets');
-					}
-				};
-
-				var prefix = fromState.name.replace("questionnaire.","");
-
-				if ((scope.questionnaire.request[prefix] != undefined)||(toState.name == "questionnaire.loader")) {
+					screening.questions[$state.params.category] = scope.$root.screening.questions[$state.params.category];
+					screening.answers[$state.params.category] = scope.$root.screening.answers[$state.params.category];
 
 					var request = {};
-					if (scope.questionnaire.screening != undefined) {
-						request.screening = scope.questionnaire.screening;
+
+					if (screening.results.screening.id != undefined) {
+						request.screening = screening.results.screening;
 					}
 
-					request.pgno=scope.pgno;
-					request.prescreen =scope.questionnaire.prevScreening;
+					request.pgno = ScreeningRoutes[$state.params.category].pgno;
 
-					if (scope.questionnaire.request[prefix]!= undefined) {
-						request.answers = scope.questionnaire.request[prefix];
-					} else {
-						request.answers = {};
+					if (prescreen.results.screening.id != undefined) {
+						request.prescreen = prescreen.results.screening;
 					}
 
-					if (toState.name == "questionnaire.loader") {
-						request.lastSet="true";
+
+					if (stateName == "questionnaire.loader") {
+						request.lastSet = "true";
 					}
 
-					if (prefix == "finances-income-grid") {
-						for (var i in scope.questionnaire.request['income-totals']) {
-							request.answers[i] = scope.questionnaire.request['income-totals'][i];
-						}
+					request.answers = scope.$root.screening.answers[$state.params.category];
 
-					}
-
-					if (prefix == "finances-assets-grid") {
-						for (var i in scope.questionnaire.request['assets-totals']) {
-							request.answers[i] = scope.questionnaire.request['assets-totals'][i];
-						}
-					}
-
-					saveScreening.post(request).success(function(data, status, headers, config) {
-						if (toState.name == "questionnaire.loader") {
-							scope.questionnaire.screening = data.screening;
-							scope.questionnaire.found_programs = data.found_programs;
-							scope.questionnaire.key_programs = [];
-							for (var i=0;i<scope.questionnaire.found_programs.length;i++) {
-								for (var j=0;j<scope.questionnaire.found_programs[i].programs.length;j++) {
-									if (scope.questionnaire.found_programs[i].programs[j].key_program) {
-										var program = scope.questionnaire.found_programs[i].programs[j];
-										program.category = scope.questionnaire.found_programs[i].category;
-										scope.questionnaire.key_programs.push(program);
+					saveScreening.post(request).success(function (data, status, headers, config) {
+						if (stateName == "questionnaire.loader") {
+							screening.results.screening = data.screening;
+							screening.results.found_programs = data.found_programs;
+							screening.results.key_programs = [];
+							for (var i = 0; i < screening.results.found_programs.length; i++) {
+								for (var j = 0; j < screening.results.found_programs[i].programs.length; j++) {
+									if (screening.results.found_programs[i].programs[j].key_program) {
+										var program = screening.results.found_programs[i].programs[j];
+										program.category = screening.results.found_programs[i].category;
+										screening.results.key_programs.push(program);
 									}
 								}
 							}
-							questionnaire = scope.questionnaire;
 							$state.transitionTo('questionnaire.results');
 						} else {
-							scope.questionnaire.screening = data;
-							questionnaire = scope.questionnaire;
+							screening.results.screening = data;
+							var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
+							$state.transitionTo("screening", {"category": stateName, "state": stateId});
 						}
-						statusChangeProc();
 					});
-				} else {
-					statusChangeProc();
 				}
 
-
-
-			});
-
-
+			}
 		}
 	}
 }]);
+
+
 app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', function (prescreen, $state, Drugs, CronicConditions) {
 	return {
 	  restrict: 'A',	  
 	  templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
 	  link: function (scope, element, attr) {
 	  	scope.screenData = prescreen.screenData;
-		scope.questionnaire.prevScreening = prescreen.results.screening;
+		//scope.questionnaire.prevScreening = prescreen.results.screening;
 	  	scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
 
 		scope.cronicConditions = function() {
@@ -1264,10 +1193,10 @@ app.factory('ScreeningRoutes',[function() {
 	var ScreeningParts = {};
 
 	var _routes = {};
-	_routes.basics = {"prev":"prescreen.results", "next":"health"};
-	_routes.health = {"prev":"basics", "next":"household"};
-	_routes.household = {"prev":"health", "next":"finances"};
-	_routes.finances = {"prev":"household", "next":""};
+	_routes.basics = {"prev":"prescreen.results", "next":"health", pgno:1};
+	_routes.health = {"prev":"basics", "next":"household", pgno:2};
+	_routes.household = {"prev":"health", "next":"finances", pgno:3};
+	_routes.finances = {"prev":"household", "next":"questionnaire.loader", pgno:4};
 
 	_routes.default="basics";
 
@@ -1352,6 +1281,15 @@ app.factory('prescreen', [function(){
 	var prescreenform = {};
 
 	return prescreenform;
+}]);
+
+app.factory('screening', [function() {
+	var screening = {};
+	screening.questions = {};
+	screening.answers = {};
+	screening.results = {};
+	screening.results.screening = {};
+	return screening;
 }]);
 
 app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
@@ -1895,7 +1833,7 @@ app.directive('divProgramDesc',function() {
 	}
 });
 
-app.controller('questionnaireResultsController', ['$scope', '$state', function($scope, $state){
+app.controller('questionnaireResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening){
 	var el = document.querySelector('.odometer');
 
 	od = new Odometer({
@@ -1905,12 +1843,14 @@ app.controller('questionnaireResultsController', ['$scope', '$state', function($
 
 	var odValue = 0;
 
-	for (var i=0; i<$scope.$parent.questionnaire.found_programs.length;i++) {
-		odValue = odValue + $scope.$parent.questionnaire.found_programs[i].count;
+	for (var i=0; i<screening.results.found_programs.length;i++) {
+		odValue = odValue + screening.results.found_programs[i].count;
 	}
 
 	od.update(odValue);
 
+	$scope.key_programs = screening.results.key_programs;
+	$scope.found_programs = screening.results.found_programs;
 
 	document.querySelector('.page-wrapper h1').scrollIntoView();
 
