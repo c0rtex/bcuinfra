@@ -115,6 +115,7 @@
             <cfset retStrct["sort"] = a.getSort()>
             <cfset retStrct["id"] = a.getId()>
             <cfset retStrct["type"] = "grid">
+            <cfset retStrct["earned"] = a.getEarned_flag()>
             <cfset var helps = ormExecuteQuery("from help where keyword=?",[a.getDefinition()])>
             <cfif arraylen(helps) gt 0>
                 <cfset retStrct["description"] = helps[1].getDisplay().getDisplay_text()>
@@ -137,6 +138,7 @@
             <cfset retStrct["sort"] = a.getSort()>
             <cfset retStrct["id"] = a.getId()>
             <cfset retStrct["type"] = "grid">
+            <cfset retStrct["earned"] = a.getEarned_flag()>
             <cfset var helps = ormExecuteQuery("from help where keyword=?",[a.getDefinition()])>
             <cfif arraylen(helps) gt 0>
                 <cfset retStrct["description"] = helps[1].getDisplay().getDisplay_text()>

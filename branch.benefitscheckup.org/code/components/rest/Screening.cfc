@@ -154,8 +154,19 @@
                 <cfset sa.setOption(option[1])>
             </cfcase>
 
-            <cfcase value="4,5,6,8,13,14,23,25,27,29,30,32,33">
+            <cfcase value="4,5,6,13,14,23,25,27,29,30,32,33">
                 <cfset option = entityload("option",{code="#value#"})>
+                <cfif arraylen(option) neq 0>
+                    <cfset sa.setOption(option[1])>
+                </cfif>
+            </cfcase>
+
+            <cfcase value="8">
+                <cfif isStruct(value)>
+                    <cfset option = entityload("option",{code="#value.code#"})>
+                <cfelse>
+                    <cfset option = entityload("option",{code="#value#"})>
+                </cfif>
                 <cfif arraylen(option) neq 0>
                     <cfset sa.setOption(option[1])>
                 </cfif>

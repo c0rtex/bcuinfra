@@ -19,4 +19,5 @@
     <cfproperty name="sort">
     <cfproperty name="definition">
     <cfproperty name="exclude_flag">
+	<cfproperty name="earned_flag">
 </cfcomponent>
