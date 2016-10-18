@@ -170,8 +170,10 @@ break;
 
 @if(strpos($evalue->url, 'http')===0)
 
-            <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+           <!-- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+            <span style="white-space: pre-line">{{ $evalue->caption }}</span>-->
+            <?php $pos-- ?> <!--showing and counting only non-online applications -->
+       
             </a>
             @else
             <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
