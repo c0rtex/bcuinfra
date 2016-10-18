@@ -8800,23 +8800,23 @@ grid:last-child .sales-grid {
     background: url(../images/categories/category_veteran.svg) no-repeat left center;
     background-size: 55px; }
 
-  .program.un_prg_1 .program-header span {
+  .program.bcuqc_category_employment .program-header span {
     background: url(../images/categories/category_employment.svg) no-repeat left center;
     background-size: 55px; }
 
-  .program.un_prg_2 .program-header span {
+  .program.bcuqc_category_transportation .program-header span {
     background: url(../images/categories/category_transportation.svg) no-repeat left center;
     background-size: 55px; }
 
-  .program.un_prg_3 .program-header span {
+  .program.bcuqc_category_education .program-header span {
     background: url(../images/categories/category_education.svg) no-repeat left center;
     background-size: 55px; }
 
-  .program.un_prg_4 .program-header span {
+  .program.bcuqc_category_discounts .program-header span {
     background: url(../images/categories/category_discounts.svg) no-repeat left center;
     background-size: 55px; }
 
-  .program.un_prg_5 .program-header span {
+  .program.bcuqc_category_other_assistance .program-header span {
     background: url(../images/categories/category_assistance.svg) no-repeat left center;
     background-size: 55px; }
 
@@ -10161,19 +10161,19 @@ grid:last-child .sales-grid {
   .questionnaire .program-card .bcuqc_category_veteran {
     background: url(../images/categories/category_veteran.svg) no-repeat top center; }
 
-  .questionnaire .program-card .un_prg_1 {
+  .questionnaire .program-card .bcuqc_category_employment {
     background: url(../images/categories/category_employment.svg) no-repeat top center; }
 
-  .questionnaire .program-card .un_prg_2 {
+  .questionnaire .program-card .bcuqc_category_transportation {
     background: url(../images/categories/category_transportation.svg) no-repeat top center; }
 
-  .questionnaire .program-card .un_prg_3 {
+  .questionnaire .program-card .bcuqc_category_education {
     background: url(../images/categories/category_education.svg) no-repeat top center; }
 
-  .questionnaire .program-card .un_prg_4 {
+  .questionnaire .program-card .bcuqc_category_discounts {
     background: url(../images/categories/category_discounts.svg) no-repeat top center; }
 
-  .questionnaire .program-card .un_prg_5 {
+  .questionnaire .program-card .bcuqc_category_other_assistance {
     background: url(../images/categories/category_assistance.svg) no-repeat top center; }
 
   @media (min-width: 768px) {

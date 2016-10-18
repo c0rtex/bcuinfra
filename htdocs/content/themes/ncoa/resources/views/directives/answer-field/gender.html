@@ -1,3 +1,3 @@
 <div class="btn-group" role="group">
-    <button ng-repeat="gender in answer_field.options track by gender.code" type="button" class="btn btn-default" ng-class="{active: $root.gender_af == gender.code}" ng-click="$root.gender_af = gender.code">{{gender.display}}</button>
+    <button ng-repeat="gender in answer_field.options track by gender.code" type="button" class="btn btn-default" ng-class="{active: $root.screening.answers[category][answer_field.code] == gender.code}" ng-click="$root.screening.answers[category][answer_field.code] = gender.code">{{gender.display}}</button>
 </div>
