@@ -1,12 +1,12 @@
-<div class="veteran-status question-block" ng-show="$root.prescreen.marital_status">
+<div class="veteran-status question-block" ng-show="$root.answers[category].marital_stat">
     <section>
-        <p class="question-block-icon question-block-title">Are you a veteran?<button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
+        <p class="question-block-icon question-block-title"><ng-label text="{{question.display}}"></ng-label><button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <div class="btn-group" role="group" aria-label="Montly Income?">
-            <button type="button" class="btn btn-default" ng-class="{active: $root.prescreen.veteran == 'y'}" ng-click="$root.prescreen.veteran = 'y'">Yes</button>
-            <button type="button" class="btn btn-default" ng-class="{active: $root.prescreen.veteran == 'n'}" ng-click="$root.prescreen.veteran = 'n'">No</button>
+            <button type="button" class="btn btn-default" ng-class="{active: $root.answers[category].veteran == 'y'}" ng-click="$root.answers[category].veteran = 'y'">Yes</button>
+            <button type="button" class="btn btn-default" ng-class="{active: $root.answers[category].veteran == 'n'}" ng-click="$root.answers[category].veteran = 'n'">No</button>
         </div>
     </section>
-    <div class="cta" ng-show="$root.prescreen.veteran == 'y'">
+    <div class="cta" ng-show="$root.answers[category].veteran == 'y'">
         Thank you for your service.
     </div>
 </div>

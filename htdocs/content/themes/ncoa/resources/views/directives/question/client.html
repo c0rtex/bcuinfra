@@ -1,12 +1,12 @@
-<div class="search-type question-block" ng-show="$root.prescreen.zipcode&&$root.prescreen.isZipValid&&!$root.prescreen.isEdit">
+<div class="search-type question-block" ng-show="$root.answers[category].zipcode&&$root.isZipValid&&!$root.prescreen.isZipEdit">
     <section>
-        <p class="question-block-icon question-block-title">Who are you completing this search for?<button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
-        <select class="form-control" name="searchFor" ng-model="$root.prescreen.searchfor" ng-options="searchfor.display for searchfor in question.answer_fields[0].options track by searchfor.code" ng-change="onStatusChange()">
+        <p class="question-block-icon question-block-title"><ng-label text="{{question.display}}"></ng-label><button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
+        <select class="form-control" name="searchFor" ng-model="$root.answers[category].client" ng-options="searchfor.display for searchfor in question.answer_fields[0].options track by searchfor.code" ng-change="onStatusChange()">
             <option value="">-- choose an option --</option>
         </select>
-        <input type="text" name="search-for-other" class="form-control" placeholder="Please enter other type" ng-show="$root.prescreen.searchfor.code == 'other'" ng-model="$root.prescreen.searchforother" />
-        <div class="cta ng-hide" ng-hide="$root.prescreen.showCTA">
-            <strong>Okay, great!</strong> Please answer all remaining questions as your {{ $root.prescreen.searchfor.code != 'other' ? $root.prescreen.searchfor.display : $root.prescreen.searchforother }}.
+        <input type="text" name="search-for-other" class="form-control" placeholder="Please enter other type" ng-show="$root.answers[category].client.code == 'other'" ng-model="$root.answers[category].client_other" />
+        <div class="cta ng-hide" ng-hide="$root.answers[category].client.code == undefined || $root.answers[category].client.code == '' || $root.answers[category].client.code == 'self'">
+            <strong>Okay, great!</strong> Please answer all remaining questions as your {{ $root.answers[category].client.code != 'other' ? $root.answers[category].client.display : $root.answers[category].client_other}}.
         </div>
 
     </section>
