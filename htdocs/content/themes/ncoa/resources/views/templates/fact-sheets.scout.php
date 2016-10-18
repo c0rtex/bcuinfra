@@ -85,7 +85,7 @@
           
       
         
-          <hr class="fact-sheets-hr" />
+          <!--<hr class="fact-sheets-hr" />-->
 
           <h3 class="bold-h3">
             Frequently Asked Questions
