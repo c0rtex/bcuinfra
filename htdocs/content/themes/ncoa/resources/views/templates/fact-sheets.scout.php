@@ -71,6 +71,7 @@
           <hr class="fact-sheets-hr" />
 
           <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
+<!--
 
         <h3 class="bold-h3">What You'll Need...</h3>
         <ul class="fact-sheets-list">
@@ -79,6 +80,7 @@
           <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
           @endforeach
         </ul>
+-->
       
           
       
@@ -102,11 +104,24 @@
              </div>
               @endforeach
               @else
+              @if($value["answer"] === 'documents_needed')
+              <div class="programs-container program-p">
+            <ul class="fact-sheets-list">
+          @foreach($required_materials as $ekey => $evalue)
+
+          <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
+          @endforeach
+        </ul>
+
+              </div>
+          
+              @else
               <div class="programs-container program-p">
                 <p>
                   {{ $value["answer"] }}
                 </p>
               </div>
+              @endif
               @endif
             </section>
           @endforeach
