@@ -19,7 +19,7 @@
         INNER JOIN questioncategory ON questioncategory.questioncategory_id = subset_questioncategory.questioncategory_id
         where subset_question.subset_id = 0
         order by subset_question.sort--->
-        <cfset questions = ormExecuteQuery("select sq.question from subset_question sq where sq.subset.id=0 order by sq.sort")>
+        <cfset questions = ormExecuteQuery("select sq.question from subset_question sq where sq.subset.id=100 order by sq.sort")>
 
         <cfset retVal = arrayNew(1)>
 
