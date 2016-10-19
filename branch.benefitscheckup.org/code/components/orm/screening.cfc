@@ -13,7 +13,7 @@
 --->
 
 <cfcomponent persistent="true" entityname="screening" table="screening" extends="ToStructConverter">
-    <cfproperty name="id" fieldtype="id" column="screening_id" generator="increment">
+    <cfproperty name="id" fieldtype="id" column="screening_id" generator="identity">
     <cfproperty name="prev_screening" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="prev_screening_id" cfc="Screening">
     <cfproperty name="cfid">
     <cfproperty name="cftoken">
