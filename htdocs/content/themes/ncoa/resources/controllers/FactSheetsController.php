@@ -41,7 +41,13 @@ class FactSheetsController extends BaseController
 			]);
 		} else {
 
-			$entryPoints = \Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/entryPoints/forProgram/' . $program_code)->send();
+			if (array_key_exists('zipcode',$_REQUEST)) {
+				$zipcode = $_REQUEST['zipcode'];
+			} else {
+				$zipcode = '';
+			}
+
+			$entryPoints = \Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/entryPoints/forProgram/' . $program_code.'?zipcode='.$zipcode)->send();
 
 			$entryPoints = json_decode($entryPoints->body);
 

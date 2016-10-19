@@ -129,15 +129,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     })
     .state('fact-sheets-short', {
-	  url: "/fact-sheets-short/:programCode/:stateId",
+	  url: "/fact-sheets-short/:programCode/:stateId/:zipcode",
       templateUrl: function($stateParams) {
-		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y&short_layout=y";
-	  }/*,
-      controller: 'factSheetsController',
-	  data:{
-	    next: "",
-		prev: ""
-	  }*/
+		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y&zipcode="+$stateParams.zipcode;
+	  }
 	})
 	.state('screening-start', {
 	  url: '/screening-start',
@@ -1910,6 +1905,7 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', function(Benef
 		link: function(scope, element) {
 			scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
 			scope.stateId = prescreen.data.answers.stateId;
+			scope.zipcode = prescreen.data.answers.zip;
 		},
 		scope: {
 			found_program:"=foundProgram"
@@ -1926,6 +1922,7 @@ app.directive("divKeyProgram",['prescreen',function(prescreen) {
 		},
 		link: function(scope,element) {
 			scope.stateId = prescreen.data.answers.stateId;
+			scope.zipcode = prescreen.data.answers.zip;
 			scope.subString = function(string) {
 				if (string.length>70) {
 					return string.substring(0,70)+"...";
