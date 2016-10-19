@@ -162,14 +162,14 @@
             </cfcase>
 
             <cfcase value="8">
-                <cfif isStruct(value)>
-                    <cfset option = entityload("option",{code="#value.code#"})>
-                <cfelse>
-                    <cfset option = entityload("option",{code="#value#"})>
-                </cfif>
+                <cfset option = entityload("option",{code="#value.code#"})>
                 <cfif arraylen(option) neq 0>
                     <cfset sa.setOption(option[1])>
                 </cfif>
+            </cfcase>
+
+            <cfcase value="21">
+                sa.setResponse(value.id);
             </cfcase>
 
             <cfdefaultcase>
