@@ -3500,6 +3500,7 @@ function dynamicAddEvent(id){
     $('[data-toggle="popover"]')
      .popover()
      .click(function(e) {
+      e.stopPropagation();
       console.log("test this");
         e.preventDefault()
 	var el = this;
@@ -3507,6 +3508,7 @@ function dynamicAddEvent(id){
       $(".popover > h3").append('<span id="closeButton" class="close icon icon-remove">X</span>')
                         .find('.close').on('click', function(e) {
                             e.preventDefault();
+                            e.stopPropagation();
                             $(el).popover('hide');
                         }
        );

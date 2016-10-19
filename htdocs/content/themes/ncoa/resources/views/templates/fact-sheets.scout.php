@@ -71,6 +71,7 @@
           <hr class="fact-sheets-hr" />
 
           <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
+<!--
 
         <h3 class="bold-h3">What You'll Need...</h3>
         <ul class="fact-sheets-list">
@@ -79,11 +80,12 @@
           <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
           @endforeach
         </ul>
+-->
       
           
       
         
-          <hr class="fact-sheets-hr" />
+          <!--<hr class="fact-sheets-hr" />-->
 
           <h3 class="bold-h3">
             Frequently Asked Questions
@@ -102,11 +104,24 @@
              </div>
               @endforeach
               @else
+              @if($value["answer"] === 'documents_needed')
+              <div class="programs-container program-p">
+            <ul class="fact-sheets-list">
+          @foreach($required_materials as $ekey => $evalue)
+
+          <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
+          @endforeach
+        </ul>
+
+              </div>
+          
+              @else
               <div class="programs-container program-p">
                 <p>
                   {{ $value["answer"] }}
                 </p>
               </div>
+              @endif
               @endif
             </section>
           @endforeach
@@ -155,8 +170,10 @@ break;
 
 @if(strpos($evalue->url, 'http')===0)
 
-            <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+           <!-- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+            <span style="white-space: pre-line">{{ $evalue->caption }}</span>-->
+            <?php $pos-- ?> <!--showing and counting only non-online applications -->
+       
             </a>
             @else
             <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
