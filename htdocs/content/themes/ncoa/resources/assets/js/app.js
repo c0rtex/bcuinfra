@@ -1769,7 +1769,7 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 }]);
 
 app.controller('screeningController', ['$scope', '$state', 'prescreen', 'screening', 'screeningQuestions', function($scope, $state, prescreen, screening, screeningQuestions){
-	if ($scope.$root.screening == undefined) {
+	if ($scope.$root.screening.answers == undefined) {
 		$scope.$root.screening = screening.data;
 	}
 
