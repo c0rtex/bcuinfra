@@ -2,9 +2,11 @@
 
     <cffunction name="forProgram" access="remote" restpath="/forProgram/{programCode}/" returnType="String" httpMethod="GET">
         <cfargument name="programCode" required="true" restargsource="Path" type="string"/>
+        <cfargument name="zipcode" required="false" restargsource="Query">
 
         <cfset params = structNew()>
         <cfset this.setDefaultParams()>
+        <cfset params['zipcode'] = zipcode>
 
         <cfset retVal = arrayNew(1)>
 
