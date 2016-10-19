@@ -759,8 +759,14 @@ app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening',
 				scope.prev = "prescreen.results";
 				scope.next = "screening-start";
 			} else {
-				scope.prev = ScreeningRoutes[$state.params.category].prev;
-				scope.next = ScreeningRoutes[$state.params.category].next;
+				if ($state.current.name=="questionnaire.results") {
+					scope.prev="finances";
+					scope.next="basics";
+
+				} else {
+					scope.prev = ScreeningRoutes[$state.params.category].prev;
+					scope.next = ScreeningRoutes[$state.params.category].next;
+				}
 			}
 
 			scope.switchPage = function (stateName) {
@@ -1892,13 +1898,13 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
 }]);
 
-app.directive('divProgramsCategory',['BenefitItems', function(BenefitItems) {
+app.directive('divProgramsCategory',['BenefitItems', 'prescreen', function(BenefitItems,prescreen) {
 	return {
 		restrict: 'E',
 		templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
 		link: function(scope, element) {
 			scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
-			scope.stateId = scope.$root.prescreen.stateId;
+			scope.stateId = prescreen.data.answers.stateId;
 		},
 		scope: {
 			found_program:"=foundProgram"
@@ -1914,7 +1920,7 @@ app.directive("divKeyProgram",['prescreen',function(prescreen) {
 			program:"=program"
 		},
 		link: function(scope,element) {
-			scope.stateId = scope.$root.prescreen.stateId;
+			scope.stateId = prescreen.data.answers.stateId;
 			scope.subString = function(string) {
 				if (string.length>70) {
 					return string.substring(0,70)+"...";
