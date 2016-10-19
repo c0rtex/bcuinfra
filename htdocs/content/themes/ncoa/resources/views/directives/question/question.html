@@ -1,6 +1,6 @@
 <div class="income question-block">
 <section class="form-group">
     <p><ng-label text="{{question.display}}"></ng-label><button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
-<answerfield answer_field="answer_field" ng-repeat="answer_field in question.answer_fields | orderBy:'sort'"></answerfield>
+<answerfield question="question" answer_field="answer_field" ng-repeat="answer_field in question.answer_fields | orderBy:'sort'"></answerfield>
 </section>
 </div>
