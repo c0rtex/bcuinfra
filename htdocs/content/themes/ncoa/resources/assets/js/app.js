@@ -1769,8 +1769,13 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 }]);
 
 app.controller('screeningController', ['$scope', '$state', 'prescreen', 'screening', 'screeningQuestions', function($scope, $state, prescreen, screening, screeningQuestions){
-	if ($scope.$root.screening.answers == undefined) {
+	if ($scope.$root.screening == undefined) {
 		$scope.$root.screening = screening.data;
+		if ($state.params.category != undefined) {
+			if ($scope.$root.screening.answers[$state.params.category] == undefined) {
+
+			}
+		}
 	}
 
 	if (($state.params.category != undefined) && ($state.params.state != undefined)) {
