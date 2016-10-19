@@ -96,6 +96,10 @@
                     <cfset strct["answer_fields"] = this.getAssetAnswerfields()>
                 </cfcase>
 
+                <cfdefaultcase>
+                    <cfset strct["answer_fields"] = this.getAnswersFilteredByState(i,state)>
+                </cfdefaultcase>
+
             </cfswitch>
 
             <cfset arrayAppend(retVal,strct)>
@@ -172,6 +176,17 @@
         <cfset retVal["count"] = arraylen(retArray)>
         <cfset var retArray = arrayNew(1)>
         <cfset arrayAppend(retArray,retVal)>
+        <cfreturn retArray>
+    </cffunction>
+
+    <cffunction name="getAnswersFilteredByState">
+        <cfargument name="question">
+        <cfargument name="state" default="">
+        <cfset answers = ormExecuteQuery("select a from question_answer_field qaf join qaf.answer a where qaf.question=? and (a.state is null or a.state=?) order by qaf.sort",[question,state])>
+        <cfset var retArray = arrayNew(1)>
+        <cfloop array="#answers#" index="i">
+            <cfset arrayAppend(retArray,i.toStructure())>
+        </cfloop>
         <cfreturn retArray>
     </cffunction>
 
