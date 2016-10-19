@@ -16,4 +16,6 @@
     <cfproperty name="id" fieldtype="id" column="supercategory_id">
     <cfproperty name="code" column="categorycode">
     <cfproperty name="name" column="category_name">
+	<cfproperty name="iconcode">
+	<cfproperty name="answerfieldcode">
 </cfcomponent>

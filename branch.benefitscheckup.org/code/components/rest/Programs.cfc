@@ -1,5 +1,8 @@
 <cfcomponent rest="true" restpath="/findPrograms">
-    <cfset categories = structNew()>
+
+    <!---TODO remove commented sturcture--->
+
+    <!---<cfset categories = structNew()>
     <cfset categories['bcuqc_category_income'] = ["income"]>
     <cfset categories['bcuqc_category_medicaid'] = ["medicaid","health","homecare"]>
     <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxgov"]><!--- rxco,rxcard removed from results --->
@@ -13,7 +16,7 @@
     <cfset categories['bcuqc_category_transportation'] = ["transportation"]>
     <cfset categories['bcuqc_category_education'] = ["education"]>
     <cfset categories['bcuqc_category_discounts'] = ["discounts"]>
-    <cfset categories['bcuqc_category_other_assistance'] = ["assistance","counseling","info","legal","advocacy"]>
+    <cfset categories['bcuqc_category_other_assistance'] = ["assistance","counseling","info","legal","advocacy"]>--->
 
 
     <cfset sa = structNew()>
@@ -46,21 +49,24 @@
 
         <cfset screening_answers = ormexecutequery("select distinct a.code from screening_answerfield sa join sa.answer a where sa.screening=?",[screening])>
 
-        <cfset programsByCategories = structNew()>
+        <cfset supercategories = ormexecutequery("from program_supercategory")>
+        <cfset superCategoriesStruct = structNew()>
+        <cfloop array="#supercategories#" index="i">
+            <cfset superCategoriesStruct[i.getAnswerfieldcode()] = 'y'>
+        </cfloop>
 
         <cfset filter = "''">
 
+
         <cfloop array="#screening_answers#" index="answerCode">
-            <cfif structKeyExists(categories,answerCode)>
-                <cfloop array="#categories[answerCode]#" index="category">
-                    <cfset filter="#filter#,'#category#'">
-                </cfloop>
+            <cfif structKeyExists(superCategoriesStruct,answerCode)>
+                <cfset filter="#filter#,'#answerCode#'">
             </cfif>
         </cfloop>
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc where sc.answerfieldcode in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
@@ -80,7 +86,7 @@
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programs = ormExecuteQuery("select p,#this.categoriesToGroups()# as category from screening_program sp join sp.program p join p.program_category pc where sp.screening=? order by p.key_program, p.sort",[screening])>
+        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by p.key_program, p.sort",[screening])>
 
 
         <cfset programsByCategories = structNew()>
@@ -109,6 +115,9 @@
 
         <cfreturn serializeJSON(retVal)>
     </cffunction>
+
+    <!--- TODO remove unused method --->
+    <!---
 
     <cffunction name="programsForPrescreen" access="remote" restpath="/forPrescreen/{screeningId}" returnType="String" httpMethod="GET">
         <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
@@ -154,6 +163,7 @@
         <cfreturn serializeJSON(retval)>
 
     </cffunction>
+    --->
 
     <cffunction name="getIncomeTables">
 
