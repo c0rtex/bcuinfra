@@ -1,5 +1,18 @@
 <cfcomponent rest="true" restpath="/entryPoints">
 
+    <cffunction name="becsOffices" access="remote" restpath="/becs/{zipcode}" returnType="String" httpMethod="GET">
+        <cfargument name="zipcode" required="true" restargsource="Path" type="string"/>
+        <cfset entrypoints = ormExecuteQuery("select ep from entry_point_group epg join epg.entry_points ep join ep.zips z where epg.id=1342 and z.zipcode=?",[zipcode])>
+
+        <cfset var retVal = arrayNew(1)>
+
+        <cfloop array="#entrypoints#" index="ep">
+            <cfset arrayAppend(retVal, this.formatEntryPoint(ep))>
+        </cfloop>
+
+        <cfreturn serializeJSON(retVal)>
+    </cffunction>
+
     <cffunction name="forProgram" access="remote" restpath="/forProgram/{programCode}/" returnType="String" httpMethod="GET">
         <cfargument name="programCode" required="true" restargsource="Path" type="string"/>
         <cfargument name="zipcode" required="false" restargsource="Query">
