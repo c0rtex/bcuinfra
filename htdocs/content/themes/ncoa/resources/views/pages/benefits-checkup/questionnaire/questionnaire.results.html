@@ -15,13 +15,13 @@
 		<span ng-if="key_programs.length>0">
 			<h3><strong>Key Programs</strong></h3>
 			<p>These {{key_programs.length}} programs are where we recommend you start, because they could give you the best cost savings.</p>
-			<div-key-program class="program-card card hover-shade" ui-sref="fact-sheets-short({programCode:program.code,stateId:stateId,zipcode:zipcode})" ng-repeat="program in key_programs" program="program"></div-key-program>
+			<div-key-program class="program-card card hover-shade" ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:'n'})" ng-repeat="program in key_programs" program="program"></div-key-program>
 		</span>
 		<h3><strong>More Benefit Programs</strong></h3>
 		<p>Select a category to see the benefits you may qualify for.</p>
 		<div class="more-benefits">
 			<span ng-repeat="found_program in found_programs">
-				<div-programs-category found_program="found_program"></div-programs-category>
+				<div-programs-category short="n" found_program="found_program"></div-programs-category>
 			</span>
 		</div>
 		<p>Select a program from above to learn more and apply. You can also choose to save your results or view and edit your search details.</p>

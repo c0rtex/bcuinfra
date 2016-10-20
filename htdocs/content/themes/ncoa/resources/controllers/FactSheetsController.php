@@ -24,13 +24,13 @@ class FactSheetsController extends BaseController
 		$requiredMaterials = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/materials/required/forProgram/'.$program_code)->send();
 		$requiredMaterials = json_decode($requiredMaterials->body);
 
-		if (array_key_exists('short',$_REQUEST)) {
+		if (array_key_exists("short_layout",$_REQUEST)) {
+			$layout = "layouts.short";
+		} else {
+			$layout = "layouts.main";
+		}
 
-			if (array_key_exists("short_layout",$_REQUEST)) {
-				$layout = "layouts.short";
-			} else {
-				$layout = "layouts.main";
-			}
+		if (array_key_exists('short',$_REQUEST)) {
 
 			return View::make('templates.short-fact-sheets', [
 				'page_slug' => $fact_sheet_slug,
@@ -58,6 +58,7 @@ class FactSheetsController extends BaseController
 			return View::make('templates.fact-sheets', [
 				'page_slug' => $fact_sheet_slug,
 				'entry_points' => $entryPoints,
+				'layout' => $layout,
 				'app_forms' => $appForms,
 				'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
 				'required_materials' => $requiredMaterials,

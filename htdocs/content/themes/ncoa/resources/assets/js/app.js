@@ -128,10 +128,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         prev: ""
       }
     })
-    .state('fact-sheets-short', {
-	  url: "/fact-sheets-short/:programCode/:stateId/:zipcode",
+    .state('fact-sheets', {
+	  url: "/fact-sheets/:programCode/:stateId/:short/:zipcode",
       templateUrl: function($stateParams) {
-		return '/fact-sheets/factsheet_'+$stateParams.programCode+"/?state="+$stateParams.stateId+"&short=y&zipcode="+$stateParams.zipcode;
+		  if ($stateParams.short == "y") {
+			  return '/fact-sheets/factsheet_' + $stateParams.programCode + "/?state=" + $stateParams.stateId + "&short_layout=y&short=y&zipcode=" + $stateParams.zipcode;
+		  } else {
+			  return '/fact-sheets/factsheet_' + $stateParams.programCode + "/?state=" + $stateParams.stateId + "&short_layout=y&zipcode=" + $stateParams.zipcode;
+		  }
 	  }
 	})
 	.state('screening-start', {
@@ -1908,7 +1912,8 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', function(Benef
 			scope.zipcode = prescreen.data.answers.zip;
 		},
 		scope: {
-			found_program:"=foundProgram"
+			found_program:"=foundProgram",
+			short:"@"
 		}
 	}
 }]);
