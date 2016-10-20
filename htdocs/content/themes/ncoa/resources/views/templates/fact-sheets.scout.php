@@ -92,7 +92,7 @@
           </h3>
           <div>
             
-          @foreach(Meta::get(Loop::id(), $key = 'faqs-list', $single = true) as $key => $value)
+       @foreach(Meta::get(Loop::id(), $key = 'faqs-list', $single = true) as $key => $value)
             <section slide-down class="program program-no-icon">
               <div class="program-header"><span>{{ $value["question"] }}</span></div>
               @if(strpos($value["answer"], 'entrypoints'))
@@ -124,7 +124,19 @@
               @endif
               @endif
             </section>
-          @endforeach
+       @endforeach
+            @if(!empty($becs))
+            <section slide-down class="program program-no-icon">
+                <div class="program-header"><span>Who Can Help Me Apply?</span></div>
+                @foreach($becs as $ekey => $evalue)
+                <div class="programs-container program-p">
+                    <p>
+                        {{ $evalue->print_name }}
+                    </p>
+                </div>
+                @endforeach
+            </section>
+            @endif
           </div>
         @endif
       </div>
