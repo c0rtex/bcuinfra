@@ -151,6 +151,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		  prev: ""
 		}
 	});
+}]).run(['$rootScope', function($rootScope) {
+	$rootScope.$on('$stateChangeSuccess',
+		function(event, toState, toParams, fromState, fromParams){
+			var test = document.querySelector('body');
+			if (test != undefined) {
+				$('html,body').animate({
+					scrollTop: $(test).offset().top  + 'px'
+				}, 0);
+			}
+		})
 }]);
 
 app.directive('completeQuestionnaire',['$state','$window','prescreen',function($state,$window,prescreen) {
