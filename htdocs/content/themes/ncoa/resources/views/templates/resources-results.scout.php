@@ -7,7 +7,7 @@ window.programs = {{$programs}};
 @section('main')
 	<div ncoa-programs>
 	<div class="container resource-results-container">
-		<a href="/resources" class="btn-link back-chev"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
+		<a href="/resources" class="btn-link back-chev"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back</a>
 		<h1 class="">Program Details</h1>
 		<div class="card">
 			<div class="card-nested">

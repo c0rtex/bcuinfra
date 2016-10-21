@@ -12,7 +12,7 @@
     </header>
 
     <div class="card-header">
-        <a href="javascript:history.back()" class="btn-link btn-back">Back to Search Results</a>
+        <a href="javascript:history.back()" class="btn-link btn-back">Back</a>
         <h1>Fact Sheet</h1>
     </div>
 

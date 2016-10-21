@@ -12,7 +12,7 @@
 </header>
 
 <div class="card-header">
-  <a ui-sref="questionnaire.results" class="btn-link btn-back">Back to Results</a>
+  <a ui-sref="questionnaire.results" class="btn-link btn-back">Back</a>
   <h1>Fact Sheet</h1>
 </div>
 

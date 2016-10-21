@@ -2,7 +2,7 @@
 
 @section('main')
 	<div class="container fact-sheet-alt">
-		<a href="/results" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
+		<a href="/results" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back</a>
 		<h1>Program Details</h1>
 		<div class="card">
 			<div class="card-nested row">

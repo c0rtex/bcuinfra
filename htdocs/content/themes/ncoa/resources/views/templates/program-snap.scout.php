@@ -4,7 +4,7 @@
 	<span id="map-tip"></span>
 	<div class="container fact-sheet-alt">
 		<div class="page-top-headline">
-			<a href="/resources" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to Resource Library</a>
+			<a href="/resources" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back</a>
 			<h1>Program Details</h1>
 		</div>
 		<div class="card">
