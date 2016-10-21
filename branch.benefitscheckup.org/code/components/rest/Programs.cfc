@@ -66,7 +66,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc where sc.answerfieldcode in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc where sc.answerfieldcode in #filter# and (p.state=? or p.state is null) and p.active_flag=1",[screening.getPreset_state()])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
