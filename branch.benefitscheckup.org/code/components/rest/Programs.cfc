@@ -66,7 +66,19 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc where sc.answerfieldcode in #filter# and p.state=? and p.active_flag=1",[screening.getPreset_state()])>
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc   
+	where 
+	pc.code not in ('rxcard','rxco')  
+	and p.code not like '%_long'
+	and p.code not like '%_short'
+	and p.code not like '%_aarp'
+	and p.code not like '%_children'
+	and  sc.answerfieldcode in #filter# and (p.state='AK' or p.state is null) 
+	and p.active_flag=1
+	and sc.answerfieldcode in #filter# 
+	and (p.state=? or p.state is null) 
+	and p.active_flag=1
+	",[screening.getPreset_state()])>
 
         <cftransaction>
            <cfloop array="#programs#" index="program">
