@@ -178,7 +178,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
 
 			scope.completeFQ = function (url) {
 				if (prescreenAnswered) {
-					$state.go('/screening-start');
+					$state.go('screening-start');
 				} else {
 					$window.location.href = '/find-my-benefits';
 				}
