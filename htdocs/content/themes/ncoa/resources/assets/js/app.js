@@ -1,4 +1,4 @@
-var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router']);
+var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
@@ -1475,6 +1475,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 	$scope.submitPrescreen = function() {
 
+		$scope.sibmitDisabled = true;
+
 		prescreen.data.screenData = {};
 
 		prescreen.data.screenData.formatted_address = $scope.$root.answers[$scope.category].zipcode_formatted;
@@ -1504,6 +1506,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 		request.st = $scope.$root.answers[$scope.category].stateId;
 
 		savePrescreen.post(request).success(function(data, status, headers, config) {
+			$scope.sibmitDisabled = false;
 			prescreen.data.answers = $scope.$root.answers[$scope.category];
 			prescreen.data.results = data;
 
