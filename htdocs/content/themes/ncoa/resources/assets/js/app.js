@@ -1,5 +1,11 @@
 var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
 
+// Use sessionStorage instead of localStorage
+app.config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+        .setStorageType('sessionStorage');
+});
+
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise("/");
