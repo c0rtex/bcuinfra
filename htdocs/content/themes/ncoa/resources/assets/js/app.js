@@ -1324,15 +1324,24 @@ app.service('screeningQuestions',['$http', function ($http) {
 	}
 }]);
 
-app.factory('prescreen', ['localStorageService', function(localStorageService){
+app.factory('prescreen', ['localStorageService','$window', function(localStorageService, $window){
 	var prescreenform = {};
 
 	var _data = localStorageService.get('prescreen');
 
+	prescreenform.clear = function() {
+		localStorageService.remove('prescreen');
+	};
+
 	if (_data == undefined) {
 		prescreenform.data = {};
 	} else {
-		prescreenform.data = _data;
+		if (_data.name==$window.name) {
+			prescreenform.data = _data;
+		} else {
+			localStorageService.remove('prescreen');
+			prescreenform.data = {};
+		}
 	}
 
 	if (prescreenform.data.answers == undefined) {
@@ -1340,20 +1349,24 @@ app.factory('prescreen', ['localStorageService', function(localStorageService){
 	}
 
 	prescreenform.save = function() {
+		prescreenform.data.name=$window.name;
 		localStorageService.set('prescreen', prescreenform.data);
-	};
-
-	prescreenform.clear = function() {
-		localStorageService.remove('prescreen');
 	};
 
 	return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', function(localStorageService) {
+app.factory('screening', ['localStorageService', '$window', function(localStorageService, $window) {
 	var screening = {};
 
 	var _data = localStorageService.get('screening');
+
+	if (_data != undefined) {
+		if (_data.name != $window.name) {
+			_data == undefined;
+			localStorageService.remove('screening');
+		}
+	}
 
 	if (_data == undefined) {
 		_data = {};

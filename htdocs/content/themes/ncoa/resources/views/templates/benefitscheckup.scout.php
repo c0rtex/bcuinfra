@@ -4,6 +4,9 @@
 
 <script>
 	window.webServiceUrl = '{{$webServiceUrl}}';
+	if (window.name == '') {
+		window.name = '{{microtime(true)}}';
+	}
 </script>
 	
 	<!-- <div ng-view></div> -->
