@@ -1141,6 +1141,25 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 					scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
 				}
 				scope.$parent.zipCodeUpdated=true;
+
+                $('[data-toggle="popover"]')
+                    .popover()
+                    .click(function(e) {
+                        e.stopPropagation();
+                        e.preventDefault()
+                        var el = this;
+                        $(el).popover('show');
+
+                        $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
+                            .find('.close').on('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(el).popover('hide');
+                        });
+
+                        $(".popover > h3").show();
+                        $(".close").show();
+                    });
 			}
 		}
 	}
@@ -3541,29 +3560,27 @@ function dynamicAddEvent(id){
     });
 };
 
-//Lynna Cekova: popovers 
+// Popovers
     $('[data-toggle="popover"]')
-     .popover()
-     .click(function(e) {
-      e.stopPropagation();
-      console.log("test this");
-        e.preventDefault()
-	var el = this;
-      $(el).popover('show');
-      $(".popover > h3").append('<span id="closeButton" class="close icon icon-remove">X</span>')
-                        .find('.close').on('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            $(el).popover('hide');
-                        }
-       );
+        .popover()
+        .click(function(e) {
+            e.stopPropagation();
+            e.preventDefault()
+            var el = this;
+            $(el).popover('show');
 
-      $(".popover > h3").show();
-      $("#closeButton").show();
+            $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
+                .find('.close').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(el).popover('hide');
+            });
 
-     });   
+            $(".popover > h3").show();
+            $(".close").show();
+        });
 
- 
+
 
 //Lynna Cekova: click to call
 
