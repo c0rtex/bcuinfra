@@ -10853,7 +10853,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 4px;
   border-bottom-right-radius: 1px;
   border-top-right-radius: 1px;
 }
@@ -10864,7 +10864,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   width: 70px;
   right: 0;
   top: 0;
-  height: 2px;
+  height: 4px;
   opacity: .45;
   -moz-box-shadow: #29d 1px 0 6px 1px;
   -ms-box-shadow: #29d 1px 0 6px 1px;
