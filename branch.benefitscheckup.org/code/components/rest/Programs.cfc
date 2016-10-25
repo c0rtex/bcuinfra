@@ -73,7 +73,7 @@
 	and p.code not like '%_short'
 	and p.code not like '%_aarp'
 	and p.code not like '%_children'
-	and  sc.answerfieldcode in #filter# and (p.state='AK' or p.state is null) 
+	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
 	and (p.state=? or p.state is null) 
