@@ -131,6 +131,7 @@ class ResourcesController extends BaseController
 	}
 
 	public function snap(){
+		
 		return View::make('templates.program-snap',[
 			'states' => $this->states
 		]);

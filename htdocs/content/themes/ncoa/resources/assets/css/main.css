@@ -9518,6 +9518,7 @@ grid:last-child .sales-grid {
   background: url(../images/categories/category_medicine.svg) no-repeat center left; }
 
 .page-resources .resources .btn-link, .page-results .resources .btn-link {
+  vertical-align: top;
   display: inline-block;
   padding-bottom: 5px; }
   .page-resources .resources .btn-link i, .page-results .resources .btn-link i {
@@ -9573,7 +9574,7 @@ grid:last-child .sales-grid {
   padding: 20px 10px;
   margin-bottom: 15px;
   width: 200px;
-  height: 200px;
+  min-height: 210px;
   display: inline-block;
   border: 1px solid #ECECEC;
   box-shadow: 0 0 2px #ccc;
@@ -9805,7 +9806,7 @@ grid:last-child .sales-grid {
           height: 100%; } }
     @media (min-width: 992px) {
       .page-sponsors .sponsor-featured .featured-item, .page-sponsor .sponsor-featured .featured-item {
-        height: 136px; } }
+        min-height: 136px; } }
 
 .page-sponsors .sponsors-gallery, .page-sponsor .sponsors-gallery {
   background: #fff; }

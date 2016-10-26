@@ -53,5 +53,7 @@
 	      	</div>
 		</div>
 	</div>
-
+@stop
+@section('misc-scripts')
+	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/snapmap.js"></script>
 @stop

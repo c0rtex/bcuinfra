@@ -21,3 +21,6 @@ styleguide:
 
 default:
 - 'build'
+
+dist:
+- 'uglify'

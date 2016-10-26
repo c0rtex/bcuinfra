@@ -21,9 +21,6 @@ module.exports = {
 			'<%= paths.src %>/js/services/**/*.js',
 			'<%= paths.src %>/js/factory/**/*.js',
 			'<%= paths.src %>/js/controllers/**/*.js',
-			'<%= paths.src %>/js/map/map-config.js',
-			'<%= paths.src %>/js/map/pin-config.js',
-			'<%= paths.src %>/js/map/map-interact.js',
 			'<%= paths.src %>/js/jquery.quicksearch.js',
 			'<%= paths.src %>/js/jquery.multiselect.js'
 		],
@@ -36,5 +33,13 @@ module.exports = {
 			
 		],
 		dest: '<%= paths.dist %>/js/styleguide.js'
+	},
+	snapmap:{
+		src:[
+			'<%= paths.src %>/js/map/map-config.js',
+			'<%= paths.src %>/js/map/pin-config.js',
+			'<%= paths.src %>/js/map/map-interact.js'
+		],
+		dest: '<%= paths.dist %>/js/snapmap.js'
 	}
 };
