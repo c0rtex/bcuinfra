@@ -1787,10 +1787,6 @@ app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuest
 
 app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){
 
-	$('.fa-question-circle').popover();
-
-
-	
 	document.querySelector('.page-wrapper').scrollIntoView();
 	
 	$scope.tooltipAccuracy = "You will receive more accurate results if you provide more details.";
@@ -1814,11 +1810,28 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
 	}
 
 	od.update(foundCount);
+
+    $('[data-toggle="popover"]')
+        .popover()
+        .click(function(e) {
+            e.stopPropagation();
+            e.preventDefault()
+            var el = this;
+            $(el).popover('show');
+
+            $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
+                .find('.close').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(el).popover('hide');
+            });
+
+            $(".popover > h3").show();
+            $(".close").show();
+        });
 }]);
 
 app.controller('questionnaireBasicController', ['$scope','$state', 'questionnaire', function($scope, $state, questionnaire){
-
-	$('.fa-question-circle').popover();
 
 	$scope.tooltip = {
 		"race": "Why are we asking? This question is optional, and does not affect your results. Your answer will help us understand how best to reach people who can benefit from this service."
@@ -1854,6 +1867,24 @@ app.controller('questionnaireBasicController', ['$scope','$state', 'questionnair
 					{id:"hispanic",                        name:"Hispanic, Latino, or Spanish Origin"},
 					{id:"other_race",                      name:"Other"}];
 
+    $('[data-toggle="popover"]')
+        .popover()
+        .click(function(e) {
+            e.stopPropagation();
+            e.preventDefault()
+            var el = this;
+            $(el).popover('show');
+
+            $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
+                .find('.close').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(el).popover('hide');
+            });
+
+            $(".popover > h3").show();
+            $(".close").show();
+        });
 	
 }]);
 
