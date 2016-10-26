@@ -942,6 +942,34 @@ app.directive('question',['questionTemplates', 'category', 'localStorageService'
 	}
 }]);
 
+// Update Popovers once page has been rendered.
+app.directive('question', ['$timeout', function($timeout) {
+    return {
+        link: function(scope, element, attr) {
+            $timeout(function() {
+                $('[data-toggle="popover"]')
+                    .popover()
+                    .click(function(e) {
+                        e.stopPropagation();
+                        e.preventDefault()
+                        var el = this;
+                        $(el).popover('show');
+
+                        $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
+                            .find('.close').on('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            $(el).popover('hide');
+                        });
+
+                        $(".popover > h3").show();
+                        $(".close").show();
+                    });
+            });
+        }
+    }
+}]);
+
 app.directive('answerfield',['$state', function($state){
 	return {
 		template:"<span ng-include='answer_field_link'></span>",
