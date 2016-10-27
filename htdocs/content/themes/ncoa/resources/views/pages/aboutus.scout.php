@@ -23,7 +23,7 @@
                   )
                 )
             }}
-            
+
           </div>
           <div class="about-content col-md-8">
             <h2>{{ $bodySection[$key]["body-item-headline"] }}</h2>
@@ -109,11 +109,10 @@
           <h3>Spread the Word</h3>
           <p>Let others know about the benefits they could be receiving</p>
           <ul class="social-jewlery">
-					<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.ncoa.org/get-involved/contact-us/email/" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.facebook.com/NCOAging" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/NCOAging" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 				</ul>
-
         </div>
       </div>
     </section>
