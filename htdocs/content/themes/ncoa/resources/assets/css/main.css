@@ -3066,14 +3066,6 @@ fieldset[disabled] a.btn {
     color: #d9534f;
     background-color: #fff; }
 
-button.btn-link,
-button.btn-link:hover,
-button.btn-link:active {
-  background-color: #337ab7;
-  color: #fff;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
-}
-
 .btn-link {
   color: #337ab7;
   font-weight: normal;
