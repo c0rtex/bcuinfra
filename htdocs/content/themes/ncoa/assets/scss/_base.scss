@@ -275,6 +275,10 @@ select.form-control{
 	&:hover {
 		background-color: darken($select-form-background-color, 15%);
 	}
+
+	&::-ms-expand {
+	    display: none;
+	}
 }
 
 input[type="text"].form-control,select.form-control{
