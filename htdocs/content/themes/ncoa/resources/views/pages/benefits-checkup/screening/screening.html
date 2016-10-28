@@ -8,7 +8,7 @@
 				<div class="cta">
 					<strong>Just a reminder</strong> Answer all your questions as your {{screenData.searchingFor}}.
 				</div>
-				<question ng-repeat="question in $root.screening.questions[category]" question="question"></question>
+				<question ng-repeat="question in $root.questions[category]" question="question"></question>
 				<p class="error-state" ng-show="wrongLink"><strong>Error!</strong> Please add category and state to url</p>
 			</div>
 

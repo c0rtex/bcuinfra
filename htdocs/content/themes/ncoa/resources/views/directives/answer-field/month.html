@@ -1,4 +1,4 @@
-<select class="form-control inline" name="dob-month" ng-model="$root.answers[category][answer_field.code]" ng-options="month.name for month in months | orderBy:'id' track by month.id">
+<select class="form-control inline" name="dob-month" ng-model="$root.answers[category][answer_field.code]" ng-options="month.name for month in  $parent.$parent.$parent.months | orderBy:'id' track by month.id">
         <option value="">-- Select Month --</option>
 </select>
 

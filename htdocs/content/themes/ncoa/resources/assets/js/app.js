@@ -207,6 +207,12 @@ app.directive('selector',[function(){
     }
 }]);
 
+app.factory('Months',[function(){
+	return [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
+			{id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
+			{id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
+}]);
+
 app.factory('CronicConditions', [function(){
 
     var cronicConditions = {};
@@ -806,11 +812,11 @@ app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening',
                         request.lastSet = "true";
                     }
 
-                    request.answers = scope.$root.screening.answers[$state.params.category];
+                    request.answers = scope.$root.answers[$state.params.category];
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
-                            screening.data.answers = scope.$root.screening.answers;
+                            screening.data.answers = scope.$root.answers;
                             screening.data.results.screening = data.screening;
                             screening.data.results.found_programs = data.found_programs;
                             screening.data.results.key_programs = [];
@@ -827,7 +833,7 @@ app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening',
                             $state.transitionTo('questionnaire.results');
                         } else {
                             screening.data.results.screening = data;
-                            screening.data.answers = scope.$root.screening.answers;
+                            screening.data.answers = scope.$root.answers;
                             screening.save();
                             var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
                             $state.transitionTo("screening", {"category": stateName, "state": stateId});
@@ -1325,8 +1331,6 @@ app.factory('ScreeningRoutes',[function() {
     _routes.household = {"prev":"health", "next":"finances", pgno:3};
     _routes.finances = {"prev":"household", "next":"questionnaire.loader", pgno:4};
 
-    _routes.default="basics";
-
     return _routes;
 }]);
 
@@ -1436,7 +1440,7 @@ app.factory('prescreen', ['localStorageService','$window', function(localStorage
     return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', '$window', function(localStorageService, $window) {
+app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', function(localStorageService, $window, ScreeningRoutes) {
     var screening = {};
 
     var _data = localStorageService.get('screening');
@@ -1456,6 +1460,13 @@ app.factory('screening', ['localStorageService', '$window', function(localStorag
         _data.results.screening = {};
     } else if (_data.answers == undefined) {
         _data.answers = {};
+    }
+
+    if (Object.keys(_data.answers).length != Object.keys(ScreeningRoutes).length) {
+        _data.answers = {};
+        for (i in ScreeningRoutes) {
+            _data.answers[i] = {};
+        }
     }
 
     screening.data = _data;
@@ -1480,13 +1491,11 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
-app.controller('questionController',['$scope', 'category', 'BenefitItems', function($scope, category, BenefitItems){
+app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Months', function($scope, category, BenefitItems, Months){
 
     $scope.category = category;
 
-    $scope.months = [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
-        {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
-        {id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
+    $scope.months = Months;
 
     $scope.programs = BenefitItems.getBenefitItems();
     $scope.selectLinkText = "Select All";
@@ -1915,26 +1924,26 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 }]);
 
 app.controller('screeningController', ['$scope', '$state', 'prescreen', 'screening', 'screeningQuestions', function($scope, $state, prescreen, screening, screeningQuestions){
-    if ($scope.$root.screening == undefined) {
-        $scope.$root.screening = screening.data;
-        if ($state.params.category != undefined) {
-            if ($scope.$root.screening.answers[$state.params.category] == undefined) {
 
-            }
-        }
+    if ($scope.$root.answers == undefined) {
+        $scope.$root.answers = screening.data.answers;
+    }
+
+    if ($scope.$root.questions == undefined) {
+        $scope.$root.questions = screening.data.questions;
     }
 
     if (($state.params.category != undefined) && ($state.params.state != undefined)) {
 
         $scope.category = $state.params.category;
 
-        if ($scope.$root.screening.answers[$state.params.category] == undefined) {
-            $scope.$root.screening.answers[$state.params.category] = {};
+        if ($scope.$root.answers[$state.params.category] == undefined) {
+            $scope.$root.answers[$state.params.category] = screening.data.answers[$state.params.category];
         }
 
         screeningQuestions.get($state.params.category,$state.params.state).success(function(data){
             screening.data.questions[$state.params.category] = data;
-            $scope.$root.screening.questions[$state.params.category] = data;
+            $scope.$root.questions[$state.params.category] = data;
         });
     } else {
         $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
