@@ -125,6 +125,7 @@ class ResourcesController extends BaseController
 	{	
 		$fact_sheet_slug = "";//$query->query["p"];
 		return View::make('templates.fact-sheets',[
+			'layout' => "layouts.main",
 			'page_slug' => $fact_sheet_slug,
 			'is_alt' => true
 		]);
