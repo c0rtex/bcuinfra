@@ -54208,7 +54208,8 @@ if (typeof jQuery === 'undefined') {
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    //template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-container"><h3 class="popover-title"></h3><span class="popover-close close">&times;</span><div class="popover-content"></div></div></div>'
   })
 
 
@@ -54227,6 +54228,9 @@ if (typeof jQuery === 'undefined') {
     var $tip    = this.tip()
     var title   = this.getTitle()
     var content = this.getContent()
+
+    // Functionality to close popup
+    $tip.find('.popover-close').click(function() { $tip.popover('hide'); });
 
     $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
     $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
