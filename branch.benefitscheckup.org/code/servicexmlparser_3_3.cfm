@@ -548,6 +548,7 @@ order by question_code, answerfield
 <cfinvokeargument name="zipcode" value="#checkzip#"/> 
 </cfinvoke> 
 	<cfset response_set.county = locationdata.county_name>
+	<cfset response_set.st = locationdata.state_id>
 </cfif>
 
 
