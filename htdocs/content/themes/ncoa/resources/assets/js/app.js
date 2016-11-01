@@ -177,7 +177,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
         link: function(scope,elm) {
             var prescreenAnswered = Object.keys(prescreen.data.answers).length != 0;
             if (prescreenAnswered) {
-                scope.caption = "Complete Full Questionnaire";
+                scope.caption = "Continue to Full Questionnaire";
             } else {
                 scope.caption = "Start Questionnaire";
             }

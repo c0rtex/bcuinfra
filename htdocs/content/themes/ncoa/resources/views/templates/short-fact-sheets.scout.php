@@ -25,7 +25,7 @@
                     <div>
                         <span class="icon-block pull-left">
                             {{
-                                wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full', array('title' => 'Loop::id()')) 
+                                wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full', array('title' => 'Loop::id()'))
                             }}
                         </span>
                         <div class="pull-left">
@@ -64,7 +64,7 @@
                     <hr class="fact-sheets-hr" />
                     <h3 class="bold-h3">How do I get more information?</h3>
                     <p>
-                        If you would like more information and to find out if you meet the program guidelines, please answer a few more questions.
+                        If you would like more information about the program, get the application forms, and to find out if you are eligible, please answer a few more questions.
                     </p>
                     <complete-questionnaire/>
                     <!--<a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
@@ -72,13 +72,6 @@
                     <hr class="fact-sheets-hr" />
 
                     <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
-
-                    <h3 class="bold-h3">What You'll Need...</h3>
-                    <ul class="fact-sheets-list">
-                        @foreach($required_materials as $ekey => $evalue)
-                        <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
-                        @endforeach
-                    </ul>
                     @endif
                 </div>
 
