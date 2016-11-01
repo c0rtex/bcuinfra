@@ -9462,7 +9462,9 @@ grid:last-child .sales-grid {
       display: block; }
     .ncoa-carousel .item img {
       max-height: 104px;
-      margin: 0 auto; }
+      margin: 0 auto; 
+      max-width: 100%;
+    }
     .ncoa-carousel .item p {
       margin: 0; }
     .ncoa-carousel .item:last-child {
