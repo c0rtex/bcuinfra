@@ -49,7 +49,7 @@
 					<cfif commandParams gt 2>
 						<cfset defText = ListGetAt(getCode, 3, '|')>
 					<cfelse>
-						<cfset defText = ''>
+						<cfset defText = ListGetAt(getCode, 2, '|')>
 					</cfif>
 					<cfset defKeyword = ListGetAt(getCode, 2, '|')>
 					<cfset h=ormExecuteQuery("from help as h where h.keyword='#defKeyword#'")>
