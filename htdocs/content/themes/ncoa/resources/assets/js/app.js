@@ -2823,19 +2823,17 @@ app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 
 
 
-//Lynna Cekova: click to call
-
-//console.log ($(".single-fact-sheets").html());
-//if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-
+    //Lynna Cekova: click to call
     var countrycodes = "1"
     var delimiters = "-|\\.|—|–|&nbsp;"
     var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
     var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
     var phonereg = new RegExp("((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
 
+    //Created by Jon Meck at LunaMetrics.com - Version 1.0
+    //    //http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
+
     function ReplacePhoneNumbers(oldhtml) {
-//Created by Jon Meck at LunaMetrics.com - Version 1.0
         var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
         newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
             if ($3) return $1;
@@ -2845,19 +2843,10 @@ app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
     }
 
 
-
-//http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
-
-//$(".test").html(ReplacePhoneNumbers($(".test").html()));
     $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
-
-//}
-
-
-
-
-
-
+    $(".program-p").each(function(p) {
+        $(this).html(ReplacePhoneNumbers($(this).html()));
+    });
 
 
 }(window.jQuery);
