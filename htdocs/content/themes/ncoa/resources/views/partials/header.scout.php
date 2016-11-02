@@ -1,22 +1,22 @@
 <header class="container-fluid">
 	<section class="container">
 		<div class="clearfix">
-			<h1 class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">	
+			<h1 class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
 				<a tabindex="1" href="/" class="logo">
-					{{ 
+					{{
 						wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
 							array(
 								'title' => get_the_title(Option::get('global-settings', 'main-logo')),
 								'width' => Option::get('global-settings', 'main-logo-width'),
 								'height' => Option::get('global-settings', 'main-logo-height')
-							)) 
+							))
 					}}
 				</a>
 				@if(Option::get('global-settings', 'whitelabel') == '0')
 					<a href="#" class="whitelabel-logo">
 						{{
 							wp_get_attachment_image(Option::get('global-settings', 'whitelabel-logo'), 'full', false,
-							array('title' => get_the_title(Option::get('global-settings', 'whitelabel-logo')))) 
+							array('title' => get_the_title(Option::get('global-settings', 'whitelabel-logo'))))
 						}}
 					</a>
 				@endif
@@ -24,7 +24,7 @@
 
 			@if(Option::get('global-settings', 'showHeaderCTA') == '0')
 				<div class="pull-right header-cta-ncoaLogo hidden-xs">
-					<a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Newsletter</a>
+					<a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
 
 				<span><a tabindex="3" href="http://www.ncoa.org"><img width="150px" src="{{themosis_assets()}}/images/ncoa-logo.png" class="ncoaLogo" alt="National Council on Aging" /></a></span>
 
@@ -63,7 +63,7 @@
 				?>
 
 				<div class="header-cta hidden-lg hidden-md hidden-sm">
-					<a href="#" class="btn btn-purple">Sign Up for Newsletter</a>
+					<a href="#" class="btn btn-purple">Sign Up for Enews</a>
 				</div>
 		      	<text-size-changer class="pull-right hidden-xs" min="18" mid="20" max="24" unit="px"></text-size-changer>
 		    </div><!-- /.navbar-collapse -->
