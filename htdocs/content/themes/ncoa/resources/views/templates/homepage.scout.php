@@ -78,7 +78,7 @@
 						@foreach($sponsors as $key => $value)
 							<div class="item">
 								@if(Meta::get($value->ID, $key = 'sponsor-url', $single = true) != "")
-									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}">
+									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank">
 										{{
 											get_the_post_thumbnail($value->ID, 'full', 
 												array('title' => get_the_title($value->ID)))
