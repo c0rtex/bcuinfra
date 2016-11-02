@@ -1,4 +1,4 @@
-var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
+﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
 
 // Use sessionStorage instead of localStorage
 app.config(function (localStorageServiceProvider) {
@@ -663,7 +663,7 @@ app.directive('medicationSelector',['Drugs', function(Drugs){
             }
 
             $("#multiselect").multiSelect({
-                selectableHeader: "<p class='bold'>Available Medications <i class='fa fa-question-circle' aria-hidden='true'></i></p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
+                selectableHeader: "<p class='bold'>Available Medications</p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
                 selectionHeader: "<span class='h4'>My Medication List</span><p>Below are the medications you have selected</p>",
                 selectableFooter: "<button class='btn btn-secondary add' disabled>Add to My List</button>",
                 selectionFooter: "<button class='btn btn-secondary remove' disabled>Remove from My List</button>",
