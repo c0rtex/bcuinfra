@@ -1195,8 +1195,27 @@
 
 	<!--- sort order by program then form sort --->
 	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
+<cfset qryFormsQuery = "
+select 'test name' as prg_nm,p.short_desc,p.code   
+from program p 
+join p.program_category pc 
+join pc.super_category sc 
+join p.program_category pc  
 
-        <cfset query = ormExecuteQuery(qryFormsQuery,[cat])>
+	 
+	where 
+	pc.code not in ('rxcard','rxco')  
+	and p.code not like '%_long'
+	and p.code not like '%_short'
+	and p.code not like '%_aarp'
+	and p.code not like '%_children'
+	and sc.code like  '%#cat#'
+	and p.active_flag=1
+        and (p.state='#st#' or p.state is null) 
+	order by p.sort 
+">
+
+        <cfset query = ormExecuteQuery(qryFormsQuery)>
 
         <cfset data = arrayNew(1)>
 
