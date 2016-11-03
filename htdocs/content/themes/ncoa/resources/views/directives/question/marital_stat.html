@@ -5,4 +5,6 @@
             <button ng-repeat="marital_status in question.answer_fields[0].options track by marital_status.code" type="button" class="btn btn-default" ng-class="{active: $root.answers[category].marital_stat.code == marital_status.code}" ng-click="$root.answers[category].marital_stat = marital_status">{{marital_status.display}}</button>
         </div>
     </section>
+
+    <input type="text" ng-show="false" required ng-model="$root.answers[category].marital_stat">
 </div>

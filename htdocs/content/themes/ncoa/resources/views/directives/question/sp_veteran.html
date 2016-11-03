@@ -6,4 +6,5 @@
             <button type="button" class="btn btn-default" value="no" ng-class="{active: $root.answers[category].sp_veteran == 'n'}" ng-click="$root.answers[category].sp_veteran = 'n'">No</button>
         </div>
     </section>
+    <input type="text" ng-model="$root.answers[category].sp_veteran" ng-show="false" ng-required="showSpouseVeteranStatus()">
 </div>

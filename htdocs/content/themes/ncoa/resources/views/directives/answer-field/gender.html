@@ -1,3 +1,4 @@
 <div class="btn-group" role="group">
     <button ng-repeat="gender in answer_field.options track by gender.code" type="button" class="btn btn-default" ng-class="{active: $root.answers[category][answer_field.code] == gender.code}" ng-click="$root.answers[category][answer_field.code] = gender.code">{{gender.display}}</button>
+    <input type="hidden" value="{{$root.answers[category][answer_field.code]}}" ng-required="answer_field.required">
 </div>

@@ -7,5 +7,6 @@
         </div>
         <p ng-show="zipCodeUpdated" ng-class="{'correct-state':$root.isZipValid,'error-state':!$root.isZipValid}"><strong>{{zipCodeCheckResult}}</strong> {{zipCodeDescription}}</p>
     </section>
+    <input type="text" ng-show="false" ng-model="zipValid" required/>
 </div>
 

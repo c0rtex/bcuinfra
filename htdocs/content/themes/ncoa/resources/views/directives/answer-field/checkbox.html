@@ -1,5 +1,5 @@
 <div class="checkbox">
-    <input type="checkbox" ng-value="y" name="{{question.code+'_'+answer_field.code}}" id="{{question.code+'_'+answer_field.code}}" ng-model="$root.answers[category][answer_field.code]">
+    <input type="checkbox" ng-value="y" name="{{question.code+'_'+answer_field.code}}" id="{{question.code+'_'+answer_field.code}}" ng-model="$root.answers[category][answer_field.code]" ng-required="answer_field.required">
     <label for="{{question.code+'_'+answer_field.code}}"><span></span><ng-label text="{{answer_field.display}}"></ng-label></label>
 </div>
 

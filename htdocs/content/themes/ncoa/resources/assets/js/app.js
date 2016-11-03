@@ -235,6 +235,23 @@ app.factory('CronicConditions', [function(){
     return cronicConditions;
 }]);
 
+app.factory('AnswersByCategories', [function() {
+    var retVal = {};
+
+    var _retVal = {}
+
+    retVal.getCategory = function(answerCode) {
+        return _retVal[answerCode];
+    }
+
+    retVal.setCategory = function(answerCode, category, type) {
+        _retVal[answerCode] = {'category':category,'type':type};
+    }
+
+    return retVal;
+
+}]);
+
 app.factory('Income', [function(){
 
     var income = {};
@@ -646,7 +663,7 @@ app.directive('ncoaLoader', function(){
         }
     }
 });
-app.directive('medicationSelector',['Drugs', function(Drugs){
+app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
     return {
         restrict: 'E',
         scope: {answer_field:"=answerField"},
@@ -654,6 +671,8 @@ app.directive('medicationSelector',['Drugs', function(Drugs){
         link: function(scope, elm){
 
             Drugs.setDrugs(scope.answer_field.options);
+
+            scope.category = $state.params.category;
 
             var drugs = Drugs.getDrugs();
 
@@ -918,11 +937,64 @@ app.factory('questionTemplates',[function() {
     return questionTemplates;
 }]);
 
-app.directive('question',['questionTemplates', 'category', 'localStorageService', 'BenefitItems', function(questionTemplates, category, localStorageService, BenefitItems) {
+app.directive('question',['questionTemplates', 'AnswersByCategories', 'category', 'localStorageService', 'BenefitItems', function(questionTemplates, AnswersByCategories,category, localStorageService, BenefitItems) {
     return {
         restrict: 'E',
-        template:"<span ng-include='question_template_link'></span>",
-        link: function(scope,element) {
+        template:"<span ng-show='checkRule()' ng-include='question_template_link'></span>",
+        link: function(scope,element,ngShow) {
+
+            for (var i=0; i<scope.question.answer_fields.length;i++) {
+                AnswersByCategories.setCategory(scope.question.answer_fields[i].code,scope.category,scope.question.answer_fields[i].type);
+            }
+
+            if (scope.question.rule == undefined) {
+                scope.checkRule = function() {return true};
+            } else if (scope.question.rule == '') {
+                scope.checkRule = function() {return true};
+            } else {
+                scope.checkRule = function () {
+                    if (scope.question.rule == undefined) return true;
+                    if (scope.question.rule == '') return true;
+
+                    var ruleArray = scope.question.rule.split('#');
+                    var evalString = '';
+                    for (var i = 0; i < ruleArray.length; i++) {
+                        var isVar = i % 2 == 1;
+                        if (isVar) {
+                            var val = '';
+                            try {
+                                var ans = ruleArray[i].trim();
+                                var cat = AnswersByCategories.getCategory(ans);
+                                switch (cat.type) {
+                                    case 'select':
+                                        val = '\''+scope.$root.answers[cat.category][ans].code+'\'';
+                                        break;
+                                    default:
+                                        val = scope.$root.answers[cat.category][ans];
+                                        break;
+                                }
+                            } catch (err) {
+                                val = 'undefined';
+                            }
+                            evalString = evalString + val;
+                        } else {
+                            evalString = evalString + ruleArray[i];
+                        }
+                    }
+                    var retVal = false;
+                    try {
+                        retVal = eval(evalString);
+                    } catch(err) {
+                        retVal = false;
+                    }
+                    if (retVal) {
+                        return retVal;
+                    } else {
+                        return retVal;
+                    }
+                }
+            }
+
             scope.category=category;
             if (questionTemplates[scope.question.code] == undefined) {
                 scope.question_template_link = '/content/themes/ncoa/resources/views/directives/question/question.html?' + (new Date());
@@ -1113,7 +1185,8 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
             scope.category = category;
 
             scope.regPattern = "\\d{5}";
-            scope.$root.isZipValid = true;
+            scope.$root.isZipValid = false;
+            scope.zipValid = '';
             scope.$root.isZipCodeValidating = false;
 
             scope.updateZip = function(){
@@ -1144,6 +1217,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
             function validateZip(data){
                 if (scope.$root.answers[category].zip.length != 5) {
                     scope.$root.isZipValid = false;
+                    scope.zipValid = '';
                     scope.$parent.zipCodeCheckResult = "Error!"
                     scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
                     scope.$parent.zipCodeUpdated=true;
@@ -1162,15 +1236,18 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 
                         scope.$root.answers[category].zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
                         scope.$root.isZipValid = true;
+                        scope.zipValid = '1';
                         scope.$parent.zipCodeCheckResult = "Success!"
                         scope.$parent.zipCodeDescription = scope.$root.answers[category].zipcode_formatted;
                     }else{
                         scope.$root.isZipValid = false;
+                        scope.zipValid = '';
                         scope.$parent.zipCodeCheckResult = "Error!"
                         scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
                     }
                 }else{
                     scope.$root.isZipValid = false;
+                    scope.zipValid = '';
                     scope.$parent.zipCodeCheckResult = "Error!"
                     scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
                 }
@@ -1533,6 +1610,8 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Mont
             delete $scope.$root.$root.answers[category][program.code];
         }
 
+        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category]) == 0 ? undefined : '1';
+
         if (BenefitItems.programsInStructure($scope.$root.answers[category]) == $scope.programs.length) {
             $scope.selectLinkText = "Deselect All";
         } else {
@@ -1788,7 +1867,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     });
 
     $scope.disableSubmit = function(){
-        return $scope.sibmitDisabled || BenefitItems.programsInStructure($scope.$root.answers[$scope.category]) == 0;
+        if ($scope.prescreenForm == undefined) return true;
+        return !$scope.prescreenForm.$valid;
     };
 
 }]);

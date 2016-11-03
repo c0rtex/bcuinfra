@@ -5,4 +5,6 @@
             <button ng-repeat="income in question.answer_fields[0].options track by income.code" type="button" class="btn btn-default" ng-class="{active: $root.answers[category].bcuqc_income_list == income}" ng-click="$root.answers[category].bcuqc_income_list = income">{{income.display}}</button>
         </div>
     </section>
+
+    <input type="text" ng-show="false" required ng-model="$root.answers[category].bcuqc_income_list">
 </div>
