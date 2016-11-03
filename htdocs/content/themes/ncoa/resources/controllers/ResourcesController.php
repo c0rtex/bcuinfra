@@ -123,12 +123,9 @@ class ResourcesController extends BaseController
 
   public function details($post, $query)
   {
-    $fact_sheet_slug = "";//$query->query["p"];
-    return View::make('templates.fact-sheets',[
-      'layout' => "layouts.main",
-      'page_slug' => $fact_sheet_slug,
-      'is_alt' => true
-    ]);
+    if (!empty($_POST['fact_sheet_url'])) {
+      header('Location: ' . $_POST['fact_sheet_url']);
+    }
   }
 
   public function snap(){

@@ -1060,7 +1060,10 @@ app.directive('stateSelection',function(){
         restrict: 'A',
         link: function(scope,element,attrs){
 
+            scope.factSheetUrl = '';
+
             scope.stateChange = function(){
+                scope.factSheetUrl = map_config['map_' + map_ids[scope.mapState]]['url'];
 
                 if(scope.mapState == "TX")
                     $('#map_base svg path#map_43').css({'fill':'#1F3D7D'});
@@ -1071,6 +1074,8 @@ app.directive('stateSelection',function(){
                     $('#map_base svg path#map_1').css({'fill':'#1F3D7D'});
                 else
                     $('#map_base svg path#map_1').css({'fill':'#1888de'});
+
+                scope.$digest();
 
             }
         }
