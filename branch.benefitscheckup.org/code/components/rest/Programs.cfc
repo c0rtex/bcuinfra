@@ -1,26 +1,5 @@
 <cfcomponent rest="true" restpath="/findPrograms">
-
-    <!---TODO remove commented sturcture--->
-
-    <!---<cfset categories = structNew()>
-    <cfset categories['bcuqc_category_income'] = ["income"]>
-    <cfset categories['bcuqc_category_medicaid'] = ["medicaid","health","homecare"]>
-    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxgov"]><!--- rxco,rxcard removed from results --->
-    <cfset categories['bcuqc_category_property_taxrelief'] = ["taxrelief","taxrelief_other"]>
-    <cfset categories['bcuqc_category_veteran'] = ["veteran"]>
-    <cfset categories['bcuqc_category_nutrition'] = ["nutrition","foodsupp"]>
-    <cfset categories['bcuqc_category_utility'] = ["utility","housing","insurance","homerepair"]>
-
-    <!---New Fields For New PreScreen --->
-    <cfset categories['bcuqc_category_employment'] = ["employment","volunteer"]>
-    <cfset categories['bcuqc_category_transportation'] = ["transportation"]>
-    <cfset categories['bcuqc_category_education'] = ["education"]>
-    <cfset categories['bcuqc_category_discounts'] = ["discounts"]>
-    <cfset categories['bcuqc_category_other_assistance'] = ["assistance","counseling","info","legal","advocacy"]>--->
-
-
     <cfset sa = structNew()>
-
     <cfset ynDoBuffer = false>
 
     <cffunction name="categoriesToGroups" returnType="String">
@@ -46,9 +25,7 @@
     <cffunction name="calcForPrescreen">
         <cfargument name="screeningId">
         <cfset screening = entityLoadByPK("screening",screeningId)>
-
         <cfset screening_answers = ormexecutequery("select distinct a.code from screening_answerfield sa join sa.answer a where sa.screening=?",[screening])>
-
         <cfset supercategories = ormexecutequery("from program_supercategory")>
         <cfset superCategoriesStruct = structNew()>
         <cfloop array="#supercategories#" index="i">
@@ -156,7 +133,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1 order by 2,p.sort",[sa.st])>
+        <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and (p.state=? or p.state is null) and p.active_flag=1 order by 2,p.sort",[sa.st])>
 
         <cfloop array="#groupedByCategories#" index="i">
             <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
