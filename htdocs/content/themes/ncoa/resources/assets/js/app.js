@@ -1,4 +1,4 @@
-var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
+﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
 
 // Use sessionStorage instead of localStorage
 app.config(function (localStorageServiceProvider) {
@@ -177,7 +177,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
         link: function(scope,elm) {
             var prescreenAnswered = Object.keys(prescreen.data.answers).length != 0;
             if (prescreenAnswered) {
-                scope.caption = "Complete Full Questionnaire";
+                scope.caption = "Continue to Full Questionnaire";
             } else {
                 scope.caption = "Start Questionnaire";
             }
@@ -682,7 +682,7 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
             }
 
             $("#multiselect").multiSelect({
-                selectableHeader: "<p class='bold'>Available Medications <i class='fa fa-question-circle' aria-hidden='true'></i></p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
+                selectableHeader: "<p class='bold'>Available Medications</p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
                 selectionHeader: "<span class='h4'>My Medication List</span><p>Below are the medications you have selected</p>",
                 selectableFooter: "<button class='btn btn-secondary add' disabled>Add to My List</button>",
                 selectionFooter: "<button class='btn btn-secondary remove' disabled>Remove from My List</button>",
@@ -1020,34 +1020,6 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
     }
 }]);
 
-// Update Popovers once page has been rendered.
-app.directive('question', ['$timeout', function($timeout) {
-    return {
-        link: function(scope, element, attr) {
-            $timeout(function() {
-                $('[data-toggle="popover"]')
-                    .popover()
-                    .click(function(e) {
-                        e.stopPropagation();
-                        e.preventDefault()
-                        var el = this;
-                        $(el).popover('show');
-
-                        $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
-                            .find('.close').on('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            $(el).popover('hide');
-                        });
-
-                        $(".popover > h3").show();
-                        $(".close").show();
-                    });
-            });
-        }
-    }
-}]);
-
 app.directive('answerfield',['$state', function($state){
     return {
         template:"<span ng-include='answer_field_link'></span>",
@@ -1160,7 +1132,10 @@ app.directive('stateSelection',function(){
         restrict: 'A',
         link: function(scope,element,attrs){
 
+            scope.factSheetUrl = '';
+
             scope.stateChange = function(){
+                scope.factSheetUrl = map_config['map_' + map_ids[scope.mapState]]['url'];
 
                 if(scope.mapState == "TX")
                     $('#map_base svg path#map_43').css({'fill':'#1F3D7D'});
@@ -1171,6 +1146,8 @@ app.directive('stateSelection',function(){
                     $('#map_base svg path#map_1').css({'fill':'#1F3D7D'});
                 else
                     $('#map_base svg path#map_1').css({'fill':'#1888de'});
+
+                scope.$digest();
 
             }
         }
@@ -1252,25 +1229,6 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                     scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
                 }
                 scope.$parent.zipCodeUpdated=true;
-
-                $('[data-toggle="popover"]')
-                    .popover()
-                    .click(function(e) {
-                        e.stopPropagation();
-                        e.preventDefault()
-                        var el = this;
-                        $(el).popover('show');
-
-                        $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
-                            .find('.close').on('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            $(el).popover('hide');
-                        });
-
-                        $(".popover > h3").show();
-                        $(".close").show();
-                    });
             }
         }
     }
@@ -1654,7 +1612,6 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
         $scope.$root.prescreen.programList = {};
     }
 
-    $('.glyphicon-question-sign').popover();
     $scope.questions = prescreen.data.questions;
     $scope.canContinue = true;
     $scope.showquestions = false;
@@ -1912,25 +1869,6 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
     }
 
     od.update(foundCount);
-
-    $('[data-toggle="popover"]')
-        .popover()
-        .click(function(e) {
-            e.stopPropagation();
-            e.preventDefault()
-            var el = this;
-            $(el).popover('show');
-
-            $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
-                .find('.close').on('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                $(el).popover('hide');
-            });
-
-            $(".popover > h3").show();
-            $(".close").show();
-        });
 }]);
 
 app.controller('questionnaireBasicController', ['$scope','$state', 'questionnaire', function($scope, $state, questionnaire){
@@ -1968,25 +1906,6 @@ app.controller('questionnaireBasicController', ['$scope','$state', 'questionnair
         {id:"pacific_islander",                name:"Native Hawaiian or Other Pacific Islander"},
         {id:"hispanic",                        name:"Hispanic, Latino, or Spanish Origin"},
         {id:"other_race",                      name:"Other"}];
-
-    $('[data-toggle="popover"]')
-        .popover()
-        .click(function(e) {
-            e.stopPropagation();
-            e.preventDefault()
-            var el = this;
-            $(el).popover('show');
-
-            $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
-                .find('.close').on('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                $(el).popover('hide');
-            });
-
-            $(".popover > h3").show();
-            $(".close").show();
-        });
 
 }]);
 
@@ -2986,64 +2905,5 @@ app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
             }
         });
     };
-
-// Popovers
-    $('[data-toggle="popover"]')
-        .popover()
-        .click(function(e) {
-            e.stopPropagation();
-            e.preventDefault()
-            var el = this;
-            $(el).popover('show');
-
-            $(el).next('.popover').children('h3').append('<span class="close">&times;</span>')
-                .find('.close').on('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                $(el).popover('hide');
-            });
-
-            $(".popover > h3").show();
-            $(".close").show();
-        });
-
-
-
-//Lynna Cekova: click to call
-
-//console.log ($(".single-fact-sheets").html());
-//if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-
-    var countrycodes = "1"
-    var delimiters = "-|\\.|—|–|&nbsp;"
-    var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
-    var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
-    var phonereg = new RegExp("((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
-
-    function ReplacePhoneNumbers(oldhtml) {
-//Created by Jon Meck at LunaMetrics.com - Version 1.0
-        var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
-        newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
-            if ($3) return $1;
-            else if ($4) return $2+$4+$5+$6;
-            else return $2+"<a href='tel:"+$5.replace(spechars,"")+"' onclick=\"_gaq.push(['_trackEvent','Phone Call Tracking','Click/Touch']);\" >"+$5+"</a>"+$6; });
-        return newhtml;
-    }
-
-
-
-//http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
-
-//$(".test").html(ReplacePhoneNumbers($(".test").html()));
-    $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
-
-//}
-
-
-
-
-
-
-
 
 }(window.jQuery);

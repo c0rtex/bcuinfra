@@ -25,7 +25,7 @@
                     <div>
                         <span class="icon-block pull-left">
                             {{
-                                wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full', array('title' => 'Loop::id()')) 
+                                wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full', array('title' => 'Loop::id()'))
                             }}
                         </span>
                         <div class="pull-left">
@@ -64,7 +64,7 @@
                     <hr class="fact-sheets-hr" />
                     <h3 class="bold-h3">How do I get more information?</h3>
                     <p>
-                        If you would like more information and to find out if you meet the program guidelines, please answer a few more questions.
+                        If you would like more information about the program, get the application forms, and to find out if you are eligible, please answer a few more questions.
                     </p>
                     <complete-questionnaire/>
                     <!--<a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
@@ -72,13 +72,6 @@
                     <hr class="fact-sheets-hr" />
 
                     <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
-
-                    <h3 class="bold-h3">What You'll Need...</h3>
-                    <ul class="fact-sheets-list">
-                        @foreach($required_materials as $ekey => $evalue)
-                        <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
-                        @endforeach
-                    </ul>
                     @endif
                 </div>
 
@@ -174,6 +167,36 @@
           <a ui-sref="questionnaire.results" class="btn btn-link btn-back fact-sheets-side-link">Back to Results</a>
         </h3> -->
     </div>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+      //Lynna Cekova: click to call
+      var countrycodes = "1"
+      var delimiters = "-|\\.|—|–|&nbsp;"
+      var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
+      var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
+      var phonereg = new RegExp("((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
+
+      //Created by Jon Meck at LunaMetrics.com - Version 1.0
+      // http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
+
+      function ReplacePhoneNumbers(oldhtml) {
+          if (!oldhtml) { return; }
+          var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
+          newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
+              if ($3) return $1;
+              else if ($4) return $2+$4+$5+$6;
+              else return $2+"<a href='tel:"+$5.replace(spechars,"")+"' onclick=\"_gaq.push(['_trackEvent','Phone Call Tracking','Click/Touch']);\" >"+$5+"</a>"+$6; });
+          return newhtml;
+      }
+
+      $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
+      $(".program-p").each(function(p) {
+          $(this).html(ReplacePhoneNumbers($(this).html()));
+      });
+    });
+
+    </script>
     @endquery
     </div>
     @stop

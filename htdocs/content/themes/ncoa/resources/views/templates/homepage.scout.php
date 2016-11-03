@@ -21,7 +21,7 @@
 					<figure class="testimonial col-xs-12 col-sm-4">
 						{{
 							wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
-							array('title' => get_the_title($testimonials[$key]["testimonial-image"]))) 
+							array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
 						}}
 						<figcaption>
 							<p>"{{ $testimonials[$key]["testimonial-quote"] }}"</p>
@@ -49,7 +49,7 @@
 						<h4 class="title-icon">
 							{{
 								wp_get_attachment_image($betterwaysection[$key]["benefit-icon"], 'full', false,
-									array('title' => get_the_title($betterwaysection[$key]["benefit-icon"]))) 	
+									array('title' => get_the_title($betterwaysection[$key]["benefit-icon"])))
 							}}
 							{{ $betterwaysection[$key]["benefit-title"] }}
 						</h4>
@@ -78,15 +78,15 @@
 						@foreach($sponsors as $key => $value)
 							<div class="item">
 								@if(Meta::get($value->ID, $key = 'sponsor-url', $single = true) != "")
-									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}">
+									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank">
 										{{
-											get_the_post_thumbnail($value->ID, 'full', 
+											get_the_post_thumbnail($value->ID, 'full',
 												array('title' => get_the_title($value->ID)))
 										}}
 									</a>
 								@else
 									{{
-										get_the_post_thumbnail($value->ID, 'full', 
+										get_the_post_thumbnail($value->ID, 'full',
 											array('title' => get_the_title($value->ID)))
 									}}
 								@endif
@@ -111,7 +111,7 @@
 					<div class="stay-connected col-xs-12 col-sm-6 col-md-6">
 						<h3>Stay Connected</h3>
 						<p>Receive emails about how to stay healthy, secure, and independent.</p>
-						<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Subscribe to Newsletter</a>
+						<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Sign Up for Enews</a>
 					</div>
 					<div class="spread-the-word col-xs-12 col-sm-6 col-md-6">
 						<h3>Spread the Word</h3>

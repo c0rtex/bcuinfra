@@ -31,8 +31,8 @@
         <!-- Views -->
         <div>
           <span class="icon-block pull-left">
-            <?php 
-              echo wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full') 
+            <?php
+              echo wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full')
             ?>
           </span>
           <div class="pull-left">
@@ -66,7 +66,7 @@
         @if($is_alt)
           {{ Meta::get(Loop::id(), $key = 'requirement-info-alt', $single = true) }}
         @endif
-        
+
         @if(!$is_alt)
           <hr class="fact-sheets-hr" />
 
@@ -81,17 +81,17 @@
           @endforeach
         </ul>
 -->
-      
-          
-      
-        
+
+
+
+
           <!--<hr class="fact-sheets-hr" />-->
 
           <h3 class="bold-h3">
             Frequently Asked Questions
           </h3>
           <div>
-            
+
        @foreach(Meta::get(Loop::id(), $key = 'faqs-list', $single = true) as $key => $value)
             <section slide-down class="program program-no-icon">
               <div class="program-header"><span>{{ $value["question"] }}</span></div>
@@ -114,7 +114,7 @@
         </ul>
 
               </div>
-          
+
               @else
               <div class="programs-container program-p">
                 <p>
@@ -152,12 +152,12 @@
         @if(!$is_alt)
           <div class="results-options">
             <span class="fact-sheets-side-header">Quick Links</span>
-            
-<?php 
+
+<?php
 
 $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
 
-//if (!empty($programUrl)) {           
+//if (!empty($programUrl)) {
 
 
 foreach($app_forms as $ekey => $evalue){
@@ -176,7 +176,7 @@ break;
             @if ($app_forms)
             <?php $pos=1 ?>
             @foreach($app_forms as $ekey => $evalue)
-            
+
             <?php $pos++ ?>
 
 
@@ -185,7 +185,7 @@ break;
            <!-- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
             <span style="white-space: pre-line">{{ $evalue->caption }}</span>-->
             <?php $pos-- ?> <!--showing and counting only non-online applications -->
-       
+
             </a>
             @else
             <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
@@ -221,7 +221,7 @@ break;
 
 
 <?php break;?>
-      
+
             @endif
 
             @endforeach
@@ -239,8 +239,8 @@ break;
             </a>
             @endif
 
-            
-            
+
+
             @endforeach
             @if ($pos >= 3)
 </div>
@@ -256,10 +256,10 @@ break;
             @endif
             @endif
 
-            
+
           </div>
         @endif
-        
+
       </div>
 
       <!-- Mobile -->
@@ -301,13 +301,13 @@ break;
             {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
           </div>
         </div>
-        
+
         @if($is_alt)
            {{ Meta::get(Loop::id(), $key = 'requirement-info-alt', $single = true) }}
         @endif
-        
+
       @if(!$is_alt)
-          
+
         <div>
           <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" target="_new" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
         </div>
@@ -315,7 +315,7 @@ break;
         <hr class="fact-sheets-hr" />
 
         {{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}
-        
+
         <div class="fact-sheets-main-apply mobile-padding">
           <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-main-mobile">{{ Meta::get(Loop::id(), $key = 'button-title', $single = true) }}</a>
         </div>
@@ -362,5 +362,36 @@ break;
   <a ui-sref="questionnaire.results" class="btn btn-link btn-back fact-sheets-side-link">Back to Results</a>
 </h3> -->
 </div>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+  //Lynna Cekova: click to call
+  var countrycodes = "1"
+  var delimiters = "-|\\.|—|–|&nbsp;"
+  var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
+  var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
+  var phonereg = new RegExp("((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
+
+  //Created by Jon Meck at LunaMetrics.com - Version 1.0
+  // http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
+
+  function ReplacePhoneNumbers(oldhtml) {
+      if (!oldhtml) { return; }
+      var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
+      newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6) {
+          if ($3) return $1;
+          else if ($4) return $2+$4+$5+$6;
+          else return $2+"<a href='tel:"+$5.replace(spechars,"")+"' onclick=\"_gaq.push(['_trackEvent','Phone Call Tracking','Click/Touch']);\" >"+$5+"</a>"+$6; });
+      return newhtml;
+  }
+
+  $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
+  $(".program-p").each(function(p) {
+      $(this).html(ReplacePhoneNumbers($(this).html()));
+  });
+});
+
+</script>
 @endquery
 @stop
