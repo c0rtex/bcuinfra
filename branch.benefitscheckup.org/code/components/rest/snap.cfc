@@ -3,7 +3,7 @@
         <cfargument name="state_id" required="true" restargsource="Path" type="string"/>
 	<cfargument name="year" required="true" restargsource="Path" type="numeric"/>
 
-	<cfquery name="snapQuery" datasource="bcu_qa">
+	<cfquery name="snapQuery" datasource="dbSrc">
 	select s.state_name, ssn.state_id, ssn.snap_seniors from state_snap ssn, state s
 	where ssn.year = '#year#' and ssn.state_id = s.state_id and s.state_id = '#state_id#'
 	</cfquery>
