@@ -1,6 +1,13 @@
 @extends('layouts.main')
 
 @section('main')
+  <script>
+    window.webServiceUrl = '{{$webServiceUrl}}';
+    if (window.name == '') {
+      window.name = '{{microtime(true)}}';
+    }
+  </script>
+
 	<span id="map-tip"></span>
 	<div class="container fact-sheet-alt">
 		<div class="page-top-headline">
