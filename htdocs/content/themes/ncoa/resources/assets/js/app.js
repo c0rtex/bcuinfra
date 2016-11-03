@@ -715,16 +715,20 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                 var selected = $('.ms-selectable .ms-list .selected span').map(function(){
                     return Drugs.codeByName($(this).html());
                 }).get();
-
                 $('#multiselect').multiSelect('select', selected);
+                for (var i=0;i<selected.length;i++) {
+                    scope.$root.answers[scope.category][selected[i]] = 'y';
+                }
             });
 
             $('.ms-selection').on('click', 'button.remove', function(){
                 var selected = $('.ms-selection .ms-list .selected span').map(function(){
                     return Drugs.codeByName($(this).html());
                 }).get();
-
                 $('#multiselect').multiSelect('deselect', selected);
+                for (var i=0;i<selected.length;i++) {
+                    delete scope.$root.answers[scope.category][selected[i]];
+                }
             });
         }
     }
