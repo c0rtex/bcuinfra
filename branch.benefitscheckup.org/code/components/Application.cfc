@@ -22,5 +22,29 @@
 
     </cffunction>
 
+   <cffunction
+        name="onRequestStart"
+        access="public"
+        returntype="boolean"
+        output="false"
+        hint="Intialize these settings on each request.">
 
+        <!---
+            Check to see if the refresh of rebuild flag is
+            present. If it is, then we need to reload the ORM
+            mappings and configuration.
+        --->
+        <cfif (
+            !isNull( url.rebuild ) ||
+            !isNull( url.refresh )
+            )>
+
+            <!--- Reload the ORM configuration and mappings. --->
+            <cfset ORMReload() />
+
+        </cfif>
+
+        <!--- Return true so that the page can run. --->
+        <cfreturn true />
+    </cffunction>	 
 </cfcomponent>
