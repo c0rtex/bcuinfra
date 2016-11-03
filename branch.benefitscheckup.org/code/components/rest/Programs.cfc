@@ -1174,24 +1174,29 @@
 	<!--- sort order by program then form sort --->
 	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
 <cfset qryFormsQuery = "
-select 'test name' as prg_nm,p.short_desc,p.code   
+select  p.name_display as prg_nm,p.short_desc,p.code   
 from program p 
 join p.program_category pc 
 join pc.super_category sc 
 join p.program_category pc  
+join p.name_display d
 
 	 
 	where 
 	pc.code not in ('rxcard','rxco')  
 	and p.code not like '%_long'
 	and p.code not like '%_short'
-	and p.code not like '%_aarp'
+	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
+	and p.code not like '%_child_%'
 	and sc.code like  '%#cat#'
 	and p.active_flag=1
         and (p.state='#st#' or p.state is null) 
 	order by p.sort 
 ">
+
+
 
         <cfset query = ormExecuteQuery(qryFormsQuery)>
 
@@ -1199,7 +1204,7 @@ join p.program_category pc
 
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1]>
+            <cfset str.prg_nm=item[1].getDisplay_text()>
             <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
