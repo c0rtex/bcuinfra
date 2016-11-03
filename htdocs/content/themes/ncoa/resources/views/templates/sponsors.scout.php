@@ -19,7 +19,13 @@
 						@foreach($featured as $key => $value)
 							<div class="featured-item">
 								<div class="col-sm-6 col-md-4 col-md-offset-2">
-									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+									<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank">
+										{{ 
+											get_the_post_thumbnail($value->ID, 'full', array(
+												'title' => get_the_title(get_post_thumbnail_id($value->ID))
+											))
+										}}
+										</a>
 								</div>
 								<div class="col-md-5 featured-text">
 									<p>{{ $value->post_excerpt }}</p>
@@ -31,9 +37,19 @@
 					@foreach($sponsors as $key => $value)
 						<div class="col-xs-12 col-sm-6 col-md-3 sponsor-items">
 							@if(Meta::get($value->ID, $key = 'sponsor-url', $single = true) != "")
-								<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank"><?php echo get_the_post_thumbnail($value->ID, 'full') ?></a>
+								<a href="{{ Meta::get($value->ID, $key = 'sponsor-url', $single = true) }}" target="_blank">
+									{{ 
+										get_the_post_thumbnail($value->ID, 'full', array(
+											'title' => get_the_title(get_post_thumbnail_id($value->ID))
+										)) 
+									}}
+								</a>
 							@else
-								<?php echo get_the_post_thumbnail($value->ID, 'full') ?>
+								{{ 
+									get_the_post_thumbnail($value->ID, 'full',array(
+										'title' => get_the_title(get_post_thumbnail_id($value->ID))
+									)) 
+								}}
 							@endif
 						</div>
 					@endforeach
