@@ -1599,6 +1599,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Mont
             $('.benefits-selector-repeater').addClass('checked');
             $scope.selectLinkText = "Deselect All";
         }
+        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category]) == 0 ? undefined : '1';
     }
 
 }]);
