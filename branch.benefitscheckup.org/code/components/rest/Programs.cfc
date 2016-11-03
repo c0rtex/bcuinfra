@@ -71,13 +71,14 @@
 	pc.code not in ('rxcard','rxco')  
 	and p.code not like '%_long'
 	and p.code not like '%_short'
-	and p.code not like '%_aarp'
+	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
+	and p.code not like '%_child_%'
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
 	and (p.state=? or p.state is null) 
-	and p.active_flag=1
 	",[screening.getPreset_state()])>
 
         <cftransaction>
