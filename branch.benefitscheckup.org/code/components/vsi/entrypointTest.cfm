@@ -100,6 +100,18 @@
 <cfif zipchk.RecordCount eq 0>
 	Sorry, but #zipcode# is not a valid zip code
 <cfelse>
+	<cfquery name="factsheet_link" datasource="bcu_wp">
+	SELECT DISTINCT
+wp_posts.post_name
+FROM
+wp_postmeta
+INNER JOIN wp_posts ON wp_postmeta.post_id = wp_posts.ID
+where meta_key = 'program_id' and meta_value like '#program_id#'
+</cfquery>
+<cfoutput ><br>Fact Sheet: <a href="http://bcudesign.leviathantech.com/fact-sheets/#factsheet_link.post_name#?zipcode=#zipcode#" target="new">#factsheet_link.post_name#?zipcode=#zipcode#</a></cfoutput>
+
+
+
 	<cf_displayProgramDetailEntrypoints mode="#mode#" program_id="#program_id#" city_id="#city_id#" zipcode="#zipcode#" radius="#radius#" limit="#limit#" var="entrypointStr" debugvar="debugTrace">
 	<small>#debugTrace#</small><hr>
 	#entrypointStr#

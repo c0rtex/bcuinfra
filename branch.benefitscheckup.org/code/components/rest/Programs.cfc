@@ -1,26 +1,5 @@
 <cfcomponent rest="true" restpath="/findPrograms">
-
-    <!---TODO remove commented sturcture--->
-
-    <!---<cfset categories = structNew()>
-    <cfset categories['bcuqc_category_income'] = ["income"]>
-    <cfset categories['bcuqc_category_medicaid'] = ["medicaid","health","homecare"]>
-    <cfset categories['bcuqc_category_rx'] = ["medicare","medications","rxgov"]><!--- rxco,rxcard removed from results --->
-    <cfset categories['bcuqc_category_property_taxrelief'] = ["taxrelief","taxrelief_other"]>
-    <cfset categories['bcuqc_category_veteran'] = ["veteran"]>
-    <cfset categories['bcuqc_category_nutrition'] = ["nutrition","foodsupp"]>
-    <cfset categories['bcuqc_category_utility'] = ["utility","housing","insurance","homerepair"]>
-
-    <!---New Fields For New PreScreen --->
-    <cfset categories['bcuqc_category_employment'] = ["employment","volunteer"]>
-    <cfset categories['bcuqc_category_transportation'] = ["transportation"]>
-    <cfset categories['bcuqc_category_education'] = ["education"]>
-    <cfset categories['bcuqc_category_discounts'] = ["discounts"]>
-    <cfset categories['bcuqc_category_other_assistance'] = ["assistance","counseling","info","legal","advocacy"]>--->
-
-
     <cfset sa = structNew()>
-
     <cfset ynDoBuffer = false>
 
     <cffunction name="categoriesToGroups" returnType="String">
@@ -46,9 +25,7 @@
     <cffunction name="calcForPrescreen">
         <cfargument name="screeningId">
         <cfset screening = entityLoadByPK("screening",screeningId)>
-
         <cfset screening_answers = ormexecutequery("select distinct a.code from screening_answerfield sa join sa.answer a where sa.screening=?",[screening])>
-
         <cfset supercategories = ormexecutequery("from program_supercategory")>
         <cfset superCategoriesStruct = structNew()>
         <cfloop array="#supercategories#" index="i">
@@ -71,13 +48,14 @@
 	pc.code not in ('rxcard','rxco')  
 	and p.code not like '%_long'
 	and p.code not like '%_short'
-	and p.code not like '%_aarp'
+	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
+	and p.code not like '%_child_%'
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
 	and (p.state=? or p.state is null) 
-	and p.active_flag=1
 	",[screening.getPreset_state()])>
 
         <cftransaction>
@@ -155,7 +133,7 @@
 
         <cfset filter = "(#filter#)">
 
-        <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and p.state=? and p.active_flag=1 order by 2,p.sort",[sa.st])>
+        <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and (p.state=? or p.state is null) and p.active_flag=1 order by 2,p.sort",[sa.st])>
 
         <cfloop array="#groupedByCategories#" index="i">
             <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
@@ -1195,14 +1173,38 @@
 
 	<!--- sort order by program then form sort --->
 	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
+<cfset qryFormsQuery = "
+select  p.name_display as prg_nm,p.short_desc,p.code   
+from program p 
+join p.program_category pc 
+join pc.super_category sc 
+join p.program_category pc  
+join p.name_display d
 
-        <cfset query = ormExecuteQuery(qryFormsQuery,[cat])>
+	 
+	where 
+	pc.code not in ('rxcard','rxco')  
+	and p.code not like '%_long'
+	and p.code not like '%_short'
+	and p.code not like '%_aarp%'
+	and p.code not like '%_children'
+	and p.code not like '%_schip'
+	and p.code not like '%_child_%'
+	and sc.code like  '%#cat#'
+	and p.active_flag=1
+        and (p.state='#st#' or p.state is null) 
+	order by p.sort 
+">
+
+
+
+        <cfset query = ormExecuteQuery(qryFormsQuery)>
 
         <cfset data = arrayNew(1)>
 
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1]>
+            <cfset str.prg_nm=item[1].getDisplay_text()>
             <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
