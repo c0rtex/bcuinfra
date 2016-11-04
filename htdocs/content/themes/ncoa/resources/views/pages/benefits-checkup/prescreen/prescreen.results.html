@@ -1,28 +1,30 @@
 <div class="prescreen-results">
-	<div class="card">
-		<div class="card-nested">
-			<h2 class="page-header">Good News! We've found some initial results.</h2>		
-			<div class="results-tally">
-				<span class="odometer">0</span> <strong>benefit programs</strong> match your basic details.
-			</div>
-				
-			<h3><strong>Keep going to get the most accurate results.</strong></h3>
+    <div class="card">
+        <div class="card-nested">
+            <h2 class="page-header">Good News! We've found some initial results.</h2>
+            <div class="results-tally">
+                <span class="odometer">0</span>
+                <span ng-if="foundCount == 1"><strong>benefit program</strong> matches your basic details.</span>
+                <span ng-if="foundCount > 1"><strong>benefit programs</strong> match your basic details.</span>
+            </div>
 
-			<p>This is great start, but with a little more information, you could improve your results. Keep going to get the most accurate list of benefits you'd be likely to receive.</p>
-			<div class="ready-list">
-				<p>Here's the information you might want to have ready:</p>
-				<ul>
-					<li>Estimated household expenses <button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltipExpenses}}" data-placement="top" class="fa fa-question-circle"></button></li>
-					<li>Current income for self, spouse and others in household</li>
-					<li>Value of assets for self, spouse and others in household</li>
-					<li>Names of prescription medications</li>
-				</ul>
-			</div>
-		</div>
-		<section class="btns-container">
-			<a ui-sref="questionnaire.initial-results" class="btn btn-link">View Initial Results</a>
-			<button ng-click="nextPage('screening-start')" class="btn btn-primary pull-right">Continue</button>
-		</section>
-	</div>
+            <h3><strong>Keep going to get the most accurate results.</strong></h3>
+
+            <p>This is great start, but with a little more information, you could improve your results. Keep going to get the most accurate list of benefits you'd be likely to receive.</p>
+            <div class="ready-list">
+                <p>Here's the information you might want to have ready:</p>
+                <ul>
+                    <li>Estimated household expenses <button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltipExpenses}}" data-placement="top" class="fa fa-question-circle"></button></li>
+                    <li>Current income for self, spouse and others in household</li>
+                    <li>Value of assets for self, spouse and others in household</li>
+                    <li>Names of prescription medications</li>
+                </ul>
+            </div>
+        </div>
+        <section class="btns-container">
+            <a ui-sref="questionnaire.initial-results" class="btn btn-link">View Initial Results</a>
+            <button ng-click="nextPage('screening-start')" class="btn btn-primary pull-right">Continue</button>
+        </section>
+    </div>
 </div>
 

@@ -1,19 +1,23 @@
 <!--Results-->
 <div class="results card-panel">
-	<h2 class="page-header">Here are you initial results...</h2>
-	<div class="results-tally">
-		There are <span class="odometer">0</span> <strong>benefit programs</strong> that match your basic details.
-	</div>
-	
-	<div class="cta-yellow">
-		<p><span class="orange-bold">Please note!</span> These results are based on the few questions you answered and don't show whether you are eligible for these programs. <a ui-sref="screening-start" class="btn-link underline normal">Continue BenefitsCheckUp questionnaire</a> to get the most accurate and personalized list of benefits.</p>
-	</div>
+    <h2 class="page-header">Here are you initial results...</h2>
+    <div class="results-tally">
+        <span ng-if="foundCount == 1">There is</span>
+        <span ng-if="foundCount > 1">There are</span>
+        <span class="odometer">0</span>
+        <span ng-if="foundCount == 1"><strong>benefit program</strong> matches your basic details.</span>
+        <span ng-if="foundCount > 1"><strong>benefit programs</strong> match your basic details.</span>
+    </div>
 
-	
-	<p>Select a category to see the benefits you may qualify for.</p>
-	<div class="more-benefits">
+    <div class="cta-yellow">
+        <p><span class="orange-bold">Please note!</span> These results are based on the few questions you answered and don't show whether you are eligible for these programs. <a ui-sref="screening-start" class="btn-link underline normal">Continue BenefitsCheckUp questionnaire</a> to get the most accurate and personalized list of benefits.</p>
+    </div>
+
+
+    <p>Select a category to see the benefits you may qualify for.</p>
+    <div class="more-benefits">
 		<span ng-repeat="found_program in found_programs">
 			<div-programs-category short="y" found_program="found_program"></div-programs-category>
 		</span>
-	</div>
+    </div>
 </div>

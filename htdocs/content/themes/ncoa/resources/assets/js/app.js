@@ -1937,13 +1937,13 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
         value: 0,
     });
 
-    var foundCount = 0;
+    $scope.foundCount = 0;
 
     for (var i=0; i<prescreen.data.results.found_programs.length; i++) {
-        foundCount = foundCount + prescreen.data.results.found_programs[i].count;
+        $scope.foundCount = $scope.foundCount + prescreen.data.results.found_programs[i].count;
     }
 
-    od.update(foundCount);
+    od.update($scope.foundCount);
 }]);
 
 app.controller('questionnaireBasicController', ['$scope','$state', 'questionnaire', function($scope, $state, questionnaire){
@@ -2134,14 +2134,13 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
         });
     });
 
-    var foundCount = 0;
+    $scope.foundCount = 0;
 
     for (var i=0; i<prescreen.data.results.found_programs.length; i++) {
-        foundCount = foundCount + prescreen.data.results.found_programs[i].count;
+        $scope.foundCount = $scope.foundCount + prescreen.data.results.found_programs[i].count;
     }
 
-    od.update(foundCount);
-
+    od.update($scope.foundCount);
 
     document.querySelector('.page-wrapper h1').scrollIntoView();
 
