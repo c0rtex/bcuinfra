@@ -14,7 +14,7 @@
 
 <cfcomponent persistent="true" entityname="rule" table="rule" extends="ToStructConverter">
 	<cfproperty name="id" fieldtype="id" column="rule_id">
-	<cfproperty name="code">
+	<cfproperty name="code" tostruct="rulecode">
 	<cfproperty name="description">
 	<cfproperty name="rule_text">
 	<cfproperty name="rule_js_text" tostruct="rule">
