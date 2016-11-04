@@ -352,11 +352,15 @@ app.factory('Income', [function(){
 }]);
 
 app.factory('category', ['$state',function($state){
-    if ($state.params.category == undefined) {
-        return "prescreen";
-    } else {
-        return $state.params.category;
+    var _category = {};
+    _category.currentCategory = function() {
+        if ($state.params.category == undefined) {
+            return "prescreen";
+        } else {
+            return $state.params.category;
+        }
     }
+    return _category;
 }]);
 
 app.factory('Asset', [function(){
@@ -835,7 +839,7 @@ app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening',
                         request.lastSet = "true";
                     }
 
-                    request.answers = scope.$root.answers[$state.params.category];
+                    request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
@@ -948,7 +952,7 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
         link: function(scope,element,ngShow) {
 
             for (var i=0; i<scope.question.answer_fields.length;i++) {
-                AnswersByCategories.setCategory(scope.question.answer_fields[i].code,scope.category,scope.question.answer_fields[i].type);
+                AnswersByCategories.setCategory(scope.question.answer_fields[i].code,category.currentCategory(),scope.question.answer_fields[i].type);
             }
 
             if (scope.question.rule == undefined) {
@@ -956,50 +960,57 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
             } else if (scope.question.rule == '') {
                 scope.checkRule = function() {return true};
             } else {
-                scope.checkRule = function () {
-                    if (scope.question.rule == undefined) return true;
-                    if (scope.question.rule == '') return true;
+                if (scope.question.rulecode.indexOf('question_dep_') != 0) {
+                    scope.checkRule = function() {return true};
+                } else {
+                    scope.checkRule = function () {
+                        if (scope.question.rule == undefined) return true;
+                        if (scope.question.rule == '') return true;
 
-                    var ruleArray = scope.question.rule.split('#');
-                    var evalString = '';
-                    for (var i = 0; i < ruleArray.length; i++) {
-                        var isVar = i % 2 == 1;
-                        if (isVar) {
-                            var val = '';
-                            try {
-                                var ans = ruleArray[i].trim();
-                                var cat = AnswersByCategories.getCategory(ans);
-                                switch (cat.type) {
-                                    case 'select':
-                                        val = '\''+scope.$root.answers[cat.category][ans].code+'\'';
-                                        break;
-                                    default:
-                                        val = scope.$root.answers[cat.category][ans];
-                                        break;
+                        var ruleArray = scope.question.rule.split('#');
+                        var evalString = '';
+                        for (var i = 0; i < ruleArray.length; i++) {
+                            var isVar = i % 2 == 1;
+                            if (isVar) {
+                                var val = '';
+                                try {
+                                    var ans = ruleArray[i].trim();
+                                    var cat = AnswersByCategories.getCategory(ans);
+                                    switch (cat.type) {
+                                        case 'select':
+                                            val = '\'' + scope.$root.answers[cat.category][ans].code + '\'';
+                                            break;
+                                        case 'yn':
+                                            val = '\'' + scope.$root.answers[cat.category][ans] + '\'';
+                                            break;
+                                        default:
+                                            val = scope.$root.answers[cat.category][ans];
+                                            break;
+                                    }
+                                } catch (err) {
+                                    val = 'undefined';
                                 }
-                            } catch (err) {
-                                val = 'undefined';
+                                evalString = evalString + val;
+                            } else {
+                                evalString = evalString + ruleArray[i];
                             }
-                            evalString = evalString + val;
-                        } else {
-                            evalString = evalString + ruleArray[i];
                         }
-                    }
-                    var retVal = false;
-                    try {
-                        retVal = eval(evalString);
-                    } catch(err) {
-                        retVal = false;
-                    }
-                    if (retVal) {
-                        return retVal;
-                    } else {
-                        return retVal;
+                        var retVal = false;
+                        try {
+                            retVal = eval(evalString);
+                        } catch (err) {
+                            retVal = false;
+                        }
+                        if (retVal) {
+                            return retVal;
+                        } else {
+                            return retVal;
+                        }
                     }
                 }
             }
 
-            scope.category=category;
+            scope.category=category.currentCategory();
             if (questionTemplates[scope.question.code] == undefined) {
                 scope.question_template_link = '/content/themes/ncoa/resources/views/directives/question/question.html?' + (new Date());
             } else {
@@ -1119,9 +1130,9 @@ app.directive('yearDrop',['category',function(category){
         template: '<select class="form-control inline" name="dob-year" ng-model="$root.answers[category][code]" ng-options="y for y in years"></select>',
         link: function(scope,element,attrs){
             scope.years = getYears(+attrs.offset, +attrs.range);
-            scope.category = category;
-            if (scope.$root.answers[category][scope.code] == undefined) {
-                scope.$root.answers[category][scope.code] = scope.years[66];
+            scope.category = category.currentCategory();
+            if (scope.$root.answers[category.currentCategory()][scope.code] == undefined) {
+                scope.$root.answers[category.currentCategory()][scope.code] = scope.years[66];
             }
         },
         scope: {
@@ -1163,7 +1174,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
     return {
         link: function(scope, elm){
 
-            scope.category = category;
+            scope.category = category.currentCategory();
 
             scope.regPattern = "\\d{5}";
             scope.$root.isZipValid = false;
@@ -1172,7 +1183,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 
             scope.updateZip = function(){
                 scope.$root.isZipCodeValidating = true;
-                locationFinder.getLocation(scope.$root.answers[category].zip).success(function(data, status, headers, config) {
+                locationFinder.getLocation(scope.$root.answers[scope.category].zip).success(function(data, status, headers, config) {
                     validateZip(data);
                     scope.$root.isZipCodeValidating = false;
                 });
@@ -1181,7 +1192,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 
             if (localStorageService.get('v_zipcode') != undefined) {
                 scope.zipCodeLabel = "Update Zip Code";
-                scope.$root.answers[scope.category].zip = localStorageService.get('v_zipcode');
+                scope.$root.answers[category.currentCategory()].zip = localStorageService.get('v_zipcode');
                 localStorageService.remove('v_zipcode');
                 scope.updateZip();
             } else {
@@ -1196,7 +1207,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
             }
 
             function validateZip(data){
-                if (scope.$root.answers[category].zip.length != 5) {
+                if (scope.$root.answers[category.currentCategory()].zip.length != 5) {
                     scope.$root.isZipValid = false;
                     scope.zipValid = '';
                     scope.$parent.zipCodeCheckResult = "Error!"
@@ -1206,20 +1217,20 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                 }
                 if(data.status == "OK"){
                     if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){
-                        scope.$root.answers[category].zipcode = data.results[0].address_components[0].long_name;
+                        scope.$root.answers[category.currentCategory()].zipcode = data.results[0].address_components[0].long_name;
                         for (var i=1;i<data.results[0].address_components.length;i++) {
                             if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
-                                scope.$root.answers[category].stateId = data.results[0].address_components[i].short_name;
+                                scope.$root.answers[category.currentCategory()].stateId = data.results[0].address_components[i].short_name;
                                 scope.zipCodeLabel = "Update Zip Code";
                                 continue;
                             }
                         }
 
-                        scope.$root.answers[category].zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
+                        scope.$root.answers[category.currentCategory()].zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
                         scope.$root.isZipValid = true;
                         scope.zipValid = '1';
                         scope.$parent.zipCodeCheckResult = "Success!"
-                        scope.$parent.zipCodeDescription = scope.$root.answers[category].zipcode_formatted;
+                        scope.$parent.zipCodeDescription = scope.$root.answers[category.currentCategory()].zipcode_formatted;
                     }else{
                         scope.$root.isZipValid = false;
                         scope.zipValid = '';
@@ -1530,9 +1541,9 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
-app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Months', function($scope, category, BenefitItems, Months){
+app.controller('questionController',['$scope', 'category', 'BenefitItems', 'AnswersByCategories', 'Months', function($scope, category, BenefitItems, AnswersByCategories, Months){
 
-    $scope.category = category;
+    $scope.category = category.currentCategory();
 
     $scope.months = Months;
 
@@ -1540,22 +1551,22 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Mont
     $scope.selectLinkText = "Select All";
 
     $scope.showSpouseVeteranStatus = function(){
-        if ($scope.$root.answers[category].marital_stat == undefined) {
+        if ($scope.$root.answers[category.currentCategory()].marital_stat == undefined) {
             return false;
         } else {
-            return (($scope.$root.answers[category].marital_stat.code == 'married' || $scope.$root.answers[category].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category].marital_stat.code == 'widowed') && $scope.$root.answers[category].veteran == 'n');
+            return (($scope.$root.answers[category.currentCategory()].marital_stat.code == 'married' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'widowed') && $scope.$root.answers[category.currentCategory()].veteran == 'n');
         }
     }
 
     $scope.showBenefits = function(){
-        if ($scope.$root.answers[category].marital_stat == undefined) {
+        if ($scope.$root.answers[category.currentCategory()].marital_stat == undefined) {
             return false;
         } else {
-            if ((($scope.$root.answers[category].marital_stat.code == 'married' || $scope.$root.answers[category].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category].marital_stat.code == 'widowed') && $scope.$root.answers[category].veteran == 'y')) {
+            if ((($scope.$root.answers[category.currentCategory()].marital_stat.code == 'married' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'widowed') && $scope.$root.answers[category.currentCategory()].veteran == 'y')) {
                 return true;
-            } else if ((($scope.$root.answers[category].marital_stat.code == 'married' || $scope.$root.answers[category].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category].marital_stat.code == 'widowed') && $scope.$root.answers[category].veteran == 'n') && $scope.$root.answers[category].sp_veteran) {
+            } else if ((($scope.$root.answers[category.currentCategory()].marital_stat.code == 'married' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'widowed') && $scope.$root.answers[category.currentCategory()].veteran == 'n') && $scope.$root.answers[category.currentCategory()].sp_veteran) {
                 return true;
-            } else if (($scope.$root.answers[category].marital_stat.code == 'divorced' || $scope.$root.answers[category].marital_stat.code == 'single') && $scope.$root.answers[category].veteran) {
+            } else if (($scope.$root.answers[category.currentCategory()].marital_stat.code == 'divorced' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'single') && $scope.$root.answers[category.currentCategory()].veteran) {
                 return true;
             } else {
                 return false;
@@ -1565,16 +1576,16 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Mont
 
     $scope.addProgram = function(program){
 
-        var benefitindex = $scope.$root.answers[category][program.code];
+        var benefitindex = $scope.$root.answers[category.currentCategory()][program.code];
         if(benefitindex == undefined){
-            $scope.$root.answers[category][program.code] = 'y';
+            $scope.$root.answers[category.currentCategory()][program.code] = 'y';
         }else{
-            delete $scope.$root.$root.answers[category][program.code];
+            delete $scope.$root.$root.answers[category.currentCategory()][program.code];
         }
 
-        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category]) == 0 ? undefined : '1';
+        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
 
-        if (BenefitItems.programsInStructure($scope.$root.answers[category]) == $scope.programs.length) {
+        if (BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == $scope.programs.length) {
             $scope.selectLinkText = "Deselect All";
         } else {
             $scope.selectLinkText = "Select All";
@@ -1582,26 +1593,25 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Mont
     }
 
     $scope.programAdded = function(programCode) {
-        return $scope.$root.$root.answers[category][programCode] != undefined;
+        return $scope.$root.$root.answers[category.currentCategory()][programCode] != undefined;
     }
 
     $scope.selectAll = function(){
-        if(BenefitItems.programsInStructure($scope.$root.answers[category]) == $scope.programs.length){
+        if(BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == $scope.programs.length){
             for (var i=0;i<$scope.programs.length;i++) {
-                delete $scope.$root.$root.answers[category][$scope.programs[i].code];
+                delete $scope.$root.$root.answers[category.currentCategory()][$scope.programs[i].code];
             }
             $('.benefits-selector-repeater').removeClass('checked');
             $scope.selectLinkText = "Select All";
         }else {
             for (var i=0;i<$scope.programs.length;i++) {
-                $scope.$root.answers[category][$scope.programs[i].code] = 'y';
+                $scope.$root.answers[category.currentCategory()][$scope.programs[i].code] = 'y';
             }
             $('.benefits-selector-repeater').addClass('checked');
             $scope.selectLinkText = "Deselect All";
         }
-        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category]) == 0 ? undefined : '1';
+        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
     }
-
 }]);
 
 app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
@@ -2174,6 +2184,33 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
         });
     }
 
+}]);
+
+app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', function($scope, category, AnswersByCategories) {
+
+    $scope.calcDob = function() {
+        if (($scope.$root.answers[category.currentCategory()].dob_month != undefined)&&($scope.$root.answers[category.currentCategory()].dob_year != undefined)) {
+
+            AnswersByCategories.setCategory('dob',category.currentCategory(),'integer');
+
+            $scope.$root.answers[category.currentCategory()].dob = (new Date().getFullYear()) - $scope.$root.answers[category.currentCategory()].dob_year;
+            if ((new Date().getMonth() + 1) >= $scope.$root.answers[$scope.category].dob_month) {
+                $scope.$root.answers[category.currentCategory()].dob = $scope.$root.answers[category.currentCategory()].dob + 1;
+            }
+        }
+    }
+
+    var yearWatch = '$root.answers.'+category.currentCategory()+'.dob_year';
+
+    $scope.$watch(yearWatch, function() {
+        $scope.calcDob();
+    });
+
+    var monthWatch = '$root.answers.'+category.currentCategory()+'.dob_month';
+
+    $scope.$watch(monthWatch, function() {
+        $scope.calcDob();
+    });
 }]);
 
 

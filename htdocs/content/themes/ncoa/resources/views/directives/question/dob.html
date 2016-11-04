@@ -1,4 +1,4 @@
-<div class="dob question-block" ng-show="$root.answers[category].client">
+<div ng-controller="dobController" class="dob question-block" ng-show="$root.answers[category].client">
     <section>
         <p class="question-block-icon question-block-title"><ng-label text="{{question.display}}"></ng-label><button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <select required class="form-control inline" name="dob-month" ng-model="$root.answers[category].dob_month" ng-options="month.name for month in months | orderBy:'id' track by month.id">
