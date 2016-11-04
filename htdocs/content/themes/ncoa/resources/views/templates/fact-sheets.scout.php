@@ -365,7 +365,7 @@ break;
 
 <script type="text/javascript">
 
-$(document).ready(function () {
+jQuery(document).ready(function () {
   //Lynna Cekova: click to call
   var countrycodes = "1"
   var delimiters = "-|\\.|—|–|&nbsp;"

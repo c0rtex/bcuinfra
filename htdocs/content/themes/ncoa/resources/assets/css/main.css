@@ -5119,7 +5119,7 @@ button.close {
 
 .modal-body {
   position: relative;
-  padding: 15px; 
+  padding: 15px;
     max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
@@ -7836,11 +7836,11 @@ header {
         header .header-logo a {
           width: auto; } }
     header .header-logo img {
-      //width: 300px; 
+      //width: 300px;
     }
       @media (min-width: 992px) {
         header .header-logo img {
-          //width: 310px; 
+          //width: 310px;
           } }
     header .header-logo.white-label {
       width: 100%;
@@ -9364,7 +9364,7 @@ grid:last-child .sales-grid {
     border-right: 2px solid #ccc; }
     .home .better-way-benefits .benefits-item:last-child, .page-white-label-homepage .better-way-benefits .benefits-item:last-child {
       border: none; }
-  
+
   .home .better-way-benefits .benefits-item .title-icon{
     padding-top:0;
   }
@@ -9462,7 +9462,7 @@ grid:last-child .sales-grid {
       display: block; }
     .ncoa-carousel .item img {
       max-height: 104px;
-      margin: 0 auto; 
+      margin: 0 auto;
       max-width: 100%;
     }
     .ncoa-carousel .item p {
@@ -10262,10 +10262,8 @@ grid:last-child .sales-grid {
     color: #1888de; }
 
 .fact-sheets-icon-block {
-  margin-left: 20px; }
-  @media (max-width: 991px) {
-    .fact-sheets-icon-block {
-      margin-left: 10px; } }
+  margin-left: 10px;
+  clear: both; }
 
 .fact-sheets-spacer {
   width: 20px;
@@ -10785,12 +10783,12 @@ border-bottom: none;
 
 
 /*remove the arrows from the income and asset grid input boxes*/
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0; 
+    margin: 0;
 }
 
 .header-cta-ncoaLogo{
