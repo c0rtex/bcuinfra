@@ -5,7 +5,7 @@
             <div class="checkbox" ng-repeat="asset in question.answer_fields">
                 <input type="checkbox" name="{{asset.code}}" id="income-cb-{{asset.code}}" ng-model="answer_checked">
                 <label for="income-cb-{{asset.code}}"><span></span><ng-label text="{{asset.display}}"></ng-label></label>
-                <grid ng-show="answer_checked" class="sales-grid" request="finances-assets-grid" code="{{asset.code}}" type="2" description="{{asset.description}}"></grid>
+                <grid answer-field="asset" ng-show="answer_checked" class="sales-grid" request="finances-assets-grid" code="{{asset.code}}" type="2" description="{{asset.description}}"></grid>
             </div>
         </div>
     </section>

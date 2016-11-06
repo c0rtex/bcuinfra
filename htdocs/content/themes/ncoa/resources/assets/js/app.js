@@ -620,7 +620,7 @@ app.directive('ncoaCarousel', [function(){
         }
     }
 }]);
-app.directive('grid', ['$state',function ($state) {
+app.directive('grid', ['$state', 'AnswersByCategories',function ($state, AnswersByCategories) {
     return {
         restrict: 'E',
         scope: {
@@ -628,12 +628,27 @@ app.directive('grid', ['$state',function ($state) {
             description: "@",
             code: "@",
             type: "@",
-            request: "@"
+            request: "@",
+            answer_field: "=answerField"
         },
         templateUrl: '/content/themes/ncoa/resources/views/directives/grid/grid-tpl.html?'+(new Date()),
         link: function (scope, element, attr) {
 
             scope.category = $state.params.category;
+
+            var cat = AnswersByCategories.getCategory('marital_stat');
+
+            scope.isMarital = false;
+
+            if (cat != undefined) {
+                if (scope.$root.answers[cat.category] != undefined) {
+                    if (scope.$root.answers[cat.category].marital_stat != undefined) {
+                        if (scope.$root.answers[cat.category].marital_stat.code == 'married' || scope.$root.answers[cat.category].marital_stat.code == 'widowed') {
+                            scope.isMarital = true;
+                        }
+                    }
+                }
+            }
 
             switch (parseInt(scope.type)) {
                 case 1:
@@ -655,6 +670,51 @@ app.directive('grid', ['$state',function ($state) {
                     scope.household_code="";
                     break;
             }
+
+            scope.calcTotal = function(code) {
+                scope.$root.answers[scope.category][code+"total_complete"] = 0;
+                scope.$root.answers[scope.category][code+"total_unearned"] = 0;
+                for (var i in scope.$root["grid_"+code+"_"+scope.type]) {
+                    if (scope.$root.answers[scope.category][code+i] != undefined) {
+                        scope.$root.answers[scope.category][code + "total_complete"] =
+                            scope.$root.answers[scope.category][code + "total_complete"] +
+                            scope.$root.answers[scope.category][code + i];
+
+                        if (scope.$root["grid_" + code + "_" + scope.type][i] == 0) {
+                            scope.$root.answers[scope.category][code + "total_unearned"] =
+                                scope.$root.answers[scope.category][code + "total_unearned"] +
+                                scope.$root.answers[scope.category][code + i];
+
+                        }
+                    }
+
+                }
+
+            }
+
+            scope.$watch("$root.answers."+scope.category+"."+scope.self_code+scope.answer_field.code,function() {
+                if (scope.$root["grid_"+scope.self_code+"_"+scope.type] == undefined) scope.$root["grid_"+scope.self_code+"_"+scope.type] = {};
+                scope.$root["grid_"+scope.self_code+"_"+scope.type][scope.answer_field.code] = scope.answer_field.earned;
+                scope.calcTotal(scope.self_code);
+            });
+
+            scope.$watch("$root.answers."+scope.category+"."+scope.spouse_code+scope.answer_field.code,function() {
+                if (scope.$root["grid_"+scope.spouse_code+"_"+scope.type] == undefined) scope.$root["grid_"+scope.spouse_code+"_"+scope.type] = {};
+                scope.$root["grid_"+scope.spouse_code+"_"+scope.type][scope.answer_field.code] = scope.answer_field.earned;
+                scope.calcTotal(scope.spouse_code);
+            });
+
+            scope.$watch("$root.answers."+scope.category+"."+scope.joint_code+scope.answer_field.code,function() {
+                if (scope.$root["grid_"+scope.joint_code+"_"+scope.type] == undefined) scope.$root["grid_"+scope.joint_code+"_"+scope.type] = {};
+                scope.$root["grid_"+scope.joint_code+"_"+scope.type][scope.answer_field.code] = scope.answer_field.earned;
+                scope.calcTotal(scope.joint_code);
+            });
+
+            scope.$watch("$root.answers."+scope.category+"."+scope.household_code+scope.answer_field.code,function() {
+                if (scope.$root["grid_"+scope.household_code+"_"+scope.type] == undefined) scope.$root["grid_"+scope.household_code+"_"+scope.type] = {};
+                scope.$root["grid_"+scope.household_code+"_"+scope.type][scope.answer_field.code] = scope.answer_field.earned;
+                scope.calcTotal(scope.household_code);
+            });
         }
     }
 }]);
