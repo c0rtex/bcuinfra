@@ -1282,7 +1282,9 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                             if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
                                 scope.$root.answers[category.currentCategory()].stateId = data.results[0].address_components[i].short_name;
                                 scope.zipCodeLabel = "Update Zip Code";
-                                continue;
+                            } else if ((data.results[0].address_components[i].types.indexOf("administrative_area_level_2") > -1)) {
+
+                                scope.$root.answers[category.currentCategory()].county = data.results[0].address_components[i].short_name.toUpperCase().replace(' COUNTY','');
                             }
                         }
 
