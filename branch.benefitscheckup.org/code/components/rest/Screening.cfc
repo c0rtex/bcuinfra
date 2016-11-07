@@ -154,7 +154,7 @@
                 <cfset sa.setOption(option[1])>
             </cfcase>
 
-            <cfcase value="4,5,6,13,14,23,25,27,29,30,32,33">
+            <cfcase value="5,6,13,14,23,25,27,29,30,32,33">
                 <cfset option = entityload("option",{code="#value#"})>
                 <cfif arraylen(option) neq 0>
                     <cfset sa.setOption(option[1])>
@@ -169,7 +169,7 @@
             </cfcase>
 
             <cfcase value="21">
-                sa.setResponse(value.id);
+                <cfset sa.setResponse(value.id)>;
             </cfcase>
 
             <cfdefaultcase>

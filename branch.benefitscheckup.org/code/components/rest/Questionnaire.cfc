@@ -82,7 +82,7 @@
             <cfset strct = i.toStructure()>
             <cfset strct["display"] = display.expandTextCodes(strct["display"])>
 
-            <cfswitch expression="#i.getCode()#">
+             <cfswitch expression="#i.getCode()#">
 
                 <cfcase value="drugs">
                     <cfset strct["answer_fields"] = this.getDrugList()>
