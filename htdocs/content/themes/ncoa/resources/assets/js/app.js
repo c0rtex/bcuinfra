@@ -1315,7 +1315,7 @@ app.factory('BenefitItems', [function(){
 
     var _BenefitItems = [
         {
-            name: 'Medications',
+            name: 'Medication',
             code: 'bcuqc_category_rx',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg',
             alt: 'Medicine Pills',
@@ -1357,7 +1357,7 @@ app.factory('BenefitItems', [function(){
             title: 'Piggy Bank'
         },
         {
-            name: 'Veteran',
+            name: 'Veterans',
             code: 'bcuqc_category_veteran',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_veteran.svg',
             alt: 'Medal',
@@ -1385,7 +1385,7 @@ app.factory('BenefitItems', [function(){
             title: 'Apple on Book'
         },
         {
-            name: 'Discounts',
+            name: 'Discount',
             code: 'bcuqc_category_discounts',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg',
             alt: 'Percent Off',
