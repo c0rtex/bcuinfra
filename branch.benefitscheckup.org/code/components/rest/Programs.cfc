@@ -720,6 +720,12 @@
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
+	<!--- Default Values --->
+	<cfset sa.pri_resident = 'y'>
+
+        <cfparam name="session.partner_id" default= 0>
+        <cfparam name="session.org_id" default = 0>
+        <cfparam name="session.subset_id" default = 0>
 
         <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
 
