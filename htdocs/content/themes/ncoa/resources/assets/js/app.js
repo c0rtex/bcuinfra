@@ -1317,7 +1317,7 @@ app.factory('BenefitItems', [function(){
 
     var _BenefitItems = [
         {
-            name: 'Medications',
+            name: 'Medication',
             code: 'bcuqc_category_rx',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg',
             alt: 'Medicine Pills',
@@ -1359,7 +1359,7 @@ app.factory('BenefitItems', [function(){
             title: 'Piggy Bank'
         },
         {
-            name: 'Veteran',
+            name: 'Veterans',
             code: 'bcuqc_category_veteran',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_veteran.svg',
             alt: 'Medal',
@@ -1387,7 +1387,7 @@ app.factory('BenefitItems', [function(){
             title: 'Apple on Book'
         },
         {
-            name: 'Discounts',
+            name: 'Discount',
             code: 'bcuqc_category_discounts',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg',
             alt: 'Percent Off',
@@ -1939,13 +1939,13 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
         value: 0,
     });
 
-    var foundCount = 0;
+    $scope.foundCount = 0;
 
     for (var i=0; i<prescreen.data.results.found_programs.length; i++) {
-        foundCount = foundCount + prescreen.data.results.found_programs[i].count;
+        $scope.foundCount = $scope.foundCount + prescreen.data.results.found_programs[i].count;
     }
 
-    od.update(foundCount);
+    od.update($scope.foundCount);
 }]);
 
 app.controller('questionnaireBasicController', ['$scope','$state', 'questionnaire', function($scope, $state, questionnaire){
@@ -2136,14 +2136,13 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
         });
     });
 
-    var foundCount = 0;
+    $scope.foundCount = 0;
 
     for (var i=0; i<prescreen.data.results.found_programs.length; i++) {
-        foundCount = foundCount + prescreen.data.results.found_programs[i].count;
+        $scope.foundCount = $scope.foundCount + prescreen.data.results.found_programs[i].count;
     }
 
-    od.update(foundCount);
-
+    od.update($scope.foundCount);
 
     document.querySelector('.page-wrapper h1').scrollIntoView();
 
