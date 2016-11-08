@@ -1012,6 +1012,9 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
         link: function(scope,element,ngShow) {
 
             for (var i=0; i<scope.question.answer_fields.length;i++) {
+                if ((scope.question.answer_fields[i].default != undefined) && (scope.$root.answers[category.currentCategory()][scope.question.answer_fields[i].code] == undefined)) {
+                    scope.$root.answers[category.currentCategory()][scope.question.answer_fields[i].code] = scope.question.answer_fields[i].default;
+                }
                 AnswersByCategories.setCategory(scope.question.answer_fields[i].code,category.currentCategory(),scope.question.answer_fields[i].type);
             }
 
