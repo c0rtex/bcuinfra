@@ -748,6 +748,7 @@
                     <cfset strRule = Replace(rule.getRule_text(), "gteq", "gte", "ALL")>
                     <cfset strRule = Replace(strRule, "lteq", "lte", "ALL")>
                     <cfset strRule = Replace(strRule, "XX[" , "[", "ALL")>
+                    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")>
 
                     <cfif FINDNOCASE("BuyInQI2asset", strRule, 1) NEQ 0>
                         <cfif structKeyExists(sa,'skipassets') and sa.skipassets EQ "n">
