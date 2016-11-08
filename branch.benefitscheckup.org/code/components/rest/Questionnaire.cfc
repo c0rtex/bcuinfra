@@ -185,7 +185,24 @@
         <cfset answers = ormExecuteQuery("select a from question_answer_field qaf join qaf.answer a where qaf.question=? and (a.state is null or a.state=?) order by qaf.sort",[question,state])>
         <cfset var retArray = arrayNew(1)>
         <cfloop array="#answers#" index="i">
-            <cfset arrayAppend(retArray,i.toStructure())>
+            <cfset var afStrct = i.toStructure()>
+            <cfif !isNull(i.getDefault_value())>
+                <cfset defOpt = ormexecutequery("from option where id=?",[i.getDefault_value()])>
+                <cfif arraylen(defOpt) neq 0>
+                    <cfset afStrct['default'] = defOpt[1].toStructure()>
+                <cfelse>
+                    <cfif (afStrct["type"] eq 'yn')>
+                        <cfif i.getDefault_value() eq 1>
+                            <cfset afStrct['default'] = 'y'>
+                        <cfelse>
+                            <cfset afStrct['default'] = 'n'>
+                        </cfif>
+                    <cfelse>
+                        <cfset afStrct['default'] = i.getDefault_value()>
+                    </cfif>
+                </cfif>
+            </cfif>
+            <cfset arrayAppend(retArray,afStrct)>
         </cfloop>
         <cfreturn retArray>
     </cffunction>
