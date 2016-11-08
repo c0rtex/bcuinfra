@@ -1,4 +1,4 @@
-<cfabort>
+
 <cfset subset_id = 0>
 <cfset new_subset_id = 101>
 <cfquery name="statequery" datasource="dbSrc  ">
