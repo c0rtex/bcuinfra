@@ -1621,19 +1621,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 
     $scope.showBenefits = function(){
-        if ($scope.$root.answers[category.currentCategory()].marital_stat == undefined) {
-            return false;
-        } else {
-            if ((($scope.$root.answers[category.currentCategory()].marital_stat.code == 'married' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'widowed') && $scope.$root.answers[category.currentCategory()].veteran == 'y')) {
-                return true;
-            } else if ((($scope.$root.answers[category.currentCategory()].marital_stat.code == 'married' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'married_living_sep' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'widowed') && $scope.$root.answers[category.currentCategory()].veteran == 'n') && $scope.$root.answers[category.currentCategory()].sp_veteran) {
-                return true;
-            } else if (($scope.$root.answers[category.currentCategory()].marital_stat.code == 'divorced' || $scope.$root.answers[category.currentCategory()].marital_stat.code == 'single') && $scope.$root.answers[category.currentCategory()].veteran) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        return $scope.$root.answers[category.currentCategory()].veteran != undefined;
     }
 
     $scope.addProgram = function(program){
