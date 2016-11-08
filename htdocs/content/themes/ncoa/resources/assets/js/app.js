@@ -1307,6 +1307,14 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                 }
                 scope.$parent.zipCodeUpdated=true;
             }
+
+            if (scope.$root.answers != undefined) {
+                if (scope.$root.answers[category.currentCategory()] != undefined) {
+                    if (scope.$root.answers[category.currentCategory()].zipcode != undefined) {
+                        scope.updateZip();
+                    }
+                }
+            }
         }
     }
 }]);
@@ -1633,7 +1641,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
             delete $scope.$root.$root.answers[category.currentCategory()][program.code];
         }
 
-        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
+        $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
 
         if (BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == $scope.programs.length) {
             $scope.selectLinkText = "Deselect All";
@@ -1660,7 +1668,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
             $('.benefits-selector-repeater').addClass('checked');
             $scope.selectLinkText = "Deselect All";
         }
-        $scope.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
+        $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
     }
 }]);
 
@@ -1681,6 +1689,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     $scope.canContinue = true;
     $scope.showquestions = false;
     $scope.$root.prescreen.showCTA = true;
+    $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
     $scope.submitPrescreen = function() {
 
@@ -1873,18 +1882,6 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
                     }
                 }, 500);
             }
-        }
-    });
-
-    $scope.$watch('$root.answers.'+$scope.category+'sp_veteran', function(){
-        if(($scope.$root.answers[$scope.category].sp_veteran != undefined) && !$('.benefits').is(":visible")){
-            $scope.sibmitDisabled = false;
-            setTimeout(function(){
-                var test = document.querySelector('.benefits');
-                $('html,body').animate({
-                    scrollTop: $(test).offset().top-100 + 'px'
-                }, 500);
-            }, 500);
         }
     });
 
