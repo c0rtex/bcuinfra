@@ -107,10 +107,14 @@
               @if($value["answer"] === 'documents_needed')
               <div class="programs-container program-p">
             <ul class="fact-sheets-list">
-          @foreach($required_materials as $ekey => $evalue)
-
-          <li><a href="" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
-          @endforeach
+            @if (empty($required_materials))
+                <li>There are no required materials needed for this program.</li>
+            @else
+                @foreach($required_materials as $ekey => $evalue)
+                    <li><a href="" data-toggle="popover" data-html="true" class="popover-rm" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
+                @endforeach
+                <script type="text/javascript-lazy">$('.popover-r').popover();</script>
+          @endif
         </ul>
 
               </div>
