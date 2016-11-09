@@ -1349,14 +1349,14 @@ app.factory('BenefitItems', [function(){
             title: 'Money'
         },
         {
-            name: 'Food and Nutrition',
+            name: 'Food &amp; Nutrition',
             code: 'bcuqc_category_nutrition',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
             title: 'Basket of Food'
         },
         {
-            name: 'Housing and Utilities',
+            name: 'Housing &amp; Utilities',
             code: 'bcuqc_category_utility',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
