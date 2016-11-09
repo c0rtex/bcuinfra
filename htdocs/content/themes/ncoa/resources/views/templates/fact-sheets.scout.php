@@ -113,7 +113,7 @@
                 @foreach($required_materials as $ekey => $evalue)
                     <li><a href="" data-toggle="popover" data-html="true" class="popover-rm" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
                 @endforeach
-                <script type="text/javascript-lazy">$('.popover-r').popover();</script>
+                <script type="text/javascript-lazy">$('.popover-rm').popover();</script>
           @endif
         </ul>
 
