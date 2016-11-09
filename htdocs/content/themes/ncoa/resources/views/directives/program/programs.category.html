@@ -3,7 +3,7 @@
         <span ng-if="found_program.count==1">{{benefitItem.name}} Benefits: {{found_program.count}} Program</span>
         <span ng-if="found_program.count>1 || found_program.count==0">{{benefitItem.name}} Benefits: {{found_program.count}} Programs</span>
     </div>
-    <div class="programs-container" ng-if="found_program.count>1">
+    <div class="programs-container" ng-if="found_program.count>0">
         <ul class="programs" ng-repeat="program in found_program.programs">
             <li>
               <h4 ng-bind-html="program.name_display | unsafe"></h4>
