@@ -1711,7 +1711,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
         prescreen.data.screenData.marital_status = $scope.$root.answers[$scope.category].marital_stat.display;
 
-        prescreen.data.screenData.veteran = (($scope.$root.answers[$scope.category].veteran == "y") || ($scope.$root.answers[$scope.category].sp_veteran == "y")) ? "Yes" : "No";
+        prescreen.data.screenData.veteran = $scope.$root.answers[$scope.category].veteran == "y" ? "Yes" : "No";
 
         prescreen.data.screenData.benefits_categories = [];
         prescreen.data.screenData.benefits_categories_codes = [];
