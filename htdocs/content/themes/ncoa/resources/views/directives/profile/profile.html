@@ -18,7 +18,7 @@
 		<li><strong>Marital status: </strong>{{screenData.marital_status}}</li>
 		<li><strong>Veteran: </strong>{{screenData.veteran}}</li>
 		<li class="categoreis"><strong>Benefits Categories: </strong>
-			<span ng-repeat="benefit in screenData.benefits_categories">{{benefit}}</span>
+			<span ng-repeat="benefit in screenData.benefits_categories | orderBy:'sort'">{{benefit.name}}</span>
 		</li>
 	</ul>
 </section>

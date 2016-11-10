@@ -1336,84 +1336,96 @@ app.factory('BenefitItems', [function(){
             code: 'bcuqc_category_rx',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg',
             alt: 'Medicine Pills',
-            title: 'Medicine Pills'
+            title: 'Medicine Pills',
+            sort: 5
         },
         {
             name: 'Healthcare',
             code: 'bcuqc_category_medicaid',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_health.svg',
             alt: 'Doctor Symbols',
-            title: 'Doctor Symbol'
+            title: 'Doctor Symbol',
+            sort: 2
         },
         {
             name: 'Income Assistance',
             code: 'bcuqc_category_income',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_income.svg',
             alt: 'Money',
-            title: 'Money'
+            title: 'Money',
+            sort: 4
         },
         {
-            name: 'Food & Nutrition',
+            name: 'Food and Nutrition',
             code: 'bcuqc_category_nutrition',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
-            title: 'Basket of Food'
+            title: 'Basket of Food',
+            sort: 1
         },
         {
-            name: 'Housing & Utilities',
+            name: 'Housing and Utilities',
             code: 'bcuqc_category_utility',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
-            title: 'House'
+            title: 'House',
+            sort: 3
         },
         {
             name: 'Tax Relief',
             code: 'bcuqc_category_property_taxrelief',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_taxRelief.svg',
             alt: 'Piggy Bank',
-            title: 'Piggy Bank'
+            title: 'Piggy Bank',
+            sort: 6
         },
         {
             name: 'Veterans',
             code: 'bcuqc_category_veteran',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_veteran.svg',
             alt: 'Medal',
-            title: 'Medal'
+            title: 'Medal',
+            sort: 7
         },
         {
             name: 'Employment',
             code: 'bcuqc_category_employment',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_employment.svg',
             alt: 'Briefcase',
-            title: 'Briefcase'
+            title: 'Briefcase',
+            sort: 8
         },
         {
             name: 'Transportation',
             code: 'bcuqc_category_transportation',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_transportation.svg',
             alt: 'Automobile',
-            title: 'Automobile'
+            title: 'Automobile',
+            sort: 12
         },
         {
             name: 'Education',
             code: 'bcuqc_category_education',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_education.svg',
             alt: 'Apple on Book',
-            title: 'Apple on Book'
+            title: 'Apple on Book',
+            sort: 11
         },
         {
             name: 'Discount',
             code: 'bcuqc_category_discounts',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg',
             alt: 'Percent Off',
-            title: 'Percent Off'
+            title: 'Percent Off',
+            sort: 10
         },
         {
             name: 'Other Assistance',
             code: 'bcuqc_category_other_assistance',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_assistance.svg',
             alt: 'Information',
-            title: 'Information'
+            title: 'Information',
+            sort: 9
         }
     ];
 
@@ -1722,7 +1734,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
         for (var programCatCode in $scope.$root.answers[$scope.category]) {
             if (BenefitItems.getByCode(programCatCode) != undefined) {
-                prescreen.data.screenData.benefits_categories.push(BenefitItems.getByCode(programCatCode).name);
+                prescreen.data.screenData.benefits_categories.push(BenefitItems.getByCode(programCatCode));
                 prescreen.data.screenData.benefits_categories_codes.push(programCatCode);
             }
         }
