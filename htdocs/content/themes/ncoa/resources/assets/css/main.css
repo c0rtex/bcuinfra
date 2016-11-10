@@ -2802,6 +2802,8 @@ select[multiple].input-lg,
     padding-top: 6px;
     font-size: 12px; } }
 
+
+
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -7679,6 +7681,11 @@ body {
 
 .bold, body .form-control, body .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search body .zipcode-formatted, .bold-h3, .modal-close span, #details-modal h2, .benefits-slider-circle-nav > div span, .benefits-slider-carousel .row h3, .fact-sheets-side-header, .about-section h2, .about-how-works h2, .about-how-works h3, .page-white-label-homepage .white-label-section h3 {
   font-weight: 700; }
+
+  .normal-bold{
+    font-weight: 700;
+    color: #444;
+  }
 
 .orange-bold {
   font-weight: 700;
