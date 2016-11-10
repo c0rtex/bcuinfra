@@ -1349,14 +1349,14 @@ app.factory('BenefitItems', [function(){
             title: 'Money'
         },
         {
-            name: 'Food &amp; Nutrition',
+            name: 'Food & Nutrition',
             code: 'bcuqc_category_nutrition',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
             title: 'Basket of Food'
         },
         {
-            name: 'Housing &amp; Utilities',
+            name: 'Housing & Utilities',
             code: 'bcuqc_category_utility',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
@@ -2136,7 +2136,7 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
 }]);
 
-app.directive('divProgramsCategory',['BenefitItems', 'prescreen', function(BenefitItems,prescreen) {
+app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
     return {
         restrict: 'E',
         templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
