@@ -71,7 +71,7 @@
 			        <img ng-src="/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg">
 			      </div>
 			      <div class="icon-panel-selector-label">
-			        <div class="label-inner ng-binding">Medications</div>
+			        <div class="label-inner ng-binding">Medication</div>
 			      </div>
 			    </div>
 		  	</div>
@@ -85,7 +85,7 @@
 			        <img ng-src="/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg">
 			      </div>
 			      <div class="icon-panel-selector-label">
-			        <div class="label-inner ng-binding">Medications</div>
+			        <div class="label-inner ng-binding">Medication</div>
 			      </div>
 			    </div>
 		  	</div>
@@ -100,7 +100,7 @@
 
 	<div class="program-slide-down col-md-9">
 		<section class="program medicine" slide-down>
-			<div class="program-header hover-shade"><span>Medications Benefits: 3 Programs</span></div>
+			<div class="program-header hover-shade"><span>Medication Benefits: 3 Programs</span></div>
 			<div class="programs-container" style="display: block;">
 				<ul class="programs">
 					<li>

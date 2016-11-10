@@ -1,7 +1,10 @@
-<section class="program {{found_program.category}}" slide-down>
+<section class="program" slide-down>
     <div class="program-header hover-shade">
+        <img ng-src="{{benefitItem.image}}" width="55" height="55" alt="{{benefitItem.name}}" title="{{benefitItem.name}}" />
         <span ng-if="found_program.count==1">{{benefitItem.name}} Benefits: {{found_program.count}} Program</span>
-        <span ng-if="found_program.count>1 || found_program.count==0">{{benefitItem.name}} Benefits: {{found_program.count}} Programs</span>
+        <span ng-if="found_program.count>1 || found_program.count==0">
+            {{benefitItem.name}} Benefits: {{found_program.count}} Programs
+        </span>
     </div>
     <div class="programs-container" ng-if="found_program.count>0">
         <ul class="programs" ng-repeat="program in found_program.programs">

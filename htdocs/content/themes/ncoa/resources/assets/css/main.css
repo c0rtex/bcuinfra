@@ -2802,6 +2802,8 @@ select[multiple].input-lg,
     padding-top: 6px;
     font-size: 12px; } }
 
+
+
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -7680,6 +7682,11 @@ body {
 .bold, body .form-control, body .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search body .zipcode-formatted, .bold-h3, .modal-close span, #details-modal h2, .benefits-slider-circle-nav > div span, .benefits-slider-carousel .row h3, .fact-sheets-side-header, .about-section h2, .about-how-works h2, .about-how-works h3, .page-white-label-homepage .white-label-section h3 {
   font-weight: 700; }
 
+  .normal-bold{
+    font-weight: 700;
+    color: #444;
+  }
+
 .orange-bold {
   font-weight: 700;
   color: #F4640A; }
@@ -8737,36 +8744,59 @@ grid:last-child .sales-grid {
   .program .program-header {
     padding: 0 20px;
     border-top-left-radius: 8px;
-    border-top-right-radius: 8px; }
+    border-top-right-radius: 8px; 
+  }
     .program .program-header span {
       font-family: "interface",sans-serif;
-      padding: 15px 0 10px 70px;
+      /*padding: 15px 0 10px 70px;*/
+      padding: 10px 0 10px;
       font-weight: 700;
       display: block;
       font-size: 1.222em;
       color: #333333;
-      line-height: 1.3; }
+      line-height: 1.3; 
+      width: 90%;
+
+    }
+    .program .program-header img{
+      display:none;
+    }
       .program .program-header span:after {
         content: '\e080';
         font-family: 'Glyphicons Halflings';
-        display: inline-block;
-        float: right;
+        position: absolute;
+        top:50%;
+        right: 20px;
         color: #1888de;
-        -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
+        -ms-transform: translateY(-50%) rotate(90deg);
+            transform: translateY(-50%) rotate(90deg);
         transition: transform 200ms linear;
-        vertical-align: middle; }
+      }
       @media (min-width: 480px) {
         .program .program-header span {
-          padding: 30px 0 20px 70px;
-          line-height: 1.667em; } }
+          padding: 30px 0 20px 10px;
+          line-height: 1.667em; 
+          display: inline-block;
+          vertical-align: middle;
+          width:60%;
+        }
+        .program .program-header img{
+          display: inline-block;
+          vertical-align: middle;
+        } 
+      }
+      @media (min-width: 768px) {
+        .program .program-header span{
+          width:80%;
+        }
+      }
     .program .program-header:hover {
       cursor: pointer; }
   .program.active .program-header {
     background-color: #F9F9F9; }
     .program.active .program-header span:after {
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg); }
+      -ms-transform: translateY(-50%) rotate(-90deg);
+          transform: translateY(-50%) rotate(-90deg); }
 
   .program.bcuqc_category_rx .program-header span {
     background: url(../images/categories/category_medicine.svg) no-repeat left center;
@@ -10850,7 +10880,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 7px;
   border-bottom-right-radius: 1px;
   border-top-right-radius: 1px;
 }
@@ -10861,7 +10891,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   width: 70px;
   right: 0;
   top: 0;
-  height: 4px;
+  height: 7px;
   opacity: .45;
   -moz-box-shadow: #29d 1px 0 6px 1px;
   -ms-box-shadow: #29d 1px 0 6px 1px;

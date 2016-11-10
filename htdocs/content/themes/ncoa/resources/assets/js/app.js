@@ -1,5 +1,9 @@
 ﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
 
+app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+}]);
+
 // Use sessionStorage instead of localStorage
 app.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -208,9 +212,9 @@ app.directive('selector',[function(){
 }]);
 
 app.factory('Months',[function(){
-	return [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
-			{id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
-			{id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
+    return [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
+        {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
+        {id:9,name:"September"},{id:10,name:"October"},{id:11,name:"November"},{id:12,name:"December"}];
 }]);
 
 app.factory('CronicConditions', [function(){
@@ -1349,14 +1353,14 @@ app.factory('BenefitItems', [function(){
             title: 'Money'
         },
         {
-            name: 'Food and Nutrition',
+            name: 'Food & Nutrition',
             code: 'bcuqc_category_nutrition',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
             title: 'Basket of Food'
         },
         {
-            name: 'Housing and Utilities',
+            name: 'Housing & Utilities',
             code: 'bcuqc_category_utility',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
@@ -2136,7 +2140,7 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
 }]);
 
-app.directive('divProgramsCategory',['BenefitItems', 'prescreen', function(BenefitItems,prescreen) {
+app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
     return {
         restrict: 'E',
         templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
