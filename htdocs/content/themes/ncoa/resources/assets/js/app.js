@@ -676,6 +676,7 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
             }
 
             scope.calcTotal = function(code) {
+                if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
                 scope.$root.answers[scope.category][code+"total_complete"] = 0;
                 scope.$root.answers[scope.category][code+"total_unearned"] = 0;
                 for (var i in scope.$root["grid_"+code+"_"+scope.type]) {
@@ -1337,7 +1338,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg',
             alt: 'Medicine Pills',
             title: 'Medicine Pills',
-            sort: 5
+            sort: 3
         },
         {
             name: 'Healthcare',
@@ -1345,7 +1346,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_health.svg',
             alt: 'Doctor Symbols',
             title: 'Doctor Symbol',
-            sort: 2
+            sort: 1
         },
         {
             name: 'Income Assistance',
@@ -1353,7 +1354,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_income.svg',
             alt: 'Money',
             title: 'Money',
-            sort: 4
+            sort: 2
         },
         {
             name: 'Food and Nutrition',
@@ -1361,7 +1362,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
             title: 'Basket of Food',
-            sort: 1
+            sort: 4
         },
         {
             name: 'Housing and Utilities',
@@ -1369,7 +1370,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
             title: 'House',
-            sort: 3
+            sort: 5
         },
         {
             name: 'Tax Relief',
@@ -1393,7 +1394,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_employment.svg',
             alt: 'Briefcase',
             title: 'Briefcase',
-            sort: 8
+            sort: 12
         },
         {
             name: 'Transportation',
@@ -1401,7 +1402,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_transportation.svg',
             alt: 'Automobile',
             title: 'Automobile',
-            sort: 12
+            sort: 8
         },
         {
             name: 'Education',
@@ -1409,7 +1410,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_education.svg',
             alt: 'Apple on Book',
             title: 'Apple on Book',
-            sort: 11
+            sort: 9
         },
         {
             name: 'Discount',
@@ -1425,7 +1426,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_assistance.svg',
             alt: 'Information',
             title: 'Information',
-            sort: 9
+            sort: 11
         }
     ];
 

@@ -16,7 +16,7 @@
 
     <p>Select a category to learn more:</p>
     <div class="more-benefits">
-		<span ng-repeat="found_program in found_programs">
+		<span ng-repeat="found_program in found_programs  | orderBy:'sort'">
 			<div-programs-category short="y" found_program="found_program"></div-programs-category>
 		</span>
     </div>

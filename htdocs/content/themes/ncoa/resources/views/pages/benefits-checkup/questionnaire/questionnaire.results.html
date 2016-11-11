@@ -20,7 +20,7 @@
 		<h3><strong>More Benefit Programs</strong></h3>
 		<p>Select a category to see the benefits you may qualify for.</p>
 		<div class="more-benefits">
-			<span ng-repeat="found_program in found_programs">
+			<span ng-repeat="found_program in found_programs  | orderBy:'sort'">
 				<div-programs-category short="n" found_program="found_program"></div-programs-category>
 			</span>
 		</div>
