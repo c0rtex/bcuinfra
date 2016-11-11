@@ -296,19 +296,27 @@
         <cfset outstr = "<b>#entryPoint.getName()#</b><br />">
 
         <cfif not isNull(entryPoint.getSub_name())>
+            <cfif entryPoint.getSub_name() neq ''>
             <cfset outstr = outstr & "#entryPoint.getSub_name()#<br />">
+            </cfif>
         </cfif>
 
         <cfif not isNull(entryPoint.getAddress1())>
+            <cfif entryPoint.getAddress1() neq ''>
             <cfset outstr = outstr & "#entryPoint.getAddress1()#<br />">
+            </cfif>
         </cfif>
 
         <cfif not isNull(entryPoint.getAddress2())>
+            <cfif entryPoint.getAddress2() neq ''>
             <cfset outstr = outstr & "#entryPoint.getAddress2()#<br />">
+            </cfif>
         </cfif>
 
         <cfif not isNull(entryPoint.getAddress3())>
+            <cfif entryPoint.getAddress3() neq ''>
             <cfset outstr = outstr & "#entryPoint.getAddress3()#<br />">
+            </cfif>
         </cfif>
 
         <cfif not isNull(entryPoint.getCity()) and not isNull(entryPoint.getState())>
@@ -327,11 +335,15 @@
         </cfloop>
 
         <cfif not isNull(entryPoint.getEmail())>
+            <cfif entryPoint.getEmail() neq ''>
             <cfset outstr = outstr & "Email: <a href=""mailto:#entryPoint.getEmail()#"">#entryPoint.getEmail()#</a><br />">
+            </cfif>
         </cfif>
 
         <cfif not isNull(entryPoint.getUrl())>
+            <cfif entryPoint.getUrl() neq ''>
             <cfset outstr = outstr & "Website: <a href=""#entryPoint.getUrl()#"" target=""_blank"">#entryPoint.getUrl()#</a><br />">
+            </cfif>
         </cfif>
 
         <!--- <cfif not isNull(entryPoint.getHours_display())>
