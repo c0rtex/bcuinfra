@@ -8567,7 +8567,7 @@ grid:last-child .sales-grid {
       border-radius: 0;
       border-width: 2px; }
     .crumb-trails .btn-breadcrumb > div {
-      cursor: pointer; }
+      cursor: auto; }
     .crumb-trails .btn-breadcrumb.basics .btn:first-child {
       background-color: #1888de;
       color: #fff; }
