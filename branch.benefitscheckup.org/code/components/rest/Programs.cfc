@@ -76,8 +76,7 @@
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by p.key_program, p.sort",[screening])>
-
+        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by sc.sort, p.key_program, p.sort",[screening])>
 
         <cfset programsByCategories = structNew()>
 
@@ -87,6 +86,7 @@
                 <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
             <cfelse>
                 <cfset programsByCategories[i[2]] = structNew()>
+                <cfset programsByCategories[i[2]]["sort"] = i[3]>
                 <cfset programsByCategories[i[2]]["count"] = 1>
                 <cfset programsByCategories[i[2]]["programs"] = arrayNew(1)>
                 <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
@@ -97,6 +97,7 @@
 
         <cfloop collection="#programsByCategories#" item="category">
             <cfset categoryItem = structNew()>
+            <cfset categoryItem['sort'] = programsByCategories[category].sort>
             <cfset categoryItem['category'] = category>
             <cfset categoryItem['count'] = programsByCategories[category].count>
             <cfset categoryItem['programs'] = programsByCategories[category].programs>

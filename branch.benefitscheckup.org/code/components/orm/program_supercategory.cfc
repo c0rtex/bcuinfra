@@ -18,4 +18,5 @@
     <cfproperty name="name" column="category_name">
 	<cfproperty name="iconcode">
 	<cfproperty name="answerfieldcode">
+	<cfproperty name="sort">
 </cfcomponent>
