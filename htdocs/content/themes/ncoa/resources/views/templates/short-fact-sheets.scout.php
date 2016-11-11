@@ -83,6 +83,16 @@
                         {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
                     </div>
                     @endif
+                    <?php
+                    $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
+                    ?>
+                    @if(!empty($programUrl))
+                    <div class="results-options">
+                        <span class="fact-sheets-side-header">Quick Links</span>
+
+                        <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
+                    </div>
+                    @endif
                 </div>
 
                 <!-- Mobile -->
