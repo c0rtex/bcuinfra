@@ -864,7 +864,7 @@ app.directive('ncoaPrograms',[function(){
 
 }]);
 
-app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($state, prescreen, screening, saveScreening, ScreeningRoutes){
+app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($rootScope, $state, prescreen, screening, saveScreening, ScreeningRoutes){
     return {
         link: function (scope, elm) {
 
@@ -902,6 +902,8 @@ app.directive('pageSwitch',['$state', 'prescreen', 'screening', 'saveScreening',
 
                     if (stateName == "questionnaire.loader") {
                         request.lastSet = "true";
+                        $rootScope.showLoader = true;
+                        document.querySelector('.container').scrollIntoView();
                     }
 
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
@@ -1695,6 +1697,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
 app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
 
     $scope.category = "prescreen";
+    $scope.showLoader = false;
 
     if(prescreen.data.questions == undefined) $state.transitionTo('prescreen');
 
@@ -1712,6 +1715,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
     $scope.submitPrescreen = function() {
+        $scope.showLoader = true;
+        document.querySelector('.container').scrollIntoView();
 
         $scope.sibmitDisabled = true;
 
@@ -2004,7 +2009,9 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 
 }]);
 
-app.controller('screeningController', ['$scope', '$state', 'prescreen', 'screening', 'screeningQuestions', function($scope, $state, prescreen, screening, screeningQuestions){
+app.controller('screeningController', ['$rootScope', '$scope', '$state', 'prescreen', 'screening', 'screeningQuestions', function($rootScope, $scope, $state, prescreen, screening, screeningQuestions){
+
+    $rootScope.showLoader = false;
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = screening.data.answers;
