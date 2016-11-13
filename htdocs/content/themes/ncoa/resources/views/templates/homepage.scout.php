@@ -7,11 +7,13 @@
 			<section class="hero find-my-benefits cta-hero row">
 				<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
 					<h1>{{ $headline }}</h1>
-					<div class="zip-code form-inline" ng-controller="zipCodeController">
+					<form ng-submit="findZip(zipcode)" ng-controller="zipCodeController">
+					<div class="zip-code form-inline">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
 						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
 					</div>
+					</form>
 				</div>
 			</section>
 
