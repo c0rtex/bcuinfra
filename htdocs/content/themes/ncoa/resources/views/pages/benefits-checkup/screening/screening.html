@@ -1,5 +1,5 @@
 <h1>Find My Benefits</h1>
-<div class="card questionnaire">
+<div class="card questionnaire" ng-show="showLoader!=true">
 	<div class="card-nested">
 		<div breadcrumb class="breadcrumbs" ng-hide="hideBreadCrumbs"></div>
 		<div class="row">
@@ -20,4 +20,9 @@
 		<button class="btn btn-link btn-back pull-left" ng-click="switchPage(prev)">Back</button>
 		<button class="btn btn-primary pull-right" ng-hide="isResults" ng-click="switchPage(next)">Continue</button>
 	</div>
+</div>
+<div class="card questionnaire" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">
+    <div class="card-nested" style="padding: 0;">
+        <ncoa-loader></ncoa-loader>
+    </div>
 </div>

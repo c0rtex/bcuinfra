@@ -76,13 +76,24 @@
                 </div>
 
                 <div class="col-md-3 hidden-xs hidden-sm">
+                    <?php
+                    $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
+                    ?>
+                    @if(!empty($programUrl))
+                    <div class="results-options">
+                        <span class="fact-sheets-side-header">Quick Links</span>
+
+                        <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
+                    </div>
+                    @endif
+
                     @if(strlen(Meta::get(Loop::id(), $key = 'body-copy', $single = true))>0)
                     <div class="results-options">
                         <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
                         <br />
                         {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
                     </div>
-                    @endif
+                    @endif  
                 </div>
 
                 <!-- Mobile -->
