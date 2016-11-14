@@ -89,7 +89,7 @@
 
     <div class="fluid-container">
       <div class="blue-background cta-full">
-        <h1>Discover your benefits today.</h1>
+        <h1>Discover your benefits today</h1>
           <div class="zip-code form-inline" ng-controller="zipCodeController">
             <input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
             <button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
