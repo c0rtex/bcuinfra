@@ -8744,7 +8744,8 @@ grid:last-child .sales-grid {
   .program .program-header {
     padding: 0 20px;
     border-top-left-radius: 8px;
-    border-top-right-radius: 8px; 
+    border-top-right-radius: 8px;
+    position: relative;
   }
     .program .program-header span {
       font-family: "interface",sans-serif;
