@@ -26,7 +26,7 @@
 							array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
 						}}
 						<figcaption>
-							<p>"{{ $testimonials[$key]["testimonial-quote"] }}"</p>
+							<p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
 							<span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
 						</figcaption>
 					</figure>

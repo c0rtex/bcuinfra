@@ -23,7 +23,7 @@
             <figure class="testimonial col-xs-12 col-sm-4">
               <img src="<?php echo wp_get_attachment_image_src($testimonials[$key]["testimonial-image"], 'full')[0] ?>" />
               <figcaption>
-                <p>"{{ $testimonials[$key]["testimonial-quote"] }}"</p>
+                <p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
                 <span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
               </figcaption>
             </figure>
