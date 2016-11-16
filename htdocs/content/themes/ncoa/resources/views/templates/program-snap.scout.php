@@ -18,7 +18,7 @@
     <div class="card-nested row">
       <div class="col-xs-12">
         <div class="fact-sheet-icon-hdr">
-          <span class="icon-block-healthcare pull-left"></span>
+          <span class="icon-block-food pull-left"></span>
           <div class="pull-left">
             <div class="fact-sheets-header fact-sheets-top-header">Food &amp; Nutrition</div>
             <div class="fact-sheets-header fact-sheets-bottom-header">Supplemental Nutrition Assistance Program (SNAP)</div>

@@ -10260,6 +10260,16 @@ grid:last-child .sales-grid {
     .icon-block-healthcare {
       margin-left: 5px; } }
 
+.icon-block-food {
+  background: url(../images/categories/category_food.svg) no-repeat top center;
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px; }
+@media (max-width: 991px) {
+  .icon-block-food {
+    margin-left: 5px; } }
+
 .fact-sheets-top-header {
   font-weight: bold;
   font-size: 18px; }
