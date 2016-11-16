@@ -10,7 +10,7 @@
                     <span class="super-footer-spacer">|</span> -->
                     <span class="super-footer-link"><a href="/privacy-policy">Privacy Policy</a></span>
                     <span class="super-footer-spacer">|</span>
-                    <span class="super-footer-link"><a href="#">Terms of Use</a></span>
+                    <span class="super-footer-link"><a href="/terms-of-use/">Terms of Use</a></span>
                     <span class="super-footer-spacer">|</span>
                     <span class="super-footer-link"><a href="mailto:comments@benefitscheckup.org">Feedback</a></span>
                     <span class="super-footer-spacer">|</span>
