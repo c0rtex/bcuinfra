@@ -9,7 +9,7 @@ class ResourcesController extends BaseController
   public function __construct()
   {
     // Do something
-    $this->states = array(
+    $this->states_codes = array(
       'AL'=>'ALABAMA',
       'AK'=>'ALASKA',
       'AZ'=>'ARIZONA',
@@ -64,6 +64,63 @@ class ResourcesController extends BaseController
       'WV'=>'WEST VIRGINIA',
       'WI'=>'WISCONSIN',
       'WY'=>'WYOMING'
+    );
+
+    $this->states = array(
+      '/fact-sheets/factsheet_nutrition_al_snap_program/'=>'ALABAMA',
+      '/fact-sheets/factsheet_nutrition_ak_snap_program/'=>'ALASKA',
+      '/fact-sheets/factsheet_nutrition_az_snap_program/'=>'ARIZONA',
+      '/fact-sheets/factsheet_nutrition_ar_snap_program/'=>'ARKANSAS',
+      '/fact-sheets/factsheet_nutrition_ca_snap_program/'=>'CALIFORNIA',
+      '/fact-sheets/factsheet_nutrition_co_snap_program/'=>'COLORADO',
+      '/fact-sheets/factsheet_nutrition_ct_snap_program/'=>'CONNECTICUT',
+      '/fact-sheets/factsheet_nutrition_de_snap_program/'=>'DELAWARE',
+      '/fact-sheets/factsheet_nutrition_dc_snap_program/'=>'DISTRICT OF COLUMBIA',
+      '/fact-sheets/factsheet_nutrition_fl_snap_program/'=>'FLORIDA',
+      '/fact-sheets/factsheet_nutrition_ga_snap_program/'=>'GEORGIA',
+      '/fact-sheets/factsheet_nutrition_hi_snap_program/'=>'HAWAII',
+      '/fact-sheets/factsheet_nutrition_id_snap_program/'=>'IDAHO',
+      '/fact-sheets/factsheet_nutrition_il_snap_program/'=>'ILLINOIS',
+      '/fact-sheets/factsheet_nutrition_in_snap_program/'=>'INDIANA',
+      '/fact-sheets/factsheet_nutrition_ia_snap_program/'=>'IOWA',
+      '/fact-sheets/factsheet_nutrition_ks_snap_program/'=>'KANSAS',
+      '/fact-sheets/factsheet_nutrition_ky_snap_program/'=>'KENTUCKY',
+      '/fact-sheets/factsheet_nutrition_la_snap_program/'=>'LOUISIANA',
+      '/fact-sheets/factsheet_nutrition_me_snap_program/'=>'MAINE',
+      '/fact-sheets/factsheet_nutrition_md_snap_program/'=>'MARYLAND',
+      '/fact-sheets/factsheet_nutrition_ma_snap_program/'=>'MASSACHUSETTS',
+      '/fact-sheets/factsheet_nutrition_mi_snap_program/'=>'MICHIGAN',
+      '/fact-sheets/factsheet_nutrition_mn_snap_program/'=>'MINNESOTA',
+      '/fact-sheets/factsheet_nutrition_ms_snap_program/'=>'MISSISSIPPI',
+      '/fact-sheets/factsheet_nutrition_mo_snap_program/'=>'MISSOURI',
+      '/fact-sheets/factsheet_nutrition_mt_snap_program/'=>'MONTANA',
+      '/fact-sheets/factsheet_nutrition_ne_snap_program/'=>'NEBRASKA',
+      '/fact-sheets/factsheet_nutrition_nv_snap_program/'=>'NEVADA',
+      '/fact-sheets/factsheet_nutrition_nh_snap_program/'=>'NEW HAMPSHIRE',
+      '/fact-sheets/factsheet_nutrition_nj_snap_program/'=>'NEW JERSEY',
+      '/fact-sheets/factsheet_nutrition_nm_snap_program/'=>'NEW MEXICO',
+      '/fact-sheets/factsheet_nutrition_ny_snap_program/'=>'NEW YORK',
+      '/fact-sheets/factsheet_nutrition_nc_snap_program/'=>'NORTH CAROLINA',
+      '/fact-sheets/factsheet_nutrition_nd_snap_program/'=>'NORTH DAKOTA',
+      '/fact-sheets/factsheet_nutrition_oh_snap_program/'=>'OHIO',
+      '/fact-sheets/factsheet_nutrition_ok_snap_program/'=>'OKLAHOMA',
+      '/fact-sheets/factsheet_nutrition_or_snap_program/'=>'OREGON',
+      '/fact-sheets/factsheet_nutrition_pw_snap_program/'=>'PALAU',
+      '/fact-sheets/factsheet_nutrition_pa_snap_program/'=>'PENNSYLVANIA',
+      '/fact-sheets/factsheet_nutrition_pr_snap_program/'=>'PUERTO RICO',
+      '/fact-sheets/factsheet_nutrition_ri_snap_program/'=>'RHODE ISLAND',
+      '/fact-sheets/factsheet_nutrition_sc_snap_program/'=>'SOUTH CAROLINA',
+      '/fact-sheets/factsheet_nutrition_sd_snap_program/'=>'SOUTH DAKOTA',
+      '/fact-sheets/factsheet_nutrition_tn_snap_program/'=>'TENNESSEE',
+      '/fact-sheets/factsheet_nutrition_tx_snap_program/'=>'TEXAS',
+      '/fact-sheets/factsheet_nutrition_ut_snap_program/'=>'UTAH',
+      '/fact-sheets/factsheet_nutrition_vt_snap_program/'=>'VERMONT',
+      '/fact-sheets/factsheet_nutrition_vi_snap_program/'=>'VIRGIN ISLANDS',
+      '/fact-sheets/factsheet_nutrition_va_snap_program/'=>'VIRGINIA',
+      '/fact-sheets/factsheet_nutrition_wa_snap_program/'=>'WASHINGTON',
+      '/fact-sheets/factsheet_nutrition_wv_snap_program/'=>'WEST VIRGINIA',
+      '/fact-sheets/factsheet_nutrition_wi_snap_program/'=>'WISCONSIN',
+      '/fact-sheets/factsheet_nutrition_wy_snap_program/'=>'WYOMING'
     );
 
     $this->categories = array(
@@ -123,8 +180,8 @@ class ResourcesController extends BaseController
 
   public function details($post, $query)
   {
-    if (!empty($_POST['fact_sheet_url'])) {
-      header('Location: ' . $_POST['fact_sheet_url']);
+    if (!empty($_POST['state-selection'])) {
+      header('Location: ' . $_POST['state-selection']);
     }
   }
 

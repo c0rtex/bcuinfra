@@ -37,13 +37,12 @@
         <p class="bold">Select your state from the map or list to find out more.</p>
         <div class="form-group">
           <label class="sr-only" for="state-selection">Select State</label>
-          <select class="form-control" id="state-selection" ng-model="mapState" ng-change="stateChange()" state-selection>
+          <select class="form-control" name="state-selection" id="state-selection" ng-model="mapState" ng-change="stateChange()" state-selection>
             <option value="">-- Select --</option>
-            @foreach($states as $key => $value)
-            <option value="{{ $key }}">{{ ucwords(strtolower($value)) }}</option>
+            @foreach($states as $fact_sheet_url => $value)
+            <option value="{{ $fact_sheet_url }}">{{ ucwords(strtolower($value)) }}</option>
             @endforeach
           </select>
-          <input type="hidden" name="fact_sheet_url" ng-model="factSheetUrl" value="@{{ factSheetUrl }}"/>
         </div>
         <button type="submit" class="btn btn-primary">Continue</button>
         {{ Form::close() }}
