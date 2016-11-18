@@ -885,7 +885,9 @@
 <cfparam name="session.int_crisis_prevention_veterans" default="">
 <cfparam name="session.int_vol" default="">
 <cfparam name="session.int_hiv_aids" default="">
-
+<cfloop COLLECTION="#sa#"  item="x">
+	<cfset 'session.#x#' = evaluate('sa.#x#')>
+</cfloop>
         <cfparam name="session.partner_id" default= 0>
         <cfparam name="session.org_id" default = 0>
         <cfparam name="session.subset_id" default = 0>
