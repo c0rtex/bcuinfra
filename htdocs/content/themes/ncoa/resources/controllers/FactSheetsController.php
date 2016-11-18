@@ -59,7 +59,7 @@ class FactSheetsController extends BaseController
 
             $becs = json_decode($becs->body);
 
-            $factsList = Meta::get(Loop::id(), $key = 'faqs-list', $single = true);
+            $faqsList = Meta::get(Loop::id(), $key = 'faqs-list', $single = true);
 
             return View::make('templates.fact-sheets', [
                 'page_slug' => $fact_sheet_slug,
@@ -68,7 +68,7 @@ class FactSheetsController extends BaseController
                 'app_forms' => $appForms,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'required_materials' => $requiredMaterials,
-                'facts_list' => $factsList,
+                'faqs_list' => $faqsList,
                 'becs' => $becs,
                 'is_alt' => false
             ]);
