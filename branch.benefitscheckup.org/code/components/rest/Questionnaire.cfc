@@ -155,20 +155,28 @@
     </cffunction>
 
     <cffunction name="getDrugList">
-        <cfset drg = ormExecuteQuery("select distinct af from program_answer_field paf right join paf.answer_field af where af.answer_field_type.id=13 and paf.answer_field is not null")>
+        <cfset drg = ormExecuteQuery("select distinct af from program_answer_field paf right join paf.answer_field af join paf.program p where af.answer_field_type.id=13 and paf.answer_field is not null and p.active_flag=1")>
         <cfset var retArray = arrayNew(1)>
+        <cfset var tmpStrct = structNew()>
+        <cfset var i=1>
         <cfloop array="#drg#" index="d">
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
-            <cfset arrayAppend(retArray,option)>
+            <cfset tmpStrct[i] = option>
+            <cfset i = i+1>
         </cfloop>
-        <cfset drg = ormExecuteQuery("from answer_field af where af.answer_field_type.id=14")>
+        <!---<cfset drg = ormExecuteQuery("from answer_field af where af.answer_field_type.id=14")>
         <cfloop array="#drg#" index="d">
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
-            <cfset arrayAppend(retArray,option)>
+            <cfset tmpStrct[i] = option>
+            <cfset i = i+1>
+        </cfloop>--->
+        <cfset keys = structsort(tmpStrct,"textnocase","ASC","display")>
+        <cfloop from="1" to="#arrayLen(keys)#" index="i">
+            <cfset arrayAppend(retArray,tmpStrct[keys[i]])>
         </cfloop>
         <cfset var retVal = structNew()>
         <cfset retVal["type"]="druglist">
