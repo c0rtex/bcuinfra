@@ -83,12 +83,12 @@
                     </h3>
                     <div>
 
-                        @if(!empty($facts_list))
-                        @foreach($facts_list as $key => $value)
-                        <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
+                        @if(!empty($faqs_list))
+                        @foreach($faqs_list as $key => $value)
                             @if(strpos($value["answer"], 'entrypoints'))
                             @if(!empty($entry_points))
+                            <section slide-down class="program program-no-icon">
+                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
                             @foreach($entry_points as $ekey => $evalue)
                             <div class="programs-container program-p">
                                 <p>
@@ -96,9 +96,12 @@
                                 </p>
                             </div>
                             @endforeach
+                            </section>
                             @endif
                             @else
                             @if($value["answer"] === 'documents_needed')
+                            <section slide-down class="program program-no-icon">
+                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
                             <div class="programs-container program-p">
                                 <ul class="fact-sheets-list">
                                     @if (empty($required_materials))
@@ -112,16 +115,18 @@
                                 </ul>
 
                             </div>
-
+                            </section>
                             @else
+                            <section slide-down class="program program-no-icon">
+                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
                             <div class="programs-container program-p">
                                 <p>
                                     {{ $value["answer"] }}
                                 </p>
                             </div>
+                            </section>
                             @endif
                             @endif
-                        </section>
                         @endforeach
                         @endif
                         @if(!empty($becs))
@@ -340,7 +345,7 @@
                             Frequently Asked Questions
                         </h3>
                         <div>
-                            @foreach(Meta::get(Loop::id(), $key = 'faqs-list', $single = true) as $key => $value)
+                            @foreach($faqs_list as $key => $value)
                             <section slide-down class="program program-no-icon">
                                 <div class="program-header"><span>{{ $value["question"] }}</span></div>
                                 <div class="programs-container program-p">
