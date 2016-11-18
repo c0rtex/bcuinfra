@@ -1105,6 +1105,20 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
     }
 }]);
 
+app.directive('setDefaultAnswer',[function(){
+    return {
+        link: function(scope, element, attr) {
+            if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
+            scope.$root.answers[scope.category][scope.code] = scope.value;
+        },
+        scope: {
+            category:"@",
+            code:"@",
+            value:"@"
+        }
+    }
+}]);
+
 app.directive('answerfield',['$state', function($state){
     return {
         template:"<span ng-include='answer_field_link'></span>",
@@ -1643,7 +1657,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 
     $scope.showBenefits = function(){
-        return $scope.$root.answers[category.currentCategory()].veteran != undefined;
+        return ($scope.$root.answers[category.currentCategory()].veteran != undefined)&&($scope.$root.answers[category.currentCategory()].marital_stat != undefined);
     }
 
     $scope.addProgram = function(program){
