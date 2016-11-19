@@ -54,7 +54,6 @@
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
-	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
 	and p.code not like 'health_az_mcs_qmb%'
 	and p.code not like 'health_az_mcs_slmb%'
@@ -1176,10 +1175,7 @@
             </cfloop>
         </cfif>
 
-        <cfset schipnum = ListFind(sa.prg_list, "'103-309-2191-FD-FD'")>
-        <cfif schipnum gt 0>
-            <cfset sa.prg_list=ListDeleteAt(sa.prg_list, schipnum)>
-        </cfif>
+      
 
         <cfset genericnum = ListFind(sa.prg_list, "'XXX-311-2387-FD-FD'")>
         <cfif genericnum gt 0>
@@ -1369,7 +1365,6 @@
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
-	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
 	and p.code not like 'health_az_mcs_qmb%'
 	and p.code not like 'health_az_mcs_slmb%'
