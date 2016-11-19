@@ -37,6 +37,7 @@
         </cfloop>
 
         <cfset var bcuqcIncomeList = ormexecutequery("select o.code from screening_answerfield sa join sa.option o where sa.screening=? and sa.answer.code=?",[screening,"bcuqc_income_list"])>
+<<<<<<< HEAD
 
         <cfset var over3000 = false>
 
@@ -44,6 +45,15 @@
             <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
         </cfif>
 
+=======
+
+        <cfset var over3000 = false>
+
+        <cfif arraylen(bcuqcIncomeList) neq 0>
+            <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
+        </cfif>
+
+>>>>>>> 3f83bd6b76a06a7b7e6aeeb70636b1f1fe704f90
         <cfset filter = "''">
 
         <cfloop array="#screening_answers#" index="answerCode">
@@ -69,6 +79,17 @@
 	and p.code not like '%_children'
 	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
+<<<<<<< HEAD
+	and p.code not like 'health_az_mcs_qmb%'
+	and p.code not like 'health_az_mcs_slmb%'
+	and p.code not like 'health_az_mcs_qi%'
+	and p.code not like 'health_fd_msp_qmb%'
+	and p.code not like 'health_fd_msp_slmb%'
+	and p.code not like 'health_fd_msp_qi%'
+
+	and  sc.answerfieldcode in #filter# 
+=======
+>>>>>>> 3f83bd6b76a06a7b7e6aeeb70636b1f1fe704f90
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
 	and (p.state=? or p.state is null) 
@@ -1377,6 +1398,15 @@ join p.name_display d
 	and p.code not like '%_children'
 	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
+<<<<<<< HEAD
+	and p.code not like 'health_az_mcs_qmb%'
+	and p.code not like 'health_az_mcs_slmb%'
+	and p.code not like 'health_az_mcs_qi%'
+	and p.code not like 'health_fd_msp_qmb%'
+	and p.code not like 'health_fd_msp_slmb%'
+	and p.code not like 'health_fd_msp_qi%'
+=======
+>>>>>>> 3f83bd6b76a06a7b7e6aeeb70636b1f1fe704f90
 	and sc.code like  '%#cat#'
 	and p.active_flag=1
         and (p.state='#st#' or p.state is null) 
