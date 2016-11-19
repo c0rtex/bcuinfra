@@ -1397,7 +1397,7 @@
 
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1].getDisplay_text()  & cat>
+            <cfset str.prg_nm=item[1].getDisplay_text()  >
             <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
