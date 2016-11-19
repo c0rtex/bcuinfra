@@ -37,6 +37,7 @@
         </cfloop>
 
         <cfset var bcuqcIncomeList = ormexecutequery("select o.code from screening_answerfield sa join sa.option o where sa.screening=? and sa.answer.code=?",[screening,"bcuqc_income_list"])>
+<<<<<<< HEAD
 
         <cfset var over3000 = false>
 
@@ -44,6 +45,15 @@
             <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
         </cfif>
 
+=======
+
+        <cfset var over3000 = false>
+
+        <cfif arraylen(bcuqcIncomeList) neq 0>
+            <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
+        </cfif>
+
+>>>>>>> 3f83bd6b76a06a7b7e6aeeb70636b1f1fe704f90
         <cfset filter = "''">
 
         <cfloop array="#screening_answers#" index="answerCode">
@@ -57,21 +67,19 @@
                 </cfif>
             </cfif>
         </cfloop>
-	<cfset state_id = screening.getPreset_state().GETID()> 
+
         <cfset filter = "(#filter#)">
-	<cfif state_id eq 'az'>
-		<cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
-	<cfelseif state_id eq 'co' or state_id eq 'mi'>
-		<cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
-	</cfif>
-        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc   
-	where 
-	pc.code not in ('rxcard','rxco')  
+
+        <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc
+	where
+	pc.code not in ('rxcard','rxco')
 	and p.code not like '%_long'
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
+<<<<<<< HEAD
 	and p.code not like 'health_az_mcs_qmb%'
 	and p.code not like 'health_az_mcs_slmb%'
 	and p.code not like 'health_az_mcs_qi%'
@@ -80,6 +88,8 @@
 	and p.code not like 'health_fd_msp_qi%'
 
 	and  sc.answerfieldcode in #filter# 
+=======
+>>>>>>> 3f83bd6b76a06a7b7e6aeeb70636b1f1fe704f90
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
 	and (p.state=? or p.state is null) 
@@ -912,9 +922,7 @@
 <cfparam name="session.int_crisis_prevention_veterans" default="">
 <cfparam name="session.int_vol" default="">
 <cfparam name="session.int_hiv_aids" default="">
-<cfloop COLLECTION="#sa#"  item="x">
-	<cfset 'session.#x#' = evaluate('sa.#x#')>
-</cfloop>
+
         <cfparam name="session.partner_id" default= 0>
         <cfparam name="session.org_id" default = 0>
         <cfparam name="session.subset_id" default = 0>
@@ -1192,7 +1200,10 @@
             </cfloop>
         </cfif>
 
-      
+        <cfset schipnum = ListFind(sa.prg_list, "'103-309-2191-FD-FD'")>
+        <cfif schipnum gt 0>
+            <cfset sa.prg_list=ListDeleteAt(sa.prg_list, schipnum)>
+        </cfif>
 
         <cfset genericnum = ListFind(sa.prg_list, "'XXX-311-2387-FD-FD'")>
         <cfif genericnum gt 0>
@@ -1368,41 +1379,41 @@
         </cfif>
 
 	<!--- sort order by program then form sort --->
-	
-	<cfset qryFormsQuery = "
-	select  p.name_display as prg_nm,p.short_desc,p.code   
-	from program p 
-	join p.program_category pc 
-	join pc.super_category sc 
-	join p.program_category pc  
-	join p.name_display d 
+	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
+<cfset qryFormsQuery = "
+select  p.name_display as prg_nm,p.short_desc,p.code   
+from program p 
+join p.program_category pc 
+join pc.super_category sc 
+join p.program_category pc  
+join p.name_display d
+
+	 
 	where 
 	pc.code not in ('rxcard','rxco')  
 	and p.code not like '%_long'
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
+<<<<<<< HEAD
 	and p.code not like 'health_az_mcs_qmb%'
 	and p.code not like 'health_az_mcs_slmb%'
 	and p.code not like 'health_az_mcs_qi%'
 	and p.code not like 'health_fd_msp_qmb%'
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
+=======
+>>>>>>> 3f83bd6b76a06a7b7e6aeeb70636b1f1fe704f90
 	and sc.code like  '%#cat#'
 	and p.active_flag=1
         and (p.state='#st#' or p.state is null) 
-	
-	">
-	<cfif ((FindNoCase("_az_",st) gt 0) or (st eq 'az'))  and (cat eq 'healthcare') >
-		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'health_fd_msp_general' or p.code like 'health_az_mcs_general'  ">
-	<cfelseif ((FindNoCase("_co_",st) gt 0) or (st eq 'co'))  >
-		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'utility_fd_liheap'   ">
-	<cfelseif ((FindNoCase("_mi_",st) gt 0) or (st eq 'mi'))   >
-		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'utility_fd_liheap'  ">
-	</cfif>
+	order by p.sort 
+">
 
-	<cfset qryFormsQuery = qryFormsQuery & " order by p.sort ">
+
+
         <cfset query = ormExecuteQuery(qryFormsQuery)>
 
         <cfset data = arrayNew(1)>
