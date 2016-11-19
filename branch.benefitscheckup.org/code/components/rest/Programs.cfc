@@ -40,9 +40,11 @@
                 <cfset filter="#filter#,'#answerCode#'">
             </cfif>
         </cfloop>
-
+	<cfset state_id = screening.getPreset_state().GETID()> 
         <cfset filter = "(#filter#)">
-
+	<cfif state_id eq 'az'>
+		<cfset filter = filter & "and p.code not like 'health_fd_msp_general'">
+	</cfif>
         <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc   
 	where 
 	pc.code not in ('rxcard','rxco')  
@@ -52,6 +54,13 @@
 	and p.code not like '%_children'
 	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
+	and p.code not like 'health_az_mcs_qmb%'
+	and p.code not like 'health_az_mcs_slmb%'
+	and p.code not like 'health_az_mcs_qi%'
+	and p.code not like 'health_fd_msp_qmb%'
+	and p.code not like 'health_fd_msp_slmb%'
+	and p.code not like 'health_fd_msp_qi%'
+
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
@@ -1344,16 +1353,14 @@
         </cfif>
 
 	<!--- sort order by program then form sort --->
-	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
-<cfset qryFormsQuery = "
-select  p.name_display as prg_nm,p.short_desc,p.code   
-from program p 
-join p.program_category pc 
-join pc.super_category sc 
-join p.program_category pc  
-join p.name_display d
-
-	 
+	
+	<cfset qryFormsQuery = "
+	select  p.name_display as prg_nm,p.short_desc,p.code   
+	from program p 
+	join p.program_category pc 
+	join pc.super_category sc 
+	join p.program_category pc  
+	join p.name_display d 
 	where 
 	pc.code not in ('rxcard','rxco')  
 	and p.code not like '%_long'
@@ -1362,21 +1369,29 @@ join p.name_display d
 	and p.code not like '%_children'
 	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
+	and p.code not like 'health_az_mcs_qmb%'
+	and p.code not like 'health_az_mcs_slmb%'
+	and p.code not like 'health_az_mcs_qi%'
+	and p.code not like 'health_fd_msp_qmb%'
+	and p.code not like 'health_fd_msp_slmb%'
+	and p.code not like 'health_fd_msp_qi%'
 	and sc.code like  '%#cat#'
 	and p.active_flag=1
         and (p.state='#st#' or p.state is null) 
-	order by p.sort 
-">
+	
+	">
+	<cfif ((FindNoCase("_az_",st) gt 0) or (st eq 'az'))  and (cat eq 'healthcare') >
+		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'health_fd_msp_general' or p.code like 'health_az_mcs_general'  ">
+	</cfif>
 
-
-
+	<cfset qryFormsQuery = qryFormsQuery & " order by p.sort ">
         <cfset query = ormExecuteQuery(qryFormsQuery)>
 
         <cfset data = arrayNew(1)>
 
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1].getDisplay_text()>
+            <cfset str.prg_nm=item[1].getDisplay_text()  >
             <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
