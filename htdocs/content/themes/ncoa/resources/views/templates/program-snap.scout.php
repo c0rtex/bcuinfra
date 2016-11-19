@@ -28,7 +28,7 @@
 
       <div class="col-md-9">
         <p>The Supplemental Nutrition Assistance Program (SNAP) (the new name for the federal Food Stamp Program) helps low-income individuals and families buy the food they need for good health. Although SNAP is the national name, your state may use a different name.</p>
-        <p>Use this map to learn more about SNAP and find application froms to apply for this benefit</p>
+        <p>Use this map to learn more about SNAP and find application froms to apply for this benefit.</p>
 
         {{ Form::open('/resources/details', 'post', false, [
         'class' => 'form-inline state-selection'
