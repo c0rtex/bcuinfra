@@ -43,7 +43,9 @@
 	<cfset state_id = screening.getPreset_state().GETID()> 
         <cfset filter = "(#filter#)">
 	<cfif state_id eq 'az'>
-		<cfset filter = filter & "and p.code not like 'health_fd_msp_general'">
+		<cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
+	<cfelseif state_id eq 'co' or state_id eq 'mi'>
+		<cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
 	</cfif>
         <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc   
 	where 
@@ -1382,6 +1384,10 @@
 	">
 	<cfif ((FindNoCase("_az_",st) gt 0) or (st eq 'az'))  and (cat eq 'healthcare') >
 		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'health_fd_msp_general' or p.code like 'health_az_mcs_general'  ">
+	<cfelseif ((FindNoCase("_co_",st) gt 0) or (st eq 'co'))  >
+		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'utility_fd_liheap'   ">
+	<cfelseif ((FindNoCase("_mi_",st) gt 0) or (st eq 'mi'))   >
+		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'utility_fd_liheap'  ">
 	</cfif>
 
 	<cfset qryFormsQuery = qryFormsQuery & " order by p.sort ">
@@ -1391,7 +1397,7 @@
 
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1].getDisplay_text()  >
+            <cfset str.prg_nm=item[1].getDisplay_text()  & cat>
             <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
