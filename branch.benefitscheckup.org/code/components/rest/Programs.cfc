@@ -22,22 +22,39 @@
         <cfreturn groupBy>
     </cffunction>
 
-    <cffunction name="calcForPrescreen">
-        <cfargument name="screeningId">
+    <cffunction name="calcForPrescreen" access="remote" restpath="/calcForPrescreen/{screeningId}" returnType="String" httpMethod="GET">
+        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
         <cfset screening = entityLoadByPK("screening",screeningId)>
         <cfset screening_answers = ormexecutequery("select distinct a.code from screening_answerfield sa join sa.answer a where sa.screening=?",[screening])>
         <cfset supercategories = ormexecutequery("from program_supercategory")>
         <cfset superCategoriesStruct = structNew()>
+        <cfset notOver3000Categories = {"bcuqc_category_income":"",
+            "bcuqc_category_medicaid":"",
+            "bcuqc_category_nutrition":"",
+            "bcuqc_category_rx":""}>
         <cfloop array="#supercategories#" index="i">
             <cfset superCategoriesStruct[i.getAnswerfieldcode()] = 'y'>
         </cfloop>
 
-        <cfset filter = "''">
+        <cfset var bcuqcIncomeList = ormexecutequery("select o.code from screening_answerfield sa join sa.option o where sa.screening=? and sa.answer.code=?",[screening,"bcuqc_income_list"])>
 
+        <cfset var over3000 = false>
+
+        <cfif arraylen(bcuqcIncomeList) neq 0>
+            <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
+        </cfif>
+
+        <cfset filter = "''">
 
         <cfloop array="#screening_answers#" index="answerCode">
             <cfif structKeyExists(superCategoriesStruct,answerCode)>
-                <cfset filter="#filter#,'#answerCode#'">
+                <cfif over3000>
+                    <cfif not structKeyExists(notOver3000Categories,answerCode)>
+                        <cfset filter="#filter#,'#answerCode#'">
+                    </cfif>
+                <cfelse>
+                    <cfset filter="#filter#,'#answerCode#'">
+                </cfif>
             </cfif>
         </cfloop>
 	<cfset state_id = screening.getPreset_state().GETID()> 
@@ -61,7 +78,6 @@
 	and p.code not like 'health_fd_msp_qmb%'
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
-	and p.code not like 'health_ct_msp_almb'
 
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
@@ -70,7 +86,7 @@
 	",[screening.getPreset_state()])>
 
         <cftransaction>
-           <cfloop array="#programs#" index="program">
+            <cfloop array="#programs#" index="program">
                 <cfset sp = entityNew("screening_program")>
                 <cfset sp.setScreening(screening)>
                 <cfset sp.setProgram(program)>
@@ -1373,7 +1389,6 @@
 	and p.code not like 'health_fd_msp_qmb%'
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
-	and p.code not like 'health_ct_msp_almb'
 	and sc.code like  '%#cat#'
 	and p.active_flag=1
         and (p.state='#st#' or p.state is null) 
@@ -1394,7 +1409,7 @@
 
         <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1].getDisplay_text()  >
+            <cfset str.prg_nm=item[1].getDisplay_text()>
             <cfset str.prg_desc=item[2]>
             <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
