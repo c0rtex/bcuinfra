@@ -61,6 +61,7 @@
 	and p.code not like 'health_fd_msp_qmb%'
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
+	and p.code not like 'health_ct_msp_almb'
 
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
@@ -1372,6 +1373,7 @@
 	and p.code not like 'health_fd_msp_qmb%'
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
+	and p.code not like 'health_ct_msp_almb'
 	and sc.code like  '%#cat#'
 	and p.active_flag=1
         and (p.state='#st#' or p.state is null) 
