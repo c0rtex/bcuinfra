@@ -9,7 +9,7 @@ class ResourcesController extends BaseController
   public function __construct()
   {
     // Do something
-    $this->states_codes = array(
+    $this->states = array(
       'AL'=>'ALABAMA',
       'AK'=>'ALASKA',
       'AZ'=>'ARIZONA',
@@ -65,7 +65,7 @@ class ResourcesController extends BaseController
       'WY'=>'WYOMING'
     );
 
-    $this->states = array(
+    $this->states_fact_sheets = array(
       '/fact-sheets/factsheet_nutrition_al_snap_program/'=>'ALABAMA',
       '/fact-sheets/factsheet_nutrition_ak_snap_program/'=>'ALASKA',
       '/fact-sheets/factsheet_nutrition_az_snap_program/'=>'ARIZONA',
@@ -188,7 +188,7 @@ class ResourcesController extends BaseController
     $constants = Config::get('constants');
 
     return View::make('templates.program-snap',[
-      'states' => $this->states,
+      'states' => $this->states_fact_sheets,
       'webServiceUrl' => $constants['WEB_SERVICE_URL']
     ]);
   }
