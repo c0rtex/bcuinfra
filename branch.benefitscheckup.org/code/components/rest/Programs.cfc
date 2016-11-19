@@ -105,19 +105,20 @@
 
         <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by sc.sort, p.key_program, p.sort",[screening])>
 
+        <cfset superCategories = ormExecuteQuery("select sc.answerfieldcode,sc.sort from program_supercategory sc order by sc.sort")>
+
         <cfset programsByCategories = structNew()>
 
+        <cfloop array="#superCategories#" index="i">
+            <cfset programsByCategories[i[1]] = structNew()>
+            <cfset programsByCategories[i[1]]["sort"] = i[2]>
+            <cfset programsByCategories[i[1]]["count"] = 0>
+            <cfset programsByCategories[i[1]]["programs"] = arrayNew(1)>
+        </cfloop>
+
         <cfloop array="#programs#" index="i">
-            <cfif structKeyExists(programsByCategories,i[2])>
-                <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
-                <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
-            <cfelse>
-                <cfset programsByCategories[i[2]] = structNew()>
-                <cfset programsByCategories[i[2]]["sort"] = i[3]>
-                <cfset programsByCategories[i[2]]["count"] = 1>
-                <cfset programsByCategories[i[2]]["programs"] = arrayNew(1)>
-                <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
-            </cfif>
+            <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
+            <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
         </cfloop>
 
         <cfset retVal = arrayNew(1)>
