@@ -14,13 +14,15 @@
             <div class="ready-list">
                 <p>Here's the information you might want to have ready:</p>
                 <ul>
-                    <li>Estimated household expenses <button data-toggle="popover" data-trigger="focus" data-html="true" data-content="{{tooltipExpenses}}" data-placement="top" class="fa fa-question-circle"></button></li>
-                    <li>Current income for self, spouse and others in household</li>
-                    <li>Value of assets for self, spouse and others in household</li>
-                    <li>Names of prescription medications</li>
+                    <li>Estimated household expenses <button data-toggle="popover" data-trigger="click" data-html="true" data-content="Household expenses can include your mortgage or rent, utilities costs (such as electricity, gas, etc.), and out-of-pocket medical bills that is not paid for by your insurance." data-placement="top" class="fa fa-question-circle"></button></li>
+                    <li>Current income for self, spouse and others in household <button data-toggle="popover" data-trigger="click" data-html="true" data-content="Income is money you receive, especially on a regular basis. Examples include earnings from a job, retirement pension benefits, or cash from a government program like Supplemental Security Income. You will need the information for yourself and anyone else living in your household." data-placement="top" class="fa fa-question-circle"></button></li>
+                    <li>Value of assets for self, spouse and others in household <button data-toggle="popover" data-trigger="click" data-html="true" data-content="Assets are items of value that you own and have the right to use or exchange.  Examples include your home, car or stocks. You will need this information for yourself and anyone else living in your household." data-placement="top" class="fa fa-question-circle"></button></li>
+                    <li>Names of prescription medications <button data-toggle="popover" data-trigger="click" data-html="true" data-content="Prescription medications are used to treat a health condition and include both brand name and generic drugs. You can typically find the name of the prescription printed on the container the pharmacist provides to you." data-placement="top" class="fa fa-question-circle"></button></li>
                 </ul>
             </div>
         </div>
+        <script type="text/javascript-lazy">$('.fa-question-circle').popover();</script>
+
         <section class="btns-container">
             <a ui-sref="questionnaire.initial-results" class="btn btn-link">View Initial Results</a>
             <button ng-click="nextPage('screening-start')" class="btn btn-primary pull-right">Keep Going</button>
