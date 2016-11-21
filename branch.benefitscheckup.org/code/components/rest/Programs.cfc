@@ -1382,15 +1382,15 @@
 	and p.code not like 'health_ct_msp_almb'
 	and p.active_flag=1
 	and sc.answerfieldcode = #filter#
-	and (p.state='#st#' or p.state is null)
+	and (p.state='#st#' or p.state is null) order by p.sort
 	")>
 
         <cfset data = arrayNew(1)>
 
         <cfloop array="#programs#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item.getName_display().getDisplay_text()  >
-            <cfset str.prg_desc=item.getDesc_display().getDisplay_text()>
+            <cfset str.prg_nm=item.getName_display().getDisplay_text()>
+            <cfset str.prg_desc=item.getShort_desc()>
             <cfset str.code=item.getCode()>
             <cfset arrayAppend(data,str)>
         </cfloop>
