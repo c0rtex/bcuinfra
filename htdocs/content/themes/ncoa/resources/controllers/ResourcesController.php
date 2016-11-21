@@ -122,18 +122,18 @@ class ResourcesController extends BaseController
     );
 
     $this->categories = array(
-      "110" => "medication",
-      "107" => "healthcare",
-      "109" => "income",
-      "179" =>  "foodnutrition",
-      "108" => "housingutility",
-      "111" => "taxrelief",
-      "113" => "veteran",
-      "105" => "employment",
-      "112" => "transportation",
-      "104" => "education",
-      "103" => "discount",
-      "102" => "otherassistance"
+      "110" => "bcuqc_category_rx",
+      "107" => "bcuqc_category_medicaid",
+      "109" => "bcuqc_category_income",
+      "179" =>  "bcuqc_category_nutrition",
+      "108" => "bcuqc_category_utility",
+      "111" => "bcuqc_category_property_taxrelief",
+      "113" => "bcuqc_category_veteran",
+      "105" => "bcuqc_category_employment",
+      "112" => "bcuqc_category_transportation",
+      "104" => "bcuqc_category_education",
+      "103" => "bcuqc_category_discounts",
+      "102" => "bcuqc_category_other_assistance"
     );
   }
   /**
