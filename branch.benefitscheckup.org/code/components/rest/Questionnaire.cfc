@@ -166,14 +166,14 @@
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
-        <!---<cfset drg = ormExecuteQuery("from answer_field af where af.answer_field_type.id=14")>
+        <cfset drg = ormExecuteQuery("from answer_field af where af.answer_field_type.id=14")>
         <cfloop array="#drg#" index="d">
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
-        </cfloop>--->
+        </cfloop>
         <cfset keys = structsort(tmpStrct,"textnocase","ASC","display")>
         <cfloop from="1" to="#arrayLen(keys)#" index="i">
             <cfset arrayAppend(retArray,tmpStrct[keys[i]])>
