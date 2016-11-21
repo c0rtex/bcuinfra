@@ -1359,24 +1359,15 @@
         <cfargument name="cat" required="no" restargsource="query" default="">
         <cfargument name="st" required="no" restargsource="query" default="">
 
-        <cfset qryFormsQuery = "select distinct p.prg_nm,pr.short_desc,pr.code from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.program_category pc join pc.super_category psc join pr.tbl_prg_all p join p.subset_program_bases sp">
-        <cfset qryFormsQuery = "#qryFormsQuery# where ft.id <> 2 and (p.inactive_flag = 0 or p.inactive_flag is null) and psc.code=?">
-
-        <cfif st neq ''>
-            <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
+        <cfset filter = "'#cat#' ">
+        <cfif st eq 'az'>
+            <cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
+            <cfelseif st eq 'co' or st eq 'mi'>
+            <cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
         </cfif>
-
-	<!--- sort order by program then form sort --->
-	
-	<cfset qryFormsQuery = "
-	select  p.name_display as prg_nm,p.short_desc,p.code   
-	from program p 
-	join p.program_category pc 
-	join pc.super_category sc 
-	join p.program_category pc  
-	join p.name_display d 
-	where 
-	pc.code not in ('rxcard','rxco')  
+        <cfset programs = ormexecutequery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc
+	where
+	pc.code not in ('rxcard','rxco')
 	and p.code not like '%_long'
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
@@ -1389,29 +1380,18 @@
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
 	and p.code not like 'health_ct_msp_almb'
-	and sc.code like  '%#cat#'
 	and p.active_flag=1
-        and (p.state='#st#' or p.state is null) 
-	
-	">
-	<cfif ((FindNoCase("_az_",st) gt 0) or (st eq 'az'))  and (cat eq 'healthcare') >
-		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'health_fd_msp_general' or p.code like 'health_az_mcs_general'  ">
-	<cfelseif ((FindNoCase("_co_",st) gt 0) or (st eq 'co'))  >
-		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'utility_fd_liheap'   ">
-	<cfelseif ((FindNoCase("_mi_",st) gt 0) or (st eq 'mi'))   >
-		<cfset qryFormsQuery = qryFormsQuery & " and p.code not like 'utility_fd_liheap'  ">
-	</cfif>
-
-	<cfset qryFormsQuery = qryFormsQuery & " order by p.sort ">
-        <cfset query = ormExecuteQuery(qryFormsQuery)>
+	and sc.answerfieldcode = #filter#
+	and (p.state='#st#' or p.state is null)
+	")>
 
         <cfset data = arrayNew(1)>
 
-        <cfloop array="#query#" index="item">
+        <cfloop array="#programs#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1].getDisplay_text()  >
-            <cfset str.prg_desc=item[2]>
-            <cfset str.code=item[3]>
+            <cfset str.prg_nm=item.getName_display().getDisplay_text()  >
+            <cfset str.prg_desc=item.getDesc_display().getDisplay_text()>
+            <cfset str.code=item.getCode()>
             <cfset arrayAppend(data,str)>
         </cfloop>
         <cfreturn serializeJSON(data)>
