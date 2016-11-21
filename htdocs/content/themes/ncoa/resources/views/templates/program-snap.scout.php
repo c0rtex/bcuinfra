@@ -34,7 +34,7 @@
         'class' => 'form-inline state-selection'
         ])
         }}
-        <p class="bold">Select your state from the map or list to find out more.</p>
+        <p class="bold">Select your state from the map or list to find out more</p>
         <div class="form-group">
           <label class="sr-only" for="state-selection">Select State</label>
           <select class="form-control" name="state-selection" id="state-selection" ng-model="mapState" ng-change="stateChange()" state-selection>
