@@ -2157,10 +2157,13 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
     });
 
     var returned_programs = [];
+    $scope.found_programs = [];
 
-    $scope.found_programs = prescreen.data.results.found_programs;
-    $scope.found_programs.forEach(function(element) {
-        returned_programs.push(element.category);
+    prescreen.data.results.found_programs.forEach(function(element) {
+        if (prescreen.data.answers[element.category]) {
+            returned_programs.push(element.category);
+            $scope.found_programs.push(element);
+        }
     });
 
     // Find empty programs
