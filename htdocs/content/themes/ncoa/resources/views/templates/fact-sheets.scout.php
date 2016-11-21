@@ -87,16 +87,7 @@
                         @foreach($faqs_list as $key => $value)
                             @if(strpos($value["answer"], 'entrypoints'))
                             @if(!empty($entry_points))
-                            <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
-                            @foreach($entry_points as $ekey => $evalue)
-                            <div class="programs-container program-p">
-                                <p>
-                                    {{ $evalue->print_name }}
-                                </p>
-                            </div>
-                            @endforeach
-                            </section>
+                            <?php $entryPointValue= $value ?>
                             @endif
                             @else
                             @if($value["answer"] === 'documents_needed')
@@ -129,16 +120,29 @@
                             @endif
                         @endforeach
                         @endif
-                        @if(!empty($becs))
                         <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>Who Can Help Me Apply?</span></div>
-                            @foreach($becs as $ekey => $evalue)
+                            <div class="program-header"><span>{{ $entryPointValue["question"] }}</span></div>
                             <div class="programs-container program-p">
+                                @foreach($entry_points as $ekey => $evalue)
                                 <p>
                                     {{ $evalue->print_name }}
                                 </p>
+                                @endforeach
                             </div>
+                        </section>
+                        @if(!empty($becs))
+                        <section slide-down class="program program-no-icon">
+                            <div class="program-header"><span>Who can help me to apply?</span></div>
+                            <div class="programs-container program-p">
+                                <p>
+                                A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC is available to help you.
+                                </p>
+                            @foreach($becs as $ekey => $evalue)
+                                <p>
+                                    {{ $evalue->print_name }}
+                                </p>
                             @endforeach
+                            </div>
                         </section>
                         @endif
                     </div>
