@@ -863,7 +863,7 @@ app.directive('ncoaPrograms',[function(){
         restrict: 'A',
         link: function(scope,elm){
             scope.programs = window.programs;
-            scope.currentProgramsList =scope.programs.slice(0,9);
+            scope.currentProgramsList =scope.programs.slice(0,10);
             scope.pageCount=Math.ceil(scope.programs.length/10);
             scope.currentPage= scope.pageCount==0 ? 0 : 1;
             scope.showPage = function(pageNum) {
