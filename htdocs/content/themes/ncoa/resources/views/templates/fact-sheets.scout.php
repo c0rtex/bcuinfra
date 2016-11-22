@@ -120,6 +120,7 @@
                             @endif
                         @endforeach
                         @endif
+                        @if(!empty($entryPointValue))
                         <section slide-down class="program program-no-icon">
                             <div class="program-header"><span>{{ $entryPointValue["question"] }}</span></div>
                             <div class="programs-container program-p">
@@ -130,6 +131,7 @@
                                 @endforeach
                             </div>
                         </section>
+                        @endif
                         @if(!empty($becs))
                         <section slide-down class="program program-no-icon">
                             <div class="program-header"><span>Who can help me to apply?</span></div>
