@@ -547,30 +547,6 @@ var map_config = {
     }
 };
 
-var pin_config = {
-    'default':{
-        'pinShadow':'#000', //shadow color below the points
-        'pinShadowOpacity':'50', //shadow opacity, value, 0-100
-    },
-    'points':[
-        // {
-        // 	'shape':'circle',
-        // 	'hover':'In Texas, over <strong>333,000 people</strong> are using SNAP to stretch their grocery budget. Are you?',
-        // 	'pos_X':362,
-        // 	'pos_Y':376,
-        // 	'diameter':12,
-        // 	'outline':'#FFF',
-        // 	'thickness':1,
-        // 	'upColor':'#FF0000',
-        // 	'overColor':'#FFEE88',
-        // 	'downColor':'#00ffff',
-        // 	'url':'http://www.html5interactivemaps.com',
-        // 	'target':'same_window',
-        // 	'enable':true,
-        // }
-    ]
-}
-
 // Quick feature detection
 function isTouchEnabled() {
     return (('ontouchstart' in window)
@@ -841,4 +817,31 @@ function dynamicAddEvent(id){
             $('#map-tip').css({left:x, top:y})
         })
     }
+}
+
+var pin_config = {
+    'default':{
+        'pinShadow':'#000', //shadow color below the points
+        'pinShadowOpacity':'50', //shadow opacity, value, 0-100
+    },
+    'points':[
+        {
+            'shape':'circle',//choose the shape of the pin circle or rectangle
+            'hover':'<u><b>Washington DC</b></u><br>This pin when clicked will open<br>the URL in a <span style="color:black; background-color:#a9f038;"><b>NEW</b></span> window.',//the content of the hover ppup
+            'pos_X':672,//location of the pin on X axis
+            'pos_Y':210,//location of the pin on Y axis
+            'diameter': 14,
+            // 'width':12,//width of the pin if rectangle (if circle use diameter)
+            // 'height':12,//height of the pin if rectangle (if circle delete this line)
+            'outline':'#FFF',//outline color of the pin
+            'thickness':1,//thickness of the line (0 to hide the line)
+            'upColor':'#1888de',//color of the pin when map loads
+            'overColor':'#1F3D7D',//color of the pin when mouse hover
+            'downColor':'#993366',//color of the pin when clicked 
+            //(trick, if you make this pin un-clickable > make the overColor and downColor the same)
+            'url':'http://www.html5interactivemaps.com',//URL of this pin
+            'target':'new_window',//'new_window' opens URL in new window//'same_window' opens URL in the same window //'none' pin is not clickable
+            'enable':true,//true/false to enable/disable this pin
+        }
+    ]
 }
