@@ -1,5 +1,5 @@
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
-@extends($layout)
+@extends('layouts.print')
 
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
@@ -20,7 +20,6 @@
     </script>
 
     <div class="card-header">
-        <a href="javascript:history.back()" class="btn-link btn-back">Back</a>
         <h1>Fact Sheet</h1>
     </div>
 
@@ -28,7 +27,7 @@
         <div class="card-nested">
             <!-- Desktop -->
             <div class="row">
-                <div class="col-md-9 hidden-xs hidden-sm">
+                <div class="col-md-12 hidden-xs hidden-sm">
                     <!-- Views -->
                     <div>
           <span class="icon-block pull-left">
@@ -39,22 +38,6 @@
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
-                        </div>
-                        <div class="fact-sheets-icon-block pull-left">
-                            <a href="#" class="fact-sheet-header-icon">
-                                <span class="fa fa-print"></span>
-                                Print
-                            </a>
-                            <span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
-                                <span class="fa fa-download"></span>
-                                Save
-                            </a>
-                            <span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
-                                <span class="fa fa-envelope-o"></span>
-                                Email
-                            </a>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -91,184 +74,74 @@
                             @endif
                             @else
                             @if($value["answer"] === 'documents_needed')
-                            <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
-                            <div class="programs-container program-p">
-                                <ul class="fact-sheets-list">
-                                    @if (empty($required_materials))
-                                    <li>There are no required materials needed for this program.</li>
-                                    @else
-                                    @foreach($required_materials as $ekey => $evalue)
-                                    <li><a href="" data-toggle="popover" data-html="true" class="popover-rm" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
-                                    @endforeach
-                                    <script type="text/javascript-lazy">$('.popover-rm').popover();</script>
-                                    @endif
-                                </ul>
-
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">{{ $value["question"] }}</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <ul class="fact-sheets-list">
+                                        @if (empty($required_materials))
+                                        <li>There are no required materials needed for this program.</li>
+                                        @else
+                                        @foreach($required_materials as $ekey => $evalue)
+                                        <li><a href="" data-toggle="popover" data-html="true" class="popover-rm" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
+                                        @endforeach
+                                        <script type="text/javascript-lazy">$('.popover-rm').popover();</script>
+                                        @endif
+                                    </ul>
+                                </div>
                             </div>
-                            </section>
                             @else
-                            <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>{{ $value["question"] }}</span></div>
-                            <div class="programs-container program-p">
-                                <p>
-                                    {{ $value["answer"] }}
-                                </p>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">{{ $value["question"] }}</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        {{ $value["answer"] }}
+                                    </p>
+                                </div>
                             </div>
-                            </section>
                             @endif
                             @endif
                         @endforeach
                         @endif
                         @if(!empty($entryPointValue))
-                        <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>{{ $entryPointValue["question"] }}</span></div>
-                            <div class="programs-container program-p">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ $entryPointValue["question"] }}</h3>
+                            </div>
+                            <div class="panel-body">
                                 @foreach($entry_points as $ekey => $evalue)
                                 <p>
                                     {{ $evalue->print_name }}
                                 </p>
                                 @endforeach
                             </div>
-                        </section>
+                        </div>
                         @endif
                         @if(!empty($becs))
-                        <section slide-down class="program program-no-icon">
-                            <div class="program-header"><span>Who can help me to apply?</span></div>
-                            <div class="programs-container program-p">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Who can help me to apply?</h3>
+                            </div>
+                            <div class="panel-body">
                                 <p>
-                                A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC is available to help you.
+                                    A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC is available to help you.
                                 </p>
-                            @foreach($becs as $ekey => $evalue)
+                                @foreach($becs as $ekey => $evalue)
                                 <p>
                                     {{ $evalue->print_name }}
                                 </p>
-                            @endforeach
+                                @endforeach
                             </div>
-                        </section>
+                        </div>
                         @endif
                     </div>
                     @endif
                 </div>
 
                 <div class="col-md-3 hidden-xs hidden-sm">
-                    @if(strlen(Meta::get(Loop::id(), $key = 'body-copy', $single = true))>0)
-                    <div class="results-options">
-                        <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
-                        <br />
-                        {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
-                    </div>
-                    @endif
-                    @if(!$is_alt)
-                    <div class="results-options">
-                        <span class="fact-sheets-side-header">Quick Links</span>
-
-                        <?php
-
-                        //if (!empty($programUrl)) {
-
-                        if(!empty($app_forms)) {
-                            foreach($app_forms as $ekey => $evalue){
-                                if(strpos($evalue->url, 'http')===0){
-
-                                    echo '
-
-<a href="'.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>
-';
-                                    break;
-                                }
-                            }
-                        }
-                        //}
-                        ?>
-
-                        @if (!empty($app_forms))
-                        <?php $pos=1 ?>
-                        @foreach($app_forms as $ekey => $evalue)
-
-                        <?php $pos++ ?>
-
-
-                        @if(strpos($evalue->url, 'http')===0)
-
-                        <!-- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                         <span style="white-space: pre-line">{{ $evalue->caption }}</span>-->
-                        <?php $pos-- ?> <!--showing and counting only non-online applications -->
-
-                        </a>
-                        @else
-                        <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
-                            <span class="fa fa-file fact-sheets-icon"></span>
-                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                        </a>
-                        @endif
-
-
-                        @if ($pos === 3)
-                        <!-- Trigger the modal with a button -->
-                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
-
-
-                        @if (!empty($programUrl))
-                        </br>
-
-                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
-                        @endif
-
-                        <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Application Forms</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-
-
-                                        <?php break;?>
-
-                                        @endif
-
-                                        @endforeach
-
-                                        @foreach($app_forms as $ekey => $evalue) <!--Lynna Cekova: starting the loop again in order to print all application forms in the modal, not just the remaining ones -->
-                                        @if(strpos($evalue->url, 'http')===0)
-
-                                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
-                                        @else
-                                        <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
-                                            <span class="fa fa-file fact-sheets-icon"></span>
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
-                                        @endif
-
-
-
-                                        @endforeach
-                                        @if ($pos >= 3)
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        @endif
-                        @endif
-
-
-                    </div>
-                    @endif
-
                 </div>
 
                 <!-- Mobile -->
@@ -302,14 +175,6 @@
                     <hr class="fact-sheets-hr" />
                     <div class="mobile-padding">
                         {{ Loop::content() }}
-
-                        <div class="results-options fact-sheet-options">
-                            <div class="fact-sheets-know-container">
-                                <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
-                                <br />
-                                {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
-                            </div>
-                        </div>
 
                         @if($is_alt)
                         {{ Meta::get(Loop::id(), $key = 'requirement-info-alt', $single = true) }}
