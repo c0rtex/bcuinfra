@@ -61,7 +61,9 @@ class FactSheetsController extends BaseController
 
             $faqsList = Meta::get(Loop::id(), $key = 'faqs-list', $single = true);
 
-            return View::make('templates.fact-sheets', [
+            $template = (!isset($_REQUEST['pdf'])) ? 'templates.fact-sheets' : 'templates.print-fact-sheets';
+
+            return View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,
