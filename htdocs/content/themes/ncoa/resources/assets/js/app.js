@@ -675,6 +675,7 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                     break;
             }
 
+
             scope.calcTotal = function(code) {
                 var suffix = ((code == "hh_income_")||(code == "hh_asset_")) ? "_simple" : "";
                 if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
@@ -738,6 +739,16 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                 scope.$root["grid_"+scope.household_code+"_"+scope.type][scope.answer_field.code] = scope.answer_field.earned;
                 scope.calcTotal(scope.household_code);
             });
+
+
+            scope.$root.answers[scope.category][scope.self_code+scope.code] = 0;
+
+            scope.$root.answers[scope.category][scope.spouse_code+scope.code] = 0;
+
+            scope.$root.answers[scope.category][scope.joint_code+scope.code] = 0;
+
+            scope.$root.answers[scope.category][scope.household_code+scope.code+'_simple'] = 0;
+
         }
     }
 }]);
