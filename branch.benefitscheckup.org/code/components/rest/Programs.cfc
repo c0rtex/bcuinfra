@@ -103,9 +103,24 @@
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by sc.sort, p.key_program, p.sort",[screening])>
+        <cfset sqs = "1=1">
+        <cfif not isnull(screening.getPrev_screening())>
+            <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[screening.getPrev_screening().getId()])>
+            <cfif arraylen(ps) neq 0>
+                <cfset sqs = "0">
+            </cfif>
+            <cfloop array="#ps#" index="psi">
+                <cfset sqs = "#sqs#,#psi.getId()#">
+            </cfloop>
+            <cfif arraylen(ps) neq 0>
+                <cfset sqs = " sc.id in (#sqs#)">
+            </cfif>
+        </cfif>
 
-        <cfset superCategories = ormExecuteQuery("select sc.answerfieldcode,sc.sort from program_supercategory sc order by sc.sort")>
+
+        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? and #sqs# order by sc.sort, p.key_program, p.sort",[screening])>
+
+        <cfset superCategories = ormExecuteQuery("select sc.answerfieldcode,sc.sort from program_supercategory sc where #sqs# order by sc.sort")>
 
         <cfset programsByCategories = structNew()>
 

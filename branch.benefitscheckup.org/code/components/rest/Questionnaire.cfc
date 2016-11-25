@@ -31,9 +31,22 @@
 
     </cffunction>
 
-    <cffunction name="screening" access="remote" restpath="/{superCategoryCode}/{stateId}" returnType="String" httpMethod="GET">
+    <cffunction name="screening" access="remote" restpath="/{superCategoryCode}/{prevScreeningId}/{stateId}" returnType="String" httpMethod="GET">
         <cfargument name="superCategoryCode" required="true" restargsource="Path" type="string"/>
+        <cfargument name="prevScreeningId" required="false" restargsource="Path" type="numeric" default="-1">
         <cfargument name="stateId" required="true" restargsource="Path" type="string"/>
+
+        <cfset sqs = "">
+        <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[prevScreeningId])>
+        <cfif arraylen(ps) neq 0>
+            <cfset sqs = "0">
+        </cfif>
+        <cfloop array="#ps#" index="psi">
+            <cfset sqs = "#sqs#,#psi.getId()#">
+        </cfloop>
+        <cfif arraylen(ps) neq 0>
+            <cfset sqs = "and sqp.supercategory_id in (#sqs#)">
+        </cfif>
 
         <!---SELECT
         subset_question_tmp.subset_id,
@@ -62,16 +75,18 @@
 
 
         <cfset questions = ormexecutequery("select
-                                              q
+                                              distinct q
                                             from
                                               subset_question_tmp sqt join
                                               sqt.question q join
                                               q.question_category qc join
                                               qc.super_category sc
+                                              join q.subset_question_programcategory sqp
                                             where
                                               sqt.subset.id=101
                                               and sqt.state=?
                                               and sc.code=?
+                                              #sqs#
                                             order by sqt.sort",[state,superCategoryCode])>
 
 
