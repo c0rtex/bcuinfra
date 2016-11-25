@@ -977,7 +977,9 @@ app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', fu
         link: function (scope, element, attr) {
             scope.screenData = prescreen.data.screenData;
             //scope.questionnaire.prevScreening = prescreen.results.screening;
-            scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
+            // @TODO: Options were disabled as per requested in ticket BCURD-105
+            scope.showOptions = false;
+            //scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
 
             scope.cronicConditions = function() {
                 try {

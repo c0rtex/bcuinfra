@@ -12,13 +12,6 @@
         <hr class="fact-sheets-hr">
     </header>
 
-
-    <script>
-
-
-
-    </script>
-
     <div class="card-header">
         <a href="javascript:history.back()" class="btn-link btn-back">Back</a>
         <h1>Fact Sheet</h1>
@@ -41,20 +34,20 @@
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?print=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-print"></span>
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?pdf=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
-                            <span class="fact-sheets-spacer"></span>
+                            <!--<span class="fact-sheets-spacer"></span>
                             <a href="#" class="fact-sheet-header-icon">
                                 <span class="fa fa-envelope-o"></span>
                                 Email
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -152,6 +145,16 @@
                 </div>
 
                 <div class="col-md-3 hidden-xs hidden-sm">
+                    @if(Loop::id() == '7284')
+                    <div style="margin: 20px 0">
+                        <a href="{{ get_permalink(12464) }}" class="btn btn-primary btn-block">Espa&ntilde;ol</a>
+                    </div>
+                    @elseif(Loop::id() == '12464')
+                    <div style="margin: 20px 0">
+                        <a href="{{ get_permalink(7284) }}" class="btn btn-primary btn-block">Ingl&eacute;s</a>
+                    </div>
+                    @endif
+
                     @if(strlen(Meta::get(Loop::id(), $key = 'body-copy', $single = true))>0)
                     <div class="results-options">
                         <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
@@ -282,20 +285,20 @@
                         <div class="clearfix"></div>
                         <hr class="fact-sheets-hr" />
                         <div class="fact-sheets-icon-block pull-left">
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?print=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-print"></span>
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?pdf=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-floppy-o"></span>
                                 Save
                             </a>
-                            <span class="fact-sheets-spacer"></span>
+                            <!--<span class="fact-sheets-spacer"></span>
                             <a href="#" class="fact-sheet-header-icon">
                                 <span class="fa fa-envelope-o"></span>
                                 Email
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                     <div class="clearfix"></div>

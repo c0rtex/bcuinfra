@@ -13,12 +13,11 @@
     "type": "wordpress-theme",
     "require": {
         "php": ">=5.4",
-        "composer/installers" : "~1.0"
+        "composer/installers" : "~1.0",
+        "dompdf/dompdf": "^0.7.0",
+        "nategood/httpful": "*"
     },
     "require-dev":{
         "php": ">=5.4"
-    },
-    "require": {
-        "nategood/httpful": "*"
     }
 }
