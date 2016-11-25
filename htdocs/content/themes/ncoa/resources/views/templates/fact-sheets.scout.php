@@ -41,20 +41,20 @@
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?print=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-print"></span>
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?pdf=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
-                            <span class="fact-sheets-spacer"></span>
+                            <!--<span class="fact-sheets-spacer"></span>
                             <a href="#" class="fact-sheet-header-icon">
                                 <span class="fa fa-envelope-o"></span>
                                 Email
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -282,20 +282,20 @@
                         <div class="clearfix"></div>
                         <hr class="fact-sheets-hr" />
                         <div class="fact-sheets-icon-block pull-left">
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?print=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-print"></span>
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?pdf=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-floppy-o"></span>
                                 Save
                             </a>
-                            <span class="fact-sheets-spacer"></span>
+                            <!--<span class="fact-sheets-spacer"></span>
                             <a href="#" class="fact-sheet-header-icon">
                                 <span class="fa fa-envelope-o"></span>
                                 Email
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                     <div class="clearfix"></div>
