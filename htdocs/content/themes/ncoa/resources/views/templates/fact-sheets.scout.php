@@ -147,11 +147,11 @@
                 <div class="col-md-3 hidden-xs hidden-sm">
                     @if(Loop::id() == '7284')
                     <div style="margin: 20px 0">
-                        <a target="_blank" href="{{ get_permalink(12464) }}" class="btn btn-primary btn-block">Espa&ntilde;ol</a>
+                        <a href="{{ get_permalink(12464) }}" class="btn btn-primary btn-block">Espa&ntilde;ol</a>
                     </div>
                     @elseif(Loop::id() == '12464')
                     <div style="margin: 20px 0">
-                        <a target="_blank" href="{{ get_permalink(7284) }}" class="btn btn-primary btn-block">Ingl&eacute;s</a>
+                        <a href="{{ get_permalink(7284) }}" class="btn btn-primary btn-block">Ingl&eacute;s</a>
                     </div>
                     @endif
 
