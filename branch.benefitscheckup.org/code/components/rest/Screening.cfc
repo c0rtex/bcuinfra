@@ -7,13 +7,6 @@
         </cfif>
     </cffunction>
 
-    <cffunction name="getDefaultPartner">
-        <cfset var partner = entityload("partner",0)>
-        <cfif arraylen(partner) neq 0>
-            <cfreturn partner[1]>
-        </cfif>
-    </cffunction>
-
     <cffunction name="savePrescreen" access="remote" restpath="/savePrescreen" returnType="String" httpMethod="POST">
         <cfargument name="body" type="String">
 
@@ -29,7 +22,7 @@
             <cfset screening.setStart_datetime(Now())>
             <cfset screening.setSource(this.getDefaultSource())>
             <cfset screening.setOrg_id(0)>
-            <cfset screening.setPartner(this.getDefaultPartner())>
+            <cfset screening.setPartner_id(0)>
 
             <cfset state = entityload("state",prescreen.state_id)>
             <cfif arraylen(state) neq 0>
@@ -91,7 +84,7 @@
                 <cfset screening.setPreset_state(prescreen.getPreset_state())>
                 <cfset screening.setSource(this.getDefaultSource())>
                 <cfset screening.setOrg_id(0)>
-                <cfset screening.setPartner(this.getDefaultPartner())>
+                <cfset screening.setPartner_id(0)>
 
                 <cfset subset = entityload("subset",101)>
                 <cfif arraylen(subset) neq 0>
