@@ -66,8 +66,5 @@
 
 </footer>
 
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
-@yield('misc-scripts')
-
 </body>
 </html>
