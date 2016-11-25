@@ -39,6 +39,7 @@ class FactSheetsController extends BaseController
                 'required_materials' => $requiredMaterials,
                 'is_alt' => false
             ]);
+
         } else {
 
             if (array_key_exists('zipcode',$_REQUEST)) {
@@ -61,9 +62,13 @@ class FactSheetsController extends BaseController
 
             $faqsList = Meta::get(Loop::id(), $key = 'faqs-list', $single = true);
 
-            $template = (!isset($_REQUEST['pdf'])) ? 'templates.fact-sheets' : 'templates.print-fact-sheets';
+            $template = 'templates.fact-sheets';
 
-            return View::make($template, [
+            if (isset($_REQUEST['pdf']) || isset($_REQUEST['print'])) {
+                $template = 'templates.print-fact-sheets';
+            }
+
+            $return = View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,
@@ -73,7 +78,23 @@ class FactSheetsController extends BaseController
                 'faqs_list' => $faqsList,
                 'becs' => $becs,
                 'is_alt' => false
-            ]);
+            ])->render();
+
+            if (isset($_REQUEST['pdf'])) {
+                // instantiate and use the dompdf class
+                $dompdf = new \Dompdf\Dompdf();
+                $dompdf->loadHtml($return);
+
+                // Render the HTML as PDF
+                $dompdf->render();
+
+                // Output the generated PDF to Browser
+                $dompdf->stream();
+            }
+            else {
+                return $return;
+            }
+            
         }
     }
 
