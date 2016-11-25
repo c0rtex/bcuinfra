@@ -19,7 +19,7 @@
     <cfproperty name="cftoken">
     <cfproperty name="source" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="source_id" cfc="Source">
     <cfproperty name="org_id">
-    <cfproperty name="partner" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="partner_id" cfc="partner">
+    <cfproperty name="partner_id">
     <cfproperty name="subset" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="subset_id" cfc="subset">
 	<cfproperty name="language" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="language_id" cfc="language">
 	<cfproperty name="access_id">
