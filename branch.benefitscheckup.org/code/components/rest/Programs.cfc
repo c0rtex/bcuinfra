@@ -1396,5 +1396,9 @@
         </cfloop>
         <cfreturn serializeJSON(data)>
     </cffunction>
-
+    <cffunction name="refreshorm" access="remote" restpath="/refreshorm" returnType="String" httpMethod="GET">
+	<cfargument name="refresh" required="yes" restargsource="query" default="1">
+		<cfset ORMReload() />
+		<cfreturn '<h1>ORM Reloaded!!!!</h1>'>
+    </cffunction>
 </cfcomponent>
