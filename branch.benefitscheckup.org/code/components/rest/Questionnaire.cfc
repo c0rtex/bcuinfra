@@ -45,7 +45,7 @@
             <cfset sqs = "#sqs#,#psi.getId()#">
         </cfloop>
         <cfif arraylen(ps) neq 0>
-            <cfset sqs = "and sqp.supercategory_id in (#sqs#)">
+            <cfset sqs = "and (sqp.supercategory_id in (#sqs#) or sqp.supercategory_id is null)">
         </cfif>
 
         <!---SELECT
@@ -81,7 +81,7 @@
                                               sqt.question q join
                                               q.question_category qc join
                                               qc.super_category sc
-                                              join q.subset_question_programcategory sqp
+                                              left join q.subset_question_programcategory sqp
                                             where
                                               sqt.subset.id=101
                                               and sqt.state=?
@@ -181,7 +181,7 @@
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
-        <cfset drg = ormExecuteQuery("from answer_field af where af.answer_field_type.id=14")>
+        <cfset drg = ormExecuteQuery("select distinct afr.right_answerfield from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1)")>
         <cfloop array="#drg#" index="d">
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
