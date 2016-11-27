@@ -1732,7 +1732,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 }]);
 
-app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', 'prescreenQuestions', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems, prescreenQuestions){
+app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', 'prescreenQuestions','screening', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems, prescreenQuestions,screening){
 
     $scope.category = "prescreen";
     $scope.showLoader = false;
@@ -1756,14 +1756,10 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     $scope.$root.prescreen.showCTA = true;
     $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
-    if($scope.questions == undefined) {
-
-        prescreenQuestions.get().success(function(data, status, headers, config) {
-            prescreen.data.questions = data;
-            $scope.questions = prescreen.data.questions;
-        });
-
-    };
+    prescreenQuestions.get().success(function(data, status, headers, config) {
+        prescreen.data.questions = data;
+        $scope.questionSet = prescreen.data.questions;
+    });
 
 
     $scope.submitPrescreen = function() {
@@ -1811,8 +1807,10 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
             prescreen.save();
 
-            $state.transitionTo('prescreen.results');
+            screening.data.results.screening.id = undefined;
+
             $scope.showLoader = false;
+            $state.go('prescreen.results');
         });
     }
 
@@ -1991,8 +1989,8 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
     $scope.tooltipAccuracy = "You will receive more accurate results if you provide more details.";
     $scope.tooltipExpenses = "Expenses are the amount of money you spend on things like rent, utilities, and other costs of living."
 
-    $scope.nextPage = function(url){
-        $state.go(url);
+    $scope.goScreening = function(){
+        $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
     }
 
     var el = document.querySelector('.odometer');
