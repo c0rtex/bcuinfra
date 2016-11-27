@@ -68,6 +68,9 @@
 
         <cfif structKeyExists(answers,"screening")>
             <cfset screening = entityLoadByPK("screening",answers.screening.id)>
+            <cftransaction>
+                <cfset ormExecuteQuery("delete from screening_answerfield sa where sa.screening=? and sa.page_num=?",[screening,pgno])>
+            </cftransaction>
         <cfelse>
             <cftransaction>
                 <cfset prescreen = entityLoadByPK("screening", answers.prescreen.id)>
