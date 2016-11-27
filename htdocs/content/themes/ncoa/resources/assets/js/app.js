@@ -17,8 +17,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
         .state('prescreen', {
             url: "/",
-            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/prescreen/prescreen.html?'+(new Date()),
-            controller: 'preScreenInitalController'
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/prescreen/prescreen.questions.html?'+(new Date()),
+            controller: 'preScreenController'
         })
         .state('prescreen.questions', {
             url: "prescreen/questions",
@@ -1732,12 +1732,17 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 }]);
 
-app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems){
+app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', 'prescreenQuestions', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems, prescreenQuestions){
 
     $scope.category = "prescreen";
     $scope.showLoader = false;
 
-    if(prescreen.data.questions == undefined) $state.transitionTo('prescreen');
+    if ($scope.$root.answers == undefined) {
+        $scope.$root.answers = {};
+    }
+
+
+    $scope.$root.answers.prescreen = prescreen.data.answers;
 
     $scope.sibmitDisabled = true;
 
@@ -1746,11 +1751,20 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
         $scope.$root.prescreen.programList = {};
     }
 
-    $scope.questions = prescreen.data.questions;
     $scope.canContinue = true;
     $scope.showquestions = false;
     $scope.$root.prescreen.showCTA = true;
     $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
+
+    if($scope.questions == undefined) {
+
+        prescreenQuestions.get().success(function(data, status, headers, config) {
+            prescreen.data.questions = data;
+            $scope.questions = prescreen.data.questions;
+        });
+
+    };
+
 
     $scope.submitPrescreen = function() {
         $scope.showLoader = true;
@@ -1797,7 +1811,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
             prescreen.save();
 
-            $state.go('prescreen.results');
+            $state.transitionTo('prescreen.results');
+            $scope.showLoader = false;
         });
     }
 
