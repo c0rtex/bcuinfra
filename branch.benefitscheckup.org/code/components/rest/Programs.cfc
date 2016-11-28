@@ -79,6 +79,7 @@
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
 	and p.code not like 'health_ct_msp_almb'
+        and p.code not like 'health_#state_id#_schip'
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
@@ -1395,6 +1396,7 @@
 	and p.code not like 'health_fd_msp_slmb%'
 	and p.code not like 'health_fd_msp_qi%'
 	and p.code not like 'health_ct_msp_almb'
+	and p.code not like 'health_#st#_schip'
 	and p.active_flag=1
 	and sc.answerfieldcode = #filter#
 	and (p.state='#st#' or p.state is null) order by p.sort
