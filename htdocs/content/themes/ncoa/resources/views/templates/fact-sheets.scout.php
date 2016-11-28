@@ -245,7 +245,7 @@
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
                                         @else
-                                        <a target="_blank" href="{{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                        <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
