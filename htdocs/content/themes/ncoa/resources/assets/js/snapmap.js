@@ -827,7 +827,7 @@ var pin_config = {
     'points':[
         {
             'shape':'circle',//choose the shape of the pin circle or rectangle
-            'hover':'<u><b>Washington DC</b></u><br>This pin when clicked will open<br>the URL in a <span style="color:black; background-color:#a9f038;"><b>NEW</b></span> window.',//the content of the hover ppup
+            'hover':'Washington DC',//the content of the hover ppup
             'pos_X':672,//location of the pin on X axis
             'pos_Y':210,//location of the pin on Y axis
             'diameter': 14,
@@ -839,7 +839,7 @@ var pin_config = {
             'overColor':'#1F3D7D',//color of the pin when mouse hover
             'downColor':'#993366',//color of the pin when clicked 
             //(trick, if you make this pin un-clickable > make the overColor and downColor the same)
-            'url':'http://www.html5interactivemaps.com',//URL of this pin
+            'url':'/fact-sheets/factsheet_nutrition_dc_snap_program/',//URL of this pin
             'target':'new_window',//'new_window' opens URL in new window//'same_window' opens URL in the same window //'none' pin is not clickable
             'enable':true,//true/false to enable/disable this pin
         }
