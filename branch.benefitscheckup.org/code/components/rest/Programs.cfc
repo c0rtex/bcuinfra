@@ -765,6 +765,9 @@
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
+	<cfset debug = "false">
+	<cfset attributes.ynDoBuffer = "no">
+        <cfset application.dbSrc = "dbSrc">
 	<!--- Default Values --->
 	<cfset sa.pri_resident = 'y'>
 	
@@ -779,162 +782,161 @@
 	    <cfparam name="session.SNAP_AR_RECEIVE" default="">
 	    <cfparam name="session.snap_co_receive" default="">
 	    <cfparam name="session.snap_ct_receive" default=""> 
-<cfparam name="session.snap_dc_receive" default="">
-<cfparam name="session.snap_de_receive" default="">
-<cfparam name="session.snap_fl_receive" default="">
-<cfparam name="session.snap_ga_receive" default="">
-<cfparam name="session.snap_hi_receive" default="">
-<cfparam name="session.snap_ia_receive" default="">
-<cfparam name="session.snap_id_receive" default="">
-<cfparam name="session.snap_il_receive" default="">
-<cfparam name="session.snap_in_receive" default="">
-<cfparam name="session.snap_ks_receive" default="">
-<cfparam name="session.snap_ky_receive" default="">
-<cfparam name="session.snap_la_receive" default="">
-<cfparam name="session.snap_ma_receive" default="">
-<cfparam name="session.snap_md_receive" default="">
-<cfparam name="session.snap_me_receive" default="">
-<cfparam name="session.snap_mi_receive" default="">
-<cfparam name="session.snap_mn_receive" default="">
-<cfparam name="session.snap_mo_receive" default="">
-<cfparam name="session.snap_ms_receive" default="">
-<cfparam name="session.snap_mt_receive" default="">
-<cfparam name="session.snap_nc_receive" default="">
-<cfparam name="session.snap_nd_receive" default="">
-<cfparam name="session.snap_ne_receive" default="">
-<cfparam name="session.snap_nh_receive" default="">
-<cfparam name="session.snap_nj_receive" default="">
-<cfparam name="session.snap_nm_receive" default="">
-<cfparam name="session.snap_nv_receive" default="">
-<cfparam name="session.snap_ny_receive" default="">
-<cfparam name="session.snap_oh_receive" default="">
-<cfparam name="session.snap_ok_receive" default="">
-<cfparam name="session.snap_or_receive" default="">
-<cfparam name="session.snap_pa_receive" default="">
-<cfparam name="session.snap_ri_receive" default="">
-<cfparam name="session.snap_sc_receive" default="">
-<cfparam name="session.snap_sd_receive" default="">
-<cfparam name="session.snap_tn_receive" default="">
-<cfparam name="session.snap_tx_receive" default="">
-<cfparam name="session.snap_ut_receive" default="">
-<cfparam name="session.snap_va_receive" default="">
-<cfparam name="session.snap_vt_receive" default="">
-<cfparam name="session.snap_wa_receive" default="">
-<cfparam name="session.snap_wi_receive" default="">
-<cfparam name="session.snap_wv_receive" default="">
-<cfparam name="session.snap_wy_receive" default=""> 
+	    <cfparam name="session.snap_dc_receive" default="">
+	    <cfparam name="session.snap_de_receive" default="">
+	    <cfparam name="session.snap_fl_receive" default="">
+	    <cfparam name="session.snap_ga_receive" default="">
+	    <cfparam name="session.snap_hi_receive" default="">
+	    <cfparam name="session.snap_ia_receive" default="">
+	    <cfparam name="session.snap_id_receive" default="">
+	    <cfparam name="session.snap_il_receive" default="">
+	    <cfparam name="session.snap_in_receive" default="">
+	    <cfparam name="session.snap_ks_receive" default="">
+	    <cfparam name="session.snap_ky_receive" default="">
+	    <cfparam name="session.snap_la_receive" default="">
+	    <cfparam name="session.snap_ma_receive" default="">
+	    <cfparam name="session.snap_md_receive" default="">
+	    <cfparam name="session.snap_me_receive" default="">
+	    <cfparam name="session.snap_mi_receive" default="">
+	    <cfparam name="session.snap_mn_receive" default="">
+	    <cfparam name="session.snap_mo_receive" default="">
+	    <cfparam name="session.snap_ms_receive" default="">
+	    <cfparam name="session.snap_mt_receive" default="">
+	    <cfparam name="session.snap_nc_receive" default="">
+	    <cfparam name="session.snap_nd_receive" default="">
+	    <cfparam name="session.snap_ne_receive" default="">
+	    <cfparam name="session.snap_nh_receive" default="">
+	    <cfparam name="session.snap_nj_receive" default="">
+	    <cfparam name="session.snap_nm_receive" default="">
+	    <cfparam name="session.snap_nv_receive" default="">
+	    <cfparam name="session.snap_ny_receive" default="">
+	    <cfparam name="session.snap_oh_receive" default="">
+	    <cfparam name="session.snap_ok_receive" default="">
+	    <cfparam name="session.snap_or_receive" default="">
+	    <cfparam name="session.snap_pa_receive" default="">
+	    <cfparam name="session.snap_ri_receive" default="">
+	    <cfparam name="session.snap_sc_receive" default="">
+	    <cfparam name="session.snap_sd_receive" default="">
+	    <cfparam name="session.snap_tn_receive" default="">
+	    <cfparam name="session.snap_tx_receive" default="">
+	    <cfparam name="session.snap_ut_receive" default="">
+	    <cfparam name="session.snap_va_receive" default="">
+	    <cfparam name="session.snap_vt_receive" default="">
+	    <cfparam name="session.snap_wa_receive" default="">
+	    <cfparam name="session.snap_wi_receive" default="">
+	    <cfparam name="session.snap_wv_receive" default="">
+	    <cfparam name="session.snap_wy_receive" default=""> 
 
-	<cfparam name="session.medicare_receive" default="">
-	<cfparam name="session.receive_partd" default="">
-	<cfparam name="session.tanf_vi_receive" default="">
-	<cfparam name="session.receive_lis" default="">
-	<cfparam name="session.med_receive" default="">	
-	<cfparam name="session.receive_msp" default="">	
-	
-<cfparam name="session.REVERSE_MORTGAGE" default="">
-<cfparam name="session.EYECARE" default="">
-<cfparam name="session.VETERAN" default="">
-<cfparam name="reverse_mortgage" default="">
-<cfparam name="session.tefap_receive" default="">
-<cfparam name="session.receive_csfp" default="">
-<cfparam name="session.cash_assist_receive" default="">
-<cfparam name="session.ssi_receive" default="">
-<cfparam name="session.tanf_receive" default="">
-<cfparam name="session.tanf_ar_receive" default="">
-<cfparam name="session.eaedc_receive" default="">
-<cfparam name="session.emergency_assist_receive" default="">
-<cfparam name="session.general_assist_receive" default="">
-<cfparam name="session.scsep_receive" default="">
+	    <cfparam name="session.medicare_receive" default="">
+	    <cfparam name="session.receive_partd" default="">
+	    <cfparam name="session.tanf_vi_receive" default="">
+	    <cfparam name="session.receive_lis" default="">
+	    <cfparam name="session.med_receive" default="">	
+	    <cfparam name="session.receive_msp" default="">		
+            <cfparam name="session.REVERSE_MORTGAGE" default="">
+	    <cfparam name="session.EYECARE" default="">
+	    <cfparam name="session.VETERAN" default="">
+	    <cfparam name="reverse_mortgage" default="">
+	    <cfparam name="session.tefap_receive" default="">
+	    <cfparam name="session.receive_csfp" default="">
+	    <cfparam name="session.cash_assist_receive" default="">
+	    <cfparam name="session.ssi_receive" default="">
+	    <cfparam name="session.tanf_receive" default="">
+	    <cfparam name="session.tanf_ar_receive" default="">
+	    <cfparam name="session.eaedc_receive" default="">
+	    <cfparam name="session.emergency_assist_receive" default="">
+	    <cfparam name="session.general_assist_receive" default="">
+	    <cfparam name="session.scsep_receive" default="">
 
-<cfparam name="session.cobra2" default="">	
-<cfparam name="session.rec_ak_seniorbenefits" default="">	
-<cfparam name="session.rec_az_copperrx" default="">	
-<cfparam name="session.rec_ca_drugdiscount" default="">	
-<cfparam name="session.rec_de_dpap" default="">	
-<cfparam name="session.rec_fl_discountdrugcard" default="">	
-<cfparam name="session.rec_il_rxbuyingclub" default="">	
-<cfparam name="session.rec_in_hoosierrx" default="">	
-<cfparam name="session.rec_ma_prescriptionadvantage" default="">	
-<cfparam name="session.rec_md_spdap" default="">	
-<cfparam name="session.rec_me_del" default="">	
-<cfparam name="session.rec_me_rxplus" default="">	
-<cfparam name="session.rec_mi_mirx" default="">	
-<cfparam name="session.rec_mo_rxplan" default="">	
-<cfparam name="session.rec_mt_bigskyrx" default="">	
-<cfparam name="session.rec_nj_paad" default="">	
-<cfparam name="session.rec_nj_seniorgold" default="">	
-<cfparam name="session.rec_nv_seniorrx" default="">	
-<cfparam name="session.rec_ny_epic" default="">	
-<cfparam name="session.rec_ny_bigapplerx" default="">	
-<cfparam name="session.rec_oh_bestrx" default="">	
-<cfparam name="session.rec_or_pdap_2" default="">	
-<cfparam name="session.rec_pa_pace" default="">	
-<cfparam name="session.rec_pa_pacenet" default="">	
-<cfparam name="session.rec_ri_ripae" default="">	
-<cfparam name="session.rec_vt_vpharm1" default="">	
-<cfparam name="session.rec_vt_vpharm2" default="">	
-<cfparam name="session.rec_vt_vpharm3" default="">	
-<cfparam name="session.rec_vt_healthyvermonters" default="">	
-<cfparam name="session.rec_wa_pdp" default="">	
-<cfparam name="session.rec_wi_seniorcare" default="">	
-<cfparam name="session.rec_wv_goldenmountaineer" default="">	
-<cfparam name="session.ss_receive" default="">	
-<cfparam name="session.ssd_receive" default="">	
-<cfparam name="session.ssd_receive_2" default="">	
-<cfparam name="session.ssi_receive" default="">	
-<cfparam name="session.rr_receive" default="">	
-<cfparam name="session.rr_receive_2" default="">	
-<cfparam name="session.rec_reverse_mortgage" default="">	
-<cfparam name="session.rec_employee_hi" default="">	
-<cfparam name="session.rec_tricare" default="">	
-<cfparam name="session.receive_va" default="">	
-<cfparam name="session.liheap_receive" default="">	
-<cfparam name="session.receive_pub_housing" default="">	
-<cfparam name="session.receive_section_8" default="">	
-<cfparam name="session.scsep_receive" default="">	
-<cfparam name="session.receive_hopwa" default="">	
-<cfparam name="session.unemp_receive" default="">	
-<cfparam name="session.snap_vi_receive" default="">	
-<cfparam name="session.rec_vi_pap" default="">	
-<cfparam name="session.ecap_receive" default="">	
-<cfparam name="session.cobra" default="">
-<cfparam name="session.int_unemployed" default="">
-<cfparam name="session.int_medicare_2" default="">
-<cfparam name="session.int_social_security" default="">
-<cfparam name="session.int_fed_civil_service_retirement" default="">
-<cfparam name="session.int_railroad_retirment" default="">
-<cfparam name="session.abused" default="">
-<cfparam name="session.int_alzheimer" default="">
-<cfparam name="session.int_assistech" default="">
-<cfparam name="session.int_caregiver_respite" default="">
-<cfparam name="session.int_diabetes" default="">
-<cfparam name="session.int_edu" default="">
-<cfparam name="session.int_elder_nut" default="">
-<cfparam name="session.emerg_needs" default="">
-<cfparam name="session.int_emp" default="">
-<cfparam name="session.int_foreclosure" default="">
-<cfparam name="session.int_medicare" default="">
-<cfparam name="session.int_homeowners_insurance" default="">
-<cfparam name="session.int_low_inc_house" default="">
-<cfparam name="session.legal" default="">
-<cfparam name="session.int_ltc_ombuds" default="">
-<cfparam name="session.int_pension" default="">
-<cfparam name="session.int_health_center" default="">
-<cfparam name="session.int_mental_health" default="">
-<cfparam name="session.int_blind" default="">
-<cfparam name="session.int_deaf" default="">
-<cfparam name="session.int_retire_tax_estate_planning" default="">
-<cfparam name="session.int_trans_personal" default="">
-<cfparam name="session.int_unclaimed_property" default="">
-<cfparam name="session.int_crisis_prevention_veterans" default="">
-<cfparam name="session.int_vol" default="">
-<cfparam name="session.int_hiv_aids" default="">
-<cfloop COLLECTION="#sa#"  item="x">
-	<cfset 'session.#x#' = evaluate('sa.#x#')>
-</cfloop>
-        <cfparam name="session.partner_id" default= 0>
-        <cfparam name="session.org_id" default = 0>
-        <cfparam name="session.subset_id" default = 0>
+	    <cfparam name="session.cobra2" default="">	
+	    <cfparam name="session.rec_ak_seniorbenefits" default="">	
+	    <cfparam name="session.rec_az_copperrx" default="">	
+	    <cfparam name="session.rec_ca_drugdiscount" default="">	
+	    <cfparam name="session.rec_de_dpap" default="">	
+	    <cfparam name="session.rec_fl_discountdrugcard" default="">	
+	    <cfparam name="session.rec_il_rxbuyingclub" default="">	
+	    <cfparam name="session.rec_in_hoosierrx" default="">	
+	    <cfparam name="session.rec_ma_prescriptionadvantage" default="">	
+	    <cfparam name="session.rec_md_spdap" default="">	
+	    <cfparam name="session.rec_me_del" default="">	
+	    <cfparam name="session.rec_me_rxplus" default="">	
+	    <cfparam name="session.rec_mi_mirx" default="">	
+	    <cfparam name="session.rec_mo_rxplan" default="">	
+	    <cfparam name="session.rec_mt_bigskyrx" default="">	
+	    <cfparam name="session.rec_nj_paad" default="">	
+	    <cfparam name="session.rec_nj_seniorgold" default="">	
+	    <cfparam name="session.rec_nv_seniorrx" default="">	
+	    <cfparam name="session.rec_ny_epic" default="">	
+	    <cfparam name="session.rec_ny_bigapplerx" default="">	
+	    <cfparam name="session.rec_oh_bestrx" default="">	
+	    <cfparam name="session.rec_or_pdap_2" default="">	
+	    <cfparam name="session.rec_pa_pace" default="">	
+	    <cfparam name="session.rec_pa_pacenet" default="">	
+	    <cfparam name="session.rec_ri_ripae" default="">	
+	    <cfparam name="session.rec_vt_vpharm1" default="">	
+	    <cfparam name="session.rec_vt_vpharm2" default="">	
+	    <cfparam name="session.rec_vt_vpharm3" default="">	
+	    <cfparam name="session.rec_vt_healthyvermonters" default="">	
+	    <cfparam name="session.rec_wa_pdp" default="">	
+	    <cfparam name="session.rec_wi_seniorcare" default="">	
+	    <cfparam name="session.rec_wv_goldenmountaineer" default="">	
+	    <cfparam name="session.ss_receive" default="">	
+	    <cfparam name="session.ssd_receive" default="">	
+	    <cfparam name="session.ssd_receive_2" default="">	
+	    <cfparam name="session.ssi_receive" default="">	
+	    <cfparam name="session.rr_receive" default="">	
+	    <cfparam name="session.rr_receive_2" default="">	
+	    <cfparam name="session.rec_reverse_mortgage" default="">	
+	    <cfparam name="session.rec_employee_hi" default="">	
+	    <cfparam name="session.rec_tricare" default="">	
+	    <cfparam name="session.receive_va" default="">	
+	    <cfparam name="session.liheap_receive" default="">	
+	    <cfparam name="session.receive_pub_housing" default="">	
+	    <cfparam name="session.receive_section_8" default="">	
+	    <cfparam name="session.scsep_receive" default="">	
+	    <cfparam name="session.receive_hopwa" default="">	
+	    <cfparam name="session.unemp_receive" default="">	
+	    <cfparam name="session.snap_vi_receive" default="">	
+	    <cfparam name="session.rec_vi_pap" default="">	
+	    <cfparam name="session.ecap_receive" default="">	
+	    <cfparam name="session.cobra" default="">
+	    <cfparam name="session.int_unemployed" default="">
+	    <cfparam name="session.int_medicare_2" default="">
+	    <cfparam name="session.int_social_security" default="">
+	    <cfparam name="session.int_fed_civil_service_retirement" default="">
+	    <cfparam name="session.int_railroad_retirment" default="">
+	    <cfparam name="session.abused" default="">
+	    <cfparam name="session.int_alzheimer" default="">
+	    <cfparam name="session.int_assistech" default="">
+	    <cfparam name="session.int_caregiver_respite" default="">
+	    <cfparam name="session.int_diabetes" default="">
+	    <cfparam name="session.int_edu" default="">
+	    <cfparam name="session.int_elder_nut" default="">
+	    <cfparam name="session.emerg_needs" default="">
+	    <cfparam name="session.int_emp" default="">
+	    <cfparam name="session.int_foreclosure" default="">
+	    <cfparam name="session.int_medicare" default="">
+	    <cfparam name="session.int_homeowners_insurance" default="">
+	    <cfparam name="session.int_low_inc_house" default="">
+	    <cfparam name="session.legal" default="">
+	    <cfparam name="session.int_ltc_ombuds" default="">
+	    <cfparam name="session.int_pension" default="">
+	    <cfparam name="session.int_health_center" default="">
+	    <cfparam name="session.int_mental_health" default="">
+	    <cfparam name="session.int_blind" default="">
+	    <cfparam name="session.int_deaf" default="">
+	    <cfparam name="session.int_retire_tax_estate_planning" default="">
+	    <cfparam name="session.int_trans_personal" default="">
+	    <cfparam name="session.int_unclaimed_property" default="">
+	    <cfparam name="session.int_crisis_prevention_veterans" default="">
+	    <cfparam name="session.int_vol" default="">
+	    <cfparam name="session.int_hiv_aids" default="">
+	    <cfloop COLLECTION="#sa#"  item="x">
+		    <cfset 'session.#x#' = evaluate('sa.#x#')>
+	    </cfloop>
+        	    <cfparam name="session.partner_id" default= 0>
+        	    <cfparam name="session.org_id" default = 0>
+        	    <cfparam name="session.subset_id" default = 0>
 
         <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
 
@@ -959,137 +961,189 @@
                     <cfset strRule = Replace(strRule, "XX[" , "[", "ALL")>
                     <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")>
 
+                    <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
                     <cfif FINDNOCASE("BuyInQI2asset", strRule, 1) NEQ 0>
-                        <cfif structKeyExists(sa,'skipassets') and sa.skipassets EQ "n">
-                            <cfset answer = "NO">
-                        <cfelse>
-                            <cfset answer = this.ynMedicareBuyInAss(gettoken(strRule,2,"-"),gettoken(strRule,3,"-"))>
-                        </cfif>
-                    <cfelseif FINDNOCASE("BuyInQI2inc", strRule, 1) NEQ 0>
-                        <cfif structKeyExists(sa,'skipinc') and sa.skipinc EQ "n">
-                            <cfset answer = "NO">
-                        <cfelse>
-                            <cfset answer = this.ynMedicareBuyInInc(gettoken(strRule,2,"-"),gettoken(strRule,3,"-"),gettoken(strRule,4,"-"),gettoken(strRule,5,"-"))>
-                        </cfif>
-                    <cfelseif FINDNOCASE("MXASSET", strRule, 1) NEQ 0>
-                        <cfset strTable = Replace(strRule,"(","","ALL")>
-                        <cfset strTable = Trim(ReplaceNoCase(strTable,"MXASSET)","","ALL"))>
-                        <cfset getMxAssetVals = ormexecutequery("SELECT single, couple FROM tbl_mx_asset where state=? and tbl_nm=?",[screening.getPreset_state(),strTable])>
-
-                        <cfif structKeyExists(sa,'skipassets') and sa.skipassets EQ "n">
-                            <cfif getMxAssetVals[1][1] GTE 1000000>
-                                <cfset answer = "YES">
-                            <cfelse>
-                                <cfset answer = "NO">
-                            </cfif>
-                        <cfelse>
-                            <cfset answer = this.ynMedicareBuyInAss(getMxAssetVals[1][1],getMxAssetVals[1][2])>
-                        </cfif>
-                    <cfelseif FINDNOCASE("MXINCOME", strRule, 1) NEQ 0>
-                        <cfif structKeyExists(sa,'skipinc') and sa.skipinc EQ "n">
-                            <cfset answer = "NO">
-                        <cfelse>
-                            <cfset strTable = Replace(strRule,"(","","ALL")>
-                            <cfset strTable = Trim(ReplaceNoCase(strTable,"MXINCOME)","","ALL"))>
-                            <cfset getMxIncVals = ormexecutequery("SELECT single_max, single_min, couple_max, couple_min FROM tbl_mx_income WHERE state.id=? and tbl_nm=?",[sa.st,strTable])>
-                            <cfset answer = this.ynMedicareBuyInInc(getMxIncVals[1][1],getMxIncVals[1][2],getMxIncVals[1][3],getMxIncVals[1][4])>
-                        </cfif>
-                    <cfelseif FINDNOCASE("childstatessiinc", strRule, 1) NEQ 0>
-                        <cfset answer = this.ynChildSSIInc(checkState=true)>
-                    <cfelseif FINDNOCASE("childssiinc", strRule, 1) NEQ 0>
-                        <cfset answer = this.ynChildSSIInc(checkState=false)>
-                    <cfelseif FINDNOCASE("ssiinc", strRule, 1) NEQ 0>
-                        <cfif structKeyExists(sa,'skipinc') and sa.skipinc EQ "n">
-                            <cfset answer = "NO">
-                        <cfelse>
-                            <cfset answer = this.ynSSIInc(gettoken(strRule,2,"-"),gettoken(strRule,3,"-"))>
-                        </cfif>
-                    <cfelseif FINDNOCASE("prg", strRule, 1) NEQ 0>
-                        <cfset answer = this.ynPrgFind(strRule)>
-                    <cfelseif FINDNOCASE("spenddowninc", strRule, 1) NEQ 0>
-                        <cfif structKeyExists(sa,'skipinc') and sa.skipinc EQ "n">
-                            <cfset answer = "NO">
-                        <cfelse>
-                            <cfset ynConvertStructMem = FINDNOCASE("struct_mem", strRule, 1)>
-                            <cfif ynConvertStructMem>
-                                <cfset strStructMem = getToken(strRule,3," ")>
-                                <cfset valStructMem = Evaluate("#strStructMem#")>
-                                <cfset strConvertedRule = ReplaceNoCase(strRule, strStructMem, valStructMem)>
-                                <cfset answer = this.ynSpendDown(strConvertedRule,true)>
-                            <cfelse>
-                                <cfset answer = this.ynSpendDown(strRule,false)>
-                            </cfif>
-                        </cfif>
-                    <cfelse>
-                        <cfset findPos = 1>
-                        <cfloop condition="Find('##', strRule, findPos)">
-                            <cfset firstPound = Find('##', strRule, findPos)>
-                            <cfset secondPound = Find('##', strRule, firstPound + 1)>
-                            <cfif secondPound gt firstPound>
-                                <cfset variableName = Mid(strRule, firstPound + 1, secondPound - firstPound - 1)>
-                                <cfif FindNoCase('struct_mem[', variableName) eq 1 Or FindNoCase('listable[', variableName) eq 1 Or FindNoCase('childtable[', variableName) eq 1 Or IsDefined(variableName)>
-                                    <cfset eVal = Evaluate(variableName)>
-                                    <cfelseif FindNoCase('session.', variableName) eq 1>
-                                    <cfset newVariableName = RemoveChars(variableName, 1, 8)>
-                                    <cfif structKeyExists(sa,newVariableName)>
-                                        <cfset eVal = sa[newVariableName]>
-                                    <cfelse>
-                                        <cfset eval = 0>
-                                    </cfif>
-                                <cfelse>
-                                    <cfset eVal = 0>
-                                </cfif>
-                                <cfif eVal eq ''>
-                                    <cfset eVal = 0>
-                                </cfif>
-                                <cfif Not IsNumeric(eVal) Or (IsNumeric(eVal) And Len(eVal) gt 1 And Left(eVal, 1) eq '0')>
-                                    <cfset eVal = "'#eVal#'">
-                                <cfelse>
-                                    <cfset eVal = toString(eVal)>
-                                </cfif>
-                                <cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')>
-                            <cfelse>
-                                <cfset findPos = firstPound + 1>
-                            </cfif>
-                        </cfloop>
-                        <cfset posIn = FindNoCase(' in ', strRule, 1)>
-                        <cfset posNotIn = FindNoCase(' not in ', strRule, 1)>
-                        <cfif posNotIn>
-                            <cfset posFind = posNotIn>
-                            <cfset posLen = 8>
-                            <cfelseif posIn>
-                            <cfset posFind = posIn>
-                            <cfset posLen = 4>
-                        <cfelse>
-                            <cfset posFind = 0>
-                        </cfif>
-                        <cfif posFind>
-                            <cfset strItem = Trim(Left(strRule, posFind - 1))>
-                            <cfif Find("('", strItem) eq 1>
-                                <cfset strItem = Mid(strItem, 3, Len(strItem) - 3)>
-                            <cfelse>
-                                <cfset strItem = Mid(strItem, 2, Len(strItem) - 1)>
-                            </cfif>
-                            <cfset strList = Trim(Right(strRule, Len(strRule) - (posFind + posLen - 1)))>
-                            <cfset strList = Mid(strList, 2, Len(strList) - 3)>
-                            <cfloop index="element" from="1" to="#ListLen(strList)#">
-                                <cfset strList = ListSetAt(strList, element, Trim(ListGetAt(strList, element)))>
-                            </cfloop>
-                            <cfset temp = ListFindNoCase(strList, strItem)>
-                            <cfif temp eq 0>
-                                <cfif posNotIn>
-                                    <cfset answer="YES">
-                                <cfelse>
-                                    <cfset answer="NO">
-                                </cfif>
-                            <cfelse>
-                                <cfif posNotIn>
-                                    <cfset answer="NO">
-                                <cfelse>
-                                    <cfset answer="YES">
-                                </cfif>
-                            </cfif>
-                        <cfelse>
+	
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
+				   <cf_tagYeMedicareBuyInAss 
+						rule="#strRule#" 
+						ynDoBuffer="#attributes.ynDoBuffer#"
+						self = "#gettoken(strRule,2,"-")#"	
+						self_spouse = "#gettoken(strRule,3,"-")#">
+				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("BuyInQI2inc", strRule, 1) NEQ 0>
+				
+					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
+				   <cf_tagYeMedicareBuyInInc 
+						rule="#strRule#" 
+						ynDoBuffer="#attributes.ynDoBuffer#"
+						self_high = "#gettoken(strRule,2,"-")#"	
+						self_low = "#gettoken(strRule,3,"-")#"
+						s_sp_high = "#gettoken(strRule,4,"-")#"
+						s_sp_low = "#gettoken(strRule,5,"-")#">
+				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("MXASSET", strRule, 1) NEQ 0>
+				<cfset strTable = Replace(strRule,"(","","ALL")>
+				<cfset strTable = Trim(ReplaceNoCase(strTable,"MXASSET)","","ALL"))>
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxAssetVals<br /><br /></cfoutput></cfif>
+				<cfinclude template="../tagGetMxAssetVals.cfm">
+				<cfif IsDefined('session.skipassets') and session.skipassets EQ "N">
+					<!--- 07/18/02 REM  If the table val is $1MM, then everyone passes --->
+					<cfif getMxAssetVals.single GTE 1000000>
+						<cfset answer = "YES">
+					<cfelse>
+						<cfset answer = "NO">
+					</cfif>
+				<cfelse>
+					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
+					<cf_tagYeMedicareBuyInAss 
+						rule="#strRule#" 
+						ynDoBuffer="#attributes.ynDoBuffer#"
+						self = "#getMxAssetVals.single#"	
+						self_spouse = "#getMxAssetVals.couple#">
+				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+				</cfif>
+			<cfelseif FINDNOCASE("MXINCOME", strRule, 1) NEQ 0>
+				
+					<cfset strTable = Replace(strRule,"(","","ALL")>
+					<cfset strTable = Trim(ReplaceNoCase(strTable,"MXINCOME)","","ALL"))>
+					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxIncVals<br /><br /></cfoutput></cfif>
+					<cfinclude template="../tagGetMxIncVals.cfm">
+					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
+				   <cf_tagYeMedicareBuyInInc 
+						rule="#strRule#" 
+						ynDoBuffer="#attributes.ynDoBuffer#"
+						self_high = "#getMxIncVals.single_max#"	
+						self_low = "#getMxIncVals.single_min#"
+						s_sp_high = "#getMxIncVals.couple_max#"
+						s_sp_low = "#getMxIncVals.couple_min#">
+				
+				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("childstatessiinc", strRule, 1) NEQ 0>
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeChildSSIInc checkState="true"<br /><br /></cfoutput></cfif>
+			   <cf_tagYeChildSSIInc ynDoBuffer="#attributes.ynDoBuffer#" checkState="true">
+			   <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("childssiinc", strRule, 1) NEQ 0>
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeChildSSIInc<br /><br /></cfoutput></cfif>
+			   <cf_tagYeChildSSIInc ynDoBuffer="#attributes.ynDoBuffer#">
+                            <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("ssiinc", strRule, 1) NEQ 0>
+				
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSSIInc<br /><br /></cfoutput></cfif>
+				   <cf_tagYeSSIInc 
+						self="#gettoken(strRule,2,"-")#" 
+						self_spouse="#gettoken(strRule,3,"-")#" 
+						ynDoBuffer="#attributes.ynDoBuffer#">
+				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("prg", strRule, 1) NEQ 0>
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYePrgFind<br /><br /></cfoutput></cfif>
+			   <cf_tagYePrgFind 
+					rule="#strRule#" 
+					ynDoBuffer="#attributes.ynDoBuffer#">
+				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Ending tagYePrgFind<br /><br /></cfoutput></cfif>
+ 				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelseif FINDNOCASE("spenddowninc", strRule, 1) NEQ 0>
+				
+				   <cfset ynConvertStructMem = FINDNOCASE("struct_mem", strRule, 1)>
+				   <!--- If 'struct_mem' is part of the Rule that is getting passed to the 
+				   TagYeSpendDown --->
+				   <cfif ynConvertStructMem>
+					  <cfset strStructMem = getToken(strRule,3," ")>
+					  <cfset valStructMem = Evaluate("#strStructMem#")> 
+					  <!--- now replace the part of the passed in rule with its evaluate --->
+					  <cfset strConvertedRule = ReplaceNoCase(strRule, strStructMem, valStructMem)>
+					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSpendDown<br /><br /></cfoutput></cfif>
+					  <cf_tagYeSpendDown 
+							rule="#strConvertedRule#" 
+							EvaluateRule="TRUE" 
+							ynDoBuffer="#attributes.ynDoBuffer#">
+				   <cfelse>
+						<!--- if there is no 'struct_mem getting passed in --->                  
+					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSpendDown<br /><br /></cfoutput></cfif>
+					  <cf_tagYeSpendDown 
+							rule="#strRule#" 
+							EvaluateRule="FALSE" 
+							ynDoBuffer="#attributes.ynDoBuffer#">
+				   </cfif>
+				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+			<cfelse>
+				<cfif debug><cfoutput><h2>#strRule#</h2></cfoutput></cfif>
+				<cfset findPos = 1>
+				<cfloop condition="Find('##', strRule, findPos)">
+					<cfset firstPound = Find('##', strRule, findPos)>
+					<cfset secondPound = Find('##', strRule, firstPound + 1)>
+					<cfif secondPound gt firstPound>
+						<cfset variableName = Mid(strRule, firstPound + 1, secondPound - firstPound - 1)>
+						<cfif debug><cfoutput><li>#variableName#: </cfoutput></cfif>
+						<cfif FindNoCase('struct_mem[', variableName) eq 1 Or FindNoCase('listable[', variableName) eq 1 Or FindNoCase('childtable[', variableName) eq 1 Or IsDefined(variableName)>
+							<cfset eVal = Evaluate(variableName)>
+						<cfelse>
+							<cfset eVal = 0>
+						</cfif>
+						<cfif eVal eq ''>
+							<cfset eVal = 0>
+						</cfif>
+						<cfif Not IsNumeric(eVal) Or (IsNumeric(eVal) And Len(eVal) gt 1 And Left(eVal, 1) eq '0')>
+							<cfset eVal = "'#eVal#'">
+						</cfif>
+						<cfif debug><cfoutput>#eVal#</cfoutput></cfif>
+						<cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')>
+					<cfelse>
+						<cfset findPos = firstPound + 1>
+					</cfif>
+				</cfloop>
+				<cfif debug><cfoutput><br><br>#strRule#</cfoutput></cfif>
+			   <!--- 07/09/2002 REM  If we get to here, we evaluate the rule  --->
+			   <!--- 2/11/02 REM Added a process to account for List Compare rules (e.g., 
+			   session.county IN 'countyA, countyB, countyC').  --->
+			   <!--- 03/09/2002 REM  Need an additional proc for the 'NOT IN' rules --->
+				<cfset posIn = FindNoCase(' in ', strRule, 1)>
+				<cfset posNotIn = FindNoCase(' not in ', strRule, 1)>
+				<cfif posNotIn>
+					<cfset posFind = posNotIn>
+					<cfset posLen = 8>
+				<cfelseif posIn>
+					<cfset posFind = posIn>
+					<cfset posLen = 4>
+				<cfelse>
+					<cfset posFind = 0>
+				</cfif>
+			   <cfif posFind>
+				  <cfset strItem = Trim(Left(strRule, posFind - 1))>
+				  <cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
+				  <!--- 03/09/2002 REM  Need to strip the opening '(' --->
+				  <!--- 10/25/2005 BShunn  Also strip apostrophes --->
+				  <cfif Find("('", strItem) eq 1>
+					  <cfset strItem = Mid(strItem, 3, Len(strItem) - 3)>
+					<cfelse>
+					 <cfset strItem = Mid(strItem, 2, Len(strItem) - 1)>
+				</cfif>
+				<cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
+				  <!--- 03/09/2002 REM  Need to do this to extract the compare list --->
+				  <cfset strList = Trim(Right(strRule, Len(strRule) - (posFind + posLen - 1)))>
+				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
+				  <!--- 03/09/2002 REM  Need to strip the closing ')' --->
+				  <cfset strList = Mid(strList, 2, Len(strList) - 3)>
+				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
+				  <cfloop index="element" from="1" to="#ListLen(strList)#">
+					<cfset strList = ListSetAt(strList, element, Trim(ListGetAt(strList, element)))>
+				  </cfloop>
+				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
+				  <cfset temp = ListFindNoCase(strList, strItem)>
+				  <cfif temp eq 0>
+					<cfif posNotIn>
+						<cfset answer="YES">
+					 <cfelse>
+						<cfset answer="NO">
+					 </cfif>
+				  <cfelse>
+					<cfif posNotIn>
+						<cfset answer="NO">
+					 <cfelse>
+						<cfset answer="YES">
+					 </cfif>
+				  </cfif>
+			   <cfelse>
                             <cftry>
                                 <cfset answer=Evaluate("#strRule#")>
                                 <cfcatch type="any">
