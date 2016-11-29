@@ -149,6 +149,9 @@
 		c-1.7-0.9-3.8-1-5.7-1c-0.5,0-1.4-0.1-1.3,0.7c-0.3,0.4-1.3,0.1-1.9,0.3c-0.6,0.2-1.1-0.1-1.5-0.6c-0.4-0.4-0.7-0.7-1.1-1.1
 		c-0.4-0.4-1.1-0.5-1.6-0.3c-0.3,0.1-0.5,0.2-0.8,0.1c-0.1-0.3,0-0.8-0.5-0.8c-0.3-0.1-0.6-0.2-0.9-0.3
 		C716.5,487.1,716.2,487.1,715.9,487.3z"/>
+	<path id="map_54" vector-effect="non-scaling-stroke" fill="#EBECED" stroke="#FFFFFF" d="M670.4,213.6L670.4,213.6c-2.4,0-4.4-2-4.4-4.4l0,0c0-2.4,2-4.4,4.4-4.4l0,0c2.4,0,4.4,2,4.4,4.4l0,0
+		C674.8,211.6,672.8,213.6,670.4,213.6z M745.5,289.2v-8.9c0-2.7-2.2-4.9-4.9-4.9h-15.3c-2.7,0-4.9,2.2-4.9,4.9v8.9
+		c0,2.7,2.2,4.9,4.9,4.9h15.3C743.3,294,745.5,291.9,745.5,289.2z" />
 			</g><!--regions-->
 
 			<g id="lakes">
@@ -207,7 +210,8 @@
 				<text id="map_50" transform="matrix(1 0 0 1 242 162)" font-family="'Open Sans'" font-size="16">WY</text>
 				<text id="map_51" transform="matrix(1 0 0 1 475 483.7414)" font-family="'Open Sans'" font-size="12">PR</text>
 				<text id="map_52" transform="matrix(1 0 0 1 577.5684 490.1313)" font-family="'Open Sans'" font-size="12">GU</text>
-				<text id="map_53" transform="matrix(1 0 0 1 709.7856 474.7748)" font-family="'Open Sans'" font-size="12">VI</text>			
+				<text id="map_53" transform="matrix(1 0 0 1 709.7856 474.7748)" font-family="'Open Sans'" font-size="12">VI</text>	
+				<text id="map_54" transform="matrix(1 0 0 1 725, 289)" font-family="'Open Sans'" font-size="12">DC</text>		
 			</g>
 
 			<g id="map_points"></g>

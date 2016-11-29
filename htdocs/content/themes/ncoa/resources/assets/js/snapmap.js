@@ -3,7 +3,7 @@ var map_ids = {'AL': 1, 'AK': 2, 'AZ': 3, 'AR': 4, 'CA': 5, 'CO': 6, 'CT': 7, 'D
     'ID': 12, 'IL': 13, 'IN': 14, 'IA': 15, 'KS': 16, 'KY': 17, 'LA': 18, 'ME': 19, 'MD': 20, 'MA': 21, 'MI': 22,
     'MN': 23, 'MS': 24, 'MO': 25, 'MT': 26, 'NE': 27, 'NV': 28, 'NH': 29, 'NJ': 30, 'NM': 31, 'NY': 32, 'NC': 33,
     'ND': 34, 'OH': 35, 'OK': 36, 'OR': 37, 'PA': 38, 'RI': 39, 'SC': 40, 'SD': 41, 'TN': 42, 'TX': 43, 'UT': 44,
-    'VT': 45, 'VA': 46, 'WA': 47, 'WV': 48, 'WI': 49, 'WY': 50, 'PR': 51, 'GU': 52, 'VI': 53
+    'VT': 45, 'VA': 46, 'WA': 47, 'WV': 48, 'WI': 49, 'WY': 50, 'PR': 51, 'GU': 52, 'VI': 53, 'DC': 54
 };
 
 var map_config = {
@@ -544,6 +544,16 @@ var map_config = {
         'overColor':'#1F3D7D',
         'downColor':'#993366',
         'enable':true,
+    },
+    'map_54':{
+        'state_code': 'DC',
+        'hover': 'District of Columbia',
+        'url':'/fact-sheets/factsheet_nutrition_dc_snap_program/',
+        'target':'same_window',
+        'upColor':'#1888de', //state's color when page loads
+        'overColor':'#1F3D7D',
+        'downColor':'#993366',
+        'enable':true,
     }
 };
 
@@ -608,6 +618,7 @@ $(function(){
     addEvent('map_51');
     addEvent('map_52');
     addEvent('map_53');
+    addEvent('map_54');
 
     // Get count for all States (to display in map);
     $.getJSON(window.webServiceUrl+'/rest/backend/snap/countallstates/2016', function(data) {
@@ -819,29 +830,29 @@ function dynamicAddEvent(id){
     }
 }
 
-var pin_config = {
-    'default':{
-        'pinShadow':'#000', //shadow color below the points
-        'pinShadowOpacity':'50', //shadow opacity, value, 0-100
-    },
-    'points':[
-        {
-            'shape':'circle',//choose the shape of the pin circle or rectangle
-            'hover':'Washington DC',//the content of the hover ppup
-            'pos_X':672,//location of the pin on X axis
-            'pos_Y':210,//location of the pin on Y axis
-            'diameter': 14,
-            // 'width':12,//width of the pin if rectangle (if circle use diameter)
-            // 'height':12,//height of the pin if rectangle (if circle delete this line)
-            'outline':'#FFF',//outline color of the pin
-            'thickness':1,//thickness of the line (0 to hide the line)
-            'upColor':'#1888de',//color of the pin when map loads
-            'overColor':'#1F3D7D',//color of the pin when mouse hover
-            'downColor':'#993366',//color of the pin when clicked 
-            //(trick, if you make this pin un-clickable > make the overColor and downColor the same)
-            'url':'/fact-sheets/factsheet_nutrition_dc_snap_program/',//URL of this pin
-            'target':'new_window',//'new_window' opens URL in new window//'same_window' opens URL in the same window //'none' pin is not clickable
-            'enable':true,//true/false to enable/disable this pin
-        }
-    ]
-}
+// var pin_config = {
+//     'default':{
+//         'pinShadow':'#000', //shadow color below the points
+//         'pinShadowOpacity':'50', //shadow opacity, value, 0-100
+//     },
+//     'points':[
+//         {
+//             'shape':'circle',//choose the shape of the pin circle or rectangle
+//             'hover':'Washington DC',//the content of the hover ppup
+//             'pos_X':672,//location of the pin on X axis
+//             'pos_Y':210,//location of the pin on Y axis
+//             'diameter': 14,
+//             // 'width':12,//width of the pin if rectangle (if circle use diameter)
+//             // 'height':12,//height of the pin if rectangle (if circle delete this line)
+//             'outline':'#FFF',//outline color of the pin
+//             'thickness':1,//thickness of the line (0 to hide the line)
+//             'upColor':'#1888de',//color of the pin when map loads
+//             'overColor':'#1F3D7D',//color of the pin when mouse hover
+//             'downColor':'#993366',//color of the pin when clicked 
+//             //(trick, if you make this pin un-clickable > make the overColor and downColor the same)
+//             'url':'/fact-sheets/factsheet_nutrition_dc_snap_program/',//URL of this pin
+//             'target':'new_window',//'new_window' opens URL in new window//'same_window' opens URL in the same window //'none' pin is not clickable
+//             'enable':true,//true/false to enable/disable this pin
+//         }
+//     ]
+// }
