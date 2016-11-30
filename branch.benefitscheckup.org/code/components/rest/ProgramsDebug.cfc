@@ -715,21 +715,21 @@
 
     </cffunction>
 
-    <cffunction name="testRules">
+    <cffunction name="testRules" output="yes">
         <cfset this.getIncomeTables()>
         <cfset testPrograms = "">
         <cfset tmp_prg_list = ''>
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
-	<cfset debug = "false">
+	<cfset debug = "true">
 	<cfset attributes.ynDoBuffer = "no">
         <cfset application.dbSrc = "dbSrc">
 	<!--- Default Values --->
 	<cfset sa.pri_resident = 'y'>
+	<cfset sa.dob_month = '1'>
 	
-	    <!--- Default Values for Receive Questions - Temp to remove --->
-	   <cfparam name="session.INT_SOCIAL_SECURITY" default="">
+	    <cfparam name="session.INT_SOCIAL_SECURITY" default="">
 	    <cfparam name="session.INT_FED_CIVIL_SERVICE_RETIREMENT" default="">
 	    <cfparam name="session.INT_RAILROAD_RETIRMENT" default="">
 	    <cfparam name="session.SNAP_AK_RECEIVE" default="">
@@ -739,168 +739,172 @@
 	    <cfparam name="session.SNAP_AR_RECEIVE" default="">
 	    <cfparam name="session.snap_co_receive" default="">
 	    <cfparam name="session.snap_ct_receive" default=""> 
-	    <cfparam name="session.snap_dc_receive" default="">
-	    <cfparam name="session.snap_de_receive" default="">
-	    <cfparam name="session.snap_fl_receive" default="">
-	    <cfparam name="session.snap_ga_receive" default="">
-	    <cfparam name="session.snap_hi_receive" default="">
-	    <cfparam name="session.snap_ia_receive" default="">
-	    <cfparam name="session.snap_id_receive" default="">
-	    <cfparam name="session.snap_il_receive" default="">
-	    <cfparam name="session.snap_in_receive" default="">
-	    <cfparam name="session.snap_ks_receive" default="">
-	    <cfparam name="session.snap_ky_receive" default="">
-	    <cfparam name="session.snap_la_receive" default="">
-	    <cfparam name="session.snap_ma_receive" default="">
-	    <cfparam name="session.snap_md_receive" default="">
-	    <cfparam name="session.snap_me_receive" default="">
-	    <cfparam name="session.snap_mi_receive" default="">
-	    <cfparam name="session.snap_mn_receive" default="">
-	    <cfparam name="session.snap_mo_receive" default="">
-	    <cfparam name="session.snap_ms_receive" default="">
-	    <cfparam name="session.snap_mt_receive" default="">
-	    <cfparam name="session.snap_nc_receive" default="">
-	    <cfparam name="session.snap_nd_receive" default="">
-	    <cfparam name="session.snap_ne_receive" default="">
-	    <cfparam name="session.snap_nh_receive" default="">
-	    <cfparam name="session.snap_nj_receive" default="">
-	    <cfparam name="session.snap_nm_receive" default="">
-	    <cfparam name="session.snap_nv_receive" default="">
-	    <cfparam name="session.snap_ny_receive" default="">
-	    <cfparam name="session.snap_oh_receive" default="">
-	    <cfparam name="session.snap_ok_receive" default="">
-	    <cfparam name="session.snap_or_receive" default="">
-	    <cfparam name="session.snap_pa_receive" default="">
-	    <cfparam name="session.snap_ri_receive" default="">
-	    <cfparam name="session.snap_sc_receive" default="">
-	    <cfparam name="session.snap_sd_receive" default="">
-	    <cfparam name="session.snap_tn_receive" default="">
-	    <cfparam name="session.snap_tx_receive" default="">
-	    <cfparam name="session.snap_ut_receive" default="">
-	    <cfparam name="session.snap_va_receive" default="">
-	    <cfparam name="session.snap_vt_receive" default="">
-	    <cfparam name="session.snap_wa_receive" default="">
-	    <cfparam name="session.snap_wi_receive" default="">
-	    <cfparam name="session.snap_wv_receive" default="">
-	    <cfparam name="session.snap_wy_receive" default=""> 
+<cfparam name="session.snap_dc_receive" default="">
+<cfparam name="session.snap_de_receive" default="">
+<cfparam name="session.snap_fl_receive" default="">
+<cfparam name="session.snap_ga_receive" default="">
+<cfparam name="session.snap_hi_receive" default="">
+<cfparam name="session.snap_ia_receive" default="">
+<cfparam name="session.snap_id_receive" default="">
+<cfparam name="session.snap_il_receive" default="">
+<cfparam name="session.snap_in_receive" default="">
+<cfparam name="session.snap_ks_receive" default="">
+<cfparam name="session.snap_ky_receive" default="">
+<cfparam name="session.snap_la_receive" default="">
+<cfparam name="session.snap_ma_receive" default="">
+<cfparam name="session.snap_md_receive" default="">
+<cfparam name="session.snap_me_receive" default="">
+<cfparam name="session.snap_mi_receive" default="">
+<cfparam name="session.snap_mn_receive" default="">
+<cfparam name="session.snap_mo_receive" default="">
+<cfparam name="session.snap_ms_receive" default="">
+<cfparam name="session.snap_mt_receive" default="">
+<cfparam name="session.snap_nc_receive" default="">
+<cfparam name="session.snap_nd_receive" default="">
+<cfparam name="session.snap_ne_receive" default="">
+<cfparam name="session.snap_nh_receive" default="">
+<cfparam name="session.snap_nj_receive" default="">
+<cfparam name="session.snap_nm_receive" default="">
+<cfparam name="session.snap_nv_receive" default="">
+<cfparam name="session.snap_ny_receive" default="">
+<cfparam name="session.snap_oh_receive" default="">
+<cfparam name="session.snap_ok_receive" default="">
+<cfparam name="session.snap_or_receive" default="">
+<cfparam name="session.snap_pa_receive" default="">
+<cfparam name="session.snap_ri_receive" default="">
+<cfparam name="session.snap_sc_receive" default="">
+<cfparam name="session.snap_sd_receive" default="">
+<cfparam name="session.snap_tn_receive" default="">
+<cfparam name="session.snap_tx_receive" default="">
+<cfparam name="session.snap_ut_receive" default="">
+<cfparam name="session.snap_va_receive" default="">
+<cfparam name="session.snap_vt_receive" default="">
+<cfparam name="session.snap_wa_receive" default="">
+<cfparam name="session.snap_wi_receive" default="">
+<cfparam name="session.snap_wv_receive" default="">
+<cfparam name="session.snap_wy_receive" default=""> 
 
-	    <cfparam name="session.medicare_receive" default="">
-	    <cfparam name="session.receive_partd" default="">
-	    <cfparam name="session.tanf_vi_receive" default="">
-	    <cfparam name="session.receive_lis" default="">
-	    <cfparam name="session.med_receive" default="">	
-	    <cfparam name="session.receive_msp" default="">		
-            <cfparam name="session.REVERSE_MORTGAGE" default="">
-	    <cfparam name="session.EYECARE" default="">
-	    <cfparam name="session.VETERAN" default="">
-	    <cfparam name="reverse_mortgage" default="">
-	    <cfparam name="session.tefap_receive" default="">
-	    <cfparam name="session.receive_csfp" default="">
-	    <cfparam name="session.cash_assist_receive" default="">
-	    <cfparam name="session.ssi_receive" default="">
-	    <cfparam name="session.tanf_receive" default="">
-	    <cfparam name="session.tanf_ar_receive" default="">
-	    <cfparam name="session.eaedc_receive" default="">
-	    <cfparam name="session.emergency_assist_receive" default="">
-	    <cfparam name="session.general_assist_receive" default="">
-	    <cfparam name="session.scsep_receive" default="">
+	<cfparam name="session.medicare_receive" default="">
+	<cfparam name="session.receive_partd" default="">
+	<cfparam name="session.tanf_vi_receive" default="">
+	<cfparam name="session.receive_lis" default="">
+	<cfparam name="session.med_receive" default="">	
+	<cfparam name="session.receive_msp" default="">	
+	
+<cfparam name="session.REVERSE_MORTGAGE" default="">
+<cfparam name="session.EYECARE" default="">
+<cfparam name="session.VETERAN" default="">
+<cfparam name="reverse_mortgage" default="">
+<cfparam name="session.tefap_receive" default="">
+<cfparam name="session.receive_csfp" default="">
+<cfparam name="session.cash_assist_receive" default="">
+<cfparam name="session.ssi_receive" default="">
+<cfparam name="session.tanf_receive" default="">
+<cfparam name="session.tanf_ar_receive" default="">
+<cfparam name="session.eaedc_receive" default="">
+<cfparam name="session.emergency_assist_receive" default="">
+<cfparam name="session.general_assist_receive" default="">
+<cfparam name="session.scsep_receive" default="">
 
-	    <cfparam name="session.cobra2" default="">	
-	    <cfparam name="session.rec_ak_seniorbenefits" default="">	
-	    <cfparam name="session.rec_az_copperrx" default="">	
-	    <cfparam name="session.rec_ca_drugdiscount" default="">	
-	    <cfparam name="session.rec_de_dpap" default="">	
-	    <cfparam name="session.rec_fl_discountdrugcard" default="">	
-	    <cfparam name="session.rec_il_rxbuyingclub" default="">	
-	    <cfparam name="session.rec_in_hoosierrx" default="">	
-	    <cfparam name="session.rec_ma_prescriptionadvantage" default="">	
-	    <cfparam name="session.rec_md_spdap" default="">	
-	    <cfparam name="session.rec_me_del" default="">	
-	    <cfparam name="session.rec_me_rxplus" default="">	
-	    <cfparam name="session.rec_mi_mirx" default="">	
-	    <cfparam name="session.rec_mo_rxplan" default="">	
-	    <cfparam name="session.rec_mt_bigskyrx" default="">	
-	    <cfparam name="session.rec_nj_paad" default="">	
-	    <cfparam name="session.rec_nj_seniorgold" default="">	
-	    <cfparam name="session.rec_nv_seniorrx" default="">	
-	    <cfparam name="session.rec_ny_epic" default="">	
-	    <cfparam name="session.rec_ny_bigapplerx" default="">	
-	    <cfparam name="session.rec_oh_bestrx" default="">	
-	    <cfparam name="session.rec_or_pdap_2" default="">	
-	    <cfparam name="session.rec_pa_pace" default="">	
-	    <cfparam name="session.rec_pa_pacenet" default="">	
-	    <cfparam name="session.rec_ri_ripae" default="">	
-	    <cfparam name="session.rec_vt_vpharm1" default="">	
-	    <cfparam name="session.rec_vt_vpharm2" default="">	
-	    <cfparam name="session.rec_vt_vpharm3" default="">	
-	    <cfparam name="session.rec_vt_healthyvermonters" default="">	
-	    <cfparam name="session.rec_wa_pdp" default="">	
-	    <cfparam name="session.rec_wi_seniorcare" default="">	
-	    <cfparam name="session.rec_wv_goldenmountaineer" default="">	
-	    <cfparam name="session.ss_receive" default="">	
-	    <cfparam name="session.ssd_receive" default="">	
-	    <cfparam name="session.ssd_receive_2" default="">	
-	    <cfparam name="session.ssi_receive" default="">	
-	    <cfparam name="session.rr_receive" default="">	
-	    <cfparam name="session.rr_receive_2" default="">	
-	    <cfparam name="session.rec_reverse_mortgage" default="">	
-	    <cfparam name="session.rec_employee_hi" default="">	
-	    <cfparam name="session.rec_tricare" default="">	
-	    <cfparam name="session.receive_va" default="">	
-	    <cfparam name="session.liheap_receive" default="">	
-	    <cfparam name="session.receive_pub_housing" default="">	
-	    <cfparam name="session.receive_section_8" default="">	
-	    <cfparam name="session.scsep_receive" default="">	
-	    <cfparam name="session.receive_hopwa" default="">	
-	    <cfparam name="session.unemp_receive" default="">	
-	    <cfparam name="session.snap_vi_receive" default="">	
-	    <cfparam name="session.rec_vi_pap" default="">	
-	    <cfparam name="session.ecap_receive" default="">	
-	    <cfparam name="session.cobra" default="">
-	    <cfparam name="session.int_unemployed" default="">
-	    <cfparam name="session.int_medicare_2" default="">
-	    <cfparam name="session.int_social_security" default="">
-	    <cfparam name="session.int_fed_civil_service_retirement" default="">
-	    <cfparam name="session.int_railroad_retirment" default="">
-	    <cfparam name="session.abused" default="">
-	    <cfparam name="session.int_alzheimer" default="">
-	    <cfparam name="session.int_assistech" default="">
-	    <cfparam name="session.int_caregiver_respite" default="">
-	    <cfparam name="session.int_diabetes" default="">
-	    <cfparam name="session.int_edu" default="">
-	    <cfparam name="session.int_elder_nut" default="">
-	    <cfparam name="session.emerg_needs" default="">
-	    <cfparam name="session.int_emp" default="">
-	    <cfparam name="session.int_foreclosure" default="">
-	    <cfparam name="session.int_medicare" default="">
-	    <cfparam name="session.int_homeowners_insurance" default="">
-	    <cfparam name="session.int_low_inc_house" default="">
-	    <cfparam name="session.legal" default="">
-	    <cfparam name="session.int_ltc_ombuds" default="">
-	    <cfparam name="session.int_pension" default="">
-	    <cfparam name="session.int_health_center" default="">
-	    <cfparam name="session.int_mental_health" default="">
-	    <cfparam name="session.int_blind" default="">
-	    <cfparam name="session.int_deaf" default="">
-	    <cfparam name="session.int_retire_tax_estate_planning" default="">
-	    <cfparam name="session.int_trans_personal" default="">
-	    <cfparam name="session.int_unclaimed_property" default="">
-	    <cfparam name="session.int_crisis_prevention_veterans" default="">
-	    <cfparam name="session.int_vol" default="">
-	    <cfparam name="session.int_hiv_aids" default="">
-	    <cfloop COLLECTION="#sa#"  item="x">
-		    <cfset 'session.#x#' = evaluate('sa.#x#')>
-	    </cfloop>
-        	    <cfparam name="session.partner_id" default= 0>
-        	    <cfparam name="session.org_id" default = 0>
-        	    <cfparam name="session.subset_id" default = 0>
+<cfparam name="session.cobra2" default="">	
+<cfparam name="session.rec_ak_seniorbenefits" default="">	
+<cfparam name="session.rec_az_copperrx" default="">	
+<cfparam name="session.rec_ca_drugdiscount" default="">	
+<cfparam name="session.rec_de_dpap" default="">	
+<cfparam name="session.rec_fl_discountdrugcard" default="">	
+<cfparam name="session.rec_il_rxbuyingclub" default="">	
+<cfparam name="session.rec_in_hoosierrx" default="">	
+<cfparam name="session.rec_ma_prescriptionadvantage" default="">	
+<cfparam name="session.rec_md_spdap" default="">	
+<cfparam name="session.rec_me_del" default="">	
+<cfparam name="session.rec_me_rxplus" default="">	
+<cfparam name="session.rec_mi_mirx" default="">	
+<cfparam name="session.rec_mo_rxplan" default="">	
+<cfparam name="session.rec_mt_bigskyrx" default="">	
+<cfparam name="session.rec_nj_paad" default="">	
+<cfparam name="session.rec_nj_seniorgold" default="">	
+<cfparam name="session.rec_nv_seniorrx" default="">	
+<cfparam name="session.rec_ny_epic" default="">	
+<cfparam name="session.rec_ny_bigapplerx" default="">	
+<cfparam name="session.rec_oh_bestrx" default="">	
+<cfparam name="session.rec_or_pdap_2" default="">	
+<cfparam name="session.rec_pa_pace" default="">	
+<cfparam name="session.rec_pa_pacenet" default="">	
+<cfparam name="session.rec_ri_ripae" default="">	
+<cfparam name="session.rec_vt_vpharm1" default="">	
+<cfparam name="session.rec_vt_vpharm2" default="">	
+<cfparam name="session.rec_vt_vpharm3" default="">	
+<cfparam name="session.rec_vt_healthyvermonters" default="">	
+<cfparam name="session.rec_wa_pdp" default="">	
+<cfparam name="session.rec_wi_seniorcare" default="">	
+<cfparam name="session.rec_wv_goldenmountaineer" default="">	
+<cfparam name="session.ss_receive" default="">	
+<cfparam name="session.ssd_receive" default="">	
+<cfparam name="session.ssd_receive_2" default="">	
+<cfparam name="session.ssi_receive" default="">	
+<cfparam name="session.rr_receive" default="">	
+<cfparam name="session.rr_receive_2" default="">	
+<cfparam name="session.rec_reverse_mortgage" default="">	
+<cfparam name="session.rec_employee_hi" default="">	
+<cfparam name="session.rec_tricare" default="">	
+<cfparam name="session.receive_va" default="">	
+<cfparam name="session.liheap_receive" default="">	
+<cfparam name="session.receive_pub_housing" default="">	
+<cfparam name="session.receive_section_8" default="">	
+<cfparam name="session.scsep_receive" default="">	
+<cfparam name="session.receive_hopwa" default="">	
+<cfparam name="session.unemp_receive" default="">	
+<cfparam name="session.snap_vi_receive" default="">	
+<cfparam name="session.rec_vi_pap" default="">	
+<cfparam name="session.ecap_receive" default="">	
+<cfparam name="session.cobra" default="">
+<cfparam name="session.int_unemployed" default="">
+<cfparam name="session.int_medicare_2" default="">
+<cfparam name="session.int_social_security" default="">
+<cfparam name="session.int_fed_civil_service_retirement" default="">
+<cfparam name="session.int_railroad_retirment" default="">
+<cfparam name="session.abused" default="">
+<cfparam name="session.int_alzheimer" default="">
+<cfparam name="session.int_assistech" default="">
+<cfparam name="session.int_caregiver_respite" default="">
+<cfparam name="session.int_diabetes" default="">
+<cfparam name="session.int_edu" default="">
+<cfparam name="session.int_elder_nut" default="">
+<cfparam name="session.emerg_needs" default="">
+<cfparam name="session.int_emp" default="">
+<cfparam name="session.int_foreclosure" default="">
+<cfparam name="session.int_medicare" default="">
+<cfparam name="session.int_homeowners_insurance" default="">
+<cfparam name="session.int_low_inc_house" default="">
+<cfparam name="session.legal" default="">
+<cfparam name="session.int_ltc_ombuds" default="">
+<cfparam name="session.int_pension" default="">
+<cfparam name="session.int_health_center" default="">
+<cfparam name="session.int_mental_health" default="">
+<cfparam name="session.int_blind" default="">
+<cfparam name="session.int_deaf" default="">
+<cfparam name="session.int_retire_tax_estate_planning" default="">
+<cfparam name="session.int_trans_personal" default="">
+<cfparam name="session.int_unclaimed_property" default="">
+<cfparam name="session.int_crisis_prevention_veterans" default="">
+<cfparam name="session.int_vol" default="">
+<cfparam name="session.int_hiv_aids" default="">
+<cfloop COLLECTION="#sa#"  item="x">
+<cfset 'session.#x#' = evaluate('sa.#x#')>
 
+</cfloop>
+	<cfparam name="session.partner_id" default= 0>
+        <cfparam name="session.org_id" default = 0>
+        <cfparam name="session.subset_id" default = 0>
+
+	<cfif debug><h1>Debug Step 2 - Test Rules</h1><br></cfif>
+	<cfdump var="#sa#"> <cfdump var="#session#" >
         <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
 
-        <cfloop array="#querySubsetProgram#" index="i">
+	<cfloop array="#querySubsetProgram#" index="i">
             <cfset loopindex = loopindex + 1>
             <cfset prg_id = i.getLegacy()>
-
+	    <cfset program_code  = i.getcode()>
             <cfif loopindex gt 1>
                 <cfset test1 = FINDNOCASE("no", test, 1)>
                 <cfif test neq "" and test1 EQ 0>
@@ -912,13 +916,12 @@
                 <cfset testProgram = ormexecutequery("select r from program_rule pr join pr.rule r where pr.program=?",[i])>
 
                 <cfloop array="#testProgram#" index="rule">
-
+		    <cfif debug><cfoutput>#prg_id# #program_code#  #rule.getcode()#</cfoutput></cfif>
                     <cfset strRule = Replace(rule.getRule_text(), "gteq", "gte", "ALL")>
                     <cfset strRule = Replace(strRule, "lteq", "lte", "ALL")>
                     <cfset strRule = Replace(strRule, "XX[" , "[", "ALL")>
-                    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")>
-
-                    <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
+		    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")> 
+		     <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
                     <cfif FINDNOCASE("BuyInQI2asset", strRule, 1) NEQ 0>
 	
 				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
@@ -1082,7 +1085,7 @@
                            	<cftry>
                                 <cfset answer=Evaluate("#strRule#")>
 				<cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
-				<cfcatch></cfcatch>
+				<cfcatch>error in rule: <cfoutput> #strRule#<br></cfoutput><hr> </cfcatch>
                               </cftry>
                         </cfif>
                     </cfif>
