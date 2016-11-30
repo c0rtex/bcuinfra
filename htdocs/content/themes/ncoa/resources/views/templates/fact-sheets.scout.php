@@ -162,7 +162,7 @@
                         {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
                     </div>
                     @endif
-                    @if(!$is_alt)
+                    @if(!empty($app_forms) || !empty($programUrl))
                     <div class="results-options">
                         <span class="fact-sheets-side-header">Quick Links</span>
 
