@@ -908,7 +908,7 @@
             <cfif loopindex gt 1>
                 <cfset test1 = FINDNOCASE("no", test, 1)>
                 <cfif test neq "" and test1 EQ 0>
-		   <cfif debug><cfoutput> Number of Rules Failed = #test1#</cfoutput><br></cfif>	
+		   <cfif debug><cfoutput> Adding Program - Number of Rules Failed = #test1#  Test Case Results: #test#</cfoutput><br></cfif>	
                     <cfset tmp_prg_list = ListAppend(tmp_prg_list, "'#oldid#'")>
                 </cfif>
             </cfif>
@@ -918,6 +918,7 @@
 
                 <cfloop array="#testProgram#" index="rule">
 		    <cfif debug><cfoutput>#prg_id# #program_code#  #rule.getcode()#</cfoutput></cfif>
+		    <cfif debug><br><cfoutput>#oldid#   rule number #loopindex#  Test Case Results: #test#</cfoutput><br></cfif>	
                     <cfset strRule = Replace(rule.getRule_text(), "gteq", "gte", "ALL")>
                     <cfset strRule = Replace(strRule, "lteq", "lte", "ALL")>
                     <cfset strRule = Replace(strRule, "XX[" , "[", "ALL")>
@@ -1104,6 +1105,7 @@
 
         <cfset test1 = FINDNOCASE("no", test, 1)>
         <cfif test1 EQ 0 and oldid neq ''>
+	      <cfif debug><cfoutput> Adding Program - Number of Rules Failed = #test1#  Test Case Results: #test#</cfoutput><br></cfif>	
             <cfset tmp_prg_list = ListAppend(tmp_prg_list, "'#oldid#'")>
         </cfif>
         <cfif tmp_prg_list eq "''">
