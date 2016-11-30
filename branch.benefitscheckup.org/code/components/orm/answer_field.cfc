@@ -30,6 +30,5 @@
   <cfproperty name="state" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
   <cfproperty name="description" column="answerfield_desc">
   <cfproperty name="options" tostructarray="options" fieldtype="one-to-many" cfc="answer_field_option" fkcolumn="answerfield_id" lazy="extra" cascade="all" orderby="sort">
-  <cfproperty name="programs" fieldtype="many-to-many" cfc="program" linktable="program_answerfield" inversejoincolumn="program_id" fkcolumn="answerfield_id">
 
 </cfcomponent>
