@@ -908,11 +908,11 @@
             <cfif loopindex gt 1>
                 <cfset test1 = FINDNOCASE("no", test, 1)>
                 <cfif test neq "" and test1 EQ 0>
-		    <cfif debug><br><cfoutput>Adding Program  #oldid#  #program_code# : Number of Rules Failed = #test1#. Test Case Results: #test#</cfoutput><br></cfif>
+		    
                     <cfset tmp_prg_list = ListAppend(tmp_prg_list, "'#oldid#'")>
                 </cfif>
             </cfif>
-
+	   <cfif debug><br><cfoutput>#oldid#  #program_code# rule number #loopindex# : Number of Rules Failed = #test1#. Test Case Results: #test#</cfoutput><br></cfif>		
             <cfif not ynDoBuffer or ListFind(sa.prg_list, "'#prg_id#'") eq 0>
                 <cfset testProgram = ormexecutequery("select r from program_rule pr join pr.rule r where pr.program=?",[i])>
 
