@@ -1081,10 +1081,11 @@
 					 </cfif>
 				  </cfif>
 			   <cfelse>
-                           
+                           	<cftry>
                                 <cfset answer=Evaluate("#strRule#")>
 				<cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
-                             
+				<cfcatch>error in rule: <cfoutput> #strRule#<br></cfoutput><hr> </cfcatch>
+                              </cftry>
                         </cfif>
                     </cfif>
 
