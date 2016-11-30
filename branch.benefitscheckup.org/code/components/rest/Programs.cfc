@@ -1068,30 +1068,8 @@
 				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
 			<cfelse>
 				<cfif debug><cfoutput><h2>#strRule#</h2></cfoutput></cfif>
-				<cfset findPos = 1>
-				<cfloop condition="Find('##', strRule, findPos)">
-					<cfset firstPound = Find('##', strRule, findPos)>
-					<cfset secondPound = Find('##', strRule, firstPound + 1)>
-					<cfif secondPound gt firstPound>
-						<cfset variableName = Mid(strRule, firstPound + 1, secondPound - firstPound - 1)>
-						<cfif debug><cfoutput><li>#variableName#: </cfoutput></cfif>
-						<cfif FindNoCase('struct_mem[', variableName) eq 1 Or FindNoCase('listable[', variableName) eq 1 Or FindNoCase('childtable[', variableName) eq 1 Or IsDefined(variableName)>
-							<cfset eVal = Evaluate(variableName)>
-						<cfelse>
-							<cfset eVal = 0>
-						</cfif>
-						<cfif eVal eq ''>
-							<cfset eVal = 0>
-						</cfif>
-						<cfif Not IsNumeric(eVal) Or (IsNumeric(eVal) And Len(eVal) gt 1 And Left(eVal, 1) eq '0')>
-							<cfset eVal = "'#eVal#'">
-						</cfif>
-						<cfif debug><cfoutput>#eVal#</cfoutput></cfif>
-						<cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')>
-					<cfelse>
-						<cfset findPos = firstPound + 1>
-					</cfif>
-				</cfloop>
+				
+				
 				<cfif debug><cfoutput><br><br>#strRule#</cfoutput></cfif>
 			   <!--- 07/09/2002 REM  If we get to here, we evaluate the rule  --->
 			   <!--- 2/11/02 REM Added a process to account for List Compare rules (e.g., 
@@ -1144,12 +1122,11 @@
 					 </cfif>
 				  </cfif>
 			   <cfelse>
-                            <cftry>
+                           	<cftry>
                                 <cfset answer=Evaluate("#strRule#")>
-                                <cfcatch type="any">
-                                    <cfset answer="YES">
-                                </cfcatch>
-                            </cftry>
+				<cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
+				<cfcatch></cfcatch>
+                              </cftry>
                         </cfif>
                     </cfif>
 
