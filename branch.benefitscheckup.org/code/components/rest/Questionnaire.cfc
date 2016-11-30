@@ -205,7 +205,7 @@
     <cffunction name="getAnswersFilteredByState">
         <cfargument name="question">
         <cfargument name="state" default="">
-        <cfset answers = ormExecuteQuery("select a from question_answer_field qaf join qaf.answer a where qaf.question=? and (a.state is null or a.state=?) order by qaf.sort",[question,state])>
+        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a left join a.programs p where qaf.question=? and (p.state is null or p.state=?) and (a.state is null or a.state=?) and (p.active_flag=1 or p is null) order by qaf.sort",[question,state,state])>
         <cfset var retArray = arrayNew(1)>
         <cfloop array="#answers#" index="i">
             <cfset var afStrct = i.toStructure()>
