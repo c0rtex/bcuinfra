@@ -137,6 +137,7 @@
         </cftransaction>
 
         <cfif structKeyExists(answers,"lastSet")>
+            <cfset this.calcLastSet(screening,pgno)>
             <cfset screening.setEnd_datetime(Now())>
             <cfset entitySave(screening)>
 
@@ -148,6 +149,47 @@
         <cfelse>
             <cfreturn serializeJSON(screening)>
         </cfif>
+
+    </cffunction>
+
+    <cffunction name="calcLastSet">
+        <cfargument name="screening">
+        <cfargument name="pgno">
+        <cfset var sa = ormExecuteQuery("from screening_answerfield sa where sa.screening=?",[screening])>
+        <cfset var saArray = structNew()>
+        <cfloop array="#sa#" index="i">
+            <cfif isNull(i.getOption())>
+                <cfset saArray[i.getAnswer().getCode()]=i.getResponse()>
+            <cfelse>
+                <cfset saArray[i.getAnswer().getCode()]=i.getOption().getCode()>
+            </cfif>
+        </cfloop>
+
+
+        <cfset var memCount=0>
+        <cfif structKeyExists(saArray,"no_hh_members")>
+            <cfif saArray["no_hh_members"] gt 0>
+                <cfset memCount = saArray["no_hh_members"]>
+            </cfif>
+        </cfif>
+
+        <cfif ((memCount eq 0)and(structKeyExists(saArray,"hh_depend")))>
+            <cfset memCount = saArray["hh_depend"]>
+        </cfif>
+
+        <cfif memCount  eq 0 or memCount eq ''>
+            <cfset memCount = 1>
+        <cfelseif memCount gt 8>
+            <cfset memCount   = 8>
+        </cfif>
+
+        <cfset getPoverty = ormExecuteQuery("select mem#memCount# from tbl_inc where proc_id = 484")>
+
+        <cfset povertyIndex = saArray["hh_income_total_complete"]/getPoverty[1]>
+
+        <cfset var answerField = entityload("answer_field",{code="poverty_index"})>
+
+        <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,povertyIndex)>
 
     </cffunction>
 
@@ -206,7 +248,5 @@
         </cfswitch>
         <cfset entitySave(sa)>
     </cffunction>
-
-
 
 </cfcomponent>
