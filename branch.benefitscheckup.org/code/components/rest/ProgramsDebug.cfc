@@ -898,7 +898,7 @@
         <cfparam name="session.subset_id" default = 0>
 
 	<cfif debug><h1>Debug Step 2 - Test Rules</h1><br></cfif>
-	<cfdump var="#sa#" cfdump var="#session#" >
+	<cfdump var="#sa#"> <cfdump var="#session#" >
         <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
 
 	<cfloop array="#querySubsetProgram#" index="i">
