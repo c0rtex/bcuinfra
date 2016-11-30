@@ -1,6 +1,6 @@
-<cfcomponent rest="true" restpath="/findPrograms">
+<cfcomponent  displayName="ProgramsDebug">
     <cfset sa = structNew()>
-    <cfset ynDoBuffer = false>
+     <cfset ynDoBuffer = false>
 
     <cffunction name="categoriesToGroups" returnType="String">
         <cfset groupBy = "">
@@ -22,48 +22,28 @@
         <cfreturn groupBy>
     </cffunction>
 
-    <cffunction name="calcForPrescreen" access="remote" restpath="/calcForPrescreen/{screeningId}" returnType="String" httpMethod="GET">
-        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
+    <cffunction name="calcForPrescreen" output="yes">
+        <cfargument name="screeningId">
         <cfset screening = entityLoadByPK("screening",screeningId)>
         <cfset screening_answers = ormexecutequery("select distinct a.code from screening_answerfield sa join sa.answer a where sa.screening=?",[screening])>
         <cfset supercategories = ormexecutequery("from program_supercategory")>
         <cfset superCategoriesStruct = structNew()>
-        <cfset notOver3000Categories = {"bcuqc_category_income":"",
-            "bcuqc_category_medicaid":"",
-            "bcuqc_category_nutrition":"",
-            "bcuqc_category_rx":""}>
         <cfloop array="#supercategories#" index="i">
             <cfset superCategoriesStruct[i.getAnswerfieldcode()] = 'y'>
         </cfloop>
-
-        <cfset var bcuqcIncomeList = ormexecutequery("select o.code from screening_answerfield sa join sa.option o where sa.screening=? and sa.answer.code=?",[screening,"bcuqc_income_list"])>
-
-
-        <cfset var over3000 = false>
-
-        <cfif arraylen(bcuqcIncomeList) neq 0>
-            <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
-        </cfif>
+	<cfdump var="#screening_answers#">
+ 	 
         <cfset filter = "''">
+
 
         <cfloop array="#screening_answers#" index="answerCode">
             <cfif structKeyExists(superCategoriesStruct,answerCode)>
-                <cfif over3000>
-                    <cfif not structKeyExists(notOver3000Categories,answerCode)>
-                        <cfset filter="#filter#,'#answerCode#'">
-                    </cfif>
-                <cfelse>
-                    <cfset filter="#filter#,'#answerCode#'">
-                </cfif>
+                <cfset filter="#filter#,'#answerCode#'">
             </cfif>
         </cfloop>
-	<cfset state_id = screening.getPreset_state().GETID()> 
+
         <cfset filter = "(#filter#)">
-	<cfif state_id eq 'az'>
-		<cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
-	<cfelseif state_id eq 'co' or state_id eq 'mi'>
-		<cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
-	</cfif>
+
         <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc   
 	where 
 	pc.code not in ('rxcard','rxco')  
@@ -71,15 +51,8 @@
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
-	and p.code not like 'health_az_mcs_qmb%'
-	and p.code not like 'health_az_mcs_slmb%'
-	and p.code not like 'health_az_mcs_qi%'
-	and p.code not like 'health_fd_msp_qmb%'
-	and p.code not like 'health_fd_msp_slmb%'
-	and p.code not like 'health_fd_msp_qi%'
-	and p.code not like 'health_ct_msp_almb'
-        and p.code not like 'health_#state_id#_schip'
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
@@ -87,7 +60,7 @@
 	",[screening.getPreset_state()])>
 
         <cftransaction>
-            <cfloop array="#programs#" index="program">
+           <cfloop array="#programs#" index="program">
                 <cfset sp = entityNew("screening_program")>
                 <cfset sp.setScreening(screening)>
                 <cfset sp.setProgram(program)>
@@ -97,51 +70,35 @@
                 <cfset entitySave(sp)>
             </cfloop>
         </cftransaction>
+	
     </cffunction>
 
-    <cffunction name="calculatedForScreening" access="remote" restpath="/calculatedForScreening/{screeningId}" returnType="String" httpMethod="GET">
-        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
+    <cffunction name="calculatedForScreening" access="public" returnType="String" >
+        <cfargument name="screeningId" required="true"  type="numeric"/>
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset sqs = "1=1">
-        <cfif not isnull(screening.getPrev_screening())>
-            <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[screening.getPrev_screening().getId()])>
-            <cfif arraylen(ps) neq 0>
-                <cfset sqs = "0">
-            </cfif>
-            <cfloop array="#ps#" index="psi">
-                <cfset sqs = "#sqs#,#psi.getId()#">
-            </cfloop>
-            <cfif arraylen(ps) neq 0>
-                <cfset sqs = " sc.id in (#sqs#)">
-            </cfif>
-        </cfif>
+        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by p.key_program, p.sort",[screening])>
 
-
-        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? and #sqs# order by sc.sort, p.key_program, p.sort",[screening])>
-
-        <cfset superCategories = ormExecuteQuery("select sc.answerfieldcode,sc.sort from program_supercategory sc where #sqs# order by sc.sort")>
 
         <cfset programsByCategories = structNew()>
 
-        <cfloop array="#superCategories#" index="i">
-            <cfset programsByCategories[i[1]] = structNew()>
-            <cfset programsByCategories[i[1]]["sort"] = i[2]>
-            <cfset programsByCategories[i[1]]["count"] = 0>
-            <cfset programsByCategories[i[1]]["programs"] = arrayNew(1)>
-        </cfloop>
-
         <cfloop array="#programs#" index="i">
-            <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
-            <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
+            <cfif structKeyExists(programsByCategories,i[2])>
+                <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
+                <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
+            <cfelse>
+                <cfset programsByCategories[i[2]] = structNew()>
+                <cfset programsByCategories[i[2]]["count"] = 1>
+                <cfset programsByCategories[i[2]]["programs"] = arrayNew(1)>
+                <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
+            </cfif>
         </cfloop>
 
         <cfset retVal = arrayNew(1)>
 
         <cfloop collection="#programsByCategories#" item="category">
             <cfset categoryItem = structNew()>
-            <cfset categoryItem['sort'] = programsByCategories[category].sort>
             <cfset categoryItem['category'] = category>
             <cfset categoryItem['count'] = programsByCategories[category].count>
             <cfset categoryItem['programs'] = programsByCategories[category].programs>
@@ -154,8 +111,8 @@
     <!--- TODO remove unused method --->
     <!---
 
-    <cffunction name="programsForPrescreen" access="remote" restpath="/forPrescreen/{screeningId}" returnType="String" httpMethod="GET">
-        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
+    <cffunction name="programsForPrescreen" access="public"  returnType="String">
+        <cfargument name="screeningId" required="true"  type="numeric"/>
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
@@ -758,21 +715,21 @@
 
     </cffunction>
 
-    <cffunction name="testRules">
+    <cffunction name="testRules" output="yes">
         <cfset this.getIncomeTables()>
         <cfset testPrograms = "">
         <cfset tmp_prg_list = ''>
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
-	<cfset debug = "false">
+	<cfset debug = "true">
 	<cfset attributes.ynDoBuffer = "no">
         <cfset application.dbSrc = "dbSrc">
 	<!--- Default Values --->
 	<cfset sa.pri_resident = 'y'>
+	<cfset sa.dob_month = '1'>
 	
-	    <!--- Default Values for Receive Questions - Temp to remove --->
-	   <cfparam name="session.INT_SOCIAL_SECURITY" default="">
+	    <cfparam name="session.INT_SOCIAL_SECURITY" default="">
 	    <cfparam name="session.INT_FED_CIVIL_SERVICE_RETIREMENT" default="">
 	    <cfparam name="session.INT_RAILROAD_RETIRMENT" default="">
 	    <cfparam name="session.SNAP_AK_RECEIVE" default="">
@@ -782,186 +739,191 @@
 	    <cfparam name="session.SNAP_AR_RECEIVE" default="">
 	    <cfparam name="session.snap_co_receive" default="">
 	    <cfparam name="session.snap_ct_receive" default=""> 
-	    <cfparam name="session.snap_dc_receive" default="">
-	    <cfparam name="session.snap_de_receive" default="">
-	    <cfparam name="session.snap_fl_receive" default="">
-	    <cfparam name="session.snap_ga_receive" default="">
-	    <cfparam name="session.snap_hi_receive" default="">
-	    <cfparam name="session.snap_ia_receive" default="">
-	    <cfparam name="session.snap_id_receive" default="">
-	    <cfparam name="session.snap_il_receive" default="">
-	    <cfparam name="session.snap_in_receive" default="">
-	    <cfparam name="session.snap_ks_receive" default="">
-	    <cfparam name="session.snap_ky_receive" default="">
-	    <cfparam name="session.snap_la_receive" default="">
-	    <cfparam name="session.snap_ma_receive" default="">
-	    <cfparam name="session.snap_md_receive" default="">
-	    <cfparam name="session.snap_me_receive" default="">
-	    <cfparam name="session.snap_mi_receive" default="">
-	    <cfparam name="session.snap_mn_receive" default="">
-	    <cfparam name="session.snap_mo_receive" default="">
-	    <cfparam name="session.snap_ms_receive" default="">
-	    <cfparam name="session.snap_mt_receive" default="">
-	    <cfparam name="session.snap_nc_receive" default="">
-	    <cfparam name="session.snap_nd_receive" default="">
-	    <cfparam name="session.snap_ne_receive" default="">
-	    <cfparam name="session.snap_nh_receive" default="">
-	    <cfparam name="session.snap_nj_receive" default="">
-	    <cfparam name="session.snap_nm_receive" default="">
-	    <cfparam name="session.snap_nv_receive" default="">
-	    <cfparam name="session.snap_ny_receive" default="">
-	    <cfparam name="session.snap_oh_receive" default="">
-	    <cfparam name="session.snap_ok_receive" default="">
-	    <cfparam name="session.snap_or_receive" default="">
-	    <cfparam name="session.snap_pa_receive" default="">
-	    <cfparam name="session.snap_ri_receive" default="">
-	    <cfparam name="session.snap_sc_receive" default="">
-	    <cfparam name="session.snap_sd_receive" default="">
-	    <cfparam name="session.snap_tn_receive" default="">
-	    <cfparam name="session.snap_tx_receive" default="">
-	    <cfparam name="session.snap_ut_receive" default="">
-	    <cfparam name="session.snap_va_receive" default="">
-	    <cfparam name="session.snap_vt_receive" default="">
-	    <cfparam name="session.snap_wa_receive" default="">
-	    <cfparam name="session.snap_wi_receive" default="">
-	    <cfparam name="session.snap_wv_receive" default="">
-	    <cfparam name="session.snap_wy_receive" default=""> 
+<cfparam name="session.snap_dc_receive" default="">
+<cfparam name="session.snap_de_receive" default="">
+<cfparam name="session.snap_fl_receive" default="">
+<cfparam name="session.snap_ga_receive" default="">
+<cfparam name="session.snap_hi_receive" default="">
+<cfparam name="session.snap_ia_receive" default="">
+<cfparam name="session.snap_id_receive" default="">
+<cfparam name="session.snap_il_receive" default="">
+<cfparam name="session.snap_in_receive" default="">
+<cfparam name="session.snap_ks_receive" default="">
+<cfparam name="session.snap_ky_receive" default="">
+<cfparam name="session.snap_la_receive" default="">
+<cfparam name="session.snap_ma_receive" default="">
+<cfparam name="session.snap_md_receive" default="">
+<cfparam name="session.snap_me_receive" default="">
+<cfparam name="session.snap_mi_receive" default="">
+<cfparam name="session.snap_mn_receive" default="">
+<cfparam name="session.snap_mo_receive" default="">
+<cfparam name="session.snap_ms_receive" default="">
+<cfparam name="session.snap_mt_receive" default="">
+<cfparam name="session.snap_nc_receive" default="">
+<cfparam name="session.snap_nd_receive" default="">
+<cfparam name="session.snap_ne_receive" default="">
+<cfparam name="session.snap_nh_receive" default="">
+<cfparam name="session.snap_nj_receive" default="">
+<cfparam name="session.snap_nm_receive" default="">
+<cfparam name="session.snap_nv_receive" default="">
+<cfparam name="session.snap_ny_receive" default="">
+<cfparam name="session.snap_oh_receive" default="">
+<cfparam name="session.snap_ok_receive" default="">
+<cfparam name="session.snap_or_receive" default="">
+<cfparam name="session.snap_pa_receive" default="">
+<cfparam name="session.snap_ri_receive" default="">
+<cfparam name="session.snap_sc_receive" default="">
+<cfparam name="session.snap_sd_receive" default="">
+<cfparam name="session.snap_tn_receive" default="">
+<cfparam name="session.snap_tx_receive" default="">
+<cfparam name="session.snap_ut_receive" default="">
+<cfparam name="session.snap_va_receive" default="">
+<cfparam name="session.snap_vt_receive" default="">
+<cfparam name="session.snap_wa_receive" default="">
+<cfparam name="session.snap_wi_receive" default="">
+<cfparam name="session.snap_wv_receive" default="">
+<cfparam name="session.snap_wy_receive" default=""> 
 
-	    <cfparam name="session.medicare_receive" default="">
-	    <cfparam name="session.receive_partd" default="">
-	    <cfparam name="session.tanf_vi_receive" default="">
-	    <cfparam name="session.receive_lis" default="">
-	    <cfparam name="session.med_receive" default="">	
-	    <cfparam name="session.receive_msp" default="">		
-            <cfparam name="session.REVERSE_MORTGAGE" default="">
-	    <cfparam name="session.EYECARE" default="">
-	    <cfparam name="session.VETERAN" default="">
-	    <cfparam name="reverse_mortgage" default="">
-	    <cfparam name="session.tefap_receive" default="">
-	    <cfparam name="session.receive_csfp" default="">
-	    <cfparam name="session.cash_assist_receive" default="">
-	    <cfparam name="session.ssi_receive" default="">
-	    <cfparam name="session.tanf_receive" default="">
-	    <cfparam name="session.tanf_ar_receive" default="">
-	    <cfparam name="session.eaedc_receive" default="">
-	    <cfparam name="session.emergency_assist_receive" default="">
-	    <cfparam name="session.general_assist_receive" default="">
-	    <cfparam name="session.scsep_receive" default="">
+	<cfparam name="session.medicare_receive" default="">
+	<cfparam name="session.receive_partd" default="">
+	<cfparam name="session.tanf_vi_receive" default="">
+	<cfparam name="session.receive_lis" default="">
+	<cfparam name="session.med_receive" default="">	
+	<cfparam name="session.receive_msp" default="">	
+	
+<cfparam name="session.REVERSE_MORTGAGE" default="">
+<cfparam name="session.EYECARE" default="">
+<cfparam name="session.VETERAN" default="">
+<cfparam name="reverse_mortgage" default="">
+<cfparam name="session.tefap_receive" default="">
+<cfparam name="session.receive_csfp" default="">
+<cfparam name="session.cash_assist_receive" default="">
+<cfparam name="session.ssi_receive" default="">
+<cfparam name="session.tanf_receive" default="">
+<cfparam name="session.tanf_ar_receive" default="">
+<cfparam name="session.eaedc_receive" default="">
+<cfparam name="session.emergency_assist_receive" default="">
+<cfparam name="session.general_assist_receive" default="">
+<cfparam name="session.scsep_receive" default="">
 
-	    <cfparam name="session.cobra2" default="">	
-	    <cfparam name="session.rec_ak_seniorbenefits" default="">	
-	    <cfparam name="session.rec_az_copperrx" default="">	
-	    <cfparam name="session.rec_ca_drugdiscount" default="">	
-	    <cfparam name="session.rec_de_dpap" default="">	
-	    <cfparam name="session.rec_fl_discountdrugcard" default="">	
-	    <cfparam name="session.rec_il_rxbuyingclub" default="">	
-	    <cfparam name="session.rec_in_hoosierrx" default="">	
-	    <cfparam name="session.rec_ma_prescriptionadvantage" default="">	
-	    <cfparam name="session.rec_md_spdap" default="">	
-	    <cfparam name="session.rec_me_del" default="">	
-	    <cfparam name="session.rec_me_rxplus" default="">	
-	    <cfparam name="session.rec_mi_mirx" default="">	
-	    <cfparam name="session.rec_mo_rxplan" default="">	
-	    <cfparam name="session.rec_mt_bigskyrx" default="">	
-	    <cfparam name="session.rec_nj_paad" default="">	
-	    <cfparam name="session.rec_nj_seniorgold" default="">	
-	    <cfparam name="session.rec_nv_seniorrx" default="">	
-	    <cfparam name="session.rec_ny_epic" default="">	
-	    <cfparam name="session.rec_ny_bigapplerx" default="">	
-	    <cfparam name="session.rec_oh_bestrx" default="">	
-	    <cfparam name="session.rec_or_pdap_2" default="">	
-	    <cfparam name="session.rec_pa_pace" default="">	
-	    <cfparam name="session.rec_pa_pacenet" default="">	
-	    <cfparam name="session.rec_ri_ripae" default="">	
-	    <cfparam name="session.rec_vt_vpharm1" default="">	
-	    <cfparam name="session.rec_vt_vpharm2" default="">	
-	    <cfparam name="session.rec_vt_vpharm3" default="">	
-	    <cfparam name="session.rec_vt_healthyvermonters" default="">	
-	    <cfparam name="session.rec_wa_pdp" default="">	
-	    <cfparam name="session.rec_wi_seniorcare" default="">	
-	    <cfparam name="session.rec_wv_goldenmountaineer" default="">	
-	    <cfparam name="session.ss_receive" default="">	
-	    <cfparam name="session.ssd_receive" default="">	
-	    <cfparam name="session.ssd_receive_2" default="">	
-	    <cfparam name="session.ssi_receive" default="">	
-	    <cfparam name="session.rr_receive" default="">	
-	    <cfparam name="session.rr_receive_2" default="">	
-	    <cfparam name="session.rec_reverse_mortgage" default="">	
-	    <cfparam name="session.rec_employee_hi" default="">	
-	    <cfparam name="session.rec_tricare" default="">	
-	    <cfparam name="session.receive_va" default="">	
-	    <cfparam name="session.liheap_receive" default="">	
-	    <cfparam name="session.receive_pub_housing" default="">	
-	    <cfparam name="session.receive_section_8" default="">	
-	    <cfparam name="session.scsep_receive" default="">	
-	    <cfparam name="session.receive_hopwa" default="">	
-	    <cfparam name="session.unemp_receive" default="">	
-	    <cfparam name="session.snap_vi_receive" default="">	
-	    <cfparam name="session.rec_vi_pap" default="">	
-	    <cfparam name="session.ecap_receive" default="">	
-	    <cfparam name="session.cobra" default="">
-	    <cfparam name="session.int_unemployed" default="">
-	    <cfparam name="session.int_medicare_2" default="">
-	    <cfparam name="session.int_social_security" default="">
-	    <cfparam name="session.int_fed_civil_service_retirement" default="">
-	    <cfparam name="session.int_railroad_retirment" default="">
-	    <cfparam name="session.abused" default="">
-	    <cfparam name="session.int_alzheimer" default="">
-	    <cfparam name="session.int_assistech" default="">
-	    <cfparam name="session.int_caregiver_respite" default="">
-	    <cfparam name="session.int_diabetes" default="">
-	    <cfparam name="session.int_edu" default="">
-	    <cfparam name="session.int_elder_nut" default="">
-	    <cfparam name="session.emerg_needs" default="">
-	    <cfparam name="session.int_emp" default="">
-	    <cfparam name="session.int_foreclosure" default="">
-	    <cfparam name="session.int_medicare" default="">
-	    <cfparam name="session.int_homeowners_insurance" default="">
-	    <cfparam name="session.int_low_inc_house" default="">
-	    <cfparam name="session.legal" default="">
-	    <cfparam name="session.int_ltc_ombuds" default="">
-	    <cfparam name="session.int_pension" default="">
-	    <cfparam name="session.int_health_center" default="">
-	    <cfparam name="session.int_mental_health" default="">
-	    <cfparam name="session.int_blind" default="">
-	    <cfparam name="session.int_deaf" default="">
-	    <cfparam name="session.int_retire_tax_estate_planning" default="">
-	    <cfparam name="session.int_trans_personal" default="">
-	    <cfparam name="session.int_unclaimed_property" default="">
-	    <cfparam name="session.int_crisis_prevention_veterans" default="">
-	    <cfparam name="session.int_vol" default="">
-	    <cfparam name="session.int_hiv_aids" default="">
-	    <cfloop COLLECTION="#sa#"  item="x">
-		    <cfset 'session.#x#' = evaluate('sa.#x#')>
-	    </cfloop>
-        	    <cfparam name="session.partner_id" default= 0>
-        	    <cfparam name="session.org_id" default = 0>
-        	    <cfparam name="session.subset_id" default = 0>
+<cfparam name="session.cobra2" default="">	
+<cfparam name="session.rec_ak_seniorbenefits" default="">	
+<cfparam name="session.rec_az_copperrx" default="">	
+<cfparam name="session.rec_ca_drugdiscount" default="">	
+<cfparam name="session.rec_de_dpap" default="">	
+<cfparam name="session.rec_fl_discountdrugcard" default="">	
+<cfparam name="session.rec_il_rxbuyingclub" default="">	
+<cfparam name="session.rec_in_hoosierrx" default="">	
+<cfparam name="session.rec_ma_prescriptionadvantage" default="">	
+<cfparam name="session.rec_md_spdap" default="">	
+<cfparam name="session.rec_me_del" default="">	
+<cfparam name="session.rec_me_rxplus" default="">	
+<cfparam name="session.rec_mi_mirx" default="">	
+<cfparam name="session.rec_mo_rxplan" default="">	
+<cfparam name="session.rec_mt_bigskyrx" default="">	
+<cfparam name="session.rec_nj_paad" default="">	
+<cfparam name="session.rec_nj_seniorgold" default="">	
+<cfparam name="session.rec_nv_seniorrx" default="">	
+<cfparam name="session.rec_ny_epic" default="">	
+<cfparam name="session.rec_ny_bigapplerx" default="">	
+<cfparam name="session.rec_oh_bestrx" default="">	
+<cfparam name="session.rec_or_pdap_2" default="">	
+<cfparam name="session.rec_pa_pace" default="">	
+<cfparam name="session.rec_pa_pacenet" default="">	
+<cfparam name="session.rec_ri_ripae" default="">	
+<cfparam name="session.rec_vt_vpharm1" default="">	
+<cfparam name="session.rec_vt_vpharm2" default="">	
+<cfparam name="session.rec_vt_vpharm3" default="">	
+<cfparam name="session.rec_vt_healthyvermonters" default="">	
+<cfparam name="session.rec_wa_pdp" default="">	
+<cfparam name="session.rec_wi_seniorcare" default="">	
+<cfparam name="session.rec_wv_goldenmountaineer" default="">	
+<cfparam name="session.ss_receive" default="">	
+<cfparam name="session.ssd_receive" default="">	
+<cfparam name="session.ssd_receive_2" default="">	
+<cfparam name="session.ssi_receive" default="">	
+<cfparam name="session.rr_receive" default="">	
+<cfparam name="session.rr_receive_2" default="">	
+<cfparam name="session.rec_reverse_mortgage" default="">	
+<cfparam name="session.rec_employee_hi" default="">	
+<cfparam name="session.rec_tricare" default="">	
+<cfparam name="session.receive_va" default="">	
+<cfparam name="session.liheap_receive" default="">	
+<cfparam name="session.receive_pub_housing" default="">	
+<cfparam name="session.receive_section_8" default="">	
+<cfparam name="session.scsep_receive" default="">	
+<cfparam name="session.receive_hopwa" default="">	
+<cfparam name="session.unemp_receive" default="">	
+<cfparam name="session.snap_vi_receive" default="">	
+<cfparam name="session.rec_vi_pap" default="">	
+<cfparam name="session.ecap_receive" default="">	
+<cfparam name="session.cobra" default="">
+<cfparam name="session.int_unemployed" default="">
+<cfparam name="session.int_medicare_2" default="">
+<cfparam name="session.int_social_security" default="">
+<cfparam name="session.int_fed_civil_service_retirement" default="">
+<cfparam name="session.int_railroad_retirment" default="">
+<cfparam name="session.abused" default="">
+<cfparam name="session.int_alzheimer" default="">
+<cfparam name="session.int_assistech" default="">
+<cfparam name="session.int_caregiver_respite" default="">
+<cfparam name="session.int_diabetes" default="">
+<cfparam name="session.int_edu" default="">
+<cfparam name="session.int_elder_nut" default="">
+<cfparam name="session.emerg_needs" default="">
+<cfparam name="session.int_emp" default="">
+<cfparam name="session.int_foreclosure" default="">
+<cfparam name="session.int_medicare" default="">
+<cfparam name="session.int_homeowners_insurance" default="">
+<cfparam name="session.int_low_inc_house" default="">
+<cfparam name="session.legal" default="">
+<cfparam name="session.int_ltc_ombuds" default="">
+<cfparam name="session.int_pension" default="">
+<cfparam name="session.int_health_center" default="">
+<cfparam name="session.int_mental_health" default="">
+<cfparam name="session.int_blind" default="">
+<cfparam name="session.int_deaf" default="">
+<cfparam name="session.int_retire_tax_estate_planning" default="">
+<cfparam name="session.int_trans_personal" default="">
+<cfparam name="session.int_unclaimed_property" default="">
+<cfparam name="session.int_crisis_prevention_veterans" default="">
+<cfparam name="session.int_vol" default="">
+<cfparam name="session.int_hiv_aids" default="">
+<cfloop COLLECTION="#sa#"  item="x">
+<cfset 'session.#x#' = evaluate('sa.#x#')>
 
+</cfloop>
+	<cfparam name="session.partner_id" default= 0>
+        <cfparam name="session.org_id" default = 0>
+        <cfparam name="session.subset_id" default = 0>
+
+	<cfif debug><h1>Debug Step 2 - Test Rules</h1><br></cfif>
+	<cfdump var="#sa#"> <cfdump var="#session#" >
         <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
-
-        <cfloop array="#querySubsetProgram#" index="i">
+	
+	<cfloop array="#querySubsetProgram#" index="i">
             <cfset loopindex = loopindex + 1>
             <cfset prg_id = i.getLegacy()>
-
+	    <cfset program_code  = i.getcode()>
             <cfif loopindex gt 1>
                 <cfset test1 = FINDNOCASE("no", test, 1)>
                 <cfif test neq "" and test1 EQ 0>
+		   <cfif debug><cfoutput> Adding Program - Number of Rules Failed = #test1#  Test Case Results: #test#</cfoutput><br></cfif>	
                     <cfset tmp_prg_list = ListAppend(tmp_prg_list, "'#oldid#'")>
                 </cfif>
             </cfif>
-
+	   <cfif debug><br><cfoutput>#oldid#  #program_code# rule number #loopindex#  Test Case Results: #test#</cfoutput><br></cfif>		
             <cfif not ynDoBuffer or ListFind(sa.prg_list, "'#prg_id#'") eq 0>
                 <cfset testProgram = ormexecutequery("select r from program_rule pr join pr.rule r where pr.program=?",[i])>
 
                 <cfloop array="#testProgram#" index="rule">
-
+		    <cfif debug><cfoutput>#prg_id# #program_code#  #rule.getcode()#</cfoutput></cfif>
+		    <cfif debug><br><cfoutput>#oldid#   rule number #loopindex#  Test Case Results: #test#</cfoutput><br></cfif>	
                     <cfset strRule = Replace(rule.getRule_text(), "gteq", "gte", "ALL")>
                     <cfset strRule = Replace(strRule, "lteq", "lte", "ALL")>
                     <cfset strRule = Replace(strRule, "XX[" , "[", "ALL")>
-                    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")>
-
-                    <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
+		    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")> 
+		     <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
                     <cfif FINDNOCASE("BuyInQI2asset", strRule, 1) NEQ 0>
 	
 				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
@@ -1125,7 +1087,7 @@
                            	<cftry>
                                 <cfset answer=Evaluate("#strRule#")>
 				<cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
-				<cfcatch></cfcatch>
+				<cfcatch>error in rule: <cfoutput> #strRule#<br></cfoutput><hr> </cfcatch>
                               </cftry>
                         </cfif>
                     </cfif>
@@ -1143,6 +1105,7 @@
 
         <cfset test1 = FINDNOCASE("no", test, 1)>
         <cfif test1 EQ 0 and oldid neq ''>
+	      <cfif debug><cfoutput> Adding Program - Number of Rules Failed = #test1#  Test Case Results: #test#</cfoutput><br></cfif>	
             <cfset tmp_prg_list = ListAppend(tmp_prg_list, "'#oldid#'")>
         </cfif>
         <cfif tmp_prg_list eq "''">
@@ -1156,9 +1119,10 @@
         </cfif>
     </cffunction>
 
-    <cffunction name="calcForScreening" access="remote" restpath="/calcForScreening/{screeningId}" returnType="String" httpMethod="GET">
-        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
-
+    <cffunction name="calcForScreening" access="public"  returnType="String"  output="yes">
+        <cfargument name="screeningId" required="true"  type="numeric"/>
+	<cfset debug="true">
+	<cfif debug><cfoutput><h1>Screening Debug Step 1:</h2><hr></cfoutput></cfif>
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
         <cfset this.initScreeningAnswers()>
@@ -1238,6 +1202,11 @@
                     <cfset sa.buff_list = ListDeleteAt(sa.buff_list, helperIndex)>
                 </cfif>
             </cfloop>
+        </cfif>
+
+        <cfset schipnum = ListFind(sa.prg_list, "'103-309-2191-FD-FD'")>
+        <cfif schipnum gt 0>
+            <cfset sa.prg_list=ListDeleteAt(sa.prg_list, schipnum)>
         </cfif>
 
         <cfset genericnum = ListFind(sa.prg_list, "'XXX-311-2387-FD-FD'")>
@@ -1352,7 +1321,8 @@
                 </cfif>
             </cfloop>
        </cftransaction>
-        <cfreturn this.calculatedForScreening(screening.getId())>
+          <!--- cfreturn this.calculatedForScreening(screening.getId()) ---> 
+	   <cfreturn "<h1>Program List:</h1> <hr> #sa.prg_list#" > 
     </cffunction>
 
     <cffunction name="initScreeningAnswers">
@@ -1402,51 +1372,59 @@
         </cfloop>
     </cffunction>
 
-    <cffunction name="dspForms" access="remote" restpath="/findResources" returnType="String" httpMethod="GET">
-        <cfargument name="cat" required="no" restargsource="query" default="">
-        <cfargument name="st" required="no" restargsource="query" default="">
+    <cffunction name="dspForms" access="public"  returnType="String" >
+        <cfargument name="cat" required="no"  default="">
+        <cfargument name="st" required="no"  default="">
 
-        <cfset filter = "'#cat#' ">
-        <cfif st eq 'az'>
-            <cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
-            <cfelseif st eq 'co' or st eq 'mi'>
-            <cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
+        <cfset qryFormsQuery = "select distinct p.prg_nm,pr.short_desc,pr.code from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.program_category pc join pc.super_category psc join pr.tbl_prg_all p join p.subset_program_bases sp">
+        <cfset qryFormsQuery = "#qryFormsQuery# where ft.id <> 2 and (p.inactive_flag = 0 or p.inactive_flag is null) and psc.code=?">
+
+        <cfif st neq ''>
+            <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
         </cfif>
-        <cfset programs = ormexecutequery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc
-	where
-	pc.code not in ('rxcard','rxco')
+
+	<!--- sort order by program then form sort --->
+	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
+<cfset qryFormsQuery = "
+select  p.name_display as prg_nm,p.short_desc,p.code   
+from program p 
+join p.program_category pc 
+join pc.super_category sc 
+join p.program_category pc  
+join p.name_display d
+
+	 
+	where 
+	pc.code not in ('rxcard','rxco')  
 	and p.code not like '%_long'
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
-	and p.code not like 'health_az_mcs_qmb%'
-	and p.code not like 'health_az_mcs_slmb%'
-	and p.code not like 'health_az_mcs_qi%'
-	and p.code not like 'health_fd_msp_qmb%'
-	and p.code not like 'health_fd_msp_slmb%'
-	and p.code not like 'health_fd_msp_qi%'
-	and p.code not like 'health_ct_msp_almb'
-	and p.code not like 'health_#st#_schip'
+	and sc.code like  '%#cat#'
 	and p.active_flag=1
-	and sc.answerfieldcode = #filter#
-	and (p.state='#st#' or p.state is null) order by p.sort
-	")>
+        and (p.state='#st#' or p.state is null) 
+	order by p.sort 
+">
+
+
+
+        <cfset query = ormExecuteQuery(qryFormsQuery)>
 
         <cfset data = arrayNew(1)>
 
-        <cfloop array="#programs#" index="item">
+        <cfloop array="#query#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item.getName_display().getDisplay_text()>
-            <cfset str.prg_desc=item.getShort_desc()>
-            <cfset str.code=item.getCode()>
+            <cfset str.prg_nm=item[1].getDisplay_text()>
+            <cfset str.prg_desc=item[2]>
+            <cfset str.code=item[3]>
             <cfset arrayAppend(data,str)>
         </cfloop>
+
         <cfreturn serializeJSON(data)>
     </cffunction>
-    <cffunction name="refreshorm" access="remote" restpath="/refreshorm" returnType="String" httpMethod="GET">
-	<cfargument name="refresh" required="yes" restargsource="query" default="1">
-		<cfset ORMReload() />
-		<cfreturn '<h1>ORM Reloaded!!!!</h1>'>
-    </cffunction>
+
+
+
 </cfcomponent>
