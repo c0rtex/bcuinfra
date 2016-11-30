@@ -1,6 +1,7 @@
 <cfcomponent>
     <cfset this.name = "bcubackend">
     <cfset this.datasource = "dbSrc">
+    <cfset application.dbSrc = this.datasource>
     <cfset this.ormenabled = "true">
     <cfset this.ormsettings.cfclocation = "/bcu/orm">
     <cfset this.sessionmanagement = "yes">
@@ -18,7 +19,7 @@
             output="false"
             hint="Fires ONLY ONCE when session first created and not when session renewed/restarted.">
 
-        <cfset session.language = createObject("component","bcu.orm.language").getDefault()>
+        	<cfset session.language = createObject("component","bcu.orm.language").getDefault()>
 
     </cffunction>
 
@@ -26,7 +27,7 @@
         name="onRequestStart"
         access="public"
         returntype="boolean"
-        output="false"
+        output="true"
         hint="Intialize these settings on each request.">
 
         <!---
@@ -35,13 +36,15 @@
             mappings and configuration.
         --->
         <cfif (
-            !isNull( url.rebuild ) ||
-            !isNull( url.refresh )
+            !isNull( url.rebuildORM ) ||
+            !isNull( url.refreshORM ) ||
+            !isNull( form.refreshORM )
+
             )>
 
             <!--- Reload the ORM configuration and mappings. --->
             <cfset ORMReload() />
-
+		<cfoutput><h1>Orm Reloaded!</h1></cfoutput>	
         </cfif>
 
         <!--- Return true so that the page can run. --->
