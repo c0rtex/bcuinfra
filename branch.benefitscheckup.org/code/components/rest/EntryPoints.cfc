@@ -206,7 +206,7 @@
             <cfreturn>
         </cfif>
 
-        <cfset ep=arrayNew(0)>
+        <cfset ep=arrayNew(1)>
 
         <cfif arraylen(zip.getPrefered_cities()) neq 0>
             <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.cities c join ep.view_zip_distance zd
