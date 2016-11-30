@@ -1047,7 +1047,7 @@
 							<cfset eVal = "'#eVal#'">
 						</cfif>
 						<cfif debug><cfoutput>#eVal#</cfoutput></cfif>
-						<cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')>
+						<cftry><cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')><cfcatch><cfoutput>Error in  #variableName#</cfoutput></cfcatch></cftry>
 					<cfelse>
 						<cfset findPos = firstPound + 1>
 					</cfif>
