@@ -885,7 +885,7 @@ app.directive('ncoaPrograms',[function(){
                 } else {
                     scope.currentPage = pageNum;
                 }
-                scope.currentProgramsList =scope.programs.slice((scope.currentPage-1)*10, scope.currentPage*10-1);
+                scope.currentProgramsList =scope.programs.slice((scope.currentPage-1)*10, scope.currentPage*10);
                 return false;
             }
         }
