@@ -32,6 +32,7 @@
 	<cfproperty name="sort" tostruct="sort">
 	<cfproperty name="answer_fields" tostructarray="answer_fields" fieldtype="one-to-many" cfc="question_answer_field" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
 	<cfproperty name="helps" tostructarray="helps" fieldtype="one-to-many" cfc="question_help" fkcolumn="question_id" lazy="extra" cascade="all" orderby="sort">
+	<cfproperty name="subset_question_programcategory" fieldtype="one-to-many" cfc="subset_question_programcategory" fkcolumn="question_id">
 
 <!---
   Inherited toStructure method defined in parent method ToStructConverter. Filter questions answer fields based on passed state, subset and partner
