@@ -15,7 +15,7 @@
 
     <cffunction name="forProgram" access="remote" restpath="/forProgram/{programCode}/" returnType="String" httpMethod="GET">
         <cfargument name="programCode" required="true" restargsource="Path" type="string"/>
-        <cfargument name="zipcode" required="false" restargsource="Query">
+        <cfargument name="zipcode" required="false" restargsource="Query" default="">
 
         <cfset params = structNew()>
         <cfset this.setDefaultParams()>
@@ -205,6 +205,8 @@
             <cfset methodSucceeded = false>
             <cfreturn>
         </cfif>
+
+        <cfset ep=arrayNew(0)>
 
         <cfif arraylen(zip.getPrefered_cities()) neq 0>
             <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.cities c join ep.view_zip_distance zd
