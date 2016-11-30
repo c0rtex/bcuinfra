@@ -10,7 +10,7 @@
             margin-bottom: 20px;
         }
         .faq {
-            margin: 35px 0;
+            margin-bottom: 10px;
         }
     </style>
 </head>
