@@ -722,7 +722,7 @@
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
-	<cfset debug = "true">
+	<cfset debug = "false">
 	<cfset attributes.ynDoBuffer = "no">
         <cfset application.dbSrc = "dbSrc">
 	<!--- Default Values --->
