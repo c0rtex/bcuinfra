@@ -722,7 +722,7 @@
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
-	<cfset debug = "false">
+	<cfset debug = "true">
 	<cfset attributes.ynDoBuffer = "no">
         <cfset application.dbSrc = "dbSrc">
 	<!--- Default Values --->
@@ -898,9 +898,10 @@
         <cfparam name="session.subset_id" default = 0>
 
 	<cfif debug><h1>Debug Step 2 - Test Rules</h1><br></cfif>
-	<!--- cfdump var="#sa#" cfdump var="#session#" --->
+	<cfdump var="#sa#" cfdump var="#session#" >
         <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
-        <cfloop array="#querySubsetProgram#" index="i">
+
+	<cfloop array="#querySubsetProgram#" index="i">
             <cfset loopindex = loopindex + 1>
             <cfset prg_id = i.getLegacy()>
 	    <cfset program_code  = i.getcode()>
@@ -945,7 +946,7 @@
 				<cfset strTable = Replace(strRule,"(","","ALL")>
 				<cfset strTable = Trim(ReplaceNoCase(strTable,"MXASSET)","","ALL"))>
 				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxAssetVals<br /><br /></cfoutput></cfif>
-				<cfinclude template="tagGetMxAssetVals.cfm">
+				<cfinclude template="../tagGetMxAssetVals.cfm">
 				<cfif IsDefined('session.skipassets') and session.skipassets EQ "N">
 					<!--- 07/18/02 REM  If the table val is $1MM, then everyone passes --->
 					<cfif getMxAssetVals.single GTE 1000000>
@@ -967,7 +968,7 @@
 					<cfset strTable = Replace(strRule,"(","","ALL")>
 					<cfset strTable = Trim(ReplaceNoCase(strTable,"MXINCOME)","","ALL"))>
 					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxIncVals<br /><br /></cfoutput></cfif>
-					<cfinclude template="tagGetMxIncVals.cfm">
+					<cfinclude template="../tagGetMxIncVals.cfm">
 					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
 				   <cf_tagYeMedicareBuyInInc 
 						rule="#strRule#" 
