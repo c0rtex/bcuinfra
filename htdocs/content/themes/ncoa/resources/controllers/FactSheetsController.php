@@ -1,5 +1,8 @@
 <?php
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 class FactSheetsController extends BaseController
 {
     /**
@@ -82,7 +85,9 @@ class FactSheetsController extends BaseController
 
             if (isset($_REQUEST['pdf'])) {
                 // instantiate and use the dompdf class
-                $dompdf = new \Dompdf\Dompdf();
+                $options = new Options();
+                $options->set('isRemoteEnabled', TRUE);
+                $dompdf = new Dompdf($options);
                 $dompdf->loadHtml($return);
 
                 // Render the HTML as PDF
@@ -94,7 +99,7 @@ class FactSheetsController extends BaseController
             else {
                 return $return;
             }
-            
+
         }
     }
 
