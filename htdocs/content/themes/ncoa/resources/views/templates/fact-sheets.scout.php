@@ -194,11 +194,11 @@
 
                         @if(strpos($evalue->url, 'http')===0)
 
-                        <!-- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                         <span style="white-space: pre-line">{{ $evalue->caption }}</span>-->
+                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                        </a>
                         <?php $pos-- ?> <!--showing and counting only non-online applications -->
 
-                        </a>
                         @else
                         <a target="_blank" href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
                             <span class="fa fa-file fact-sheets-icon"></span>
@@ -237,6 +237,7 @@
                                         @endif
 
                                         @endforeach
+                                        @if ($pos >= 3)
 
                                         @foreach($app_forms as $ekey => $evalue) <!--Lynna Cekova: starting the loop again in order to print all application forms in the modal, not just the remaining ones -->
                                         @if(strpos($evalue->url, 'http')===0)
@@ -254,6 +255,7 @@
 
 
                                         @endforeach
+                                        @endif
                                         @if ($pos >= 3)
                                     </div>
                                     <div class="modal-footer">
