@@ -10,7 +10,7 @@
             </form>
         </div>
         <div class="btns-container clearfix">
-            <button class="btn btn-primary pull-right"  ng-click="submitPrescreen()">Get Results</button>
+            <button class="btn btn-primary pull-right" ng-disabled="disableSubmit()"  ng-click="submitPrescreen()">Get Results</button>
         </div>
     </div>
     <div class="card" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">

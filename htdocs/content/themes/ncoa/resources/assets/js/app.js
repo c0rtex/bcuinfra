@@ -1962,8 +1962,8 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     });
 
     $scope.disableSubmit = function(){
-        if ($scope.prescreenForm == undefined) return true;
-        return !$scope.prescreenForm.$valid;
+        if (this.prescreenForm == undefined) return true;
+        return !this.prescreenForm.$valid;
     };
 
 }]);
