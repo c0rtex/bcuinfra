@@ -1205,23 +1205,7 @@
 
         <cfset this.testRules()>
 
-        <cfif Not isNull(screening.getSubset()) Or screening.getSubset().getId() neq 1>
-            <CFSET sa.S_asset_TOTAL_COMPLETE = sa.s_asset_TOTAL_COMPLETE - 500>
-            <CFSET sa.S_SP_asset_TOTAL_COMPLETE = sa.S_SP_asset_TOTAL_COMPLETE - 500>
-            <CFSET sa.HH_asset_TOTAL_COMPLETE = sa.HH_asset_TOTAL_COMPLETE - 500>
-            <CFSET sa.S_INCOME_TOTAL_COMPLETE = sa.s_INCOME_TOTAL_COMPLETE - 100>
-            <CFSET sa.S_SP_INCOME_TOTAL_COMPLETE = sa.S_SP_INCOME_TOTAL_COMPLETE - 100>
-            <CFSET sa.HH_INCOME_TOTAL_COMPLETE = sa.HH_INCOME_TOTAL_COMPLETE - 100>
-
-            <cfset this.testRules()>
-
-            <CFSET sa.S_asset_TOTAL_COMPLETE = sa.s_asset_TOTAL_COMPLETE + 500>
-            <CFSET sa.S_SP_asset_TOTAL_COMPLETE = sa.S_SP_asset_TOTAL_COMPLETE + 500>
-            <CFSET sa.HH_asset_TOTAL_COMPLETE = sa.HH_asset_TOTAL_COMPLETE + 500>
-            <CFSET sa.S_INCOME_TOTAL_COMPLETE = sa.s_INCOME_TOTAL_COMPLETE + 100>
-            <CFSET sa.S_SP_INCOME_TOTAL_COMPLETE = sa.S_SP_INCOME_TOTAL_COMPLETE + 100>
-            <CFSET sa.HH_INCOME_TOTAL_COMPLETE = sa.HH_INCOME_TOTAL_COMPLETE + 100>
-        </cfif>
+ 	<!--- REMOVED BUFFER OF 500 FOR INCOME RULES --->
 
         <cfset sa.zipradius = 100>
 
