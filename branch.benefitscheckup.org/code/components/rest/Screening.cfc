@@ -39,7 +39,7 @@
             <cfloop collection="#prescreen#" item="afCode">
                 <cfset answerField = entityload("answer_field",{code="#afCode#"})>
                 <cfif arraylen(answerField) neq 0>
-                    <cfset this.saveScreeningAnswerfield(screening,answerField[1],0,prescreen[afCode])>
+                    <cfset this.saveScreeningAnswerfield(screening,answerField[1],0,prescreen[afCode],0)>
                 </cfif>
             </cfloop>
 
@@ -120,7 +120,7 @@
                         <cfloop array="#answers.answers.drugs#" index="drug">
                             <cfset answerField = entityload("answer_field",{code="#drug#"})>
                             <cfif arraylen(answerField) neq 0>
-                                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,"y")>
+                                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,"y",0)>
                             </cfif>
                         </cfloop>
                     </cfcase>
@@ -128,7 +128,7 @@
                     <cfdefaultcase>
                         <cfset answerField = entityload("answer_field",{code="#afCode#"})>
                         <cfif arraylen(answerField) neq 0>
-                            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,answers.answers[afCode])>
+                            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,answers.answers[afCode],0)>
                         </cfif>
                     </cfdefaultcase>
 
@@ -189,8 +189,16 @@
 
         <cfset var answerField = entityload("answer_field",{code="poverty_index"})>
 
-        <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,povertyIndex)>
+        <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,povertyIndex,1)>
 
+        <cfset county = ormExecuteQuery("select id from county c where c.name=? and c.state.id=?",[saArray["county"],saArray["st"]])>
+        <cfif arraylen(county) neq 0>
+            <cfset var answerField = entityload("answer_field",{code="county_id"})>
+            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,county[1],1)>
+        </cfif>
+
+        <cfset var answerField = entityload("answer_field",{code="pri_resident"})>
+        <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,'y',1)>
     </cffunction>
 
     <cffunction name="saveScreeningAnswerfield">
@@ -198,6 +206,7 @@
         <cfargument name="answerField">
         <cfargument name="pgno">
         <cfargument name="value">
+        <cfargument name="derivedFlag" default="0">
 
         <cfset sa = entityNew("screening_answerfield")>
         <cfset sa.setScreening(screening)>
@@ -205,6 +214,7 @@
         <cfset sa.setResponse_type(1)>
         <cfset sa.setPage_num(pgno)>
         <cfset sa.setSubmit_datetime(Now())>
+        <cfset sa.setDerived_flag(derivedFlag)>
 
         <cfswitch expression="#answerField.getAnswer_field_type().getId()#">
             <cfcase value="18">
