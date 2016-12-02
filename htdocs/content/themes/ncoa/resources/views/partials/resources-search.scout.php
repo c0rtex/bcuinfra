@@ -18,7 +18,7 @@
   	<select name="state" ng-model="state" class="form-control" required>
         <option value="">-- Select --</option>
   		@foreach($states as $key => $value)
-		    <option value="{{ $key }}">{{ ucwords(strtolower($value)) }}</option>
+		    <option value="{{ $key }}">{{ $value }}</option>
 	    @endforeach
         </select>
 	</div>

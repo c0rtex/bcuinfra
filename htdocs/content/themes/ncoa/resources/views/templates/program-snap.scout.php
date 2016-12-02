@@ -40,13 +40,7 @@
           <select class="form-control" name="state-selection" id="state-selection" ng-model="mapState" ng-change="stateChange()" state-selection>
             <option value="">-- Select --</option>
             @foreach($states as $fact_sheet_url => $value)
-            <option value="{{ $fact_sheet_url }}">
-              @if($value != "District of Colombia")
-                {{ ucwords(strtolower($value)) }}
-              @else
-                {{ $value }}
-              @endif
-              </option>
+            <option value="{{ $fact_sheet_url }}">{{ $value }}</option>
             @endforeach
           </select>
         </div>
