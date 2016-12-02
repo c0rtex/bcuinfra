@@ -218,15 +218,15 @@
 
 	<div class="col-md-7 states">
 		<div class="cta-green">
-			<strong>Just a reminder</strong> Answer all your questions as your .
+			<strong>Just a reminder:</strong> Answer all your questions as your .
 		</div>
 
 		<div class="cta-red">
-			<strong>Just a reminder</strong> Answer all your questions as your .
+			<strong>Just a reminder:</strong> Answer all your questions as your .
 		</div>
 
 		<div class="cta-yellow">
-			<strong>Just a reminder</strong> Answer all your questions as your .
+			<strong>Just a reminder:</strong> Answer all your questions as your .
 		</div>
 	</div>
 </section>
