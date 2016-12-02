@@ -3,7 +3,7 @@
   'name' => 'form',
 	'class' => 'form-inline row',
   'novalidate' => ""
-  ]) 
+  ])
 }}
 
 <script>
@@ -12,13 +12,13 @@
 </script>
 
 <div ncoa-form>
-	
+
 	<div class="form-group col-md-10">
   	<label for="search-states">Search States</label>
   	<select name="state" ng-model="state" class="form-control" required>
         <option value="">-- Select --</option>
   		@foreach($states as $key => $value)
-		    <option value="{{ $key }}">{{ $value }}</option>
+		    <option value="{{ $key }}">{{ ucwords(strtolower($value)) }}</option>
 	    @endforeach
         </select>
 	</div>

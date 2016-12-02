@@ -12,6 +12,24 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
+        /*$home_url = home_url();
+        $fact_sheet_url = home_url($_SERVER['REDIRECT_URL']);
+        $to = 'ctxuser@gmail.com';
+        $subject = 'BenefitsCheckUp Fact Sheet';
+        $body = <<<EOT
+Thank you for using BenefitsCheckUp to help you find programs that you may be eligible for or interested in getting information about. Here is a link to the program fact sheet you requested should be emailed to you:
+        
+{$fact_sheet_url}
+        
+BenefitsCheckUp constantly updates the database with new information for existing programs and adds new programs on a regular basis. Please feel free to use the BenefitsCheckUp site at any time.
+{$home_url}
+        
+Have a wonderful day!
+BenefitsCheckUp Team 
+EOT;
+
+        wp_mail( $to, $subject, $body );*/
+
         $fact_sheet_slug = $query->query["name"];
 
         $program_code = Meta::get($query->queried_object_id, 'program_code');
@@ -94,7 +112,7 @@ class FactSheetsController extends BaseController
                 $dompdf->render();
 
                 // Output the generated PDF to Browser
-                $dompdf->stream();
+                $dompdf->stream('Fact Sheet - ' . $post->post_title);
             }
             else {
                 return $return;
