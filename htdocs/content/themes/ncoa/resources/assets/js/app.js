@@ -781,7 +781,7 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
 
             $("#multiselect").multiSelect({
                 selectableHeader: "<p class='bold'>Available Medications</p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
-                selectionHeader: "<span class='h4'>My Medication List</span><p>Below are the medications you have selected</p>",
+                selectionHeader: "<p class='bold'>My Medication List</p>",
                 selectableFooter: "<button class='btn btn-secondary add' disabled>Add to My List</button>",
                 selectionFooter: "<button class='btn btn-secondary remove' disabled>Remove from My List</button>",
                 afterInit: function(ms){
