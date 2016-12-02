@@ -9,7 +9,7 @@
 
             <!-- Desktop -->
             <div class="row">
-                <div class="col-md-12 hidden-xs hidden-sm">
+                <div class="col-xs-12">
                     <!-- Views -->
                     <div>
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
