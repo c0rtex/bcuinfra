@@ -194,9 +194,9 @@
 
                         @if(strpos($evalue->url, 'http')===0)
 
-                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                       <!--- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                        </a>
+                        </a>--->
                         <?php $pos-- ?> <!--showing and counting only non-online applications -->
 
                         @else
