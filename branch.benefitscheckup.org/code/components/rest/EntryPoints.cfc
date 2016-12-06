@@ -2,9 +2,29 @@
 
     <cffunction name="becsOffices" access="remote" restpath="/becs/{zipcode}" returnType="String" httpMethod="GET">
         <cfargument name="zipcode" required="true" restargsource="Path" type="string"/>
+
         <cfset entrypoints = ormExecuteQuery("select ep from entry_point_group epg join epg.entry_points ep join ep.zips z where epg.id=1342 and z.zipcode=?",[zipcode])>
+        <!--- SELECT
+                entrypoint.entrypoint_id
+              FROM
+                entrypoint_county AS epc
+                INNER JOIN county AS cy ON  epc.county_id = cy.county_id
+                INNER JOIN entrypoint ON epc.entrypoint_id = entrypoint.entrypoint_id
+                INNER JOIN entrypoint_entrypointgroup ON entrypoint_entrypointgroup.entrypoint_id = entrypoint.entrypoint_id
+                INNER JOIN entrypointgroup ON entrypoint_entrypointgroup.entrypointgroup_id = entrypointgroup.entrypointgroup_id
+                where entrypointgroup.entrypointgroup_id = 1342 and cy.county_name = 'bIENVILLE'
+              ORDER BY
+                entrypoint.entrypoint_id,
+                cy.state_id,
+                cy.county_name--->
 
         <cfset var retVal = arrayNew(1)>
+
+        <cfloop array="#entrypoints#" index="ep">
+            <cfset arrayAppend(retVal, this.formatEntryPoint(ep))>
+        </cfloop>
+
+        <cfset entrypoints = ormExecuteQuery("select ep from from entry_point_group epg join epg.entry_points ep join ep.counties c where epg.id=1342 and c.name='bIENVILLE'")>
 
         <cfloop array="#entrypoints#" index="ep">
             <cfset arrayAppend(retVal, this.formatEntryPoint(ep))>
