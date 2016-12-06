@@ -53,7 +53,13 @@ EOT;
 
         if (array_key_exists('short',$_REQUEST)) {
 
-            return View::make('templates.short-fact-sheets', [
+          $template = 'templates.short-fact-sheets';
+
+          if (isset($_REQUEST['pdf']) || isset($_REQUEST['print'])) {
+            $template = 'templates.print-short-fact-sheets';
+          }
+
+            return View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,

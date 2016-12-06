@@ -33,12 +33,12 @@
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
-                            <a href="{{ Loop::link() }}?print=y" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?short=y&print=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-print"></span>
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="{{ Loop::link() }}?pdf=y" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?short=y&pdf=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
