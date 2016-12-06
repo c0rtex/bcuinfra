@@ -24,7 +24,7 @@
             <cfset arrayAppend(retVal, this.formatEntryPoint(ep))>
         </cfloop>
 
-        <cfset entrypoints = ormExecuteQuery("select ep from from entry_point_group epg join epg.entry_points ep join ep.counties c where epg.id=1342 and c.name='bIENVILLE'")>
+        <cfset entrypoints = ormExecuteQuery("select ep from entry_point_group epg join epg.entry_points ep join ep.counties c join c.zips z where epg.id=1342 and z.zipcode=?",[zipcode])>
 
         <cfloop array="#entrypoints#" index="ep">
             <cfset arrayAppend(retVal, this.formatEntryPoint(ep))>
