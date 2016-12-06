@@ -16,5 +16,6 @@
     <cfproperty name="name" column="county_name">
     <cfproperty name="valid">
     <cfproperty name="map_id">
+	<cfproperty name="zips" fieldtype="one-to-many" fkcolumn="county_id" cfc="zip" missingRowIgnored="true">
     <cfproperty name="update_valid">
 </cfcomponent>
