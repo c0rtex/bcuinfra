@@ -39,7 +39,7 @@
 
         <cfset params = structNew()>
         <cfset this.setDefaultParams()>
-        <cfset params['zipcode'] = zipcode>
+        <cfset params['zipcode'] = "#zipcode#">
 
         <cfset retVal = arrayNew(1)>
 
