@@ -170,7 +170,7 @@
         <cfset st = zip.getState()>
 
         <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.view_zip_distance zd
-         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id=zd.end_state_id and zd.end_zipcode=?",[entryPointGroup, params.zipCode])>
+         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id=zd.end_state_id and zd.end_zipcode='#params.zipCode#'",[entryPointGroup])>
 
         <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep
          where ep.active_flag=1 and ep.zipcode is null and ep.state =? and epepg.entry_point_group=?",[st, entryPointGroup])>
@@ -196,12 +196,12 @@
         </cfif>
 
         <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.counties c join ep.view_zip_distance zd
-         where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode=? and c in (select c from zip z join z.county c where z.zipcode=?)",
-                [entryPointGroup, params.zipcode, params.zipcode])>
+         where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode='#params.zipCode#' and c in (select c from zip z join z.county c where z.zipcode='#params.zipCode#')",
+                [entryPointGroup])>
 
         <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.counties c
-         where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and c in (select c from zip z join z.county c where z.zipcode=?)",
-                [entryPointGroup, params.zipcode])>
+         where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and c in (select c from zip z join z.county c where z.zipcode='#params.zipCode#')",
+                [entryPointGroup])>
 
         <cfset arrayAppend(ep,ep1,true)>
 
@@ -230,7 +230,7 @@
 
         <cfif arraylen(zip.getPrefered_cities()) neq 0>
             <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.cities c join ep.view_zip_distance zd
-                   where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode=? and c=?",[entryPointGroup, params.zipcode, zip.getPrefered_cities()[1]])>
+                   where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode='#params.zipCode#' and c=?",[entryPointGroup, zip.getPrefered_cities()[1]])>
 
             <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.cities c
                    where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and c=?",[entryPointGroup, zip.getPrefered_cities()[1]])>
@@ -289,7 +289,7 @@
         <cfset st = zip.getState()>
 
         <cfset ep=ormExecuteQuery("select ep from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.view_zip_distance zd
-         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id = ? and zd.end_zipcode=? and zd.distance=?",[entryPointGroup, st, params.zipcode, params.radius])>
+         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id = ? and zd.end_zipcode='#params.zipCode#' and zd.distance=?",[entryPointGroup, st, params.radius])>
 
         <cfif arraylen(ep) eq 0>
             <cfset var success = false>
