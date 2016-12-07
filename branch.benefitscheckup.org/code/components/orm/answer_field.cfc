@@ -32,4 +32,16 @@
   <cfproperty name="options" tostructarray="options" fieldtype="one-to-many" cfc="answer_field_option" fkcolumn="answerfield_id" lazy="extra" cascade="all" orderby="sort">
   <cfproperty name="programs" fieldtype="many-to-many" cfc="program" linktable="program_answerfield" inversejoincolumn="program_id" fkcolumn="answerfield_id">
 
+  <cffunction name="toStructure">
+    <cfset var retVal = super.toStructure()>
+    <cfset var options = this.getOptions()>
+    <cfset retVal["options"] = arrayNew(1)>
+    <cfloop array="#options#" index="op">
+      <cfif op.getOption().getInclude_flag() neq 0>
+        <cfset arrayAppend(retVal["options"],op.toStructure())>
+      </cfif>
+    </cfloop>
+    <cfreturn retVal>
+  </cffunction>
+
 </cfcomponent>
