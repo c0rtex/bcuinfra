@@ -258,7 +258,7 @@
         </cfif>
 
         <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.zips z join ep.view_zip_distance zd
-               where ep.active_flag=1 and epepg.entry_point_group=? and z.zipcode=? and zd.end_zipcode=?",[entryPointGroup, "#params.zipcode#", "#params.zipcode#"])>
+               where ep.active_flag=1 and epepg.entry_point_group=? and z.zipcode='?' and zd.end_zipcode='?'",[entryPointGroup, "#params.zipcode#", "#params.zipcode#"])>
 
         <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.zips z
                where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and z.zipcode=?",[entryPointGroup, params.zipcode])>
