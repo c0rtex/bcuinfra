@@ -71,6 +71,9 @@
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
+	and p.code not in ('health_oh_kp_med_assistance','health_hi_kp_med_assistance','health_dc_kp_med_assistance','health_va_kp_med_assistance',
+                       'health_md_kp_med_assistance','health_ga_kp_med_assistance','health_ca_kp_med_assistance','health_co_kphelps',
+                       'health_or_kp_med_assistance','health_wa_kp_med_assistance')
 	and p.code not like '%_child_%'
 	and p.code not like 'health_az_mcs_qmb%'
 	and p.code not like 'health_az_mcs_slmb%'
@@ -938,7 +941,21 @@
         	    <cfparam name="session.org_id" default = 0>
         	    <cfparam name="session.subset_id" default = 0>
 
-        <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
+        <cfset querySubsetProgram = ormexecutequery("select
+                                                       p
+                                                     from
+                                                       subset_program_sum sp
+                                                       join sp.program p
+                                                     where
+                                                       sp.subset=? and
+                                                       p.active_flag=? and
+                                                       (p.state is null or p.state.id=?) and
+                                                       p.code not in ('health_oh_kp_med_assistance','health_hi_kp_med_assistance',
+                                                                      'health_dc_kp_med_assistance','health_va_kp_med_assistance',
+                                                                      'health_md_kp_med_assistance','health_ga_kp_med_assistance',
+                                                                      'health_ca_kp_med_assistance','health_co_kphelps',
+                                                                      'health_or_kp_med_assistance','health_wa_kp_med_assistance')
+                                                     order by p.sort",[screening.getSubset(),1,sa.st])>
 
         <cfloop array="#querySubsetProgram#" index="i">
             <cfset loopindex = loopindex + 1>
@@ -1404,6 +1421,9 @@
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
 	and p.code not like '%_child_%'
+    and p.code not in ('health_oh_kp_med_assistance','health_hi_kp_med_assistance','health_dc_kp_med_assistance','health_va_kp_med_assistance',
+                   'health_md_kp_med_assistance','health_ga_kp_med_assistance','health_ca_kp_med_assistance','health_co_kphelps',
+                   'health_or_kp_med_assistance','health_wa_kp_med_assistance')
 	and p.code not like 'health_az_mcs_qmb%'
 	and p.code not like 'health_az_mcs_slmb%'
 	and p.code not like 'health_az_mcs_qi%'
