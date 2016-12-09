@@ -8898,12 +8898,11 @@ grid:last-child .sales-grid {
   .ms-selection {
     width: 45%;
     margin-left: 10%;
-    height: 290px;
-    padding-top: 10px; } }
+    height: 290px; } }
 
 @media (min-width: 1210px) {
   .ms-selection .ms-list {
-    margin-top: 32px; } }
+    margin-top: 64px; } }
 
 @media (min-width: 768px) {
   .ms-selectable:after {

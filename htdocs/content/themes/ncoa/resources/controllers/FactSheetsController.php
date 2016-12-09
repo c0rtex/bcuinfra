@@ -17,16 +17,16 @@ class FactSheetsController extends BaseController
         $to = 'ctxuser@gmail.com';
         $subject = 'BenefitsCheckUp Fact Sheet';
         $body = <<<EOT
-Thank you for using BenefitsCheckUp to help you find programs that you may be eligible for or interested in getting information about. Here is a link to the program fact sheet you requested should be emailed to you:
-        
-{$fact_sheet_url}
-        
-BenefitsCheckUp constantly updates the database with new information for existing programs and adds new programs on a regular basis. Please feel free to use the BenefitsCheckUp site at any time.
-{$home_url}
-        
-Have a wonderful day!
-BenefitsCheckUp Team 
-EOT;
+    Thank you for using BenefitsCheckUp to help you find programs that you may be eligible for or interested in getting information about. Here is a link to the program fact sheet you requested should be emailed to you:
+
+    {$fact_sheet_url}
+
+    BenefitsCheckUp constantly updates the database with new information for existing programs and adds new programs on a regular basis. Please feel free to use the BenefitsCheckUp site at any time.
+    {$home_url}
+
+    Have a wonderful day!
+    BenefitsCheckUp Team
+    EOT;
 
         wp_mail( $to, $subject, $body );*/
 
@@ -53,13 +53,36 @@ EOT;
 
         if (array_key_exists('short',$_REQUEST)) {
 
-            return View::make('templates.short-fact-sheets', [
+            $template = 'templates.short-fact-sheets';
+
+            if (isset($_REQUEST['pdf']) || isset($_REQUEST['print'])) {
+                $template = 'templates.print-short-fact-sheets';
+            }
+
+            $return = View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
                 'required_materials' => $requiredMaterials,
                 'is_alt' => false
-            ]);
+            ])->render();
+
+            if (isset($_REQUEST['pdf'])) {
+                // instantiate and use the dompdf class
+                $options = new Options();
+                $options->set('isRemoteEnabled', TRUE);
+                $dompdf = new Dompdf($options);
+                $dompdf->loadHtml($return);
+
+                // Render the HTML as PDF
+                $dompdf->render();
+
+                // Output the generated PDF to Browser
+                $dompdf->stream('Fact Sheet - ' . $post->post_title);
+            }
+            else {
+                return $return;
+            }
 
         } else {
 
