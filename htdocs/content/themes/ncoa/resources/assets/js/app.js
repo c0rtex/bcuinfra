@@ -2303,10 +2303,14 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
         locationFinder.getLocation(zip).success(function(data, status, headers, config) {
 
-            if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){
-                localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
-                $window.location.href = '/find-my-benefits';
-            } else {
+            if(data.status == "OK"){
+                if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){
+                    localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
+                    $window.location.href = '/find-my-benefits';
+                }else{
+                    $scope.isZipInvalid=true;
+                }
+            }else{
                 $scope.isZipInvalid=true;
             }
         });
