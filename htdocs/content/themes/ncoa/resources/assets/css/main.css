@@ -8442,8 +8442,7 @@ footer .btn-purple {
   margin: 0; }
   .profile-section .profile-list li {
     list-style: none;
-    padding: 0 0 5px 0;
-    text-transform: capitalize; }
+    padding: 0 0 5px 0;  }
 
 .profile-section .categoreis span {
   display: block;
