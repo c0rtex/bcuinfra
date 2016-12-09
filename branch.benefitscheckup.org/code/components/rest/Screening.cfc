@@ -208,7 +208,7 @@
         <cfargument name="value">
         <cfargument name="derivedFlag" default="0">
 
-        <cfset sa = entityNew("screening_answerfield")>
+        <cfset var sa = entityNew("screening_answerfield")>
         <cfset sa.setScreening(screening)>
         <cfset sa.setAnswer(answerField)>
         <cfset sa.setResponse_type(1)>
@@ -231,9 +231,9 @@
 
             <cfcase value="14">
                 <cfset var relDrug = ormExecuteQuery("select afr.left_answerfield from answer_field_relationship afr where afr.right_answerfield=?",[sa.getAnswer()])>
-                <cfif arraylen(relDrug) neq 0>
-                    <cfset sa.setAnswer(relDrug[1])>
-                </cfif>
+                <cfloop array="#relDrug#" index="rd">
+                    <cfset this.saveScreeningAnswerfield(screening,rd,pgno,value,derivedFlag)>
+                </cfloop>
                 <cfset option = entityload("option",{code="#value#"})>
                 <cfif arraylen(option) neq 0>
                     <cfset sa.setOption(option[1])>
