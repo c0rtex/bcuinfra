@@ -1,14 +1,18 @@
 <header class="visible-print-block print-header">
-  <img src="/content/themes/ncoa/resources/assets/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" class="pull-left print-logo">
-  <div class="pull-right"><span>www.benefitscheckup.org</span></div>
-  <div class="clearfix"></div>
-  <hr class="fact-sheets-hr">
+	<img src="/content/themes/ncoa/resources/assets/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" class="pull-left print-logo">
+	<div class="pull-right"><span>www.benefitscheckup.org</span></div>
+	<div class="clearfix"></div>
+	<hr class="fact-sheets-hr">
 </header>
 <!--Results-->
 <div class="results card-panel">
 	<h2 class="page-header">Congratulations! Here are your results.</h2>
 	<div class="results-tally">
-		There are <span class="odometer">0</span> <strong>benefit programs</strong> that may be right for you.
+		<span ng-if="foundCount == 1">There is</span>
+		<span ng-if="foundCount > 1 || foundCount == 0">There are</span>
+		<span class="odometer">0</span>
+		<span ng-if="foundCount == 1"><strong>benefit program</strong> that may be right for you..</span>
+		<span ng-if="foundCount > 1 || foundCount == 0"><strong>benefit programs</strong> that may be right for you.</span>
 	</div>
 	<span ng-if="found_programs.length>0">
 		<!--<p>Select a program to learn more and apply.</p>

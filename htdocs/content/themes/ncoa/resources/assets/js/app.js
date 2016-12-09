@@ -2275,11 +2275,13 @@ app.controller('questionnaireResultsController', ['$scope', '$state', 'screening
 
     var odValue = 0;
 
+    $scope.foundCount = 0;
+
     for (var i=0; i<screening.data.results.found_programs.length;i++) {
-        odValue = odValue + screening.data.results.found_programs[i].count;
+        $scope.foundCount = $scope.foundCount + screening.data.results.found_programs[i].count;
     }
 
-    od.update(odValue);
+    od.update($scope.foundCount);
 
     $scope.key_programs = screening.data.results.key_programs;
     $scope.found_programs = screening.data.results.found_programs;
