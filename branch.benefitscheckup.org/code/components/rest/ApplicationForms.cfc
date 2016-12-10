@@ -36,7 +36,7 @@
                                                  f.form_tag ft join
                                                  fft.form_type ftp
                                             where pf.program=?
-                                                  and ftp.id in (1,4)
+                                                  and ftp.id in (1,3,4)
                                                   and fft.active=1 and (f.state=? or f.state is null)
 					    ORDER BY pf.sort",[pobj,state])>
         <cfelse>
@@ -50,7 +50,7 @@
                                                  f.form_tag ft join
                                                  fft.form_type ftp
                                             where pf.program=?
-                                                  and ftp.id in (1,4)
+                                                  and ftp.id in (1,3,4)
                                                   and fft.active=1
 					    ORDER BY pf.sort",[pobj])>
         </cfif>
