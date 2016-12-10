@@ -108,7 +108,8 @@
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
         <cfset sqs = "1=1">
-        <cfif not isnull(screening.getPrev_screening())>
+        <!--- temporally disabled super category filter --->
+        <!---<cfif not isnull(screening.getPrev_screening())>
             <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[screening.getPrev_screening().getId()])>
             <cfif arraylen(ps) neq 0>
                 <cfset sqs = "0">
@@ -119,7 +120,7 @@
             <cfif arraylen(ps) neq 0>
                 <cfset sqs = " sc.id in (#sqs#)">
             </cfif>
-        </cfif>
+        </cfif>--->
 
 
         <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? and #sqs# order by sc.sort, p.key_program, p.sort",[screening])>
