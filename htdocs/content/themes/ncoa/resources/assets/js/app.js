@@ -36,7 +36,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             controller: 'questionnairePrescreenResultsController',
             data: {
                 next: "questionnaire.basics",
-                prev: "prescreen.results"
+                prev: "/"
             }
         })
         .state('questionnaire', {
@@ -898,7 +898,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
         link: function (scope, elm) {
 
             if ($state.params.category == undefined) {
-                scope.prev = "prescreen.results";
+                scope.prev = "prescreen";
                 scope.next = "screening-start";
             } else {
                 if ($state.current.name=="questionnaire.results") {
@@ -912,7 +912,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
             }
 
             scope.switchPage = function (stateName) {
-                if ((stateName == "prescreen.results")||(stateName == "screening-start")) {
+                if ((stateName == "prescreen")||(stateName == "screening-start")||(stateName == "questionnaire.initial-results")) {
                     $state.transitionTo(stateName);
                 } else {
 
@@ -1506,7 +1506,7 @@ app.factory('ScreeningRoutes',[function() {
     var ScreeningParts = {};
 
     var _routes = {};
-    _routes.basics = {"prev":"prescreen.results", "next":"health", pgno:1};
+    _routes.basics = {"prev":"questionnaire.initial-results", "next":"health", pgno:1};
     _routes.health = {"prev":"basics", "next":"household", pgno:2};
     _routes.household = {"prev":"health", "next":"finances", pgno:3};
     _routes.finances = {"prev":"household", "next":"questionnaire.loader", pgno:4};
@@ -1810,7 +1810,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
             screening.data.results.screening.id = undefined;
 
             $scope.showLoader = false;
-            $state.go('prescreen.results');
+            $state.go('questionnaire.initial-results');
         });
     }
 
