@@ -1381,7 +1381,7 @@ app.factory('BenefitItems', [function(){
             sort: 3
         },
         {
-            name: 'Healthcare',
+            name: 'Health Care',
             code: 'bcuqc_category_medicaid',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_health.svg',
             alt: 'Doctor Symbols',
@@ -1397,7 +1397,7 @@ app.factory('BenefitItems', [function(){
             sort: 2
         },
         {
-            name: 'Food and Nutrition',
+            name: 'Food & Nutrition',
             code: 'bcuqc_category_nutrition',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
@@ -1405,7 +1405,7 @@ app.factory('BenefitItems', [function(){
             sort: 4
         },
         {
-            name: 'Housing and Utilities',
+            name: 'Housing & Utilities',
             code: 'bcuqc_category_utility',
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
