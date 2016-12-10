@@ -167,79 +167,41 @@
                         <span class="fact-sheets-side-header">Quick Links</span>
 
                         <?php
-
-                        //if (!empty($programUrl)) {
-
-                        if(!empty($app_forms)) {
                             foreach($app_forms as $ekey => $evalue){
-                                if(strpos($evalue->url, 'http')===0){
-
-                                    echo '
-
-<a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>
-';
+                                if($evalue->type=='online'){
+                                    echo '<a href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
                                     break;
                                 }
                             }
-                        }
-                        //}
                         ?>
 
-                        @if (!empty($app_forms))
-                        <?php $pos=1 ?>
+                        <?php $pos=0 ?>
                         @foreach($app_forms as $ekey => $evalue)
+                            <?php $isAdded = false?>
+                            @if(($evalue->type!='online')&&($pos<2))
+                                <?php $pos++ ?>
+                                <?php $isAdded = true ?>
+                                <a target="_blank" href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
+                                    <span class="fa fa-file fact-sheets-icon"></span>
+                                    <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                </a>
+                            @endif
 
-                        <?php $pos++ ?>
+                            @if (($pos===2)&&($evalue->type!='online'))
+                                <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
 
-
-                        @if(strpos($evalue->url, 'http')===0)
-
-                       <!--- <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                        </a>--->
-                        <?php $pos-- ?> <!--showing and counting only non-online applications -->
-
-                        @else
-                        <a target="_blank" href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
-                            <span class="fa fa-file fact-sheets-icon"></span>
-                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                        </a>
-                        @endif
-
-
-                        @if ($pos === 3)
-                        <!-- Trigger the modal with a button -->
-                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
-
-
-                        @if (!empty($programUrl))
-                        </br>
-
-                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
-                        @endif
-
-                        <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
 
                                 <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Application Forms</h4>
-                                    </div>
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Application Forms</h4>
+                                        </div>
                                     <div class="modal-body">
-
-
-
-                                        <?php break;?>
-
-                                        @endif
-
-                                        @endforeach
-                                        @if ($pos >= 3)
-
-                                        @foreach($app_forms as $ekey => $evalue) <!--Lynna Cekova: starting the loop again in order to print all application forms in the modal, not just the remaining ones -->
+                                        @if(!$isAdded)
+                                        <?php $isAdded = true ?>
                                         @if(strpos($evalue->url, 'http')===0)
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
@@ -251,12 +213,27 @@
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
                                         @endif
-
-
-
-                                        @endforeach
                                         @endif
-                                        @if ($pos >= 3)
+                                        <?php $pos++ ?>
+                            @endif
+
+                            @if (($pos >= 3)&&($evalue->type!='online')&&(!$isAdded))
+
+                                @if(strpos($evalue->url, 'http')===0)
+
+                                <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                    <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                </a>
+                                @else
+                                <a target="_blank" href="https://redesign.benefitscheckup.org/cf/form_redirect.cfm?id=847&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                    <span class="fa fa-file fact-sheets-icon"></span>
+                                    <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                </a>
+                                @endif
+                            @endif
+                        @endforeach
+
+                        @if ($pos >= 3)
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -265,15 +242,12 @@
 
                             </div>
                         </div>
-
-
                         @endif
-                        @endif
-
-
-                    </div>
+                @endif
+                    @if (!empty($programUrl))
+                    </br>
+                    <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
                     @endif
-
                 </div>
 
                 <!-- Mobile -->
