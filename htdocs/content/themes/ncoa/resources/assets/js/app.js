@@ -1378,7 +1378,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg',
             alt: 'Medicine Pills',
             title: 'Medicine Pills',
-            sort: 3
+            sort: 1
         },
         {
             name: 'Health Care',
@@ -1386,7 +1386,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_health.svg',
             alt: 'Doctor Symbols',
             title: 'Doctor Symbol',
-            sort: 1
+            sort: 2
         },
         {
             name: 'Income Assistance',
@@ -1394,7 +1394,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_income.svg',
             alt: 'Money',
             title: 'Money',
-            sort: 2
+            sort: 3
         },
         {
             name: 'Food & Nutrition',
@@ -1434,7 +1434,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_employment.svg',
             alt: 'Briefcase',
             title: 'Briefcase',
-            sort: 12
+            sort: 8
         },
         {
             name: 'Transportation',
@@ -1442,7 +1442,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_transportation.svg',
             alt: 'Automobile',
             title: 'Automobile',
-            sort: 8
+            sort: 9
         },
         {
             name: 'Education',
@@ -1450,7 +1450,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_education.svg',
             alt: 'Apple on Book',
             title: 'Apple on Book',
-            sort: 9
+            sort: 10
         },
         {
             name: 'Discount',
@@ -1458,7 +1458,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg',
             alt: 'Percent Off',
             title: 'Percent Off',
-            sort: 10
+            sort: 11
         },
         {
             name: 'Other Assistance',
@@ -1466,7 +1466,7 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_assistance.svg',
             alt: 'Information',
             title: 'Information',
-            sort: 11
+            sort: 12
         }
     ];
 
