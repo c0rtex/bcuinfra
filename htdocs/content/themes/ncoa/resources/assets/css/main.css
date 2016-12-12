@@ -10075,6 +10075,10 @@ grid:last-child .sales-grid {
 .prescreen-results .btns-container .btn-underline {
   padding-top: 10px; }
 
+.results.card-panel p {
+  margin: 25px 0;
+}
+
 .questionnaire h2 {
   margin-top: 0;
   margin-bottom: 25px; }
@@ -10234,7 +10238,7 @@ grid:last-child .sales-grid {
   border-bottom-color: #ccc; }
 
 .results .cta-yellow {
-  margin-bottom: 40px; }
+  margin-bottom: 30px; }
 
 .card-header {
   padding-top: 40px; }
