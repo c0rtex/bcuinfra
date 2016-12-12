@@ -896,6 +896,9 @@ app.directive('ncoaPrograms',[function(){
 app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($rootScope, $state, prescreen, screening, saveScreening, ScreeningRoutes){
     return {
         link: function (scope, elm) {
+            if ($state.current.name == 'questionnaire.results') {
+                scope.isResults = true;
+            }
 
             if ($state.params.category == undefined) {
                 scope.prev = "prescreen";
