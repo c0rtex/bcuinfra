@@ -19,9 +19,18 @@
             <li>Estimated household expenses such as: mortgage or rent, utility costs, and dependent care</li>
             <li>Out-of-pocket medical expenses that is not paid for by your insurance</li>
             <li>Name of prescription medications that you take (include brand name and generic drugs)</li>
-        </ul>" data-placement="top" class="fa fa-question-circle">Click here</a> for some information you may want to have ready before you continue with the full questionnaire.</p>
+        </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue with the full questionnaire.</p>
 
-    <script type="text/javascript-lazy">$('.fa-question-circle').popover();</script>
+    <div class="ready-list">
+    </div>
+
+    <script type="text/javascript-lazy">
+    	$('.ready-list').popover();
+
+    	$( ".ready-list" ).click(function( event ) {
+    		event.preventDefault();
+    	});
+    </script>
 
 
     <p>Select a category to learn more:</p>
