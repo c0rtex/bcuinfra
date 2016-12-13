@@ -59,6 +59,7 @@
             <cfset item = structNew()>
             <cfset item["url"] = i[1]>
             <cfset item["caption"] = i[2]>
+            <cfset item["id"] = i[3]>
             <cfset item["type"] = i[4]>
             <cfset arrayAppend(retVal,item)>
         </cfloop>
