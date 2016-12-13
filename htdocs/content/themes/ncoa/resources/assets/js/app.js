@@ -1322,7 +1322,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                     scope.$root.isZipValid = false;
                     scope.zipValid = '';
                     scope.$parent.zipCodeCheckResult = "Error!"
-                    scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
+                    scope.$parent.zipCodeDescription = "Error! Please enter a valid zip code in the United States.";
                     scope.$parent.zipCodeUpdated=true;
                     return;
                 }
@@ -1364,13 +1364,13 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                         scope.$root.isZipValid = false;
                         scope.zipValid = '';
                         scope.$parent.zipCodeCheckResult = "Error!"
-                        scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
+                        scope.$parent.zipCodeDescription = "Error! Please enter a valid zip code in the United States.";
                     }
                 }else{
                     scope.$root.isZipValid = false;
                     scope.zipValid = '';
                     scope.$parent.zipCodeCheckResult = "Error!"
-                    scope.$parent.zipCodeDescription = "Please enter a valid zipcode in the United States";
+                    scope.$parent.zipCodeDescription = "Error! Please enter a valid zip code in the United States.";
                 }
                 scope.$parent.zipCodeUpdated=true;
             }
