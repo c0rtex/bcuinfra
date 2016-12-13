@@ -11,7 +11,7 @@
 					<div class="zip-code form-inline">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
-						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 					</div>
 					</form>
 				</div>
@@ -67,7 +67,7 @@
 					<div class="zip-code form-inline" ng-controller="zipCodeController">
 						<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 						<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
-						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zipcode in the United States</p>
+						<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 					</div>
 				</div>
 			</section>
