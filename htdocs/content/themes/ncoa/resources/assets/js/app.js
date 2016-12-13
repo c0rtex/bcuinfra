@@ -1324,18 +1324,34 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                     return;
                 }
                 if(data.status == "OK"){
-                    if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){
-                        scope.$root.answers[category.currentCategory()].zipcode = data.results[0].address_components[0].long_name;
-                        for (var i=1;i<data.results[0].address_components.length;i++) {
-                            if (data.results[0].address_components[i].types.indexOf("administrative_area_level_1") > -1) {
+
+                    var isZipInvalid=true;
+                    var zipCode = "";
+
+                    for (var i=0;i<data.results[0].address_components.length;i++) {
+                        for(var j=0;j<data.results[0].address_components[i].types.length;j++) {
+                            if (((data.results[0].address_components[i].types[j] == "country")||
+                                (data.results[0].address_components[i].types[j] == "political"))&&
+                                (data.results[0].address_components[i].short_name == "US")) {
+                                isZipInvalid=false;
+                            }
+
+                            if (data.results[0].address_components[i].types[j] == "postal_code") {
+                                scope.$root.answers[category.currentCategory()].zipcode = data.results[0].address_components[i].long_name;
+                            }
+
+                            if (data.results[0].address_components[i].types[j] == "administrative_area_level_1") {
                                 scope.$root.answers[category.currentCategory()].stateId = data.results[0].address_components[i].short_name;
                                 scope.zipCodeLabel = "Update Zip Code";
-                            } else if ((data.results[0].address_components[i].types.indexOf("administrative_area_level_2") > -1)) {
+                            }
 
+                            if (data.results[0].address_components[i].types[j] == "administrative_area_level_2") {
                                 scope.$root.answers[category.currentCategory()].county = data.results[0].address_components[i].short_name.toUpperCase().replace(' COUNTY','');
                             }
                         }
+                    }
 
+                    if(!isZipInvalid){
                         scope.$root.answers[category.currentCategory()].zipcode_formatted = $filter('limitTo')(data.results[0].formatted_address, data.results[0].formatted_address.lastIndexOf(','), 0);
                         scope.$root.isZipValid = true;
                         scope.zipValid = '1';
@@ -2305,12 +2321,27 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
         locationFinder.getLocation(zip).success(function(data, status, headers, config) {
 
+            var retZipCode = "";
+
             if(data.status == "OK"){
-                if(data.results[0].address_components[0].short_name != "Undefined" && data.results[0].formatted_address.lastIndexOf("US") != -1){
+                $scope.isZipInvalid=true;
+                for (var i=0;i<data.results[0].address_components.length;i++) {
+                    for(var j=0;j<data.results[0].address_components[i].types.length;j++) {
+                        if (((data.results[0].address_components[i].types[j] == "country")||
+                            (data.results[0].address_components[i].types[j] == "political"))&&
+                            (data.results[0].address_components[i].short_name == "US")) {
+                            $scope.isZipInvalid=false;
+                        }
+
+                        if (data.results[0].address_components[i].types[j] == "postal_code") {
+                            retZipCode = data.results[0].address_components[i].long_name;
+                        }
+                    }
+                }
+
+                if(!$scope.isZipInvalid){
                     localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
                     $window.location.href = '/find-my-benefits';
-                }else{
-                    $scope.isZipInvalid=true;
                 }
             }else{
                 $scope.isZipInvalid=true;
