@@ -17,7 +17,7 @@
  
     <cffunction name="countVob" access="remote" restpath="/countvob" returnType="String" httpMethod="GET">
 
-	  <cfset retVal = 1770000000>
+	  <cfset retVal = 17700000000>
 
 
         <cfreturn serializeJSON(retVal)>
