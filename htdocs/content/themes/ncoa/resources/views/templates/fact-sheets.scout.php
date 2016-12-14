@@ -19,16 +19,16 @@
 
     <div class="card">
         <div class="card-nested">
-            <!-- Desktop -->
             <div class="row">
-                <div class="col-md-9 hidden-xs hidden-sm">
+                <!-- Desktop -->
+                <div class="col-xs-12 col-md-9">
                     <!-- Views -->
                     <div>
-          <span class="icon-block pull-left">
-            <?php
-            echo wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full')
-            ?>
-          </span>
+                      <span class="icon-block pull-left">
+                        <?php
+                        echo wp_get_attachment_image(Meta::get(Loop::id(), $key = 'fact-sheet-category-icon', $single = true), 'full')
+                        ?>
+                      </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
                             <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
@@ -78,13 +78,13 @@
 
                         @if(!empty($faqs_list))
                         @foreach($faqs_list as $key => $value)
-                            @if(strpos($value["answer"], 'entrypoints'))
-                            @if(!empty($entry_points))
-                            <?php $entryPointValue= $value ?>
-                            @endif
-                            @else
-                            @if($value["answer"] === 'documents_needed')
-                            <section slide-down class="program program-no-icon">
+                        @if(strpos($value["answer"], 'entrypoints'))
+                        @if(!empty($entry_points))
+                        <?php $entryPointValue= $value ?>
+                        @endif
+                        @else
+                        @if($value["answer"] === 'documents_needed')
+                        <section slide-down class="program program-no-icon">
                             <div class="program-header"><span>{{ $value["question"] }}</span></div>
                             <div class="programs-container program-p">
                                 <ul class="fact-sheets-list">
@@ -99,18 +99,18 @@
                                 </ul>
 
                             </div>
-                            </section>
-                            @else
-                            <section slide-down class="program program-no-icon">
+                        </section>
+                        @else
+                        <section slide-down class="program program-no-icon">
                             <div class="program-header"><span>{{ $value["question"] }}</span></div>
                             <div class="programs-container program-p">
                                 <p>
                                     {{ $value["answer"] }}
                                 </p>
                             </div>
-                            </section>
-                            @endif
-                            @endif
+                        </section>
+                        @endif
+                        @endif
                         @endforeach
                         @endif
                         @if(!empty($entryPointValue))
@@ -130,13 +130,13 @@
                             <div class="program-header"><span>Who can help me to apply?</span></div>
                             <div class="programs-container program-p">
                                 <p>
-                                A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC is available to help you.
+                                    A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC is available to help you.
                                 </p>
-                            @foreach($becs as $ekey => $evalue)
+                                @foreach($becs as $ekey => $evalue)
                                 <p>
                                     {{ $evalue->print_name }}
                                 </p>
-                            @endforeach
+                                @endforeach
                             </div>
                         </section>
                         @endif
@@ -167,39 +167,39 @@
                         <span class="fact-sheets-side-header">Quick Links</span>
 
                         <?php
-                            foreach($app_forms as $ekey => $evalue){
-                                if($evalue->type=='online'){
-                                    echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
+                        foreach($app_forms as $ekey => $evalue){
+                            if($evalue->type=='online'){
+                                echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
 
-                                    break;
-                                }
+                                break;
                             }
+                        }
                         ?>
 
                         <?php $pos=0 ?>
                         @foreach($app_forms as $ekey => $evalue)
-                            <?php $isAdded = false?>
-                            @if(($evalue->type!='online')&&($pos<2))
-                                <?php $pos++ ?>
-                                <?php $isAdded = true ?>
-                                <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
-                                    <span class="fa fa-file fact-sheets-icon"></span>
-                                    <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                </a>
-                            @endif
+                        <?php $isAdded = false?>
+                        @if(($evalue->type!='online')&&($pos<2))
+                        <?php $pos++ ?>
+                        <?php $isAdded = true ?>
+                        <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
+                            <span class="fa fa-file fact-sheets-icon"></span>
+                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                        </a>
+                        @endif
 
-                            @if (($pos===2)&&($evalue->type!='online'))
-                                <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
+                        @if (($pos===2)&&($evalue->type!='online'))
+                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
 
-                                <div id="myModal" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
 
                                 <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Application Forms</h4>
-                                        </div>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Application Forms</h4>
+                                    </div>
                                     <div class="modal-body">
                                         @if(!$isAdded)
                                         <?php $isAdded = true ?>
@@ -217,25 +217,25 @@
                                         @endif
                                         @endif
                                         <?php $pos++ ?>
-                            @endif
+                                        @endif
 
-                            @if (($pos >= 3)&&($evalue->type!='online')&&(!$isAdded))
+                                        @if (($pos >= 3)&&($evalue->type!='online')&&(!$isAdded))
 
-                                @if(strpos($evalue->url, 'http')===0)
+                                        @if(strpos($evalue->url, 'http')===0)
 
-                                <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                    <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                </a>
-                                @else
-                                <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
-                                    <span class="fa fa-file fact-sheets-icon"></span>
-                                    <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                </a>
-                                @endif
-                            @endif
-                        @endforeach
+                                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                        </a>
+                                        @else
+                                        <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                            <span class="fa fa-file fact-sheets-icon"></span>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                        </a>
+                                        @endif
+                                        @endif
+                                        @endforeach
 
-                        @if ($pos >= 3)
+                                        @if ($pos >= 3)
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -245,144 +245,54 @@
                             </div>
                         </div>
                         @endif
-                @endif
-                    @if (!empty($programUrl))
-                    </br>
-                    <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
-                    @endif
+                        @endif
+                        @if (!empty($programUrl))
+                        </br>
+                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
+                        @endif
+                    </div>
                 </div>
 
-                <!-- Mobile -->
-                <div class="col-xs-12 hidden-md hidden-lg">
-                    <div>
-                        <span class="icon-block-healthcare pull-left"></span>
-                        <div class="pull-left">
-                            <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
-                            <div class="fact-sheets-header fact-sheets-bottom-header">{{ Loop::title() }}</div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr class="fact-sheets-hr" />
-                        <div class="fact-sheets-icon-block pull-left">
-                            <a href="{{ Loop::link() }}?print=y" class="fact-sheet-header-icon">
-                                <span class="fa fa-print"></span>
-                                Print
-                            </a>
-                            <span class="fact-sheets-spacer"></span>
-                            <a href="{{ Loop::link() }}?pdf=y" class="fact-sheet-header-icon">
-                                <span class="fa fa-floppy-o"></span>
-                                Save
-                            </a>
-                            <!--<span class="fact-sheets-spacer"></span>
-                            <a href="#" class="fact-sheet-header-icon">
-                                <span class="fa fa-envelope-o"></span>
-                                Email
-                            </a>-->
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr class="fact-sheets-hr" />
-                    <div class="mobile-padding">
-                        {{ Loop::content() }}
 
-                        <div class="results-options fact-sheet-options">
-                            <div class="fact-sheets-know-container">
-                                <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
-                                <br />
-                                {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
-                            </div>
-                        </div>
-
-                        @if($is_alt)
-                        {{ Meta::get(Loop::id(), $key = 'requirement-info-alt', $single = true) }}
-                        @endif
-
-                        @if(!$is_alt)
-
-                        <div>
-                            <a href="{{ Meta::get(Loop::id(), $key = 'program-url', $single = true) }}" target="_new" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">{{ Meta::get(Loop::id(), $key = 'program-title', $single = true) }}</a>
-                        </div>
-
-                        <hr class="fact-sheets-hr" />
-
-                        {{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}
-
-                        <div class="fact-sheets-main-apply mobile-padding">
-                            <a href="{{ Meta::get(Loop::id(), $key = 'button-url', $single = true) }}" class="btn btn-primary fact-sheets-main-mobile">{{ Meta::get(Loop::id(), $key = 'button-title', $single = true) }}</a>
-                        </div>
-
-                        <div class="mobile-padding">
-                            <a href="{{ Meta::get(Loop::id(), $key = 'english-url', $single = true) }}" class="btn btn-link fact-sheets-link">
-                                <span class="fa fa-file fact-sheets-icon"></span>
-                                {{ Meta::get(Loop::id(), $key = 'english-title', $single = true) }}
-                            </a>
-                            <span class="fact-sheets-bar">|</span>
-                            <a href="{{ Meta::get(Loop::id(), $key = 'spanish-url', $single = true) }}" class="btn btn-link fact-sheets-link">
-                                <span class="fa fa-file fact-sheets-icon"></span>
-                                {{ Meta::get(Loop::id(), $key = 'spanish-title', $single = true) }}
-                            </a>
-                            <span class="fact-sheets-bar">|</span>
-                            <a href="{{ Meta::get(Loop::id(), $key = 'more-languages-url', $single = true) }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-link">
-                                {{ Meta::get(Loop::id(), $key = 'more-languages', $single = true) }}
-                            </a>
-                        </div>
-
-                        <hr class="fact-sheets-hr" />
-
-                        <h3 class="mobile-padding bold-h3">
-                            Frequently Asked Questions
-                        </h3>
-                        <div>
-                            @foreach($faqs_list as $key => $value)
-                            <section slide-down class="program program-no-icon">
-                                <div class="program-header"><span>{{ $value["question"] }}</span></div>
-                                <div class="programs-container program-p">
-                                    <p>
-                                        {{ $value["answer"] }}
-                                    </p>
-                                </div>
-                            </section>
-                            @endforeach
-                        </div>
-                        @endif
-                    </div>
                 </div>
             </div>
+            <!-- <h3 class="fact-sheets-bottom">
+              <a ui-sref="questionnaire.results" class="btn btn-link btn-back fact-sheets-side-link">Back to Results</a>
+            </h3> -->
         </div>
-        <!-- <h3 class="fact-sheets-bottom">
-          <a ui-sref="questionnaire.results" class="btn btn-link btn-back fact-sheets-side-link">Back to Results</a>
-        </h3> -->
     </div>
 
-    <script type="text/javascript">
 
-        jQuery(document).ready(function () {
-            //Lynna Cekova: click to call
-            var countrycodes = "1"
-            var delimiters = "-|\\.|—|–|&nbsp;"
-            var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
-            var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
-            var phonereg = new RegExp("(Fax:)?((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
+<script type="text/javascript">
 
-            //Created by Jon Meck at LunaMetrics.com - Version 1.0
-            // http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
+    jQuery(document).ready(function () {
+        //Lynna Cekova: click to call
+        var countrycodes = "1"
+        var delimiters = "-|\\.|—|–|&nbsp;"
+        var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
+        var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
+        var phonereg = new RegExp("(Fax:)?((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
 
-            function ReplacePhoneNumbers(oldhtml) {
-                if (!oldhtml) { return; }
-                var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
-                newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6, $7) {
-                    if ($4) return $2;
-                    else if ($5) return $3+$5+$6+$7;
-                    else if ($1)  return $1+$2;
-                    else return $3+"<a href='tel:"+$6.replace(spechars,"")+"' onclick=\"_gaq.push(['_trackEvent','Phone Call Tracking','Click/Touch']);\" >"+$6+"</a>"+$7; });
-                return newhtml;
-            }
+        //Created by Jon Meck at LunaMetrics.com - Version 1.0
+        // http://www.lunametrics.com/blog/2014/01/16/phone-numbers-clickable-trackable-mobile-devices-javascript-google-tag-manager/
 
-            $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
-            $(".program-p").each(function(p) {
-                $(this).html(ReplacePhoneNumbers($(this).html()));
-            });
+        function ReplacePhoneNumbers(oldhtml) {
+            if (!oldhtml) { return; }
+            var newhtml = oldhtml.replace("/href=['']callto:/gi",'href="tel:');
+            newhtml = newhtml.replace(phonereg, function ($0, $1, $2, $3, $4, $5, $6, $7) {
+                if ($4) return $2;
+                else if ($5) return $3+$5+$6+$7;
+                else if ($1)  return $1+$2;
+                else return $3+"<a href='tel:"+$6.replace(spechars,"")+"' onclick=\"_gaq.push(['_trackEvent','Phone Call Tracking','Click/Touch']);\" >"+$6+"</a>"+$7; });
+            return newhtml;
+        }
+
+        $("#factsheetContent").html(ReplacePhoneNumbers($("#factsheetContent").html()));
+        $(".program-p").each(function(p) {
+            $(this).html(ReplacePhoneNumbers($(this).html()));
         });
+    });
 
-    </script>
-    @endquery
-    @stop
+</script>
+@endquery
+@stop
