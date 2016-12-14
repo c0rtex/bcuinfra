@@ -11,5 +11,5 @@ return [
 	*/
 	'THEME_VERSION'	=> '1.0.0',
 	'WEB_SERVICE_URL' => 'http://leviathantech.com:8500',
-	'APPLICATION_FORMS_URL' => 'https://redesign.benefitscheckup.org/forms/'
+	'APPLICATION_FORMS_URL' => 'https://www.benefitscheckup.org/forms/'
 ];
