@@ -6,7 +6,9 @@
 <cfparam name="session.partner_id" default="0">
 <cfparam name="session.org_id" default="0">
 <cf_cacheWrapperQuery query="wrapper" partner_id="#session.partner_id#">
-
+<cfif isdefined('url.partner_id') and url.partner_id eq 0>
+	<cflocation url="https://www.benefitscheckup.org/medicare-rx-extra-help-application/">
+</cfif>
 <cfif trim(wrapper.wrapper_afc) IS NOT "">
 	<cfset guts = "extrahelp_pl.cfm">
 <cfelse>
