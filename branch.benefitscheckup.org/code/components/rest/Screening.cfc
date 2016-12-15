@@ -191,11 +191,29 @@
 
         <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,povertyIndex,1)>
 
-        <cfset county = ormExecuteQuery("select id from county c where c.name=? and c.state.id=?",[saArray["county"],saArray["st"]])>
+        <cfset var countyName = "">
+
+        <cfif structKeyExists(saArray,"county")>
+            <cfset countyName = saArray["county"]>
+        </cfif>
+
+
+        <cfset county = ormExecuteQuery("select id from county c where c.name=? and c.state.id=?",[countyName,saArray["st"]])>
         <cfif arraylen(county) neq 0>
             <cfset var answerField = entityload("answer_field",{code="county_id"})>
             <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,county[1],1)>
+        <cfelse>
+            <cfset var countyZip = entityLoadByPK("zip",saArray["zip"])>
+            <cfif !isNull(countyZip)>
+                <cfset var answerField = entityload("answer_field",{code="county_id"})>
+                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getId(),1)>
+
+                <cfset var answerField = entityload("answer_field",{code="county"})>
+                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getName(),1)>
+            </cfif>
         </cfif>
+
+
 
         <cfset var answerField = entityload("answer_field",{code="pri_resident"})>
         <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,'y',1)>
