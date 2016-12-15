@@ -105,11 +105,11 @@
 		</script>
 		<div class="container-fluid">
             <div id="header" class="row-fluid">
-            	<div class="span12"><a href="http://www.ncoa.org" target="_blank"><img id="topbar" alt="National Council on Aging" title="National Council on Aging" src="/wp-content/themes/bcuwptheme/images/logos/ncoa_top.png"></a><BR></div>
+            	<div class="span12"><a href="http://www.ncoa.org" target="_blank"><img id="topbar" alt="National Council on Aging" title="National Council on Aging" src="https://www.economiccheckup.org/wp-content/themes/bcuwptheme/images/logos/ncoa_top.png"></a><BR></div>
          	</div>
            <div id="header" class="row-fluid">
                 <div class="span5">
-                	<a href="http://www.ncoa.org/enhance-economic-security/economic-security-Initiative/" target="_new" class="block">                  <img src="/wp-content/uploads/2014/12/ECU-PNG-Logo-2015.png" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp" id="logo"></a><br><br>
+                	<a href="http://www.ncoa.org/enhance-economic-security/economic-security-Initiative/" target="_new" class="block">                  <img src="https://www.economiccheckup.org/wp-content/uploads/2014/12/ECU-PNG-Logo-2015.png" title="EconomicCheckUp - A Holistic Approach to Helping Older Adults in Need" alt="EconomicCheckUp" id="logo"></a><br><br>
               	</div>
                	<div class="span7 statistics" id="logo"><br>Since 2010, we've helped thousands of older adults find work, budget their money, and save on daily expenses.
                 </div>
@@ -243,7 +243,7 @@
 
                	</div>
 			<div id="footer-primary">
-				<p><a href="http://www.ncoa.org/" target="_blank"><img title="National Council on Aging" alt="National Council on Aging" src="/wp-content/uploads/2011/11/BCUfooter-ncoa-logo.png"></a></p>		
+				<p><a href="http://www.ncoa.org/" target="_blank"><img title="National Council on Aging" alt="National Council on Aging" src="https://www.economiccheckup.org/wp-content/uploads/2011/11/BCUfooter-ncoa-logo.png"></a></p>		
 <p id="ncoaAddress">251 18th Street South&nbsp;|&nbsp; Suite 500 &nbsp;| &nbsp;Arlington, VA 22202 &nbsp;</p>
 			</div> <!-- end footer-primary -->
 

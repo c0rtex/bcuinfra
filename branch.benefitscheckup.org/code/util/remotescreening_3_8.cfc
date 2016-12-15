@@ -1980,7 +1980,7 @@ SELECT
         	<cfargument name="screening_id" type="numeric" required="yes"   >
 		<cfset htmlDoc = "">
 		<!--- Set the URL address. --->
-		<cfset urlAddress="https://#application.serverPath#/show_summary.php?screeningID=#screening_id#">
+		<cfset urlAddress="https://legacy.benefitscheckup.org/show_summary.php/show_summary.php?screeningID=#screening_id#">
 		<cfhttp url="#urladdress#" method="GET" resolveurl="Yes" throwOnError="No"/>
 
 		<cfset htmlDoc = "<ul>" & CFHTTP.FileContent & "</ul>">
