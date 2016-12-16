@@ -8873,7 +8873,7 @@ grid:last-child .sales-grid {
     font-size: 1em;
     color: #323232;
     line-height: 1.222em; }
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     .programs li {
       display: inline-block; }
       .programs li:first-child {
