@@ -189,8 +189,6 @@
                         @endif
 
                         @if (($pos===2)&&($evalue->type!='online'))
-                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
-
                         <div id="myModal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
 
@@ -200,6 +198,7 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">Application Forms</h4>
                                     </div>
+                                    <?php $modalNotEmpty = false; ?>
                                     <div class="modal-body">
                                         @if(!$isAdded)
                                         <?php $isAdded = true ?>
@@ -208,12 +207,14 @@
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
+                                        <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
 
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
+                                        <?php $modalNotEmpty = true; ?>
                                         @endif
                                         @endif
                                         <?php $pos++ ?>
@@ -226,11 +227,13 @@
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
+                                        <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
                                         </a>
+                                        <?php $modalNotEmpty = true; ?>
                                         @endif
                                         @endif
                                         @endforeach
@@ -244,6 +247,11 @@
 
                             </div>
                         </div>
+
+                        @if ($modalNotEmpty == true)
+                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
+                        @endif
+
                         @endif
                         @endif
                         @if (!empty($programUrl))
@@ -254,13 +262,13 @@
                 </div>
 
 
-                </div>
             </div>
-            <!-- <h3 class="fact-sheets-bottom">
-              <a ui-sref="questionnaire.results" class="btn btn-link btn-back fact-sheets-side-link">Back to Results</a>
-            </h3> -->
         </div>
+        <!-- <h3 class="fact-sheets-bottom">
+          <a ui-sref="questionnaire.results" class="btn btn-link btn-back fact-sheets-side-link">Back to Results</a>
+        </h3> -->
     </div>
+</div>
 
 
 <script type="text/javascript">
