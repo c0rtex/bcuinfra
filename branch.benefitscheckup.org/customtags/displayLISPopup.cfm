@@ -38,7 +38,7 @@
 <cfelseif isdefined('session.partner_id') and (session.partner_id eq 89 or session.partner_id eq 90)>
 	<cf_sessionPassVars href="https://secure.ssa.gov/i1020/start" partner_id="#session.partner_id#" subset_id="41"   test_id="#session.test_id#" confirm="#lisappPopupText#"><cfoutput>#buttonImg#</cfoutput></cf_sessionPassVars>
 <cfelse>
-	<cf_sessionPassVars href="#lisUrl#/lisapp/start.cfm"  partner_id="#session.partner_id#" org_id="#session.org_id#" user_id="#session.user_id#" test_id="#session.test_id#" confirm="#lisappPopupText#"><cfoutput>#buttonImg#</cfoutput></cf_sessionPassVars>
+	<cf_sessionPassVars href="https://www.benefitscheckup.org/medicare-rx-extra-help-application/"  partner_id="#session.partner_id#" org_id="#session.org_id#" user_id="#session.user_id#" test_id="#session.test_id#" confirm="#lisappPopupText#"><cfoutput>#buttonImg#</cfoutput></cf_sessionPassVars>
 </cfif>
 <cfsilent></cfsilent>
 <cfelse>
