@@ -4,7 +4,7 @@
             <div class="super-footer">
                 <div class="super-footer-inner">
                     <span class="super-footer-copyright">
-                        &copy; 2016 National Council on Aging. All rights reserved.
+                        &copy; <?php echo date("Y"); ?> National Council on Aging. All rights reserved.
                     </span>
                     <!-- <span class="super-footer-link"><a href="#">Sitemap</a></span>
                     <span class="super-footer-spacer">|</span> -->
