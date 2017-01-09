@@ -92,7 +92,7 @@
                     <h3>Who can help me to apply?</h3>
                     <div>
                         <p>
-                            A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC is available to help you.
+                            A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC or BECs are available to help you.
                         </p>
                         @foreach($becs as $ekey => $evalue)
                         <p>
