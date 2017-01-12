@@ -209,7 +209,13 @@
                 <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getId(),1)>
 
                 <cfset var answerField = entityload("answer_field",{code="county"})>
-                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getName(),1)>
+                <cfset var sa = entityload("screening_answerfield",{screening=screening,answer=answerField[1]})>
+                <cfif arraylen(sa) neq 0>
+                    <cfset sa[1].setResponse(countyZip.getCounty().getName())>
+                    <cfset entitySave(sa[1])>
+                <cfelse>
+                    <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getName(),1)>
+                </cfif>
             </cfif>
         </cfif>
 
