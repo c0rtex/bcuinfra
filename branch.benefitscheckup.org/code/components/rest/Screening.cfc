@@ -232,10 +232,15 @@
         <cfargument name="value">
         <cfargument name="derivedFlag" default="0">
 
-        <cfset var sa = entityNew("screening_answerfield")>
-        <cfset sa.setScreening(screening)>
-        <cfset sa.setAnswer(answerField)>
-        <cfset sa.setResponse_type(1)>
+        <cfset var saArrayItems = entityload("screening_answerfield",{screening=screening,answer=answerField})>
+        <cfif arraylen(saArrayItems) neq 0 >
+            <cfset var sa = saArrayItems[1]>
+        <cfelse>
+            <cfset var sa = entityNew("screening_answerfield")>
+            <cfset sa.setScreening(screening)>
+            <cfset sa.setAnswer(answerField)>
+            <cfset sa.setResponse_type(1)>
+        </cfif>
         <cfset sa.setPage_num(pgno)>
         <cfset sa.setSubmit_datetime(Now())>
         <cfset sa.setDerived_flag(derivedFlag)>
@@ -280,7 +285,7 @@
             </cfdefaultcase>
 
         </cfswitch>
-        <cfset entitySave(sa)>
+        <cfset entitySave(sa,true)>
     </cffunction>
 
 </cfcomponent>
