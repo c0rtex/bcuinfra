@@ -5,7 +5,7 @@
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
 <div class="container">
-    <h1>Fact Sheet</h1>
+
 
     <!-- Desktop -->
     <div class="row">
