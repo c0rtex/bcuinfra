@@ -7904,7 +7904,7 @@ header {
       display: block;
       background-size: contain;
       width: 100%;
-      height: 46px;
+      height: 4px;
       margin-left: 10px; }
     @media (min-width: 768px) {
       header .header-cta {
@@ -7936,7 +7936,9 @@ header {
       padding: 6px 0 0 5px;
       font-weight: bold; }
     header .navbar-default .navbar-collapse {
-      padding-left: 0; }
+      padding-left: 0;
+      padding-right: 0;
+    }
     header .navbar-default .navbar-nav > li a {
       font-family: 'Open Sans', sans-serif;
       color: #1F3D7D;

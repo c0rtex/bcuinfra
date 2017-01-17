@@ -63,7 +63,7 @@
 				?>
 
 				<div class="header-cta hidden-lg hidden-md hidden-sm">
-					<a href="#" class="btn btn-purple">Sign Up for Enews</a>
+					<a href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
 				</div>
 		      	<text-size-changer class="pull-right hidden-xs" min="18" mid="20" max="24" unit="px"></text-size-changer>
 		    </div><!-- /.navbar-collapse -->
