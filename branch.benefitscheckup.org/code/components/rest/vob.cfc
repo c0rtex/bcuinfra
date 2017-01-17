@@ -9,7 +9,7 @@
 	
 			</cfquery>
 		
-				<cfset retVal = whscr.c * 5>
+				<cfset retVal = whscr.c >
 			
 
 			<cfcatch>
