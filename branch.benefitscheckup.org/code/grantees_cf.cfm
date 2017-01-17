@@ -652,6 +652,31 @@ Struct of structs of grantee logos
  <cfset granteeStruct.granteeState = "West Virginia West Virginia Bureau of Senior Services">
  <cfset granteeStruct.granteeStateName = "West Virginia">
  <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+ <!--- Alivio Medical Center --->
+ <cfset granteeStruct = structNew() />
+ <cfset granteeStruct.granteeLogo = "">
+ <cfset granteeStruct.granteeUrl = "http://www.aliviomedicalcenter.org">
+ <cfset granteeStruct.granteeImg = "">
+ <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+ <cfset granteeStruct.granteeAltText = "Alivio Medical Center">
+ <cfset granteeStruct.granteeID = "">
+ <cfset granteeStruct.granteeState = "Illinois Alabama Alivio Medical Center">
+ <cfset granteeStruct.granteeStateName = "Illinois">
+ <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<!--- Connecticut State Department on Aging --->
+ <cfset granteeStruct = structNew() />
+ <cfset granteeStruct.granteeLogo = "">
+ <cfset granteeStruct.granteeUrl = "http://www.ct.gov/agingservices">
+ <cfset granteeStruct.granteeImg = "">
+ <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+ <cfset granteeStruct.granteeAltText = "Connecticut State Department on Aging">
+ <cfset granteeStruct.granteeID = "">
+ <cfset granteeStruct.granteeState = "Connecticut State Department on Aging">
+ <cfset granteeStruct.granteeStateName = "Connecticut">
+ <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+ 
 <cfset sortedGrantees =  StructSort(allGranteesStruct, "textnocase", "asc", "granteeState")>
 
 <cfoutput>
