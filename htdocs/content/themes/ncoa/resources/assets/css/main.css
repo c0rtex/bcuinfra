@@ -3731,6 +3731,14 @@ tbody.collapse.in {
     .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
+@media (max-device-width: 480px) {
+  .btn-get-info {
+    padding: 6px !important;
+    min-height: 0 !important;
+    font-size: 0.8em !important;
+  }
+}
+
 .container > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-header,
