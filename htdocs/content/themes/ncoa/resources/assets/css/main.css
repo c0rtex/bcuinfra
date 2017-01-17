@@ -3740,6 +3740,13 @@ tbody.collapse.in {
   }
 }
 
+@media (max-device-width: 768px) {
+  .results-options {
+    width: auto !important;
+    margin: 20px 0 0 0 !important;
+  }
+}
+
 .container > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-header,
