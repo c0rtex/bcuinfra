@@ -3732,7 +3732,8 @@ tbody.collapse.in {
       max-height: 200px; } }
 
 @media (max-device-width: 480px) {
-  .btn-get-info {
+  .btn-get-info,
+  .btn-primary {
     padding: 6px !important;
     min-height: 0 !important;
     font-size: 0.8em !important;
