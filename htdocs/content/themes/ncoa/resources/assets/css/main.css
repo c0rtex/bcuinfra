@@ -3745,6 +3745,15 @@ tbody.collapse.in {
     width: auto !important;
     margin: 20px 0 0 0 !important;
   }
+
+  header .header-logo img {
+    width: 280px !important;
+  }
+
+  .page-sponsors .sponsors-hero h1,
+  .page-sponsor .sponsors-hero h1 {
+    font-size: 31px !important;
+  }
 }
 
 .container > .navbar-header,
