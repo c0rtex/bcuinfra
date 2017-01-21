@@ -3754,6 +3754,26 @@ tbody.collapse.in {
   .page-sponsor .sponsors-hero h1 {
     font-size: 31px !important;
   }
+
+  h3 {
+    font-size: 20px !important;
+  }
+
+  .btn-tertiary {
+    padding: 6px 12px !important;
+  }
+}
+
+.header-cta-ncoaLogo-xs {
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.header-cta-ncoaLogo-xs .btn-purple {
+  padding: 6px !important;
+  min-height: 0 !important;
+  font-size: 0.8em !important;
+  margin-top: 3px !important;
 }
 
 .container > .navbar-header,
