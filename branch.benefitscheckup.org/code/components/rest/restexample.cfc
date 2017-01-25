@@ -11,14 +11,14 @@
 
  
 
-    <cffunction name="example1" access="remote" restpath="/pathtoexampleone/{node}" returnType="String" httpMethod="GET">
+        <cffunction name="example2" access="remote" restpath="/pathtoexampletwo/{node}" returnType="String" httpMethod="GET">
         <cfargument name="node" required="true" restargsource="Path" type="string"/>
-        <cfargument name="stateId" required="false" restargsource="Query" default="" type="string"/>
-        		<cfset retVal = "Here are your inputs:" & node & ":" & stateId>
+        <cfargument name="stateid" required="false" restargsource="Query" default="" type="string"/>
+
+        		<cfset retVal = "Here are your inputs:#node#-#stateid#">
 
 			<cfreturn serializeJSON(retVal)>
 
-
-    </cffunction>
+    	</cffunction>
 
 </cfcomponent>
