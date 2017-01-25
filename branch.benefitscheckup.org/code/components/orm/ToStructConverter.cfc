@@ -30,7 +30,7 @@
                     <cfset retVal[p.tostructarray]=this.toStructArray(p.name)>
                 <cfelseif structKeyExists(p,"tostructcomponent")>
                     <cfset s=evaluate("this.get#p.name#()")>
-                    <cfif !isNull(s)>
+                    <cfif not isNull(s)>
                         <cfset s=s.toStructure()>
                         <cfif p.tostructcomponent neq "">
                             <cfset retVal["#p.tostructcomponent#"]=s>

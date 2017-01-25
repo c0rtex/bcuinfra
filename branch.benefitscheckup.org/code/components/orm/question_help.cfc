@@ -14,7 +14,7 @@
 
 <cfcomponent persistent="true" entityname="question_help" table="question_help" extends="ToStructConverter">
     <cfproperty name="question_id" fieldtype="id">
-    <cfproperty name="help" tostructcomponent="" fieldtype="id,many-to-one" fkcolumn="help_id" cfc="help">
+    <cfproperty name="help" tostructcomponent="" fieldtype="id,many-to-one" missingRowIgnored="false" fkcolumn="help_id" cfc="help">
     <cfproperty name="state" tostructcomponent="" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="state_id" cfc="state">
     <cfproperty name="rule" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="rule_id" cfc="rule">
     <cfproperty name="sort" tostruct="sort">

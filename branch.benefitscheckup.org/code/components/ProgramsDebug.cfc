@@ -1,6 +1,6 @@
-<cfcomponent  displayName="ProgramsDebug">
+<cfcomponent rest="true" restpath="/findPrograms">
     <cfset sa = structNew()>
-     <cfset ynDoBuffer = false>
+    <cfset ynDoBuffer = false>
 
     <cffunction name="categoriesToGroups" returnType="String">
         <cfset groupBy = "">
@@ -22,28 +22,48 @@
         <cfreturn groupBy>
     </cffunction>
 
-    <cffunction name="calcForPrescreen" output="yes">
-        <cfargument name="screeningId">
+    <cffunction name="calcForPrescreen" access="remote" restpath="/calcForPrescreen/{screeningId}" returnType="String" httpMethod="GET">
+        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
         <cfset screening = entityLoadByPK("screening",screeningId)>
         <cfset screening_answers = ormexecutequery("select distinct a.code from screening_answerfield sa join sa.answer a where sa.screening=?",[screening])>
         <cfset supercategories = ormexecutequery("from program_supercategory")>
         <cfset superCategoriesStruct = structNew()>
+        <cfset notOver3000Categories = {"bcuqc_category_income":"",
+            "bcuqc_category_medicaid":"",
+            "bcuqc_category_nutrition":"",
+            "bcuqc_category_rx":""}>
         <cfloop array="#supercategories#" index="i">
             <cfset superCategoriesStruct[i.getAnswerfieldcode()] = 'y'>
         </cfloop>
-	<cfdump var="#screening_answers#">
- 	 
-        <cfset filter = "''">
 
+        <cfset var bcuqcIncomeList = ormexecutequery("select o.code from screening_answerfield sa join sa.option o where sa.screening=? and sa.answer.code=?",[screening,"bcuqc_income_list"])>
+
+
+        <cfset var over3000 = false>
+
+        <cfif arraylen(bcuqcIncomeList) neq 0>
+            <cfset over3000 = bcuqcIncomeList[1] eq "bcuqc_income_3000">
+        </cfif>
+        <cfset filter = "''">
 
         <cfloop array="#screening_answers#" index="answerCode">
             <cfif structKeyExists(superCategoriesStruct,answerCode)>
-                <cfset filter="#filter#,'#answerCode#'">
+                <cfif over3000>
+                    <cfif not structKeyExists(notOver3000Categories,answerCode)>
+                        <cfset filter="#filter#,'#answerCode#'">
+                    </cfif>
+                <cfelse>
+                    <cfset filter="#filter#,'#answerCode#'">
+                </cfif>
             </cfif>
         </cfloop>
-
+        <cfset state_id = screening.getPreset_state().GETID()>
         <cfset filter = "(#filter#)">
-
+        <cfif state_id eq 'az'>
+            <cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
+            <cfelseif state_id eq 'co' or state_id eq 'mi'>
+            <cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
+        </cfif>
         <cfset programs = ormExecuteQuery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc   
 	where 
 	pc.code not in ('rxcard','rxco')  
@@ -51,8 +71,18 @@
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
-	and p.code not like '%_schip'
+	and p.code not in ('health_oh_kp_med_assistance','health_hi_kp_med_assistance','health_dc_kp_med_assistance','health_va_kp_med_assistance',
+                       'health_md_kp_med_assistance','health_ga_kp_med_assistance','health_ca_kp_med_assistance','health_co_kphelps',
+                       'health_or_kp_med_assistance','health_wa_kp_med_assistance')
 	and p.code not like '%_child_%'
+	and p.code not like 'health_az_mcs_qmb%'
+	and p.code not like 'health_az_mcs_slmb%'
+	and p.code not like 'health_az_mcs_qi%'
+	and p.code not like 'health_fd_msp_qmb%'
+	and p.code not like 'health_fd_msp_slmb%'
+	and p.code not like 'health_fd_msp_qi%'
+	and p.code not like 'health_ct_msp_almb'
+        and p.code not like 'health_#state_id#_schip'
 	and  sc.answerfieldcode in #filter# 
 	and p.active_flag=1
 	and sc.answerfieldcode in #filter# 
@@ -60,7 +90,7 @@
 	",[screening.getPreset_state()])>
 
         <cftransaction>
-           <cfloop array="#programs#" index="program">
+            <cfloop array="#programs#" index="program">
                 <cfset sp = entityNew("screening_program")>
                 <cfset sp.setScreening(screening)>
                 <cfset sp.setProgram(program)>
@@ -70,35 +100,52 @@
                 <cfset entitySave(sp)>
             </cfloop>
         </cftransaction>
-	
     </cffunction>
 
-    <cffunction name="calculatedForScreening" access="public" returnType="String" >
-        <cfargument name="screeningId" required="true"  type="numeric"/>
+    <cffunction name="calculatedForScreening" access="remote" restpath="/calculatedForScreening/{screeningId}" returnType="String" httpMethod="GET">
+        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by p.key_program, p.sort",[screening])>
+        <cfset sqs = "1=1">
+<!--- temporally disabled super category filter --->
+<!---<cfif not isnull(screening.getPrev_screening())>
+    <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[screening.getPrev_screening().getId()])>
+    <cfif arraylen(ps) neq 0>
+        <cfset sqs = "0">
+    </cfif>
+    <cfloop array="#ps#" index="psi">
+        <cfset sqs = "#sqs#,#psi.getId()#">
+    </cfloop>
+    <cfif arraylen(ps) neq 0>
+        <cfset sqs = " sc.id in (#sqs#)">
+    </cfif>
+</cfif>--->
 
+
+        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? and #sqs# order by sc.sort, p.key_program, p.sort",[screening])>
+
+        <cfset superCategories = ormExecuteQuery("select sc.answerfieldcode,sc.sort from program_supercategory sc where #sqs# order by sc.sort")>
 
         <cfset programsByCategories = structNew()>
 
+        <cfloop array="#superCategories#" index="i">
+            <cfset programsByCategories[i[1]] = structNew()>
+            <cfset programsByCategories[i[1]]["sort"] = i[2]>
+            <cfset programsByCategories[i[1]]["count"] = 0>
+            <cfset programsByCategories[i[1]]["programs"] = arrayNew(1)>
+        </cfloop>
+
         <cfloop array="#programs#" index="i">
-            <cfif structKeyExists(programsByCategories,i[2])>
-                <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
-                <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
-            <cfelse>
-                <cfset programsByCategories[i[2]] = structNew()>
-                <cfset programsByCategories[i[2]]["count"] = 1>
-                <cfset programsByCategories[i[2]]["programs"] = arrayNew(1)>
-                <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
-            </cfif>
+            <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
+            <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
         </cfloop>
 
         <cfset retVal = arrayNew(1)>
 
         <cfloop collection="#programsByCategories#" item="category">
             <cfset categoryItem = structNew()>
+            <cfset categoryItem['sort'] = programsByCategories[category].sort>
             <cfset categoryItem['category'] = category>
             <cfset categoryItem['count'] = programsByCategories[category].count>
             <cfset categoryItem['programs'] = programsByCategories[category].programs>
@@ -108,60 +155,60 @@
         <cfreturn serializeJSON(retVal)>
     </cffunction>
 
-    <!--- TODO remove unused method --->
-    <!---
+<!--- TODO remove unused method --->
+<!---
 
-    <cffunction name="programsForPrescreen" access="public"  returnType="String">
-        <cfargument name="screeningId" required="true"  type="numeric"/>
+<cffunction name="programsForPrescreen" access="remote" restpath="/forPrescreen/{screeningId}" returnType="String" httpMethod="GET">
+    <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
 
-        <cfset screening = entityLoadByPK("screening",screeningId)>
+    <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset programsByCategories = structNew()>
+    <cfset programsByCategories = structNew()>
 
-        <cfset filter = "''">
-        <cfset groupBy = "">
-        <cfset groupByCount = 0>
+    <cfset filter = "''">
+    <cfset groupBy = "">
+    <cfset groupByCount = 0>
 
-        <cfloop collection="#categories#" item="answerCode">
-            <cfif structKeyExists(categories,answerCode)>
-                <cfset programsByCategories[answerCode] = structNew()>
-                <cfset programsByCategories[answerCode]["count"] = 0>
-                <cfset programsByCategories[answerCode]["programs"] = arrayNew(1)>
-                <cfloop array="#categories[answerCode]#" index="category">
-                    <cfset filter="#filter#,'#category#'">
-                </cfloop>
-            </cfif>
-        </cfloop>
+    <cfloop collection="#categories#" item="answerCode">
+        <cfif structKeyExists(categories,answerCode)>
+            <cfset programsByCategories[answerCode] = structNew()>
+            <cfset programsByCategories[answerCode]["count"] = 0>
+            <cfset programsByCategories[answerCode]["programs"] = arrayNew(1)>
+            <cfloop array="#categories[answerCode]#" index="category">
+                <cfset filter="#filter#,'#category#'">
+            </cfloop>
+        </cfif>
+    </cfloop>
 
-        <cfset filter = "(#filter#)">
+    <cfset filter = "(#filter#)">
 
-        <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and (p.state=? or p.state is null) and p.active_flag=1 order by 2,p.sort",[sa.st])>
+    <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and (p.state=? or p.state is null) and p.active_flag=1 order by 2,p.sort",[sa.st])>
 
-        <cfloop array="#groupedByCategories#" index="i">
-            <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
-            <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
-        </cfloop>
+    <cfloop array="#groupedByCategories#" index="i">
+        <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
+        <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
+    </cfloop>
 
-        <cfset retVal = arrayNew(1)>
+    <cfset retVal = arrayNew(1)>
 
-        <cfloop collection="#programsByCategories#" item="category">
-            <cfset categoryItem = structNew()>
-            <cfset categoryItem['category'] = category>
-            <cfset categoryItem['count'] = programsByCategories[category].count>
-            <cfset categoryItem['programs'] = programsByCategories[category].programs>
-            <cfset arrayAppend(retVal,categoryItem)>
-        </cfloop>
+    <cfloop collection="#programsByCategories#" item="category">
+        <cfset categoryItem = structNew()>
+        <cfset categoryItem['category'] = category>
+        <cfset categoryItem['count'] = programsByCategories[category].count>
+        <cfset categoryItem['programs'] = programsByCategories[category].programs>
+        <cfset arrayAppend(retVal,categoryItem)>
+    </cfloop>
 
-        <cfreturn serializeJSON(retval)>
+    <cfreturn serializeJSON(retval)>
 
-    </cffunction>
-    --->
+</cffunction>
+--->
 
     <cffunction name="getIncomeTables">
 
         <cfif Not structKeyExists(sa,'no_hh_members') or sa.no_hh_members eq 0>
             <cfset sa.no_hh_members = 1>
-        <cfelseif sa.no_hh_members GT 8>
+            <cfelseif sa.no_hh_members GT 8>
             <cfset sa.no_hh_members = 8>
         </cfif>
         <cfset householdcount =  sa.no_hh_members>
@@ -170,7 +217,7 @@
             <cfset sa.hh_depend = val(sa.hh_depend)>
             <cfif sa.hh_depend eq "" or sa.hh_depend lt 1>
                 <cfset sa.hh_depend = 1>
-            <cfelseif sa.hh_depend GT 8>
+                <cfelseif sa.hh_depend GT 8>
                 <cfset sa.hh_depend = 8>
             </cfif>
             <cfset dependcount = sa.hh_depend>
@@ -181,7 +228,7 @@
         <cfif structKeyExists(sa,'no_hh_children')>
             <cfif sa.no_hh_children lt 1>
                 <cfset childcount = 1>
-            <cfelseif sa.no_hh_children gt 8>
+                <cfelseif sa.no_hh_children gt 8>
                 <cfset childcount = 8>
             <cfelse>
                 <cfset childcount = sa.no_hh_children>
@@ -250,7 +297,7 @@
                 <cfset exclusion = sa.s_asset_life_cash>
             <cfelse>
                 <cfset exclusion = 0>
-           </cfif>
+            </cfif>
 
             <cfset X = sa.s_asset_life_face + sa.s_asset_irrevocable>
             <cfset burialexclusion = MAX((1500-X),0)>
@@ -258,7 +305,7 @@
             <cfset exclusion3 = sa.s_asset_auto1 + sa.s_asset_home>
             <cfset finalfigure = sa.s_asset_total_complete - (exclusion + exclusion2 + exclusion3)>
             <cfset valToCompare = self>
-        <cfelseif sa.marital_stat EQ "married">
+            <cfelseif sa.marital_stat EQ "married">
             <cfif sa.s_sp_asset_life_face LTE 1500>
                 <cfset exclusion = sa.s_sp_asset_life_cash>
             <cfelse>
@@ -283,7 +330,7 @@
                     <cfset exclusion2 = burialexclusion>
                 </cfif>
             <cfelse>
-               <cfset exclusion2 = sa.s_sp_asset_revocable>
+                <cfset exclusion2 = sa.s_sp_asset_revocable>
             </cfif>
 
             <cfif sa.s_sp_asset_auto1 EQ ''>
@@ -507,7 +554,7 @@
         <cfset childcount = sa.no_hh_children>
         <cfif childcount eq '' or childcount lt 1>
             <cfset childcount = 1>
-        <cfelseif childcount gt 8>
+            <cfelseif childcount gt 8>
             <cfset childcount = 8>
         </cfif>
 
@@ -519,7 +566,7 @@
 
         <cfif sa.ch_parent neq 'y'>
             <cfset result = this.compareSSILookup(table="child",state_id=passStateID,count=childcount,childIncome=childIncomeAdjusted)>
-        <cfelseif sa.ch_guardian eq 'y' or sa.ch_other eq 'y'>
+            <cfelseif sa.ch_guardian eq 'y' or sa.ch_other eq 'y'>
             <cfset result = this.compareSSILookup(table=tableToCheck,state_id=passStateID,count=childcount,childIncome=childIncomeAdjusted,parentsIncome=parentsIncomeAdjusted,checkHighIncome=true)>
 
             <cfif not result>
@@ -609,7 +656,7 @@
             <cfif CharNumY EQ 0>
                 <cfset Criteria = "N">
                 <cfset CharNumCrit = CharNumN>
-            <cfelseif CharNumN EQ 0>
+                <cfelseif CharNumN EQ 0>
                 <cfset Criteria = "Y">
                 <cfset CharNumCrit = CharNumY>
             <cfelse>
@@ -657,7 +704,7 @@
                 <cfset evaluate = "1 EQ 0">
             </cfif>
 
-           <cfset StrFullRule = Replace(StrFullRule, prgRule, evaluate)>
+            <cfset StrFullRule = Replace(StrFullRule, prgRule, evaluate)>
         </cfloop>
         <cfreturn Evaluate(StrFullRule)>
     </cffunction>
@@ -715,195 +762,206 @@
 
     </cffunction>
 
-    <cffunction name="testRules" output="yes">
+    <cffunction name="testRules">
         <cfset this.getIncomeTables()>
         <cfset testPrograms = "">
         <cfset tmp_prg_list = ''>
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
-	<cfset debug = "false">
-	<cfset attributes.ynDoBuffer = "no">
+        <cfset debug = "false">
+        <cfset attributes.ynDoBuffer = "no">
         <cfset application.dbSrc = "dbSrc">
-	<!--- Default Values --->
-	<cfset sa.pri_resident = 'y'>
-	<cfset sa.dob_month = '1'>
-	
-	    <cfparam name="session.INT_SOCIAL_SECURITY" default="">
-	    <cfparam name="session.INT_FED_CIVIL_SERVICE_RETIREMENT" default="">
-	    <cfparam name="session.INT_RAILROAD_RETIRMENT" default="">
-	    <cfparam name="session.SNAP_AK_RECEIVE" default="">
-	    <cfparam name="session.SNAP_AL_RECEIVE" default="">
-	    <cfparam name="session.SNAP_AZ_RECEIVE" default="">
-	    <cfparam name="session.SNAP_CA_RECEIVE" default="">
-	    <cfparam name="session.SNAP_AR_RECEIVE" default="">
-	    <cfparam name="session.snap_co_receive" default="">
-	    <cfparam name="session.snap_ct_receive" default=""> 
-<cfparam name="session.snap_dc_receive" default="">
-<cfparam name="session.snap_de_receive" default="">
-<cfparam name="session.snap_fl_receive" default="">
-<cfparam name="session.snap_ga_receive" default="">
-<cfparam name="session.snap_hi_receive" default="">
-<cfparam name="session.snap_ia_receive" default="">
-<cfparam name="session.snap_id_receive" default="">
-<cfparam name="session.snap_il_receive" default="">
-<cfparam name="session.snap_in_receive" default="">
-<cfparam name="session.snap_ks_receive" default="">
-<cfparam name="session.snap_ky_receive" default="">
-<cfparam name="session.snap_la_receive" default="">
-<cfparam name="session.snap_ma_receive" default="">
-<cfparam name="session.snap_md_receive" default="">
-<cfparam name="session.snap_me_receive" default="">
-<cfparam name="session.snap_mi_receive" default="">
-<cfparam name="session.snap_mn_receive" default="">
-<cfparam name="session.snap_mo_receive" default="">
-<cfparam name="session.snap_ms_receive" default="">
-<cfparam name="session.snap_mt_receive" default="">
-<cfparam name="session.snap_nc_receive" default="">
-<cfparam name="session.snap_nd_receive" default="">
-<cfparam name="session.snap_ne_receive" default="">
-<cfparam name="session.snap_nh_receive" default="">
-<cfparam name="session.snap_nj_receive" default="">
-<cfparam name="session.snap_nm_receive" default="">
-<cfparam name="session.snap_nv_receive" default="">
-<cfparam name="session.snap_ny_receive" default="">
-<cfparam name="session.snap_oh_receive" default="">
-<cfparam name="session.snap_ok_receive" default="">
-<cfparam name="session.snap_or_receive" default="">
-<cfparam name="session.snap_pa_receive" default="">
-<cfparam name="session.snap_ri_receive" default="">
-<cfparam name="session.snap_sc_receive" default="">
-<cfparam name="session.snap_sd_receive" default="">
-<cfparam name="session.snap_tn_receive" default="">
-<cfparam name="session.snap_tx_receive" default="">
-<cfparam name="session.snap_ut_receive" default="">
-<cfparam name="session.snap_va_receive" default="">
-<cfparam name="session.snap_vt_receive" default="">
-<cfparam name="session.snap_wa_receive" default="">
-<cfparam name="session.snap_wi_receive" default="">
-<cfparam name="session.snap_wv_receive" default="">
-<cfparam name="session.snap_wy_receive" default=""> 
+<!--- Default Values --->
+        <cfset sa.pri_resident = 'y'>
 
-	<cfparam name="session.medicare_receive" default="">
-	<cfparam name="session.receive_partd" default="">
-	<cfparam name="session.tanf_vi_receive" default="">
-	<cfparam name="session.receive_lis" default="">
-	<cfparam name="session.med_receive" default="">	
-	<cfparam name="session.receive_msp" default="">	
-	
-<cfparam name="session.REVERSE_MORTGAGE" default="">
-<cfparam name="session.EYECARE" default="">
-<cfparam name="session.VETERAN" default="">
-<cfparam name="reverse_mortgage" default="">
-<cfparam name="session.tefap_receive" default="">
-<cfparam name="session.receive_csfp" default="">
-<cfparam name="session.cash_assist_receive" default="">
-<cfparam name="session.ssi_receive" default="">
-<cfparam name="session.tanf_receive" default="">
-<cfparam name="session.tanf_ar_receive" default="">
-<cfparam name="session.eaedc_receive" default="">
-<cfparam name="session.emergency_assist_receive" default="">
-<cfparam name="session.general_assist_receive" default="">
-<cfparam name="session.scsep_receive" default="">
+<!--- Default Values for Receive Questions - Temp to remove --->
+        <cfparam name="session.INT_SOCIAL_SECURITY" default="">
+        <cfparam name="session.INT_FED_CIVIL_SERVICE_RETIREMENT" default="">
+        <cfparam name="session.INT_RAILROAD_RETIRMENT" default="">
+        <cfparam name="session.SNAP_AK_RECEIVE" default="">
+        <cfparam name="session.SNAP_AL_RECEIVE" default="">
+        <cfparam name="session.SNAP_AZ_RECEIVE" default="">
+        <cfparam name="session.SNAP_CA_RECEIVE" default="">
+        <cfparam name="session.SNAP_AR_RECEIVE" default="">
+        <cfparam name="session.snap_co_receive" default="">
+        <cfparam name="session.snap_ct_receive" default="">
+        <cfparam name="session.snap_dc_receive" default="">
+        <cfparam name="session.snap_de_receive" default="">
+        <cfparam name="session.snap_fl_receive" default="">
+        <cfparam name="session.snap_ga_receive" default="">
+        <cfparam name="session.snap_hi_receive" default="">
+        <cfparam name="session.snap_ia_receive" default="">
+        <cfparam name="session.snap_id_receive" default="">
+        <cfparam name="session.snap_il_receive" default="">
+        <cfparam name="session.snap_in_receive" default="">
+        <cfparam name="session.snap_ks_receive" default="">
+        <cfparam name="session.snap_ky_receive" default="">
+        <cfparam name="session.snap_la_receive" default="">
+        <cfparam name="session.snap_ma_receive" default="">
+        <cfparam name="session.snap_md_receive" default="">
+        <cfparam name="session.snap_me_receive" default="">
+        <cfparam name="session.snap_mi_receive" default="">
+        <cfparam name="session.snap_mn_receive" default="">
+        <cfparam name="session.snap_mo_receive" default="">
+        <cfparam name="session.snap_ms_receive" default="">
+        <cfparam name="session.snap_mt_receive" default="">
+        <cfparam name="session.snap_nc_receive" default="">
+        <cfparam name="session.snap_nd_receive" default="">
+        <cfparam name="session.snap_ne_receive" default="">
+        <cfparam name="session.snap_nh_receive" default="">
+        <cfparam name="session.snap_nj_receive" default="">
+        <cfparam name="session.snap_nm_receive" default="">
+        <cfparam name="session.snap_nv_receive" default="">
+        <cfparam name="session.snap_ny_receive" default="">
+        <cfparam name="session.snap_oh_receive" default="">
+        <cfparam name="session.snap_ok_receive" default="">
+        <cfparam name="session.snap_or_receive" default="">
+        <cfparam name="session.snap_pa_receive" default="">
+        <cfparam name="session.snap_ri_receive" default="">
+        <cfparam name="session.snap_sc_receive" default="">
+        <cfparam name="session.snap_sd_receive" default="">
+        <cfparam name="session.snap_tn_receive" default="">
+        <cfparam name="session.snap_tx_receive" default="">
+        <cfparam name="session.snap_ut_receive" default="">
+        <cfparam name="session.snap_va_receive" default="">
+        <cfparam name="session.snap_vt_receive" default="">
+        <cfparam name="session.snap_wa_receive" default="">
+        <cfparam name="session.snap_wi_receive" default="">
+        <cfparam name="session.snap_wv_receive" default="">
+        <cfparam name="session.snap_wy_receive" default="">
 
-<cfparam name="session.cobra2" default="">	
-<cfparam name="session.rec_ak_seniorbenefits" default="">	
-<cfparam name="session.rec_az_copperrx" default="">	
-<cfparam name="session.rec_ca_drugdiscount" default="">	
-<cfparam name="session.rec_de_dpap" default="">	
-<cfparam name="session.rec_fl_discountdrugcard" default="">	
-<cfparam name="session.rec_il_rxbuyingclub" default="">	
-<cfparam name="session.rec_in_hoosierrx" default="">	
-<cfparam name="session.rec_ma_prescriptionadvantage" default="">	
-<cfparam name="session.rec_md_spdap" default="">	
-<cfparam name="session.rec_me_del" default="">	
-<cfparam name="session.rec_me_rxplus" default="">	
-<cfparam name="session.rec_mi_mirx" default="">	
-<cfparam name="session.rec_mo_rxplan" default="">	
-<cfparam name="session.rec_mt_bigskyrx" default="">	
-<cfparam name="session.rec_nj_paad" default="">	
-<cfparam name="session.rec_nj_seniorgold" default="">	
-<cfparam name="session.rec_nv_seniorrx" default="">	
-<cfparam name="session.rec_ny_epic" default="">	
-<cfparam name="session.rec_ny_bigapplerx" default="">	
-<cfparam name="session.rec_oh_bestrx" default="">	
-<cfparam name="session.rec_or_pdap_2" default="">	
-<cfparam name="session.rec_pa_pace" default="">	
-<cfparam name="session.rec_pa_pacenet" default="">	
-<cfparam name="session.rec_ri_ripae" default="">	
-<cfparam name="session.rec_vt_vpharm1" default="">	
-<cfparam name="session.rec_vt_vpharm2" default="">	
-<cfparam name="session.rec_vt_vpharm3" default="">	
-<cfparam name="session.rec_vt_healthyvermonters" default="">	
-<cfparam name="session.rec_wa_pdp" default="">	
-<cfparam name="session.rec_wi_seniorcare" default="">	
-<cfparam name="session.rec_wv_goldenmountaineer" default="">	
-<cfparam name="session.ss_receive" default="">	
-<cfparam name="session.ssd_receive" default="">	
-<cfparam name="session.ssd_receive_2" default="">	
-<cfparam name="session.ssi_receive" default="">	
-<cfparam name="session.rr_receive" default="">	
-<cfparam name="session.rr_receive_2" default="">	
-<cfparam name="session.rec_reverse_mortgage" default="">	
-<cfparam name="session.rec_employee_hi" default="">	
-<cfparam name="session.rec_tricare" default="">	
-<cfparam name="session.receive_va" default="">	
-<cfparam name="session.liheap_receive" default="">	
-<cfparam name="session.receive_pub_housing" default="">	
-<cfparam name="session.receive_section_8" default="">	
-<cfparam name="session.scsep_receive" default="">	
-<cfparam name="session.receive_hopwa" default="">	
-<cfparam name="session.unemp_receive" default="">	
-<cfparam name="session.snap_vi_receive" default="">	
-<cfparam name="session.rec_vi_pap" default="">	
-<cfparam name="session.ecap_receive" default="">	
-<cfparam name="session.cobra" default="">
-<cfparam name="session.int_unemployed" default="">
-<cfparam name="session.int_medicare_2" default="">
-<cfparam name="session.int_social_security" default="">
-<cfparam name="session.int_fed_civil_service_retirement" default="">
-<cfparam name="session.int_railroad_retirment" default="">
-<cfparam name="session.abused" default="">
-<cfparam name="session.int_alzheimer" default="">
-<cfparam name="session.int_assistech" default="">
-<cfparam name="session.int_caregiver_respite" default="">
-<cfparam name="session.int_diabetes" default="">
-<cfparam name="session.int_edu" default="">
-<cfparam name="session.int_elder_nut" default="">
-<cfparam name="session.emerg_needs" default="">
-<cfparam name="session.int_emp" default="">
-<cfparam name="session.int_foreclosure" default="">
-<cfparam name="session.int_medicare" default="">
-<cfparam name="session.int_homeowners_insurance" default="">
-<cfparam name="session.int_low_inc_house" default="">
-<cfparam name="session.legal" default="">
-<cfparam name="session.int_ltc_ombuds" default="">
-<cfparam name="session.int_pension" default="">
-<cfparam name="session.int_health_center" default="">
-<cfparam name="session.int_mental_health" default="">
-<cfparam name="session.int_blind" default="">
-<cfparam name="session.int_deaf" default="">
-<cfparam name="session.int_retire_tax_estate_planning" default="">
-<cfparam name="session.int_trans_personal" default="">
-<cfparam name="session.int_unclaimed_property" default="">
-<cfparam name="session.int_crisis_prevention_veterans" default="">
-<cfparam name="session.int_vol" default="">
-<cfparam name="session.int_hiv_aids" default="">
-<cfloop COLLECTION="#sa#"  item="x">
-<cfset 'session.#x#' = evaluate('sa.#x#')>
+        <cfparam name="session.medicare_receive" default="">
+        <cfparam name="session.receive_partd" default="">
+        <cfparam name="session.tanf_vi_receive" default="">
+        <cfparam name="session.receive_lis" default="">
+        <cfparam name="session.med_receive" default="">
+        <cfparam name="session.receive_msp" default="">
+        <cfparam name="session.REVERSE_MORTGAGE" default="">
+        <cfparam name="session.EYECARE" default="">
+        <cfparam name="session.VETERAN" default="">
+        <cfparam name="reverse_mortgage" default="">
+        <cfparam name="session.tefap_receive" default="">
+        <cfparam name="session.receive_csfp" default="">
+        <cfparam name="session.cash_assist_receive" default="">
+        <cfparam name="session.ssi_receive" default="">
+        <cfparam name="session.tanf_receive" default="">
+        <cfparam name="session.tanf_ar_receive" default="">
+        <cfparam name="session.eaedc_receive" default="">
+        <cfparam name="session.emergency_assist_receive" default="">
+        <cfparam name="session.general_assist_receive" default="">
+        <cfparam name="session.scsep_receive" default="">
 
-</cfloop>
-	<cfparam name="session.partner_id" default= 0>
+        <cfparam name="session.cobra2" default="">
+        <cfparam name="session.rec_ak_seniorbenefits" default="">
+        <cfparam name="session.rec_az_copperrx" default="">
+        <cfparam name="session.rec_ca_drugdiscount" default="">
+        <cfparam name="session.rec_de_dpap" default="">
+        <cfparam name="session.rec_fl_discountdrugcard" default="">
+        <cfparam name="session.rec_il_rxbuyingclub" default="">
+        <cfparam name="session.rec_in_hoosierrx" default="">
+        <cfparam name="session.rec_ma_prescriptionadvantage" default="">
+        <cfparam name="session.rec_md_spdap" default="">
+        <cfparam name="session.rec_me_del" default="">
+        <cfparam name="session.rec_me_rxplus" default="">
+        <cfparam name="session.rec_mi_mirx" default="">
+        <cfparam name="session.rec_mo_rxplan" default="">
+        <cfparam name="session.rec_mt_bigskyrx" default="">
+        <cfparam name="session.rec_nj_paad" default="">
+        <cfparam name="session.rec_nj_seniorgold" default="">
+        <cfparam name="session.rec_nv_seniorrx" default="">
+        <cfparam name="session.rec_ny_epic" default="">
+        <cfparam name="session.rec_ny_bigapplerx" default="">
+        <cfparam name="session.rec_oh_bestrx" default="">
+        <cfparam name="session.rec_or_pdap_2" default="">
+        <cfparam name="session.rec_pa_pace" default="">
+        <cfparam name="session.rec_pa_pacenet" default="">
+        <cfparam name="session.rec_ri_ripae" default="">
+        <cfparam name="session.rec_vt_vpharm1" default="">
+        <cfparam name="session.rec_vt_vpharm2" default="">
+        <cfparam name="session.rec_vt_vpharm3" default="">
+        <cfparam name="session.rec_vt_healthyvermonters" default="">
+        <cfparam name="session.rec_wa_pdp" default="">
+        <cfparam name="session.rec_wi_seniorcare" default="">
+        <cfparam name="session.rec_wv_goldenmountaineer" default="">
+        <cfparam name="session.ss_receive" default="">
+        <cfparam name="session.ssd_receive" default="">
+        <cfparam name="session.ssd_receive_2" default="">
+        <cfparam name="session.ssi_receive" default="">
+        <cfparam name="session.rr_receive" default="">
+        <cfparam name="session.rr_receive_2" default="">
+        <cfparam name="session.rec_reverse_mortgage" default="">
+        <cfparam name="session.rec_employee_hi" default="">
+        <cfparam name="session.rec_tricare" default="">
+        <cfparam name="session.receive_va" default="">
+        <cfparam name="session.liheap_receive" default="">
+        <cfparam name="session.receive_pub_housing" default="">
+        <cfparam name="session.receive_section_8" default="">
+        <cfparam name="session.scsep_receive" default="">
+        <cfparam name="session.receive_hopwa" default="">
+        <cfparam name="session.unemp_receive" default="">
+        <cfparam name="session.snap_vi_receive" default="">
+        <cfparam name="session.rec_vi_pap" default="">
+        <cfparam name="session.ecap_receive" default="">
+        <cfparam name="session.cobra" default="">
+        <cfparam name="session.int_unemployed" default="">
+        <cfparam name="session.int_medicare_2" default="">
+        <cfparam name="session.int_social_security" default="">
+        <cfparam name="session.int_fed_civil_service_retirement" default="">
+        <cfparam name="session.int_railroad_retirment" default="">
+        <cfparam name="session.abused" default="">
+        <cfparam name="session.int_alzheimer" default="">
+        <cfparam name="session.int_assistech" default="">
+        <cfparam name="session.int_caregiver_respite" default="">
+        <cfparam name="session.int_diabetes" default="">
+        <cfparam name="session.int_edu" default="">
+        <cfparam name="session.int_elder_nut" default="">
+        <cfparam name="session.emerg_needs" default="">
+        <cfparam name="session.int_emp" default="">
+        <cfparam name="session.int_foreclosure" default="">
+        <cfparam name="session.int_medicare" default="">
+        <cfparam name="session.int_homeowners_insurance" default="">
+        <cfparam name="session.int_low_inc_house" default="">
+        <cfparam name="session.legal" default="">
+        <cfparam name="session.int_ltc_ombuds" default="">
+        <cfparam name="session.int_pension" default="">
+        <cfparam name="session.int_health_center" default="">
+        <cfparam name="session.int_mental_health" default="">
+        <cfparam name="session.int_blind" default="">
+        <cfparam name="session.int_deaf" default="">
+        <cfparam name="session.int_retire_tax_estate_planning" default="">
+        <cfparam name="session.int_trans_personal" default="">
+        <cfparam name="session.int_unclaimed_property" default="">
+        <cfparam name="session.int_crisis_prevention_veterans" default="">
+        <cfparam name="session.int_vol" default="">
+        <cfparam name="session.int_hiv_aids" default="">
+        <cfloop COLLECTION="#sa#"  item="x">
+            <cfset 'session.#x#' = evaluate('sa.#x#')>
+        </cfloop>
+        <cfparam name="session.partner_id" default= 0>
         <cfparam name="session.org_id" default = 0>
         <cfparam name="session.subset_id" default = 0>
 
-	<cfif debug><h1>Debug Step 2 - Test Rules</h1><br></cfif>
-	<!--- cfdump var="#sa#" cfdump var="#session#" --->
-        <cfset querySubsetProgram = ormexecutequery("select p from subset_program_sum sp join sp.program p where sp.subset=? and p.active_flag=? and (p.state is null or p.state.id=?) order by p.sort",[screening.getSubset(),1,sa.st])>
+        <cfset querySubsetProgram = ormexecutequery("select
+                                                       p
+                                                     from
+                                                       subset_program_sum sp
+                                                       join sp.program p
+                                                     where
+                                                       sp.subset=? and
+                                                       p.active_flag=? and
+                                                       (p.state is null or p.state.id=?) and
+                                                       p.code not in ('health_oh_kp_med_assistance','health_hi_kp_med_assistance',
+                                                                      'health_dc_kp_med_assistance','health_va_kp_med_assistance',
+                                                                      'health_md_kp_med_assistance','health_ga_kp_med_assistance',
+                                                                      'health_ca_kp_med_assistance','health_co_kphelps',
+                                                                      'health_or_kp_med_assistance','health_wa_kp_med_assistance')
+                                                     order by p.sort",[screening.getSubset(),1,sa.st])>
+
         <cfloop array="#querySubsetProgram#" index="i">
             <cfset loopindex = loopindex + 1>
             <cfset prg_id = i.getLegacy()>
-	    <cfset program_code  = i.getcode()>
+
             <cfif loopindex gt 1>
                 <cfset test1 = FINDNOCASE("no", test, 1)>
                 <cfif test neq "" and test1 EQ 0>
@@ -915,199 +973,182 @@
                 <cfset testProgram = ormexecutequery("select r from program_rule pr join pr.rule r where pr.program=?",[i])>
 
                 <cfloop array="#testProgram#" index="rule">
-		    <cfif debug><cfoutput>#prg_id# #program_code#  #rule.getcode()#</cfoutput></cfif>
+
                     <cfset strRule = Replace(rule.getRule_text(), "gteq", "gte", "ALL")>
                     <cfset strRule = Replace(strRule, "lteq", "lte", "ALL")>
                     <cfset strRule = Replace(strRule, "XX[" , "[", "ALL")>
-		    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")> 
-		     <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
+                    <cfset strRule = Replace(strRule, "IsDefined('session", "IsDefined('sa", "ALL")>
+
+                    <cfif debug><br><cfoutput>Rule: #strRule#</cfoutput><br></cfif>
                     <cfif FINDNOCASE("BuyInQI2asset", strRule, 1) NEQ 0>
-	
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
-				   <cf_tagYeMedicareBuyInAss 
-						rule="#strRule#" 
-						ynDoBuffer="#attributes.ynDoBuffer#"
-						self = "#gettoken(strRule,2,"-")#"	
-						self_spouse = "#gettoken(strRule,3,"-")#">
-				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("BuyInQI2inc", strRule, 1) NEQ 0>
-				
-					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
-				   <cf_tagYeMedicareBuyInInc 
-						rule="#strRule#" 
-						ynDoBuffer="#attributes.ynDoBuffer#"
-						self_high = "#gettoken(strRule,2,"-")#"	
-						self_low = "#gettoken(strRule,3,"-")#"
-						s_sp_high = "#gettoken(strRule,4,"-")#"
-						s_sp_low = "#gettoken(strRule,5,"-")#">
-				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("MXASSET", strRule, 1) NEQ 0>
-				<cfset strTable = Replace(strRule,"(","","ALL")>
-				<cfset strTable = Trim(ReplaceNoCase(strTable,"MXASSET)","","ALL"))>
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxAssetVals<br /><br /></cfoutput></cfif>
-				<cfinclude template="tagGetMxAssetVals.cfm">
-				<cfif IsDefined('session.skipassets') and session.skipassets EQ "N">
-					<!--- 07/18/02 REM  If the table val is $1MM, then everyone passes --->
-					<cfif getMxAssetVals.single GTE 1000000>
-						<cfset answer = "YES">
-					<cfelse>
-						<cfset answer = "NO">
-					</cfif>
-				<cfelse>
-					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
-					<cf_tagYeMedicareBuyInAss 
-						rule="#strRule#" 
-						ynDoBuffer="#attributes.ynDoBuffer#"
-						self = "#getMxAssetVals.single#"	
-						self_spouse = "#getMxAssetVals.couple#">
-				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-				</cfif>
-			<cfelseif FINDNOCASE("MXINCOME", strRule, 1) NEQ 0>
-				
-					<cfset strTable = Replace(strRule,"(","","ALL")>
-					<cfset strTable = Trim(ReplaceNoCase(strTable,"MXINCOME)","","ALL"))>
-					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxIncVals<br /><br /></cfoutput></cfif>
-					<cfinclude template="tagGetMxIncVals.cfm">
-					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
-				   <cf_tagYeMedicareBuyInInc 
-						rule="#strRule#" 
-						ynDoBuffer="#attributes.ynDoBuffer#"
-						self_high = "#getMxIncVals.single_max#"	
-						self_low = "#getMxIncVals.single_min#"
-						s_sp_high = "#getMxIncVals.couple_max#"
-						s_sp_low = "#getMxIncVals.couple_min#">
-				
-				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("childstatessiinc", strRule, 1) NEQ 0>
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeChildSSIInc checkState="true"<br /><br /></cfoutput></cfif>
-			   <cf_tagYeChildSSIInc ynDoBuffer="#attributes.ynDoBuffer#" checkState="true">
-			   <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("childssiinc", strRule, 1) NEQ 0>
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeChildSSIInc<br /><br /></cfoutput></cfif>
-			   <cf_tagYeChildSSIInc ynDoBuffer="#attributes.ynDoBuffer#">
+
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
+                        <cf_tagYeMedicareBuyInAss
+                                rule="#strRule#"
+                                ynDoBuffer="#attributes.ynDoBuffer#"
+                                self = "#gettoken(strRule,2,"-")#"
+                                self_spouse = "#gettoken(strRule,3,"-")#">
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("BuyInQI2inc", strRule, 1) NEQ 0>
+
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
+                        <cf_tagYeMedicareBuyInInc
+                                rule="#strRule#"
+                                ynDoBuffer="#attributes.ynDoBuffer#"
+                                self_high = "#gettoken(strRule,2,"-")#"
+                                self_low = "#gettoken(strRule,3,"-")#"
+                                s_sp_high = "#gettoken(strRule,4,"-")#"
+                                s_sp_low = "#gettoken(strRule,5,"-")#">
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("MXASSET", strRule, 1) NEQ 0>
+                        <cfset strTable = Replace(strRule,"(","","ALL")>
+                        <cfset strTable = Trim(ReplaceNoCase(strTable,"MXASSET)","","ALL"))>
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxAssetVals<br /><br /></cfoutput></cfif>
+                        <cfinclude template="tagGetMxAssetVals.cfm">
+                        <cfif IsDefined('session.skipassets') and session.skipassets EQ "N">
+<!--- 07/18/02 REM  If the table val is $1MM, then everyone passes --->
+                            <cfif getMxAssetVals.single GTE 1000000>
+                                <cfset answer = "YES">
+                            <cfelse>
+                                <cfset answer = "NO">
+                            </cfif>
+                        <cfelse>
+                            <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInAss<br /><br /></cfoutput></cfif>
+                            <cf_tagYeMedicareBuyInAss
+                                    rule="#strRule#"
+                                    ynDoBuffer="#attributes.ynDoBuffer#"
+                                    self = "#getMxAssetVals.single#"
+                                    self_spouse = "#getMxAssetVals.couple#">
                             <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("ssiinc", strRule, 1) NEQ 0>
-				
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSSIInc<br /><br /></cfoutput></cfif>
-				   <cf_tagYeSSIInc 
-						self="#gettoken(strRule,2,"-")#" 
-						self_spouse="#gettoken(strRule,3,"-")#" 
-						ynDoBuffer="#attributes.ynDoBuffer#">
-				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("prg", strRule, 1) NEQ 0>
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYePrgFind<br /><br /></cfoutput></cfif>
-			   <cf_tagYePrgFind 
-					rule="#strRule#" 
-					ynDoBuffer="#attributes.ynDoBuffer#">
-				<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Ending tagYePrgFind<br /><br /></cfoutput></cfif>
- 				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelseif FINDNOCASE("spenddowninc", strRule, 1) NEQ 0>
-				
-				   <cfset ynConvertStructMem = FINDNOCASE("struct_mem", strRule, 1)>
-				   <!--- If 'struct_mem' is part of the Rule that is getting passed to the 
-				   TagYeSpendDown --->
-				   <cfif ynConvertStructMem>
-					  <cfset strStructMem = getToken(strRule,3," ")>
-					  <cfset valStructMem = Evaluate("#strStructMem#")> 
-					  <!--- now replace the part of the passed in rule with its evaluate --->
-					  <cfset strConvertedRule = ReplaceNoCase(strRule, strStructMem, valStructMem)>
-					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSpendDown<br /><br /></cfoutput></cfif>
-					  <cf_tagYeSpendDown 
-							rule="#strConvertedRule#" 
-							EvaluateRule="TRUE" 
-							ynDoBuffer="#attributes.ynDoBuffer#">
-				   <cfelse>
-						<!--- if there is no 'struct_mem getting passed in --->                  
-					<cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSpendDown<br /><br /></cfoutput></cfif>
-					  <cf_tagYeSpendDown 
-							rule="#strRule#" 
-							EvaluateRule="FALSE" 
-							ynDoBuffer="#attributes.ynDoBuffer#">
-				   </cfif>
-				<cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
-			<cfelse>
-				<cfif debug><cfoutput><h2>#strRule#</h2></cfoutput></cfif>
-				<cfset findPos = 1>
-				<cfloop condition="Find('##', strRule, findPos)">
-					<cfset firstPound = Find('##', strRule, findPos)>
-					<cfset secondPound = Find('##', strRule, firstPound + 1)>
-					<cfif secondPound gt firstPound>
-						<cfset variableName = Mid(strRule, firstPound + 1, secondPound - firstPound - 1)>
-						<cfif debug><cfoutput><li>#variableName#: </cfoutput></cfif>
-						<cfif FindNoCase('struct_mem[', variableName) eq 1 Or FindNoCase('listable[', variableName) eq 1 Or FindNoCase('childtable[', variableName) eq 1 Or IsDefined(variableName)>
-							<cfset eVal = Evaluate(variableName)>
-						
-						<cfelse>
-							<cfset eVal = 0>
-						</cfif>
-						<cfif eVal eq ''>
-							<cfset eVal = 0>
-						</cfif>
-						<cfif Not IsNumeric(eVal) Or (IsNumeric(eVal) And Len(eVal) gt 1 And Left(eVal, 1) eq '0')>
-							<cfset eVal = "'#eVal#'">
-						</cfif>
-						<cfif debug><cfoutput>#eVal#</cfoutput></cfif>
-						<cfset strRule = Replace(strRule, "###variableName###", eVal, 'ONE')>
-					<cfelse>
-						<cfset findPos = firstPound + 1>
-					</cfif>
-				</cfloop>
-				<cfif debug><cfoutput><br><br>#strRule#</cfoutput></cfif>
-			   <!--- 07/09/2002 REM  If we get to here, we evaluate the rule  --->
-			   <!--- 2/11/02 REM Added a process to account for List Compare rules (e.g., 
-			   session.county IN 'countyA, countyB, countyC').  --->
-			   <!--- 03/09/2002 REM  Need an additional proc for the 'NOT IN' rules --->
-				<cfset posIn = FindNoCase(' in ', strRule, 1)>
-				<cfset posNotIn = FindNoCase(' not in ', strRule, 1)>
-				<cfif posNotIn>
-					<cfset posFind = posNotIn>
-					<cfset posLen = 8>
-				<cfelseif posIn>
-					<cfset posFind = posIn>
-					<cfset posLen = 4>
-				<cfelse>
-					<cfset posFind = 0>
-				</cfif>
-			   <cfif posFind>
-				  <cfset strItem = Trim(Left(strRule, posFind - 1))>
-				  <cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
-				  <!--- 03/09/2002 REM  Need to strip the opening '(' --->
-				  <!--- 10/25/2005 BShunn  Also strip apostrophes --->
-				  <cfif Find("('", strItem) eq 1>
-					  <cfset strItem = Mid(strItem, 3, Len(strItem) - 3)>
-					<cfelse>
-					 <cfset strItem = Mid(strItem, 2, Len(strItem) - 1)>
-				</cfif>
-				<cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
-				  <!--- 03/09/2002 REM  Need to do this to extract the compare list --->
-				  <cfset strList = Trim(Right(strRule, Len(strRule) - (posFind + posLen - 1)))>
-				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
-				  <!--- 03/09/2002 REM  Need to strip the closing ')' --->
-				  <cfset strList = Mid(strList, 2, Len(strList) - 3)>
-				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
-				  <cfloop index="element" from="1" to="#ListLen(strList)#">
-					<cfset strList = ListSetAt(strList, element, Trim(ListGetAt(strList, element)))>
-				  </cfloop>
-				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
-				  <cfset temp = ListFindNoCase(strList, strItem)>
-				  <cfif temp eq 0>
-					<cfif posNotIn>
-						<cfset answer="YES">
-					 <cfelse>
-						<cfset answer="NO">
-					 </cfif>
-				  <cfelse>
-					<cfif posNotIn>
-						<cfset answer="NO">
-					 <cfelse>
-						<cfset answer="YES">
-					 </cfif>
-				  </cfif>
-			   <cfelse>
-                           
+                        </cfif>
+                        <cfelseif FINDNOCASE("MXINCOME", strRule, 1) NEQ 0>
+
+                        <cfset strTable = Replace(strRule,"(","","ALL")>
+                        <cfset strTable = Trim(ReplaceNoCase(strTable,"MXINCOME)","","ALL"))>
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagGetMxIncVals<br /><br /></cfoutput></cfif>
+                        <cfinclude template="tagGetMxIncVals.cfm">
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeMedicareBuyInInc<br /><br /></cfoutput></cfif>
+                        <cf_tagYeMedicareBuyInInc
+                                rule="#strRule#"
+                                ynDoBuffer="#attributes.ynDoBuffer#"
+                                self_high = "#getMxIncVals.single_max#"
+                                self_low = "#getMxIncVals.single_min#"
+                                s_sp_high = "#getMxIncVals.couple_max#"
+                                s_sp_low = "#getMxIncVals.couple_min#">
+
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("childstatessiinc", strRule, 1) NEQ 0>
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeChildSSIInc checkState="true"<br /><br /></cfoutput></cfif>
+                        <cf_tagYeChildSSIInc ynDoBuffer="#attributes.ynDoBuffer#" checkState="true">
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("childssiinc", strRule, 1) NEQ 0>
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeChildSSIInc<br /><br /></cfoutput></cfif>
+                        <cf_tagYeChildSSIInc ynDoBuffer="#attributes.ynDoBuffer#">
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("ssiinc", strRule, 1) NEQ 0>
+
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSSIInc<br /><br /></cfoutput></cfif>
+                        <cf_tagYeSSIInc
+                                self="#gettoken(strRule,2,"-")#"
+                                self_spouse="#gettoken(strRule,3,"-")#"
+                                ynDoBuffer="#attributes.ynDoBuffer#">
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("prg", strRule, 1) NEQ 0>
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYePrgFind<br /><br /></cfoutput></cfif>
+                        <cf_tagYePrgFind
+                                rule="#strRule#"
+                                ynDoBuffer="#attributes.ynDoBuffer#">
+                        <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Ending tagYePrgFind<br /><br /></cfoutput></cfif>
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                        <cfelseif FINDNOCASE("spenddowninc", strRule, 1) NEQ 0>
+
+                        <cfset ynConvertStructMem = FINDNOCASE("struct_mem", strRule, 1)>
+<!--- If 'struct_mem' is part of the Rule that is getting passed to the
+TagYeSpendDown --->
+                        <cfif ynConvertStructMem>
+                            <cfset strStructMem = getToken(strRule,3," ")>
+                            <cfset valStructMem = Evaluate("#strStructMem#")>
+<!--- now replace the part of the passed in rule with its evaluate --->
+                            <cfset strConvertedRule = ReplaceNoCase(strRule, strStructMem, valStructMem)>
+                            <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSpendDown<br /><br /></cfoutput></cfif>
+                            <cf_tagYeSpendDown
+                                    rule="#strConvertedRule#"
+                                    EvaluateRule="TRUE"
+                                    ynDoBuffer="#attributes.ynDoBuffer#">
+                        <cfelse>
+<!--- if there is no 'struct_mem getting passed in --->
+                            <cfif debug><cfoutput>#CreateODBCDateTime(Now())#: Starting tagYeSpendDown<br /><br /></cfoutput></cfif>
+                            <cf_tagYeSpendDown
+                                    rule="#strRule#"
+                                    EvaluateRule="FALSE"
+                                    ynDoBuffer="#attributes.ynDoBuffer#">
+                        </cfif>
+                        <cfif debug><cfoutput>Response From Tag: #answer#</cfoutput></cfif>
+                    <cfelse>
+                        <cfif debug><cfoutput><h2>#strRule#</h2></cfoutput></cfif>
+
+
+                        <cfif debug><cfoutput><br><br>#strRule#</cfoutput></cfif>
+<!--- 07/09/2002 REM  If we get to here, we evaluate the rule  --->
+<!--- 2/11/02 REM Added a process to account for List Compare rules (e.g.,
+session.county IN 'countyA, countyB, countyC').  --->
+<!--- 03/09/2002 REM  Need an additional proc for the 'NOT IN' rules --->
+                        <cfset posIn = FindNoCase(" in '", strRule, 1)>
+                        <cfset posNotIn = FindNoCase(" not in '", strRule, 1)>
+                        <cfif posNotIn>
+                            <cfset posFind = posNotIn>
+                            <cfset posLen = 8>
+                        <cfelseif posIn>
+                            <cfset posFind = posIn>
+                            <cfset posLen = 4>
+                        <cfelse>
+                            <cfset posFind = 0>
+                        </cfif>
+                        <cfif posFind>
+                            <cfset strItem = Trim(Left(strRule, posFind - 1))>
+                            <cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
+<!--- 03/09/2002 REM  Need to strip the opening '(' --->
+<!--- 10/25/2005 BShunn  Also strip apostrophes --->
+                            <cfif Find("('", strItem) eq 1>
+                                <cfset strItem = Mid(strItem, 3, Len(strItem) - 3)>
+                            <cfelse>
+                                <cfset strItem = Mid(strItem, 2, Len(strItem) - 1)>
+                            </cfif>
+                            <cfset strItem = Replace(strItem,"session","sa","ALL")>
+                            <cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
+<!--- 03/09/2002 REM  Need to do this to extract the compare list --->
+                            <cfset strList = Trim(Right(strRule, Len(strRule) - (posFind + posLen - 1)))>
+                            <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
+<!--- 03/09/2002 REM  Need to strip the closing ')' --->
+                            <cfset strList = Mid(strList, 2, Len(strList) - 3)>
+                            <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
+                            <cfloop index="element" from="1" to="#ListLen(strList)#">
+                                <cfset strList = ListSetAt(strList, element, Trim(ListGetAt(strList, element)))>
+                            </cfloop>
+                            <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
+                            <cfoutput><p>strRule = (#strRule#)</p></cfoutput>
+                            <cfoutput><p>strItem = (#strItem#)</p> </cfoutput>
+
+                            <cfset temp = ListFindNoCase(strList, strItem)>
+                            <cfif temp eq 0>
+                                <cfif posNotIn>
+                                    <cfset answer="YES">
+                                <cfelse>
+                                    <cfset answer="NO">
+                                </cfif>
+                            <cfelse>
+                                <cfif posNotIn>
+                                    <cfset answer="NO">
+                                <cfelse>
+                                    <cfset answer="YES">
+                                </cfif>
+                            </cfif>
+                        <cfelse>
+                            <cftry>
                                 <cfset answer=Evaluate("#strRule#")>
-				<cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
-                             
+                                <cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
+                                <cfcatch></cfcatch>
+                            </cftry>
                         </cfif>
                     </cfif>
 
@@ -1117,7 +1158,7 @@
                         <cfset test = answer>
                     </cfif>
 
-                     <cfset oldid = prg_id>
+                    <cfset oldid = prg_id>
                 </cfloop>
             </cfif>
         </cfloop>
@@ -1137,10 +1178,9 @@
         </cfif>
     </cffunction>
 
-    <cffunction name="calcForScreening" access="public"  returnType="String"  output="yes">
-        <cfargument name="screeningId" required="true"  type="numeric"/>
-	<cfset debug="true">
-	<cfif debug><cfoutput><h1>Screening Debug Step 1:</h2><hr></cfoutput></cfif>
+    <cffunction name="calcForScreening" access="remote" restpath="/calcForScreening/{screeningId}" returnType="String" httpMethod="GET">
+        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
+
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
         <cfset this.initScreeningAnswers()>
@@ -1187,30 +1227,14 @@
 
         <cfset this.testRules()>
 
-        <cfif Not isNull(screening.getSubset()) Or screening.getSubset().getId() neq 1>
-            <CFSET sa.S_asset_TOTAL_COMPLETE = sa.s_asset_TOTAL_COMPLETE - 500>
-            <CFSET sa.S_SP_asset_TOTAL_COMPLETE = sa.S_SP_asset_TOTAL_COMPLETE - 500>
-            <CFSET sa.HH_asset_TOTAL_COMPLETE = sa.HH_asset_TOTAL_COMPLETE - 500>
-            <CFSET sa.S_INCOME_TOTAL_COMPLETE = sa.s_INCOME_TOTAL_COMPLETE - 100>
-            <CFSET sa.S_SP_INCOME_TOTAL_COMPLETE = sa.S_SP_INCOME_TOTAL_COMPLETE - 100>
-            <CFSET sa.HH_INCOME_TOTAL_COMPLETE = sa.HH_INCOME_TOTAL_COMPLETE - 100>
-
-            <cfset this.testRules()>
-
-            <CFSET sa.S_asset_TOTAL_COMPLETE = sa.s_asset_TOTAL_COMPLETE + 500>
-            <CFSET sa.S_SP_asset_TOTAL_COMPLETE = sa.S_SP_asset_TOTAL_COMPLETE + 500>
-            <CFSET sa.HH_asset_TOTAL_COMPLETE = sa.HH_asset_TOTAL_COMPLETE + 500>
-            <CFSET sa.S_INCOME_TOTAL_COMPLETE = sa.s_INCOME_TOTAL_COMPLETE + 100>
-            <CFSET sa.S_SP_INCOME_TOTAL_COMPLETE = sa.S_SP_INCOME_TOTAL_COMPLETE + 100>
-            <CFSET sa.HH_INCOME_TOTAL_COMPLETE = sa.HH_INCOME_TOTAL_COMPLETE + 100>
-        </cfif>
+<!--- REMOVED BUFFER OF 500 FOR INCOME RULES --->
 
         <cfset sa.zipradius = 100>
 
         <cfif Not isNull(screening.getSubset()) And screening.getSubset().getId() gt 0>
             <cfset helperPrg = ormExecuteQuery("select p.prg_id from subset_program_base spb right outer join spb.subset_program_sum sps inner join sps.tbl_prg_all p  where sps.subset.id=? and spb.subset is null order by p.prg_id",[screening.getSubset().getId()])>
 
-             <cfloop array="#helperPrg#" index="i">
+            <cfloop array="#helperPrg#" index="i">
                 <cfset helperIndex = ListFind(sa.prg_list, "'#i#'")>
                 <cfif helperIndex gt 0>
                     <cfset sa.prg_list = ListDeleteAt(sa.prg_list, helperIndex)>
@@ -1222,11 +1246,6 @@
             </cfloop>
         </cfif>
 
-        <cfset schipnum = ListFind(sa.prg_list, "'103-309-2191-FD-FD'")>
-        <cfif schipnum gt 0>
-            <cfset sa.prg_list=ListDeleteAt(sa.prg_list, schipnum)>
-        </cfif>
-
         <cfset genericnum = ListFind(sa.prg_list, "'XXX-311-2387-FD-FD'")>
         <cfif genericnum gt 0>
             <cfset sa.prg_list=ListDeleteAt(sa.prg_list, genericnum)>
@@ -1235,11 +1254,11 @@
             <cfset sa.genericdrugs = 'n'>
         </cfif>
 
-        <!---<cfif sa.subsetRecFlag eq 1>
-            <cfset unseenVal = 1>
-        <cfelse>--->
-            <cfset unseenVal = 0>
-        <!---</cfif>--->
+<!---<cfif sa.subsetRecFlag eq 1>
+    <cfset unseenVal = 1>
+<cfelse>--->
+        <cfset unseenVal = 0>
+<!---</cfif>--->
 
 
         <cftransaction>
@@ -1268,7 +1287,7 @@
                     <cfset insertprogram.setUnseen_flag(unseenAdjustedVal)>
                     <cfset insertprogram.setBuffer_flag(0)>
                     <cfset insertprogram.setMaybe_flag(0)>
-                <cfset entitySave(insertprogram)>
+                    <cfset entitySave(insertprogram)>
                 </cfif>
             </cfloop>
 
@@ -1338,9 +1357,8 @@
                     <cfset entitySave(insertbuffers)>
                 </cfif>
             </cfloop>
-       </cftransaction>
-          <!--- cfreturn this.calculatedForScreening(screening.getId()) ---> 
-	   <cfreturn "<h1>Program List:</h1> <hr> #sa.prg_list#" > 
+        </cftransaction>
+        <cfreturn this.calculatedForScreening(screening.getId())>
     </cffunction>
 
     <cffunction name="initScreeningAnswers">
@@ -1390,59 +1408,54 @@
         </cfloop>
     </cffunction>
 
-    <cffunction name="dspForms" access="public"  returnType="String" >
-        <cfargument name="cat" required="no"  default="">
-        <cfargument name="st" required="no"  default="">
+    <cffunction name="dspForms" access="remote" restpath="/findResources" returnType="String" httpMethod="GET">
+        <cfargument name="cat" required="no" restargsource="query" default="">
+        <cfargument name="st" required="no" restargsource="query" default="">
 
-        <cfset qryFormsQuery = "select distinct p.prg_nm,pr.short_desc,pr.code from form f join f.form_form_types fft join fft.form_type ft join f.form_tag ftg join f.program_forms pf join pf.program pr join pr.program_category pc join pc.super_category psc join pr.tbl_prg_all p join p.subset_program_bases sp">
-        <cfset qryFormsQuery = "#qryFormsQuery# where ft.id <> 2 and (p.inactive_flag = 0 or p.inactive_flag is null) and psc.code=?">
-
-        <cfif st neq ''>
-            <cfset qryFormsQuery = "#qryFormsQuery# and f.state.id = '#st#'">
+        <cfset filter = "'#cat#' ">
+        <cfif st eq 'az'>
+            <cfset filter = filter & " and p.code not like 'health_fd_msp_general'">
+            <cfelseif st eq 'co' or st eq 'mi'>
+            <cfset filter = filter & " and p.code not like 'utility_fd_liheap'">
         </cfif>
-
-	<!--- sort order by program then form sort --->
-	<cfset qryFormsQuery = qryFormsQuery & " order by p.order_num, pf.sort ">
-<cfset qryFormsQuery = "
-select  p.name_display as prg_nm,p.short_desc,p.code   
-from program p 
-join p.program_category pc 
-join pc.super_category sc 
-join p.program_category pc  
-join p.name_display d
-
-	 
-	where 
-	pc.code not in ('rxcard','rxco')  
+        <cfset programs = ormexecutequery("select p from program p join p.program_category pc join pc.super_category sc join p.program_category pc
+	where
+	pc.code not in ('rxcard','rxco')
 	and p.code not like '%_long'
 	and p.code not like '%_short'
 	and p.code not like '%_aarp%'
 	and p.code not like '%_children'
-	and p.code not like '%_schip'
 	and p.code not like '%_child_%'
-	and sc.code like  '%#cat#'
+    and p.code not in ('health_oh_kp_med_assistance','health_hi_kp_med_assistance','health_dc_kp_med_assistance','health_va_kp_med_assistance',
+                   'health_md_kp_med_assistance','health_ga_kp_med_assistance','health_ca_kp_med_assistance','health_co_kphelps',
+                   'health_or_kp_med_assistance','health_wa_kp_med_assistance')
+	and p.code not like 'health_az_mcs_qmb%'
+	and p.code not like 'health_az_mcs_slmb%'
+	and p.code not like 'health_az_mcs_qi%'
+	and p.code not like 'health_fd_msp_qmb%'
+	and p.code not like 'health_fd_msp_slmb%'
+	and p.code not like 'health_fd_msp_qi%'
+	and p.code not like 'health_ct_msp_almb'
+	and p.code not like 'health_#st#_schip'
 	and p.active_flag=1
-        and (p.state='#st#' or p.state is null) 
-	order by p.sort 
-">
-
-
-
-        <cfset query = ormExecuteQuery(qryFormsQuery)>
+	and sc.answerfieldcode = #filter#
+	and (p.state='#st#' or p.state is null) order by p.sort
+	")>
 
         <cfset data = arrayNew(1)>
 
-        <cfloop array="#query#" index="item">
+        <cfloop array="#programs#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item[1].getDisplay_text()>
-            <cfset str.prg_desc=item[2]>
-            <cfset str.code=item[3]>
+            <cfset str.prg_nm=item.getName_display().getDisplay_text()>
+            <cfset str.prg_desc=item.getShort_desc()>
+            <cfset str.code=item.getCode()>
             <cfset arrayAppend(data,str)>
         </cfloop>
-
         <cfreturn serializeJSON(data)>
     </cffunction>
-
-
-
+    <cffunction name="refreshorm" access="remote" restpath="/refreshorm" returnType="String" httpMethod="GET">
+        <cfargument name="refresh" required="yes" restargsource="query" default="1">
+        <cfset ORMReload() />
+        <cfreturn '<h1>ORM Reloaded!!!!</h1>'>
+    </cffunction>
 </cfcomponent>

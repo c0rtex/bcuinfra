@@ -1093,8 +1093,8 @@
 			   <!--- 2/11/02 REM Added a process to account for List Compare rules (e.g., 
 			   session.county IN 'countyA, countyB, countyC').  --->
 			   <!--- 03/09/2002 REM  Need an additional proc for the 'NOT IN' rules --->
-				<cfset posIn = FindNoCase(' in ', strRule, 1)>
-				<cfset posNotIn = FindNoCase(' not in ', strRule, 1)>
+                <cfset posIn = FindNoCase(" in '", strRule, 1)>
+                <cfset posNotIn = FindNoCase(" not in '", strRule, 1)>
 				<cfif posNotIn>
 					<cfset posFind = posNotIn>
 					<cfset posLen = 8>
@@ -1114,7 +1114,8 @@
 					<cfelse>
 					 <cfset strItem = Mid(strItem, 2, Len(strItem) - 1)>
 				</cfif>
-				<cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
+                <cfset strItem = Replace(strItem,"session","sa","ALL")>
+                <cfif debug><cfoutput> (#strItem#)</cfoutput></cfif>
 				  <!--- 03/09/2002 REM  Need to do this to extract the compare list --->
 				  <cfset strList = Trim(Right(strRule, Len(strRule) - (posFind + posLen - 1)))>
 				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
@@ -1125,7 +1126,7 @@
 					<cfset strList = ListSetAt(strList, element, Trim(ListGetAt(strList, element)))>
 				  </cfloop>
 				  <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
-				  <cfset temp = ListFindNoCase(strList, strItem)>
+                  <cfset temp = ListFindNoCase(strList, evaluate(strItem))>
 				  <cfif temp eq 0>
 					<cfif posNotIn>
 						<cfset answer="YES">
