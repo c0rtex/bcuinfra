@@ -128,7 +128,13 @@
                     <cfdefaultcase>
                         <cfset answerField = entityload("answer_field",{code="#afCode#"})>
                         <cfif arraylen(answerField) neq 0>
-                            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,answers.answers[afCode],0)>
+                            <cftry>
+                                <cfset var afVal = answers.answers[afCode]>
+                            <cfcatch>
+                                <cfset var afVal = "">
+                            </cfcatch>
+                            </cftry>
+                            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,afVal,0)>
                         </cfif>
                     </cfdefaultcase>
 
@@ -270,9 +276,13 @@
             </cfcase>
 
             <cfcase value="8">
-                <cfset option = entityload("option",{code="#value.code#"})>
-                <cfif arraylen(option) neq 0>
-                    <cfset sa.setOption(option[1])>
+                <cfif isStruct(value)>
+                    <cfset option = entityload("option",{code="#value.code#"})>
+                    <cfif arraylen(option) neq 0>
+                        <cfset sa.setOption(option[1])>
+                    </cfif>
+                <cfelse>
+                    <cfset sa.setResponse("")>
                 </cfif>
             </cfcase>
 

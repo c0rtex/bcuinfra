@@ -1,4 +1,4 @@
-<cfcomponent rest="true" restpath="/findPrograms">
+<cfcomponent rest="true">
     <cfset sa = structNew()>
     <cfset ynDoBuffer = false>
 
