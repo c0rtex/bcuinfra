@@ -1365,7 +1365,11 @@
             <cfif isNull(i.getOption())>
                 <cfset sa[i.getAnswer().getCode()]=i.getResponse()>
             <cfelse>
-                <cfset sa[i.getAnswer().getCode()]=i.getOption().getCode()>
+                <cfif i.getAnswer().getAnswer_field_type().getId() eq 8>
+                    <cfset sa[i.getAnswer().getCode()] = i.getOption().getDisplay().getDisplay_text()>
+                <cfelse>
+                    <cfset sa[i.getAnswer().getCode()]=i.getOption().getCode()>
+                </cfif>
             </cfif>
         </cfloop>
 

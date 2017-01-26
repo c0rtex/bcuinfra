@@ -769,7 +769,7 @@
         <cfset oldid = ''>
         <cfset test = ''>
         <cfset loopindex = 0>
-        <cfset debug = "false">
+        <cfset debug = "true">
         <cfset attributes.ynDoBuffer = "no">
         <cfset application.dbSrc = "dbSrc">
 <!--- Default Values --->
@@ -1098,7 +1098,7 @@ session.county IN 'countyA, countyB, countyC').  --->
                         <cfif posNotIn>
                             <cfset posFind = posNotIn>
                             <cfset posLen = 8>
-                        <cfelseif posIn>
+                            <cfelseif posIn>
                             <cfset posFind = posIn>
                             <cfset posLen = 4>
                         <cfelse>
@@ -1126,10 +1126,7 @@ session.county IN 'countyA, countyB, countyC').  --->
                                 <cfset strList = ListSetAt(strList, element, Trim(ListGetAt(strList, element)))>
                             </cfloop>
                             <cfif debug><cfoutput> (#strList#)</cfoutput></cfif>
-                            <cfoutput><p>strRule = (#strRule#)</p></cfoutput>
-                            <cfoutput><p>strItem = (#strItem#)</p> </cfoutput>
-
-                            <cfset temp = ListFindNoCase(strList, strItem)>
+                            <cfset temp = ListFindNoCase(strList, evaluate(strItem))>
                             <cfif temp eq 0>
                                 <cfif posNotIn>
                                     <cfset answer="YES">
@@ -1368,7 +1365,11 @@ session.county IN 'countyA, countyB, countyC').  --->
             <cfif isNull(i.getOption())>
                 <cfset sa[i.getAnswer().getCode()]=i.getResponse()>
             <cfelse>
-                <cfset sa[i.getAnswer().getCode()]=i.getOption().getCode()>
+                <cfif i.getAnswer().getAnswer_field_type().getId() eq 8>
+                    <cfset sa[i.getAnswer().getCode()] = i.getOption().getDisplay().getDisplay_text()>
+                <cfelse>
+                    <cfset sa[i.getAnswer().getCode()]=i.getOption().getCode()>
+                </cfif>
             </cfif>
         </cfloop>
 
