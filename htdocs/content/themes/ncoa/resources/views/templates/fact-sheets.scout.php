@@ -1,5 +1,5 @@
 ﻿<!-- php the_meta(); -->
-<?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'snap:_find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
+<?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
 <?php $snap_bcu_url = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 <?php echo "test".$snap_findstores_url.$snap_bcu_url;?>
