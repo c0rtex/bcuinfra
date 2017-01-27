@@ -99,7 +99,7 @@
                     @endif
 		    @if (!empty($snap_findstores_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link"><?php echo $snap_findstores_url; ?></a>
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Snap: Find Stores to Use Debit Card in English and Spanish</a>
                     @endif
 		   </div>
                 </div>
