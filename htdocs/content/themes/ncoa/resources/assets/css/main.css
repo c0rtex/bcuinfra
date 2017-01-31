@@ -3745,6 +3745,35 @@ tbody.collapse.in {
     width: auto !important;
     margin: 20px 0 0 0 !important;
   }
+
+  header .header-logo img {
+    width: 280px !important;
+  }
+
+  .page-sponsors .sponsors-hero h1,
+  .page-sponsor .sponsors-hero h1 {
+    font-size: 31px !important;
+  }
+
+  h3 {
+    font-size: 20px !important;
+  }
+
+  .btn-tertiary {
+    padding: 6px 12px !important;
+  }
+}
+
+.header-cta-ncoaLogo-xs {
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.header-cta-ncoaLogo-xs .btn-purple {
+  padding: 6px !important;
+  min-height: 0 !important;
+  font-size: 0.8em !important;
+  margin-top: 3px !important;
 }
 
 .container > .navbar-header,
@@ -7904,7 +7933,7 @@ header {
       display: block;
       background-size: contain;
       width: 100%;
-      height: 46px;
+      height: 4px;
       margin-left: 10px; }
     @media (min-width: 768px) {
       header .header-cta {
@@ -7936,7 +7965,9 @@ header {
       padding: 6px 0 0 5px;
       font-weight: bold; }
     header .navbar-default .navbar-collapse {
-      padding-left: 0; }
+      padding-left: 0;
+      padding-right: 0;
+    }
     header .navbar-default .navbar-nav > li a {
       font-family: 'Open Sans', sans-serif;
       color: #1F3D7D;

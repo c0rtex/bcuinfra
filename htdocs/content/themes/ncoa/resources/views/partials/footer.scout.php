@@ -36,6 +36,7 @@
         </div>
     </div>
 </div><!-- end container -->
+
 <div class="full-width footer-bottom-wrapper ">
     <div class="footer-aux-site-network container">
         <div class="site-footer-inner row">
@@ -56,35 +57,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-<div class=" social-media-bar visible-xs-block container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="footer-social-media-tray">
-                <p>Connect with us on:</p>
-
-<a class="footer-facebook-icon" href="http://www.facebook.com/NCOAging" title="Facebook"></a>
-
-<a class="footer-twitter-icon" href="http://www.twitter.com/NCOAging" title="Twitter"></a>
-
-<a class="footer-linkedin-icon" href="http://www.linkedin.com/company/216832" title="Linkedin"></a>
-
-<a class="footer-group-icon" href="http://www.ncoacrossroads.org/" title="NCOA Crossroads"></a>
-
-<a class="footer-youtube-icon" href="http://www.youtube.com/ncoaging" title="Youtube"></a>
-            </div>
-                            <div class="footer-enews-tray">
-                    <p>Sign Up for Enews</p>
-                    <a class="footer-enews-icon" href="http://go.ncoa.org/BCUsignup"></a>
-                </div>
-
-<div class="footer-donate-tray-mobile"><a class="btn btn-purple" href="http://www.ncoa.org/Donate">Donate</a></div>
-        </div>
-    </div>
-</div>
 
 <div class=" site-footer-address-container container">
     <div class="row">

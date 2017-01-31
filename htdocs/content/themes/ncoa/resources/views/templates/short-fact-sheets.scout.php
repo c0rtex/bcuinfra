@@ -1,5 +1,4 @@
 @extends($layout)
-
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
@@ -77,8 +76,12 @@
 
                 <div class="col-xs-12 col-md-3">
                     <?php
-                    $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
+                     $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true));
                     ?>
+		    <?php 
+		      $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'snap:_find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); 
+		    ?>
+
                     @if(strlen(Meta::get(Loop::id(), $key = 'body-copy', $single = true))>0)
                     <div class="results-options">
                         <span class="fact-sheets-know fact-sheets-side-header">{{ Meta::get(Loop::id(), $key = 'title', $single = true) }}</span>
@@ -86,14 +89,19 @@
                         {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
                     </div>
                     @endif
-
+			
                     @if(!empty($programUrl))
                     <div class="results-options">
                         <span class="fact-sheets-side-header">Quick Links</span>
                         <br />
                         <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
-                    </div>
+                    
                     @endif
+		    @if (!empty($snap_findstores_url))
+                        </br>
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Snap: Find Stores to Use Debit Card in English and Spanish</a>
+                    @endif
+		   </div>
                 </div>
             </div>
         </div>
