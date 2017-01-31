@@ -46,6 +46,18 @@
         </cfif>
         <cfset filter = "''">
 
+        <cfset var dob = 0>
+        <cfset dobSA = ormexecutequery("from screening_answerfield sa where sa.screening=? and sa.answer.code=?",[screening,'dob'])>
+        <cfif arraylen(dobSA) neq 0>
+            dob = dobSA[1].getResponse()>
+        </cfif>
+
+        <cfset var veteran = 'n'>
+        <cfset veteranSA = ormexecutequery("from screening_answerfield sa where sa.screening=? and sa.answer.code=?",[screening,'veteran'])>
+        <cfif arraylen(veteranSA) neq 0>
+            veteran = veteranSA[1].getOption().getCode()>
+        </cfif>
+
         <cfloop array="#screening_answers#" index="answerCode">
             <cfif structKeyExists(superCategoriesStruct,answerCode)>
                 <cfif over3000>
@@ -89,15 +101,38 @@
 	and (p.state=? or p.state is null) 
 	",[screening.getPreset_state()])>
 
+
+
         <cftransaction>
             <cfloop array="#programs#" index="program">
-                <cfset sp = entityNew("screening_program")>
-                <cfset sp.setScreening(screening)>
-                <cfset sp.setProgram(program)>
-                <cfset sp.setUnseen_flag(0)>
-                <cfset sp.setBuffer_flag(0)>
-                <cfset sp.setMaybe_flag(0)>
-                <cfset entitySave(sp)>
+                <cfset rules = ormexecutequery("select pr.rule from program_rule pr where (pr.rule.rule_text like '%##session.veteran##%' or pr.rule.rule_text like '%##session.sp_veteran##%' or pr.rule.rule_text like '%##session.dob##%') and pr.program=?",[program])>
+                <cfset var ruleProc = true>
+                <cfloop array="#rules#" index="i">
+                    <cfset ruleText = i.getRule_text()>
+                    <cfset veteranPosition = findNoCase("##session.veteran## eq 'Y'",ruleText)>
+                    <cfset sposeVeteranPosition = findNoCase("##session.sp_veteran## eq 'Y'",ruleText)>
+                    <cfset dobGtePosition = findNoCase('##session.dob## gte 65',ruleText)>
+                    <cfset dobGteqPosition = findNoCase('##session.dob## gteq 65',ruleText)>
+
+                    <cfif (((dob gte 65) and (dobGtePosition neq 0 or dobgteqposition neq 0)) or
+                            (dob eq 65 and (dobGteqPosition neq 0)) or
+                            ((veteran eq 'y') and (veteranPosition neq 0) or (sposeVeteranPosition neq 0)))>
+                        <cfset ruleProc = ruleProc and true>
+                    <cfelseif ((dobGtePosition eq 0)and(dobgteqposition eq 0)and(veteranPosition eq 0)and(sposeVeteranPosition eq 0))>
+                        <cfset ruleProc = ruleProc and true>
+                    <cfelse>
+                        <cfset ruleProc = ruleProc and false>
+                    </cfif>
+                </cfloop>
+                <cfif ruleProc>
+                    <cfset sp = entityNew("screening_program")>
+                    <cfset sp.setScreening(screening)>
+                    <cfset sp.setProgram(program)>
+                    <cfset sp.setUnseen_flag(0)>
+                    <cfset sp.setBuffer_flag(0)>
+                    <cfset sp.setMaybe_flag(0)>
+                    <cfset entitySave(sp)>
+                </cfif>
             </cfloop>
         </cftransaction>
     </cffunction>
