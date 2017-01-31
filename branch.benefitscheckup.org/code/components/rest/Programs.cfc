@@ -49,13 +49,13 @@
         <cfset var dob = 0>
         <cfset dobSA = ormexecutequery("from screening_answerfield sa where sa.screening=? and sa.answer.code=?",[screening,'dob'])>
         <cfif arraylen(dobSA) neq 0>
-            dob = dobSA[1].getResponse()>
+            <cfset dob = dobSA[1].getResponse()>
         </cfif>
 
         <cfset var veteran = 'n'>
         <cfset veteranSA = ormexecutequery("from screening_answerfield sa where sa.screening=? and sa.answer.code=?",[screening,'veteran'])>
         <cfif arraylen(veteranSA) neq 0>
-            veteran = veteranSA[1].getOption().getCode()>
+            <cfset veteran = veteranSA[1].getOption().getCode()>
         </cfif>
 
         <cfloop array="#screening_answers#" index="answerCode">
