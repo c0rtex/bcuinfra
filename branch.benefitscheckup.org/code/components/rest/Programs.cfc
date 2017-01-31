@@ -116,7 +116,7 @@
 
                     <cfif (((dob gte 65) and (dobGtePosition neq 0 or dobgteqposition neq 0)) or
                             (dob eq 65 and (dobGteqPosition neq 0)) or
-                            ((veteran eq 'y') and (veteranPosition neq 0) or (sposeVeteranPosition neq 0)))>
+                            ((veteran eq 'y') and ((veteranPosition neq 0) or (sposeVeteranPosition neq 0))))>
                         <cfset ruleProc = ruleProc and true>
                     <cfelseif ((dobGtePosition eq 0)and(dobgteqposition eq 0)and(veteranPosition eq 0)and(sposeVeteranPosition eq 0))>
                         <cfset ruleProc = ruleProc and true>
