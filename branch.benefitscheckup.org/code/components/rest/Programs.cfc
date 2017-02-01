@@ -1176,11 +1176,15 @@
 					 </cfif>
 				  </cfif>
 			   <cfelse>
-                           	<cftry>
-                                <cfset answer=Evaluate("#strRule#")>
-				<cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
-				<cfcatch></cfcatch>
-                              </cftry>
+
+               <cftry>
+                    <cfset answer=Evaluate("#strRule#")>
+				    <cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is #answer#</cfoutput><hr></cfif>
+				    <cfcatch>
+                        <cfif debug><br><cfoutput> #strRule#<br> Evaluate:#strRule#: Answer is error</cfoutput><hr></cfif>
+                        <cfset answer = "NO">
+                    </cfcatch>
+               </cftry>
                         </cfif>
                     </cfif>
 
