@@ -2551,7 +2551,10 @@ if ($dataBridge == true && $dataBridge2 != "true" && !(substr($reportClient, 0, 
 ?>
 
 </li>
-        </ol>		
+        </ol>	
+			<a href="/greenpath-financial-wellness" target="GreenPath"><img
+                        border="0" alt="GreenPath Financial Wellness" title="GreenPath Financial Wellness"
+                        src="/wp-content/uploads/2017/02/ECU-GP-Button.png"></a>	
     </div>	  
 </div>
 <div id="learnmore" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Learn More" aria-hidden="true" style="display: none;">
