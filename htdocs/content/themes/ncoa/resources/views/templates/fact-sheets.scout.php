@@ -265,11 +265,11 @@
                         @endif
 			@if (!empty($snap_findstores_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Snap: Find Stores to Use Debit Card in English and Spanish</a>
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
                         @endif
 			@if (!empty($snap_bcu_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_bcu_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Snap: Find Out If You're Eligible</a>
+                        <a target="_blank" href="<?php echo $snap_bcu_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
                         @endif
 
                     </div>
