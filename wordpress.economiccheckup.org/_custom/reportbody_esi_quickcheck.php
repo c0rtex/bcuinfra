@@ -2196,7 +2196,9 @@ echo '
             <?php
         }
         ?>
-
+		<a href="/greenpath-financial-wellness" target="GreenPath"><img
+                        border="0" alt="GreenPath Financial Wellness" title="GreenPath Financial Wellness"
+                        src="/wp-content/uploads/2017/02/ECU-GP-Button.png"></a>
 
     </div>
 </div>
