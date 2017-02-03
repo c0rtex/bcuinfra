@@ -2193,12 +2193,14 @@ echo '
                         Get Help in Your Community</a></form>
             </div>
 
-            <?php
+        <?php
         }
-        ?>
-		<a href="/greenpath-financial-wellness" target="GreenPath"><img
+         if (substr($reportClient, 0, 27) != "/eversafe-quickcheck-report")   {
+	?>
+	<a href="/greenpath-financial-wellness" target="GreenPath"><img
                         border="0" alt="GreenPath Financial Wellness" title="GreenPath Financial Wellness"
                         src="/wp-content/uploads/2017/02/ECU-GP-Button.png"></a>
+	<?php } ?>
 
     </div>
 </div>
