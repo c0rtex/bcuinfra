@@ -109,20 +109,43 @@
                 <cfset var ruleProc = true>
                 <cfloop array="#rules#" index="i">
                     <cfset ruleText = i.getRule_text()>
-                    <cfset veteranPosition = findNoCase("##session.veteran## eq 'Y'",ruleText)>
-                    <cfset sposeVeteranPosition = findNoCase("##session.sp_veteran## eq 'Y'",ruleText)>
-                    <cfset dobGtePosition = findNoCase('##session.dob## gte 65',ruleText)>
-                    <cfset dobGteqPosition = findNoCase('##session.dob## gteq 65',ruleText)>
+                    <cfset changedRule = ruleText>
+                    <cfset localRule = "">
 
-                    <cfif (((dob gte 65) and (dobGtePosition neq 0 or dobgteqposition neq 0)) or
-                            (dob eq 65 and (dobGteqPosition neq 0)) or
-                            ((veteran eq 'y') and ((veteranPosition neq 0) or (sposeVeteranPosition neq 0))))>
-                        <cfset ruleProc = ruleProc and true>
-                    <cfelseif ((dobGtePosition eq 0)and(dobgteqposition eq 0)and(veteranPosition eq 0)and(sposeVeteranPosition eq 0))>
-                        <cfset ruleProc = ruleProc and true>
-                    <cfelse>
-                        <cfset ruleProc = ruleProc and false>
-                    </cfif>
+                    <cfloop index="idx" from="1" to="#len(ruleText)#">
+                        <cfset char = mid(ruleText,idx,1)>
+                        <cfswitch expression="#char#">
+                            <cfcase value="(">
+                                <cfset localRule = "(">
+                            </cfcase>
+                            <cfcase value=")">
+                                <cfif len(localRule) neq 0>
+                                    <cfset localRule = "#localRule##char#">
+                                    <cfif ((findNoCase("##session.veteran##",localRule) eq 0)and(findNoCase("##session.sp_veteran##",localRule) eq 0)and(findNoCase("##session.dob##",localRule) eq 0))>
+                                        <cfset changedRule = replaceNoCase(changedRule,localRule,'(true)')>
+                                    </cfif>
+                                </cfif>
+                                <cfset localRule = "">
+                            </cfcase>
+                            <cfdefaultcase>
+                                <cfset localRule = "#localRule##char#">
+                            </cfdefaultcase>
+                        </cfswitch>
+                    </cfloop>
+                    <cfset changedRule = replaceNoCase(changedRule,localRule,'(true)')>
+                    <cfset changedRule = replaceNoCase(changedRule,'##session.hh_income_total_unearned##','true','ALL')>
+                    <cfset changedRule = Replace(changedRule, "gteq", "gte", "ALL")>
+                    <cfset changedRule = Replace(changedRule, "lteq", "lte", "ALL")>
+                    <cfset changedRule = replaceNoCase(changedRule,"session.veteran","veteran",'ALL')>
+                    <cfset changedRule = replaceNoCase(changedRule,"session.sp_veteran","veteran",'ALL')>
+                    <cfset changedRule = replaceNoCase(changedRule,"session.dob","dob",'ALL')>
+
+                    <cftry>
+                        <cfset ruleProc = ruleProc and Evaluate(changedRule)>
+                        <cfcatch>
+                            <cfset ruleProc = ruleProc and true>
+                        </cfcatch>
+                    </cftry>
                 </cfloop>
                 <cfif ruleProc>
                     <cfset sp = entityNew("screening_program")>
