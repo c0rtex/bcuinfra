@@ -1,4 +1,5 @@
-﻿<?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
+﻿<?php print_r(get_post_meta(Meta::get(Loop::id()); die; ?>
+<?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 @extends($layout)
 
 @section('main')

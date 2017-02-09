@@ -2,10 +2,17 @@
 .DS_Store
 Thumbs.db
 htdocs/content/themes/ncoa/node_modules/*
+.env
 
 ### Composer
 composer.lock
 vendor/
+
+### Config
+/config/environment.php
+/config/ncoa.dev.conf
+/config/local/.env
+/config/local/ncoa.dev.conf
 
 ### IDE
 .idea/
