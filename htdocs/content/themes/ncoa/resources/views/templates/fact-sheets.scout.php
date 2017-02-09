@@ -1,4 +1,4 @@
-ï»¿<!-- php the_meta(); -->
+<!-- php the_meta(); -->
 <?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
 <?php $snap_bcu_url = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
@@ -266,14 +266,7 @@
                         </br>
                         <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
                         @endif
-			@if (!empty($snap_bcu_url))
-                        </br>
-                        <a target="_blank" href="<?php echo $snap_bcu_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
-                        @endif
-
-                    </div>
-                    @endif
-                </div>
+		                </div>
 
 
             </div>
@@ -290,7 +283,7 @@
     jQuery(document).ready(function () {
         //Lynna Cekova: click to call
         var countrycodes = "1"
-        var delimiters = "-|\\.|â€”|â€“|&nbsp;"
+        var delimiters = "-|\\.|—|–|&nbsp;"
         var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
         var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
         var phonereg = new RegExp("(Fax:)?((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
