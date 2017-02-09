@@ -1,5 +1,8 @@
-﻿<?php print_r(get_post_meta(Meta::get(Loop::id()); die; ?>
+﻿<!-- php the_meta(); -->
+<?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
+<?php $snap_bcu_url = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
+
 @extends($layout)
 
 @section('main')
@@ -259,6 +262,15 @@
                         </br>
                         <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
                         @endif
+			@if (!empty($snap_findstores_url))
+                        </br>
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
+                        @endif
+			@if (!empty($snap_bcu_url))
+                        </br>
+                        <a target="_blank" href="<?php echo $snap_bcu_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
+                        @endif
+
                     </div>
                     @endif
                 </div>

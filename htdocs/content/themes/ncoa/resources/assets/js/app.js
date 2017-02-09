@@ -2371,8 +2371,8 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
             AnswersByCategories.setCategory('dob',category.currentCategory(),'integer');
 
             $scope.$root.answers[category.currentCategory()].dob = (new Date().getFullYear()) - $scope.$root.answers[category.currentCategory()].dob_year;
-            if ((new Date().getMonth() + 1) >= $scope.$root.answers[$scope.category].dob_month) {
-                $scope.$root.answers[category.currentCategory()].dob = $scope.$root.answers[category.currentCategory()].dob + 1;
+            if ((new Date().getMonth() + 1) < $scope.$root.answers[$scope.category].dob_month.id) {
+                $scope.$root.answers[category.currentCategory()].dob = $scope.$root.answers[category.currentCategory()].dob - 1;
             }
         }
     }
