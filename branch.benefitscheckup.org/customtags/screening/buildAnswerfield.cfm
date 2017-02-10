@@ -232,9 +232,6 @@
 				</cfif>
 			</cfif>
 			<cf_displayText code="#attributes.display#" group="answerfield" spaceafter="true" suppress="#suppress#">
-            <!--- MH: Bug 5412 6/07/10 display '8' for HCS Agency ID/fit_agency_id field in fit questionnaire --->
-			<cfif attributes.name eq "fit_agency_id">8</cfif>
-			<!--- MH: END --->
 			<input type="text" name="#attributes.name#" value="#HTMLEditFormat(attributes.matchval)#" maxlength="#afMaxLength#" size="#afSize#">
 		</cfcase>
         <cfcase value="textarea">
