@@ -14,7 +14,7 @@
 
 </cfsilent>
 
-<cfoutput><cfif attributes.code eq "fit_agency_id" and session.partner_id eq 76>8</cfif><cfif attributes.mode neq 'print'><cfif attributes.code eq "fit_agency_id" and session.partner_id eq 76><input type="text" name="#attributes.code#" value="#HTMLEditFormat(matchVal)#" size="5" maxlength="4"><cfelse><input type="text" name="#attributes.code#" value="#HTMLEditFormat(matchVal)#" size="15" maxlength="64"></cfif><cfelse><cfif attributes.code eq "fit_agency_id" and session.partner_id eq 76>________<cfelse>____________</cfif></cfif></cfoutput>
+<cfoutput><cfif attributes.mode neq 'print'><input type="text" name="#attributes.code#" value="#HTMLEditFormat(matchVal)#" size="15" maxlength="64"><cfelse>____________</cfif></cfoutput>
 
 <cfsilent>
 
