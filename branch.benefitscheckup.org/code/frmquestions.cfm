@@ -115,11 +115,11 @@ REQUIRED: form fields from frmWelcome
     <cfif not validationError>
     <cfif session.partner_id is 76 AND (IsDefined('form.FIT_AGENCY_ID') AND form.FIT_AGENCY_ID neq '')>
     	<cfset value = form.fit_agency_id>
-        <cfset isValid = evaluate("REFind('^[0-9]{4}$', value)")>
+        <cfset isValid = evaluate("REFind('^[0-9]{5}$', value)")>
         <cfif not isValid>
 			<SCRIPT LANGUAGE="javascript">
             {
-                alert("You must enter exactly four (4) digits that come after the number \"8\" for your HCS Agency ID.");
+                alert("You must enter exactly five (5) digits for your HUD HCS#.");
                 history.go(-1);
             }
             </SCRIPT>

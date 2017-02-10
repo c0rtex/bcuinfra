@@ -5,9 +5,6 @@
 </cfif>
 <cfif IsDefined('URL.partner_id') AND URL.partner_id NEQ ''>
 	<cfset SESSION.partner_id = URL.partner_id>
-	<cfif url.partner_id eq 0>
-		<cflocation url="https://www.benefitscheckup.org/find-my-benefits/">
-	</cfif>
 </cfif>
 <cfif IsDefined('URL.sc_partner_id') AND URL.sc_partner_id NEQ ''>
 	<cfset SESSION.sc_partner_id = URL.sc_partner_id>
@@ -511,7 +508,7 @@
 								<tr>
 									<td></td>
 									<td>
-										<cfoutput><font face="arial"><cf_buildAnswerfield name="fit_agency_id" format="text_hide" type="text" maxlength="4" matchval="#matchVal#"></font></cfoutput>
+										<cfoutput><font face="arial"><cf_buildAnswerfield name="fit_agency_id" format="text_hide" type="text" maxlength="5" matchval="#matchVal#"></font></cfoutput>
 	                                </td>
 	                            </tr>
 								<tr><td>&nbsp;</td></tr>
