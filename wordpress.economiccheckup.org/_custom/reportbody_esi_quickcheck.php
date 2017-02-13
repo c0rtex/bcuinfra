@@ -29,6 +29,8 @@ $functionDebugging = "false"; // Debugging on = true and Debugging off = false
 //TBD - Need to move DB connections to DB help functions
 $bcudb = new wpdb(DB_USER_BCU, DB_PASSWORD_BCU, DB_NAME_BCU, DB_HOST_BCU);
 $bcudb->show_errors();
+$link = mysql_connect(DB_HOST_BCU, DB_USER_BCU,DB_PASSWORD_BCU);
+$db_selected = mysql_select_db(DB_NAME_BCU, $link);
 $esi_zip = 0;
 /* 5017990, 5018048, 5017788, 5017774, 5017603 */
 $screeningID = 5051454;
