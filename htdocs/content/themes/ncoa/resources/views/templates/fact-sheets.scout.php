@@ -33,7 +33,7 @@
                       </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
-                            <div class="fact-sheets-header fact-sheets-bottom-header"><h1>{{ Loop::title() }}</h1></div>
+                            <div class="fact-sheets-header fact-sheets-bottom-header"><h2>{{ Loop::title() }}</h2></div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
                             <a target="_blank" href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&print=y" class="fact-sheet-header-icon">
