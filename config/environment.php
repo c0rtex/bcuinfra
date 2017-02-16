@@ -5,7 +5,7 @@
 /*----------------------------------------------------*/
 return [
 
-    'local'         =>  ['local','Rustams-MacBook-Pro.local','ncoa.dev'],
+    'local'         =>  ['local','JoshuaBerrysMBP.home','ncoa.dev'],
     'production'    => 'ncoa.dev'
 
 ];
