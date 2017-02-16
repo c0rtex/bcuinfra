@@ -1,7 +1,7 @@
 <header class="container-fluid">
     <section class="container">
         <div class="clearfix">
-            <h1 class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
+            <span class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
                 <a tabindex="1" href="/" class="logo">
                     {{
                         wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
@@ -20,7 +20,7 @@
                     }}
                 </a>
                 @endif
-            </h1>
+            </span>
 
             @if(Option::get('global-settings', 'showHeaderCTA') == '0')
             <div class="pull-right header-cta-ncoaLogo hidden-xs">
