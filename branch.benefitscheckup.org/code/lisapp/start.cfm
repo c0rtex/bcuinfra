@@ -7,7 +7,7 @@ Data Tables: NA
 <!--- start display of text  --->
 <cf_buildHTML cellpadding="12" cellspacing="2">
 <cfoutput>
-
+<cfset application.enableLIS = false>
 <cfif application.enableLIS >
 	<!--- generate site text --->
 	<cf_displayText code="site_turboapp_welcome" group="site"><br><br>
