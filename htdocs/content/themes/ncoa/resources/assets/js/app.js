@@ -1001,12 +1001,14 @@ app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicCon
                         if(i==0) {
                             firstSlug = key;
                         } else {
-                            slugs = slugs + key + ";";
+                            slugs = slugs +";" + key;
                         }
                         i++;
                     }
 
-                    window.open('/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&short=y&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y', '_blank');
+                    slugs = slugs.substring(1);
+
+                    window.open('/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&short=y&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y');
                 }
             };
 
