@@ -12,41 +12,27 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
-        $retVal = $this->render_page($query->query["name"]);
+        /*$home_url = home_url();
+        $fact_sheet_url = home_url($_SERVER['REDIRECT_URL']);
+        $to = 'ctxuser@gmail.com';
+        $subject = 'BenefitsCheckUp Fact Sheet';
+        $body = <<<EOT
+    Thank you for using BenefitsCheckUp to help you find programs that you may be eligible for or interested in getting information about. Here is a link to the program fact sheet you requested should be emailed to you:
 
-        if (array_key_exists('slugs', $_REQUEST)) {
-            $slugs = explode(";",$_REQUEST['slugs']);
+    {$fact_sheet_url}
 
-            foreach($slugs as $slug) {
-                $retVal = $retVal.$this->render_page("factsheet_".$slug);
-            }
-        }
+    BenefitsCheckUp constantly updates the database with new information for existing programs and adds new programs on a regular basis. Please feel free to use the BenefitsCheckUp site at any time.
+    {$home_url}
 
-        if (isset($_REQUEST['pdf'])) {
-            return $retVal;
-            // instantiate and use the dompdf class
-            $options = new Options();
-            $options->set('isRemoteEnabled', TRUE);
-            $dompdf = new Dompdf($options);
-            $dompdf->loadHtml($retVal);
+    Have a wonderful day!
+    BenefitsCheckUp Team
+    EOT;
 
-            // Render the HTML as PDF
-            $dompdf->render();
+        wp_mail( $to, $subject, $body );*/
 
-            // Output the generated PDF to Browser
-            $dompdf->stream('');
-        }
-        else {
-            return $retVal;
-        }
+        $fact_sheet_slug = $query->query["name"];
 
-    }
-
-    public function render_page($fact_sheet_slug) {
-
-        $query = new WP_Query(['post_type' => 'fact-sheets', 'name' => $fact_sheet_slug]);
-
-        $program_code = substr($fact_sheet_slug,10);
+        $program_code = Meta::get($query->queried_object_id, 'program_code');
 
         $constants = Config::get('constants');
 
@@ -73,13 +59,30 @@ class FactSheetsController extends BaseController
                 $template = 'templates.print-short-fact-sheets';
             }
 
-            return View::make($template, [
+            $return = View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
                 'required_materials' => $requiredMaterials,
                 'is_alt' => false
             ])->render();
+
+            if (isset($_REQUEST['pdf'])) {
+                // instantiate and use the dompdf class
+                $options = new Options();
+                $options->set('isRemoteEnabled', TRUE);
+                $dompdf = new Dompdf($options);
+                $dompdf->loadHtml($return);
+
+                // Render the HTML as PDF
+                $dompdf->render();
+
+                // Output the generated PDF to Browser
+                $dompdf->stream('Fact Sheet - ' . $post->post_title);
+            }
+            else {
+                return $return;
+            }
 
         } else {
 
@@ -109,7 +112,7 @@ class FactSheetsController extends BaseController
                 $template = 'templates.print-fact-sheets';
             }
 
-            return View::make($template, [
+            $return = View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,
@@ -120,6 +123,24 @@ class FactSheetsController extends BaseController
                 'becs' => $becs,
                 'is_alt' => false
             ])->render();
+
+            if (isset($_REQUEST['pdf'])) {
+                // instantiate and use the dompdf class
+                $options = new Options();
+                $options->set('isRemoteEnabled', TRUE);
+                $dompdf = new Dompdf($options);
+                $dompdf->loadHtml($return);
+
+                // Render the HTML as PDF
+                $dompdf->render();
+
+                // Output the generated PDF to Browser
+                $dompdf->stream('Fact Sheet - ' . $post->post_title);
+            }
+            else {
+                return $return;
+            }
+
         }
     }
 

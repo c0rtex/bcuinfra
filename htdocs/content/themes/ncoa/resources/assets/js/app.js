@@ -973,7 +973,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 }]);
 
 
-app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, $state, Drugs, CronicConditions) {
+app.directive('profile', ['prescreen', '$state', 'Drugs', 'CronicConditions', function (prescreen, $state, Drugs, CronicConditions) {
     return {
         restrict: 'A',
         templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
@@ -983,43 +983,6 @@ app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicCon
             // @TODO: Options were disabled as per requested in ticket BCURD-105
             scope.showOptions = false;
             //scope.showOptions = ($state.current.name.split('.')[1] == "results" || $state.current.name.split(".")[1] == "initial-results");
-
-            scope.programs_calculated=false;
-
-            if (screening.data.results.found_programs != undefined) {
-                scope.programs_calculated=screening.data.results.found_programs.length>0;
-            }
-
-            scope.slugs={};
-
-            scope.printReport = function() {
-                if (Object.keys(scope.slugs).length>0) {
-                    var i = 0;
-                    var firstSlug = "";
-                    var slugs = "";
-                    for(var key in scope.slugs) {
-                        if(i==0) {
-                            firstSlug = key;
-                        } else {
-                            slugs = slugs + key + ";";
-                        }
-                        i++;
-                    }
-
-                    window.open('/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&short=y&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y', '_blank');
-                }
-            };
-
-            scope.found_programs=[];
-
-            if (scope.programs_calculated) {
-                scope.programs_calculated=true;
-                for (var i=0;i<screening.data.results.found_programs.length;i++) {
-                    for (var j=0;j<screening.data.results.found_programs[i].programs.length;j++) {
-                        scope.found_programs.push(screening.data.results.found_programs[i].programs[j]);
-                    }
-                }
-            }
 
             scope.cronicConditions = function() {
                 try {
