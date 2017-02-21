@@ -146,7 +146,7 @@
                     @endif
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 hidden-xs hidden-sm">
                     @if(Loop::id() == '7284')
                     <div style="margin: 20px 0">
                         <a href="{{ get_permalink(12464) }}" class="btn btn-primary btn-block">Espa&ntilde;ol</a>
