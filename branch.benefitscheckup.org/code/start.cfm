@@ -1,7 +1,7 @@
 <cf_sessionLoadVars>
 <cf_buildHTML cellpadding="12" cellspacing="2">
 <cfoutput>
-<cfset application.enableLIS = false>
+<cfset application.enableLIS = true>
 <cfif application.enableLIS >
 	<cf_displayText code="site_turboapp_welcome" group="site"><br><br>
 	<cf_sessionPassVars action="https://#application.consumerurl#/cf/continue.cfm" method="post">
