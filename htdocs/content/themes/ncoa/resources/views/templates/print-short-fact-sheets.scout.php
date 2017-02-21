@@ -1,4 +1,3 @@
-<div style="page-break-before: always;">
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 @extends('layouts.print')
 
@@ -34,4 +33,3 @@
 </div>
 @endquery
 @stop
-</div>

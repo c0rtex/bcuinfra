@@ -23,7 +23,7 @@ class FactSheetsController extends BaseController
         }
 
         if (isset($_REQUEST['pdf'])) {
-            //return $retVal;
+            return $retVal;
             // instantiate and use the dompdf class
             $options = new Options();
             $options->set('isRemoteEnabled', TRUE);
