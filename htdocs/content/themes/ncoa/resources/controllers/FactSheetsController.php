@@ -18,18 +18,17 @@ class FactSheetsController extends BaseController
             $slugs = explode(";",$_REQUEST['slugs']);
 
             foreach($slugs as $slug) {
-                $retVal = $retVal.$this->render_page("factsheet_".$slug);
+                $retVal = $retVal.$this->render_page("factsheet_".$slug,true);
             }
         }
 
         if (isset($_REQUEST['pdf'])) {
-            //return $retVal;
             // instantiate and use the dompdf class
             $options = new Options();
             $options->set('isRemoteEnabled', TRUE);
+            $options->set('compress',1);
             $dompdf = new Dompdf($options);
             $dompdf->loadHtml($retVal);
-
             // Render the HTML as PDF
             $dompdf->render();
 
@@ -42,7 +41,7 @@ class FactSheetsController extends BaseController
 
     }
 
-    public function render_page($fact_sheet_slug) {
+    public function render_page($fact_sheet_slug, $on_new_page = false) {
 
         $query = new WP_Query(['post_type' => 'fact-sheets', 'name' => $fact_sheet_slug]);
 
@@ -74,6 +73,7 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
+                'on_new_page' => $on_new_page,
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
@@ -110,6 +110,7 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
+                'on_new_page' => $on_new_page,
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,

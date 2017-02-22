@@ -1008,7 +1008,7 @@ app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicCon
 
                     slugs = slugs.substring(1);
 
-                    window.open('/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&short=y&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y');
+                    window.open('/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y');
                 }
             };
 
