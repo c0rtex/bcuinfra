@@ -12,7 +12,14 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
-        $retVal = $this->render_page($query->query["name"]);
+
+        $retVal = "";
+
+        if (isset($_REQUEST['pdf'])) {
+            $retVal = View::make("templates.print-fact-sheet-cover-page", [])->render();
+        }
+
+        $retVal = $retVal.$this->render_page($query->query["name"],isset($_REQUEST['pdf']));
 
         if (array_key_exists('slugs', $_REQUEST)) {
             $slugs = explode(";",$_REQUEST['slugs']);

@@ -16,14 +16,6 @@
 </head>
 <body>
 
-<header>
-  <section class="container">
-    <div class="clearfix">
-      <img src="<?php echo themosis_assets() ?>/images/BCU-logo.jpg" />
-    </div>
-
-  </section>
-</header>
 
 <div class="page-wrapper">
   @yield('main')
