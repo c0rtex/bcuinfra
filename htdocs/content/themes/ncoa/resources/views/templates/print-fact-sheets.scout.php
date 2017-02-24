@@ -1,3 +1,8 @@
+@if($on_new_page)
+<div style="page-break-before: always;">
+@else
+<div style="page-break-before: auto;">
+@endif
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 @extends('layouts.print')
 
@@ -111,4 +116,6 @@
     </div>
 </div>
 @endquery
+</div>
 @stop
+

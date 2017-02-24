@@ -1,108 +1,65 @@
-<div class="results-options" ng-show="showOptions">
-	<ul class="result-options-list">
-		<li data-toggle="modal" data-target="#print-modal"><span class="fa fa-print"></span>Print Results</li>
-		<li data-toggle="modal" data-target="#save-modal"><span class="fa fa-floppy-o"></span>Save Results</li>
-		<li data-toggle="modal" data-target="#email-modal"><span class="fa fa-envelope-o"></span>Email Results</li>
-	</ul>
-</div>
+<!--<div class="results-options" ng-show="programs_calculated">
+  <ul class="result-options-list">
+    <li data-toggle="modal" data-target="#print-modal"><span class="fa fa-print"></span>Print Results</li>
+    <li data-toggle="modal" data-target="#save-modal"><span class="fa fa-floppy-o"></span>Save Results</li>
+    <li data-toggle="modal" data-target="#email-modal"><span class="fa fa-envelope-o"></span>Email Results</li>
+  </ul>
+</div>-->
 
 <section class="prescreen-profile">
-	<img src="/content/themes/ncoa/resources/assets/images/prescreen/Prescreen_profile.svg" alt="Profile Image" class="profile-image" />
-	<p>Search Details</p>
+  <img src="/content/themes/ncoa/resources/assets/images/prescreen/Prescreen_profile.svg" alt="Profile Image" class="profile-image" />
+  <p>Search Details</p>
 </section>
 <section>
-	<ul class="profile-list">
-		<li><strong>Location: </strong>{{screenData.formatted_address}}</li>
-		<li><strong>Relationship to You: </strong>{{screenData.searchingFor}}</li>
-		<li><strong>Date of Birth: </strong>{{screenData.date_of_birth.month}} {{screenData.date_of_birth.year}}</li>
-		<li><strong>Marital status: </strong>{{screenData.marital_status}}</li>
-		<li><strong>Veteran: </strong>{{screenData.veteran}}</li>
-		<li class="categoreis"><strong>Benefits Categories: </strong>
-			<span ng-repeat="benefit in screenData.benefits_categories | orderBy:'sort'">{{benefit.name}}</span>
-		</li>
-	</ul>
+  <ul class="profile-list">
+    <li><strong>Location: </strong>{{screenData.formatted_address}}</li>
+    <li><strong>Relationship to You: </strong>{{screenData.searchingFor}}</li>
+    <li><strong>Date of Birth: </strong>{{screenData.date_of_birth.month}} {{screenData.date_of_birth.year}}</li>
+    <li><strong>Marital status: </strong>{{screenData.marital_status}}</li>
+    <li><strong>Veteran: </strong>{{screenData.veteran}}</li>
+    <li class="categoreis"><strong>Benefits Categories: </strong>
+      <span ng-repeat="benefit in screenData.benefits_categories | orderBy:'sort'">{{benefit.name}}</span>
+    </li>
+  </ul>
 </section>
 
+<button class="btn btn-primary" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>
 <!--<span data-toggle="modal" data-target="#details-modal" class="btn-link view-details" ng-show="showOptions">View all details <strong>&gt;</strong></span>-->
 
 <div class="modal fade" id="print-modal" tabindex="-1" role="dialog" aria-labelledby="print-label">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-      	<h1 class="modal-title modal-h1" id="print-label">
-      		Print My Results
-      		<button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    		</h1>
+        <h1 class="modal-title modal-h1" id="print-label">
+          Print My Results
+          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </h1>
       </div>
       <div class="modal-body">
         <div class="modal-tagline">
-        	Select which Benefit Program Fact Sheets you would like to print. <span id="print-modal-select-all" class="modal-inline bold">Select All</span>
-      	</div>
+          Select which benefit program fact sheets you would like to print. <span id="print-modal-select-all" class="modal-inline bold">Select All</span>
+        </div>
         <section class="form-group checkbox-stacked">
-					<div class="checkbox">
-						<input type="checkbox" value="1" name="print-modal-cb-1" id="print-modal-cb-1">
-            <label for="print-modal-cb-1"><span></span>Medicare</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="2" name="print-modal-cb-2" id="print-modal-cb-2">
-            <label for="print-modal-cb-2"><span></span>Medicare Prescription Drug Plan (Part D)</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="3" name="print-modal-cb-3" id="print-modal-cb-3">
-            <label for="print-modal-cb-3"><span></span>Extra Help / LIS through Medicare Prescription Drug Coverage</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="4" name="print-modal-cb-4" id="print-modal-cb-4">
-            <label for="print-modal-cb-4"><span></span>Medicaid</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="5" name="print-modal-cb-5" id="print-modal-cb-5">
-            <label for="print-modal-cb-5"><span></span>Medicare Savings Programs (QMB, SLMB, or QI)</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="6" name="print-modal-cb-6" id="print-modal-cb-6">
-            <label for="print-modal-cb-6"><span></span>Supplemental Nutrition Assistance Program (SNAP)</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="7" name="print-modal-cb-7" id="print-modal-cb-7">
-            <label for="print-modal-cb-7"><span></span>Supplemental Security Income (SSI)</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="8" name="print-modal-cb-8" id="print-modal-cb-8">
-            <label for="print-modal-cb-8"><span></span>TRICARE</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="9" name="print-modal-cb-9" id="print-modal-cb-9">
-            <label for="print-modal-cb-9"><span></span>Veteran's Health Care Benefits</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="10" name="print-modal-cb-10" id="print-modal-cb-10">
-            <label for="print-modal-cb-10"><span></span>Low Income Home Energy Assistance Program (LIHEAP)</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="11" name="print-modal-cb-11" id="print-modal-cb-11">
-            <label for="print-modal-cb-11"><span></span>Public Housing</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="12" name="print-modal-cb-12" id="print-modal-cb-12">
-            <label for="print-modal-cb-12"><span></span>Housing Choice Vouchers (Section 8)</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" value="13" name="print-modal-cb-13" id="print-modal-cb-13">
-            <label for="print-modal-cb-13"><span></span>Senior Community Service Employment Program (SCSEP)</label>
-					</div>
+          <div class="program-header hover-shade">
+            <span>Program category</span>
+          </div>
+
+          <div class="checkbox" ng-repeat="program in found_programs">
+            <input type="checkbox" ng-value="y" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
+            <label for="{{program.code}}"><span></span><ng-label text="{{program.name_display}}"></ng-label></label>
+          </div>
         </section>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-link btn-underline pull-left" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary pull-right">Continue</button>
+        <button type="button" ng-click="printReport()" class="btn btn-primary pull-right">Download and Print Report</button>
         <div class="clear-fix"></div>
       </div>
     </div>
   </div>
   <script type="text/javascript">
-  	$(document).ready(function () {
-  		$('#print-modal-select-all').click(function () {
+    $(document).ready(function () {
+      $('#print-modal-select-all').click(function () {
         if ($('#print-modal-select-all').text() == 'Select All') {
           $('#print-modal input').each(function () {
             $(this).prop('checked', true);
@@ -115,8 +72,8 @@
           });
           $('#print-modal-select-all').text('Select All');
         }
-  		});
-  	});
+      });
+    });
   </script>
 </div>
 
