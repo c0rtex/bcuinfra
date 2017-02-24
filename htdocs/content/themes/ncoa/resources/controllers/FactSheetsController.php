@@ -33,7 +33,7 @@ class FactSheetsController extends BaseController
             $dompdf->render();
 
             // Output the generated PDF to Browser
-            $dompdf->stream('');
+            $dompdf->stream('BenefitsCheckUp Report');
         }
         else {
             return $retVal;
