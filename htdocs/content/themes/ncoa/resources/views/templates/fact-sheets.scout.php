@@ -7,7 +7,7 @@
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
-<div class="container">
+<div class="container fact-sheet">
     <header class="visible-print-block print-header">
         <img src="/content/themes/ncoa/resources/assets/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" class="pull-left print-logo">
         <div class="pull-right"><span>www.benefitscheckup.org</span></div>
@@ -33,7 +33,7 @@
                       </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
-                            <div class="fact-sheets-header fact-sheets-bottom-header"><h2>{{ Loop::title() }}</h2></div>
+                            <div class="fact-sheets-header fact-sheets-bottom-header"><h1>{{ Loop::title() }}</h1></div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
                             <a target="_blank" href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&print=y" class="fact-sheet-header-icon">
