@@ -274,9 +274,9 @@
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
                         <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
                         <div class="survey-answers">
-	                        <a target="_blank" class="btn btn-default" href="https://www.surveymonkey.com/r/MPHD96K">Very Likely</a>
-	                        <a target="_blank" class="btn btn-default" href="https://www.surveymonkey.com/r/M6DLCQ3">Somewhat Likely</a>
-	                        <a target="_blank" class="btn btn-default" href="https://www.surveymonkey.com/r/M6WZNDX">Not Likely</a>
+	                        <a target="_blank" class="btn btn btn-secondary" href="https://www.surveymonkey.com/r/MPHD96K">Very Likely</a>
+	                        <a target="_blank" class="btn btn btn-secondary" href="https://www.surveymonkey.com/r/M6DLCQ3">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn btn-secondary" href="https://www.surveymonkey.com/r/M6WZNDX">Not Likely</a>
                         </div>
                     </div>                    
                     @endif
