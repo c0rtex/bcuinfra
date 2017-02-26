@@ -7,7 +7,7 @@
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
-<div class="container">
+<div class="container fact-sheet">
     <header class="visible-print-block print-header">
         <img src="/content/themes/ncoa/resources/assets/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" class="pull-left print-logo">
         <div class="pull-right"><span>www.benefitscheckup.org</span></div>
@@ -33,7 +33,7 @@
                       </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
-                            <div class="fact-sheets-header fact-sheets-bottom-header"><h2>{{ Loop::title() }}</h2></div>
+                            <div class="fact-sheets-header fact-sheets-bottom-header"><h1>{{ Loop::title() }}</h1></div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
                             <a target="_blank" href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&print=y" class="fact-sheet-header-icon">
@@ -268,6 +268,17 @@
 			
 
                     </div>
+                    @endif
+                    @if (!empty($snap_findstores_url)) 
+                    <div class="results-options feedback-box">
+                        <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
+                        <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
+                        <div class="survey-answers">
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/MPHD96K">Very Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/M6DLCQ3">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/M6WZNDX">Not Likely</a>
+                        </div>
+                    </div>                    
                     @endif
                 </div>
 
