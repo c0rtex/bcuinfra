@@ -1,4 +1,4 @@
-﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
+﻿﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
@@ -973,7 +973,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 }]);
 
 
-app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, BenefitItems, $state, Drugs, CronicConditions) {
+app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, $state, Drugs, CronicConditions) {
     return {
         restrict: 'A',
         templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
@@ -1016,12 +1016,10 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
-                scope.found_programs = screening.data.results.found_programs;
-
-                for (var i=0;i<scope.found_programs.length;i++) {
-                    var program_category = BenefitItems.getByCode(scope.found_programs[i].category);
-                    scope.found_programs[i].name= program_category.name;
-                    scope.found_programs[i].sort = program_category.sort;
+                for (var i=0;i<screening.data.results.found_programs.length;i++) {
+                    for (var j=0;j<screening.data.results.found_programs[i].programs.length;j++) {
+                        scope.found_programs.push(screening.data.results.found_programs[i].programs[j]);
+                    }
                 }
             }
 
