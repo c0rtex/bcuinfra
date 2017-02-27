@@ -113,9 +113,7 @@
 					<div class="stay-connected col-xs-12 col-sm-6 col-md-6">
 						<h3>Stay Connected</h3>
 						<p>Receive emails about how to stay healthy, secure, and independent</p>
-						<p>
-							<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Sign Up for Enews</a>
-						</p>
+						<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Sign Up for Enews</a>
 					</div>
 					<div class="spread-the-word col-xs-12 col-sm-6 col-md-6">
 						<h3>Spread the Word</h3>

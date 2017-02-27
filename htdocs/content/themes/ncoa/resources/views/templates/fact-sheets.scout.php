@@ -1,5 +1,6 @@
 <!-- php the_meta(); -->
 <?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
+<?php $snap_find_elegible = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 
 @extends($layout)
@@ -223,7 +224,27 @@
                                         <?php $pos++ ?>
                                         @endif
 
-                                        @if (($pos >= 3)&&($evalue->type!='online')&&(!$isAdded))
+                                        @if ($pos >= 3)
+
+                                        <?php
+                                        // Line added to print previous item (Application Form)
+                                        $previous_value = $app_forms[$ekey-1];
+                                        static $printed_prev = false;
+                                        ?>
+
+                                        @if(!$printed_prev)
+                                            @if(strpos($previous_value->url, 'http')===0)
+                                            <a href="{{$previous_value->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                                <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
+                                            </a>
+                                            @else
+                                            <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$previous_value->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$previous_value->url }}" class="btn btn-link fact-sheets-side-link">
+                                                <span class="fa fa-file fact-sheets-icon"></span>
+                                                <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
+                                            </a>
+                                            @endif
+                                            <?php $printed_prev = true; ?>
+                                        @endif
 
                                         @if(strpos($evalue->url, 'http')===0)
 
@@ -261,9 +282,15 @@
                         </br>
                         <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
                         @endif
-			@if (!empty($snap_findstores_url))
+
+			            @if (!empty($snap_findstores_url))
                         </br>
                         <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
+                        @endif
+
+                        @if (!empty($snap_find_elegible))
+                        </br>
+                        <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
                         @endif
 			
 
@@ -274,9 +301,9 @@
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
                         <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
                         <div class="survey-answers">
-	                        <a target="_blank" class="btn btn-default" href="https://www.surveymonkey.com/r/MPHD96K">Very Likely</a>
-	                        <a target="_blank" class="btn btn-default" href="https://www.surveymonkey.com/r/M6DLCQ3">Somewhat Likely</a>
-	                        <a target="_blank" class="btn btn-default" href="https://www.surveymonkey.com/r/M6WZNDX">Not Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/MPHD96K">Very Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/M6DLCQ3">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/M6WZNDX">Not Likely</a>
                         </div>
                     </div>                    
                     @endif
@@ -297,7 +324,7 @@
     jQuery(document).ready(function () {
         //Lynna Cekova: click to call
         var countrycodes = "1"
-        var delimiters = "-|\\.|—|–|&nbsp;"
+        var delimiters = "-|\\.|ï¿½|ï¿½|&nbsp;"
         var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
         var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
         var phonereg = new RegExp("(Fax:)?((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
