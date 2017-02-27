@@ -10243,6 +10243,13 @@ grid:last-child .sales-grid {
 	font-family: 'Open Sans', sans-serif;
 	color: #0070c0; }
 
+.icon-block-food {
+	background: url(../images/categories/category_food.svg) no-repeat top center;
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin-right: 10px;
+}
 .feedback-box .survey-answers {
 	margin-top: 20px;
 	margin-left: 10px;

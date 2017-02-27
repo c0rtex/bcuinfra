@@ -18,10 +18,8 @@
     <div class="card-nested row">
       <div class="col-xs-12">
         <div class="fact-sheet-icon-hdr">
+        	<span class="icon-block-food pull-left"></span>
           <div class="pull-left">
-          	<span class="icon-block pull-left">
-            	<img src="/content/uploads/2016/05/category_food-1.svg" class="attachment-full size-full" alt="Basket of Food">
-            </span>
             <div class="fact-sheets-header fact-sheets-top-header">Food &amp; Nutrition</div>
             <div class="fact-sheets-header fact-sheets-bottom-header"><h1>Supplemental Nutrition Assistance Program (SNAP)</h1></div>
           </div>
