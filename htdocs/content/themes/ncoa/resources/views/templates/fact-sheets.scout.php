@@ -223,7 +223,27 @@
                                         <?php $pos++ ?>
                                         @endif
 
-                                        @if (($pos >= 3)&&($evalue->type!='online')&&(!$isAdded))
+                                        @if ($pos >= 3)
+
+                                        <?php
+                                        // Line added to print previous item (Application Form)
+                                        $previous_value = $app_forms[$ekey-1];
+                                        static $printed_prev = false;
+                                        ?>
+
+                                        @if(!$printed_prev)
+                                            @if(strpos($previous_value->url, 'http')===0)
+                                            <a href="{{$previous_value->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                                <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
+                                            </a>
+                                            @else
+                                            <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$previous_value->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$previous_value->url }}" class="btn btn-link fact-sheets-side-link">
+                                                <span class="fa fa-file fact-sheets-icon"></span>
+                                                <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
+                                            </a>
+                                            @endif
+                                            <?php $printed_prev = true; ?>
+                                        @endif
 
                                         @if(strpos($evalue->url, 'http')===0)
 
@@ -297,7 +317,7 @@
     jQuery(document).ready(function () {
         //Lynna Cekova: click to call
         var countrycodes = "1"
-        var delimiters = "-|\\.|—|–|&nbsp;"
+        var delimiters = "-|\\.|ï¿½|ï¿½|&nbsp;"
         var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
         var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
         var phonereg = new RegExp("(Fax:)?((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
