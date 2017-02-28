@@ -234,6 +234,16 @@
                                         ?>
 
                                         @if(!$printed_prev)
+                                            <?php
+                                            foreach($app_forms as $ekey => $evalue){
+                                                if($evalue->type=='online'){
+                                                    echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
+
+                                                    break;
+                                                }
+                                            }
+                                            ?>
+
                                             @if(strpos($previous_value->url, 'http')===0)
                                             <a href="{{$previous_value->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                                                 <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
@@ -289,7 +299,7 @@
                         <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
                         @endif
 
-                        @if (!empty($snap_find_elegible))
+                        @if ($is_snap && !empty($snap_find_elegible))
                         </br>
                         <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
                         @endif

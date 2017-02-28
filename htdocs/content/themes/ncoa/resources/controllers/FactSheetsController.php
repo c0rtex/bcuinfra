@@ -50,6 +50,9 @@ class FactSheetsController extends BaseController
 
     public function render_page($fact_sheet_slug, $on_new_page = false) {
 
+        // Detect if SNAP page
+        $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
+
         $query = new WP_Query(['post_type' => 'fact-sheets', 'name' => $fact_sheet_slug]);
 
         $program_code = substr($fact_sheet_slug,10);
@@ -85,7 +88,8 @@ class FactSheetsController extends BaseController
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
                 'required_materials' => $requiredMaterials,
-                'is_alt' => false
+                'is_alt' => false,
+                'is_snap' => $is_snap
             ])->render();
 
         } else {
@@ -126,7 +130,8 @@ class FactSheetsController extends BaseController
                 'required_materials' => $requiredMaterials,
                 'faqs_list' => $faqsList,
                 'becs' => $becs,
-                'is_alt' => false
+                'is_alt' => false,
+                'is_snap' => $is_snap
             ])->render();
         }
     }
