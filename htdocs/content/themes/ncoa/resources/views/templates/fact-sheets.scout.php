@@ -299,7 +299,7 @@
                         <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
                         @endif
 
-                        @if (!empty($snap_find_elegible))
+                        @if ($is_snap && !empty($snap_find_elegible))
                         </br>
                         <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
                         @endif
