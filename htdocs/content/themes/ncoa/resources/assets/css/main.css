@@ -10126,15 +10126,16 @@ grid:last-child .sales-grid {
   margin: 0px; }
 
 .fact-sheets-bottom-header {
-	font-size: 36px;
-h1 {
+	font-size: 35px; }
+
+.fact-sheets-bottom-header h1 {
   font-size: 30px; 
   padding: 0;
   margin: 0;
 	color: #555555;
 	font-weight: 400;
-	line-height: 1.4;	} }
-
+	line-height: 1.4;	}
+	
 .fact-sheet-header-icon {
   display: table-cell;
   vertical-align: bottom;
