@@ -360,3 +360,26 @@
 </script>
 @endquery
 @stop
+
+@section('misc-scripts')
+<script type="text/javascript">
+    // Adjust font-size based on the number of characters in the heading
+    $(function() {
+
+        var $heading = $(".fact-sheets-header h1");
+
+        var $numChars = $heading.text().length;
+
+        if ($numChars < 45) {
+            $heading.css("font-size", "30px");
+        }
+        else if (($numChars > 45) && ($numChars < 70)) {
+            $heading.css("font-size", "25px");
+        }
+        else {
+            $heading.css("font-size", "19px");
+        }
+
+    });
+</script>
+@stop
