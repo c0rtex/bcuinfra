@@ -10,10 +10,10 @@ app.directive('ncoaFooter',['$http', function($http){
 			});
 
 			$.ajax({
-			  url: scope.url,
-			  context: document.body
+				url: scope.url,
+				context: document.body
 			}).success(function(data) {
-			  console.log(data);
+				console.log(data);
 			});
 		}
 	}

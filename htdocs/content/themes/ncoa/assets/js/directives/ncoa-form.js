@@ -1,11 +1,13 @@
 app.directive('ncoaForm',[function(){
 
 	return {
-		restrict: 'A',   
+		restrict: 'A',
 		link: function(scope, elm){
+			scope.category = window.category;
+			scope.state = window.state;
 			scope.error = false;
 			scope.processForm = function(form, event){
-				if(!form.$valid){
+				if((scope.category == "")&&(scope.state == "")){
 					scope.error = true;
 					event.preventDefault();
 				}

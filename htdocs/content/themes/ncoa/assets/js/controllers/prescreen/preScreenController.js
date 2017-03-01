@@ -1,178 +1,235 @@
-app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', '$timeout', '$state', 'BenefitItems', function($scope, localStorageService, prescreen, locationFinder, $timeout, $state, BenefitItems){
+app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', 'prescreenQuestions','screening', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems, prescreenQuestions,screening){
+
+	$scope.category = "prescreen";
+	$scope.showLoader = false;
+
+	if ($scope.$root.answers == undefined) {
+		$scope.$root.answers = {};
+	}
 
 
-	$('.fa-question-circle').popover();
+	$scope.$root.answers.prescreen = prescreen.data.answers;
+
+	$scope.sibmitDisabled = true;
+
+	if ($scope.$root.prescreen == undefined) {
+		$scope.$root.prescreen = {};
+		$scope.$root.prescreen.programList = {};
+	}
+
 	$scope.canContinue = true;
 	$scope.showquestions = false;
-	$scope.showCTA = true;
-	$scope.programList = [];
-	$scope.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	$scope.tooltip = "<strong>Gross monthly income</strong> is your income before any deductions are taken. Please include yourself and your spouse (if applicable) in your calculations.";
-	$scope.programs = BenefitItems;
-	$scope.selectLinkText = "Select All";
-	
+	$scope.$root.prescreen.showCTA = true;
+	$scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
-	$scope.onStatusChange = function(){
-		$scope.showCTA = ($scope.prescreen.searchfor == '' || $scope.prescreen.searchfor == 'self');
-	}
+	prescreenQuestions.get().success(function(data, status, headers, config) {
+		prescreen.data.questions = data;
+		$scope.questionSet = prescreen.data.questions;
+	});
 
-	$scope.addProgram = function(programName, $index){
 
-		var benefitindex = $scope.programList.indexOf(programName);
-		if(benefitindex == -1){
-			$scope.programList.push(programName);
-		}else{
-			$scope.programList.splice(benefitindex, 1);
-		}
-	}
+	$scope.submitPrescreen = function() {
+		$scope.showLoader = true;
+		document.querySelector('.container').scrollIntoView();
 
-	$scope.submitPrescreen = function(){
+		$scope.sibmitDisabled = true;
 
-		prescreen.zipcode = {
-			"code" : $scope.prescreen.zipcode,
-			"formatted_address": $scope.prescreen.zipcode_formatted
-		};
-		prescreen.date_of_birth = {
-			"month" : $scope.prescreen.month,
-			"year" : $scope.prescreen.year
+		prescreen.data.screenData = {};
+
+		prescreen.data.screenData.formatted_address = $scope.$root.answers[$scope.category].zipcode_formatted;
+
+		prescreen.data.screenData.searchingFor = $scope.$root.answers[$scope.category].client.display;
+
+		prescreen.data.screenData.date_of_birth = {
+			"month": $scope.$root.answers[$scope.category].dob_month.name,
+			"year": $scope.$root.answers[$scope.category].dob_year
 		};
 
-		prescreen.searchingFor = $scope.prescreen.searchfor;
-		prescreen.income = $scope.prescreen.income;
-		prescreen.marital_status = $scope.prescreen.marital_status;
-		prescreen.veteran = $scope.prescreen.veteran;
-		prescreen.spouse_veteran_status = ($scope.prescreen.spouse_veteran_status) ? $scope.prescreen.spouse_veteran_status : "";
-		prescreen.benefits_categories = $scope.programList;
-		$state.go('prescreen.results');
-	}
+		prescreen.data.screenData.marital_status = $scope.$root.answers[$scope.category].marital_stat.display;
 
-	$scope.selectAll = function(){
+		prescreen.data.screenData.veteran = $scope.$root.answers[$scope.category].veteran == "y" ? "Yes" : "No";
 
-		if($scope.programList.length == 12){
-			$scope.programList = [];
-			$('.benefits-selector-repeater').removeClass('checked');
-			$scope.selectLinkText = "Select All";
-		}else if($scope.programList.length >= 0){
-			$scope.programList = ['Medications', 'Healthcare', 'Income Assistance', 'Food and Nutrition', 'Housing and Utilities', 'Tax Relief', 'Veteran', 'Employment', 'Transportation', 'Education', 'Discounts', 'Other Assistance']
-			$('.benefits-selector-repeater').addClass('checked');
-			$scope.selectLinkText = "Deselect All";
+		prescreen.data.screenData.benefits_categories = [];
+		prescreen.data.screenData.benefits_categories_codes = [];
+
+		for (var programCatCode in $scope.$root.answers[$scope.category]) {
+			if (BenefitItems.getByCode(programCatCode) != undefined) {
+				prescreen.data.screenData.benefits_categories.push(BenefitItems.getByCode(programCatCode));
+				prescreen.data.screenData.benefits_categories_codes.push(programCatCode);
+			}
 		}
+
+		console.log(prescreen.data.screenData);
+
+		var request = $scope.$root.answers[$scope.category];
+
+		request.state_id = $scope.$root.answers[$scope.category].stateId;
+		request.st = $scope.$root.answers[$scope.category].stateId;
+
+		savePrescreen.post(request).success(function(data, status, headers, config) {
+			$scope.sibmitDisabled = false;
+			prescreen.data.answers = $scope.$root.answers[$scope.category];
+			prescreen.data.results = data;
+
+			prescreen.save();
+
+			screening.data.results.screening.id = undefined;
+
+			$scope.showLoader = false;
+			$state.go('questionnaire.initial-results');
+		});
 	}
 
-	$scope.$watch('prescreen.searchfor', function(){
-		if(!$('.dob').is(":visible")){
-			setTimeout(function(){
+	$scope.$watch('$root.answers.'+$scope.category+'.client', function(){
+		if (($scope.$root.answers[$scope.category].client != undefined) && (!$('.dob').is(":visible"))) {
+			setTimeout(function () {
 				var test = document.querySelector('.dob');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
+				if (test != undefined) {
+					$('html,body').animate({
+						scrollTop: $(test).offset().top - 100 + 'px'
+					}, 500);
+				}
 			}, 500);
 		}
 	});
 
-	$scope.$watch('prescreen.year', function(){
-		if($scope.prescreen.month != undefined && !$('.income').is(":visible")){
+	$scope.$watch('$root.answers.'+$scope.category+'.dob_year', function(){
+		if($scope.$root.answers[$scope.category].dob_month != undefined && !$('.income').is(":visible")){
+			setTimeout(function() {
+				var test = document.querySelector('.income');
+				if (test != undefined) {
+					$('html,body').animate({
+						scrollTop: $(test).offset().top - 100 + 'px'
+					}, 500);
+				}
+			}, 500);
+		}
+	});
+
+	$scope.$watch('$root.answers.'+$scope.category+'.dob_month', function(){
+		if($scope.$root.answers[$scope.category].dob_year != undefined && !$('.income').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.income');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
+				if (test != undefined) {
+					$('html,body').animate({
+						scrollTop: $(test).offset().top - 100 + 'px'
+					}, 500);
+				}
 			}, 500);
 		}
 	});
 
-	$scope.$watch('prescreen.month', function(){
-		if($scope.prescreen.year != undefined && !$('.income').is(":visible")){
-			setTimeout(function(){
-				var test = document.querySelector('.income');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
-			}, 500);
-		}
-	});
-
-	$scope.$watch('prescreen.income', function(){
-		if(!$('.marital-status').is(":visible")){
+	$scope.$watch('$root.answers.'+$scope.category+'.bcuqc_income', function(){
+		if(($scope.$root.answers[$scope.category].bcuqc_income != undefined) && !$('.marital-status').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.marital-status');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
+				if (test != undefined) {
+					$('html,body').animate({
+						scrollTop: $(test).offset().top - 100 + 'px'
+					}, 500);
+				}
 			}, 500);
 		}
 	});
 
-	$scope.$watch('prescreen.marital_status', function(){
-		if(!$('.veteran-status').is(":visible")){
+	$scope.$watch('$root.answers.'+$scope.category+'.marital_stat', function(){
+		if(($scope.$root.answers[$scope.category].marital_stat != undefined) && !$('.veteran-status').is(":visible")){
 			setTimeout(function(){
 				var test = document.querySelector('.veteran-status');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
-			}, 500);
-		}
-	});
-
-	$scope.$watch('prescreen.veteran', function(){
-		if(($scope.prescreen.marital_status == "married" ||
-			$scope.prescreen.marital_status == "married_living_separately" ||
-			$scope.prescreen.martial_status == "widowed") && $scope.prescreen.veteran == "no" && !$('.partner-veteran-status').is(":visible")){
-			setTimeout(function(){
-				var test = document.querySelector('.partner-veteran-status');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
-			}, 500);
-		}else if(($scope.prescreen.marital_status == "married" ||
-			$scope.prescreen.marital_status == "married_living_separately" ||
-			$scope.prescreen.martial_status == "widowed") && $scope.prescreen.veteran == "yes" && !$('.benefits').is(":visible")){
-				setTimeout(function(){
-					var test = document.querySelector('.benefits');
+				if (test != undefined) {
 					$('html,body').animate({
-						scrollTop: $(test).offset().top + 'px'
+						scrollTop: $(test).offset().top - 100 + 'px'
 					}, 500);
-				}, 500);
-		}else if(($scope.prescreen.marital_status == "divorced" || $scope.prescreen.marital_status == "single") && !$('.benefits').is(":visible")){
-			setTimeout(function(){
-				var test = document.querySelector('.benefits');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
-				}, 500);
+				}
 			}, 500);
 		}
 	});
 
-	$scope.$watch('prescreen.spouse_veteran_status', function(){
-		if(!$('.benefits').is(":visible")){
-			setTimeout(function(){
-				var test = document.querySelector('.benefits');
-				$('html,body').animate({
-					scrollTop: $(test).offset().top + 'px'
+	$scope.$watch('$root.answers.'+$scope.category+'.veteran', function(){
+		var marital_stat = $scope.$root.answers[$scope.category].marital_stat;
+		var veteran = $scope.$root.answers[$scope.category].veteran;
+		if (marital_stat != undefined) {
+			if ((marital_stat.code == "married" ||
+				marital_stat.code == "married_living_sep" ||
+				marital_stat.code == "widowed") &&
+				veteran == "n" &&
+				!$('.partner-veteran-status').is(":visible")) {
+
+				setTimeout(function () {
+					var test = document.querySelector('.partner-veteran-status');
+					if (test != undefined) {
+						$('html,body').animate({
+							scrollTop: $(test).offset().top - 100 + 'px'
+						}, 500);
+					}
 				}, 500);
-			}, 500);
+			} else if ((marital_stat.code == "married" ||
+				marital_stat.code == "married_living_sep" ||
+				marital_stat.code == "widowed") &&
+				veteran == "y" &&
+				!$('.benefits').is(":visible")) {
+
+				$scope.sibmitDisabled = false;
+				setTimeout(function () {
+					var test = document.querySelector('.veteran-status .cta');
+					if (test != undefined) {
+						$('html,body').animate({
+							scrollTop: $(test).offset().top - 10 + 'px'
+						}, 500);
+					}
+				}, 500);
+			} else if ((marital_stat.code == "married" ||
+				marital_stat.code == "married_living_sep" ||
+				marital_stat.code == "widowed") &&
+				veteran == "n" &&
+				!$('.benefits').is(":visible")) {
+
+				$scope.sibmitDisabled = false;
+				setTimeout(function () {
+					var test = document.querySelector('.benefits');
+					if (test != undefined) {
+						$('html,body').animate({
+							scrollTop: $(test).offset().top - 100 + 'px'
+						}, 500);
+					}
+				}, 500);
+			} else if ((
+				marital_stat.code == "divorced" ||
+				marital_stat.code == "single") &&
+				veteran == "y" &&
+				!$('.benefits').is(":visible")) {
+
+				$scope.sibmitDisabled = false;
+				setTimeout(function () {
+					var test = document.querySelector('.veteran-status .cta');
+					if (test != undefined) {
+						$('html,body').animate({
+							scrollTop: $(test).offset().top - 10 + 'px'
+						}, 500);
+					}
+				}, 500);
+			} else if ((
+				marital_stat.code == "divorced" ||
+				marital_stat.code == "single") &&
+				veteran == "n" &&
+				!$('.benefits').is(":visible")) {
+
+				$scope.sibmitDisabled = false;
+				setTimeout(function () {
+					var test = document.querySelector('.benefits');
+					if (test != undefined) {
+						$('html,body').animate({
+							scrollTop: $(test).offset().top - 100 + 'px'
+						}, 500);
+					}
+				}, 500);
+			}
 		}
 	});
 
 	$scope.disableSubmit = function(){
-		return ($scope.programList.length == 0);
+		if (this.prescreenForm == undefined) return true;
+		return !this.prescreenForm.$valid;
 	};
-
-	$scope.showSpouseVeteranStatus = function(){
-
-		return (($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_separately' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'no');
-	}
-
-	$scope.showBenefits = function(){
-		if((($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_separately' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'yes')){
-			return true;
-		}else if((($scope.prescreen.marital_status == 'married' || $scope.prescreen.marital_status == 'married_living_separately' || $scope.prescreen.marital_status == 'widowed') && $scope.prescreen.veteran == 'no') && $scope.prescreen.spouse_veteran_status){
-			return true;
-		}else if(($scope.prescreen.marital_status == 'divorced' || $scope.prescreen.marital_status == 'single') && $scope.prescreen.veteran){
-			return true;
-		}else{
-			return false;
-		}
-	}
 
 }]);

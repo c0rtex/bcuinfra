@@ -1,4 +1,4 @@
-app.directive('benefitsSlider',[function(){
+app.directive('benefitsSlider',['$window','localStorageService',function($window,localStorageService){
 	return {
 		restrict: 'A',
 		link: function(scope, elm){
@@ -8,6 +8,11 @@ app.directive('benefitsSlider',[function(){
 			var length = $navs.length;
 			var activeClass = 'benefits-slider-active';
 			var currentIndex = 0;
+
+			scope.findBenefits = function(category) {
+				localStorageService.set('interested_category',category);
+				$window.location.href= 'find-my-benefits';
+			};
 
 			function getIndex(currentId) {
 				var index;
@@ -55,9 +60,9 @@ app.directive('benefitsSlider',[function(){
 			});
 
 			$(window).resize(function() {
-			  var nav = $navs.get(currentIndex);
+				var nav = $navs.get(currentIndex);
 
-			  arrowReposition(nav);
+				arrowReposition(nav);
 			});
 
 			$('.benefits-slider-index').text('1 of ' + length);

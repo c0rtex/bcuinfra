@@ -1,48 +1,9 @@
-app.controller('questionnaireHealthController', ['$scope', 'questionnaire', function($scope, questionnaire){
-	
-	$scope.drugs = [
-		'abacavir sulfate',
-		'abacavir sulfate/lamivudine',
-		'abacavir sulfate/lamivudine/zidovudine',
-		'abacavir, dolutegravir, and lamivudine',
-		'abatacept',
-		'abciximab',
-		'Abilify (aripiprazole)',
-		'abiraterone acetate',
-		'Abraxane for Injectable Suspension (paclitaxel)',
-		'acamprosate calcium',
-		'acarbose',
-		'Accolate (zafirlukast)',
-		'Accupril (quinapril HCl)',
-		'Accuretic (quinapril HCl/hydrochlorothiazide)',
-		'acetohydroxamic acid',
-		'Aciphex (rabeprazole sodium) Tablets',
-		'acitretin',
-		'aclidinium bromide inhalation powder',
-		'aclometasone dipropionate cream',
-		'Aclovate Cream (aclometasone dipropionate)',
-		'Acterma (tocilizumab)',
-		'Acthar Gel (corticotropin)',
-		'Actimmune (interferon-gamma-1b)',
-		'Activella (estradiol/norethindrone acetate tablets)',
-		'Actos (pioglitazone HCl)',
-		'Acular LS Opththalmic Solution 0.40 (ketorolac tromethamine)',
-		'Acular Opththalmic Solution 0.45 (ketorolac tromethamine)',
-		'Acuvail (ketorolac)',
-		'acyclovir',
-		'Aczone (dapsone)',
-		'Adacel (tetanus, diphtheria, acellular pertussis vaccine)',
-		'Adalat CC (nifedipine)',
-		'adalimumab',
-		'adapalene and benzoyl peroxide',
-		'Adcetris (brentuximab vedotin)',
-		'Adcirca (tadalafil)',
-		'adefoir dipivoxil',
-		'Adempas (riociguat)',
-		'ado-trastuzumab emtansine',
-		'Advair Diskus (fluticasone propionate/salmeterol)',
-		'aspirin',
-		'eye drops'
-	];
+app.controller('questionnaireHealthController', ['$scope', 'questionnaire', /*'Drugs',*/ 'CronicConditions', function($scope, questionnaire, /*Drugs,*/ CronicConditions){
+
+	//$scope.drugs = Drugs.getDrugs();
+
+	$scope.chronicConditions = CronicConditions.getCronicConditions();
+
+
 
 }]);
