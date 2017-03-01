@@ -229,31 +229,28 @@
 
                                         <?php
                                         // Line added to print previous item (Application Form)
-                                        $previous_value = $app_forms[$ekey-1];
+                                        $prev_vals = array_slice($app_forms, 0, $ekey);
                                         static $printed_prev = false;
                                         ?>
 
                                         @if(!$printed_prev)
-                                            <?php
-                                            foreach($app_forms as $ekey => $evalue){
-                                                if($evalue->type=='online'){
-                                                    echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
-
-                                                    break;
-                                                }
-                                            }
-                                            ?>
-
-                                            @if(strpos($previous_value->url, 'http')===0)
-                                            <a href="{{$previous_value->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                                <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
+                                            @foreach($prev_vals as $prev_ekey => $prev_evalue)
+                                            @if($prev_evalue->type=='online')
+                                                <a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{ $prev_evalue->id }}&tgtPartner=0&tgtorg_id=0&tgt={{ $prev_evalue->url }}" class="btn btn-link fact-sheets-side-link" target="_new">
+                                                    <span class="fa fa-file fact-sheets-icon"></span>
+                                                    <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
+                                                </a>
+                                            @elseif(strpos($prev_evalue->url, 'http')===0)
+                                            <a href="{{$prev_evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
                                             </a>
                                             @else
-                                            <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$previous_value->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$previous_value->url }}" class="btn btn-link fact-sheets-side-link">
+                                            <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$prev_evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$prev_evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                                 <span class="fa fa-file fact-sheets-icon"></span>
-                                                <span style="white-space: pre-line">{{ $previous_value->caption }}</span>
+                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
                                             </a>
                                             @endif
+                                            @endforeach
                                             <?php $printed_prev = true; ?>
                                         @endif
 
