@@ -211,14 +211,14 @@
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
 
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @endif
                                         @endif
@@ -239,16 +239,16 @@
                                                 <a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{ $prev_evalue->id }}&tgtPartner=0&tgtorg_id=0&tgt={{ $prev_evalue->url }}" class="btn btn-link fact-sheets-side-link" target="_new">
                                                     <span class="fa fa-file fact-sheets-icon"></span>
                                                     <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
-                                                </a>
+                                                </a><br />
                                             @elseif(strpos($prev_evalue->url, 'http')===0)
                                             <a href="{{$prev_evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                                                 <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
-                                            </a>
+                                            </a><br />
                                             @else
                                             <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$prev_evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$prev_evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                                 <span class="fa fa-file fact-sheets-icon"></span>
                                                 <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
-                                            </a>
+                                            </a><br />
                                             @endif
                                             @endforeach
                                             <?php $printed_prev = true; ?>
@@ -258,13 +258,13 @@
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @endif
                                         @endif
@@ -370,14 +370,14 @@
 
         var $numChars = $heading.text().length;
 
-        if ($numChars < 45) {
-            $heading.css("font-size", "30px");
-        }
-        else if (($numChars > 45) && ($numChars < 70)) {
+        if (($numChars > 45) && ($numChars < 70)) {
             $heading.css("font-size", "25px");
         }
-        else {
+        else if ($numChars > 70) {
             $heading.css("font-size", "19px");
+        }
+        else {
+            $heading.css("font-size", "30px");
         }
 
     });

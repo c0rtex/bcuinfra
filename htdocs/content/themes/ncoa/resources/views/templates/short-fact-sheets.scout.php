@@ -156,14 +156,14 @@
 
         var $numChars = $heading.text().length;
 
-        if ($numChars < 45) {
-            $heading.css("font-size", "30px");
-        }
-        else if (($numChars > 45) && ($numChars < 70)) {
+        if (($numChars > 45) && ($numChars < 70)) {
             $heading.css("font-size", "25px");
         }
-        else {
+        else if ($numChars > 70) {
             $heading.css("font-size", "19px");
+        }
+        else {
+            $heading.css("font-size", "30px");
         }
 
     });
