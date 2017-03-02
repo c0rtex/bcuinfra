@@ -207,6 +207,8 @@
         <cfargument name="state" default="">
         <cfif ((question.getCode() eq 'receive')OR(question.getCode() eq 'interests'))>
             <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a join a.programs p where qaf.question=? and (p.state is null or p.state=?) and (a.state is null or a.state=?) and p.active_flag=1 and p.exclude_flag=0 order by qaf.sort",[question,state,state])>
+        <cfelseif  ((question.getCode() eq 'vet_status')OR(question.getCode() eq 'sp_vet_status')OR(question.getCode() eq 'employer'))>
+            <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a join a.programs p where qaf.question=? and p.state=? and (a.state is null or a.state=?) and p.active_flag=1 and p.exclude_flag=0 order by qaf.sort",[question,state,state])>
         <cfelse>
             <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a where qaf.question=? and (a.state is null or a.state=?) order by qaf.sort",[question,state])>
         </cfif>
