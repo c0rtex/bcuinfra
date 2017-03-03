@@ -1,0 +1,153 @@
+.about-us-banner-header {
+  background-repeat: no-repeat;
+  background-color: $about-banner-bg;
+  background-position: 0 -44px;
+  background-size: auto 115%;
+  height: 300px;
+
+
+  @media (max-width: 767px) {
+    background-image: none !important;
+  }
+}
+
+.about-us-banner-text-container {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.about-us-h1 {
+  font-weight: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 28px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    font-size: 32px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.about-main {
+  background-color: #FFF;
+}
+
+.about-left-img {
+  margin-left: 30px;
+
+  @media (max-width: $screen-sm-max) {
+    margin: 0;
+  }
+}
+
+.about-mobile-column {
+  display: none;
+
+  @media (max-width: $screen-sm-max) {
+    display: block;
+  }
+}
+
+.about-desktop-column {
+  display: block;
+
+  @media (max-width: $screen-sm-max) {
+    display: none;
+  }
+}
+
+.circle-img {
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  border: $grey-accent 1px solid;
+
+  @media (max-width: $screen-sm-max) {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.about-content {
+  text-align: center;
+  padding-right: 30px;
+
+  @media (max-width: $screen-sm-max) {
+    padding-right: 15px;
+  }
+}
+
+.about-section {
+  margin-top: 30px;
+  padding-bottom:48px;
+  border-bottom:2px solid #ccc;
+  margin-bottom:50px;
+
+  h2 {
+    color: $brand-light-blue;
+    @extend .bold;
+    font-size: 28px;
+  }
+
+  &:last-child{
+    border: none;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    text-align: center;
+  }
+}
+
+.about-how-works {
+  margin-top: 40px;
+  padding: 20px 50px 40px 50px;
+  border-top: $grey-accent 2px solid;
+  background-color: $brand-light-grey;
+  text-align: center;
+
+  h2 {
+    color: $brand-light-blue;
+    @extend .bold;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    color: $brand-blue;
+    @extend .bold;
+  }
+
+  .about-step-section {
+    padding: 5px 20px 0px 20px;
+
+     @media (min-width: $screen-md-min) {
+        border-right: 2px solid #ccc;
+        &:last-child{
+          border: none;
+        }
+     }
+  }
+
+  .about-us-step {
+    height: 100px;
+    width: 100px;
+
+    @media (max-width: $screen-sm-max) {
+      margin: 20px 0;
+    }
+  }
+}
+
+.page-about-us {
+  background-color: #FFF;
+}

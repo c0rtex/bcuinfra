@@ -1,0 +1,42 @@
+<!--Results-->
+<div class="results card-panel">
+    <h2 class="page-header">Here are your initial results.</h2>
+    <div class="results-tally">
+        <span ng-if="foundCount == 1">There is</span>
+        <span ng-if="foundCount > 1 || foundCount == 0">There are</span>
+        <span class="odometer">0</span>
+        <span ng-if="foundCount == 1"><strong>benefit program</strong> that matches your basic details.</span>
+        <span ng-if="foundCount > 1 || foundCount == 0"><strong>benefit programs</strong> that match your basic details.</span>
+    </div>
+
+    <div class="cta-yellow">
+        <p><span class="orange-bold">Please note!</span> These results are based on the few questions you answered and do not show whether you are eligible for these programs. Click on the programs below to get basic program information or <a ui-sref="screening-start" class="btn-link underline normal-bold">keep going</a> to the full questionnaire to get more details and learn about additional programs. Your results will be more personalized and specific to your situation.</p>
+    </div>
+
+    <p><a data-toggle="popover" data-trigger="click" data-html="true" data-content="<ul>
+            <li>Current income for self, spouse and others in household</li>
+            <li>Value of assets for self, spouse and others in household</li>
+            <li>Estimated household expenses such as: mortgage or rent, utility costs, and dependent care</li>
+            <li>Out-of-pocket medical expenses that is not paid for by your insurance</li>
+            <li>Name of prescription medications that you take (include brand name and generic drugs)</li>
+        </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue with the full questionnaire.</p>
+
+    <div class="ready-list">
+    </div>
+
+    <script type="text/javascript-lazy">
+    	$('.ready-list').popover();
+
+    	$( ".ready-list" ).click(function( event ) {
+    		event.preventDefault();
+    	});
+    </script>
+
+
+    <p>Select a category to learn more:</p>
+    <div class="more-benefits">
+		<span ng-repeat="found_program in found_programs  | orderBy:'sort'">
+			<div-programs-category short="y" found_program="found_program" elegible="y"></div-programs-category>
+		</span>
+    </div>
+</div>

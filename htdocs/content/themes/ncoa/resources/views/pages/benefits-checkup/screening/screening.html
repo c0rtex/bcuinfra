@@ -1,0 +1,28 @@
+<h1>Find My Benefits</h1>
+<div class="card questionnaire" ng-show="showLoader!=true">
+	<div class="card-nested">
+		<div breadcrumb class="breadcrumbs" ng-hide="hideBreadCrumbs"></div>
+		<div class="row">
+			<div class="col-sm-12 col-md-9">
+				<h2>Answer these questions to get more accurate results.</h2>
+				<div class="cta">
+					<strong>Just a reminder:</strong> Answer all your questions as your {{screenData.searchingFor}}.
+				</div>
+				<question ng-repeat="question in $root.questions[category]" question="question"></question>
+				<p class="error-state" ng-show="wrongLink"><strong>Error!</strong> Please add category and state to url</p>
+			</div>
+
+			<!-- Profile Section-->
+			<div class="col-md-3 hidden-sm hidden-xs profile-section" profile></div>
+		</div>
+	</div>
+	<div class="btns-container clearfix" page-switch>
+		<button class="btn btn-link btn-back pull-left" ng-click="switchPage(prev)">Back</button>
+		<button class="btn btn-primary pull-right" ng-hide="isResults" ng-click="switchPage(next)">Continue</button>
+	</div>
+</div>
+<div class="card questionnaire" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">
+    <div class="card-nested" style="padding: 0;">
+        <ncoa-loader></ncoa-loader>
+    </div>
+</div>

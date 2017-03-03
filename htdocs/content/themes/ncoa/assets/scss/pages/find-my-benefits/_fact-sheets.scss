@@ -1,0 +1,202 @@
+.card-header{
+  padding-top: 40px;
+
+  a{
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  h1{
+    margin-top:0;
+    padding-top:0;
+  }
+}
+
+.mobile-padding {
+  padding: 0 7px !important;
+}
+
+.icon-block{
+  //background:url(../images/categories/category_health.svg) no-repeat top center;
+  display: block;
+  margin-right: 10px;
+
+  img{
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    margin-left: 5px;
+  }
+}
+
+.fact-sheets-top-header {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.fact-sheets-header {
+  padding: 0px;
+  margin: 0px;
+}
+
+.fact-sheets-bottom-header {
+  font-size: 36px;
+}
+
+.fact-sheet-header-icon {
+  @media (min-width: $screen-md-min) {
+    height: 65px;
+  }
+
+  display: table-cell;
+  vertical-align: bottom;
+
+  @media (max-width: $screen-sm-max) {
+    height: 65px;
+  }
+  font-weight: bold;
+  color: $brand-light-blue;
+  text-decoration: none;
+
+  padding-bottom: 0px !important;
+
+  &:hover {
+    color: $brand-light-blue;
+  }
+}
+
+.fact-sheets-icon-block {
+  margin-left: 10px;
+  clear: both;
+}
+
+.fact-sheets-spacer {
+  width: 20px;
+  height: 60px;
+  display: table-cell;
+
+  @media (max-width: $screen-sm-max) {
+    height: 20px;
+  }
+}
+
+.fact-sheets-hr {
+  border: 0;
+  height: 0;
+  border-top: 2px solid $grey-accent;
+
+  @media (max-width: $screen-sm-max) {
+    margin: 10px 5px;
+  }
+}
+
+.fact-sheets-emphasis {
+  font-weight: bold;
+  font-size: 22px;
+  color: $brand-orange;
+}
+
+.fact-sheets-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fact-sheets-main-apply {
+  margin: 5px 0px 20px 0px;
+}
+
+.fact-sheets-side-apply  {
+  width: 100%;
+  margin: 10px 0px 20px 0px;
+}
+
+.fact-sheets-link {
+  padding: 0 !important;
+}
+
+.fact-sheets-icon {
+  font-size: 15px;
+}
+
+.fact-sheets-bar {
+  color: $brand-light-blue;
+  margin: 0px 7px 0px 7px;
+  text-decoration: none;
+
+  position: relative;
+  top: -10px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    top: -9px;
+  }
+}
+
+.fact-sheets-side-link {
+  text-align: left !important;
+  margin-bottom: 5px;
+  padding: 0px;
+  font-size: 18px;
+  @extends .bold;
+}
+
+.fact-sheets-side-lower {
+  margin-left: 19px;
+}
+
+.fact-sheet-button-fwd {
+  &:after{
+      content: '\e080';
+      top:2px;
+      @extend .glyphicon;
+    }
+}
+
+.fact-sheets-top {
+  margin-top: 50px;
+
+  a {
+    min-height: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.fact-sheets-bottom {
+  margin-top: 15px;
+  margin-bottom: 80px;
+
+  @media (max-width: $screen-sm-max) {
+    margin-bottom: 40px;
+  }
+}
+
+.fact-sheets-know {
+  margin: 7px 0;
+}
+
+.fact-sheets-side-header {
+  @extend .bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.fact-sheet-options {
+  @media (max-width: $screen-sm-max) {
+    margin: 10px 0px;
+  }
+}
+
+.fact-sheets-main-mobile {
+  width: 100%;
+}
+
+.fact-sheet-alt .results-options {
+  margin-top: 40px;
+  margin-bottom: 0px;
+}

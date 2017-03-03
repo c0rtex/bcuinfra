@@ -1,0 +1,24 @@
+themosis:
+  image: springbox/ncoa:local
+  volumes:
+    - $PWD:/var/www/html
+  links:
+    - db:mysql
+  environment: 
+    HOSTNAME: local
+    VIRTUALHOST: ncoa.dev
+    VIRTUAL_HOST: ncoa.dev
+  env_file: .env
+  hostname: local
+db:
+  image: springbox/themosis-db:baseline
+  env_file: .env
+nginx:
+  image: jwilder/nginx-proxy
+  ports:
+    - 80:80
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+  links:
+    - themosis
+

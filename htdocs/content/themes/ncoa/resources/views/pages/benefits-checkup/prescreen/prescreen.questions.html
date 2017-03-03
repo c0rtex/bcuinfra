@@ -1,0 +1,22 @@
+<h1>Find My Benefits</h1>
+<div ui-view>
+<div class="prescreen-questions">
+    <!-- Pre Screen-->
+    <div class="card" ng-show="showLoader!=true">
+        <div class="card-nested">
+            <h2 class="page-header">Let's start with some basics.</h2>
+            <form name="prescreenForm" novalidate>
+                <question ng-repeat="question in questionSet" question="question"></question>
+            </form>
+        </div>
+        <div class="btns-container clearfix">
+            <button class="btn btn-primary pull-right" ng-disabled="disableSubmit()"  ng-click="submitPrescreen()">Get Results</button>
+        </div>
+    </div>
+    <div class="card" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">
+        <div class="card-nested" style="padding: 0;">
+            <ncoa-loader></ncoa-loader>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,100 @@
+.cta-full{
+	color: #fff;
+	text-align: center;
+	padding:30px 20px;
+
+	h1{
+		color: #fff;
+		margin:0;
+		padding: 0 0 15px 0;
+		font-weight: 700;
+	}
+
+	h5{
+		color: #fff;
+		font-weight: 500;
+		font-size:1.556em;
+		line-height: 1.5;
+	}
+
+	p{
+		width:100%;
+		font-size: 1em;
+		padding-bottom: 20px;
+
+		@media(min-width: $screen-sm-min){
+			width: 50%;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+	}
+
+	input.form-control{
+		width:40%;
+
+		@media (max-width: $screen-xs-max) {
+			width: 100%;
+			margin-top: 20px;
+		}
+	}
+
+	button{
+		width:100%;
+		white-space: normal;
+		line-height: 1.4;
+		margin-top:30px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		@media (min-width: $screen-sm-min){
+			width: auto;
+			margin-top: 0;
+		}
+
+		@media (max-width: $screen-xs-max) {
+			margin-top: 20px;
+		}
+	}
+}
+
+.cta-green{
+	background-color: #F1FCF0;
+	padding:20px;
+	border-radius: 5px;
+	strong{
+		color: #317C60;
+	}
+}
+
+.cta-yellow{
+	border-radius: 6px;
+	background: #FFF9E9;
+	padding: 20px;
+	strong{
+		color: #FFB902;
+	}
+}
+
+.cta-red{
+	background-color: #fcf3f3;
+	padding:20px;
+	border-radius: 5px;
+	strong{
+		color: red;
+	}
+}
+
+.cta-hero-alternate{
+	text-align: center;
+	padding:40px 0;
+	
+	h1{
+		padding: 0;
+		margin-top: 0;
+		color:#fff;
+	}
+	
+	.error-state{
+		display: none;
+	}
+}

@@ -1,0 +1,17 @@
+<section class="program {{found_program.category}}" slide-down>
+    <div class="program-header hover-shade">
+        <span ng-if="found_program.count>1">{{benefitItem.name}} Benefits: {{found_program.count}} Programs</span>
+        <span ng-if="found_program.count<2">{{benefitItem.name}} Benefits: {{found_program.count}} Program</span>
+    </div>
+    <div class="programs-container">
+        <ul class="programs" ng-repeat="program in found_program.programs">
+            <li>
+                <h4>{{program.name_display}}</h4>
+                <div-program-desc program_desc="program.desc_display"></div-program-desc>
+            </li>
+            <li>
+                <a ng-href="{{program.url}}" class="btn-link">Learn More and Apply</a>
+            </li>
+        </ul>
+     </div>
+</section>

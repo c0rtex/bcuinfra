@@ -1,0 +1,339 @@
+body{
+	line-height:1.3;
+	background-color: $bg-color;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size:18px;
+	color: $body-base;
+
+	a{
+		color: $brand-light-blue;
+		text-decoration: underline;
+		&:hover{
+			color: $brand-light-blue;
+		}
+	}
+
+	h1,h2{
+		font-family: 'Open Sans', sans-serif;
+		font-style: normal;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1{
+		color:$brand-light-blue;
+		font-weight: 700;
+		padding:20px 0;
+	}
+
+	h2{
+		color:#555555;
+		font-weight:400;
+		line-height: 1.4;
+	}
+
+	h3 {
+		-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+	}
+
+	input[type='text'],select{
+		font-family: 'Open Sans', sans-serif;
+		font-size: 1em;
+	}
+
+	input[type='text']{
+		box-shadow: none !important;
+	}
+
+	.checkbox{
+		margin-bottom: 20px;
+	}
+
+	input[type=checkbox] {
+		display:none;
+	}
+
+	input[type=checkbox] + label
+	{
+		padding: 0;
+		span {
+			background: url('../images/blank-check-box.svg');
+			background-size: 26px;
+			height: 26px;
+			width: 26px;
+			display:inline-block;
+			padding: 0 0 0 0px;
+			margin-right: 5px;
+			position: relative;
+			top: 7px;
+		}
+	}
+	input[type=checkbox]:checked + label
+	{
+		padding: 0;
+		span {
+			background: url('../images/check-box.svg');
+			background-size: 26px;
+			height: 26px;
+			width: 26px;
+			display:inline-block;
+			padding: 0 0 0 0px;
+			margin-right: 5px;
+			position: relative;
+			top: 7px;
+		}
+	}
+
+	input[type=radio] {
+		display:none;
+	}
+
+	input[type=radio] + label
+	{
+		padding: 0;
+		span {
+			background: url('../images/radio-button.svg');
+			background-size: 26px;
+			height: 26px;
+			width: 26px;
+			display:inline-block;
+			padding: 0 0 0 0px;
+			margin-right: 5px;
+			position: relative;
+			top: 7px;
+		}
+	}
+	input[type=radio]:checked + label
+	{
+		padding: 0;
+		span {
+			background: url('../images/radio-on-button.svg');
+			background-size: 26px;
+			height: 26px;
+			width: 26px;
+			display:inline-block;
+			padding: 0 0 0 0px;
+			margin-right: 5px;
+			position: relative;
+			top: 7px;
+		}
+	}
+
+	.form-control {
+		font-size: 18px;
+		@extend .bold;
+	}
+
+	.form-control::-webkit-input-placeholder { color: #8f8f8f; font-weight: normal; }
+	.form-control:-moz-placeholder { color: #8f8f8f; font-weight: normal; }
+	.form-control::-moz-placeholder { color: #8f8f8f; font-weight: normal; }
+	.form-control:-ms-input-placeholder { color: #8f8f8f; font-weight: normal; }
+
+	.page-header{
+		margin:0 0 20px 0;
+		padding-bottom: 20px;
+		border-bottom: 2px solid #ccc;
+	}
+
+	.page-top-headline{
+		padding-top: 25px;
+		h1{
+			padding-top: 0;
+			margin-top: 0;
+		}
+
+		.btn-link{
+			display: inline-block;
+			padding-bottom: 5px;
+			i{
+				padding-right: 5px;
+			}
+		}
+	}
+
+}
+
+.bold{
+	font-weight: 700;
+}
+
+.orange-bold{
+	font-weight:700;
+	color: $brand-orange;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.grey-background{
+	background: $brand-light-grey;
+}
+
+.light-grey-background-rounded {
+	background-color: #F9F9F9;
+	border-radius: 8px;
+}
+
+.zip-code-container{
+	padding:20px;
+	@extend .light-grey-background-rounded;
+
+	h3 {
+		font-size: 18px;
+	}
+
+	input[type=text] {
+		width: 300px;
+	}
+
+	@media (max-width: 767px) {
+    input[type=text] {
+			width: 100%;
+		}
+  }
+}
+
+.blue-gradient-background{
+	background-image: linear-gradient(-180deg, #4675CB  0%, #1A3A74  96%);
+}
+
+.blue-background{
+	background-color: $brand-blue;
+}
+
+.card{
+	background-color:#fff;
+	border-radius:0;
+	box-shadow:0 0 5px rgba(0,0,0, .25);
+	margin-bottom:20px;
+	.card-nested{
+		padding:20px;
+
+		@media (min-width: $screen-sm-min){
+			padding:40px;
+		}
+	}
+}
+
+.fa-question-circle{
+	color: $brand-light-blue;
+}
+
+.btn-selector{
+	display: inline-block;
+	margin:5px;
+	padding: 15px 20px 10px;
+	text-align: center;
+	border-radius: 5px;
+	border:1px solid $brand-light-grey;
+	box-shadow: 0 0 2px rgba(0,0,0,.2);
+	transition: 100ms linear background-color;
+	width:120px;
+	height:100px;
+	vertical-align:top;
+	position: relative;
+
+	&:hover{
+		cursor: pointer;
+		background-color: $brand-light-grey;
+	}
+
+	figcaption{
+		margin-top:10px;
+		font-size: 0.875em;
+	}
+}
+
+.btns-container{
+	border-top:2px solid $brand-light-grey;
+	overflow: hidden;
+	background-color:$footer-btn-container;
+	padding:20px;
+}
+
+/**Validation**/
+input.ng-invalid-required:not(.ng-untouched){
+	border:1px solid red;
+}
+
+select.ng-invalid:not(.ng-untouched){
+	border:1px solid red;
+}
+
+/** Forms **/
+$select-form-background-color: #FFFFFF;
+
+select.form-control{
+	appearance: none;
+	background: $select-form-background-color url(../images/arrowdown.gif) no-repeat 98% center;
+	height: 45px;
+
+	&:hover {
+		background-color: darken($select-form-background-color, 15%);
+	}
+
+	&::-ms-expand {
+	    display: none;
+	}
+}
+
+input[type="text"].form-control,select.form-control{
+	height:45px;
+}
+
+
+/**Helpers**/
+.inline{
+	display: inline-block;
+}
+
+/**Tooltip Popover**/
+.popover{
+	background-color:#f7f7f7;
+}
+
+
+/**Odometer**/
+.odometer{
+	display: inline-block;
+	vertical-align: top;
+	background: #f6833b;
+	background-image: linear-gradient(to bottom, #f6833b 0%,#f6833b 50%,#f4640a 51%,#f4640a 100%);
+	border-radius: 6px;
+	color:#fff;
+	font-weight: 700;
+
+	&.odometer-auto-theme{
+		.odometer-digit{
+			font-family: 'Open Sans', sans-serif;
+			vertical-align: top;
+			border-left:1px solid #B14407;
+			padding:0 5px;
+			text-align: center;
+			&:first-child{
+				border:0;
+			}
+		}
+	}
+}
+
+.bold-h3 {
+	@extend .bold;
+	font-size: 20px;
+	font-family: 'Open Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+/**Animations for show/hide**/
+.ng-hide-add { animation:0.5s slide-up ease; }
+.ng-hide-remove { animation:0.5s slide-down ease; }
+
+/**Animations for view switching**/
+.ng-enter { animation: fadeIn 700ms both ease-in; z-index: 8888; }
+.ng-leave { animation: fadeOut 700ms both ease-in; z-index: 9999; }

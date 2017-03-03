@@ -1,0 +1,4 @@
+<set-default-answer category="{{category}}" code="{{answer_field.code}}" value="0"/>
+<p><ng-label text="{{answer_field.display}}"></ng-label></p>
+<input id="dependents" type="text" class="form-control" placeholder="$0" ng-model="$root.answers[category][answer_field.code]" ng-required="answer_field.required">
+

@@ -1,0 +1,88 @@
+.connected-cta{
+	text-align: center;
+	padding-bottom: 20px;
+
+	h3{
+		color: $brand-light-blue;
+		margin-top: 0;
+	}
+
+	.btn.btn-tertiary{
+		padding-top: 8px;
+		box-shadow: none;
+		padding-left: 0;
+		padding-right: 0;
+		min-width: 100%;
+		transition: min-width 500ms ease;
+
+		@media (min-width: $screen-md-min){
+			min-width: 60%;
+		}
+	}
+
+	ul{
+		padding:0;
+		margin:0;
+		li{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: inline-block;
+		}
+	}
+
+	.connected-container{
+		border-top:2px solid #ccc;
+		padding-top: 40px;
+	}
+
+	.stay-connected{
+		border-bottom:2px solid #ccc;
+		padding-bottom: 30px;
+		@media (min-width: $screen-sm-min){
+			border-bottom: none;
+			height:180px;
+			position: relative;
+			&:after{
+				content: ' ';
+				display: inline-block;
+				position: absolute;
+				height: 100%;
+				width: 2px;
+				border-right:2px solid #ccc;
+				right:0;
+				top:0;
+			}
+		}
+	}
+
+	.spread-the-word{
+		padding-top:20px;
+		@media (min-width: $screen-sm-min){
+			height:200px;
+			padding-top:0;
+		}
+	}
+
+	.social-jewlery{
+		li{
+			background: #fff;
+			border-radius: 100%;
+			border:2px solid $brand-light-blue;
+			font-size: 1.667em;
+			padding: 10px 15px;
+			&:nth-child(2){
+				padding:10px 20px;
+				margin:0 15px;
+			}
+
+			a{
+				color: $brand-light-blue;
+			}
+
+			&:hover{
+				background: rgba(0,0,0,.15);
+			}
+		}
+	}
+}

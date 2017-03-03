@@ -1,0 +1,4 @@
+<p><ng-label text="{{answer_field.display}}"></ng-label></p>
+<select class="form-control" name="{{answer_field.code}}" ng-model="$root.answers[category][answer_field.code]" ng-options="selectItem.display for selectItem in answer_field.options track by selectItem.code">
+    <option value="">-- Select value --</option>
+</select>

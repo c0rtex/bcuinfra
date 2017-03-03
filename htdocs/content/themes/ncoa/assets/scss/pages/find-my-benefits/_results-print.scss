@@ -1,0 +1,91 @@
+@media print {
+
+  .page-find-my-benefits {
+    h1 {
+      display: none;
+    }
+
+    .results-tally {
+      font-size: 30px;
+      font-weight: normal;
+
+      +p {
+        display: none;
+      }
+    }
+
+    .program-card {
+      display: block;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none;
+      text-align: left;
+      height: auto;
+      width: auto;
+
+      h3 {
+        padding: 0 !important;
+        margin: 20px 0 0 0 !important;
+      }
+
+      p {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      > a {
+        display: none;
+      }
+    }
+    .results-options {
+      display: none;
+    }
+
+    .profile-section {
+      margin-top: 200px;
+    }
+
+    .prescreen-profile > img, .btn-link.view-details {
+      display: none;
+    }
+
+    .program-card+h3 {
+      margin-top: 60px;
+    }
+
+    .more-benefits {
+      margin-top: 40px;
+    }
+
+    .program-header {
+      padding: 0 !important;
+    }
+
+    ul.programs {
+      padding: 0 !important;
+      border: none;
+
+      &:nth-of-type(1) {
+        border-top: 2px solid #ccc;
+      }
+    }
+
+    .btns-container {
+      display: none;
+    }
+
+    .programs-container {
+      .programs li:nth-of-type(2) {
+        display: none;
+      }
+    }
+
+    .odometer-digit {
+      padding: 0 !important;
+    }
+
+    .odometer.odometer-auto-theme .odometer-digit {
+      border-left: none;
+    }
+  }
+}

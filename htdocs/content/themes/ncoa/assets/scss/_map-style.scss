@@ -1,0 +1,96 @@
+﻿#mapwrapper {
+	max-width: 1920px;
+	margin: 40px auto 0;
+	padding: 0 0;
+	background-color: #f9f9f9;
+	min-width: 220px;
+	@media (max-width: $screen-md-min){
+	
+		display:none;
+	
+	}
+}
+#map_base svg {
+	max-height: 100%;
+	width: 100%;
+	margin: 0;
+	text{
+		font-weight: 700;
+	}
+}
+// @media screen and (max-width: 320px){
+// 	#map_base svg {
+// 		height:140px;
+// 	}
+// }
+// @media screen and (max-width: 400px) and (min-width: 321px) {
+// 	#map_base svg {
+// 		height:190px;
+// 	}
+// }
+// @media screen and (max-width: 480px) and (min-width: 401px) {
+// 	#map_base svg {
+// 		height:250px;
+// 	}
+// }
+// @media screen and (max-width: 568px) and (min-width: 481px) {
+// 	#map_base svg {
+// 		height:300px;
+// 	}
+// }
+// @media screen and (max-width: 685px) and (min-width: 569px) {
+// 	#map_base svg {
+// 		height:350px;
+// 	}
+// }
+// @media screen and (max-width: 767px) and (min-width: 686px) {
+// 	#map_base svg {
+// 		height:420px;
+// 	}
+// }
+@media screen and (max-width: 979px) and (min-width: 768px) {
+	#map_base svg {
+		height:470px;
+	}
+}
+@media screen and (max-width: 1024px) and (min-width: 980px) {
+	#map_base svg {
+		height:608px;
+	}
+}
+@media screen and (max-width: 1280px) and (min-width: 1025px) {
+	#map_base svg {
+		height:632px;
+	}
+}
+@media screen and (min-width: 1281px) {
+	#map_base svg {
+		height:792px;
+	}
+}
+
+#map-tip {
+    font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-size: 0.778em;
+	max-width:350px;
+    display: none;
+    padding: 15px;
+    border: 2px solid #e9e9e9;
+    z-index: 1000;
+    float: left;
+    position: absolute;
+    
+    /*gradient color*/
+    background: #fff;
+    word-break: keep-all;
+    border-radius: 4px;
+    box-shadow: 0 0 5px grey;
+}
+#map-tip p {
+	margin: 0!important;
+}
+#map-tip img {
+	float: left;
+	padding: 3px;
+}

@@ -1,0 +1,163 @@
+.questionnaire{
+
+	h2{
+		margin-top: 0;
+		margin-bottom: 25px;
+	}
+
+	.cta{
+		display: block;
+		padding:20px;
+		border-radius:5px;
+		margin:15px 0 30px;
+		background-color: #F1FCF0;
+		transform:scale(0);
+		animation:500ms slide-down 1s ease forwards;
+
+		strong{
+			color: #317C60;
+		}
+	}
+
+	.results-tally{
+		font-size: 2.667em;
+		padding:20px 0;
+		strong{
+			color: $brand-orange;
+		}
+	}
+
+	p{
+		margin-top:10px;
+	}
+
+	label{
+		font-weight: normal;
+	}
+
+	select,input[type="text"]{
+		width: 100%;
+		font-size:1em !important;
+
+		@media (min-width: $screen-sm-min){
+			width: 50%;
+		}
+	}
+
+	.step{
+		font-weight: 700;
+	}
+
+	.radio-group,.form-group{
+		padding-bottom:25px;
+	}
+
+	.medications-selections{
+		width:50%;
+	}
+
+	.mock-inputtype{
+		text-align: left;
+		border:1px solid #ccc;
+		padding:6px 12px;
+		border-radius:4px;
+		width:30%;
+		display: block;
+		margin:0 auto;
+	}
+
+	.checkbox-stacked{
+		background-color: #f9f9f9;
+		border-radius: 8px;
+		padding: 20px;
+		.checkbox{
+			margin-top: 0;
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.form-stacked{
+		padding: 10px 0;
+	}
+
+	.program-card{
+		width:100%;
+		text-align: center;
+		padding:20px;
+		background-image: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 50%);
+		border: 2px solid #CCCCCC;
+		box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.15);
+		border-radius: 8px;
+		position: relative;
+
+		&:hover{
+			cursor: pointer;
+			a{
+				color: $link-hover-blue;
+				text-decoration: none;
+			}
+		}
+
+		h4,h3{
+			margin:0;
+			padding-bottom:5px;
+		}
+
+		.program-card-icon{
+			padding-top:70px;
+			background-size: 60px !important;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 700;
+			font-size: 1.111em;
+			color: #323232;
+			line-height: 1.222em;
+			margin-top:15px;
+		}
+
+		.icon-healthcare{
+			background:url(../images/categories/category_health.svg) no-repeat top center;
+		}
+
+		.icon-medication{
+			background:url(../images/categories/category_medicine.svg) no-repeat top center;
+		}
+
+		.icon-meals{
+			background:url(../images/categories/category_food.svg) no-repeat top center;
+		}
+
+		@media (min-width: $screen-sm-min){
+			width:48%;
+			display: inline-block;
+			vertical-align: top;
+			padding:10px;
+			margin-right: 4%;
+			height: 250px;
+
+			&:nth-child(2n + 1){
+				margin-left: -5px;
+				margin-right: 0;
+			}
+		}
+	}
+
+	.card-panel.ng-hide-add { animation:none;}
+	.card-panel.ng-hide-remove { animation:1s fadeIn ease; }
+
+	.finances,.household {
+		input[type="text"] {
+			max-width: 50%;
+		}
+
+		@media (min-width: $screen-sm-min){
+			input[type="text"] {
+				max-width: 25%;
+			}
+		}
+	}
+
+}
+
+

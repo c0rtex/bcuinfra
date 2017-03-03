@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 110 110" style="enable-background:new 0 0 110 110;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#20407A;}
+	.st2{fill:#218ADB;}
+	.st3{opacity:0.5;fill:#245C9B;}
+	.st4{fill:#E2E2E2;}
+	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#3D9B79;}
+	.st6{fill:none;stroke:#203E7A;stroke-width:2;stroke-miterlimit:10;}
+	.st7{fill:#FDB82A;}
+	.st8{fill:#203E7A;}
+	.st9{fill:#3D9B79;}
+	.st10{fill:#228ADB;}
+	.st11{opacity:0.4;fill:#FFFFFF;}
+	.st12{fill:#E24447;}
+	.st13{fill:#FFFFFF;}
+	.st14{opacity:0.5;fill:#218ADB;}
+	.st15{fill:url(#);}
+	.st16{fill:#F37734;}
+	.st17{fill:#79C143;}
+	.st18{fill:#734A9B;}
+	.st19{fill:#323232;}
+	.st20{fill:#ECECEC;}
+	.st21{fill:#F4F4F4;}
+	.st22{opacity:0.25;fill:#FFFFFF;}
+	.st23{fill:#1888DE;}
+	.st24{fill-rule:evenodd;clip-rule:evenodd;fill:#20407A;}
+	.st25{clip-path:url(#SVGID_2_);}
+	.st26{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st27{fill-rule:evenodd;clip-rule:evenodd;fill:#218ADB;}
+	.st28{fill-rule:evenodd;clip-rule:evenodd;fill:#FDB82A;}
+	.st29{fill:#D3D3D3;}
+	.st30{fill-rule:evenodd;clip-rule:evenodd;fill:#D3D3D3;}
+	.st31{fill:#F7D26B;}
+	.st32{fill:#D8D8D8;}
+	.st33{fill:#CCCCCC;}
+	.st34{fill:#245C9B;}
+	.st35{fill:#F7F7F7;}
+	.st36{fill:#2D67BA;}
+	.st37{fill:#EFEFEF;}
+	.st38{opacity:0.1;}
+	.st39{fill:url(#New_Pattern_Swatch_4);}
+	.st40{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_6_);}
+	.st41{clip-path:url(#SVGID_8_);}
+	.st42{fill:#FFFFFF;stroke:#000000;stroke-width:7;stroke-miterlimit:10;}
+	.st43{fill:none;stroke:#218ADB;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+	.st44{fill:none;stroke:#CCCCCC;stroke-width:5;stroke-miterlimit:10;}
+	.st45{fill:none;stroke:#CCCCCC;stroke-width:5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st46{fill:#F2854F;}
+	.st47{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_10_);}
+</style>
+<pattern  x="-1681.2" y="168.1" width="51.8" height="51.8" patternUnits="userSpaceOnUse" id="New_Pattern_Swatch_4" viewBox="0 -51.8 51.8 51.8" style="overflow:visible;">
+	<g>
+		<polygon class="st0" points="0,0 51.8,0 51.8,-51.8 0,-51.8 		"/>
+		<polygon class="st1" points="51.8,0 0,0 0,-51.8 51.8,-51.8 		"/>
+	</g>
+</pattern>
+<g>
+	<ellipse class="st31" cx="49" cy="61.2" rx="49" ry="48.8"/>
+	<path class="st7" d="M49,110c27,0,49-21.9,49-48.8S76,12.4,49,12.4V110z"/>
+	<ellipse class="st46" cx="49" cy="61.2" rx="33.5" ry="33.4"/>
+	<g>
+		<ellipse class="st13" cx="49" cy="61.2" rx="16.8" ry="16.7"/>
+	</g>
+	<path class="st16" d="M49,27.8v16.7c9.3,0,16.8,7.5,16.8,16.7S58.2,77.9,49,77.9v16.7c18.5,0,33.5-15,33.5-33.4
+		C82.5,42.7,67.5,27.8,49,27.8z"/>
+	<polygon class="st19" points="87.6,20 90,22.3 50.6,61.5 48.3,59.2 	"/>
+	<path class="st36" d="M96.5,0.8l2,10.6l10.6,2c0.8,0.2,1.1,1.1,0.5,1.7L92.8,32c-0.2,0.2-0.6,0.3-0.9,0.3l-9.7-1.9
+		c-0.2,0-0.4-0.1-0.5-0.3l-1.9-1.9c-0.1-0.1-0.2-0.3-0.3-0.5L77.7,18c-0.1-0.3,0-0.7,0.3-0.9L94.8,0.3C95.4-0.3,96.4,0,96.5,0.8z"/>
+	<ellipse class="st19" cx="49" cy="61.2" rx="7.7" ry="7.7"/>
+	<pattern  id="SVGID_2_" xlink:href="#New_Pattern_Swatch_4" patternTransform="matrix(1.1071 0 0 1.1036 577.0109 871.8198)">
+	</pattern>
+	<path style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_2_);" d="M98.6,11.4l10.6,2c0.8,0.2,1.1,1.1,0.5,1.7L92.8,32
+		c-0.2,0.2-0.6,0.3-0.9,0.3l-9.7-1.9c-0.2,0-0.4-0.1-0.5-0.3l-1-1L98.6,11.4z"/>
+</g>
+</svg>

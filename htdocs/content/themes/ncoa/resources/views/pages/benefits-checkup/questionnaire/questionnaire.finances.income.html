@@ -1,0 +1,12 @@
+<div class="other-income card-panel">
+	<div>
+		<p>Do you have any of these other types of income? Check all that apply.</p>
+	  	<div class="checkbox-stacked">
+	  		<div class="checkbox" ng-repeat="income in questionnaire.incomes">
+				  <input type="checkbox" name="{{income.title}}" id="income-cb-{{$index}}" ng-checked="income.selected == true" ng-click="setIncomeSelected($index)">
+				  <label for="income-cb-{{$index}}"><span></span>{{income.title}}</label>
+				</div>
+	  	</div>
+	  	<p>If you do not have these types of income, click Continue to move on.</p>
+	</div>
+</div>
