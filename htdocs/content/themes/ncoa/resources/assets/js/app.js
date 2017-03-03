@@ -2246,8 +2246,20 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
     prescreen.data.results.found_programs.forEach(function(element) {
         if (prescreen.data.answers[element.category]) {
+            // -- BCURD-336 -- //
+            if (element.category == 'bcuqc_category_veteran' && prescreen.data.answers.veteran == 'n') {
+                $scope.found_programs.push({
+                    'category': element.category,
+                    'count': 0,
+                    'programs': []
+                });
+            }
+            else {
+                $scope.found_programs.push(element);
+            }
+            // -- BCURD-336 -- //
+
             returned_programs.push(element.category);
-            $scope.found_programs.push(element);
         }
 
         $scope.available_fact_sheets[element.category] = [];
