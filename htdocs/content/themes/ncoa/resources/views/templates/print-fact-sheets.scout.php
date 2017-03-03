@@ -112,7 +112,7 @@
             </div>
 
             <p>&nbsp;</p>
-            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All rights reserved.</p>
+            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All Rights Reserved.</p>
             @endif
         </div>
     </div>
