@@ -29,7 +29,7 @@
                         </span>
                         <div class="pull-left">
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
-                            <div class="fact-sheets-header fact-sheets-bottom-header"><h1>{{ Loop::title() }}</h1></div>
+                            <div class="fact-sheets-header fact-sheets-bottom-header"><h2>{{ Loop::title() }}</h2></div>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
                             <a target="_blank" href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&short=y&print=y" class="fact-sheet-header-icon">
@@ -146,26 +146,3 @@
     @endquery
     </div>
     @stop
-
-@section('misc-scripts')
-<script type="text/javascript">
-    // Adjust font-size based on the number of characters in the heading
-    $(function() {
-
-        var $heading = $(".fact-sheets-header h1");
-
-        var $numChars = $heading.text().length;
-
-        if (($numChars > 45) && ($numChars < 70)) {
-            $heading.css("font-size", "25px");
-        }
-        else if ($numChars > 70) {
-            $heading.css("font-size", "19px");
-        }
-        else {
-            $heading.css("font-size", "30px");
-        }
-
-    });
-</script>
-@stop

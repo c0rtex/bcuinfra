@@ -23,8 +23,7 @@
   </ul>
 </section>
 
-<!--<button class="btn btn-primary" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>-->
-
+<button class="btn btn-primary" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>
 <!--<span data-toggle="modal" data-target="#details-modal" class="btn-link view-details" ng-show="showOptions">View all details <strong>&gt;</strong></span>-->
 
 <div class="modal fade" id="print-modal" tabindex="-1" role="dialog" aria-labelledby="print-label">
@@ -40,15 +39,17 @@
         <div class="modal-tagline">
           Select which benefit program fact sheets you would like to print. <span id="print-modal-select-all" class="modal-inline bold">Select All</span>
         </div>
-        <section class="form-group checkbox-stacked">
+        <section class="form-group checkbox-stacked" ng-repeat="program_category in found_programs | orderBy:'sort'">
+
           <div class="program-header hover-shade">
-            <span>Program category</span>
+            <span>{{program_category.name}}</span>
           </div>
 
-          <div class="checkbox" ng-repeat="program in found_programs">
+          <div class="checkbox" ng-repeat="program in program_category.programs">
             <input type="checkbox" ng-value="y" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
             <label for="{{program.code}}"><span></span><ng-label text="{{program.name_display}}"></ng-label></label>
           </div>
+
         </section>
       </div>
       <div class="modal-footer">

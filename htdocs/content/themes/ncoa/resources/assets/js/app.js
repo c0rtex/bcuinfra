@@ -139,12 +139,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             }
         })
         .state('fact-sheets', {
-            url: "/fact-sheets/:programCode/:stateId/:short/:zipcode/:elegible",
+            url: "/fact-sheets/:programCode/:stateId/:short/:zipcode",
             templateUrl: function($stateParams) {
                 if ($stateParams.short == "y") {
-                    return '/fact-sheets/factsheet_' + $stateParams.programCode + "/?state=" + $stateParams.stateId + "&short_layout=y&short=y&zipcode=" + $stateParams.zipcode + "&elegible=" + $stateParams.elegible;
+                    return '/fact-sheets/factsheet_' + $stateParams.programCode + "/?state=" + $stateParams.stateId + "&short_layout=y&short=y&zipcode=" + $stateParams.zipcode;
                 } else {
-                    return '/fact-sheets/factsheet_' + $stateParams.programCode + "/?state=" + $stateParams.stateId + "&short_layout=y&zipcode=" + $stateParams.zipcode + "&elegible=" + $stateParams.elegible;
+                    return '/fact-sheets/factsheet_' + $stateParams.programCode + "/?state=" + $stateParams.stateId + "&short_layout=y&zipcode=" + $stateParams.zipcode;
                 }
             }
         })
@@ -973,7 +973,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 }]);
 
 
-app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, $state, Drugs, CronicConditions) {
+app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, BenefitItems, $state, Drugs, CronicConditions) {
     return {
         restrict: 'A',
         templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
@@ -1016,10 +1016,12 @@ app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicCon
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
-                for (var i=0;i<screening.data.results.found_programs.length;i++) {
-                    for (var j=0;j<screening.data.results.found_programs[i].programs.length;j++) {
-                        scope.found_programs.push(screening.data.results.found_programs[i].programs[j]);
-                    }
+                scope.found_programs = screening.data.results.found_programs;
+
+                for (var i=0;i<scope.found_programs.length;i++) {
+                    var program_category = BenefitItems.getByCode(scope.found_programs[i].category);
+                    scope.found_programs[i].name= program_category.name;
+                    scope.found_programs[i].sort = program_category.sort;
                 }
             }
 
@@ -2246,20 +2248,8 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
     prescreen.data.results.found_programs.forEach(function(element) {
         if (prescreen.data.answers[element.category]) {
-            // -- BCURD-336 -- //
-            if (element.category == 'bcuqc_category_veteran' && prescreen.data.answers.veteran == 'n') {
-                $scope.found_programs.push({
-                    'category': element.category,
-                    'count': 0,
-                    'programs': []
-                });
-            }
-            else {
-                $scope.found_programs.push(element);
-            }
-            // -- BCURD-336 -- //
-
             returned_programs.push(element.category);
+            $scope.found_programs.push(element);
         }
 
         $scope.available_fact_sheets[element.category] = [];
@@ -2305,8 +2295,7 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', functi
         },
         scope: {
             found_program:"=foundProgram",
-            short:"@",
-            elegible:"@"
+            short:"@"
         }
     }
 }]);

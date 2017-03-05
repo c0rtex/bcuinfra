@@ -18,7 +18,7 @@
     <div class="card-nested row">
       <div class="col-xs-12">
         <div class="fact-sheet-icon-hdr">
-        	<span class="icon-block-food pull-left"></span>
+          <span class="icon-block-food pull-left"></span>
           <div class="pull-left">
             <div class="fact-sheets-header fact-sheets-top-header">Food &amp; Nutrition</div>
             <div class="fact-sheets-header fact-sheets-bottom-header">Supplemental Nutrition Assistance Program (SNAP)</div>
@@ -28,7 +28,7 @@
 
       <div class="col-md-9">
         <p>The Supplemental Nutrition Assistance Program (SNAP) (the new name for the federal Food Stamp Program) helps low-income individuals and families buy the food they need for good health. Although SNAP is the national name, your state may use a different name.</p>
-        <p>Use this map to learn more about SNAP and find application forms to apply for this benefit.</p>
+        <p>Use this map to learn more about SNAP and find application froms to apply for this benefit.</p>
 
         {{ Form::open('/resources/details', 'post', false, [
         'class' => 'form-inline state-selection'

@@ -21,7 +21,7 @@
             <div class="super-footer">
                 <div class="super-footer-inner">
                     <span class="super-footer-copyright">
-                        &copy; <?php echo date("Y"); ?> National Council on Aging. All Rights Reserved.
+                        &copy; <?php echo date("Y"); ?> National Council on Aging. All rights reserved.
                     </span>
                     <!-- <span class="super-footer-link"><a href="#">Sitemap</a></span>
                     <span class="super-footer-spacer">|</span> -->
