@@ -143,10 +143,11 @@
         </cftransaction>
 
         <cfif structKeyExists(answers,"lastSet")>
-            <cfset this.calcLastSet(screening,pgno)>
-            <cfset screening.setEnd_datetime(Now())>
-            <cfset entitySave(screening)>
-
+            <cftransaction>
+                <cfset this.calcLastSet(screening,pgno)>
+                <cfset screening.setEnd_datetime(Now())>
+                <cfset entitySave(screening)>
+            </cftransaction>
             <cfset pc = createObject("component","bcu.rest.Programs")>
 
             <cfset pc.calcForScreening(screening.getId())>
@@ -206,12 +207,12 @@
 
         <cfset county = ormExecuteQuery("select id from county c where c.name=? and c.state.id=?",[countyName,saArray["st"]])>
         <cfif arraylen(county) neq 0>
-            <cfset var answerField = entityload("answer_field",{code="county_id"})>
+            <cfset var answerField = entityload("answer_field",{code="county"})>
             <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,county[1],1)>
         <cfelse>
             <cfset var countyZip = entityLoadByPK("zip",saArray["zip"])>
             <cfif !isNull(countyZip)>
-                <cfset var answerField = entityload("answer_field",{code="county_id"})>
+                <cfset var answerField = entityload("answer_field",{code="county"})>
                 <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getId(),1)>
 
                 <cfset var answerField = entityload("answer_field",{code="county"})>
