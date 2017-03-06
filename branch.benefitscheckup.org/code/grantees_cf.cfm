@@ -130,14 +130,15 @@ Struct of structs of grantee logos
 <cfset granteeStruct.granteeStateName = "Illinois">
 <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
+<!--- Hana Center, formerly Korean American Community Services --->
 <cfset granteeStruct = structNew() />
 <cfset granteeStruct.granteeLogo = "">
-<cfset granteeStruct.granteeUrl = "http://www.kacschicago.org">
+<cfset granteeStruct.granteeUrl = "http://www.kacschicago.org/">
 <cfset granteeStruct.granteeImg = "">
 <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
-<cfset granteeStruct.granteeAltText = "Korean American Community Services">
+<cfset granteeStruct.granteeAltText = "Hana Center">
 <cfset granteeStruct.granteeID = "">
-<cfset granteeStruct.granteeState = "Illinois Korean American Community Services">
+<cfset granteeStruct.granteeState = "Illinois Hana Center">
 <cfset granteeStruct.granteeStateName = "Illinois">
 <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
@@ -498,14 +499,15 @@ Struct of structs of grantee logos
 <cfset granteeStruct.granteeStateName = "Tennessee">
 <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
+<!--- Sixty & Better, formerly Senior Citizen Services of Tarrant County --->
 <cfset granteeStruct = structNew() />
 <cfset granteeStruct.granteeLogo = "">
-<cfset granteeStruct.granteeUrl = "http://www.scstc.org">
+<cfset granteeStruct.granteeUrl = "http://www.sixtyandbetter.org">
 <cfset granteeStruct.granteeImg = "">
 <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
-<cfset granteeStruct.granteeAltText = "Senior Citizen Services of Greater Tarrant County">
+<cfset granteeStruct.granteeAltText = "Sixty & Better">
 <cfset granteeStruct.granteeID = "">
-<cfset granteeStruct.granteeState = "Texas Senior Citizen Services of Greater Tarrant County">
+<cfset granteeStruct.granteeState = "Texas Sixty & Better">
 <cfset granteeStruct.granteeStateName = "Texas">
 <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
