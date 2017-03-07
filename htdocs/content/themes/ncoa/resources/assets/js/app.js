@@ -2244,15 +2244,18 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
     $scope.found_programs = [];
     $scope.available_fact_sheets = {};
 
-    prescreen.data.results.found_programs.forEach(function(element) {
+    prescreen.data.results.found_programs.forEach(function(element, index) {
         if (prescreen.data.answers[element.category]) {
             // -- BCURD-336 -- //
             if (element.category == 'bcuqc_category_veteran' && prescreen.data.answers.veteran == 'n') {
-                $scope.found_programs.push({
+                var emptyProgram = {
                     'category': element.category,
                     'count': 0,
                     'programs': []
-                });
+                };
+
+                $scope.found_programs.push(emptyProgram);
+                prescreen.data.results.found_programs[index] = emptyProgram;
             }
             else {
                 $scope.found_programs.push(element);
