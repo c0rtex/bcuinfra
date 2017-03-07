@@ -10905,18 +10905,22 @@ margin-top: 20px;
 display: block;
 }
 
-/*hide the input placeholders upon input focus*/
-
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
-input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+.survey-answers a {
+  margin: 8px 0;
+}
 
 @media (max-width: 400px) {
   .fact-sheets-side-link {
     font-size: 16px;
   }
 }
+
+/*hide the input placeholders upon input focus*/
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 
 /*!
  * angular-loading-bar v0.9.0
