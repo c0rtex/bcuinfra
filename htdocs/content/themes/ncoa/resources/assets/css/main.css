@@ -10912,6 +10912,12 @@ input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
 input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 
+@media (max-width: 400px) {
+  .fact-sheets-side-link {
+    font-size: 16px;
+  }
+}
+
 /*!
  * angular-loading-bar v0.9.0
  * https://chieffancypants.github.io/angular-loading-bar
