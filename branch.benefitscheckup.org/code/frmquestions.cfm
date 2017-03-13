@@ -124,24 +124,7 @@ REQUIRED: form fields from frmWelcome
             }
             </SCRIPT>
             <cfset validationError = 1>
-        </cfif>
-    </cfif>
-    </cfif>
-    <cfif not validationError>
-    <cfif session.partner_id is 76 AND (IsDefined('form.FIT_AGENCY_ID') AND form.FIT_AGENCY_ID neq '')>
-    	<cfset value = form.fit_agency_id>
-        <cfset firstchar = Left(value, 1)>
-	<cfif firstchar neq 8 and firstchar neq 9>
-		<cfset isValid = 0 >
-	</cfif>
-        <cfif not isValid>
-			<SCRIPT LANGUAGE="javascript">
-            {
-                alert("The first digit of your HUD HCS# must be an '8' or a '9'.");
-                history.go(-1);
-            }
-            </SCRIPT>
-            <cfset validationError = 1>
+        <cfelse>
         </cfif>
     </cfif>
     </cfif>
