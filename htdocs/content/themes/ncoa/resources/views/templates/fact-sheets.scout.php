@@ -172,6 +172,9 @@
                         <span class="fact-sheets-side-header">Quick Links</span>
 
                         <?php
+                        $food_only_available = false;
+                        $multi_program_available = false;
+
                         foreach($app_forms as $ekey => $evalue){
                             if($evalue->type=='online'){
                                 echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
@@ -183,6 +186,19 @@
 
                         <?php $pos=0 ?>
                         @foreach($app_forms as $ekey => $evalue)
+
+                        <?php
+                        // Any 'Multi-Programs' in the list?
+                        if (strstr(strtolower($evalue->caption), 'multi-program')) {
+                            $multi_program_available = true;
+                        }
+
+                        // Any 'Food Only' programs?
+                        if (strstr(strtolower($evalue->caption), 'food only ')) {
+                            $food_only_available = true;
+                        }
+                        ?>
+
                         <?php $isAdded = false?>
                         @if(($evalue->type!='online')&&($pos<2))
                         <?php $pos++ ?>
@@ -304,6 +320,25 @@
 
                     </div>
                     @endif
+
+                    @if ($food_only_available !== false || $multi_program_available !== false)
+                    <div class="results-options">
+                        <p><span class="fact-sheets-side-header">Definition(s)</span></p>
+                        @if ($multi_program_available !== false)
+                        <p>
+                            <span><strong>Multi-Program Forms:</strong></span><br />
+                            <span><em>This is to apply for more than one program at the same time.</em></span>
+                        </p>
+                        @endif
+                        @if ($food_only_available !== false)
+                        <p>
+                            <span><strong>Food Only Forms:</strong></span><br />
+                            <span><em>This is to apply for the SNAP/Food Stamp program only.</em></span>
+                        </p>
+                        @endif
+                    </div>
+                    @endif
+
                     @if (!empty($snap_findstores_url)) 
                     <div class="results-options feedback-box">
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
