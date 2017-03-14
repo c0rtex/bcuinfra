@@ -205,13 +205,8 @@
     <cffunction name="getAnswersFilteredByState">
         <cfargument name="question">
         <cfargument name="state" default="">
-        <cfif ((question.getCode() eq 'receive')OR(question.getCode() eq 'interests'))>
-            <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a join a.programs p where qaf.question=? and (p.state is null or p.state=?) and (a.state is null or a.state=?) and p.active_flag=1 and p.exclude_flag=0 order by qaf.sort",[question,state,state])>
-        <cfelseif  ((question.getCode() eq 'vet_status')OR(question.getCode() eq 'sp_vet_status')OR(question.getCode() eq 'employer'))>
-            <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a join a.programs p where qaf.question=? and p.state=? and (a.state is null or a.state=?) and p.active_flag=1 and p.exclude_flag=0 order by qaf.sort",[question,state,state])>
-        <cfelse>
-            <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qaf join qaf.answer a where qaf.question=? and (a.state is null or a.state=?) order by qaf.sort",[question,state])>
-        </cfif>
+
+        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p where qa.question=? and (a.state is null or a.state=?) and (p.state is null or p.state=?) and ((p.active_flag=1 and p.exclude_flag=0) or p.active_flag is null)",[question,state,state])>
         <cfset var retArray = arrayNew(1)>
         <cfloop array="#answers#" index="i">
             <cfset var afStrct = i.toStructure()>
@@ -221,7 +216,7 @@
                     <cfset afStrct['default'] = defOpt[1].toStructure()>
                 <cfelse>
                     <cfif (afStrct["type"] eq 'yn')>
-                        <cfif i.getDefault_value() eq 1>
+                        <cfif i.getAnswer().getDefault_value() eq 1>
                             <cfset afStrct['default'] = 'y'>
                         <cfelse>
                             <cfset afStrct['default'] = 'n'>
