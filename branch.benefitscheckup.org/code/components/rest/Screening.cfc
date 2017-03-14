@@ -226,7 +226,20 @@
             </cfif>
         </cfif>
 
+        <cfif not structKeyExists(saArray,"housing")>
+            <cfset var answerField = entityload("answer_field",{code="housing"})>
+            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,"",1)>
+        </cfif>
 
+        <cfif not structKeyExists(saArray,"gender")>
+            <cfset var answerField = entityload("answer_field",{code="gender"})>
+            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,"",1)>
+        </cfif>
+
+        <cfif not structKeyExists(saArray,"chronic_condition")>
+            <cfset var answerField = entityload("answer_field",{code="chronic_condition"})>
+            <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,"",1)>
+        </cfif>
 
         <cfset var answerField = entityload("answer_field",{code="pri_resident"})>
         <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,'y',1)>
