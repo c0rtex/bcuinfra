@@ -790,6 +790,19 @@
 								</cfif>
 							</cfif>
 						</cfcase>
+						<cfcase value="fit_agencyvalidation">
+							
+							<cf_handleScreeningAnswerfield action="get" code="fit_agency_id" element="val" var="fit_agency_id">
+							<cfset firstchar = Left(fit_agency_id, 1)>
+							<cfset isValid = evaluate("REFind('^[0-9]{5}$',fit_agency_id)")>
+							<cfif (firstchar neq 8 and firstchar neq 9)  or not (isvalid) >
+                            					<cfset badList = ListAppend(badList,lsiTrueVar)>
+								<cf_handleScreeningAnswerfield action="set" code="#lsiTrueVar#" group="valid" error="#afvalid#">
+								<cfset typeError = true>
+								
+							</cfif>	
+							
+						</cfcase>
 					</cfswitch>
 				<cfelse>
 					<cfset result = Evaluate(validationformula)>
