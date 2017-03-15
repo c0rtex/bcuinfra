@@ -19,7 +19,7 @@
     }
   </style>
 
-  <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/libs.js"></script>
+  <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/bootstrap.min.js"></script>
 </head>
 <body>
 

@@ -1,0 +1,31 @@
+{
+  "name": "BenefitsCheckUp",
+  "authors": [
+    "Juan Esteban Garcia <ctxuser@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "sizzle": "2.2.1",
+    "angular": "1.5.8",
+    "angular-local-storage": "0.2.7",
+    "bootstrap": "3.3.7",
+    "angular-loading-bar": "0.9.0",
+    "slick-carousel": "1.6.0",
+    "angular-ui-router": "ui-router#0.2.18",
+    "angular-route": "^1.6.3",
+    "angular-animate": "^1.6.3",
+    "odometer": "^0.4.8"
+  }
+}
