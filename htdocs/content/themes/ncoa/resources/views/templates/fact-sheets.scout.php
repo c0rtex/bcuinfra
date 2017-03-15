@@ -2,6 +2,7 @@
 <?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
 <?php $snap_find_elegible = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
+<?php $fillable = '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'; ?>
 
 @extends($layout)
 
@@ -226,14 +227,14 @@
                                         @if(strpos($evalue->url, 'http')===0)
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
 
                                             <span class="fa fa-file fact-sheets-icon"></span>
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @endif
@@ -254,16 +255,16 @@
                                             @if($prev_evalue->type=='online')
                                                 <a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{ $prev_evalue->id }}&tgtPartner=0&tgtorg_id=0&tgt={{ $prev_evalue->url }}" class="btn btn-link fact-sheets-side-link" target="_new">
                                                     <span class="fa fa-file fact-sheets-icon"></span>
-                                                    <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
+                                                    <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
                                                 </a><br />
                                             @elseif(strpos($prev_evalue->url, 'http')===0)
                                             <a href="{{$prev_evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
+                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
                                             </a><br />
                                             @else
                                             <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$prev_evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$prev_evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                                 <span class="fa fa-file fact-sheets-icon"></span>
-                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span>
+                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
                                             </a><br />
                                             @endif
                                             @endforeach
@@ -273,13 +274,13 @@
                                         @if(strpos($evalue->url, 'http')===0)
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                             <span class="fa fa-file fact-sheets-icon"></span>
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @endif
