@@ -195,7 +195,7 @@
                         }
 
                         // Any 'Food Only' programs?
-                        if (strstr(strtolower($evalue->caption), 'food only ')) {
+                        if (strstr(strtolower($evalue->caption), 'food only')) {
                             $food_only_available = true;
                         }
                         ?>
