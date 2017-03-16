@@ -175,6 +175,7 @@
                         <?php
                         $food_only_available = false;
                         $multi_program_available = false;
+                        $fillable_available = false;
 
                         foreach($app_forms as $ekey => $evalue){
                             if($evalue->type=='online'){
@@ -197,6 +198,10 @@
                         // Any 'Food Only' programs?
                         if (strstr(strtolower($evalue->caption), 'food only')) {
                             $food_only_available = true;
+                        }
+
+                        if ($evalue->type == 'fillable') {
+                            $fillable_available = true;
                         }
                         ?>
 
@@ -322,7 +327,7 @@
                     </div>
                     @endif
 
-                    @if ($food_only_available !== false || $multi_program_available !== false)
+                    @if ($food_only_available !== false || $multi_program_available !== false || $fillable_available !== false)
                     <div class="results-options">
                         <p><span class="fact-sheets-side-header">Definition(s)</span></p>
                         @if ($multi_program_available !== false)
@@ -335,6 +340,11 @@
                         <p>
                             <span><strong>Food Only Forms:</strong></span><br />
                             <span><em>This is to apply for the SNAP/Food Stamp program only.</em></span>
+                        </p>
+                        @endif
+                        @if ($fillable_available !== false)
+                        <p>
+                            <br /><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <em>This is for fillable forms.</em>
                         </p>
                         @endif
                     </div>
