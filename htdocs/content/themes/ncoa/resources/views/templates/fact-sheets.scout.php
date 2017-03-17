@@ -1,5 +1,7 @@
-<!-- php the_meta(); -->
-<?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
+﻿<!-- php the_meta(); -->
+<?php 
+$food_only_available = false;
+$snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
 <?php $snap_find_elegible = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 <?php $fillable = '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'; ?>
