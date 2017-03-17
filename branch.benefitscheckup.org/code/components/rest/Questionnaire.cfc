@@ -206,7 +206,7 @@
         <cfargument name="question">
         <cfargument name="state" default="">
 
-        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and p.state=? and p.active_flag=1 and p.exclude_flag=0) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0) or p.id is null))) order by qa.sort",[question,state,state,state])>
+        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and (p.state=? or p.state is null) and p.active_flag=1 and p.exclude_flag=0) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0) or p.id is null))) order by qa.sort",[question,state,state,state])>
         <cfset var retArray = arrayNew(1)>
         <cfloop array="#answers#" index="i">
             <cfset var afStrct = i.toStructure()>
