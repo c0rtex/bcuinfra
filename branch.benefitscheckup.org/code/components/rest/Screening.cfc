@@ -205,7 +205,7 @@
         </cfif>
 
 
-        <cfset county = ormExecuteQuery("select id from county c where c.name=? and c.state.id=?",[countyName,saArray["st"]])>
+        <cfset county = ormExecuteQuery("select name from county c where c.name=? and c.state.id=?",[countyName,saArray["st"]])>
         <cfif arraylen(county) neq 0>
             <cfset var answerField = entityload("answer_field",{code="county"})>
             <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,county[1],1)>
@@ -213,7 +213,7 @@
             <cfset var countyZip = entityLoadByPK("zip",saArray["zip"])>
             <cfif !isNull(countyZip)>
                 <cfset var answerField = entityload("answer_field",{code="county"})>
-                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getId(),1)>
+                <cfset this.saveScreeningAnswerfield(screening,answerField[1],pgno,countyZip.getCounty().getName(),1)>
 
                 <cfset var answerField = entityload("answer_field",{code="county"})>
                 <cfset var sa = entityload("screening_answerfield",{screening=screening,answer=answerField[1]})>
