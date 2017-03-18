@@ -3,7 +3,7 @@
     <cffunction name="vobCountPeople" access="remote" restpath="/countpeople" returnType="String" httpMethod="GET">
 			<cftry>
 			<!--- Call data mine query to count screenings --->
-			<cfquery name="whscr" datasource="bcu_warehouse">
+			<cfquery name="whscr" datasource="bcu_warehouse" cachedWithin = "#CreateTimeSpan(0, 24, 0, 0)#" >
 					select count(s.id) as c from screening s join oe_org o on s.oe_org_id=o.id
 					where s.subset_id not in (41,53)
 	
@@ -23,7 +23,7 @@
     </cffunction>
 
  
-    <cffunction name="countVob" access="remote" restpath="/countvob" returnType="String" httpMethod="GET">
+    <cffunction name="countVob" access="remote" restpath="/countvob" returnType="String" httpMethod="GET" cachedWithin = "#CreateTimeSpan(0, 24, 0, 0)#" >
 			<cftry>
 			<!--- Call data mine query to sum dollar value --->
 			<cfquery name="whdlr" datasource="bcu_warehouse">
