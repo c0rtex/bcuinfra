@@ -5,27 +5,27 @@
     <form class="form-inline col-md-12">
       <div class="form-group">
           <label for="self">Self</label>
-          <input type="number" class="form-control" id="self" ng-change="setTotal()" ng-model="$root.answers[category][self_code+code]" placeholder="$0">
+          <input type="number" class="form-control" id="self" ng-change="setForJoint(code)" ng-model="$root.answers[category][self_code+code]" placeholder="$0">
       </div>
 
       <span ng-if="isMarital">
           <div class="form-group">
               <label for="spouse">Spouse</label>
-              <input type="number" class="form-control" id="spouse" ng-change="setTotal()" ng-model="$root.answers[category][spouse_code+code]" placeholder="$0">
+              <input type="number" class="form-control" id="spouse" ng-change="setForJoint(code)" ng-model="$root.answers[category][spouse_code+code]" placeholder="$0">
           </div>
           <div class="form-group">
               <label for="household">Joint</label>
-              <input type="number" class="form-control" id="joint" ng-change="setTotal()" ng-model="$root.answers[category][joint_code+code]" placeholder="$0">
+              <input disabled type="number" class="form-control" id="joint" ng-model="$root.answers[category][joint_code+code]" placeholder="$0">
           </div>
       </span>
 
       <div class="form-group">
           <label for="household">Household</label>
-          <input type="number" class="form-control" id="household" ng-change="setTotal()" ng-model="$root.answers[category][household_code+code+'_simple']" placeholder="$0">
+          <input type="number" class="form-control" id="household" ng-model="$root.answers[category][household_code+code+'_simple']" placeholder="$0">
       </div>
       <div class="form-group total">
         <label>Total</label>
-        <span class="form-control input-regular">${{$root.answers[category][self_code+code] + $root.answers[category][spouse_code+code] + $root.answers[category][joint_code+code] + $root.answers[category][household_code+code+'_simple'] + 0}}</span>
+        <span class="form-control input-regular">${{$root.answers[category][self_code+code] + $root.answers[category][spouse_code+code] + $root.answers[category][household_code+code+'_simple'] + 0}}</span>
       </div>
     </form>
 </section>

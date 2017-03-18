@@ -676,6 +676,18 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
             }
 
 
+            scope.setForJoint = function(code) {
+
+                var s = scope.$root.answers[scope.category][scope.self_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code + code];
+                var sp = scope.$root.answers[scope.category][scope.spouse_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code + code];
+                var s_sp = scope.$root.answers[scope.category][scope.joint_code+code] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+code];
+
+                if (s_sp < s + sp) {
+                    scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                }
+            };
+
+
             scope.calcTotal = function(code) {
                 var suffix = ((code == "hh_income_")||(code == "hh_asset_")) ? "_simple" : "";
                 if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};

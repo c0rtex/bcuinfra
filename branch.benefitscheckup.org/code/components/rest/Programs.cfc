@@ -1425,7 +1425,11 @@
         <cfset sa = structNew()>
         <cfloop array="#saArr#" index="i">
             <cfif isNull(i.getOption())>
-                <cfset sa[i.getAnswer().getCode()]=i.getResponse()>
+                <cfif isNull(i.getResponse())>
+                    <cfset sa[i.getAnswer().getCode()]="">
+                <cfelse>
+                    <cfset sa[i.getAnswer().getCode()]=i.getResponse()>
+                </cfif>
             <cfelse>
                 <cfif i.getAnswer().getAnswer_field_type().getId() eq 8>
                     <cfset sa[i.getAnswer().getCode()] = i.getOption().getDisplay().getDisplay_text()>
