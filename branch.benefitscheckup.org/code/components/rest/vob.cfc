@@ -25,7 +25,7 @@
  
     <cffunction name="countVob" access="remote" restpath="/countvob" returnType="String" httpMethod="GET" >
 			<cftry>
-			<!--- Call data mine query to sum dollar value --->
+			<!--- Call data mine query to sum dollar value - get value once per day cache for every 24 hour period --->
 			<cfquery name="whdlr" datasource="bcu_warehouse" cachedWithin = "#CreateTimeSpan(0, 24, 0, 0)#" >
 		      select sum(dollarvalue) as s
                     from screening s join oe_org o on s.oe_org_id = o.id 
