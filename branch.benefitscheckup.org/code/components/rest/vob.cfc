@@ -23,10 +23,10 @@
     </cffunction>
 
  
-    <cffunction name="countVob" access="remote" restpath="/countvob" returnType="String" httpMethod="GET" cachedWithin = "#CreateTimeSpan(0, 24, 0, 0)#" >
+    <cffunction name="countVob" access="remote" restpath="/countvob" returnType="String" httpMethod="GET" >
 			<cftry>
 			<!--- Call data mine query to sum dollar value --->
-			<cfquery name="whdlr" datasource="bcu_warehouse">
+			<cfquery name="whdlr" datasource="bcu_warehouse" cachedWithin = "#CreateTimeSpan(0, 24, 0, 0)#" >
 		      select sum(dollarvalue) as s
                     from screening s join oe_org o on s.oe_org_id = o.id 
                     where (s.subset_id != 41 or              
@@ -36,7 +36,7 @@
 			</cfquery>
 			<cfset retVal = whdlr.s + 300000000>
 			<cfcatch>
-				<cfset retVal = 18039991961>
+				<cfset retVal = 1880000000>
 			</cfcatch>
 			</cftry>
         	<cfreturn serializeJSON(retVal)>
