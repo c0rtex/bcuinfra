@@ -5,7 +5,12 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     $scope.months = Months;
 
     $scope.programs = BenefitItems.getBenefitItems();
-    $scope.selectLinkText = "Select All";
+
+    if (BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == $scope.programs.length) {
+        $scope.selectLinkText = "Deselect All";
+    } else {
+        $scope.selectLinkText = "Select All";
+    }
 
     $scope.showSpouseVeteranStatus = function(){
         if ($scope.$root.answers[category.currentCategory()].marital_stat == undefined) {

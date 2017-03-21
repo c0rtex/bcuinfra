@@ -676,6 +676,18 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
             }
 
 
+            scope.setForJoint = function(code) {
+
+                var s = scope.$root.answers[scope.category][scope.self_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code + code];
+                var sp = scope.$root.answers[scope.category][scope.spouse_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code + code];
+                var s_sp = scope.$root.answers[scope.category][scope.joint_code+code] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+code];
+
+                if (s_sp < s + sp) {
+                    scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                }
+            };
+
+
             scope.calcTotal = function(code) {
                 var suffix = ((code == "hh_income_")||(code == "hh_asset_")) ? "_simple" : "";
                 if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
@@ -752,6 +764,7 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
         }
     }
 }]);
+
 app.directive('ncoaLoader', function(){
     return {
         restrict: 'E',
@@ -973,7 +986,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 }]);
 
 
-app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, $state, Drugs, CronicConditions) {
+app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Drugs', 'CronicConditions', function (prescreen,screening, BenefitItems, $state, Drugs, CronicConditions) {
     return {
         restrict: 'A',
         templateUrl: '/content/themes/ncoa/resources/views/directives/profile/profile.html?'+(new Date()),
@@ -1016,10 +1029,12 @@ app.directive('profile', ['prescreen','screening', '$state', 'Drugs', 'CronicCon
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
-                for (var i=0;i<screening.data.results.found_programs.length;i++) {
-                    for (var j=0;j<screening.data.results.found_programs[i].programs.length;j++) {
-                        scope.found_programs.push(screening.data.results.found_programs[i].programs[j]);
-                    }
+                scope.found_programs = screening.data.results.found_programs;
+
+                for (var i=0;i<scope.found_programs.length;i++) {
+                    var program_category = BenefitItems.getByCode(scope.found_programs[i].category);
+                    scope.found_programs[i].name= program_category.name;
+                    scope.found_programs[i].sort = program_category.sort;
                 }
             }
 
@@ -1736,7 +1751,12 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     $scope.months = Months;
 
     $scope.programs = BenefitItems.getBenefitItems();
-    $scope.selectLinkText = "Select All";
+
+    if (BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == $scope.programs.length) {
+        $scope.selectLinkText = "Deselect All";
+    } else {
+        $scope.selectLinkText = "Select All";
+    }
 
     $scope.showSpouseVeteranStatus = function(){
         if ($scope.$root.answers[category.currentCategory()].marital_stat == undefined) {
