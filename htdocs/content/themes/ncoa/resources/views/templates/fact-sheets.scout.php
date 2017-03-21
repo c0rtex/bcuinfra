@@ -1,6 +1,12 @@
-<!-- php the_meta(); -->
-<?php $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
+ï»¿<!-- php the_meta(); -->
+<?php 
+$food_only_available = false;
+$multi_program_available = false;
+$fillable_available = false;
+$snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_debit_card_in_english_and_spanish', $single = true)); ?>
+<?php $snap_find_elegible = trim(Meta::get(Loop::id(), $key = 'find_out_if_youre_eligible', $single = true)); ?>
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
+<?php $fillable = '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'; ?>
 
 @extends($layout)
 
@@ -32,6 +38,7 @@
                         ?>
                       </span>
                         <div class="pull-left">
+                        
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
                             <div class="fact-sheets-header fact-sheets-bottom-header"><h1>{{ Loop::title() }}</h1></div>
                         </div>
@@ -146,7 +153,7 @@
                     @endif
                 </div>
 
-                <div class="col-md-3 hidden-xs hidden-sm">
+                <div class="col-xs-12 col-md-3">
                     @if(Loop::id() == '7284')
                     <div style="margin: 20px 0">
                         <a href="{{ get_permalink(12464) }}" class="btn btn-primary btn-block">Espa&ntilde;ol</a>
@@ -170,6 +177,10 @@
                         <span class="fact-sheets-side-header">Quick Links</span>
 
                         <?php
+                        $food_only_available = false;
+                        $multi_program_available = false;
+                        $fillable_available = false;
+
                         foreach($app_forms as $ekey => $evalue){
                             if($evalue->type=='online'){
                                 echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
@@ -181,13 +192,30 @@
 
                         <?php $pos=0 ?>
                         @foreach($app_forms as $ekey => $evalue)
+
+                        <?php
+                        // Any 'Multi-Programs' in the list?
+                        if (strstr(strtolower($evalue->caption), 'multi-program')) {
+                            $multi_program_available = true;
+                        }
+
+                        // Any 'Food Only' programs?
+                        if (strstr(strtolower($evalue->caption), 'food only')) {
+                            $food_only_available = true;
+                        }
+
+                        if ($evalue->type == 'fillable') {
+                            $fillable_available = true;
+                        }
+                        ?>
+
                         <?php $isAdded = false?>
                         @if(($evalue->type!='online')&&($pos<2))
                         <?php $pos++ ?>
                         <?php $isAdded = true ?>
                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
                             <span class="fa fa-file fact-sheets-icon"></span>
-                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
+                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                         </a>
                         @endif
 
@@ -208,34 +236,61 @@
                                         @if(strpos($evalue->url, 'http')===0)
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
 
                                             <span class="fa fa-file fact-sheets-icon"></span>
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @endif
                                         @endif
                                         <?php $pos++ ?>
                                         @endif
 
-                                        @if (($pos >= 3)&&($evalue->type!='online')&&(!$isAdded))
+                                        @if ($pos >= 3)
+
+                                        <?php
+                                        // Line added to print previous item (Application Form)
+                                        $prev_vals = array_slice($app_forms, 0, $ekey);
+                                        static $printed_prev = false;
+                                        ?>
+
+                                        @if(!$printed_prev)
+                                            @foreach($prev_vals as $prev_ekey => $prev_evalue)
+                                            @if($prev_evalue->type=='online')
+                                                <a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{ $prev_evalue->id }}&tgtPartner=0&tgtorg_id=0&tgt={{ $prev_evalue->url }}" class="btn btn-link fact-sheets-side-link" target="_new">
+                                                    <span class="fa fa-file fact-sheets-icon"></span>
+                                                    <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                                </a><br />
+                                            @elseif(strpos($prev_evalue->url, 'http')===0)
+                                            <a href="{{$prev_evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                            </a><br />
+                                            @else
+                                            <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$prev_evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$prev_evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                                <span class="fa fa-file fact-sheets-icon"></span>
+                                                <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                            </a><br />
+                                            @endif
+                                            @endforeach
+                                            <?php $printed_prev = true; ?>
+                                        @endif
 
                                         @if(strpos($evalue->url, 'http')===0)
 
                                         <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
                                         <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                             <span class="fa fa-file fact-sheets-icon"></span>
-                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span>
-                                        </a>
+                                            <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
+                                        </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @endif
                                         @endif
@@ -261,14 +316,44 @@
                         </br>
                         <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
                         @endif
-			@if (!empty($snap_findstores_url))
+
+			            @if (!empty($snap_findstores_url))
                         </br>
                         <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
+                        @endif
+
+                        @if (($is_snap) && ($elegible != 'n') && !empty($snap_find_elegible))
+                        </br>
+                        <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
                         @endif
 			
 
                     </div>
                     @endif
+
+                    @if ($food_only_available !== false || $multi_program_available !== false || $fillable_available !== false)
+                    <div class="results-options">
+                        <p><span class="fact-sheets-side-header">Definition(s)</span></p>
+                        @if ($multi_program_available !== false)
+                        <p>
+                            <span><strong>Multi-Program Forms:</strong></span><br />
+                            <span><em>This is to apply for more than one program at the same time.</em></span>
+                        </p>
+                        @endif
+                        @if ($food_only_available !== false)
+                        <p>
+                            <span><strong>Food Only Forms:</strong></span><br />
+                            <span><em>This is to apply for the SNAP/Food Stamp program only.</em></span>
+                        </p>
+                        @endif
+                        @if ($fillable_available !== false)
+                        <p>
+                            <br /><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <em>This is for fillable forms.</em>
+                        </p>
+                        @endif
+                    </div>
+                    @endif
+
                     @if (!empty($snap_findstores_url)) 
                     <div class="results-options feedback-box">
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
@@ -297,7 +382,7 @@
     jQuery(document).ready(function () {
         //Lynna Cekova: click to call
         var countrycodes = "1"
-        var delimiters = "-|\\.|—|–|&nbsp;"
+        var delimiters = "-|\\.|ï¿½|ï¿½|&nbsp;"
         var phonedef = "\\+?(?:(?:(?:" + countrycodes + ")(?:\\s|" + delimiters + ")?)?\\(?[2-9]\\d{2}\\)?(?:\\s|" + delimiters + ")?[2-9]\\d{2}(?:" + delimiters + ")?[0-9a-z]{4})"
         var spechars = new RegExp("([- \(\)\.:]|\\s|" + delimiters + ")","gi") //Special characters to be removed from the link
         var phonereg = new RegExp("(Fax:)?((^|[^0-9])(href=[\"']tel:)?((?:" + phonedef + ")[\"'][^>]*?>)?(" + phonedef + ")($|[^0-9]))","gi")
@@ -324,4 +409,27 @@
 
 </script>
 @endquery
+@stop
+
+@section('misc-scripts')
+<script type="text/javascript">
+    // Adjust font-size based on the number of characters in the heading
+    $(function() {
+
+        var $heading = $(".fact-sheets-header h1");
+
+        var $numChars = $heading.text().length;
+
+        if (($numChars > 45) && ($numChars < 70)) {
+            $heading.css("font-size", "25px");
+        }
+        else if ($numChars > 70) {
+            $heading.css("font-size", "19px");
+        }
+        else {
+            $heading.css("font-size", "30px");
+        }
+
+    });
+</script>
 @stop

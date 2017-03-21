@@ -12,7 +12,14 @@
     .faq {
       margin-bottom: 10px;
     }
+    .popover-link {
+      color: #1888de;
+      text-decoration: underline;
+      cursor: hand;
+    }
   </style>
+
+  <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/bootstrap.min.js"></script>
 </head>
 <body>
 

@@ -6,33 +6,35 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">
     <script src="<?php echo themosis_assets() ?>/js/7683b69978.js"></script>
+    <!-- Google Tag Manager -->
+    <script>
+      dataLayer = [
+        { 'partner_id': '0', 'partner_name': '', 'subset_id': '0', 'state': '', }
+      ];
+    </script>
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push(
+          { 'gtm.start': new Date().getTime(), event: 'gtm.js' }
+        );
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+          '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-PHJ4LQ');</script>
+    <!-- End Google Tag Manager -->
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
-<script>
-    dataLayer = [
-        { 'partner_id': '0', 'partner_name': '', 'subset_id': '0', 'state': '', }
-    ];
-</script>
-<!-- Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
 <noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHJ4LQ"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHJ4LQ"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
-<script>(function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push(
-            { 'gtm.start': new Date().getTime(), event: 'gtm.js' }
-        );
-        var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src =
-            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-PHJ4LQ');</script>
-<!-- End Google Tag Manager -->
+<!-- End Google Tag Manager (noscript) -->
 
 @include('partials.header')
 
@@ -48,7 +50,17 @@
     @endif
 </footer>
 
-<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/libs.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/sizzle.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular-animate.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular-route.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular-local-storage.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/odometer.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/slick.min.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/loading-bar.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/app.js"></script>
 
