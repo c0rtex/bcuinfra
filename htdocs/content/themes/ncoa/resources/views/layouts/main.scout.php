@@ -25,7 +25,17 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-PHJ4LQ');</script>
     <!-- End Google Tag Manager -->
-
+    
+    <!-- LiveChat Module -->
+		<script type="text/javascript">
+		window.__lc = window.__lc || {};
+		window.__lc.license = 8680516;
+		(function() {
+		  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+		  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+		})();
+		</script>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
