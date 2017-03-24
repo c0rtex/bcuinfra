@@ -124,5 +124,5 @@
 		<cfset session.click.count = 1>
 	</cfif>
 
-	<cflocation url="#tgt#">
+	<cflocation url="#tgt#" addtoken="no">
 </cfif>
