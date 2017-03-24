@@ -2303,8 +2303,7 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', functi
         link: function(scope, element) {
             scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
             scope.stateId = prescreen.data.answers.stateId;
-            scope.defaultLangsFullScreen = window.defaultLangsFullScreen;
-            scope.defaultLangsPreScreen = window.defaultLangsPreScreen;
+            scope.defaultLangs = window.defaultLangs;
             scope.zipcode = prescreen.data.answers.zip;
         },
         scope: {
