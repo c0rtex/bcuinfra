@@ -4,7 +4,8 @@
 
 <script>
 	window.webServiceUrl = '{{$webServiceUrl}}';
-	window.defaultLangs = JSON.parse('{{$defaultLangs}}');
+	window.defaultLangsFullScreen = JSON.parse('{{defaultLangsFullScreen}}');
+	window.defaultLangsPreScreen = JSON.parse('{{defaultLangsPreScreen}}');
 	if (window.name == '') {
 		window.name = '{{microtime(true)}}';
 	}
