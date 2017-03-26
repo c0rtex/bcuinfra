@@ -53,6 +53,50 @@ class FactSheetsController extends BaseController
         // Detect if SNAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
 
+        $key_benefits_program = false;
+        $key_benefits_program_codes = array(
+            'medicaid_ak_expanded_medicaid',
+            'medicaid_ar_expanded_medicaid',
+            'medicaid_az_expanded_medicaid',
+            'medicaid_ca_expanded_medicaid',
+            'medicaid_co_expanded_medicaid',
+            'medicaid_ct_expanded_medicaid',
+            'medicaid_dc_expanded_medicaid',
+            'medicaid_de_expanded_medicaid',
+            'medicaid_hi_expanded_medicaid',
+            'medicaid_ia_expanded_medicaid',
+            'medicaid_il_expanded_medicaid',
+            'medicaid_in_expanded_medicaid',
+            'medicaid_ky_expanded_medicaid',
+            'medicaid_la_expanded_medicaid',
+            'medicaid_ma_expanded_medicaid',
+            'medicaid_md_expanded_medicaid',
+            'medicaid_mi_expanded_medicaid',
+            'medicaid_mn_expanded_medicaid',
+            'medicaid_mt_expanded_medicaid',
+            'medicaid_nd_expanded_medicaid',
+            'medicaid_nh_expanded_medicaid',
+            'medicaid_nj_expanded_medicaid',
+            'medicaid_nm_expanded_medicaid',
+            'medicaid_nv_expanded_medicaid',
+            'medicaid_ny_expanded_medicaid',
+            'medicaid_oh_expanded_medicaid',
+            'medicaid_or_expanded_medicaid',
+            'medicaid_pa_expanded_medicaid',
+            'medicaid_ri_expanded_medicaid',
+            'medicaid_vt_expanded_medicaid',
+            'medicaid_wa_expanded_medicaid',
+            'medicaid_wv_expanded_medicaid'
+        );
+
+        foreach ($key_benefits_program_codes as $key => $program_code) {
+            if (strstr($_SERVER['REQUEST_URI'], $program_code)) {
+                $key_benefits_program = true;
+                break;
+            }
+        }
+
+
         // Should we display the 'Find Out if Elegible' link?
         if (array_key_exists('elegible', $_REQUEST)) {
             $elegible = $_REQUEST['elegible'];
@@ -98,6 +142,7 @@ class FactSheetsController extends BaseController
                 'is_alt' => false,
                 'is_snap' => $is_snap,
                 'elegible' => $elegible,
+                'key_benefits_program' => $key_benefits_program
             ])->render();
 
         } else {
@@ -141,6 +186,7 @@ class FactSheetsController extends BaseController
                 'is_alt' => false,
                 'is_snap' => $is_snap,
                 'elegible' => $elegible,
+                'key_benefits_program' => $key_benefits_program
             ])->render();
         }
     }
