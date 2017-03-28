@@ -53,8 +53,8 @@ class FactSheetsController extends BaseController
         // Detect if SNAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
 
-        $key_benefits_program = false;
-        $key_benefits_program_codes = array(
+        $key_benefits_program_codes = array();
+        $key_benefits_program_codes['expanded_mdcd']['codes'] = array(
             'medicaid_ak_expanded_medicaid',
             'medicaid_ar_expanded_medicaid',
             'medicaid_az_expanded_medicaid',
@@ -87,6 +87,14 @@ class FactSheetsController extends BaseController
             'medicaid_vt_expanded_medicaid',
             'medicaid_wa_expanded_medicaid',
             'medicaid_wv_expanded_medicaid',
+        );
+        $key_benefits_program_codes['expanded_mdcd']['survey'] = array(
+            'very_likely' => 'https://www.surveymonkey.com/r/M8VFFSD',
+            'somewhat_likely' => 'https://www.surveymonkey.com/r/M8VTDDH',
+            'not_likely' => 'https://www.surveymonkey.com/r/M8VP7FX',
+        );
+
+        $key_benefits_program_codes['mdcd']['codes'] = array(
             'medicaid_ak_medicaid',
             'medicaid_al_medicaid',
             'medicaid_ar_medicaid',
@@ -138,6 +146,14 @@ class FactSheetsController extends BaseController
             'medicaid_wi_medicaid',
             'medicaid_wv_medicaid',
             'medicaid_wy_medicaid',
+        );
+        $key_benefits_program_codes['mdcd']['survey'] = array(
+            'very_likely' => 'https://www.surveymonkey.com/r/RHGGCR9',
+            'somewhat_likely' => 'https://www.surveymonkey.com/r/RHBDG9J',
+            'not_likely' => 'https://www.surveymonkey.com/r/RHBTFN7',
+        );
+
+        $key_benefits_program_codes['msp']['codes'] = array(
             'health_fd_msp_qmb',
             'health_fd_msp_slmb',
             'health_fd_msp_qi',
@@ -145,8 +161,28 @@ class FactSheetsController extends BaseController
             'health_az_mcs_qmb',
             'health_az_mcs_slmb',
             'health_az_mcs_qi',
-            'rxgov_fd_medicare_lis',
-            'utility_fd_liheap',
+        );
+        $key_benefits_program_codes['msp']['survey'] = array(
+            'very_likely' => 'https://www.surveymonkey.com/r/RHHRTKR',
+            'somewhat_likely' => 'https://www.surveymonkey.com/r/RHH5ZFF',
+            'not_likely' => 'https://www.surveymonkey.com/r/RHP7QZL',
+        );
+
+        $key_benefits_program_codes['lis']['codes'] = array('rxgov_fd_medicare_lis');
+        $key_benefits_program_codes['lis']['survey'] = array(
+            'very_likely' => 'https://www.surveymonkey.com/r/RHFHNGS',
+            'somewhat_likely' => 'https://www.surveymonkey.com/r/RH3STF8',
+            'not_likely' => 'https://www.surveymonkey.com/r/RH3BRVH',
+        );
+
+        $key_benefits_program_codes['liheap']['codes'] = array('utility_fd_liheap');
+        $key_benefits_program_codes['liheap']['survey'] = array(
+            'very_likely' => 'https://www.surveymonkey.com/r/RHZPWBG',
+            'somewhat_likely' => 'https://www.surveymonkey.com/r/RH5KZ87',
+            'not_likely' => 'https://www.surveymonkey.com/r/RH5RC3C',
+        );
+
+        $key_benefits_program_codes['ssi']['codes'] = array(
             'income_fd_ssi',
             'income_ak_ssi',
             'income_ca_ssi',
@@ -175,14 +211,21 @@ class FactSheetsController extends BaseController
             'income_wa_ssi',
             'income_wi_ssi',
         );
+        $key_benefits_program_codes['ssi']['survey'] = array(
+            'very_likely' => 'https://www.surveymonkey.com/r/RH6VY2W',
+            'somewhat_likely' => 'https://www.surveymonkey.com/r/RHZLLNB',
+            'not_likely' => 'https://www.surveymonkey.com/r/RH6MN5X',
+        );
 
-        foreach ($key_benefits_program_codes as $key => $program_code) {
-            if (strstr($_SERVER['REQUEST_URI'], $program_code)) {
-                $key_benefits_program = true;
-                break;
+        $key_benefits_program = false;
+        foreach ($key_benefits_program_codes as $index => $categories) {
+            foreach ($categories['codes'] as $key => $code) {
+                if (strstr($_SERVER['REQUEST_URI'], $code)) {
+                    $key_benefits_program['survey_links'] = $categories['survey'];
+                    break 2;
+                }
             }
         }
-
 
         // Should we display the 'Find Out if Elegible' link?
         if (array_key_exists('elegible', $_REQUEST)) {
@@ -193,7 +236,7 @@ class FactSheetsController extends BaseController
 
         $query = new WP_Query(['post_type' => 'fact-sheets', 'name' => $fact_sheet_slug]);
 
-        $program_code = substr($fact_sheet_slug,10);
+        $program_code = substr($fact_sheet_slug, 10);
 
         $constants = Config::get('constants');
 
