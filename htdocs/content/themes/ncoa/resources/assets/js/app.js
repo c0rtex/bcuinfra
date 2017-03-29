@@ -716,14 +716,14 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                 var total_joint = scope.$root.answers[scope.category][scope.joint_code+"total_complete"] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+"total_complete"] + 0;
                 var total_hh = scope.$root.answers[scope.category][scope.household_code+"total_complete_simple"] == undefined ? 0 : scope.$root.answers[scope.category][scope.household_code+"total_complete_simple"] + 0;
 
-                scope.$root.answers[scope.category][scope.household_code+"total_complete"] = total_self + total_spouse + total_joint + total_hh;
+                scope.$root.answers[scope.category][scope.household_code+"total_complete"] = total_self + total_spouse + total_hh;
 
                 total_self = scope.$root.answers[scope.category][scope.self_code+"total_unearned"] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code+"total_unearned"] + 0;
                 total_spouse = scope.$root.answers[scope.category][scope.spouse_code+"total_unearned"] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code+"total_unearned"] + 0;
                 total_joint = scope.$root.answers[scope.category][scope.joint_code+"total_unearned"] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+"total_unearned"] + 0;
                 total_hh = scope.$root.answers[scope.category][scope.household_code+"total_unearned_simple"] == undefined ? 0 : scope.$root.answers[scope.category][scope.household_code+"total_unearned_simple"] + 0;
 
-                scope.$root.answers[scope.category][scope.household_code+"total_unearned"] = total_self + total_spouse + total_joint + total_hh;
+                scope.$root.answers[scope.category][scope.household_code+"total_unearned"] = total_self + total_spouse + total_hh;
 
                 scope.$root.answers[scope.category][scope.household_code+"total_earned"] = scope.$root.answers[scope.category][scope.household_code+"total_complete"] - scope.$root.answers[scope.category][scope.household_code+"total_unearned"];
             }
