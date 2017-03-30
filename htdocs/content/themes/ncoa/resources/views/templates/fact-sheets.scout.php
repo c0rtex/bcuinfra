@@ -368,6 +368,18 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         </div>
                     </div>                    
                     @endif
+
+                    @if ($key_benefits_program !== false)
+                    <div class="results-options feedback-box">
+                        <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
+                        <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
+                        <div class="survey-answers">
+                            <a target="_blank" class="btn btn-secondary" href="{{$key_benefits_program['survey_links']['very_likely']}}">Very Likely</a>
+                            <a target="_blank" class="btn btn-secondary" href="{{$key_benefits_program['survey_links']['somewhat_likely']}}">Somewhat Likely</a>
+                            <a target="_blank" class="btn btn-secondary" href="{{$key_benefits_program['survey_links']['not_likely']}}">Not Likely</a>
+                        </div>
+                    </div>
+                    @endif
                 </div>
 
 
