@@ -301,43 +301,43 @@ app.factory('Income', [function(){
             title: 'Veteran Benefits',
             code: 'vet_ben',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Cash Assistance',
             code: 'cash_assist',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'TANF',
             code: 'tanf',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Unemployment Insurance',
             code: 'unemployment',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Railroad Retirement Benefits',
             code: 'rr_ben',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Workers Compensation',
             code: 'unemploy',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Other Non Work Income',
             code: 'other_nw',
             unearned: true,
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         }
     ];
 
@@ -375,57 +375,57 @@ app.factory('Asset', [function(){
         {
             title: 'Cash and Cash Equivalent',
             code: 'cash',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Primary Car',
             code: 'auto1',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Value of Home',
             code: 'home',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Second Car',
             code: 'auto2',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Life Insurance: Face Value',
             code: 'life_face',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Life Insurance: Cash Value',
             code: 'life_cash',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Retirement Accounts',
             code: 'retirement',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Investment Accounts',
             code: 'stocks',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Burial Accounts: Irrevocable',
             code: 'irrevocable',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Burial Accounts: Revocable',
             code: 'revocable',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         },
         {
             title: 'Other Assets',
             code: 'other_a',
-            description: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.'
+            description: 'Le Lorem Ipsum est simplement du faux texte employï¿½ dans la composition et la mise en page avant impression.'
         }
     ];
 
@@ -674,6 +674,18 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                     scope.household_code="";
                     break;
             }
+
+            scope.setForJoint = function(code) {
+
+                var s = scope.$root.answers[scope.category][scope.self_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code + code];
+                var sp = scope.$root.answers[scope.category][scope.spouse_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code + code];
+                var s_sp = scope.$root.answers[scope.category][scope.joint_code+code] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+code];
+
+                if (s_sp < s + sp) {
+                    scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                }
+            };
+
             scope.calcTotal = function(code) {
                 var suffix = ((code == "hh_income_")||(code == "hh_asset_")) ? "_simple" : "";
                 if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
@@ -702,14 +714,14 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                 var total_joint = scope.$root.answers[scope.category][scope.joint_code+"total_complete"] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+"total_complete"] + 0;
                 var total_hh = scope.$root.answers[scope.category][scope.household_code+"total_complete_simple"] == undefined ? 0 : scope.$root.answers[scope.category][scope.household_code+"total_complete_simple"] + 0;
 
-                scope.$root.answers[scope.category][scope.household_code+"total_complete"] = total_self + total_spouse + total_joint + total_hh;
+                scope.$root.answers[scope.category][scope.household_code+"total_complete"] = total_self + total_spouse + total_hh;
 
                 total_self = scope.$root.answers[scope.category][scope.self_code+"total_unearned"] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code+"total_unearned"] + 0;
                 total_spouse = scope.$root.answers[scope.category][scope.spouse_code+"total_unearned"] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code+"total_unearned"] + 0;
                 total_joint = scope.$root.answers[scope.category][scope.joint_code+"total_unearned"] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+"total_unearned"] + 0;
                 total_hh = scope.$root.answers[scope.category][scope.household_code+"total_unearned_simple"] == undefined ? 0 : scope.$root.answers[scope.category][scope.household_code+"total_unearned_simple"] + 0;
 
-                scope.$root.answers[scope.category][scope.household_code+"total_unearned"] = total_self + total_spouse + total_joint + total_hh;
+                scope.$root.answers[scope.category][scope.household_code+"total_unearned"] = total_self + total_spouse + total_hh;
 
                 scope.$root.answers[scope.category][scope.household_code+"total_earned"] = scope.$root.answers[scope.category][scope.household_code+"total_complete"] - scope.$root.answers[scope.category][scope.household_code+"total_unearned"];
             }
