@@ -28,8 +28,6 @@
 	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/slick.min.js"></script>
 	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/loading-bar.min.js"></script>
-	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.quicksearch.js"></script>
-	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.multi-select.js"></script>
 	<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/styleguide.js"></script>
 	<script src="<?php echo themosis_assets() ?>/js/7683b69978.js"></script>
 </body>
