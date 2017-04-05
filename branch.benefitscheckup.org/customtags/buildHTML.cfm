@@ -25,6 +25,8 @@ Data Tables: NA
 <cfparam name="attributes.show_title" type="string" default="">
 <cfparam name="attributes.show_left_col" type="string" default="">
 <cfparam name="attributes.content_title_override" type="string" default="">
+<cfparam name="attributes.meta_title" type="string" default="">
+<cfparam name="attributes.meta_description" type="string" default="">
 <cfparam name="url.partner_id" type="numeric" default="0">
 <!--- END annoying attributes --->
 <cfif IsDefined('SESSION.partner_id') AND SESSION.partner_id NEQ ''>
@@ -62,7 +64,7 @@ Data Tables: NA
 		<cfhtmlhead text="<meta http-equiv=""cache-control"" content=""no-cache"">">
 	</cfif>
 	<cfif IsDefined('SESSION.partner_id') >
-	<cf_tagHeader partner_id="#attributes.partner_id#" onLoad="#attributes.onLoad#" onUnload="#attributes.onUnload#" refreshurl="#attributes.refreshurl#" refreshsec="#attributes.refreshsec#" sidebar="#attributes.sidebar#" allowBack="#attributes.allowBack#" guts="#attributes.guts#" show_title="#attributes.show_title#" show_left_col="#attributes.show_left_col#" content_title_override="#attributes.content_title_override#">
+	<cf_tagHeader partner_id="#attributes.partner_id#" onLoad="#attributes.onLoad#" onUnload="#attributes.onUnload#" refreshurl="#attributes.refreshurl#" refreshsec="#attributes.refreshsec#" sidebar="#attributes.sidebar#" allowBack="#attributes.allowBack#" guts="#attributes.guts#" show_title="#attributes.show_title#" show_left_col="#attributes.show_left_col#" content_title_override="#attributes.content_title_override#" meta_title="#attributes.meta_title#" meta_description="#attributes.meta_description#">
 	</cfif>
 	<cfif attributes.jsInclude>
 		<script language="JavaScript" type="text/javascript" src="/cf/include/select.js"></script>
