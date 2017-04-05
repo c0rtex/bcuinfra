@@ -85,8 +85,8 @@
 	<meta charset="UTF-8" />
 	<meta name="language" content="en-US" />
 	<meta name="lang" content="en" />
-	<meta name="description" content="<cfoutput>#attributes.meta_description#</cfoutput>"/>
-	<meta name="title" content="<cfoutput>#attributes.meta_title#</cfoutput>"/>
+	<meta name="description" content="<cfoutput>attributes.meta_description</cfoutput>"/>
+	<meta name="title" content="<cfoutput>attributes.meta_title</cfoutput>"/>
 	<meta name="keywords" content="" />
 	<meta name="Copyright" content="Copyright NCOA 2011" />
 
