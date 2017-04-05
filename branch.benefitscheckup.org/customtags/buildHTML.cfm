@@ -63,7 +63,7 @@ Data Tables: NA
 		<cfhtmlhead text="<meta http-equiv=""expires"" content=""Tue, 01 Jan 1980 1:00:00 GMT"">">
 		<cfhtmlhead text="<meta http-equiv=""cache-control"" content=""no-cache"">">
 	</cfif>
-	<cfoutput>'build html #attributes.meta_title#'</cfoutput>
+	<cfoutput>#attributes.meta_title#"</cfoutput>
 	<cfif IsDefined('SESSION.partner_id') >
 	<cf_tagHeader partner_id="#attributes.partner_id#" onLoad="#attributes.onLoad#" onUnload="#attributes.onUnload#" refreshurl="#attributes.refreshurl#" refreshsec="#attributes.refreshsec#" sidebar="#attributes.sidebar#" allowBack="#attributes.allowBack#" guts="#attributes.guts#" show_title="#attributes.show_title#" show_left_col="#attributes.show_left_col#" content_title_override="#attributes.content_title_override#" meta_title="#attributes.meta_title#" meta_description="#attributes.meta_description#">
 	</cfif>
