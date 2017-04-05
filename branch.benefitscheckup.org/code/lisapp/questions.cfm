@@ -18,7 +18,7 @@ Data Tables: calls custom tags
 	<cfelse>
 		<cfset accumAFList = ''>
 	</cfif>
-	<cf_buildHTML cellpadding="12" cellspacing="2" allowBack="true">
+	<cf_buildHTML cellpadding="12" cellspacing="2" meta_title="Should You Use the Online LIS Application? | BenefitsCheckUp" meta_description="Find out if you should use the online application to apply for Medicare Extra Help by answering a few questions" allowBack="true">
 	<cfoutput>
 
 	
