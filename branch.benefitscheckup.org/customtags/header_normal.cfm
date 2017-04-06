@@ -171,7 +171,11 @@ Get Extra Help with Your Medicare Rx Bills
 </title>
 <cfelse>
 
+<cfif attributes.meta_title neq ''>
+<title><cfoutput>#attributes.meta_title#</cfoutput></title>
+<cfelse>
 <title>BenefitsCheckUp.org</title>
+</cfif>
 
 </cfif>
 	<script src="/cf/ValidationFunctions.js"></script>
