@@ -2206,7 +2206,7 @@ echo '
 	<?php } else { ?>
 	<a href="/taub" target="Taub"><img
                         border="0" alt="Taub" title="Taub"
-                        src="/wp-content/uploads/2017/04/ECU-Taub-Button.png"></a>
+                        src="/wp-content/themes/bcuwptheme/images/taub_button.png"></a>
 	<?php }} ?>
     </div>
 </div>
