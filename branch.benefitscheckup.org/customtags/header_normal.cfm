@@ -85,7 +85,15 @@
 	<meta charset="UTF-8" />
 	<meta name="language" content="en-US" />
 	<meta name="lang" content="en" />
-	<meta name="description" content="Here is the description of your project." />
+
+	<cfif attributes.meta_description neq ''>
+		<meta name="description" content="<cfoutput>#attributes.meta_description#</cfoutput>"/>
+	</cfif>
+
+	<cfif attributes.meta_title neq ''>
+		<meta name="title" content="<cfoutput>#attributes.meta_title#</cfoutput>"/>
+	</cfif>
+
 	<meta name="keywords" content="" />
 	<meta name="Copyright" content="Copyright NCOA 2011" />
 
@@ -163,7 +171,11 @@ Get Extra Help with Your Medicare Rx Bills
 </title>
 <cfelse>
 
+<cfif attributes.meta_title neq ''>
+<title><cfoutput>#attributes.meta_title#</cfoutput></title>
+<cfelse>
 <title>BenefitsCheckUp.org</title>
+</cfif>
 
 </cfif>
 	<script src="/cf/ValidationFunctions.js"></script>
