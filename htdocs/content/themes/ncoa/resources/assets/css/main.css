@@ -9054,6 +9054,7 @@ grid:last-child .sales-grid {
 .cta-yellow {
   border-radius: 6px;
   background: #FFF9E9;
+  font-size: 25px;
   padding: 20px; }
   .cta-yellow strong {
     color: #FFB902; }

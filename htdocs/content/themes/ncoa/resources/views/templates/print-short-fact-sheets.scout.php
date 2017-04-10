@@ -1,3 +1,4 @@
+<div style="page-break-before: always;">
 <?php $programUrl = trim(Meta::get(Loop::id(), $key = 'program-url', $single = true)); ?>
 @extends('layouts.print')
 
@@ -27,9 +28,10 @@
             @endif
 
             <p>&nbsp;</p>
-            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All rights reserved.</p>
+            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All Rights Reserved.</p>
         </div>
     </div>
 </div>
 @endquery
 @stop
+</div>

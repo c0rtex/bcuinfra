@@ -1,20 +1,23 @@
 <section class="program" slide-down>
     <div class="program-header hover-shade">
+
+
         <img ng-src="{{benefitItem.image}}" width="55" height="55" alt="{{benefitItem.name}}" title="{{benefitItem.name}}" />
         <span ng-if="found_program.count==1">{{benefitItem.name}} Benefits: {{found_program.count}} Program</span>
         <span ng-if="found_program.count>1 || found_program.count==0">
             {{benefitItem.name}} Benefits: {{found_program.count}} Programs
         </span>
+
     </div>
     <div class="programs-container" ng-if="found_program.count>0">
         <ul class="programs" ng-repeat="program in found_program.programs">
             <li>
-              <h4 ng-bind-html="program.name_display | unsafe"></h4>
+                <h4 ng-bind-html="program.name_display | unsafe"></h4>
 
                 <div-program-desc program_desc="program.short_desc"></div-program-desc>
             </li>
             <li>
-                <button ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short})" class="btn btn-secondary btn-get-info">Get More Information</button>
+                <button ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short,elegible:elegible})" class="btn btn-secondary btn-get-info">Get More Information</button>
             </li>
         </ul>
     </div>

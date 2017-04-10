@@ -5,38 +5,23 @@
         <span ng-if="foundCount == 1">There is</span>
         <span ng-if="foundCount > 1 || foundCount == 0">There are</span>
         <span class="odometer">0</span>
-        <span ng-if="foundCount == 1"><strong>benefit program</strong> that matches your basic details.</span>
-        <span ng-if="foundCount > 1 || foundCount == 0"><strong>benefit programs</strong> that match your basic details.</span>
+        <span ng-if="foundCount == 1"><strong>benefit program</strong> that matches what you've told us so far.</span>
+        <span ng-if="foundCount > 1 || foundCount == 0"><strong>benefit programs</strong> that match what you've told us so far.</span>
     </div>
 
-    <div class="cta-yellow">
-        <p><span class="orange-bold">Please note!</span> These results are based on the few questions you answered and do not show whether you are eligible for these programs. Click on the programs below to get basic program information or <a ui-sref="screening-start" class="btn-link underline normal-bold">keep going</a> to the full questionnaire to get more details and learn about additional programs. Your results will be more personalized and specific to your situation.</p>
-    </div>
+    <p>
+        <button ng-click="goScreening()" class="btn btn-primary">Keep going to get personalized results</button>
+    </p>
 
-    <p><a data-toggle="popover" data-trigger="click" data-html="true" data-content="<ul>
-            <li>Current income for self, spouse and others in household</li>
-            <li>Value of assets for self, spouse and others in household</li>
-            <li>Estimated household expenses such as: mortgage or rent, utility costs, and dependent care</li>
-            <li>Out-of-pocket medical expenses that is not paid for by your insurance</li>
-            <li>Name of prescription medications that you take (include brand name and generic drugs)</li>
-        </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue with the full questionnaire.</p>
+    <p>
+        Based on the few questions you answered, the following programs are available in your area. Click below
+        to get basic information on these programs or keep going to find out more about whether you're eligible, get
+        a personal report, and find detailed information on how to apply.
+    </p>
 
-    <div class="ready-list">
-    </div>
-
-    <script type="text/javascript-lazy">
-    	$('.ready-list').popover();
-
-    	$( ".ready-list" ).click(function( event ) {
-    		event.preventDefault();
-    	});
-    </script>
-
-
-    <p>Select a category to learn more:</p>
     <div class="more-benefits">
 		<span ng-repeat="found_program in found_programs  | orderBy:'sort'">
-			<div-programs-category short="y" found_program="found_program"></div-programs-category>
+			<div-programs-category short="y" found_program="found_program" elegible="y"></div-programs-category>
 		</span>
     </div>
 </div>

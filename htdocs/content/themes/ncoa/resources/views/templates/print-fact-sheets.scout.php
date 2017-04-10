@@ -62,9 +62,11 @@
                             <li>There are no required materials needed for this program.</li>
                             @else
                             @foreach($required_materials as $ekey => $evalue)
-                            <li><a href="" data-toggle="popover" data-html="true" class="popover-rm" data-content="{{$evalue->description}}">{{$evalue->title}}</a></li>
+                            <li><span class="popover-link" data-toggle="popover" data-html="true" data-content="{{$evalue->description}}">{{$evalue->title}}</span></li>
                             @endforeach
-                            <script type="text/javascript-lazy">$('.popover-rm').popover();</script>
+                            <script type="text/javascript">
+                                $('.popover-link').popover();
+                            </script>
                             @endif
                         </ul>
                     </div>
@@ -110,7 +112,7 @@
             </div>
 
             <p>&nbsp;</p>
-            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All rights reserved.</p>
+            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All Rights Reserved.</p>
             @endif
         </div>
     </div>
