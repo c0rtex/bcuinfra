@@ -1627,6 +1627,12 @@ app.service('locationFinder', ['$http', function($http){
     }
 }]);
 
+app.service('factSheet',['$http', function ($http) {
+    this.get = function(slug) {
+        return $http.get('/wp-json/wp/v2/fact-sheets?slug='+slug);
+    };
+}]);
+
 app.service('savePrescreen',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data,{
@@ -2356,18 +2362,20 @@ app.directive("divKeyProgram",['prescreen',function(prescreen) {
     }
 }]);
 
-app.directive('divProgramDesc',function() {
+app.directive('divProgramDesc',['factSheet',function(factSheet) {
     return {
         restrict: 'E',
         //templateUrl:'/content/themes/ncoa/resources/views/pages/benefits-checkup/programs/programs.category.html?'+(new Date()),
         link: function(scope, element) {
-            element.append("<p>"+scope.program_desc+"</p>");
+            factSheet.get('factsheet_'+scope.program_code).success(function(data, status, headers, config) {
+                element.append("<p>"+data[0].program_short_summary+"</p>");
+            });
         },
         scope: {
-            program_desc:"=programDesc"
+            program_code:"=programCode"
         }
     }
-});
+}]);
 
 app.controller('questionnaireResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening){
     var el = document.querySelector('.odometer');

@@ -11,7 +11,7 @@
             <li>
               <h4 ng-bind-html="program.name_display | unsafe"></h4>
 
-                <div-program-desc program_desc="program.short_desc"></div-program-desc>
+                <div-program-desc program_code="program.code"></div-program-desc>
             </li>
             <li>
                 <button ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short})" class="btn btn-secondary btn-get-info">Get More Information</button>
