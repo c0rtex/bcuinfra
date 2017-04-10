@@ -1005,24 +1005,68 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
             }
 
             scope.slugs={};
+            scope.noSlugs = false;
 
-            scope.printReport = function() {
-                if (Object.keys(scope.slugs).length>0) {
+            scope.generatePrintUrl = function(checkSlugs) {
+                if (Object.keys(scope.slugs).length > 0) {
+                    var slugs = '';
+                    var firstSlug = '';
+                    var url = '';
                     var i = 0;
-                    var firstSlug = "";
-                    var slugs = "";
-                    for(var key in scope.slugs) {
-                        if(i==0) {
-                            firstSlug = key;
-                        } else {
-                            slugs = slugs +";" + key;
+                    for (var key in scope.slugs) {
+                        if (scope.slugs[key] === true) {
+                            if (i == 0) {
+                                firstSlug = key;
+                            }
+                            else {
+                                slugs = slugs +";" + key;
+                            }
+                            i++;
                         }
-                        i++;
                     }
 
-                    slugs = slugs.substring(1);
+                    if (firstSlug.length > 0) {
+                        scope.noSlugs = false;
 
-                    window.open('/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y');
+                        if (checkSlugs === true) {
+                            return true;
+                        }
+
+                        scope.noSlugs = false;
+                        slugs = slugs.substring(1);
+                        url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y';
+
+                        return url;
+                    }
+                }
+
+                return false;
+            };
+
+            scope.printReport = function() {
+                url = scope.generatePrintUrl(false);
+
+                if (url !== false) {
+                    scope.noSlugs = false;
+                    window.open(url);
+                }
+                else {
+                    scope.noSlugs = true;
+                }
+            };
+
+            scope.selectAll = function() {
+                for (var key in scope.slugs) {
+                    if (scope.slugs.hasOwnProperty(key)) {
+                        scope.slugs[key] = true;
+                    }
+                }
+            };
+            scope.deselectAll = function() {
+                for (var key in scope.slugs) {
+                    if (scope.slugs.hasOwnProperty(key)) {
+                        scope.slugs[key] = false;
+                    }
                 }
             };
 
@@ -1036,6 +1080,10 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                     var program_category = BenefitItems.getByCode(scope.found_programs[i].category);
                     scope.found_programs[i].name= program_category.name;
                     scope.found_programs[i].sort = program_category.sort;
+
+                    scope.found_programs[i].programs.forEach(function(element) {
+                        scope.slugs[element.code] = false;
+                    });
                 }
             }
 
@@ -1067,7 +1115,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 }
                 return retVal.substr(0,retVal.length-2)
             }
-
         }
     }
 }]);

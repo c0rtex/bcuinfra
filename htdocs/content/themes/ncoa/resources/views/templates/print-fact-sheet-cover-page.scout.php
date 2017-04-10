@@ -12,7 +12,6 @@
     <p style="text-align: center;"><strong>Brought to you by</strong></p>
     <img class="size-full " src="<?php echo themosis_assets() ?>/images/ncoa-logo.png" alt="National Council on Aging" width="177" height="60">
     <br><br><br><br><br><br>
-    <hr>
 
     <h2 style="text-align: center;">Powered by BenefitsCheckUp.org</h2>
 </center>

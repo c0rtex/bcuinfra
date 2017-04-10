@@ -38,16 +38,20 @@
       </div>
       <div class="modal-body">
         <div class="modal-tagline">
-          Select which benefit program fact sheets you would like to print. <span id="print-modal-select-all" class="modal-inline bold">Select All</span>
+          <p>Select which benefit program fact sheets you would like to print.</p>
+          <p><span id="print-modal-select-all" class="modal-inline bold" ng-click="selectAll()">Select All</span> /
+            <span id="print-modal-deselect-all" class="modal-inline bold" ng-click="deselectAll()">Deselect All</span></p>
         </div>
-        <section class="form-group checkbox-stacked">
-          <div class="program-header hover-shade">
-            <span>Program category</span>
-          </div>
-
-          <div class="checkbox" ng-repeat="program in found_programs">
-            <input type="checkbox" ng-value="y" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
-            <label for="{{program.code}}"><span></span><ng-label text="{{program.name_display}}"></ng-label></label>
+        <div class="alert alert-danger" ng-if="noSlugs">
+          <strong>Error:</strong> Please select at least one program fact sheet to print.
+        </div>
+        <section class="form-group checkbox-stacked program-list-print">
+          <div class="category" ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0">
+            <h3>{{found_program.name}}</h3>
+            <div class="checkbox" ng-repeat="program in found_program.programs">
+              <input type="checkbox" ng-click="generatePrintUrl(true)" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
+              <label for="{{program.code}}"><span></span><ng-label text="{{program.name_display}}"></ng-label></label>
+            </div>
           </div>
         </section>
       </div>
@@ -58,24 +62,6 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('#print-modal-select-all').click(function () {
-        if ($('#print-modal-select-all').text() == 'Select All') {
-          $('#print-modal input').each(function () {
-            $(this).prop('checked', true);
-          });
-          $('#print-modal-select-all').text('Deselect All');
-        } else {
-          $('#print-modal input').each(function () {
-            $(this).prop('checked', false);
-            $(this).removeProp('checked');
-          });
-          $('#print-modal-select-all').text('Select All');
-        }
-      });
-    });
-  </script>
 </div>
 
 <div class="modal fade" id="save-modal" tabindex="-1" role="dialog" aria-labelledby="save-label">
