@@ -2195,15 +2195,19 @@ echo '
                         Get Help in Your Community</a></form>
             </div>
 
-        <?php
+            <?php
         }
          if (substr($reportClient, 0, 27) != "/eversafe-quickcheck-report")   {
-	?>
+	if (($county !== 'BERGEN')&&($county !== 'PASSAIC')) {?>
 	<a href="/greenpath-financial-wellness" target="GreenPath"><img
                         border="0" alt="GreenPath Financial Wellness" title="GreenPath Financial Wellness"
                         src="/wp-content/uploads/2017/02/ECU-GP-Button.png"></a>
-	<?php } ?>
 
+	<?php } else { ?>
+	<a href="/taub" target="Taub"><img
+                        border="0" alt="Taub" title="Taub"
+                        src="/wp-content/themes/bcuwptheme/images/taub_button.png"></a>
+	<?php }} ?>
     </div>
 </div>
 <div id="learnmore" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Learn More" aria-hidden="true"
