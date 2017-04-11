@@ -5,6 +5,7 @@
   <style type="text/css">
     body {
       background-color: #ffffff;
+      font-family: 'Open Sans', sans-serif !important;
     }
     footer {
       margin-bottom: 20px;

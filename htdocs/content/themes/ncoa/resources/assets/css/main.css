@@ -11013,6 +11013,19 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   animation:         loading-bar-spinner 400ms linear infinite;
 }
 
+.program-list-print {
+  margin-top: 0 !important;
+}
+.program-list-print .category {
+  padding-bottom: 20px;
+}
+.program-list-print .category h3 {
+  font-weight: bold;
+}
+.program-list-print .category label {
+  font-weight: normal !important;
+}
+
 @-webkit-keyframes loading-bar-spinner {
   0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
