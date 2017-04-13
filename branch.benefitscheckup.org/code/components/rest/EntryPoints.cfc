@@ -146,7 +146,7 @@
     <cffunction name="proximityCountyOverride">
         <cfargument name="entryPointGroup">
 
-        <cfset ep=ormExecuteQuery("select ep, 999999 from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.counties c where epepg.entry_point_group=? and ep.active_flag=1 and c.id=? order by distance",[entryPointGroup, params.countyId])>
+        <cfset ep=ormExecuteQuery("select ep, 999999 from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.counties c where epepg.entry_point_group=? and ep.active_flag=1 and c.id=? order by distance",[entryPointGroup, params.countyId], {maxResults=3})>
 
         <cfif arraylen(ep) eq 0>
             <cfset var success = false>
@@ -197,11 +197,11 @@
 
         <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.counties c join ep.view_zip_distance zd
          where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode='#params.zipCode#' and c in (select c from zip z join z.county c where z.zipcode='#params.zipCode#')",
-                [entryPointGroup])>
+                [entryPointGroup], {maxResults=3})>
 
         <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.counties c
          where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and c in (select c from zip z join z.county c where z.zipcode='#params.zipCode#')",
-                [entryPointGroup])>
+                [entryPointGroup], {maxResults=3})>
 
         <cfset arrayAppend(ep,ep1,true)>
 
@@ -230,10 +230,10 @@
 
         <cfif arraylen(zip.getPrefered_cities()) neq 0>
             <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.cities c join ep.view_zip_distance zd
-                   where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode='#params.zipCode#' and c=?",[entryPointGroup, zip.getPrefered_cities()[1]])>
+                   where ep.active_flag=1 and epepg.entry_point_group=? and zd.end_zipcode='#params.zipCode#' and c=?",[entryPointGroup, zip.getPrefered_cities()[1]], {maxResults=3})>
 
             <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.cities c
-                   where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and c=?",[entryPointGroup, zip.getPrefered_cities()[1]])>
+                   where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and c=?",[entryPointGroup, zip.getPrefered_cities()[1]], {maxResults=3})>
 
             <cfset arrayAppend(ep,ep1,true)>
         </cfif>
@@ -289,7 +289,7 @@
         <cfset st = zip.getState()>
 
         <cfset ep=ormExecuteQuery("select ep from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.view_zip_distance zd
-         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id = ? and zd.end_zipcode='#params.zipCode#' and zd.distance=?",[entryPointGroup, st, params.radius])>
+         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id = ? and zd.end_zipcode='#params.zipCode#' and zd.distance=?",[entryPointGroup, st, params.radius], {maxResults=3})>
 
         <cfif arraylen(ep) eq 0>
             <cfset var success = false>
