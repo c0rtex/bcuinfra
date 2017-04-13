@@ -34,6 +34,7 @@ class FactSheetsController extends BaseController
             $options = new Options();
             $options->set('isRemoteEnabled', TRUE);
             $options->set('compress',1);
+            $options->set('isPhpEnabled', TRUE);
             $dompdf = new Dompdf($options);
             $dompdf->loadHtml($retVal);
             // Render the HTML as PDF
