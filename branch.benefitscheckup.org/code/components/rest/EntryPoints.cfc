@@ -170,10 +170,10 @@
         <cfset st = zip.getState()>
 
         <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.view_zip_distance zd
-         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id=zd.end_state_id and zd.end_zipcode='#params.zipCode#'",[entryPointGroup])>
+         where ep.active_flag=1 and epepg.entry_point_group=? and zd.start_state_id=zd.end_state_id and zd.end_zipcode='#params.zipCode#'",[entryPointGroup], {maxResults=3})>
 
         <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep
-         where ep.active_flag=1 and ep.zipcode is null and ep.state =? and epepg.entry_point_group=?",[st, entryPointGroup])>
+         where ep.active_flag=1 and ep.zipcode is null and ep.state =? and epepg.entry_point_group=?",[st, entryPointGroup], {maxResults=3})>
 
         <cfset arrayAppend(ep,ep1,true)>
 
@@ -258,10 +258,10 @@
         </cfif>
 
         <cfset ep=ormExecuteQuery("select ep,zd.distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.zips z join ep.view_zip_distance zd
-               where ep.active_flag=1 and epepg.entry_point_group=? and z.zipcode='#params.zipcode#' and zd.end_zipcode='#params.zipcode#'",[entryPointGroup])>
+               where ep.active_flag=1 and epepg.entry_point_group=? and z.zipcode='#params.zipcode#' and zd.end_zipcode='#params.zipcode#'",[entryPointGroup], {maxResults=3})>
 
         <cfset ep1 = ormExecuteQuery("select ep, 999999 as distance from entry_point_entry_point_group epepg join epepg.entry_point ep join ep.zips z
-               where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and z.zipcode='#params.zipcode#'",[entryPointGroup])>
+               where ep.active_flag=1 and ep.zipcode is null and epepg.entry_point_group=? and z.zipcode='#params.zipcode#'",[entryPointGroup], {maxResults=3})>
 
         <cfset arrayAppend(ep,ep1,true)>
 
