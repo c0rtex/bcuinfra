@@ -8491,7 +8491,8 @@ footer .btn-purple {
 
 .profile-section .profile-list {
   padding: 0;
-  margin: 0; }
+  margin: 0 0 15px 0;
+}
   .profile-section .profile-list li {
     list-style: none;
     padding: 0 0 5px 0;  }
@@ -8533,7 +8534,6 @@ footer .btn-purple {
 
 @media (max-width: 991px) {
   .profile-section {
-    margin-top: 50px;
     text-align: left; }
     .profile-section .results-options {
       width: 200px;
