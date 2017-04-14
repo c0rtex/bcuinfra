@@ -1006,6 +1006,7 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
             scope.slugs={};
             scope.noSlugs = false;
+            scope.limitReached = false;
 
             scope.generatePrintUrl = function(checkSlugs) {
                 if (Object.keys(scope.slugs).length > 0) {
@@ -1025,7 +1026,22 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         }
                     }
 
+                    if (i > 0) {
+                        scope.noSlugs = false;
+
+                        if (i > 10) {
+                            scope.limitReached = true;
+                            return false;
+                        }
+                    }
+                    else {
+                        scope.noSlugs = true;
+                        scope.limitReached = false;
+                        return false;
+                    }
+
                     if (firstSlug.length > 0) {
+                        scope.limitReached = false;
                         scope.noSlugs = false;
 
                         if (checkSlugs === true) {
@@ -1049,9 +1065,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 if (url !== false) {
                     scope.noSlugs = false;
                     window.open(url);
-                }
-                else {
-                    scope.noSlugs = true;
                 }
             };
 
@@ -1686,9 +1699,9 @@ app.service('savePrescreen',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);
@@ -1697,9 +1710,9 @@ app.service('saveScreening',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/saveScreening',data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);

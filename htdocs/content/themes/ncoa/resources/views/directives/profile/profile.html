@@ -38,12 +38,15 @@
       </div>
       <div class="modal-body">
         <div class="modal-tagline">
-          <p>Select which benefit program fact sheets you would like to download and print.</p>
+          <p>Select up to 10 benefit program fact sheets at a time that you would like to download and print.</p>
           <p><span id="print-modal-select-all" class="modal-inline bold" ng-click="selectAll()">Select All</span> /
             <span id="print-modal-deselect-all" class="modal-inline bold" ng-click="deselectAll()">Deselect All</span></p>
         </div>
         <div class="alert alert-danger" ng-if="noSlugs">
           <strong>Error:</strong> Please select at least one program fact sheet to print.
+        </div>
+        <div class="alert alert-danger" ng-if="limitReached">
+          <strong>Error:</strong> You cannot select more than 10 programs.
         </div>
         <section class="form-group checkbox-stacked program-list-print">
           <div class="category" ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0">
