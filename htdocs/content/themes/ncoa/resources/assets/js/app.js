@@ -1008,6 +1008,10 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
             scope.noSlugs = false;
             scope.limitReached = false;
 
+            scope.closeErrorModal = function() {
+                $('#modalError').modal('hide');
+            };
+
             scope.generatePrintUrl = function(checkSlugs) {
                 if (Object.keys(scope.slugs).length > 0) {
                     var slugs = '';
@@ -1031,12 +1035,14 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
                         if (i > 10) {
                             scope.limitReached = true;
+                            $('#modalError').modal('show');
                             return false;
                         }
                     }
                     else {
                         scope.noSlugs = true;
                         scope.limitReached = false;
+                        $('#modalError').modal('show');
                         return false;
                     }
 
