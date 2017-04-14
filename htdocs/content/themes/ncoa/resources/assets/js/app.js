@@ -1926,8 +1926,6 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
             }
         }
 
-        console.log(prescreen.data.screenData);
-
         var request = $scope.$root.answers[$scope.category];
 
         request.state_id = $scope.$root.answers[$scope.category].stateId;
@@ -2353,7 +2351,7 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
     });
 
     // BCURD-300: List of categories & programs.
-    console.log(encodeURIComponent(JSON.stringify($scope.available_fact_sheets)));
+    //console.log(encodeURIComponent(JSON.stringify($scope.available_fact_sheets)));
 
     // Find empty programs
     var programs_diff = $(prescreen.data.screenData.benefits_categories_codes).not(returned_programs).get();
