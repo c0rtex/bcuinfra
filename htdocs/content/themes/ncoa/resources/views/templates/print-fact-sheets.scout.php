@@ -111,8 +111,14 @@
                 @endif
             </div>
 
-            <p>&nbsp;</p>
-            <p class="text-center">&copy; {{ date('Y') }} National Council on Aging. All Rights Reserved.</p>
+            @if (isset($_REQUEST['pdf']))
+            <div class="footer">
+                <p>
+                    Copyright {{date('Y')}} National Council on Aging. All Rights Reserved - Page <span class="pagenum"></span>
+                </p>
+            </div>
+            @endif
+
             @endif
         </div>
     </div>

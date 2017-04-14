@@ -23,7 +23,7 @@
   </ul>
 </section>
 
-<!--<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>-->
+<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>
 
 <!--<span data-toggle="modal" data-target="#details-modal" class="btn-link view-details" ng-show="showOptions">View all details <strong>&gt;</strong></span>-->
 
@@ -31,20 +31,36 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h1 class="modal-title modal-h1" id="print-label">
           Print My Results
-          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </h1>
       </div>
       <div class="modal-body">
         <div class="modal-tagline">
-          <p>Select which benefit program fact sheets you would like to download and print.</p>
+          <p>Select up to 10 benefit program fact sheets at a time that you would like to download and print.</p>
           <p><span id="print-modal-select-all" class="modal-inline bold" ng-click="selectAll()">Select All</span> /
             <span id="print-modal-deselect-all" class="modal-inline bold" ng-click="deselectAll()">Deselect All</span></p>
         </div>
-        <div class="alert alert-danger" ng-if="noSlugs">
-          <strong>Error:</strong> Please select at least one program fact sheet to print.
-        </div>
+
+        <div id="modalError" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Error</h3>
+              </div>
+              <div class="modal-body">
+                <p ng-if="noSlugs">Please select at least one program fact sheet to print.</p>
+                <p ng-if="limitReached">Select up to 10 programs at a time to download and print.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeErrorModal()">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <section class="form-group checkbox-stacked program-list-print">
           <div class="category" ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0">
             <h3>{{found_program.name}}</h3>

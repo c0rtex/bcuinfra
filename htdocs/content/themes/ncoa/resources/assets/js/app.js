@@ -1006,6 +1006,11 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
             scope.slugs={};
             scope.noSlugs = false;
+            scope.limitReached = false;
+
+            scope.closeErrorModal = function() {
+                $('#modalError').modal('hide');
+            };
 
             scope.generatePrintUrl = function(checkSlugs) {
                 if (Object.keys(scope.slugs).length > 0) {
@@ -1025,7 +1030,24 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         }
                     }
 
+                    if (i > 0) {
+                        scope.noSlugs = false;
+
+                        if (i > 10) {
+                            scope.limitReached = true;
+                            $('#modalError').modal('show');
+                            return false;
+                        }
+                    }
+                    else {
+                        scope.noSlugs = true;
+                        scope.limitReached = false;
+                        $('#modalError').modal('show');
+                        return false;
+                    }
+
                     if (firstSlug.length > 0) {
+                        scope.limitReached = false;
                         scope.noSlugs = false;
 
                         if (checkSlugs === true) {
@@ -1049,9 +1071,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 if (url !== false) {
                     scope.noSlugs = false;
                     window.open(url);
-                }
-                else {
-                    scope.noSlugs = true;
                 }
             };
 
@@ -1686,9 +1705,9 @@ app.service('savePrescreen',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);
@@ -1697,9 +1716,9 @@ app.service('saveScreening',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/saveScreening',data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);
@@ -1925,8 +1944,6 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
                 prescreen.data.screenData.benefits_categories_codes.push(programCatCode);
             }
         }
-
-        console.log(prescreen.data.screenData);
 
         var request = $scope.$root.answers[$scope.category];
 
@@ -2353,7 +2370,7 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
     });
 
     // BCURD-300: List of categories & programs.
-    console.log(encodeURIComponent(JSON.stringify($scope.available_fact_sheets)));
+    //console.log(encodeURIComponent(JSON.stringify($scope.available_fact_sheets)));
 
     // Find empty programs
     var programs_diff = $(prescreen.data.screenData.benefits_categories_codes).not(returned_programs).get();
