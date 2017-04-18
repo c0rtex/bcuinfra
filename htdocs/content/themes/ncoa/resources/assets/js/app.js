@@ -1065,6 +1065,14 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 return false;
             };
 
+            scope.selectAllCategory = function(category_id) {
+                var checked = angular.element('#' + category_id).is(':checked');
+                $('.' + category_id + ' input[type=checkbox]').each(function(index) {
+                    checkbox_id = $(this).attr('id');
+                    scope.slugs[checkbox_id] = checked;
+                });
+            };
+
             scope.printReport = function() {
                 url = scope.generatePrintUrl(false);
 
@@ -1080,6 +1088,7 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         scope.slugs[key] = true;
                     }
                 }
+                $('.category-headline input[type=checkbox]').prop('checked', true);
             };
             scope.deselectAll = function() {
                 for (var key in scope.slugs) {
@@ -1087,6 +1096,7 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         scope.slugs[key] = false;
                     }
                 }
+                $('.category-headline input[type=checkbox]').prop('checked', false);
             };
 
             scope.found_programs=[];
