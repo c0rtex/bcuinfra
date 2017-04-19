@@ -1000,6 +1000,16 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
             scope.programs_calculated=false;
 
+            scope.is_full_q = false;
+            scope.found_programs = [];
+            if ($state.current.name == 'questionnaire.results' ||
+                $state.current.name == 'screening') {
+                scope.is_full_q = true;
+                scope.found_programs_categories = prescreen.data.results.found_programs;
+            }
+
+            scope.BenefitItems = BenefitItems;
+
             if (screening.data.results.found_programs != undefined) {
                 scope.programs_calculated=screening.data.results.found_programs.length>0;
             }
@@ -1102,8 +1112,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 }
                 $('.category-headline input[type=checkbox]').prop('checked', false);
             };
-
-            scope.found_programs=[];
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
