@@ -63,11 +63,8 @@
 
         <section class="form-group checkbox-stacked program-list-print">
           <div class="category" ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0">
-            <div class="checkbox category-headline">
-              <input type="checkbox" ng-click="selectAllCategory(found_program.category)" name="{{found_program.category}}" id="{{found_program.category}}">
-              <label for="{{found_program.category}}"><span></span> <h3 style="display: inline">{{found_program.name}}</h3></label>
-            </div>
-            <div class="checkbox {{found_program.category}}" ng-repeat="program in found_program.programs">
+            <h3>{{found_program.name}}</h3>
+            <div class="checkbox" ng-repeat="program in found_program.programs">
               <input type="checkbox" ng-click="generatePrintUrl(true)" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
               <label for="{{program.code}}"><span></span><ng-label text="{{program.name_display}}"></ng-label></label>
             </div>
