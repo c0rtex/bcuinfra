@@ -1035,14 +1035,18 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
                         if (i > 10) {
                             scope.limitReached = true;
-                            $('#modalError').modal('show');
+                            if (checkSlugs !== true) {
+                                $('#modalError').modal('show');
+                            }
                             return false;
                         }
                     }
                     else {
                         scope.noSlugs = true;
                         scope.limitReached = false;
-                        $('#modalError').modal('show');
+                        if (checkSlugs !== true) {
+                            $('#modalError').modal('show');
+                        }
                         return false;
                     }
 
