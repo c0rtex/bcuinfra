@@ -62,7 +62,7 @@
         </div><!-- /.modal -->
 
         <section class="form-group checkbox-stacked program-list-print">
-          <div class="category" ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0">
+          <div class="category" ng-repeat="found_program in found_programs | orderBy:'sort'" ng-if="found_program.programs.length > 0">
             <h3>{{found_program.name}}</h3>
             <div class="checkbox" ng-repeat="program in found_program.programs">
               <input type="checkbox" ng-click="generatePrintUrl(true)" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
