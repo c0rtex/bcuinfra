@@ -1000,12 +1000,27 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
             scope.programs_calculated=false;
 
+            scope.is_full_q = false;
+            scope.found_programs = [];
+            if ($state.current.name == 'questionnaire.results' ||
+                $state.current.name == 'screening') {
+                scope.is_full_q = true;
+                scope.found_programs_categories = prescreen.data.results.found_programs;
+            }
+
+            scope.BenefitItems = BenefitItems;
+
             if (screening.data.results.found_programs != undefined) {
                 scope.programs_calculated=screening.data.results.found_programs.length>0;
             }
 
             scope.slugs={};
             scope.noSlugs = false;
+            scope.limitReached = false;
+
+            scope.closeErrorModal = function() {
+                $('#modalError').modal('hide');
+            };
 
             scope.generatePrintUrl = function(checkSlugs) {
                 if (Object.keys(scope.slugs).length > 0) {
@@ -1025,7 +1040,28 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         }
                     }
 
+                    if (i > 0) {
+                        scope.noSlugs = false;
+
+                        if (i > 10) {
+                            scope.limitReached = true;
+                            if (checkSlugs !== true) {
+                                $('#modalError').modal('show');
+                            }
+                            return false;
+                        }
+                    }
+                    else {
+                        scope.noSlugs = true;
+                        scope.limitReached = false;
+                        if (checkSlugs !== true) {
+                            $('#modalError').modal('show');
+                        }
+                        return false;
+                    }
+
                     if (firstSlug.length > 0) {
+                        scope.limitReached = false;
                         scope.noSlugs = false;
 
                         if (checkSlugs === true) {
@@ -1043,15 +1079,20 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 return false;
             };
 
+            scope.selectAllCategory = function(category_id) {
+                var checked = angular.element('#' + category_id).is(':checked');
+                $('.' + category_id + ' input[type=checkbox]').each(function(index) {
+                    checkbox_id = $(this).attr('id');
+                    scope.slugs[checkbox_id] = checked;
+                });
+            };
+
             scope.printReport = function() {
                 url = scope.generatePrintUrl(false);
 
                 if (url !== false) {
                     scope.noSlugs = false;
                     window.open(url);
-                }
-                else {
-                    scope.noSlugs = true;
                 }
             };
 
@@ -1061,6 +1102,7 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         scope.slugs[key] = true;
                     }
                 }
+                $('.category-headline input[type=checkbox]').prop('checked', true);
             };
             scope.deselectAll = function() {
                 for (var key in scope.slugs) {
@@ -1068,9 +1110,8 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                         scope.slugs[key] = false;
                     }
                 }
+                $('.category-headline input[type=checkbox]').prop('checked', false);
             };
-
-            scope.found_programs=[];
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
@@ -1696,9 +1737,9 @@ app.service('savePrescreen',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/savePrescreen',data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);
@@ -1707,9 +1748,9 @@ app.service('saveScreening',['$http', function($http){
     this.post = function (data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/saveScreening',data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);
@@ -1935,8 +1976,6 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
                 prescreen.data.screenData.benefits_categories_codes.push(programCatCode);
             }
         }
-
-        console.log(prescreen.data.screenData);
 
         var request = $scope.$root.answers[$scope.category];
 
@@ -2363,7 +2402,7 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
     });
 
     // BCURD-300: List of categories & programs.
-    console.log(encodeURIComponent(JSON.stringify($scope.available_fact_sheets)));
+    //console.log(encodeURIComponent(JSON.stringify($scope.available_fact_sheets)));
 
     // Find empty programs
     var programs_diff = $(prescreen.data.screenData.benefits_categories_codes).not(returned_programs).get();
@@ -2431,6 +2470,8 @@ app.directive("divKeyProgram",['prescreen',function(prescreen) {
     }
 }]);
 
+/*
+TODO revert this change after resolve wp rest api plugin issue
 app.directive('divProgramDesc',['factSheet',function(factSheet) {
     return {
         restrict: 'E',
@@ -2444,7 +2485,20 @@ app.directive('divProgramDesc',['factSheet',function(factSheet) {
             program_code:"=programCode"
         }
     }
-}]);
+}]);*/
+
+app.directive('divProgramDesc',function() {
+    return {
+        restrict: 'E',
+        //templateUrl:'/content/themes/ncoa/resources/views/pages/benefits-checkup/programs/programs.category.html?'+(new Date()),
+        link: function(scope, element) {
+            element.append("<p>"+scope.program_desc+"</p>");
+        },
+        scope: {
+            program_desc:"=programDesc"
+        }
+    }
+});
 
 app.controller('questionnaireResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening){
     var el = document.querySelector('.odometer');

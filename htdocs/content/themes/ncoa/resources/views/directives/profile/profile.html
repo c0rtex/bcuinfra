@@ -18,12 +18,13 @@
     <li><strong>Marital status: </strong>{{screenData.marital_status}}</li>
     <li><strong>Veteran: </strong>{{screenData.veteran}}</li>
     <li class="categoreis"><strong>Benefits Categories: </strong>
-      <span ng-repeat="benefit in screenData.benefits_categories | orderBy:'sort'">{{benefit.name}}</span>
+      <span ng-if="!is_full_q" ng-repeat="benefit in screenData.benefits_categories | orderBy:'sort'">{{benefit.name}}</span>
+      <span ng-if="is_full_q" ng-repeat="found_program in found_programs_categories | orderBy:'sort'">{{BenefitItems.getByCode(found_program.category).name}}</span>
     </li>
   </ul>
 </section>
 
-<!--<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>-->
+<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#print-modal" ng-show="programs_calculated">Print Results</button>
 
 <!--<span data-toggle="modal" data-target="#details-modal" class="btn-link view-details" ng-show="showOptions">View all details <strong>&gt;</strong></span>-->
 
@@ -31,22 +32,38 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h1 class="modal-title modal-h1" id="print-label">
           Print My Results
-          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </h1>
       </div>
       <div class="modal-body">
         <div class="modal-tagline">
-          <p>Select which benefit program fact sheets you would like to download and print.</p>
+          <p>Select up to 10 benefit program fact sheets at a time that you would like to download and print.</p>
           <p><span id="print-modal-select-all" class="modal-inline bold" ng-click="selectAll()">Select All</span> /
             <span id="print-modal-deselect-all" class="modal-inline bold" ng-click="deselectAll()">Deselect All</span></p>
         </div>
-        <div class="alert alert-danger" ng-if="noSlugs">
-          <strong>Error:</strong> Please select at least one program fact sheet to print.
-        </div>
+
+        <div id="modalError" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Print Report</h3>
+              </div>
+              <div class="modal-body">
+                <p ng-if="noSlugs">Please select at least one program fact sheet to print.</p>
+                <p ng-if="limitReached">Select up to 10 programs at a time to download and print.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeErrorModal()">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <section class="form-group checkbox-stacked program-list-print">
-          <div class="category" ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0">
+          <div class="category" ng-repeat="found_program in found_programs | orderBy:'sort'" ng-if="found_program.programs.length > 0">
             <h3>{{found_program.name}}</h3>
             <div class="checkbox" ng-repeat="program in found_program.programs">
               <input type="checkbox" ng-click="generatePrintUrl(true)" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
@@ -140,22 +157,22 @@
     </div>
   </div>
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#save-modal-select-all').click(function () {
-        if ($('#save-modal-select-all').text() == 'Select All') {
-          $('#save-modal input').each(function () {
-            $(this).prop('checked', true);
+      $(document).ready(function () {
+          $('#save-modal-select-all').click(function () {
+              if ($('#save-modal-select-all').text() == 'Select All') {
+                  $('#save-modal input').each(function () {
+                      $(this).prop('checked', true);
+                  });
+                  $('#save-modal-select-all').text('Deselect All');
+              } else {
+                  $('#save-modal input').each(function () {
+                      $(this).prop('checked', false);
+                      $(this).removeProp('checked');
+                  });
+                  $('#save-modal-select-all').text('Select All');
+              }
           });
-          $('#save-modal-select-all').text('Deselect All');
-        } else {
-          $('#save-modal input').each(function () {
-            $(this).prop('checked', false);
-            $(this).removeProp('checked');
-          });
-          $('#save-modal-select-all').text('Select All');
-        }
       });
-    });
   </script>
 </div>
 
@@ -239,22 +256,22 @@
     </div>
   </div>
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#email-modal-select-all').click(function () {
-        if ($('#email-modal-select-all').text() == 'Select All') {
-          $('#email-modal input').each(function () {
-            $(this).prop('checked', true);
+      $(document).ready(function () {
+          $('#email-modal-select-all').click(function () {
+              if ($('#email-modal-select-all').text() == 'Select All') {
+                  $('#email-modal input').each(function () {
+                      $(this).prop('checked', true);
+                  });
+                  $('#email-modal-select-all').text('Deselect All');
+              } else {
+                  $('#email-modal input').each(function () {
+                      $(this).prop('checked', false);
+                      $(this).removeProp('checked');
+                  });
+                  $('#email-modal-select-all').text('Select All');
+              }
           });
-          $('#email-modal-select-all').text('Deselect All');
-        } else {
-          $('#email-modal input').each(function () {
-            $(this).prop('checked', false);
-            $(this).removeProp('checked');
-          });
-          $('#email-modal-select-all').text('Select All');
-        }
       });
-    });
   </script>
 </div>
 
