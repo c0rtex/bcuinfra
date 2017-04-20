@@ -13,12 +13,6 @@
     .faq {
       margin-bottom: 10px;
     }
-    .popover-link {
-      color: #1888de;
-      text-decoration: underline;
-      cursor: hand;
-    }
-
     .footer {
       width: 100%;
       position: fixed;

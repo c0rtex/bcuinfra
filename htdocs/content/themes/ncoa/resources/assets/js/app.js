@@ -1000,6 +1000,16 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
             scope.programs_calculated=false;
 
+            scope.is_full_q = false;
+            scope.found_programs = [];
+            if ($state.current.name == 'questionnaire.results' ||
+                $state.current.name == 'screening') {
+                scope.is_full_q = true;
+                scope.found_programs_categories = prescreen.data.results.found_programs;
+            }
+
+            scope.BenefitItems = BenefitItems;
+
             if (screening.data.results.found_programs != undefined) {
                 scope.programs_calculated=screening.data.results.found_programs.length>0;
             }
@@ -1035,14 +1045,18 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
 
                         if (i > 10) {
                             scope.limitReached = true;
-                            $('#modalError').modal('show');
+                            if (checkSlugs !== true) {
+                                $('#modalError').modal('show');
+                            }
                             return false;
                         }
                     }
                     else {
                         scope.noSlugs = true;
                         scope.limitReached = false;
-                        $('#modalError').modal('show');
+                        if (checkSlugs !== true) {
+                            $('#modalError').modal('show');
+                        }
                         return false;
                     }
 
@@ -1098,8 +1112,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 }
                 $('.category-headline input[type=checkbox]').prop('checked', false);
             };
-
-            scope.found_programs=[];
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
@@ -1276,11 +1288,21 @@ app.directive('setDefaultAnswer',[function(){
     return {
         link: function(scope, element, attr) {
             if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
-            scope.$root.answers[scope.category][scope.code] = scope.value;
+            var val = scope.value;
+            if (scope.$root.answers[scope.category]) {
+                if (scope.$root.answers[scope.category][scope.answer_field.code]) {
+                    val = scope.$root.answers[scope.category][scope.answer_field.code];
+                } else if (scope.answer_field.default) {
+                    val = scope.answer_field.default;
+                }
+            } else if (scope.answer_field.default) {
+                val = scope.answer_field.default;
+            }
+            scope.$root.answers[scope.category][scope.answer_field.code] = val;
         },
         scope: {
             category:"@",
-            code:"@",
+            answer_field:"=answerField",
             value:"@"
         }
     }
