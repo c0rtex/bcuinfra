@@ -1247,11 +1247,21 @@ app.directive('setDefaultAnswer',[function(){
     return {
         link: function(scope, element, attr) {
             if (scope.$root.answers[scope.category] == undefined) scope.$root.answers[scope.category] = {};
-            scope.$root.answers[scope.category][scope.code] = scope.value;
+            var val = scope.value;
+            if (scope.$root.answers[scope.category]) {
+                if (scope.$root.answers[scope.category][scope.answer_field.code]) {
+                    val = scope.$root.answers[scope.category][scope.answer_field.code];
+                } else if (scope.answer_field.default) {
+                    val = scope.answer_field.default;
+                }
+            } else if (scope.answer_field.default) {
+                val = scope.answer_field.default;
+            }
+            scope.$root.answers[scope.category][scope.answer_field.code] = val;
         },
         scope: {
             category:"@",
-            code:"@",
+            answer_field:"=answerField",
             value:"@"
         }
     }
