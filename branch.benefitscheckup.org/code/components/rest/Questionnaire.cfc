@@ -112,7 +112,7 @@
                 </cfcase>
 
                 <cfdefaultcase>
-                    <cfset strct["answer_fields"] = this.getAnswersFilteredByState(i,state)>
+                    <cfset strct["answer_fields"] = this.getAnswersFilteredByState(i,state,prevScreeningId)>
                 </cfdefaultcase>
 
             </cfswitch>
@@ -205,6 +205,7 @@
     <cffunction name="getAnswersFilteredByState">
         <cfargument name="question">
         <cfargument name="state" default="">
+        <cfargument name="screening">
 
         <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and (p.state=? or p.state is null) and p.active_flag=1 and p.exclude_flag=0) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0) or p.id is null))) order by qa.sort",[question,state,state,state])>
         <cfset var retArray = arrayNew(1)>
@@ -225,10 +226,28 @@
                         <cfset afStrct['default'] = i.getDefault_value()>
                     </cfif>
                 </cfif>
+            <cfelse>
+                <cfif afStrct["code"] eq "no_hh_members">
+                    <cfset afStrct['default'] = this.fillHhMembers(screening)>
+                </cfif>
             </cfif>
             <cfset arrayAppend(retArray,afStrct)>
         </cfloop>
         <cfreturn retArray>
+    </cffunction>
+
+    <cffunction name="fillHhMembers">
+        <cfargument name="screening">
+        <cfset var sa = ormExecuteQuery("select sa.option.code from screening_answerfield sa where sa.screening.id=? and sa.answer.code='marital_stat'",[screening])>
+        <cfif arraylen(sa) gte 0>
+            <cfif sa[1] eq "married">
+                <cfreturn 2>
+            <cfelse>
+                <cfreturn 1>
+            </cfif>
+        <cfelse>
+            <cfreturn 0>
+        </cfif>
     </cffunction>
 
 </cfcomponent>
