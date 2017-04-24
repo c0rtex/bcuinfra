@@ -11033,6 +11033,19 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   margin-bottom: 45px;
 }
 
+/* Force break on long URLs */
+a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 @-webkit-keyframes loading-bar-spinner {
   0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
