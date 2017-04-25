@@ -1197,11 +1197,16 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
         template:"<span ng-show='checkRule()' ng-include='question_template_link'></span>",
         link: function(scope,element,ngShow) {
 
+            if (scope.$root.answers[category.currentCategory()] == undefined) {
+                scope.$root.answers[category.currentCategory()] = {};
+            }
+
             for (var i=0; i<scope.question.answer_fields.length;i++) {
-                if ((scope.question.answer_fields[i].default != undefined) && (scope.$root.answers[category.currentCategory()][scope.question.answer_fields[i].code] == undefined)) {
-                    scope.$root.answers[category.currentCategory()][scope.question.answer_fields[i].code] = scope.question.answer_fields[i].default;
+                var code = scope.question.answer_fields[i].code;
+                if ((scope.question.answer_fields[i].default != undefined) && (scope.$root.answers[category.currentCategory()][code] == undefined)) {
+                    scope.$root.answers[category.currentCategory()][code] = scope.question.answer_fields[i].default;
                 }
-                AnswersByCategories.setCategory(scope.question.answer_fields[i].code,category.currentCategory(),scope.question.answer_fields[i].type);
+                AnswersByCategories.setCategory(code,category.currentCategory(),scope.question.answer_fields[i].type);
             }
 
             if (scope.question.rule == undefined) {
@@ -1992,6 +1997,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
             screening.data.results.screening.id = undefined;
 
             $scope.showLoader = false;
+            localStorageService.remove("screening");
             $state.go('questionnaire.initial-results');
         });
     }
