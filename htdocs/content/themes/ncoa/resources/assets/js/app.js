@@ -2605,3 +2605,9 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
 
 
 app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+
+app.filter('removeNbsp', function() {
+    return function(input) {
+        return input.replace(/&nbsp;/g,' ');
+    }
+});

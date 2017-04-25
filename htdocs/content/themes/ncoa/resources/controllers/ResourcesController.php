@@ -21,7 +21,6 @@ class ResourcesController extends BaseController
       'DC' => 'District of Columbia',
       'FL' => 'Florida',
       'GA' => 'Georgia',
-      'GU' => 'Guam',
       'HI' => 'Hawaii',
       'ID' => 'Idaho',
       'IL' => 'Illinois',
