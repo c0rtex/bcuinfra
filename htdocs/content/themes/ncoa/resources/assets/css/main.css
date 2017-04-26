@@ -11034,7 +11034,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 }
 
 /* Force break on long URLs */
-a {
+#factsheetContent a {
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
