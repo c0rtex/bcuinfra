@@ -1998,6 +1998,9 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
             $scope.showLoader = false;
             localStorageService.remove("screening");
+            for (var key in $scope.$root.answers) {
+                if (key != 'prescreen') $scope.$root.answers[key] = {};
+            }
             $state.go('questionnaire.initial-results');
         });
     }
