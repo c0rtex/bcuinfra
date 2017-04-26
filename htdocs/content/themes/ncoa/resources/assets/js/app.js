@@ -1381,12 +1381,15 @@ app.directive('textSizeChanger', ['$document', 'localStorageService', function (
                 switch(size){
                     case '18':
                         scope.sel = 'min';
+                        $('.bene-panel').css('height', 'auto');
                         break;
                     case '20':
                         scope.sel = 'mid';
+                        $('.bene-panel').css('height', 'auto');
                         break;
                     default:
                         scope.sel = 'max';
+                        $('.bene-panel').css('height', '284px');
                 };
 
                 localStorageService.set('TextSize', size);

@@ -10165,7 +10165,7 @@ grid:last-child .sales-grid {
   font-size: 1em !important; }
   @media (min-width: 768px) {
     .questionnaire select, .questionnaire input[type="text"] {
-      width: 50%; } }
+      width: 45%; } }
 
 .questionnaire .step {
   font-weight: 700; }
@@ -11034,7 +11034,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 }
 
 /* Force break on long URLs */
-a {
+#factsheetContent a {
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
