@@ -1185,6 +1185,7 @@ app.factory('questionTemplates',[function() {
         "bcuqc_interest_category":directivePath+"bcuqc_interest_category.html",
         "citizen":directivePath+"citizen.html",
         "sp_veteran":directivePath+"sp_veteran.html",
+        "sp_dob":directivePath+"sp_dob.html",
         "incomegrid":directivePath+"incomegrid.html",
         "assetgrid":directivePath+"assetgrid.html"};
 
