@@ -7,7 +7,7 @@
         <ul class="programs" ng-repeat="program in found_program.programs">
             <li>
                 <h4>{{program.name_display}}</h4>
-                <div-program-desc program_desc="program.desc_display"></div-program-desc>
+                <div-program-desc program_code="program.code"></div-program-desc>
             </li>
             <li>
                 <a ng-href="{{program.url}}" class="btn-link">Learn More and Apply</a>
