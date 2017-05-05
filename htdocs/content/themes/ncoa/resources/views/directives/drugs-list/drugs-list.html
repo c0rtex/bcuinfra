@@ -1,0 +1,6 @@
+<div ng-if="Object.keys(selectedDrugs).length > 0" class="drugs-list">
+  <h3>Selected Drugs</h3>
+  <ul>
+    <li ng-repeat="(code, name) in selectedDrugs">{{ name }}</li>
+  </ul>
+</div>

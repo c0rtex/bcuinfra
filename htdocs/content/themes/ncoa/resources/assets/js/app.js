@@ -211,6 +211,24 @@ app.directive('selector',[function(){
     }
 }]);
 
+app.directive('drugsList', ['screening', 'Drugs', function(screening, Drugs) {
+    return {
+        restrict: 'E',
+        templateUrl: '/content/themes/ncoa/resources/views/directives/drugs-list/drugs-list.html?'+(new Date()),
+        link: function (scope, element, attr) {
+            scope.success = 'You made it bro!';
+            scope.selectedDrugs = {};
+            Object.keys(scope.$root.answers.health).forEach(function(code) {
+                if(code.indexOf('drug_') == 0) {
+                    scope.selectedDrugs[code.substr(5)] = Drugs.nameByCode(code.substr(5));
+                }
+            });
+
+            console.log(scope.selectedDrugs);
+        }
+    };
+}]);
+
 app.factory('Months',[function(){
     return [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
         {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
@@ -830,6 +848,7 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                 $('#multiselect').multiSelect('select', selected);
                 for (var i=0;i<selected.length;i++) {
                     scope.$root.answers[scope.category][selected[i]] = 'y';
+                    scope.$root.answers[scope.category]['drug_' + selected[i]] = 'y';
                 }
             });
 
@@ -840,6 +859,7 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                 $('#multiselect').multiSelect('deselect', selected);
                 for (var i=0;i<selected.length;i++) {
                     delete scope.$root.answers[scope.category][selected[i]];
+                    delete scope.$root.answers[scope.category]['drug_' + selected[i]];
                 }
             });
         }
