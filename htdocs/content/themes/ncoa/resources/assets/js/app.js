@@ -5,10 +5,10 @@ app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
 }]);
 
 // Use sessionStorage instead of localStorage
-app.config(function (localStorageServiceProvider) {
+app.config(['localStorageServiceProvider', function(localStorageServiceProvider) {
     localStorageServiceProvider
         .setStorageType('sessionStorage');
-});
+}]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
