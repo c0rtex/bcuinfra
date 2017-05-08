@@ -2,7 +2,7 @@
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
-<div class="container">
+<div class="container short-fact-sheet">
     <header class="visible-print-block print-header">
         <img src="/content/themes/ncoa/resources/assets/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" class="pull-left print-logo">
         <div class="pull-right"><span>www.benefitscheckup.org</span></div>

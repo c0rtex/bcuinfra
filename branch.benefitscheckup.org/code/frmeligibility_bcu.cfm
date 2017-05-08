@@ -513,13 +513,7 @@ tempPrintButton.remove();
 			</div><!-- question -->	
 		</cfif>
 		
-		<div class="question">
-			<div class="questionHolder questionBar">
-				<p>
-					<cf_displayresultscomments>
-				</p>
-			</div><!-- questionHolder -->
-		</div><!-- question -->	
+		
 	
 		<div class="question">
 			<div class="questionHolder questionBar">
