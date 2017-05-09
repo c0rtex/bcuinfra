@@ -11036,6 +11036,11 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
   margin-bottom: 45px;
 }
 
+.brand-drug-alert p,
+.generic-drug-alert p {
+  margin: 1em 0;
+}
+
 /* Force break on long URLs */
 .fact-sheet a,
 .short-fact-sheet a,

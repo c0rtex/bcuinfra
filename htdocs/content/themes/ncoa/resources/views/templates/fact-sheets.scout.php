@@ -41,7 +41,6 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         
                             <div class="fact-sheets-header fact-sheets-top-header">{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</div>
                             <div class="fact-sheets-header fact-sheets-bottom-header"><h1>{{ Loop::title() }}</h1></div>
-                            <drugs-list></drugs-list>
                         </div>
                         <div class="fact-sheets-icon-block pull-left">
                             <a target="_blank" href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&print=y" class="fact-sheet-header-icon">
@@ -65,6 +64,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
 
                     <div id="factsheetContent">
                         {{ Loop::content() }}
+                        <drugs-list></drugs-list>
                     </div>
 
                     @if($is_alt)

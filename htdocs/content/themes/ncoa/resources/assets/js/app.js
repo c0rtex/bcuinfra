@@ -216,15 +216,25 @@ app.directive('drugsList', ['screening', 'Drugs', function(screening, Drugs) {
         restrict: 'E',
         templateUrl: '/content/themes/ncoa/resources/views/directives/drugs-list/drugs-list.html?'+(new Date()),
         link: function (scope, element, attr) {
-            scope.success = 'You made it bro!';
-            scope.selectedDrugs = {};
+            scope.genericDrugsAlert = false;
+            scope.brandDrugsAlert = false;
+            scope.brandDrugs = {};
+            scope.genericDrugs = {};
+            var currentDrug = '';
             Object.keys(scope.$root.answers.health).forEach(function(code) {
                 if(code.indexOf('drug_') == 0) {
-                    scope.selectedDrugs[code.substr(5)] = Drugs.nameByCode(code.substr(5));
+                    currentDrug = code.substr(5);
+
+                    if(currentDrug.indexOf('dn_') == 0) {
+                        scope.brandDrugsAlert = true;
+                        scope.brandDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
+                    }
+                    if(currentDrug.indexOf('gen_') == 0) {
+                        scope.genericDrugsAlert = true;
+                        scope.genericDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
+                    }
                 }
             });
-
-            console.log(scope.selectedDrugs);
         }
     };
 }]);
@@ -849,6 +859,7 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                 for (var i=0;i<selected.length;i++) {
                     scope.$root.answers[scope.category][selected[i]] = 'y';
                     scope.$root.answers[scope.category]['drug_' + selected[i]] = 'y';
+                    console.log(scope.$root.answers[scope.category]);
                 }
             });
 

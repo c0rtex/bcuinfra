@@ -1,6 +1,13 @@
-<div ng-if="Object.keys(selectedDrugs).length > 0" class="drugs-list">
-  <h3>Selected Drugs</h3>
-  <ul>
-    <li ng-repeat="(code, name) in selectedDrugs">{{ name }}</li>
-  </ul>
+<div ng-if="brandDrugsAlert" class="brand-drug-alert">
+  <p><strong>This program applies to the following medications you are currently taking:</strong></p>
+  <li ng-repeat="(code, name) in brandDrugs">{{ name }}</li>
+</div>
+
+<div ng-if="genericDrugsAlert" class="generic-drug-alert">
+  <p><strong>This program applies to the following brand-name versions of generic medications you are currently taking:</strong></p>
+  <li ng-repeat="(code, name) in genericDrugs">{{ name }}</li>
+  <p><strong>Please note:</strong> Since the generic versions of some drugs you selected are not available through this program, you may
+    want to contact your healthcare provider to find out if the brand name equivalent(s) are appropriate for you. If so,
+    you may be able to save money by applying for this program. Some pharmaceutical programs provide brand-name drugs at
+    little or no cost to those who qualify.</p>
 </div>
