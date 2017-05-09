@@ -51,8 +51,9 @@ class FactSheetsController extends BaseController
 
     public function render_page($fact_sheet_slug, $on_new_page = false) {
 
-        // Detect if SNAP page
+        // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
+        $is_pap = (strstr($_SERVER['REQUEST_URI'], 'rxco_')) ? true : false;
 
         $key_benefits_program_codes = array();
         $key_benefits_program_codes['expanded_mdcd']['codes'] = array(
@@ -272,6 +273,7 @@ class FactSheetsController extends BaseController
                 'required_materials' => $requiredMaterials,
                 'is_alt' => false,
                 'is_snap' => $is_snap,
+                'is_pap' => $is_pap,
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program
             ])->render();
@@ -316,6 +318,7 @@ class FactSheetsController extends BaseController
                 'becs' => $becs,
                 'is_alt' => false,
                 'is_snap' => $is_snap,
+                'is_pap' => $is_pap,
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program
             ])->render();

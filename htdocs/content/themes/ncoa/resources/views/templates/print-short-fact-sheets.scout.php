@@ -21,6 +21,9 @@
 
             <div id="factsheetContent">
                 {{ Loop::content() }}
+                @if($is_pap)
+                <drugs-list></drugs-list>
+                @endif
             </div>
 
             @if($is_alt)
