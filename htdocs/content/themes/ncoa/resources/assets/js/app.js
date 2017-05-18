@@ -1039,6 +1039,13 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 scope.found_programs_categories = prescreen.data.results.found_programs;
             }
 
+            if ($state.current.name == 'questionnaire.results') {
+                scope.print_button = true;
+            }
+            else {
+                scope.print_button = false;
+            qqq}
+
             scope.BenefitItems = BenefitItems;
 
             if (screening.data.results.found_programs != undefined) {
