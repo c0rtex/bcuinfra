@@ -211,7 +211,7 @@ app.directive('selector',[function(){
     }
 }]);
 
-app.directive('drugsList', ['screening', 'Drugs', function(screening, Drugs) {
+app.directive('drugsList', ['screening', 'Drugs', '$state', function(screening, Drugs, $state) {
     return {
         restrict: 'E',
         templateUrl: '/content/themes/ncoa/resources/views/directives/drugs-list/drugs-list.html?'+(new Date()),
@@ -225,13 +225,16 @@ app.directive('drugsList', ['screening', 'Drugs', function(screening, Drugs) {
                 if(code.indexOf('drug_') == 0) {
                     currentDrug = code.substr(5);
 
-                    if(currentDrug.indexOf('dn_') == 0) {
-                        scope.brandDrugsAlert = true;
-                        scope.brandDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
-                    }
-                    if(currentDrug.indexOf('gen_') == 0) {
-                        scope.genericDrugsAlert = true;
-                        scope.genericDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
+                    if (Drugs.isCodeBindToProgram(currentDrug,$state.params["programCode"])) {
+
+                        if (currentDrug.indexOf('dn_') == 0) {
+                            scope.brandDrugsAlert = true;
+                            scope.brandDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
+                        }
+                        if (currentDrug.indexOf('gen_') == 0) {
+                            scope.genericDrugsAlert = true;
+                            scope.genericDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
+                        }
                     }
                 }
             });
@@ -1748,12 +1751,28 @@ app.factory('Drugs',[function() {
         return _drugs;
     }
 
-    Drugs.nameByCode = function(code) {
+    Drugs.drugByCode = function (code) {
         for(var i=0;i<_drugs.length;i++) {
-            if (_drugs[i].code==code) return _drugs[i].display;
+            if (_drugs[i].code==code) return _drugs[i];
+        }
+        return undefined;
+    }
+
+    Drugs.nameByCode = function(code) {
+        var drug = Drugs.drugByCode(code);
+        if (drug) {
+            return drug.display;
         }
         return undefined;
     };
+
+    Drugs.isCodeBindToProgram = function(drugCode,programCode) {
+        var drug = Drugs.drugByCode(drugCode);
+        if (drug) {
+            return drug.programs.indexOf(programCode) != -1;
+        }
+        return false;
+    }
 
     Drugs.codeByName = function(name) {
         for(var i=0;i<_drugs.length;i++) {

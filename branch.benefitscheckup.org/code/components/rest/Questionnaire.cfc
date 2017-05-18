@@ -178,6 +178,12 @@
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
+            <cfset option["programs"]=arrayNew(1)>
+            <cfloop array="#d.getPrograms()#" index="p">
+                <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
+                    <cfset arrayAppend(option["programs"],p.getCode())>
+                </cfif>
+            </cfloop>
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
@@ -186,6 +192,12 @@
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
+            <cfset option["programs"]=arrayNew(1)>
+            <cfloop array="#d.getPrograms()#" index="p">
+                <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
+                    <cfset arrayAppend(option["programs"],p.getCode())>
+                </cfif>
+            </cfloop>
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
