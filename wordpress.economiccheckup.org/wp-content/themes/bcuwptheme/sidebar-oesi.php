@@ -15,6 +15,7 @@
   <div id="rotating-item-wrapper" class="sponsor-block">
     <img src="/wp-content/uploads/2013/08/rrf.png" alt="The Retirement Research Foundation" title="The Retirement Research Foundation" class="rotating-item" width="180" />
     <img src="/wp-content/uploads/2011/10/boa5.png" alt="Bank of America" title="Bank of America" class="rotating-item" width="180" />
+    <img src="/wp-content/uploads/2017/05/Taub-revolving-logo.png" alt="Taub" title="Taub" class="rotating-item" width="180" />
   </div> 
   <div class="sponsor-block">
    <a href="http://ncoajobsource.org/" target="_blank"><img src="/cf/bootstrap/css/images/sponsor-2.jpg" alt="JobSource" title="JobSource"></a>
