@@ -178,6 +178,7 @@
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
+            <cfset option["type"] = "first">
             <cfset option["programs"]=arrayNew(1)>
             <cfloop array="#d.getPrograms()#" index="p">
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
@@ -187,19 +188,24 @@
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
-        <cfset drg = ormExecuteQuery("select distinct afr.right_answerfield from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1)")>
+        <cfset drg = ormExecuteQuery("select distinct afr from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1) order by afr.right_answerfield.code")>
+        <cfset var option = structNew()>
+        <cfset option["code"] = "">
         <cfloop array="#drg#" index="d">
-            <cfset var option = structNew()>
-            <cfset option["code"]=d.getCode()>
-            <cfset option["display"]=d.getDisplay().getDisplay_text()>
-            <cfset option["programs"]=arrayNew(1)>
-            <cfloop array="#d.getPrograms()#" index="p">
+            <cfif option["code"] neq d.getRight_answerfield().getCode() >
+                <cfset var option = structNew()>
+                <cfset option["code"]=d.getRight_answerfield().getCode()>
+                <cfset option["display"]=d.getRight_answerfield().getDisplay().getDisplay_text()>
+                <cfset option["programs"]=arrayNew(1)>
+                <cfset option["type"]="second">
+                <cfset tmpStrct[i] = option>
+                <cfset i = i+1>
+            </cfif>
+            <cfloop array="#d.getLeft_answerfield().getPrograms()#" index="p">
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
                     <cfset arrayAppend(option["programs"],p.getCode())>
                 </cfif>
             </cfloop>
-            <cfset tmpStrct[i] = option>
-            <cfset i = i+1>
         </cfloop>
         <cfset keys = structsort(tmpStrct,"textnocase","ASC","display")>
         <cfloop from="1" to="#arrayLen(keys)#" index="i">
