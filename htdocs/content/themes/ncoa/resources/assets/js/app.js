@@ -1047,7 +1047,7 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
             }
             else {
                 scope.print_button = false;
-            qqq}
+            }
 
             scope.BenefitItems = BenefitItems;
 
