@@ -231,7 +231,7 @@ app.directive('drugsList', ['screening', 'Drugs', '$state', function(screening, 
                             scope.brandDrugsAlert = true;
                             scope.brandDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
                         }
-                        if (currentDrug.indexOf('gen_') == 0) {
+                        if ((currentDrug.indexOf('gen_') == 0)||(/g\d+/.exec(currentDrug))) {
                             scope.genericDrugsAlert = true;
                             scope.genericDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
                         }
