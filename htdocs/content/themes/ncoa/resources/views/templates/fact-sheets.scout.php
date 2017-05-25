@@ -310,24 +310,32 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         </div>
 
                         @if ($modalNotEmpty == true)
-                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">See More</a>
+                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                          <span style="white-space: pre-line">See More</span>
+                        </a>
                         @endif
 
                         @endif
 
                         @if (!empty($programUrl))
                         </br>
-                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Program Website</a>
+                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                          <span style="white-space: pre-line">Program Website</span>
+                        </a>
                         @endif
 
 			            @if (!empty($snap_findstores_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Stores to Use Debit Card</a>
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                          <span style="white-space: pre-line">Find Stores to Use Debit Card</span>
+                        </a>
                         @endif
 
                         @if (($is_snap) && ($elegible != 'n') && !empty($snap_find_elegible))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">Find Out If You're Eligible</a>
+                        <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                          <span style="white-space: pre-line">Find Out If You're Eligible</span>
+                        </a>
                         @endif
 			
 
