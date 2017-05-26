@@ -24,10 +24,7 @@
             <hr class="fact-sheets-hr" />
 
             <div id="factsheetContent">
-                {{ Loop::content() }}
-                @if($is_pap)
-                <drugs-list></drugs-list>
-                @endif
+                {{ $post_content }}
             </div>
 
             @if($is_alt)
