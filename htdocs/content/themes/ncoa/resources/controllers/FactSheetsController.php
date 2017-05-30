@@ -19,13 +19,13 @@ class FactSheetsController extends BaseController
             $retVal = View::make("templates.print-fact-sheet-cover-page", [])->render();
         }
 
-        $retVal = $retVal.$this->render_page($query->query["name"],isset($_REQUEST['pdf']));
+        $retVal = $retVal.$this->render_page($query->query["name"], $post, isset($_REQUEST['pdf']));
 
         if (array_key_exists('slugs', $_REQUEST)) {
             $slugs = explode(";",$_REQUEST['slugs']);
 
             foreach($slugs as $slug) {
-                $retVal = $retVal.$this->render_page("factsheet_".$slug,true);
+                $retVal = $retVal.$this->render_page("factsheet_".$slug, $post,true);
             }
         }
 
@@ -49,11 +49,24 @@ class FactSheetsController extends BaseController
 
     }
 
-    public function render_page($fact_sheet_slug, $on_new_page = false) {
+    public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
+
+        $post_content = $post->post_content;
 
         // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
         $is_pap = (strstr($_SERVER['REQUEST_URI'], 'rxco_')) ? true : false;
+
+        if ($is_pap) {
+            // Insert <drugs-list /> into the post content
+            $hr_pos = strpos($post->post_content, '<hr');
+            if ($hr_pos !== false) {
+                $post_content = substr_replace($post->post_content, '<drugs-list></drugs-list>', $hr_pos, 0);
+            }
+            else {
+                $post_content = $post->post_content . '<drugs-list></drugs-list>';
+            }
+        }
 
         $key_benefits_program_codes = array();
         $key_benefits_program_codes['expanded_mdcd']['codes'] = array(
@@ -275,7 +288,8 @@ class FactSheetsController extends BaseController
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
                 'elegible' => $elegible,
-                'key_benefits_program' => $key_benefits_program
+                'key_benefits_program' => $key_benefits_program,
+                'post_content' => $post_content,
             ])->render();
 
         } else {
@@ -320,7 +334,8 @@ class FactSheetsController extends BaseController
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
                 'elegible' => $elegible,
-                'key_benefits_program' => $key_benefits_program
+                'key_benefits_program' => $key_benefits_program,
+                'post_content' => $post_content,
             ])->render();
         }
     }

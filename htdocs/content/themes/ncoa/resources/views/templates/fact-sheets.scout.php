@@ -63,10 +63,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                     <hr class="fact-sheets-hr" />
 
                     <div id="factsheetContent">
-                        {{ Loop::content() }}
-                        @if($is_pap)
-                        <drugs-list></drugs-list>
-                        @endif
+                        {{ $post_content }}
                     </div>
 
                     @if($is_alt)
