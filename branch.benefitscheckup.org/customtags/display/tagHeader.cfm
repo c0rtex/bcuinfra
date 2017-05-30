@@ -18,6 +18,8 @@
 <cfparam name="attributes.js" type="string" default="">
 <cfparam name="attributes.css" type="string" default="">
 <cfparam name="attributes.showwalmart" type="boolean" default="0">
+<cfparam name="attributes.meta_title" type="string" default="">
+<cfparam name="attributes.meta_description" type="string" default="">
 <cfif attributes.partner_id eq ''>
 	<cfif IsDefined('session.subset_id') and session.subset_id neq '' and IsNumeric(session.subset_id)>
 		<cf_cacheSubsetPool action="get" subset_id="#session.subset_id#" var="sobj">
@@ -93,7 +95,9 @@
 	</cfif>
 </cfif>
 <cfoutput>#maintMsg#</cfoutput>
-
+<div style="width:100%; background-color:#fcf8e3;text-align:center; color:#444; padding:16px; font-size:14px;border-bottom:1px solid lightGray">
+Server maintenance is scheduled for Saturday, June 3rd. There will be intermittent periods when this site will be unavailable on that day.
+</div>
 <!--- BS 11/05/02 include color values for the page, based of partner or CSO cobranding --->
 <cfset partner_id = attributes.partner_id>
 <cfinclude template="tagCobrandValues.cfm">
