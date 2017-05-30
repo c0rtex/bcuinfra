@@ -35,7 +35,9 @@
           height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
-
+<div style="width:100%; background-color:#fcf8e3;text-align:center; color:#444; padding:16px; font-size:14px;border-bottom:1px solid lightGray">
+Heads up! On Saturday, June 3, our site will be down for scheduled maintenance. Thanks for your patience.
+</div>
 @include('partials.header')
 
 <div class="page-wrapper">
