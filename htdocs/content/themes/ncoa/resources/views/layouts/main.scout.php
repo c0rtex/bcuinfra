@@ -36,7 +36,7 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div style="width:100%; background-color:#fcf8e3;text-align:center; color:#444; padding:16px; font-size:14px;border-bottom:1px solid lightGray">
-Server maintenance is scheduled for Saturday, June 3rd. There will be intermittent periods when this site will be unavailable on that day.
+Heads Up! Server maintenance is scheduled for Saturday, June 3rd and there will be intermittent periods when this site is unavailable. Thanks for your patience.
 </div>
 @include('partials.header')
 
