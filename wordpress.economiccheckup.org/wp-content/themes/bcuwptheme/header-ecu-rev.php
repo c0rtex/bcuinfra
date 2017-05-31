@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -103,7 +103,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PHJ4LQ');</script>
 <!-- End Google Tag Manager -->
-
+<div style="width:100%; background-color:#fcf8e3;text-align:center; color:#444; padding:16px; font-size:14px;border-bottom:1px solid lightGray">
+Heads Up! Server maintenance is scheduled for Saturday, June 3rd and there will be intermittent periods when this site is unavailable. Thanks for your patience.
+</div>
 
     <button id="esiMenuToggleButton" class="btn"><span id="menuButtonESITextForIE" class="menuButtonESIText">Menu</span> </i> </button>
   	<script type="text/javascript">
