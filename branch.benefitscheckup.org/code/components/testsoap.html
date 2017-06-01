@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>SOAP JavaScript Client Test</title>
+    <script type="text/javascript">
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('POST', 'http://ws2.feedingamerica.org/FAWebService.asmx', true);
+
+            var sr = '<?xml version="1.0" encoding="utf-8"?>'+
+                     '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
+                     '<soap12:Body>'+
+                     '<GetOrganizationsByZip xmlns="http://feedingamerica.org/">'+
+                     '<zip>'+document.getElementById('zip').value+'</zip>'+
+                     '</GetOrganizationsByZip>'+
+                     '</soap12:Body>'+
+                     '</soap12:Envelope>';
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        var table = document.getElementById('response');
+                        var rowLength = table.rows.length;
+                        for (var i=0;i<rowLength-1;i++) {
+                            table.deleteRow(1);
+                        }
+                        parser = new DOMParser();
+                        xmlDoc = parser.parseFromString(xmlhttp.response,"text/xml");
+                        var listFipsCounty = xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild.getElementsByTagName('ListFipsCounty')[0].getElementsByTagName('LocalFindings');
+
+                        for (var i=0;i<listFipsCounty.length;i++) {
+                            var row = table.insertRow(table.rows.length);
+                            row.insertCell(0).innerHTML = listFipsCounty[i].getElementsByTagName('FipsCode')[0].childNodes[0].nodeValue;
+                            row.insertCell(1).innerHTML = listFipsCounty[i].getElementsByTagName('CountyName')[0].childNodes[0].nodeValue;
+                            row.insertCell(2).innerHTML = listFipsCounty[i].getElementsByTagName('State')[0].childNodes[0].nodeValue;
+                        }
+                    }
+                }
+            }
+
+            xmlhttp.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
+            xmlhttp.send(sr);
+        }
+    </script>
+</head>
+<body>
+<form name="Demo" action="" method="post">
+    <div>
+        <label for="zip">zip code</label>
+        <input id="zip" type="text" name="zip">
+        <input type="button" value="Request" onclick="soap();" />
+    </div>
+</form>
+<table id="response">
+    <thead>
+    <td>Fips Code</td>
+    <td>County Name</td>
+    <td>State</td>
+    </thead>
+</table>
+</body>
+</html>
