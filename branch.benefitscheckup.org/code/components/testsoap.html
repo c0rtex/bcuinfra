@@ -25,7 +25,8 @@
                         }
                         parser = new DOMParser();
                         xmlDoc = parser.parseFromString(xmlhttp.response,"text/xml");
-                        var listFipsCounty = xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild.getElementsByTagName('ListFipsCounty')[0].getElementsByTagName('LocalFindings');
+                        var rootElement = xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild;
+                        var listFipsCounty = rootElement.getElementsByTagName('ListFipsCounty')[0].getElementsByTagName('LocalFindings');
 
                         for (var i=0;i<listFipsCounty.length;i++) {
                             var row = table.insertRow(table.rows.length);
@@ -34,6 +35,16 @@
                             row.insertCell(2).innerHTML = listFipsCounty[i].getElementsByTagName('State')[0].childNodes[0].nodeValue;
                         }
                     }
+                    var fullName = document.getElementById('fullName');
+                    fullName.innerHTML = rootElement.getElementsByTagName('FullName')[0].childNodes[0].nodeValue;
+
+                    var mailAdress = document.getElementById('mailAdress');
+                    var mailElement = rootElement.getElementsByTagName('MailAddress')[0];
+                    mailAdress.innerHTML = mailElement.getElementsByTagName('Zip')[0].childNodes[0].nodeValue + ', ' +
+                                           mailElement.getElementsByTagName('State')[0].childNodes[0].nodeValue + ', ' +
+                                           mailElement.getElementsByTagName('City')[0].childNodes[0].nodeValue + ', ' +
+                                           mailElement.getElementsByTagName('Address1')[0].childNodes[0].nodeValue;
+
                 }
             }
 
@@ -50,6 +61,8 @@
         <input type="button" value="Request" onclick="soap();" />
     </div>
 </form>
+<div id="fullName"></div>
+<div id="mailAdress"></div>
 <table id="response">
     <thead>
     <td>Fips Code</td>
