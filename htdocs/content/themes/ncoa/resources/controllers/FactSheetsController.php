@@ -50,6 +50,7 @@ class FactSheetsController extends BaseController
     }
 
     public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
+        $is_feeding_america = ($fact_sheet_slug == 'factsheet_foodsupp_fd_feeding_america') ? true : false;
 
         $post_content = $post->post_content;
 
@@ -287,6 +288,7 @@ class FactSheetsController extends BaseController
                 'is_alt' => false,
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
+                'is_feeding_america' => $is_feeding_america,
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
@@ -333,6 +335,7 @@ class FactSheetsController extends BaseController
                 'is_alt' => false,
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
+                'is_feeding_america' => $is_feeding_america,
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
