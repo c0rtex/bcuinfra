@@ -5,8 +5,7 @@
 <script type="text/javascript">
 	window.webServiceUrl = '{{$webServiceUrl}}';
 	window.defaultLangsFull = JSON.parse('{{$defaultLangsFull}}');
-	<?php //window.defaultLangsPre = JSON.parse('{{$defaultLangsPre}}'); ?>
-  window.defaultLangsPre = JSON.parse('{{$defaultLangsFull}}');
+  window.defaultLangsPre = JSON.parse('{{$defaultLangsPre}}');
 	if (window.name == '') {
 		window.name = '{{microtime(true)}}';
 	}
