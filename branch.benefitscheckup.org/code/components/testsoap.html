@@ -18,38 +18,38 @@
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
                     if (xmlhttp.status == 200) {
-                        var table = document.getElementById('response');
-                        var rowLength = table.rows.length;
-                        for (var i=0;i<rowLength-1;i++) {
-                            table.deleteRow(1);
-                        }
                         parser = new DOMParser();
                         xmlDoc = parser.parseFromString(xmlhttp.response,"text/xml");
-                        var rootElement = xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild;
-                        var listFipsCounty = rootElement.getElementsByTagName('ListFipsCounty')[0].getElementsByTagName('LocalFindings');
-
-                        for (var i=0;i<listFipsCounty.length;i++) {
-                            var row = table.insertRow(table.rows.length);
-                            row.insertCell(0).innerHTML = listFipsCounty[i].getElementsByTagName('FipsCode')[0].childNodes[0].nodeValue;
-                            row.insertCell(1).innerHTML = listFipsCounty[i].getElementsByTagName('CountyName')[0].childNodes[0].nodeValue;
-                            row.insertCell(2).innerHTML = listFipsCounty[i].getElementsByTagName('State')[0].childNodes[0].nodeValue;
-                        }
+                        showResults(xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild);
                     }
-                    var fullName = document.getElementById('fullName');
-                    fullName.innerHTML = rootElement.getElementsByTagName('FullName')[0].childNodes[0].nodeValue;
-
-                    var mailAdress = document.getElementById('mailAdress');
-                    var mailElement = rootElement.getElementsByTagName('MailAddress')[0];
-                    mailAdress.innerHTML = mailElement.getElementsByTagName('Zip')[0].childNodes[0].nodeValue + ', ' +
-                                           mailElement.getElementsByTagName('State')[0].childNodes[0].nodeValue + ', ' +
-                                           mailElement.getElementsByTagName('City')[0].childNodes[0].nodeValue + ', ' +
-                                           mailElement.getElementsByTagName('Address1')[0].childNodes[0].nodeValue;
-
                 }
             }
-
             xmlhttp.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
             xmlhttp.send(sr);
+        }
+
+        function showResults(rEl) {
+            document.getElementById('logo').innerHTML = "<img border='0' src='" +
+                                                        rEl.getElementsByTagName('LogoUrls')[0]
+                                                           .getElementsByTagName('FoodBankLocator')[0]
+                                                           .childNodes[0].nodeValue +
+                                                        "'/>";
+
+            document.getElementById('name').innerHTML = rEl.getElementsByTagName('FullName')[0].childNodes[0].nodeValue;
+
+            var mailElement = rEl.getElementsByTagName('MailAddress')[0];
+            var adres = mailElement.getElementsByTagName('Address1')[0].childNodes[0].nodeValue + "<br/>";
+            if (mailElement.getElementsByTagName('Address2')[0].childNodes[0]) {
+                adres = adres + mailElement.getElementsByTagName('Address2')[0].childNodes[0].nodeValue + "<br/>";
+            }
+            adres = adres + mailElement.getElementsByTagName('City')[0].childNodes[0].nodeValue + ", " +
+                            mailElement.getElementsByTagName('State')[0].childNodes[0].nodeValue + " " +
+                            mailElement.getElementsByTagName('Zip')[0].childNodes[0].nodeValue + "<br/>" +
+                            rEl.getElementsByTagName('Phone')[0].childNodes[0].nodeValue;
+            document.getElementById('adres').innerHTML = adres;
+
+            var site = rEl.getElementsByTagName('URL')[0].childNodes[0].nodeValue;
+            document.getElementById('website').innerHTML = "<a href='//" + site + "'>"+site+"</a>";
         }
     </script>
 </head>
@@ -61,14 +61,11 @@
         <input type="button" value="Request" onclick="soap();" />
     </div>
 </form>
-<div id="fullName"></div>
-<div id="mailAdress"></div>
-<table id="response">
-    <thead>
-    <td>Fips Code</td>
-    <td>County Name</td>
-    <td>State</td>
-    </thead>
-</table>
+<div style="display: block">
+    <p id="logo"/>
+    <p id="name"/>
+    <p id="adres"/>
+    <p id="website"/>
+</div>
 </body>
 </html>
