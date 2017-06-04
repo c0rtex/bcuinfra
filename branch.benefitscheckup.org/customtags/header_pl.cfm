@@ -277,9 +277,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PHJ4LQ');</script>
 <!-- End Google Tag Manager -->
 <!---</cfif> --->
-<div style="width:100%; background-color:##fcf8e3;text-align:center; color:##444; padding:16px; font-size:14px;border-bottom:1px solid lightGray">
-Heads Up! Server maintenance is scheduled for Saturday, June 3rd and there will be intermittent periods when this site is unavailable. Thanks for your patience.
-</div>
+
     <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000"></div> 
     
     <div class="print">
