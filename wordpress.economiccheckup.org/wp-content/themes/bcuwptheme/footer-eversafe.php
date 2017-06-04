@@ -70,7 +70,7 @@ EconomicCheckUp&reg; is powered by the National Council on Aging.
 			<div class="row credits">
 				<div class="col-md-12">
 					
-					Copyright &#0169; 2016 Elderscan, LLC (d/b/a EverSafe) - All Rights Reserved 
+					Copyright &#0169; 2017 Elderscan, LLC (d/b/a EverSafe) - All Rights Reserved 
 				</div>
 			</div>
 		</div>
