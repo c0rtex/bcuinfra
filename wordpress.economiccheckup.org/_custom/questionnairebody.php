@@ -166,17 +166,17 @@
             }
 
 $mystring = $_SERVER['REQUEST_URI'];
-//echo 'REQ URI '.$mystring;
+echo 'REQ URI '.$mystring;
 $findme   = '?';
 $pos = strpos($mystring, $findme);
-//echo 'POS '.$pos;
+echo 'POS '.$pos;
 if ($pos !== false){
 $pageName = substr ($mystring, 0, $pos);
 }
 else {
 $pageName = "esi";
 }
-//echo 'PAGENAME '.$pageName;
+echo 'PAGENAME '.$pageName;
 
 if ($pageName=='/esi-questions-eversafe/' || $pageName=='/esi-questions-eversafe' || $mystring=='/esi-questions-eversafe' || $mystring == '/esi-questions-eversafe/'){
 if (isset($_GET["eversafe_id"])){
