@@ -10081,7 +10081,9 @@ grid:last-child .sales-grid {
 .home .testimonial img, .page-white-label-homepage .testimonial img {
   width: 220px;
   height: 220px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  border: 3px solid #F4640A;
+}
 
 @media (min-width: 768px) and (max-width: 991px) {
   .home .testimonial img, .page-white-label-homepage .testimonial img {
