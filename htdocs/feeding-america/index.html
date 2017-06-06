@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="feeding-america" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+    <title>Feeding America</title>
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet" type="text/css">
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/angular.min.js"></script>
+	<!---<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>--->
+	<script src="js/app.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-sm fixed-top">
+      <button class="navbar-toggler navbar-toggler-right navbar-light" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <a class="navbar-brand" href="#"><img class="logo" src="./img/BCU-logo.svg"></a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-text" href="https://qa.benefitscheckup.org/resources/snap/">What is SNAP?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-text" href="https://qa.benefitscheckup.org/find-my-benefits/">Is SNAP For Me?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><img class="nav-item-logo" src="img/ncoa-logo.png"></a>
+          </li>
+          <li class="nav-item pull-xs-right">
+            <a class="nav-link" href="#"><img class="nav-item-logo" src="img/fa-logo-150-transparent.png"></a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="row banner-form">
+        <form ng-submit="findZip(zipcode)" ng-controller="zipCodeController" class="form-inline mx-auto">
+					<span class="form-title float-left bold white">
+						Get your SNAP Application Now...
+					</span>
+			<input ng-model="zipcode" type="text" class="form-control" ng-class="isZipInvalid ? 'ng-invalid' : ''" placeholder="Enter Zip code">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">GO <i class="fa fa-caret-right fa-3" aria-hidden="true"></i></button>
+        </form>  
+      </div>     
+    </div>
+
+    <div class="container-fluid promo-content">
+      <div class="row">
+        <div class="col-sm-7 overview">
+          <h2>We have helped more than 1 million people find over $1.5 billion in SNAP benefits.</h2>
+          <p>It's important to eat right - even when money is tight! <span class="blue bold">The Supplemental Nutrition Assistance Program (SNAP)</span> can help. Over 4 million older Americans can use SNAP to buy healthy food, and the average senior receives $110 each month! Take the first step to a more healthy diet - get your application now.</p>
+        </div>
+        <div class="col-sm-5">
+	        <div class="success-stories">
+	          <h2>Success Stories</h2>
+	          <p class="first-paragraph"><b>"Now I have peace of mind by having the security of $200 a month to buy food."</b></p>
+	          <p class="right"><i>- Ms. G, New York</i></p>
+	        </div>
+				</div>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+

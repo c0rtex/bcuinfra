@@ -1,0 +1,153 @@
+.navbar-toggler {
+	padding-top: 10px;
+	cursor: pointer;
+}
+.navbar-light .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(30, 60, 124, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.jumbotron {
+	/* padding: 4rem 2rem 0rem 2rem;	*/
+	padding: 0;
+	background-image: url("../img/bg.jpg");
+	background-size: cover;
+	background-repeat:   no-repeat;
+  background-position: center center; 	
+	height: 450px;
+	position: relative;
+	margin-bottom: 1rem;
+}
+.logo {
+	width: 200px;
+	height: 43px;
+}
+.nav-item-logo {
+	height: 40px;
+}
+.fixed-top {
+	background-color: rgba(255,255,255,.7)
+}
+navbar a {
+	font-weight: bold;
+}
+.nav-link-text {
+	font-weight: bold;
+}
+.blue {
+	color: #354662;
+}
+.bold {
+	font-weight: bold;
+}
+.right {
+	text-align: right;
+}
+.btn {
+	cursor: pointer;
+}
+.btn-success {
+	margin-left: 5px;
+	background-color: #f07a3c;
+	border-color: #f07a3c;
+	font-weight: bold;
+}
+.btn-success:hover {
+	margin-left: 5px;
+	background-color: #DB6F37;
+	border-color: #DB6F37;
+}
+.btn, .custom-select {
+	border-radius: 0px;
+}
+a, a:hover {
+	color: #354662;
+}
+.white {
+	color: white;
+}
+.form-title {
+	margin-right: 1em;
+	font-size: 1.2em;
+	width: 100%;
+}
+.promo-content {
+	margin-bottom: 2rem;
+}
+.banner-form {
+	background-color: rgba(53,70,98, .7);
+	padding: .5rem 0rem;
+	position: absolute;
+	bottom: 0rem;
+	right: 15px;
+	width: 100%;
+}
+.banner-form .form-inline {
+	padding-left: 15px;
+}
+.overview h2 {
+	color: #354662;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.success-stories {
+	background-color: #1e3c7c;
+	color: white;
+	padding: .8rem;
+	font-size: 1.4rem;
+}
+.success-stories h2 {
+ 	display: inline;
+	border-bottom: 2px solid #f07a3c;
+	margin-bottom: 20px;
+}
+.success-stories .first-paragraph {
+	padding-top: 10px;
+}
+
+@media (min-width: 576px) {
+
+	.logo {
+		width: 250px;
+		height: 54px;
+	}
+	.form-title {
+		padding-top: .4rem;
+		width: auto;
+	}
+	.banner-form {
+		padding: 1rem 0rem;
+	}
+	.jumbotron {
+		height: 600px;
+	}
+	.banner-form .form-inline {
+		padding-left: 0px;
+	}	
+}
+
+@media (min-width: 768px) {
+	.nav-link-text {
+		padding-top: 13px;
+	}
+	.overview h2 {
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+	.jumbotron {
+		height: 700px;
+	}
+	.banner-form .form-inline {
+		padding-left: 0px;
+	}		
+}
+
+@media (min-width: 992px) { 
+
+}
+
+@media (min-width: 1200px) { 
+
+}
+
+.ng-invalid{
+	border: 1px solid red;
+}
