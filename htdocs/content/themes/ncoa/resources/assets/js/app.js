@@ -2660,3 +2660,54 @@ app.filter('removeNbsp', function() {
         return input.replace(/&nbsp;/g,' ');
     }
 });
+
+
+app.directive('testimonial-carousel', [function(){
+    return {
+        link: function(scope, elm){
+
+            //Set counter for Image slider
+            $('.currItem').html("1");
+            $('.currTotal').html($('.ncoa-carousel-container .item').length);
+
+
+
+
+            $(elm).on('afterChange', function(event, slick, currentSlide, nextSlide){
+                $('.currItem').html(currentSlide + 1);
+            });
+        }
+    }
+}]);
+
+$('.testimonial-carousel').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false
+});
+
+$(document).on('click', '.program-expand-all', function(e) {
+  $('.program').each(function() {
+    $(this).addClass('active');
+    $(this).find('.programs-container').slideDown();
+  });
+});
+
+$(document).on('click', '.program-collapse-all', function(e) {
+  $('.program').each(function() {
+    $(this).removeClass('active');
+    $(this).find('.programs-container').slideUp();
+  });
+});
+
+$(document).on('click', '.navbar-toggle-wrap', function() {
+  $(this).find('.navbar-toggle').toggleClass('nav-open');
+});
+
+$('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');

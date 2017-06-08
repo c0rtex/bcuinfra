@@ -1,0 +1,48 @@
+.home-benefit-counter {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    text-align: center;
+    font-size: 24px;
+
+  }
+
+  border-bottom: 2px solid $grey-accent;
+
+  padding: 60px 15px;
+  margin-bottom: 30px;
+
+  span {
+    vertical-align: middle;
+  }
+
+  .odometer {
+    font-size: 32px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 48px;
+    }
+    background-image: linear-gradient(to bottom, #4A9FE1 0%, #3191DD 50%, #238ADB 100%);
+
+
+      &.odometer-auto-theme .odometer-digit:not(:first-child) {
+        border-left: 1px solid #1A3474;
+      }
+
+    &-puncuation {
+      font-size: 32px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 48px;
+      }
+
+      font-weight: 900;
+      vertical-align: middle;
+      color: $brand-blue;
+      font-family: "Open Sans";
+    }
+
+  }
+}

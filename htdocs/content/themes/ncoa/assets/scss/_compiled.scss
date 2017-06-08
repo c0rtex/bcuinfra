@@ -1506,41 +1506,41 @@ pre {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
-  padding-right: 15px; 
+  padding-right: 15px;
   }
 
-  .container:before, 
+  .container:before,
   .container:after {
     content: " ";
-    display: table; 
+    display: table;
   }
 
   .container:after {
-    clear: both; 
+    clear: both;
   }
 
 @media (min-width: 768px) {
   .container {
-    max-width: 750px; 
-  } 
+    max-width: 750px;
+  }
 }
 
 @media (min-width: 992px) {
   .container {
-    max-width: 970px; 
+    max-width: 970px;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1350px; 
-  } 
+    max-width: 1350px;
+  }
 }
 
 @media (min-width: 1200px) {
   .container-large {
-    max-width: 1550px; 
-  }  
+    max-width: 1550px;
+  }
 }
 
 .container-fluid {
@@ -3791,7 +3791,10 @@ tbody.collapse.in {
 }
 
 .sign-up-enews {
-  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  text-align: left;
+  padding-left: 0;
 }
 
 
@@ -7674,27 +7677,31 @@ body {
   body input[type=checkbox] + label {
     padding: 0; }
     body input[type=checkbox] + label span {
-      background: url("../images/blank-check-box.svg");
-      background-size: 26px;
-      height: 26px;
-      width: 26px;
+      background: url("../images/blank-check-box-2.svg");
+      background-repeat: no-repeat;
+      background-size: 27px 25px;
+      height: 34px;
+      width: 36px;
       display: inline-block;
       padding: 0 0 0 0px;
       margin-right: 5px;
       position: relative;
-      top: 7px; }
+      top: 16px; }
   body input[type=checkbox]:checked + label {
     padding: 0; }
     body input[type=checkbox]:checked + label span {
-      background: url("../images/check-box.svg");
-      background-size: 26px;
-      height: 26px;
-      width: 26px;
+      background: url("../images/green-check-box.svg");
+      background-repeat: no-repeat;
+      background-size: 36px 34px;
+      height: 34px;
+      width: 36px;
       display: inline-block;
       padding: 0 0 0 0px;
       margin-right: 5px;
       position: relative;
-      top: 7px; }
+      top: 7px;
+      left: -2px;
+}
   body input[type=radio] {
     display: none; }
   body input[type=radio] + label {
@@ -7952,7 +7959,7 @@ header {
           text-align: left; } }
     @media (min-width: 992px) {
       header .header-logo {
-        padding: 15px 0 50px 0; } }
+        padding: 15px 0 30px 0; } }
   header .header-cta {
     border-top: 1px solid #ccc;
     text-align: center;
@@ -7999,13 +8006,17 @@ header {
     }
     header .navbar-default .navbar-nav > li a {
       font-family: 'Open Sans', sans-serif;
+      font-size: 18px;
       color: #1F3D7D;
       text-decoration: none;
       font-weight: 700; }
+  @media (min-width: 992px) {
+    header .navbar-default .navbar-nav > li a {
+      font-size: 20px; } }
     @media (min-width: 768px) {
       header .navbar-default .navbar-nav .current_page_item a {
         color: #1888de;
-        border-bottom: 3px solid #1888de; } }
+        border-bottom: 6px solid #1888de; } }
     @media (min-width: 768px) {
       header .navbar-default {
         margin-top: 35px;
@@ -8093,7 +8104,7 @@ header {
     margin-bottom: 20px; }
     .site-footer .social-media-bar .footer-donate-tray {
       float: right;
-      display: inline-block; 
+      display: inline-block;
       position: relative;
       top: -5px;
     }
@@ -8128,7 +8139,7 @@ footer.site-footer .social-media-bar .footer-social-media-tray a {
   height: 33px;
   width: 33px;
   display: inline-block;
-  padding: 0 22px;  
+  padding: 0 22px;
 }
 
 @media (min-width: 767px) and (max-width: 992px) {
@@ -8327,8 +8338,8 @@ footer .btn-purple {
   footer.site-footer .footer-bottom-wrapper #menu-footer-network-of-sites li {
     padding-bottom: 13px; }
   footer.site-footer .trust-icon-container {
-    padding-bottom: 28px; 
-  } 
+    padding-bottom: 28px;
+  }
 }
 
 @media (min-width: 0) and (max-width: 1200px) {
@@ -8351,7 +8362,7 @@ footer .btn-purple {
       display: none; } }
 
 .super-footer-copyright {
-  margin-right: 20px; 
+  margin-right: 20px;
   margin-bottom: 8px;
 }
   @media (max-width: 991px) {
@@ -8838,7 +8849,7 @@ grid:last-child .sales-grid {
       display: block;
       font-size: 1.222em;
       color: #333333;
-      line-height: 1.3; 
+      line-height: 1.3;
       width: 90%;
 
     }
@@ -8859,7 +8870,7 @@ grid:last-child .sales-grid {
       @media (min-width: 480px) {
         .program .program-header span {
           padding: 30px 0 20px 10px;
-          line-height: 1.667em; 
+          line-height: 1.667em;
           display: inline-block;
           vertical-align: middle;
           width:60%;
@@ -8867,7 +8878,7 @@ grid:last-child .sales-grid {
         .program .program-header img{
           display: inline-block;
           vertical-align: middle;
-        } 
+        }
       }
       @media (min-width: 768px) {
         .program .program-header span{
@@ -9035,7 +9046,7 @@ grid:last-child .sales-grid {
 .cta-full {
   color: #fff;
   text-align: center;
-  padding: 24px 20px 38px; }
+  padding: 48px 20px 60px; }
   .cta-full h1 {
     color: #fff;
     margin: 0;
@@ -9045,7 +9056,7 @@ grid:last-child .sales-grid {
     color: #fff;
     font-weight: 500;
     font-size: 1.556em;
-    line-height: 1.5; 
+    line-height: 1.5;
     margin-top: 0;
   }
   .cta-full p {
@@ -9175,7 +9186,7 @@ grid:last-child .sales-grid {
       background: rgba(0, 0, 0, 0.15); }
 
 .benefits-slider-container {
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 @media (min-width: 992px) and (max-width: 1200px) {
   .benefits-slider-container {
@@ -9291,18 +9302,18 @@ grid:last-child .sales-grid {
 
   @media (max-width: 991px) {
     .benefits-slider-carousel .benefits-slider-arrow {
-      display: none; 
-    } 
+      display: none;
+    }
   }
 
   .benefits-slider-carousel .benefits-slider-arrow:hover {
-    color: #115e99; 
+    color: #115e99;
   }
 
   .benefits-slider-carousel .benefits-slider-arrow.fa-chevron-left,
   .benefits-slider-carousel .benefits-slider-arrow.fa-chevron-right {
     position: absolute;
-    top: 120px; 
+    top: 120px;
   }
 
   .benefits-slider-carousel .benefits-slider-arrow.fa-chevron-left {
@@ -9310,7 +9321,7 @@ grid:last-child .sales-grid {
   }
 
   .benefits-slider-carousel .benefits-slider-arrow.fa-chevron-right {
-    right: -55px; 
+    right: -55px;
   }
 
   .benefits-slider-carousel .row {
@@ -9393,13 +9404,13 @@ grid:last-child .sales-grid {
   font-weight: 700;
   margin: 0;
   line-height: 1;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 
 }
 
 .home .find-my-benefits, .page-white-label-homepage .find-my-benefits {
   background: #1A3A74;
-  background-image: linear-gradient(-180deg, #4675CB 0%, #1A3A74 96%);
+
   text-align: center; }
   .home .find-my-benefits .find-my-benefits-content h1, .page-white-label-homepage .find-my-benefits .find-my-benefits-content h1 {
     color: #fff;
@@ -9417,7 +9428,10 @@ grid:last-child .sales-grid {
       @media (min-width: 768px) {
         .home .find-my-benefits .zip-code .form-control, .home .find-my-benefits .zip-code .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search .home .find-my-benefits .zip-code .zipcode-formatted, .page-white-label-homepage .find-my-benefits .zip-code .form-control, .page-white-label-homepage .find-my-benefits .zip-code .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search .page-white-label-homepage .find-my-benefits .zip-code .zipcode-formatted {
           width: 60%;
-          margin-bottom: 0; } }
+          margin-bottom: 0;
+          margin-right: 10px;
+          border: none;
+        } }
     .home .find-my-benefits .zip-code .btn-primary, .page-white-label-homepage .find-my-benefits .zip-code .btn-primary {
       width: 100%; }
       @media (min-width: 768px) {
@@ -9512,12 +9526,12 @@ grid:last-child .sales-grid {
 
   @media (min-width: 768px) {
     .home .better-way-benefits .benefits-item, .page-white-label-homepage .better-way-benefits .benefits-item {
-      border-right: 2px solid #ccc; 
+      border-right: 2px solid #ccc;
     }
   }
 
   .home .better-way-benefits .benefits-item:last-child, .page-white-label-homepage .better-way-benefits .benefits-item:last-child {
-    border: none; 
+    border: none;
   }
 
   .home .better-way-benefits .benefits-item .title-icon{
@@ -9556,7 +9570,7 @@ grid:last-child .sales-grid {
   padding-bottom: 6px;
 }
 .home .our-sponsors, .page-white-label-homepage .our-sponsors {
-  //padding: 15px 0; 
+  //padding: 15px 0;
 }
   .home .our-sponsors h2, .page-white-label-homepage .our-sponsors h2 {
     text-align: center; }
@@ -9627,7 +9641,7 @@ grid:last-child .sales-grid {
       color: #1888de; }
 
 .ncoa-carousel {
-  text-align: center; 
+  text-align: center;
   padding-top: 38px;
   padding-bottom: 24px;
 }
@@ -9651,12 +9665,12 @@ grid:last-child .sales-grid {
       margin-right: 0; }
   @media (min-width: 992px) {
     .ncoa-carousel .col-md-offset-2 {
-      margin-left: 12.5%; 
-    } 
+      margin-left: 12.5%;
+    }
   }
 
   .ncoa-carousel .fa {
-    color: #1888de; 
+    color: #1888de;
   }
 
   .ncoa-carousel .fa.slick-arrow {
@@ -9673,15 +9687,15 @@ grid:last-child .sales-grid {
     .ncoa-carousel .fa.slick-arrow {
       font-size: 2.222em;
       position: absolute;
-      top: 45%; 
+      top: 45%;
     }
 
     .ncoa-carousel .fa.slick-arrow.fa-chevron-left {
-      left: -50px; 
+      left: -50px;
     }
 
     .ncoa-carousel .fa.slick-arrow.fa-chevron-right {
-      right: -40px; 
+      right: -40px;
     }
   }
 
@@ -10491,14 +10505,14 @@ grid:last-child .sales-grid {
   text-decoration: none;
   padding-bottom: 0px !important; }
 .fact-sheets-bottom-header h1 {
-  font-size: 30px; 
+  font-size: 30px;
   color: #555555;
   font-weight: 400;
-  line-height: 1.4; 
+  line-height: 1.4;
   padding: 0;
   margin: 0;
   }
-  
+
   @media (min-width: 992px) {
     .fact-sheet-header-icon {
       height: 65px; } }
@@ -11220,4 +11234,8 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 @keyframes loading-bar-spinner {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.text-light-blue {
+  color: $brand-light-blue;
 }

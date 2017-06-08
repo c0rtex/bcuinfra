@@ -1,0 +1,124 @@
+.testimonial {
+  display: flex !important;
+  align-items: flex-start;
+  padding-left: 0;
+  padding-right: 0;
+
+  // position: absolute;
+  // left: 0;
+  // opacity: 0;
+  //
+  // &.active {
+  //   opacity: 1;
+  // }
+
+  &-carousel {
+    margin-top: 30px;
+    padding-right: 0;
+
+    @media screen and (min-width: 992px) {
+      margin-top: 0;
+    }
+  }
+
+  &-carousel ul.slick-dots {
+    position: relative;
+    top: -60px;
+    text-align: left;
+    // margin-top: 15px;
+    left: 5px;
+
+    @media screen and (min-width: 330px) {
+      top: -40px;
+    }
+
+    @media screen and (min-width: 370px) {
+      top: -20px;
+
+    }
+    @media screen and (min-width: 432px) {
+      top: -10px;
+
+    }
+
+    @media screen and (min-width: 552px) {
+      top: 0px;
+
+    }
+
+    @media screen and (min-width: 768px) {
+      top: -50px;
+      margin-top: 0;
+      left: 180px;
+    }
+
+    @media screen and (min-width: 992px) {
+      top: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+      top: -30px;
+    }
+
+    @media screen and (min-width: 1220px) {
+      top: -30px;
+    }
+
+    @media screen and (min-width: 1340px) {
+      top: -40px;
+    }
+
+    li button:before {
+      color: white;
+      font-size: 10px;
+    }
+  }
+
+
+  img {
+    display: inline-block;
+    height: 100px !important;
+    width: 100px !important;
+    border-radius: 100%;
+
+    @media screen and (min-width: 768px) {
+      height: 160px !important;
+      width: 160px !important;
+
+    }
+  }
+
+  .hero & figcaption {
+    padding-left: 15px;
+    margin-left: 0;
+
+
+    @media screen and (min-width: 768px) {
+      padding-top: 15px;
+      padding-left: 30px;
+    }
+
+    h4 {
+      color: white;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    p {
+      display: inline-block;
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      text-align: left;
+    }
+
+  }
+
+
+  &-carousel.slick-dotted.slick-slider {
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 0;
+    }
+  }
+
+}
