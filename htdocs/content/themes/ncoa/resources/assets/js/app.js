@@ -246,62 +246,6 @@ app.directive('drugsList', ['screening', 'Drugs', '$state', function(screening, 
     };
 }]);
 
-app.directive('feedAmericaOffices',['screening', '$http', function(screening, $http) {
-    return {
-        restrict: 'E',
-        templateUrl: '/content/themes/ncoa/resources/views/directives/feed-america/feed-america-offices.html?'+(new Date()),
-        link: function (scope, element, attr) {
-            var zip = '10001'; // defaults to NY zip code
-            if (typeof scope.$root.answers != 'undefined') {
-                if (typeof scope.$root.answers.prescreen != 'undefined') {
-                    if (typeof scope.$root.answers.prescreen.zip) {
-                        zip = scope.$root.answers.prescreen.zip;
-                    }
-                }
-            }
-
-            var postData = '<?xml version="1.0" encoding="utf-8"?>'+
-                '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
-                '<soap12:Body>'+
-                '<GetOrganizationsByZip xmlns="http://feedingamerica.org/">'+
-                '<zip>' + zip + '</zip>'+
-                '</GetOrganizationsByZip>'+
-                '</soap12:Body>'+
-                '</soap12:Envelope>';
-
-            $http({
-                method: 'POST',
-                url: 'http://ws2.feedingamerica.org/FAWebService.asmx',
-                data: postData,
-                headers: {
-                    'Content-Type': 'text/xml'
-                }
-            })
-                .then(function(response) {
-                    var parser = new DOMParser();
-                    var xmlDoc = parser.parseFromString(response.data, "text/xml");
-                    var rel = xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild;
-
-                    var mailElement = rel.getElementsByTagName('MailAddress')[0];
-                    var address = mailElement.getElementsByTagName('Address1')[0].childNodes[0].nodeValue + "<br/>";
-                    if (mailElement.getElementsByTagName('Address2')[0].childNodes[0]) {
-                        address = address + mailElement.getElementsByTagName('Address2')[0].childNodes[0].nodeValue + "<br/>";
-                    }
-                    address = address + mailElement.getElementsByTagName('City')[0].childNodes[0].nodeValue + ", " +
-                        mailElement.getElementsByTagName('State')[0].childNodes[0].nodeValue + " " +
-                        mailElement.getElementsByTagName('Zip')[0].childNodes[0].nodeValue + "<br/>" +
-                        rel.getElementsByTagName('Phone')[0].childNodes[0].nodeValue;
-
-                    scope.office = {
-                        'fullName': rel.getElementsByTagName('FullName')[0].childNodes[0].nodeValue,
-                        'address': address,
-                        'site': rel.getElementsByTagName('URL')[0].childNodes[0].nodeValue
-                    };
-                });
-        }
-    };
-}]);
-
 app.factory('Months',[function(){
     return [{id:1,name:"January"},{id:2,name:"February"},{id:3,name:"March"},{id:4,name:"April"},
         {id:5,name:"May"},{id:6,name:"June"},{id:7,name:"July"},{id:8,name:"August"},
