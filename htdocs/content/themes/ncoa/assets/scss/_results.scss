@@ -47,7 +47,7 @@
     display: inline-block;
 
     &-wrapper {
-    
+
     }
   }
 
@@ -117,4 +117,23 @@
 
 .mb-30 {
   margin-bottom: 30px;
+}
+
+.program-print {
+  .programs {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (min-width: 768px) {
+      flex-wrap: nowrap;
+    }
+
+    & li:last-child {
+      vertical-align: baseline;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+    }
+  }
 }

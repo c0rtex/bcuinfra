@@ -12194,6 +12194,24 @@ input:focus:-ms-input-placeholder {
 .mb-30 {
   margin-bottom: 30px; }
 
+.program-print .programs {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  @media screen and (min-width: 768px) {
+    .program-print .programs {
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; } }
+  .program-print .programs li:last-child {
+    vertical-align: baseline;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
+
 .home-benefit-counter {
   font-size: 20px;
   margin-left: auto;
