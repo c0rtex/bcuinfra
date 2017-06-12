@@ -20,7 +20,7 @@
                     }}
                 </a>
                 @endif
-                <span class="header-logo-ncoa-wrap hidden-xs hidden-sm"><img width="177" height="60" src="/content/uploads/2016/09/ncoa-logo-177x60.png" class="header-logo-ncoa" alt="National Council on Aging" title="National Council on Aging"  sizes="(max-width: 177px) 100vw, 177px"></span>
+                <span class="header-logo-ncoa-wrap hidden-xs hidden-sm"><img width="177" height="60" src="/content/themes/ncoa/resources/assets/images/ncoa_logo.svg" class="header-logo-ncoa" alt="National Council on Aging" title="National Council on Aging"  sizes="(max-width: 177px) 100vw, 177px"></span>
 
             </span>
 

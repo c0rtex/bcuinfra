@@ -26,6 +26,9 @@
     top: -60px;
     text-align: left;
     // margin-top: 15px;
+    display: block;
+    width: auto;
+    max-width: 50%;
     left: 5px;
 
     @media screen and (min-width: 330px) {
@@ -57,15 +60,15 @@
     }
 
     @media screen and (min-width: 1200px) {
-      top: -30px;
+      top: -20px;
     }
 
     @media screen and (min-width: 1220px) {
-      top: -30px;
+      top: -20px;
     }
 
     @media screen and (min-width: 1340px) {
-      top: -40px;
+      top: -30px;
     }
 
     li button:before {
@@ -76,7 +79,7 @@
 
 
   img {
-    display: inline-block;
+    // display: inline-block;
     height: 100px !important;
     width: 100px !important;
     border-radius: 100%;
@@ -91,7 +94,7 @@
   .hero & figcaption {
     padding-left: 15px;
     margin-left: 0;
-
+    padding-right: 30px;
 
     @media screen and (min-width: 768px) {
       padding-top: 15px;
@@ -102,12 +105,13 @@
       color: white;
       text-align: left;
       font-weight: 700;
+      font-size: 1em;
     }
 
     p {
       display: inline-block;
       color: white;
-      font-size: 16px;
+      font-size: .9005em;
       font-weight: 400;
       text-align: left;
     }

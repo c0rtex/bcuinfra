@@ -39,22 +39,24 @@
   &-email-cta {
     display: flex;
     padding-top: 30px;
+    font-size: 18px;
 
     input[type="email"] {
       background: #F3F3F3;
       border: none;
       height: 45px;
+      font-size: 18px;
     }
     button[type="submit"] {
       padding-top: 0;
       height: 45px;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      font-size: 18px;
     }
 
     @media screen and (max-width: 991px) {
       font-size: 16px;
-
 
     }
   }
@@ -66,7 +68,6 @@
       position: relative;
       padding-right: 0;
       padding-bottom: 10px;
-
 
       &:after {
         content: '';

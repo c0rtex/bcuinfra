@@ -43,6 +43,14 @@
 .programs {
   padding-bottom: 45px;
 
+  .checkbox {
+    display: inline-block;
+
+    &-wrapper {
+    
+    }
+  }
+
   h4 {
     color: $brand-light-blue;
     margin-bottom: 15px;

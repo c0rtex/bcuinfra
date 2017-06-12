@@ -7690,17 +7690,20 @@ body {
   body input[type=checkbox]:checked + label {
     padding: 0; }
     body input[type=checkbox]:checked + label span {
-      background: url("../images/green-check-box.svg");
+      background: url("../images/bcu-checkbox.svg");
       background-repeat: no-repeat;
-      background-size: 36px 34px;
+      // background-size: 36px 34px;
+      background-size: 33px 34px;
       height: 34px;
       width: 36px;
       display: inline-block;
       padding: 0 0 0 0px;
       margin-right: 5px;
       position: relative;
-      top: 7px;
-      left: -2px;
+      // top: 7px;
+      // left: -2px;
+      top: 10px;
+      left: 0;
 }
   body input[type=radio] {
     display: none; }

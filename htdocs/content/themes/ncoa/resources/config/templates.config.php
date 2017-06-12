@@ -17,6 +17,7 @@ return [
 	'program-snap-template'				=> 'Program Snap Page',
 	'sponsors-template'					=> 'Sponsors Page',
 	'AboutUsTemplate' 					=> 'About Us Page',
+	'echotest-template' 					=> 'Echo Test Page',
 	'white-label-homepage-template' 	=> 'White Label Homepage',
 	'fact-sheets-template'				=> 'Fact Sheet Template'
 ];

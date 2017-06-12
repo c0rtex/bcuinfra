@@ -8144,17 +8144,17 @@ body input[type=checkbox]:checked + label {
   padding: 0; }
 
 body input[type=checkbox]:checked + label span {
-  background: url("../images/green-check-box.svg");
+  background: url("../images/bcu-checkbox.svg");
   background-repeat: no-repeat;
-  background-size: 36px 34px;
+  background-size: 33px 34px;
   height: 34px;
   width: 36px;
   display: inline-block;
   padding: 0 0 0 0px;
   margin-right: 5px;
   position: relative;
-  top: 7px;
-  left: -2px; }
+  top: 10px;
+  left: 0; }
 
 body input[type=radio] {
   display: none; }
@@ -12052,16 +12052,19 @@ input:focus:-ms-input-placeholder {
 .header-email-cta {
   display: -ms-flexbox;
   display: flex;
-  padding-top: 30px; }
+  padding-top: 30px;
+  font-size: 18px; }
   .header-email-cta input[type="email"] {
     background: #F3F3F3;
     border: none;
-    height: 45px; }
+    height: 45px;
+    font-size: 18px; }
   .header-email-cta button[type="submit"] {
     padding-top: 0;
     height: 45px;
     border-top-left-radius: 0;
-    border-bottom-left-radius: 0; }
+    border-bottom-left-radius: 0;
+    font-size: 18px; }
   @media screen and (max-width: 991px) {
     .header-email-cta {
       font-size: 16px; } }
@@ -12102,7 +12105,10 @@ input:focus:-ms-input-placeholder {
       transform: rotate(-45deg) translate(4px, -3px); }
 
 .hero {
-  padding: 80px 15px !important; }
+  padding: 30px 15px 0 !important; }
+  @media screen and (min-width: 768px) {
+    .hero {
+      padding: 80px 15px !important; } }
   .hero h1 {
     margin-top: 0;
     padding-top: 0; }
@@ -12142,6 +12148,8 @@ input:focus:-ms-input-placeholder {
 
 .programs {
   padding-bottom: 45px; }
+  .programs .checkbox {
+    display: inline-block; }
   .programs h4 {
     color: #1888de;
     margin-bottom: 15px; }
@@ -12190,18 +12198,28 @@ input:focus:-ms-input-placeholder {
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
-  border-bottom: 2px solid #CCCCCC;
-  padding: 60px 15px;
-  margin-bottom: 30px; }
+  text-align: center;
+  padding: 30px 15px;
+  border-bottom: 2px solid #CCCCCC; }
   @media screen and (min-width: 768px) {
     .home-benefit-counter {
-      text-align: center;
-      font-size: 24px; } }
+      font-size: 24px;
+      padding: 60px 15px;
+      margin-bottom: 30px; } }
   .home-benefit-counter span {
     vertical-align: middle; }
   .home-benefit-counter .odometer {
     font-size: 32px;
     background-image: linear-gradient(to bottom, #4A9FE1 0%, #3191DD 50%, #238ADB 100%); }
+    .home-benefit-counter .odometer-wrapper {
+      display: block;
+      margin-top: 8px;
+      margin-bottom: 8px; }
+      @media screen and (min-width: 768px) {
+        .home-benefit-counter .odometer-wrapper {
+          display: inline;
+          margin-top: 0;
+          margin-bottom: 0; } }
     @media screen and (min-width: 768px) {
       .home-benefit-counter .odometer {
         font-size: 48px; } }
@@ -12234,6 +12252,9 @@ input:focus:-ms-input-placeholder {
     position: relative;
     top: -60px;
     text-align: left;
+    display: block;
+    width: auto;
+    max-width: 50%;
     left: 5px; }
     @media screen and (min-width: 330px) {
       .testimonial-carousel ul.slick-dots {
@@ -12257,18 +12278,17 @@ input:focus:-ms-input-placeholder {
         top: 0; } }
     @media screen and (min-width: 1200px) {
       .testimonial-carousel ul.slick-dots {
-        top: -30px; } }
+        top: -20px; } }
     @media screen and (min-width: 1220px) {
       .testimonial-carousel ul.slick-dots {
-        top: -30px; } }
+        top: -20px; } }
     @media screen and (min-width: 1340px) {
       .testimonial-carousel ul.slick-dots {
-        top: -40px; } }
+        top: -30px; } }
     .testimonial-carousel ul.slick-dots li button:before {
       color: white;
       font-size: 10px; }
   .testimonial img {
-    display: inline-block;
     height: 100px !important;
     width: 100px !important;
     border-radius: 100%; }
@@ -12278,7 +12298,8 @@ input:focus:-ms-input-placeholder {
         width: 160px !important; } }
   .hero .testimonial figcaption {
     padding-left: 15px;
-    margin-left: 0; }
+    margin-left: 0;
+    padding-right: 30px; }
     @media screen and (min-width: 768px) {
       .hero .testimonial figcaption {
         padding-top: 15px;
@@ -12286,11 +12307,12 @@ input:focus:-ms-input-placeholder {
     .hero .testimonial figcaption h4 {
       color: white;
       text-align: left;
-      font-weight: 700; }
+      font-weight: 700;
+      font-size: 1em; }
     .hero .testimonial figcaption p {
       display: inline-block;
       color: white;
-      font-size: 16px;
+      font-size: .9005em;
       font-weight: 400;
       text-align: left; }
   @media screen and (min-width: 1200px) {
