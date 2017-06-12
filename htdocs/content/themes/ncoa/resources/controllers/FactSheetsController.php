@@ -89,6 +89,7 @@ class FactSheetsController extends BaseController
 
     public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
         $is_feeding_america = ($fact_sheet_slug == 'factsheet_foodsupp_fd_feeding_america') ? true : false;
+        $feeding_america_office = null;
         if ($is_feeding_america) {
             $zipcode = !empty($_REQUEST['zipcode']) ? $_REQUEST['zipcode'] : '10001';
             $feeding_america_office = $this->feed_america_soap($zipcode);
