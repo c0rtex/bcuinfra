@@ -3,6 +3,17 @@
   align-items: flex-start;
   padding-left: 0;
   padding-right: 0;
+  flex-direction: column;
+  position: relative;
+  min-height: 160px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 1200px) {
+    min-height: 180px;
+  }
 
   // position: absolute;
   // left: 0;
@@ -14,61 +25,42 @@
 
   &-carousel {
     margin-top: 30px;
-    padding-right: 0;
+    margin-bottom: 40px;
 
     @media screen and (min-width: 992px) {
       margin-top: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-left: 7%; // custom grid columns for the hero
+    }
+
+    &.slick-dotted.slick-slider {
+      margin-bottom: 60px;
     }
   }
 
   &-carousel ul.slick-dots {
-    position: relative;
-    top: -60px;
-    text-align: left;
     // margin-top: 15px;
     display: block;
-    width: auto;
-    max-width: 50%;
-    left: 5px;
+    width: 20px;
+    height: 90px;
+    margin: 0;
+    bottom: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translatey(-50%);
 
-    @media screen and (min-width: 330px) {
-      top: -40px;
-    }
-
-    @media screen and (min-width: 370px) {
-      top: -20px;
-
-    }
-    @media screen and (min-width: 432px) {
-      top: -10px;
-
-    }
-
-    @media screen and (min-width: 552px) {
-      top: 0px;
-
-    }
-
-    @media screen and (min-width: 768px) {
-      top: -50px;
-      margin-top: 0;
-      left: 180px;
-    }
-
-    @media screen and (min-width: 992px) {
-      top: 0;
-    }
-
-    @media screen and (min-width: 1200px) {
-      top: -20px;
-    }
-
-    @media screen and (min-width: 1220px) {
-      top: -20px;
-    }
-
-    @media screen and (min-width: 1340px) {
-      top: -30px;
+    li {
+      display: block;
+      margin: 0;
+      width: 20px;
+      height: 20px;
+      margin: 5px 0;
     }
 
     li button:before {
@@ -83,27 +75,40 @@
     height: 100px !important;
     width: 100px !important;
     border-radius: 100%;
+    display: block;
+    margin: 0;
 
     @media screen and (min-width: 768px) {
       height: 160px !important;
       width: 160px !important;
+    }
 
+    @media screen and (min-width: 1200px) {
+      height: 180px !important;
+      width: 180px !important;
     }
   }
 
   .hero & figcaption {
-    padding-left: 15px;
     margin-left: 0;
-    padding-right: 30px;
+    padding: 0;
+    text-align: left;
+    max-width: none;
+    padding-right: 40px;
 
     @media screen and (min-width: 768px) {
-      padding-top: 15px;
+      // padding-top: 15px;
+      // padding-left: 30px;
+      padding-top: 20px;
       padding-left: 30px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      //padding-left: 220px;
     }
 
     h4 {
       color: white;
-      text-align: left;
       font-weight: 700;
       font-size: 1em;
     }
@@ -113,9 +118,8 @@
       color: white;
       font-size: .9005em;
       font-weight: 400;
-      text-align: left;
+      margin-bottom: 0;
     }
-
   }
 
 
@@ -124,5 +128,8 @@
       margin-bottom: 0;
     }
   }
+}
 
+.slick-list {
+  overflow-y: visible;
 }

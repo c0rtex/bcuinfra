@@ -10073,8 +10073,13 @@ grid:last-child .sales-grid {
 .home .find-my-benefits .find-my-benefits-content h1, .page-white-label-homepage .find-my-benefits .find-my-benefits-content h1 {
   color: #fff;
   font-weight: 500;
-  font-size: 1.556em;
-  line-height: 1.5; }
+  font-size: 1.3em;
+  line-height: 1.4; }
+
+@media (min-width: 768px) {
+  .home .find-my-benefits .find-my-benefits-content h1, .page-white-label-homepage .find-my-benefits .find-my-benefits-content h1 {
+    font-size: 1.556em;
+    line-height: 1.5; } }
 
 .home .find-my-benefits .find-my-benefits-content .hightlight, .page-white-label-homepage .find-my-benefits .find-my-benefits-content .hightlight {
   font-weight: 700; }
@@ -12059,12 +12064,26 @@ input:focus:-ms-input-placeholder {
     border: none;
     height: 45px;
     font-size: 18px; }
+    @media screen and (min-width: 768px) {
+      .header-email-cta input[type="email"] {
+        width: 178px; } }
+    @media screen and (min-width: 991px) {
+      .header-email-cta input[type="email"] {
+        width: 190px; } }
   .header-email-cta button[type="submit"] {
     padding-top: 0;
     height: 45px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     font-size: 18px; }
+    @media screen and (min-width: 768px) {
+      .header-email-cta button[type="submit"] {
+        padding-right: 22px;
+        padding-left: 22px; } }
+    @media screen and (min-width: 991px) {
+      .header-email-cta button[type="submit"] {
+        padding-right: 30px;
+        padding-left: 30px; } }
   @media screen and (max-width: 991px) {
     .header-email-cta {
       font-size: 16px; } }
@@ -12108,7 +12127,7 @@ input:focus:-ms-input-placeholder {
   padding: 30px 15px 0 !important; }
   @media screen and (min-width: 768px) {
     .hero {
-      padding: 80px 15px !important; } }
+      padding: 80px 15px 86px !important; } }
   .hero h1 {
     margin-top: 0;
     padding-top: 0; }
@@ -12212,6 +12231,16 @@ input:focus:-ms-input-placeholder {
     -ms-flex-pack: justify;
         justify-content: space-between; }
 
+.results-tally {
+  max-width: 750px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media screen and (min-width: 1200px) {
+    .results-tally {
+      max-width: none; } }
+  .results-tally .odometer-wrapper {
+    white-space: nowrap; }
+
 .home-benefit-counter {
   font-size: 20px;
   margin-left: auto;
@@ -12259,72 +12288,78 @@ input:focus:-ms-input-placeholder {
   -ms-flex-align: start;
       align-items: flex-start;
   padding-left: 0;
-  padding-right: 0; }
+  padding-right: 0;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  position: relative;
+  min-height: 160px; }
+  @media screen and (min-width: 768px) {
+    .testimonial {
+      -ms-flex-direction: row;
+          flex-direction: row; } }
+  @media screen and (min-width: 1200px) {
+    .testimonial {
+      min-height: 180px; } }
   .testimonial-carousel {
     margin-top: 30px;
-    padding-right: 0; }
+    margin-bottom: 40px; }
     @media screen and (min-width: 992px) {
       .testimonial-carousel {
         margin-top: 0; } }
-  .testimonial-carousel ul.slick-dots {
-    position: relative;
-    top: -60px;
-    text-align: left;
-    display: block;
-    width: auto;
-    max-width: 50%;
-    left: 5px; }
-    @media screen and (min-width: 330px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -40px; } }
-    @media screen and (min-width: 370px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -20px; } }
-    @media screen and (min-width: 432px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -10px; } }
-    @media screen and (min-width: 552px) {
-      .testimonial-carousel ul.slick-dots {
-        top: 0px; } }
-    @media screen and (min-width: 768px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -50px;
-        margin-top: 0;
-        left: 180px; } }
-    @media screen and (min-width: 992px) {
-      .testimonial-carousel ul.slick-dots {
-        top: 0; } }
     @media screen and (min-width: 1200px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -20px; } }
-    @media screen and (min-width: 1220px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -20px; } }
-    @media screen and (min-width: 1340px) {
-      .testimonial-carousel ul.slick-dots {
-        top: -30px; } }
+      .testimonial-carousel {
+        margin-left: 7%; } }
+    .testimonial-carousel.slick-dotted.slick-slider {
+      margin-bottom: 60px; }
+  .testimonial-carousel ul.slick-dots {
+    display: block;
+    width: 20px;
+    height: 90px;
+    margin: 0;
+    bottom: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    -ms-transform: translatey(-50%);
+        transform: translatey(-50%); }
+    .testimonial-carousel ul.slick-dots li {
+      display: block;
+      margin: 0;
+      width: 20px;
+      height: 20px;
+      margin: 5px 0; }
     .testimonial-carousel ul.slick-dots li button:before {
       color: white;
       font-size: 10px; }
   .testimonial img {
     height: 100px !important;
     width: 100px !important;
-    border-radius: 100%; }
+    border-radius: 100%;
+    display: block;
+    margin: 0; }
     @media screen and (min-width: 768px) {
       .testimonial img {
         height: 160px !important;
         width: 160px !important; } }
+    @media screen and (min-width: 1200px) {
+      .testimonial img {
+        height: 180px !important;
+        width: 180px !important; } }
   .hero .testimonial figcaption {
-    padding-left: 15px;
     margin-left: 0;
-    padding-right: 30px; }
+    padding: 0;
+    text-align: left;
+    max-width: none;
+    padding-right: 40px; }
     @media screen and (min-width: 768px) {
       .hero .testimonial figcaption {
-        padding-top: 15px;
+        padding-top: 20px;
         padding-left: 30px; } }
     .hero .testimonial figcaption h4 {
       color: white;
-      text-align: left;
       font-weight: 700;
       font-size: 1em; }
     .hero .testimonial figcaption p {
@@ -12332,7 +12367,10 @@ input:focus:-ms-input-placeholder {
       color: white;
       font-size: .9005em;
       font-weight: 400;
-      text-align: left; }
+      margin-bottom: 0; }
   @media screen and (min-width: 1200px) {
     .testimonial-carousel.slick-dotted.slick-slider {
       margin-bottom: 0; } }
+
+.slick-list {
+  overflow-y: visible; }

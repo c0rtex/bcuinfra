@@ -9413,13 +9413,20 @@ grid:last-child .sales-grid {
 
 .home .find-my-benefits, .page-white-label-homepage .find-my-benefits {
   background: #1A3A74;
-
-  text-align: center; }
+  text-align: center; 
+}
   .home .find-my-benefits .find-my-benefits-content h1, .page-white-label-homepage .find-my-benefits .find-my-benefits-content h1 {
     color: #fff;
     font-weight: 500;
-    font-size: 1.556em;
-    line-height: 1.5; }
+    font-size: 1.3em;
+    line-height: 1.4; 
+  }
+  @media (min-width: 768px) {
+    .home .find-my-benefits .find-my-benefits-content h1, .page-white-label-homepage .find-my-benefits .find-my-benefits-content h1 {
+      font-size: 1.556em;
+      line-height: 1.5; 
+    }
+  }
   .home .find-my-benefits .find-my-benefits-content .hightlight, .page-white-label-homepage .find-my-benefits .find-my-benefits-content .hightlight {
     font-weight: 700; }
   .home .find-my-benefits .zip-code, .page-white-label-homepage .find-my-benefits .zip-code {

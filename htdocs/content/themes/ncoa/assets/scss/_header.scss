@@ -46,18 +46,37 @@
       border: none;
       height: 45px;
       font-size: 18px;
+
+      @media screen and (min-width: 768px) {
+        width: 178px;
+      }
+
+      @media screen and (min-width: 991px) {
+        width: 190px;
+      }
     }
+    
     button[type="submit"] {
       padding-top: 0;
       height: 45px;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       font-size: 18px;
+
+      @media screen and (min-width: 768px) {
+        padding-right: 22px;
+        padding-left: 22px;
+      }
+
+      @media screen and (min-width: 991px) {
+        padding-right: 30px;
+        padding-left: 30px;
+      }
     }
+
 
     @media screen and (max-width: 991px) {
       font-size: 16px;
-
     }
   }
 }

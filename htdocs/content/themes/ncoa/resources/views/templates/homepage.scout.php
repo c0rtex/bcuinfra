@@ -25,11 +25,18 @@
                     wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
                     array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
                   }}
-                  <figcaption>
-                    <h4>Greg, Columbia, SC</h4>
-                    <p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
-                    <span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
-                  </figcaption>
+
+                    <figcaption>
+                      @if($key == 1)
+                        <h4>Caroline, Chicago, IL</h4>
+                      @elseif($key == 2)
+                        <h4>Greg, Charleston, SC</h4>
+                      @else
+                        <h4>Sharell, Phoenix, AZ</h4>
+                      @endif
+                      <p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
+                      <span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
+                    </figcaption>
                 </figure>
               @endforeach
             </div>
