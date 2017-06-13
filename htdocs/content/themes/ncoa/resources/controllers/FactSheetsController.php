@@ -73,7 +73,7 @@ class FactSheetsController extends BaseController
         $xml = $xml->Body->GetOrganizationsByZipResponse->GetOrganizationsByZipResult->Organization;
 
         $feed_america_response['full_name'] = $xml->FullName;
-        $feed_america_response['site'] = '<a href="http://' . $xml->URL . '" target="_blank">' . $xml->URL . '</a>';
+        $feed_america_response['site'] = 'Website: <a href="http://' . $xml->URL . '" target="_blank">' . $xml->URL . '</a>';
         $xml_mail_elem = $xml->MailAddress;
         $feed_america_response['address'] = $xml_mail_elem->Address1 . '<br />';
         if (!empty($xml_mail_elem->Address2)) {
