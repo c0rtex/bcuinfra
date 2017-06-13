@@ -73,16 +73,26 @@ class FactSheetsController extends BaseController
         $xml = $xml->Body->GetOrganizationsByZipResponse->GetOrganizationsByZipResult->Organization;
 
         $feed_america_response['full_name'] = $xml->FullName;
-        $feed_america_response['site'] = $xml->URL;
+        $feed_america_response['site'] = '<a href="http://' . $xml->URL . '" target="_blank">' . $xml->URL . '</a>';
         $xml_mail_elem = $xml->MailAddress;
         $feed_america_response['address'] = $xml_mail_elem->Address1 . '<br />';
         if (!empty($xml_mail_elem->Address2)) {
             $feed_america_response['address'] .= $xml_mail_elem->Address2 + '<br/>';
         }
-        $feed_america_response['address'] .= $xml_mail_elem->City . '<br />';
-        $feed_america_response['address'] .= $xml_mail_elem->State . '<br />';
+        $feed_america_response['address'] .= $xml_mail_elem->City . ', ';
+        $feed_america_response['address'] .= $xml_mail_elem->State . ' ';
         $feed_america_response['address'] .= $xml_mail_elem->Zip . '<br />';
-        $feed_america_response['address'] .= $xml->Phone;
+        // Format Phone
+        if (!empty($xml->Phone)) {
+            $first_dot = strpos($xml->Phone, '.');
+            $second_dot = strrpos($xml->Phone, '.');
+
+            $phone = substr_replace($xml->Phone, '-', $second_dot, 1);
+            $phone = substr_replace($phone, ') ', $first_dot, 1);
+            $phone = '(' . $phone;
+
+            $feed_america_response['address'] .= 'Phone: ' . $phone;
+        }
 
         return $feed_america_response;
     }
