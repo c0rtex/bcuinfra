@@ -12,7 +12,6 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
-
         $retVal = "";
 
         if (isset($_REQUEST['pdf'])) {
@@ -49,8 +48,62 @@ class FactSheetsController extends BaseController
 
     }
 
+    public function feed_america_soap($zipcode) {
+        $soap_url = 'http://ws2.feedingamerica.org/FAWebService.asmx';
+        $soap_post = '<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetOrganizationsByZip xmlns="http://feedingamerica.org/">
+      <zip>' . $zipcode . '</zip>
+    </GetOrganizationsByZip>
+  </soap:Body>
+</soap:Envelope>';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $soap_url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $soap_post);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $clean_result = str_ireplace(['SOAP-ENV:', 'SOAP:'], '', $result);
+        $xml = simplexml_load_string($clean_result);
+        $xml = $xml->Body->GetOrganizationsByZipResponse->GetOrganizationsByZipResult->Organization;
+
+        $feed_america_response['full_name'] = $xml->FullName;
+        $feed_america_response['site'] = 'Website: <a href="http://' . $xml->URL . '" target="_blank">' . $xml->URL . '</a>';
+        $xml_mail_elem = $xml->MailAddress;
+        $feed_america_response['address'] = $xml_mail_elem->Address1 . '<br />';
+        if (!empty($xml_mail_elem->Address2)) {
+            $feed_america_response['address'] .= $xml_mail_elem->Address2 + '<br/>';
+        }
+        $feed_america_response['address'] .= $xml_mail_elem->City . ', ';
+        $feed_america_response['address'] .= $xml_mail_elem->State . ' ';
+        $feed_america_response['address'] .= $xml_mail_elem->Zip . '<br />';
+        // Format Phone
+        if (!empty($xml->Phone)) {
+            $first_dot = strpos($xml->Phone, '.');
+            $second_dot = strrpos($xml->Phone, '.');
+
+            $phone = substr_replace($xml->Phone, '-', $second_dot, 1);
+            $phone = substr_replace($phone, ') ', $first_dot, 1);
+            $phone = '(' . $phone;
+
+            $feed_america_response['address'] .= 'Phone: ' . $phone;
+        }
+
+        return $feed_america_response;
+    }
+
     public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
         $is_feeding_america = ($fact_sheet_slug == 'factsheet_foodsupp_fd_feeding_america') ? true : false;
+        $feeding_america_office = null;
+        if ($is_feeding_america) {
+            $zipcode = !empty($_REQUEST['zipcode']) ? $_REQUEST['zipcode'] : '10001';
+            $feeding_america_office = $this->feed_america_soap($zipcode);
+        }
 
         $post_content = $post->post_content;
 
@@ -289,6 +342,7 @@ class FactSheetsController extends BaseController
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
                 'is_feeding_america' => $is_feeding_america,
+                'feeding_america_office' => $feeding_america_office,
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
@@ -336,6 +390,7 @@ class FactSheetsController extends BaseController
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
                 'is_feeding_america' => $is_feeding_america,
+                'feeding_america_office' => $feeding_america_office,
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,

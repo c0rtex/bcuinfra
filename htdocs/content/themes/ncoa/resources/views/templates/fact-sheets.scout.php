@@ -117,7 +117,9 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                                     {{ $value["answer"] }}
                                 </p>
                                 @if($is_feeding_america)
-                                <feed-america-offices></feed-america-offices>
+                                <p><strong>{{ $feeding_america_office["full_name"] }}</strong><br />
+                                  {{ $feeding_america_office["address"] }}<br />
+                                  {{ $feeding_america_office["site"] }}</p>
                                 @endif
                             </div>
                         </section>
