@@ -2702,6 +2702,11 @@ app.directive('testimonial-carousel', [function(){
     }
 }]);
 
+// this is here because the carousel takes a moment to load.
+$('.testimonial-carousel').on('init', function(event, slick){
+    $('.testimonial-carousel').removeClass("hide");
+});
+
 $('.testimonial-carousel').slick({
     autoplay: true,
     autoplaySpeed: 5000,
@@ -2713,6 +2718,7 @@ $('.testimonial-carousel').slick({
     slidesToScroll: 1,
     arrows: false
 });
+
 
 $(document).on('click', '.program-expand-all', function(e) {
   $('.program').each(function() {

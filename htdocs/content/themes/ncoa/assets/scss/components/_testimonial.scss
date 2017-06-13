@@ -15,28 +15,20 @@
     min-height: 180px;
   }
 
-  // position: absolute;
-  // left: 0;
-  // opacity: 0;
-  //
-  // &.active {
-  //   opacity: 1;
-  // }
-
   &-carousel {
     margin-top: 30px;
     margin-bottom: 40px;
+    display: flex;
+    flex-direction:column;
 
     @media screen and (min-width: 992px) {
-      margin-top: 0;
-    }
-
-    @media screen and (min-width: 1200px) {
-      margin-left: 7%; // custom grid columns for the hero
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-left: 6%
     }
 
     &.slick-dotted.slick-slider {
-      margin-bottom: 60px;
+      margin-bottom: auto;
     }
   }
 
@@ -76,11 +68,11 @@
     width: 100px !important;
     border-radius: 100%;
     display: block;
-    margin: 0;
+    margin: auto 0;
 
     @media screen and (min-width: 768px) {
-      height: 160px !important;
-      width: 160px !important;
+      height: 100px !important;
+      width: 100px !important;
     }
 
     @media screen and (min-width: 1200px) {
@@ -90,16 +82,16 @@
   }
 
   .hero & figcaption {
-    margin-left: 0;
     padding: 0;
     text-align: left;
     max-width: none;
     padding-right: 40px;
+    margin: auto 0;
 
     @media screen and (min-width: 768px) {
       // padding-top: 15px;
       // padding-left: 30px;
-      padding-top: 20px;
+      //padding-top: 20px;
       padding-left: 30px;
     }
 
@@ -125,11 +117,13 @@
 
   &-carousel.slick-dotted.slick-slider {
     @media screen and (min-width: 1200px) {
-      margin-bottom: 0;
+      //margin-bottom: 0;
     }
   }
 }
 
-.slick-list {
-  overflow-y: visible;
+.slick-list,
+.slick-dots {
+  margin-top: auto;
+  margin-bottom: auto;
 }

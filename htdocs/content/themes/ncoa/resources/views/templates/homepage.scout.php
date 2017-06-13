@@ -18,7 +18,7 @@
 							</form>
 						</div>
 
-            <div class="testimonial-carousel col-xs-12 col-sm-12 col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1" testimonial-carousel>
+            <div class="testimonial-carousel col-xs-12 col-sm-12 col-md-6 col-lg-6 hide" testimonial-carousel>
               @foreach($testimonials as $key => $value)
                 <figure class="testimonial col-xs-12">
                   {{

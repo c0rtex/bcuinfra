@@ -8,8 +8,8 @@
 // a single partial, and archive the old Sass partials.
 @import 'variables';
 @import 'compiled';
-@import 'header';
-@import 'hero';
-@import 'results';
-@import 'home-benefit-counter';
-@import 'testimonial';
+@import 'components/header';
+@import 'components/hero';
+@import 'components/results';
+@import 'components/home-benefit-counter';
+@import 'components/testimonial';
