@@ -24,7 +24,7 @@
             <hr class="fact-sheets-hr" />
 
             <div id="factsheetContent">
-                {{ $post_content }}
+                {{ Loop::content() }}
             </div>
 
             @if($is_alt)
