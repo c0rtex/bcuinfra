@@ -183,7 +183,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
             if (prescreenAnswered) {
                 scope.caption = "Continue to Full Questionnaire";
             } else {
-                scope.caption = "Start Questionnaire";
+                scope.caption = "Complete Your Benefit Report";
             }
 
             scope.completeFQ = function (url) {

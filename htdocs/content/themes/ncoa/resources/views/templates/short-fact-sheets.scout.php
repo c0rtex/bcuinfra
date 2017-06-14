@@ -66,7 +66,7 @@
                     <hr class="fact-sheets-hr" />
                     <h3 class="bold-h3 text-light-blue">Find out if you’re eligible for this program</h3>
                     <p>
-                        If you would like more information about the program, get the application forms, and to find out if you are eligible, please answer a few more questions.
+                        Answer a few more questions to ﬁnd out if you are eligible for this program. You will get a personal report with more information on these programs and detailed information on how to apply.  
                     </p>
                     <complete-questionnaire/>
                     <!--<a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
