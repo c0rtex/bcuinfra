@@ -42,7 +42,7 @@ app.controller('zipCodeController', ['$scope', '$window', 'locationFinder', func
                 }
 
                 if($scope.stateId){
-                    $window.location.href = 'https://www.benefitscheckup.org/fact-sheets/factsheet_nutrition_'+$scope.stateId+'_snap_program/?state='+$scope.stateId+'&x=12&y=20&zipcode='+zip;
+                    $window.location.href = 'https://qa.benefitscheckup.org/fact-sheets/factsheet_nutrition_'+$scope.stateId+'_snap_program/?state='+$scope.stateId+'&x=12&y=20&zipcode='+zip;
                 } else {
                     $scope.isZipInvalid=true;
                 }
