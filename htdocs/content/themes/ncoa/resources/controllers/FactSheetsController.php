@@ -24,6 +24,7 @@ class FactSheetsController extends BaseController
             $slugs = explode(";",$_REQUEST['slugs']);
 
             foreach($slugs as $slug) {
+                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $slug]);
                 $retVal = $retVal.$this->render_page("factsheet_".$slug, $post,true);
             }
         }
@@ -98,6 +99,10 @@ class FactSheetsController extends BaseController
     }
 
     public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
+        $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $fact_sheet_slug]);
+        $posts = $query->get_posts();
+        $post_id = !empty($posts[0]->ID) ? $posts[0]->ID : Loop::id();
+
         $is_feeding_america = ($fact_sheet_slug == 'factsheet_foodsupp_fd_feeding_america') ? true : false;
         $feeding_america_office = null;
         if ($is_feeding_america) {
@@ -368,7 +373,7 @@ class FactSheetsController extends BaseController
 
             $becs = json_decode($becs->body);
 
-            $faqsList = Meta::get(Loop::id(), $key = 'faqs-list', $single = true);
+            $faqsList = Meta::get($post_id, $key = 'faqs-list', $single = true);
 
             $template = 'templates.fact-sheets';
 
