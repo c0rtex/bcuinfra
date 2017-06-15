@@ -12,20 +12,20 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
-
         $retVal = "";
 
         if (isset($_REQUEST['pdf'])) {
             $retVal = View::make("templates.print-fact-sheet-cover-page", [])->render();
         }
 
-        $retVal = $retVal.$this->render_page($query->query["name"],isset($_REQUEST['pdf']));
+        $retVal = $retVal.$this->render_page($query->query["name"], $post, isset($_REQUEST['pdf']));
 
         if (array_key_exists('slugs', $_REQUEST)) {
             $slugs = explode(";",$_REQUEST['slugs']);
 
             foreach($slugs as $slug) {
-                $retVal = $retVal.$this->render_page("factsheet_".$slug,true);
+                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $slug]);
+                $retVal = $retVal.$this->render_page("factsheet_".$slug, $post,true);
             }
         }
 
@@ -49,11 +49,83 @@ class FactSheetsController extends BaseController
 
     }
 
-    public function render_page($fact_sheet_slug, $on_new_page = false) {
+    public function feed_america_soap($zipcode) {
+        $soap_url = 'http://ws2.feedingamerica.org/FAWebService.asmx';
+        $soap_post = '<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetOrganizationsByZip xmlns="http://feedingamerica.org/">
+      <zip>' . $zipcode . '</zip>
+    </GetOrganizationsByZip>
+  </soap:Body>
+</soap:Envelope>';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $soap_url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $soap_post);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $clean_result = str_ireplace(['SOAP-ENV:', 'SOAP:'], '', $result);
+        $xml = simplexml_load_string($clean_result);
+        $xml = $xml->Body->GetOrganizationsByZipResponse->GetOrganizationsByZipResult->Organization;
+
+        $feed_america_response['full_name'] = $xml->FullName;
+        $feed_america_response['site'] = 'Website: <a href="http://' . $xml->URL . '" target="_blank">' . $xml->URL . '</a>';
+        $xml_mail_elem = $xml->MailAddress;
+        $feed_america_response['address'] = $xml_mail_elem->Address1 . '<br />';
+        if (!empty($xml_mail_elem->Address2)) {
+            $feed_america_response['address'] .= $xml_mail_elem->Address2 + '<br/>';
+        }
+        $feed_america_response['address'] .= $xml_mail_elem->City . ', ';
+        $feed_america_response['address'] .= $xml_mail_elem->State . ' ';
+        $feed_america_response['address'] .= $xml_mail_elem->Zip . '<br />';
+        // Format Phone
+        if (!empty($xml->Phone)) {
+            $first_dot = strpos($xml->Phone, '.');
+            $second_dot = strrpos($xml->Phone, '.');
+
+            $phone = substr_replace($xml->Phone, '-', $second_dot, 1);
+            $phone = substr_replace($phone, ') ', $first_dot, 1);
+            $phone = '(' . $phone;
+
+            $feed_america_response['address'] .= 'Phone: ' . $phone;
+        }
+
+        return $feed_america_response;
+    }
+
+    public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
+        $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $fact_sheet_slug]);
+        $posts = $query->get_posts();
+        $post_id = !empty($posts[0]->ID) ? $posts[0]->ID : Loop::id();
+
+        $is_feeding_america = ($fact_sheet_slug == 'factsheet_foodsupp_fd_feeding_america') ? true : false;
+        $feeding_america_office = null;
+        if ($is_feeding_america) {
+            $zipcode = !empty($_REQUEST['zipcode']) ? $_REQUEST['zipcode'] : '10001';
+            $feeding_america_office = $this->feed_america_soap($zipcode);
+        }
+
+        $post_content = $post->post_content;
 
         // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
         $is_pap = (strstr($_SERVER['REQUEST_URI'], 'rxco_')) ? true : false;
+
+        if ($is_pap) {
+            // Insert <drugs-list /> into the post content
+            $hr_pos = strpos($post->post_content, '<hr');
+            if ($hr_pos !== false) {
+                $post_content = substr_replace($post->post_content, '<drugs-list></drugs-list>', $hr_pos, 0);
+            }
+            else {
+                $post_content = $post->post_content . '<drugs-list></drugs-list>';
+            }
+        }
 
         $key_benefits_program_codes = array();
         $key_benefits_program_codes['expanded_mdcd']['codes'] = array(
@@ -274,8 +346,11 @@ class FactSheetsController extends BaseController
                 'is_alt' => false,
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
+                'is_feeding_america' => $is_feeding_america,
+                'feeding_america_office' => $feeding_america_office,
                 'elegible' => $elegible,
-                'key_benefits_program' => $key_benefits_program
+                'key_benefits_program' => $key_benefits_program,
+                'post_content' => $post_content,
             ])->render();
 
         } else {
@@ -298,7 +373,7 @@ class FactSheetsController extends BaseController
 
             $becs = json_decode($becs->body);
 
-            $faqsList = Meta::get(Loop::id(), $key = 'faqs-list', $single = true);
+            $faqsList = Meta::get($post_id, $key = 'faqs-list', $single = true);
 
             $template = 'templates.fact-sheets';
 
@@ -319,8 +394,11 @@ class FactSheetsController extends BaseController
                 'is_alt' => false,
                 'is_snap' => $is_snap,
                 'is_pap' => $is_pap,
+                'is_feeding_america' => $is_feeding_america,
+                'feeding_america_office' => $feeding_america_office,
                 'elegible' => $elegible,
-                'key_benefits_program' => $key_benefits_program
+                'key_benefits_program' => $key_benefits_program,
+                'post_content' => $post_content,
             ])->render();
         }
     }

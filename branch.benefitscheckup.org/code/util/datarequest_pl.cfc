@@ -180,9 +180,9 @@
 			 <cfset temp = QueryAddRow(queryLinks)> 
   			<cfset result = #QuerySetCell(queryLinks, "screening_id",queryUserScreenings.screening_id,rownum)#>
 			<cfif queryUserScreenings.subset_id eq 83>
-				<cfset result = QuerySetCell(queryLinks, "questionnaire_link","http://qa.economiccheckup.org/eversafe-quickcheck-report/?subset_id=83&partner_id=142&screeningID=#queryUserScreenings.screening_id#&shadowID=#queryUserScreenings.screening_id#&eversafe_read_only=true",#rownum#)>
+				<cfset result = QuerySetCell(queryLinks, "questionnaire_link","http://www.economiccheckup.org/eversafe-quickcheck-report/?subset_id=83&partner_id=142&screeningID=#queryUserScreenings.screening_id#&shadowID=#queryUserScreenings.screening_id#&eversafe_read_only=true",#rownum#)>
 			<cfelseif queryUserScreenings.subset_id eq 67>
-				<cfset result = QuerySetCell(queryLinks, "questionnaire_link","http://qa.economiccheckup.org/esi-results-eversafe/?subset_id=83&partner_id=142&screeningID=#queryUserScreenings.prev_screening_id#&shadowID=#queryUserScreenings.screening_id#&eversafe_read_only=true",#rownum#)>
+				<cfset result = QuerySetCell(queryLinks, "questionnaire_link","http://www.economiccheckup.org/esi-results-eversafe/?subset_id=83&partner_id=142&screeningID=#queryUserScreenings.prev_screening_id#&shadowID=#queryUserScreenings.screening_id#&eversafe_read_only=true",#rownum#)>
 			</cfif>
 		</cfloop>
 		<cfreturn queryLinks>	
@@ -209,7 +209,7 @@
 			<cfset rownum = rownum + 1>
 			 <cfset temp = QueryAddRow(queryLinks)> 
   			<cfset result = #QuerySetCell(queryLinks, "screening_id",queryUserScreenings.screening_id,rownum)#>
-			<cfset result = QuerySetCell(queryLinks, "questionnaire_link","http://qa.economiccheckup.org/esi-questions-eversafe/?screeningID=#queryUserScreenings.screening_id#&eversafe_read_only=true",#rownum#)>
+			<cfset result = QuerySetCell(queryLinks, "questionnaire_link","http://www.economiccheckup.org/esi-questions-eversafe/?screeningID=#queryUserScreenings.screening_id#&eversafe_read_only=true",#rownum#)>
 		</cfloop>
 		<cfreturn queryLinks>
 	</cffunction>

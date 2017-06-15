@@ -8439,7 +8439,7 @@ header .header-logo.white-label .whitelabel-logo img {
 
 @media (min-width: 992px) {
   header .header-logo {
-    padding: 15px 0 50px 0; } }
+    padding: 15px 0 45px 0; } }
 
 header .header-cta {
   border-top: 1px solid #ccc;
@@ -10100,7 +10100,8 @@ grid:last-child .sales-grid {
 .home .testimonial img, .page-white-label-homepage .testimonial img {
   width: 220px;
   height: 220px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  border: 3px solid #F4640A; }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .home .testimonial img, .page-white-label-homepage .testimonial img {
@@ -12007,18 +12008,6 @@ input:focus:-ms-input-placeholder {
   -ms-word-break: break-all;
   word-break: break-all;
   word-break: break-word;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto; }
-.fact-sheet .results-options a,
-.short-fact-sheet .results-options a,
-.print-short-fact-sheet .results-options a,
-.print-fact-sheet .results-options a {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: normal;
-  word-break: normal;
-  word-break: normal;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto; }

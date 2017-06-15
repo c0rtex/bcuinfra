@@ -18,6 +18,8 @@
 <cfparam name="attributes.js" type="string" default="">
 <cfparam name="attributes.css" type="string" default="">
 <cfparam name="attributes.showwalmart" type="boolean" default="0">
+<cfparam name="attributes.meta_title" type="string" default="">
+<cfparam name="attributes.meta_description" type="string" default="">
 <cfif attributes.partner_id eq ''>
 	<cfif IsDefined('session.subset_id') and session.subset_id neq '' and IsNumeric(session.subset_id)>
 		<cf_cacheSubsetPool action="get" subset_id="#session.subset_id#" var="sobj">

@@ -43,13 +43,13 @@ class BenefitsCheckUpController extends BaseController
 
         foreach ($programs_default_lang_pre_posts_ids as $code => $post_id) {
             $post = get_post($post_id);
-            $programs_default_langs_pre[$code] = strip_tags(preg_replace("/[\n\r]/", '', $post->post_content));
+            $programs_default_langs_pre[$code] = strip_tags(preg_replace("/[\n\r]/", '', str_replace("'", '', $post->post_content)));
         }
         $programs_default_langs_pre = json_encode($programs_default_langs_pre);
 
         foreach ($programs_default_lang_full_posts_ids as $code => $post_id) {
             $post = get_post($post_id);
-            $programs_default_langs_full[$code] = strip_tags(preg_replace("/[\n\r]/", '', $post->post_content));
+            $programs_default_langs_full[$code] = strip_tags(preg_replace("/[\n\r]/", '', str_replace("'", '', $post->post_content)));
         }
         $programs_default_langs_full = json_encode($programs_default_langs_full);
 

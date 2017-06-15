@@ -6,7 +6,7 @@
 			<section class="hero find-my-benefits cta-hero">
 				<div class="container">
 					<div class="row">
-						<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
+						<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-8 col-md-offset-2 ">
 							<h1>{{ $headline }}</h1>
 							<form ng-submit="findZip(zipcode)" ng-controller="zipCodeController">
 							<div class="zip-code form-inline">
