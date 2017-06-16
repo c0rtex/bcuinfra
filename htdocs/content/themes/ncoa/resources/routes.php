@@ -18,6 +18,7 @@ Route::get('singular', ['fact-sheets', 'uses' => 'FactSheetsController@index']);
 Route::get('template', ['home-template', 'uses' => 'HomeController@index']);
 Route::get('template', ['benefitscheckup-template', 'uses' => 'BenefitsCheckUpController@index']);
 Route::get('template', ['resources-template', 'uses' => 'ResourcesController@index']);
+Route::get('template', ['echo-template', 'uses' => 'EchoTestController@index']);
 Route::any('template', ['resources-results-template', 'uses' => 'ResourcesController@results']);
 Route::any('template', ['program-details-template', 'uses' => 'ResourcesController@details']);
 Route::get('template', ['sponsors-template', 'uses' => 'SponsorsController@index']);
