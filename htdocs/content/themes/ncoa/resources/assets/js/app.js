@@ -2738,4 +2738,9 @@ $(document).on('click', '.navbar-toggle-wrap', function() {
   $(this).find('.navbar-toggle').toggleClass('nav-open');
 });
 
+$(document).on('click', '.accordian-trigger', function(e) {
+    $(this).closest('.accordian-wrap').toggleClass('active');
+    $(this).closest('.accordian-wrap').find('.accordian-content').slideToggle();
+});
+
 $('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');

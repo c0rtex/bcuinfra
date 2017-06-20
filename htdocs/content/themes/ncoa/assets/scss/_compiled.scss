@@ -6348,6 +6348,13 @@ button.close {
     box-shadow: none;
     opacity: 1; }
 
+.btn.btn-no-padding {
+  padding: 0;
+}
+
+.btn.btn-margin-bottom {
+  margin-bottom: 26px;
+}
 a.btn {
   padding-top: 10px; }
 

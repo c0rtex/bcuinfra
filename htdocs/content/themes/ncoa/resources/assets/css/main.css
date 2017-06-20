@@ -6737,6 +6737,12 @@ button.close {
   box-shadow: none;
   opacity: 1; }
 
+.btn.btn-no-padding {
+  padding: 0; }
+
+.btn.btn-margin-bottom {
+  margin-bottom: 26px; }
+
 a.btn {
   padding-top: 10px; }
 
@@ -12386,3 +12392,61 @@ input:focus:-ms-input-placeholder {
 .slick-dots {
   margin-top: auto;
   margin-bottom: auto; }
+
+.benefits-category {
+  margin-bottom: 40px; }
+  .benefits-category > h3 {
+    font-weight: 800;
+    margin-bottom: 0; }
+  .benefits-category > .checkbox {
+    margin-top: 0px;
+    margin-bottom: 6px; }
+
+.print-control {
+  color: #1888de;
+  cursor: pointer;
+  margin-top: 4px; }
+  .print-control:hover {
+    text-decoration: underline; }
+
+.print-controls {
+  margin-bottom: 40px; }
+  .print-controls > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px; }
+
+.advanced-print-options > h2 {
+  margin-bottom: 0; }
+
+.benefits-print-options-checkboxes,
+.advanced-print-options-checkboxes {
+  margin-left: 24px; }
+
+.advanced-print-options {
+  padding-bottom: 60px; }
+
+.benefits-print-options-checkboxes {
+  padding-bottom: 20px; }
+
+.accordian-trigger {
+  color: #1888de;
+  cursor: pointer; }
+  .accordian-trigger:after {
+    content: '\e080';
+    font-family: 'Glyphicons Halflings';
+    display: inline-block;
+    position: relative;
+    right: -20px;
+    color: #1888de;
+    -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    transition: transform 200ms linear;
+    font-size: 20px; }
+  .active .accordian-trigger:after {
+    -ms-transform: rotate(270deg);
+        transform: rotate(270deg); }
+
+.accordian-wrapper,
+.accordian-content {
+  position: relative; }
