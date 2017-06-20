@@ -6,6 +6,7 @@
     <div class="card">
         <div class="card-nested">
             <h2 class="page-header">Default!</h2>
+            <p>Testing ...</p>
         </div>
     </div>
 </div>

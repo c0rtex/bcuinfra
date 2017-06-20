@@ -12043,16 +12043,18 @@ input:focus:-ms-input-placeholder {
 
 .header-logo-ncoa {
   margin-left: 20px;
-  padding-left: 15px;
+  padding-left: 22px;
   display: inline-block;
   border-left: 1px solid #CCCCCC;
-  vertical-align: middle; }
-  @media screen and (max-width: 1200px) {
-    .header-logo-ncoa img {
-      max-width: 150px; } }
-  .header-logo-ncoa-wrap {
-    height: 100%;
-    display: inline-block; }
+  vertical-align: top;
+  padding-top: 9px;
+  padding-bottom: 7px;
+  margin-top: 5px; }
+  @media screen and (min-width: 1200px) {
+    .header-logo-ncoa {
+      padding-top: 11px;
+      padding-bottom: 8px;
+      margin-top: 13px; } }
 
 .header-email-cta {
   display: -ms-flexbox;

@@ -17,20 +17,18 @@
 
     &-ncoa {
       margin-left: 20px;
-      padding-left: 15px;
+      padding-left: 22px;
       display: inline-block;
       border-left: 1px solid $grey-accent;
-      vertical-align: middle;
+      vertical-align: top;
+      padding-top: 9px;
+      padding-bottom: 7px;
+      margin-top: 5px;
 
-      @media screen and (max-width: 1200px) {
-        img {
-          max-width: 150px;
-        }
-      }
-
-      &-wrap {
-        height: 100%;
-        display: inline-block;
+      @media screen and (min-width: 1200px) {
+        padding-top: 11px;
+        padding-bottom: 8px;
+        margin-top: 13px;
       }
     }
   }
