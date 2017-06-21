@@ -2,18 +2,8 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main-vendor.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">  <style type="text/css">
-    body {
-      background-color: #ffffff;
-      font-family: 'Open Sans', sans-serif !important;
-    }
-    .faq {
-      margin-bottom: 10px;
-    }
-    .pagenum:after {
-      content: counter(page);
-    }
-  </style>
+    <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/print.css">
 </head>
 <body>
 
@@ -22,16 +12,22 @@
 </div>
 
 <script type='text/php'>
-  if (isset($pdf)) {
-    $font = $fontMetrics->get_font('helvetica');
-    $size = 10;
+
+  $pdf->page_script('
+    $font = $fontMetrics->get_font("helvetica");
+    $size = 8;
     $color = array(0.266666667, 0.266666667, 0.266666667);
     $y = $pdf->get_height() - 26;
-    $x = $pdf->get_width() - 57 - $fontMetrics->get_text_width('1/1', $font, $size);
-    $pdf->page_text($x, $y, 'Page {PAGE_NUM} of {PAGE_COUNT}', $font, $size, $color);
-    $x2 = $pdf->get_width() - 580 - $fontMetrics->get_text_width('1/1', $font, $size);
-    $pdf->page_text($x2, $y, 'Copyright ' . date('Y') . ' National Council on Aging. All Rights Reserved.', $font, $size, $color);
-  }
+    $x = $pdf->get_width() - 16 - $fontMetrics->get_text_width("1/1", $font, $size);
+    $x2 = $pdf->get_width() - 580 - $fontMetrics->get_text_width("1/1", $font, $size);
+    $current_page = $PAGE_NUM-1;
+    if ($PAGE_NUM > 1) {
+      $pdf->text($x, $y, "$current_page", $font, $size, $color);
+      $pdf->text($x2, $y, "Your BenefitsCheckUp Report", $font, $size, $color);
+    }
+  ');
+
+
 </script>
 
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.min.js"></script>
