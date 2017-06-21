@@ -183,7 +183,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
             if (prescreenAnswered) {
                 scope.caption = "Continue to Full Questionnaire";
             } else {
-                scope.caption = "Start Questionnaire";
+                scope.caption = "Complete Your Benefit Report";
             }
 
             scope.completeFQ = function (url) {
@@ -2537,6 +2537,28 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', functi
     }
 }]);
 
+
+// Temporary Echo&Co duplicate for testing program category design on final restults page
+
+app.directive('divProgramsCategorye',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+    return {
+        restrict: 'E',
+        templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.categorye.html?'+(new Date()),
+        link: function(scope, element) {
+            scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
+            scope.stateId = prescreen.data.answers.stateId;
+            scope.defaultLangsPre = window.defaultLangsPre;
+            scope.defaultLangsFull = window.defaultLangsFull;
+            scope.zipcode = prescreen.data.answers.zip;
+        },
+        scope: {
+            found_program:"=foundProgram",
+            short:"@",
+            elegible:"@"
+        }
+    }
+}]);
+
 app.directive("divKeyProgram",['prescreen',function(prescreen) {
     return {
         restrict: 'E',
@@ -2678,3 +2700,65 @@ app.filter('removeNbsp', function() {
         return input.replace(/&nbsp;/g,' ');
     }
 });
+
+
+app.directive('testimonial-carousel', [function(){
+    return {
+        link: function(scope, elm){
+
+            //Set counter for Image slider
+            $('.currItem').html("1");
+            $('.currTotal').html($('.ncoa-carousel-container .item').length);
+
+
+
+
+            $(elm).on('afterChange', function(event, slick, currentSlide, nextSlide){
+                $('.currItem').html(currentSlide + 1);
+            });
+        }
+    }
+}]);
+
+// this is here because the carousel takes a moment to load.
+$('.testimonial-carousel').on('init', function(event, slick){
+    $('.testimonial-carousel').removeClass("hide");
+});
+
+$('.testimonial-carousel').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false
+});
+
+
+$(document).on('click', '.program-expand-all', function(e) {
+  $('.program').each(function() {
+    $(this).addClass('active');
+    $(this).find('.programs-container').slideDown();
+  });
+});
+
+$(document).on('click', '.program-collapse-all', function(e) {
+  $('.program').each(function() {
+    $(this).removeClass('active');
+    $(this).find('.programs-container').slideUp();
+  });
+});
+
+$(document).on('click', '.navbar-toggle-wrap', function() {
+  $(this).find('.navbar-toggle').toggleClass('nav-open');
+});
+
+$(document).on('click', '.accordian-trigger', function(e) {
+    $(this).closest('.accordian-wrap').toggleClass('active');
+    $(this).closest('.accordian-wrap').find('.accordian-content').slideToggle();
+});
+
+$('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');

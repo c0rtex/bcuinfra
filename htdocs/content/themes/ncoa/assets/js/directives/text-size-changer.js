@@ -12,15 +12,15 @@ app.directive('textSizeChanger', ['$document', 'localStorageService', function (
 
 	  	var tSize = localStorageService.get('TextSize');
 	  	scope.sel = 'min';
-	  	
+
 	  	if(tSize){
 	  		sizeChanger(tSize);
 	  	}
-	  	
+
 	  	scope.changeSize = sizeChanger;
 
 	  	function sizeChanger(size){
-	  		
+
 	  		$document[0].body.style.fontSize = size + scope.unit;
 	  		$(element).addClass(size);
 	  		switch(size){
@@ -31,7 +31,7 @@ app.directive('textSizeChanger', ['$document', 'localStorageService', function (
 	  				scope.sel = 'mid';
 	  				break;
 	  			default:
-	  				scope.sel = 'max';	
+	  				scope.sel = 'max';
 	  		};
 
 	  		localStorageService.set('TextSize', size);
