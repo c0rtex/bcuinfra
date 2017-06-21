@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">
-  <style type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main-vendor.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">  <style type="text/css">
     body {
       background-color: #ffffff;
       font-family: 'Open Sans', sans-serif !important;

@@ -70,15 +70,18 @@
     display: block;
     margin: auto 0;
     border: 4px solid #F4640A;
+    flex: 0 0 100px;
 
     @media screen and (min-width: 768px) {
       height: 120px !important;
       width: 120px !important;
+      flex: 0 0 120px;
     }
 
     @media screen and (min-width: 1200px) {
       height: 190px !important;
       width: 190px !important;
+      flex: 0 0 190px;
     }
   }
 
@@ -88,6 +91,7 @@
     max-width: none;
     padding-right: 40px;
     margin: auto 0;
+    -ms-flex: 0 1 auto; // bugfix for ie10 flexbox
 
     @media screen and (min-width: 768px) {
       // padding-top: 15px;

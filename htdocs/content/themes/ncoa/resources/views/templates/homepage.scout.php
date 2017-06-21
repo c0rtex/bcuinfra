@@ -52,38 +52,73 @@
             <div class="home-benefit-counter col-xs-12">
               <div class="results-tally">
 
-              <span class="ng-scope" style="padding-right: 2px">Join the </span>
-              <span class="odometer-wrapper">
-                <span class="odometer odometer-auto-theme">
-                  <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">5</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span>
-                  </div>
-                </span>
+                <span class="ng-scope"">Join the </span>
+                <span class="odometer-wrapper">
+
+                  <span class="odometer-group">
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">5</span>
+                    </span><!--/.odometer-static-->
+                  </span>
                   <span class="odometer-puncuation">,</span>
-                <span class="odometer odometer-auto-theme">
-                  <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">710</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span>
-                  </div>
-                </span>
+                  <span class="odometer-group">
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">7</span>
+                    </span><!--/.odometer-static-->
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">1</span>
+                    </span><!--/.odometer-static-->
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">0</span>
+                    </span><!--/.odometer-static-->
+                  </span>
                   <span class="odometer-puncuation">,</span>
-                <span class="odometer odometer-auto-theme">
-                  <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">578</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span>
-                  </div>
-                </span>
-              </span>
-              <span class="ng-scope" style="padding-left: 2px; padding-right: 2px"> people who have discovered </span>
-              <span class="odometer-wrapper">
-                <span class="odometer-puncuation"><strong>$</strong></span>
-                <span class="odometer odometer-auto-theme">
-                  <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">19</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span>
-                  </div>
-                </span>
-                <span class="odometer-puncuation">.</span>
-                <span class="odometer odometer-auto-theme">
-                  <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">1</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span>
-                  </div>
-                </span>
-              </span>
-              <span style="padding-left: 2px">billion in benefits</span>
-          </div>
+                  <span class="odometer-group">
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">5</span>
+                    </span><!--/.odometer-static-->
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">7</span>
+                    </span><!--/.odometer-static-->
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">8</span>
+                    </span><!--/.odometer-static-->
+                  </span>
+
+                </span><!--/.odometer-wrapper-->
+
+                <span class="ng-scope"> people who have discovered </span>
+
+                <span class="odometer-wrapper">
+                  <span class="odometer-puncuation"><strong>$</strong></span>
+                  <span class="odometer-group">
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">1</span>
+                    </span><!--/.odometer-static-->
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">9</span>
+                    </span><!--/.odometer-static-->
+                  </span>
+                  <span class="odometer-puncuation"><strong>.</strong></span>
+                  <span class="odometer-group">
+                    <span class="odometer-static">
+                      <span class="odometer-static-spacer"></span>
+                      <span class="odometer-static-value">1</span>
+                    </span><!--/.odometer-static-->
+                  </span>
+                </span><!--/.odometer-wrapper-->
+
+                <span>billion in benefits</span>
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +185,7 @@
 						<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
 							<h5>Find out what benefits may be available in your area.</h5>
 							<div class="zip-code form-inline" ng-controller="zipCodeController">
-								<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+								<input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
 								<button ng-click="findZip(zipcode)" class="btn btn-primary">Get Started</button>
 								<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 							</div>

@@ -146,7 +146,7 @@
 
         <div class="advanced-print-options accordian-wrap">
           <h2 class="accordian-trigger">Advanced Print Options</h2>
-          <p class="small">Additional options to customize your report more.</p>
+          <p class="small">Additional options to further customize your report.</p>
 
           <div class="accordian-content" style="display: none;">
             <div class="print-controls">
