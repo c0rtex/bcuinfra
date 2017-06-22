@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>SOAP JavaScript Client Test</title>
+    <script type="text/javascript">
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('POST', 'http://ws2.feedingamerica.org/FAWebService.asmx', true);
+
+            var sr = '<?xml version="1.0" encoding="utf-8"?>'+
+                     '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
+                     '<soap12:Body>'+
+                     '<GetOrganizationsByZip xmlns="http://feedingamerica.org/">'+
+                     '<zip>'+document.getElementById('zip').value+'</zip>'+
+                     '</GetOrganizationsByZip>'+
+                     '</soap12:Body>'+
+                     '</soap12:Envelope>';
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        parser = new DOMParser();
+                        xmlDoc = parser.parseFromString(xmlhttp.response,"text/xml");
+                        showResults(xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild);
+                    }
+                }
+            }
+            xmlhttp.setRequestHeader('Content-Type', 'application/soap+xml; charset=utf-8');
+            xmlhttp.send(sr);
+        }
+
+        function showResults(rEl) {
+            document.getElementById('logo').innerHTML = "<img border='0' src='" +
+                                                        rEl.getElementsByTagName('LogoUrls')[0]
+                                                           .getElementsByTagName('FoodBankLocator')[0]
+                                                           .childNodes[0].nodeValue +
+                                                        "'/>";
+
+            document.getElementById('name').innerHTML = rEl.getElementsByTagName('FullName')[0].childNodes[0].nodeValue;
+
+            var mailElement = rEl.getElementsByTagName('MailAddress')[0];
+            var adres = mailElement.getElementsByTagName('Address1')[0].childNodes[0].nodeValue + "<br/>";
+            if (mailElement.getElementsByTagName('Address2')[0].childNodes[0]) {
+                adres = adres + mailElement.getElementsByTagName('Address2')[0].childNodes[0].nodeValue + "<br/>";
+            }
+            adres = adres + mailElement.getElementsByTagName('City')[0].childNodes[0].nodeValue + ", " +
+                            mailElement.getElementsByTagName('State')[0].childNodes[0].nodeValue + " " +
+                            mailElement.getElementsByTagName('Zip')[0].childNodes[0].nodeValue + "<br/>" +
+                            rEl.getElementsByTagName('Phone')[0].childNodes[0].nodeValue;
+            document.getElementById('adres').innerHTML = adres;
+
+            var site = rEl.getElementsByTagName('URL')[0].childNodes[0].nodeValue;
+            document.getElementById('website').innerHTML = "<a href='//" + site + "'>"+site+"</a>";
+        }
+    </script>
+</head>
+<body>
+<form name="Demo" action="" method="post">
+    <div>
+        <label for="zip">zip code</label>
+        <input id="zip" type="text" name="zip">
+        <input type="button" value="Request" onclick="soap();" />
+    </div>
+</form>
+<div style="display: block">
+    <p id="logo"/>
+    <p id="name"/>
+    <p id="adres"/>
+    <p id="website"/>
+</div>
+</body>
+</html>

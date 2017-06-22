@@ -25,9 +25,6 @@
 
             <div id="factsheetContent">
                 {{ Loop::content() }}
-                @if($is_pap)
-                <drugs-list></drugs-list>
-                @endif
             </div>
 
             @if($is_alt)
@@ -77,9 +74,18 @@
                 @else
                 <div class="faq">
                     <h3>{{ $value["question"] }}</h3>
+                    @if ($is_feeding_america &&
+                    trim(strtolower($value["question"])) == 'who should i contact?')
+                    <div>
+                        <p><strong>{{ $feeding_america_office["full_name"] }}</strong><br />
+                            {{ $feeding_america_office["address"] }}<br />
+                            {{ $feeding_america_office["site"] }}</p>
+                    </div>
+                    @else
                     <div>
                         <p>{{ $value["answer"] }}</p>
                     </div>
+                    @endif
                 </div>
                 @endif
                 @endif

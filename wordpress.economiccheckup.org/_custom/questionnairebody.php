@@ -1,4 +1,4 @@
-<div class="span12">
+<div class="span12"> 
     <?php
     $dataBridge = "false";
     if (isset($_GET['databridge'])) {
