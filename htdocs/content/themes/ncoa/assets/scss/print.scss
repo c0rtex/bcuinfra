@@ -38,10 +38,16 @@ body {
   }
 }
 
-.print-cover h2 {
+.print-cover h2,
+h3 {
   font-size: 16pt;
   font-weight: 800;
   color: black;
+}
+
+h4 {
+  font-style: italic;
+  font-weight: 500;
 }
 
 .print-cover-intro p{
@@ -118,3 +124,26 @@ ul.leaders {
   }
 }
 
+.fact-sheets-hr {
+  display: none;
+}
+
+.fact-sheets-bottom-header {
+  line-height: 1.1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.print-cover-url {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  text-align: center;
+  font-size: 9pt;
+
+  a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+  }
+}

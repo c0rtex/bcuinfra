@@ -58,7 +58,7 @@
                 @else
                 @if($value["answer"] === 'documents_needed')
                 <div class="faq">
-                    <h3>{{ $value["question"] }}</h3>
+                    <h4>{{ $value["question"] }}</h4>
                     <div>
                         <ul class="fact-sheets-list">
                             @if (empty($required_materials))
@@ -76,7 +76,7 @@
                 </div>
                 @else
                 <div class="faq">
-                    <h3>{{ $value["question"] }}</h3>
+                    <h4>{{ $value["question"] }}</h4>
                     <div>
                         <p>{{ $value["answer"] }}</p>
                     </div>
@@ -87,7 +87,7 @@
                 @endif
                 @if(!empty($entryPointValue))
                 <div class="faq">
-                    <h3>{{ $entryPointValue["question"] }}</h3>
+                    <h4>{{ $entryPointValue["question"] }}</h4>
                     <div>
                         @foreach($entry_points as $ekey => $evalue)
                         <p>
@@ -99,7 +99,7 @@
                 @endif
                 @if(!empty($becs))
                 <div class="faq">
-                    <h3>Who can help me to apply?</h3>
+                    <h4>Who can help me to apply?</h4>
                     <div>
                         <p>
                             A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC or BECs are available to help you.

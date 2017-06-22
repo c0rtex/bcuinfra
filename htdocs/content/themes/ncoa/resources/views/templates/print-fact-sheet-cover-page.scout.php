@@ -48,6 +48,9 @@
         <li><span class="title">America the Beautiful - Senior Pass</span> <span class="nums">37</span></li>
       </ul>
     </div>
+    <div class="print-cover-url">
+      <a href="http://www.benefitscheckup.org">www.benefitscheckup.org</a>
+    </div>
 
   </div>
 
