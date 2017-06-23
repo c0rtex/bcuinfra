@@ -1521,7 +1521,8 @@ pre code {
   padding-left: 15px;
   padding-right: 15px; }
 
-.container:before, .container:after {
+.container:before,
+.container:after {
   content: " ";
   display: table; }
 
@@ -1530,15 +1531,19 @@ pre code {
 
 @media (min-width: 768px) {
   .container {
-    width: 750px; } }
+    max-width: 750px; } }
 
 @media (min-width: 992px) {
   .container {
-    width: 970px; } }
+    max-width: 970px; } }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1350px; } }
+    max-width: 1350px; } }
+
+@media (min-width: 1200px) {
+  .container-large {
+    max-width: 1550px; } }
 
 .container-fluid {
   margin-right: auto;
@@ -8391,6 +8396,11 @@ header .header-logo a {
   header .header-logo a {
     width: auto; } }
 
+header .header-logo img {
+  max-width: 100%;
+  height: auto;
+  display: block; }
+
 header .header-logo.white-label {
   width: 100%;
   text-align: center; }
@@ -8429,7 +8439,7 @@ header .header-logo.white-label .whitelabel-logo img {
 
 @media (min-width: 992px) {
   header .header-logo {
-    padding: 15px 0 50px 0; } }
+    padding: 15px 0 45px 0; } }
 
 header .header-cta {
   border-top: 1px solid #ccc;
@@ -8601,7 +8611,9 @@ header .navbar-default .extra-info-sm img {
 
 .site-footer .social-media-bar .footer-donate-tray {
   float: right;
-  display: inline-block; }
+  display: inline-block;
+  position: relative;
+  top: -5px; }
 
 .site-footer .social-media-bar .footer-donate-tray > a {
   margin-bottom: 0; }
@@ -8633,40 +8645,30 @@ footer.site-footer .social-media-bar .footer-social-media-tray p {
   padding-top: 5px;
   margin-right: 7px; }
 
-footer.site-footer .social-media-bar .footer-social-media-tray .footer-facebook-icon {
-  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-fb-icon.svg") no-repeat 0 0;
+footer.site-footer .social-media-bar .footer-social-media-tray a {
   height: 33px;
   width: 33px;
   display: inline-block;
   padding: 0 22px; }
+
+@media (min-width: 767px) and (max-width: 992px) {
+  footer.site-footer .social-media-bar .footer-social-media-tray a {
+    padding: 0 19px; } }
+
+footer.site-footer .social-media-bar .footer-social-media-tray .footer-facebook-icon {
+  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-fb-icon.svg") no-repeat 0 0; }
 
 footer.site-footer .social-media-bar .footer-social-media-tray .footer-twitter-icon {
-  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-twitter-icon.svg") no-repeat 0 0;
-  height: 33px;
-  width: 33px;
-  display: inline-block;
-  padding: 0 22px; }
+  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-twitter-icon.svg") no-repeat 0 0; }
 
 footer.site-footer .social-media-bar .footer-social-media-tray .footer-linkedin-icon {
-  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-linkedin-icon.svg") no-repeat 0 0;
-  height: 33px;
-  width: 33px;
-  display: inline-block;
-  padding: 0 22px; }
+  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-linkedin-icon.svg") no-repeat 0 0; }
 
 footer.site-footer .social-media-bar .footer-social-media-tray .footer-group-icon {
-  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-group-icon.svg") no-repeat 0 0;
-  height: 33px;
-  width: 33px;
-  display: inline-block;
-  padding: 0 22px; }
+  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-group-icon.svg") no-repeat 0 0; }
 
 footer.site-footer .social-media-bar .footer-social-media-tray .footer-youtube-icon {
-  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-youtube-icon.svg") no-repeat 0 0;
-  height: 33px;
-  width: 33px;
-  display: inline-block;
-  padding: 0 22px; }
+  background: url("https://www.ncoa.org/wp-content/themes/ncoa2015/images/footer-youtube-icon.svg") no-repeat 0 0; }
 
 footer.site-footer .social-media-bar .footer-enews-tray {
   display: inline-block;
@@ -8796,9 +8798,6 @@ footer .btn-purple {
     padding-top: 0px; }
   footer.site-footer .footer-intro {
     display: none; }
-  footer.site-footer .site-footer-inner {
-    padding-top: 23px;
-    text-align: center; }
   footer.site-footer .site-footer-inner hr {
     display: visible;
     margin-top: 25px; }
@@ -8845,6 +8844,11 @@ footer .btn-purple {
   footer.site-footer .trust-icon-container {
     padding-bottom: 28px; } }
 
+@media (min-width: 0) and (max-width: 1200px) {
+  footer.site-footer .site-footer-inner {
+    text-align: center;
+    padding-top: 23px; } }
+
 .super-footer-inner {
   display: inline-block; }
 
@@ -8860,7 +8864,8 @@ footer .btn-purple {
     display: none; } }
 
 .super-footer-copyright {
-  margin-right: 20px; }
+  margin-right: 20px;
+  margin-bottom: 8px; }
 
 @media (max-width: 991px) {
   .super-footer-copyright {
@@ -9639,7 +9644,7 @@ grid:last-child .sales-grid {
 .cta-full {
   color: #fff;
   text-align: center;
-  padding: 30px 20px; }
+  padding: 24px 20px 38px; }
 
 .cta-full h1 {
   color: #fff;
@@ -9651,7 +9656,8 @@ grid:last-child .sales-grid {
   color: #fff;
   font-weight: 500;
   font-size: 1.556em;
-  line-height: 1.5; }
+  line-height: 1.5;
+  margin-top: 0; }
 
 .cta-full p {
   width: 100%;
@@ -9805,8 +9811,17 @@ grid:last-child .sales-grid {
   background: rgba(0, 0, 0, 0.15); }
 
 .benefits-slider-container {
-  padding: 0 80px;
   margin-top: 20px; }
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .benefits-slider-container {
+    padding-right: 32px;
+    padding-left: 32px; } }
+
+@media (min-width: 1200px) and (max-width: 1470px) {
+  .benefits-slider-container {
+    padding-right: 60px;
+    padding-left: 60px; } }
 
 .benefits-slider-header {
   text-align: center;
@@ -9934,14 +9949,15 @@ grid:last-child .sales-grid {
 .benefits-slider-carousel .benefits-slider-arrow:hover {
   color: #115e99; }
 
-.benefits-slider-carousel .benefits-slider-arrow.fa-chevron-left {
-  position: absolute;
-  left: -55px;
-  top: 120px; }
-
+.benefits-slider-carousel .benefits-slider-arrow.fa-chevron-left,
 .benefits-slider-carousel .benefits-slider-arrow.fa-chevron-right {
   position: absolute;
-  top: 120px;
+  top: 120px; }
+
+.benefits-slider-carousel .benefits-slider-arrow.fa-chevron-left {
+  left: -55px; }
+
+.benefits-slider-carousel .benefits-slider-arrow.fa-chevron-right {
   right: -55px; }
 
 .benefits-slider-carousel .row {
@@ -10035,9 +10051,12 @@ grid:last-child .sales-grid {
 .home h2, .page-white-label-homepage h2 {
   color: #1888de;
   font-weight: 700;
-  margin: 0; }
+  margin: 0;
+  line-height: 1;
+  margin-bottom: 5px; }
 
 .home .find-my-benefits, .page-white-label-homepage .find-my-benefits {
+  background: #1A3A74;
   background-image: linear-gradient(-180deg, #4675CB 0%, #1A3A74 96%);
   text-align: center; }
 
@@ -10090,7 +10109,10 @@ grid:last-child .sales-grid {
 
 .home .testimonial figcaption, .page-white-label-homepage .testimonial figcaption {
   text-align: center;
-  font-size: 1.111em; }
+  font-size: 1.111em;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto; }
 
 .home .testimonial figcaption .name-age, .page-white-label-homepage .testimonial figcaption .name-age {
   font-weight: 700;
@@ -10168,8 +10190,9 @@ grid:last-child .sales-grid {
   font-weight: 700;
   font-size: 1.333em; }
 
-.home .better-way-benefits .benefits-item, .page-white-label-homepage .better-way-benefits .benefits-item {
-  border-right: 2px solid #ccc; }
+@media (min-width: 768px) {
+  .home .better-way-benefits .benefits-item, .page-white-label-homepage .better-way-benefits .benefits-item {
+    border-right: 2px solid #ccc; } }
 
 .home .better-way-benefits .benefits-item:last-child, .page-white-label-homepage .better-way-benefits .benefits-item:last-child {
   border: none; }
@@ -10177,19 +10200,34 @@ grid:last-child .sales-grid {
 .home .better-way-benefits .benefits-item .title-icon {
   padding-top: 0; }
 
+.home .better-way-benefits .benefits-item:last-child .title-icon img {
+  position: relative;
+  right: -8px; }
+
 .home .better-way-benefits .benefits-item .title-icon img {
   height: 200px;
   display: block;
   margin: 0 auto;
   padding-bottom: 10px; }
 
+.home .better-way-benefits .benefits-item p {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px; }
+
 @media (min-width: 992px) {
   .home .better-way-benefits, .page-white-label-homepage .better-way-benefits {
-    padding-top: 50px;
+    padding-top: 27px;
     padding-bottom: 50px; } }
 
-.home .our-sponsors, .page-white-label-homepage .our-sponsors {
-  padding: 15px 0; }
+.better-way-benefits-header {
+  margin-bottom: 22px; }
+
+.benefits-container {
+  padding-top: 12px;
+  padding-bottom: 6px; }
 
 .home .our-sponsors h2, .page-white-label-homepage .our-sponsors h2 {
   text-align: center; }
@@ -10274,7 +10312,9 @@ grid:last-child .sales-grid {
   color: #1888de; }
 
 .ncoa-carousel {
-  text-align: center; }
+  text-align: center;
+  padding-top: 38px;
+  padding-bottom: 24px; }
 
 .ncoa-carousel .ncoa-carousel-container {
   padding: 20px 0;
@@ -10307,20 +10347,37 @@ grid:last-child .sales-grid {
   color: #1888de; }
 
 .ncoa-carousel .fa.slick-arrow {
-  font-size: 2.222em;
-  position: absolute;
-  top: 45%; }
+  font-size: 30px;
+  display: inline-block !important; }
 
-.ncoa-carousel .fa.slick-arrow.fa-chevron-left {
-  left: -50px; }
+.ncoa-carousel .fa.slick-arrow:hover {
+  cursor: pointer;
+  color: #115e99; }
 
-.ncoa-carousel .fa.slick-arrow.fa-chevron-right {
-  right: -40px; }
+@media (min-width: 890px) {
+  .ncoa-carousel .fa.slick-arrow {
+    font-size: 2.222em;
+    position: absolute;
+    top: 45%; }
+  .ncoa-carousel .fa.slick-arrow.fa-chevron-left {
+    left: -50px; }
+  .ncoa-carousel .fa.slick-arrow.fa-chevron-right {
+    right: -40px; } }
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .ncoa-carousel {
+    padding-right: 32px;
+    padding-left: 32px; } }
+
+@media (min-width: 1200px) and (max-width: 1470px) {
+  .ncoa-carousel {
+    padding-right: 50px;
+    padding-left: 50px; } }
 
 .controls {
   text-align: center;
   padding: 15px 0;
-  font-weight: 700; }
+  font-weight: 500; }
 
 .controls .fa {
   font-size: 1.667em; }
@@ -10328,12 +10385,17 @@ grid:last-child .sales-grid {
 .controls .count {
   display: inline-block;
   vertical-align: top;
-  font-size: 1.111em;
-  padding: 0 10px; }
+  font-size: 18px;
+  padding: 0 18px; }
 
 @media (min-width: 1024px) {
   .controls {
     display: none; } }
+
+.ncoa-carousel .btn-link .fa {
+  position: relative;
+  top: 1px;
+  right: -4px; }
 
 .title-icon {
   background-repeat: no-repeat;
@@ -11442,7 +11504,7 @@ grid:last-child .sales-grid {
 
 .about-how-works {
   margin-top: 40px;
-  padding: 20px 50px 40px 50px;
+  padding: 20px 15px 40px 15px;
   border-top: #CCCCCC 2px solid;
   background-color: #ECECEC;
   text-align: center; }
@@ -11458,6 +11520,9 @@ grid:last-child .sales-grid {
   padding: 5px 20px 0px 20px; }
 
 @media (min-width: 992px) {
+  .about-how-works {
+    padding-right: 50px;
+    padding-left: 50px; }
   .about-how-works .about-step-section {
     border-right: 2px solid #ccc; }
   .about-how-works .about-step-section:last-child {
@@ -11943,19 +12008,6 @@ input:focus:-ms-input-placeholder {
   -ms-word-break: break-all;
   word-break: break-all;
   word-break: break-word;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto; }
-
-.fact-sheet .results-options a,
-.short-fact-sheet .results-options a,
-.print-short-fact-sheet .results-options a,
-.print-fact-sheet .results-options a {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: normal;
-  word-break: normal;
-  word-break: normal;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto; }

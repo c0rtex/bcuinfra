@@ -1,0 +1,80 @@
+.benefits-category {
+  margin-bottom: 40px;
+
+  > h3 {
+    font-weight: 800;
+    margin-bottom: 0;
+  }
+
+  > .checkbox {
+    margin-top: 0px;
+    margin-bottom: 6px;
+  }
+}
+
+.print-control {
+  color: $brand-light-blue;
+  cursor: pointer;
+  margin-top: 4px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.print-controls {
+  margin-bottom: 40px;
+
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+}
+
+
+.advanced-print-options {
+  > h2 {
+    margin-bottom: 0;
+  }
+}
+
+.benefits-print-options-checkboxes,
+.advanced-print-options-checkboxes {
+  margin-left: 24px;
+}
+
+.advanced-print-options {
+  padding-bottom: 60px;
+}
+
+.benefits-print-options-checkboxes {
+  padding-bottom: 20px;
+}
+
+.accordian-trigger {
+  color: $brand-light-blue;
+  cursor: pointer;
+
+  &:after {
+    content: '\e080';
+    font-family: 'Glyphicons Halflings';
+    display: inline-block;
+    position: relative;
+    right: -20px;
+    color: $brand-light-blue;
+    transform: rotate(90deg);
+    transition: transform 200ms linear;
+    font-size: 20px;
+  }
+
+  .active &:after {
+   transform: rotate(270deg);
+  }
+}
+
+.accordian-wrapper,
+.accordian-content {
+  position: relative;
+}
+
