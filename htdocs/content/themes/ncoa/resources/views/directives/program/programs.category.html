@@ -1,7 +1,6 @@
 <section class="program" slide-down>
     <div class="program-header hover-shade">
 
-
         <img ng-src="{{benefitItem.image}}" width="55" height="55" alt="{{benefitItem.name}}" title="{{benefitItem.name}}" />
         <span ng-if="found_program.count==1">{{benefitItem.name}} Benefits: {{found_program.count}} Program</span>
         <span ng-if="found_program.count>1 || found_program.count==0">
@@ -12,12 +11,13 @@
     <div class="programs-container" ng-if="found_program.count>0">
         <ul class="programs" ng-repeat="program in found_program.programs">
             <li>
-                <h4 ng-bind-html="program.name_display | unsafe"></h4>
+                <h4><a ng-bind-html="program.name_display | unsafe" ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short,elegible:elegible})"></a></h4>
 
-                <div-program-desc program_code="program.code"></div-program-desc>
+                <div-program-desc program_code="program.code">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu ip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div-program-desc>
             </li>
             <li>
-                <button ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short,elegible:elegible})" class="btn btn-secondary btn-get-info">Get More Information</button>
+                <p>Answer a few more questions to find out if you are eligible.</p>
+                <button ng-click="goScreening()" class="btn btn-primary btn-get-info">Continue</button>
             </li>
         </ul>
     </div>

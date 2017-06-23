@@ -9,19 +9,36 @@
         <span ng-if="foundCount > 1 || foundCount == 0"><strong>benefit programs</strong> that match what you've told us so far.</span>
     </div>
 
-    <p>
-        <button ng-click="goScreening()" class="btn btn-primary">Keep going to get personalized results</button>
-    </p>
+    <h3>Find out if you are eligible for these programs</h3>
 
-    <p>
+    <p class="mt-10">
         Based on the few questions you answered, the following programs are available in your area. Click below
         to get basic information on these programs or keep going to find out more about whether you're eligible, get
         a personal report, and find detailed information on how to apply.
     </p>
 
+    <p>
+        <button ng-click="goScreening()" class="btn btn-primary">Complete Your Benefit Report</button>
+    </p>
+
     <div class="more-benefits">
+    <div class="program-toggle-controls">
+      <div class="program-expand-all">Expand All</div>
+      <span>|</span>
+      <div class="program-collapse-all">Collapse All</div>
+    </div>
 		<span ng-repeat="found_program in found_programs  | orderBy:'sort'">
 			<div-programs-category short="y" found_program="found_program" elegible="y"></div-programs-category>
 		</span>
     </div>
+
+    <h3>Find out if you are eligible for these programs</h3>
+
+    <p class="mt-10">
+        Answer a few more questions to find out exactly which programs you are eligible for in your area. You will get a personal report with more information on these programs and detailed information on how to apply.
+    </p>
+
+    <p>
+        <button ng-click="goScreening()" class="btn btn-primary">Complete Your Benefit Report</button>
+    </p>
 </div>
