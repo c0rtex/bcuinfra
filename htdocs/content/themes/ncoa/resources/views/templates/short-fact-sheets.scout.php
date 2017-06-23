@@ -61,14 +61,14 @@
 
                     @if(!$is_alt)
                     <hr class="fact-sheets-hr" />
-                    <h3 class="bold-h3">How do I get more information?</h3>
+                    <h3 class="bold-h3 text-light-blue">Find out if you’re eligible for this program</h3>
                     <p>
-                        If you would like more information about the program, get the application forms, and to find out if you are eligible, please answer a few more questions.
+                        Answer a few more questions to ﬁnd out if you are eligible for this program. You will get a personal report with more information on these programs and detailed information on how to apply.  
                     </p>
                     <complete-questionnaire/>
                     <!--<a ng-hide="prescreenAnswered" href="/find-my-benefits" class="btn btn-primary">Start Questionnaire</a>
                     <a ng-show="prescreenAnswered" ng-click="completeFQ()" class="btn btn-primary">Complete Full Questionnaire</a>-->
-                    <hr class="fact-sheets-hr" />
+                    
 
                     <!--{{ Meta::get(Loop::id(), $key = 'requirement-info', $single = true) }}-->
                     @endif
@@ -88,7 +88,7 @@
                         {{ Meta::get(Loop::id(), $key = 'body-copy', $single = true) }}
                     </div>
                     @endif
-			
+
                     @if(!empty($programUrl))
                     <div class="results-options">
                         <span class="fact-sheets-side-header">Quick Links</span>
@@ -96,7 +96,7 @@
                         <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                           <span style="white-space: pre-line">Program Website</span>
                         </a>
-                    
+
                     @endif
 		    @if (!empty($snap_findstores_url))
                         </br>
