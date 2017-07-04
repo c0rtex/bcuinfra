@@ -1,2 +1,16 @@
+// In October 2016 Sass was used to create the BenefitsCheckup.org website.
+// Afterwards Sass was not used, and CSS updates were made directly to the
+// compiled CSS file.
+// In May 2017, while doing some major updates to the site with a new agency,
+// it was decided to use Sass once again.
+// However since the compiled CSS file had received a large amount of updates
+// since October 2016, the decision was made to convert the compiled CSS into
+// a single partial, and archive the old Sass partials.
 @import 'variables';
 @import 'compiled';
+@import 'components/header';
+@import 'components/hero';
+@import 'components/results';
+@import 'components/home-benefit-counter';
+@import 'components/testimonial';
+@import 'components/page-print-benefits-report';

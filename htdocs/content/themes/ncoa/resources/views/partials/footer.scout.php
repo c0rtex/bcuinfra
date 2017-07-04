@@ -4,7 +4,7 @@
         <div class="col-sm-12">
             <div class="site-logo">
                 <a href="http://www.ncoa.org" title="NCOA" rel="home">
-                    <img width="177" height="60" src="/content/uploads/2016/09/ncoa-logo-177x60.png" class="header-logo" alt="National Council on Aging" title="National Council on Aging"  sizes="(max-width: 177px) 100vw, 177px">
+                    <img src="/content/themes/ncoa/resources/assets/images/ncoa_logo_1x.png" srcset="/content/themes/ncoa/resources/assets/images/ncoa_logo_2x.png 2x" alt="National Council on Aging" title="National Council on Aging" >
                 </a>
             </div>
 

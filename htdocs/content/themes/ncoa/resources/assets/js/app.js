@@ -183,7 +183,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
             if (prescreenAnswered) {
                 scope.caption = "Continue to Full Questionnaire";
             } else {
-                scope.caption = "Start Questionnaire";
+                scope.caption = "Complete Your Benefit Report";
             }
 
             scope.completeFQ = function (url) {
@@ -242,62 +242,6 @@ app.directive('drugsList', ['screening', 'Drugs', '$state', function(screening, 
                     }
                 }
             });
-        }
-    };
-}]);
-
-app.directive('feedAmericaOffices',['screening', '$http', function(screening, $http) {
-    return {
-        restrict: 'E',
-        templateUrl: '/content/themes/ncoa/resources/views/directives/feed-america/feed-america-offices.html?'+(new Date()),
-        link: function (scope, element, attr) {
-            var zip = '10001'; // defaults to NY zip code
-            if (typeof scope.$root.answers != 'undefined') {
-                if (typeof scope.$root.answers.prescreen != 'undefined') {
-                    if (typeof scope.$root.answers.prescreen.zip) {
-                        zip = scope.$root.answers.prescreen.zip;
-                    }
-                }
-            }
-
-            var postData = '<?xml version="1.0" encoding="utf-8"?>'+
-                '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">'+
-                '<soap12:Body>'+
-                '<GetOrganizationsByZip xmlns="http://feedingamerica.org/">'+
-                '<zip>' + zip + '</zip>'+
-                '</GetOrganizationsByZip>'+
-                '</soap12:Body>'+
-                '</soap12:Envelope>';
-
-            $http({
-                method: 'POST',
-                url: 'http://ws2.feedingamerica.org/FAWebService.asmx',
-                data: postData,
-                headers: {
-                    'Content-Type': 'text/xml'
-                }
-            })
-                .then(function(response) {
-                    var parser = new DOMParser();
-                    var xmlDoc = parser.parseFromString(response.data, "text/xml");
-                    var rel = xmlDoc.firstChild.firstChild.firstChild.firstChild.firstChild;
-
-                    var mailElement = rel.getElementsByTagName('MailAddress')[0];
-                    var address = mailElement.getElementsByTagName('Address1')[0].childNodes[0].nodeValue + "<br/>";
-                    if (mailElement.getElementsByTagName('Address2')[0].childNodes[0]) {
-                        address = address + mailElement.getElementsByTagName('Address2')[0].childNodes[0].nodeValue + "<br/>";
-                    }
-                    address = address + mailElement.getElementsByTagName('City')[0].childNodes[0].nodeValue + ", " +
-                        mailElement.getElementsByTagName('State')[0].childNodes[0].nodeValue + " " +
-                        mailElement.getElementsByTagName('Zip')[0].childNodes[0].nodeValue + "<br/>" +
-                        rel.getElementsByTagName('Phone')[0].childNodes[0].nodeValue;
-
-                    scope.office = {
-                        'fullName': rel.getElementsByTagName('FullName')[0].childNodes[0].nodeValue,
-                        'address': address,
-                        'site': rel.getElementsByTagName('URL')[0].childNodes[0].nodeValue
-                    };
-                });
         }
     };
 }]);
@@ -2600,6 +2544,28 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', functi
     }
 }]);
 
+
+// Temporary Echo&Co duplicate for testing program category design on final restults page
+
+app.directive('divProgramsCategorye',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+    return {
+        restrict: 'E',
+        templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.categorye.html?'+(new Date()),
+        link: function(scope, element) {
+            scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
+            scope.stateId = prescreen.data.answers.stateId;
+            scope.defaultLangsPre = window.defaultLangsPre;
+            scope.defaultLangsFull = window.defaultLangsFull;
+            scope.zipcode = prescreen.data.answers.zip;
+        },
+        scope: {
+            found_program:"=foundProgram",
+            short:"@",
+            elegible:"@"
+        }
+    }
+}]);
+
 app.directive("divKeyProgram",['prescreen',function(prescreen) {
     return {
         restrict: 'E',
@@ -2741,3 +2707,65 @@ app.filter('removeNbsp', function() {
         return input.replace(/&nbsp;/g,' ');
     }
 });
+
+
+app.directive('testimonial-carousel', [function(){
+    return {
+        link: function(scope, elm){
+
+            //Set counter for Image slider
+            $('.currItem').html("1");
+            $('.currTotal').html($('.ncoa-carousel-container .item').length);
+
+
+
+
+            $(elm).on('afterChange', function(event, slick, currentSlide, nextSlide){
+                $('.currItem').html(currentSlide + 1);
+            });
+        }
+    }
+}]);
+
+// this is here because the carousel takes a moment to load.
+$('.testimonial-carousel').on('init', function(event, slick){
+    $('.testimonial-carousel').removeClass("hide");
+});
+
+$('.testimonial-carousel').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false
+});
+
+
+$(document).on('click', '.program-expand-all', function(e) {
+  $('.program').each(function() {
+    $(this).addClass('active');
+    $(this).find('.programs-container').slideDown();
+  });
+});
+
+$(document).on('click', '.program-collapse-all', function(e) {
+  $('.program').each(function() {
+    $(this).removeClass('active');
+    $(this).find('.programs-container').slideUp();
+  });
+});
+
+$(document).on('click', '.navbar-toggle-wrap', function() {
+  $(this).find('.navbar-toggle').toggleClass('nav-open');
+});
+
+$(document).on('click', '.accordian-trigger', function(e) {
+    $(this).closest('.accordian-wrap').toggleClass('active');
+    $(this).closest('.accordian-wrap').find('.accordian-content').slideToggle();
+});
+
+$('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');

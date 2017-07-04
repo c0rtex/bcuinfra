@@ -112,14 +112,20 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         @else
                         <section slide-down class="program program-no-icon">
                             <div class="program-header"><span>{{ $value["question"] }}</span></div>
+                            @if ($is_feeding_america &&
+                                trim(strtolower($value["question"])) == 'who should i contact?')
+                            <div class="programs-container program-p">
+                                <p><strong>{{ $feeding_america_office["full_name"] }}</strong><br />
+                                  {{ $feeding_america_office["address"] }}<br />
+                                  {{ $feeding_america_office["site"] }}</p>
+                            </div>
+                            @else
                             <div class="programs-container program-p">
                                 <p>
                                     {{ $value["answer"] }}
                                 </p>
-                                @if($is_feeding_america)
-                                <feed-america-offices></feed-america-offices>
-                                @endif
                             </div>
+                            @endif
                         </section>
                         @endif
                         @endif
