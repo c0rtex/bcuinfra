@@ -189,7 +189,14 @@ if (!empty($template))
                 ])
             ]);
 
-        break;
+            Metabox::make('Counters', 'page', [
+                'context'   => 'normal'
+            ])->set([
+                Field::text('people-count'),
+                Field::text('vob-count')
+            ]);
+
+            break;
 
         case 'white-label-homepage-template':
 
