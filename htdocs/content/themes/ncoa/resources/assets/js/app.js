@@ -894,7 +894,14 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                         $selectableSearch = that.$selectableUl.prev(),
                         selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)';
 
-                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString,{
+                        'prepareQuery': function (val) {
+                            return new RegExp('^'+val,'i');
+                        },
+                        'testQuery': function (query, txt, _row) {
+                            return query.test(txt);
+                        }
+                    })
                         .on('keydown', function(e){
                             if (e.which === 40){
                                 that.$selectableUl.focus();
