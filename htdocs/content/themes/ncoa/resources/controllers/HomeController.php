@@ -12,13 +12,21 @@ class HomeController extends BaseController
         $constants = Config::get('constants');
         setlocale(LC_MONETARY, 'en_US');
 
-        $people_count = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/vob/countpeople')->send()->raw_body;
-        $vob_count = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/vob/countvob')->send()->raw_body;
+        try {
+            $people_count = number_format(\Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/vob/countpeople')->send()->raw_body);
+            $vob_count = $this->_thousandsCurrencyFormat(\Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/vob/countvob')->send()->raw_body);
+
+            update_post_meta(get_the_ID(), 'people-count', $people_count);
+            update_post_meta(get_the_ID(), 'vob-count', $vob_count);
+        } catch (Exception $e) {
+            $people_count = Meta::get(get_the_ID(),'people-count',true);
+            $vob_count = Meta::get(get_the_ID(),'vob-count',true);
+        }
 
         // Replace {placeholder} in headline.
         $placeholders = array(
-            '{people_count}' => number_format($people_count),
-            '{vob_count}' => '$' . $this->_thousandsCurrencyFormat($vob_count),
+            '{people_count}' => $people_count,
+            '{vob_count}' => '$' . $vob_count,
         );
 
         $headline = Meta::get(get_the_ID(), $key = 'headline', $single = true);
