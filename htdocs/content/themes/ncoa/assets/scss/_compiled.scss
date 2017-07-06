@@ -11194,9 +11194,8 @@ input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 .print-fact-sheet a {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
+  -ms-word-break: normal;
+  word-break: normal;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
