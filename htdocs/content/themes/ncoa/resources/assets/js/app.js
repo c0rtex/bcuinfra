@@ -1857,8 +1857,12 @@ app.service('screeningQuestions',['$http', function ($http) {
     }
 }]);
 
-app.factory('prescreen', ['localStorageService','$window', function(localStorageService, $window){
+app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', function(localStorageService, $window, orderBy){
     var prescreenform = {};
+
+    var reorder = function (data) {
+        return orderBy(data, 'sort');
+    };
 
     var _data = localStorageService.get('prescreen');
 
@@ -1883,14 +1887,23 @@ app.factory('prescreen', ['localStorageService','$window', function(localStorage
 
     prescreenform.save = function() {
         prescreenform.data.name=$window.name;
+        if (typeof prescreenform.data.results !== 'undefined') {
+            if (typeof prescreenform.data.results.found_programs !== 'undefined') {
+                prescreenform.data.results.found_programs = reorder(prescreenform.data.results.found_programs);
+            }
+        }
         localStorageService.set('prescreen', prescreenform.data);
     };
 
     return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', function(localStorageService, $window, ScreeningRoutes) {
+app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function(localStorageService, $window, ScreeningRoutes, orderBy) {
     var screening = {};
+
+    var reorder = function (data) {
+        return orderBy(data, 'sort');
+    };
 
     var _data = localStorageService.get('screening');
 
@@ -1921,6 +1934,11 @@ app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', f
     screening.data = _data;
 
     screening.save = function() {
+        if (typeof screening.data.results !== 'undefined') {
+            if (typeof screening.data.results.found_programs !== 'undefined') {
+                screening.data.results.found_programs = reorder(screening.data.results.found_programs);
+            }
+        }
         localStorageService.set('screening', screening.data);
     };
 
