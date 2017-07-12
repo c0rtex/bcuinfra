@@ -24,7 +24,7 @@
 		<h3><strong>More Benefit Programs</strong></h3>-->
 		<p>Based on the information you provided, you may be eligible for these programs or may be interested in getting more information about them. Select a category to learn more:</p>
 		<div class="more-benefits">
-			<span ng-repeat="found_program in found_programs | orderBy:'sort'">
+			<span ng-repeat="found_program in found_programs">
 				<div-programs-category short="n" found_program="found_program" elegible="n"></div-programs-category>
 			</span>
 		</div>

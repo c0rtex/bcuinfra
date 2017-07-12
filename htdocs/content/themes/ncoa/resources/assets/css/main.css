@@ -12005,9 +12005,8 @@ input:focus:-ms-input-placeholder {
 .print-fact-sheet a {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
+  -ms-word-break: normal;
+  word-break: normal;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto; }
