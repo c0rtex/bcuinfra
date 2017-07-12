@@ -1,0 +1,17 @@
+#livechat-full, #livechat-compact-container {
+
+span.author, span.msg-text, a.title.title-font.title-bg#title, #body input, #body label, #body select, #body table, #body textarea, a, body, input, label, select, table, table#content, textarea {
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+#livechat-full {
+  box-shadow: 0 1px 30px 0 rgba(0,0,0,.125);
+}
+
+#footer #powered a {
+  display: none !important;
+}
+#textarea .footer.textarea-inner-container {
+  border-top: 1px solid #ECECEC !important;
+}
+}
