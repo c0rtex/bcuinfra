@@ -1,9 +1,110 @@
-#livechat-full, #livechat-compact-container {
+// These are the styles for customizing the Live Chat theme. Because of the iframe it loads in, the changes must be made in the backend of Live Chat (https://my.livechatinc.com/settings/theme)
 
-span.author, span.msg-text, a.title.title-font.title-bg#title, #body input, #body label, #body select, #body table, #body textarea, a, body, input, label, select, table, table#content, textarea {
-  font-family: 'Source Sans Pro', sans-serif !important;
+// These styles exist as a backup of those styles.
+
+
+/* Border - color */
+.outline, #wrapper .operators-bar .wrapper, #wrapper #body, #wrapper #textarea-wrapper {
+  border-color: #323232 !important;
 }
 
+/* Border - radius */
+#wrapper {
+  border-radius: 4px 4px 0px 0px;
+}
+#operators .wrapper {
+  border-radius: 3px 3px 0px 0px;
+}
+#textarea-wrapper{
+  border-radius: 0px 0px 6px 6px;
+}
+
+/* Border - thickness*/
+.outline {
+  padding: 1px;
+}
+
+
+/* CONTENT */
+
+/* Operator header */
+#content img.avatar{
+    border-radius: 60px;
+    box-shadow: 0px 1px 10px rgba( 110,110,110,.5 );
+    border: 0px;
+    padding: 0px;
+}
+
+.operator {
+  background-color: White;
+  border-color: #fbfbfb;
+}
+  .operator .author {
+    color: #444;
+    font-weight: normal;
+  }
+
+.client {
+  background-color: #F9F9F9;
+  border-color: #fbfbfb;
+}
+  .client .author {
+    color: #CCCCCC;
+    font-weight: normal;
+  }
+
+@livechat-mobile {
+  #content img.avatar{
+    border-radius: 50%;
+    border: 0;
+    padding: 0;
+  }
+
+  .operator {
+    background-color: White;
+    border-color: #fbfbfb;
+  }
+    .operator .author {
+      color: Silver;
+      font-weight: normal;
+    }
+
+  .client {
+    background-color: #F9F9F9;
+    border-color: #fbfbfb;
+  }
+    .client .author {
+      color: Grey;
+      font-weight: normal;
+    }
+}
+
+a#title {
+background-color: #1888de;
+}
+
+
+#livechat-full, #livechat-compact-container {
+  #title-container {
+    a.title-bg.title.title-font {
+      font-family: 'Source Sans Pro', sans-serif !important;
+
+    }
+  }
+
+#title-text {
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
+  span.author, span.msg-text {
+    font-family: 'Source Sans Pro', sans-serif !important;
+
+  }
+
+  .time {
+      color: #444;
+  }
+}
 #livechat-full {
   box-shadow: 0 1px 30px 0 rgba(0,0,0,.125);
 }
@@ -11,7 +112,137 @@ span.author, span.msg-text, a.title.title-font.title-bg#title, #body input, #bod
 #footer #powered a {
   display: none !important;
 }
-#textarea .footer.textarea-inner-container {
+
+#text-area footer {
   border-top: 1px solid #ECECEC !important;
 }
+
+#powered {
+  display:none;
+}
+
+@livechat-mobile {
+  #powered {
+    display: none;
+  }
+}
+
+#operators .icon-thumbs-up, #operators .icon-thumbs-down, #operators #email_transcript .icon-email, #send-file-clip .icon-clip {
+  color: #ccc;
+}
+
+@media print {
+	#livechat-full, #livechat-compact-container, #livechat-eye-catcher {
+	   display: none!important;
+	}
+}
+
+.info-tooltip, .small-tooltip {
+  background: #1888de;
+}
+
+.info-tooltip__arrow--right-top {
+  border-left-color:  #1888de;
+}
+
+#invitation_message_text {
+  background: #1888de;
+  color: #fff;
+}
+
+.invitation_message:after  {
+  border-color: transparent transparent transparent #1888de;
+}
+
+#textarea .footer {
+  border-top: 1px solid #ECECEC;
+}
+
+span.author, span.msg-text, a.title.title-font.title-bg#title, #body input, #body label, #body select, #body table, #body textarea, a, body, input, label, select, table, table#content, textarea {
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+@livechat-mobile {
+  span.author, span.msg-text, a.title.title-font.title-bg#title, #body input, #body label, #body select, #body table, #body textarea, a, body, input, label, select, table, table#content, textarea {
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+#text-area footer {
+  border-top: 1px solid #ECECEC;
+}
+
+}
+
+
+.submit input {
+  background-color: #F4640A !important;
+  box-shadow: none !important;
+}
+
+#operators .icon-thumbs-up, #operators .icon-thumbs-down, #operators #email_transcript .icon-email {
+  color: #CCCCCC;
+}
+
+#send-file-clip .icon-clip {
+  color: #444;
+}
+
+#operators .icon-thumbs-up:hover {
+  color: #1473bc;
+}
+
+#operators #rating {
+  color: #ccc;
+}
+
+#operators #rating:hover {
+  color: #1473bc;
+}
+
+#operators .icon-thumbs-down:hover {
+  color: #1473bc;
+}
+
+#operators #email_transcript .icon-email:hover {
+  color: #1473bc;
+}
+
+#operators #email_transcript a {
+  color: #1473bc;
+}
+
+#operators #email_transcript a:hover {
+  color: #1473bc;
+}
+
+#send-file-clip .icon-clip:hover {
+  color: #1473bc;
+}
+
+#confirm-closing p.actions input {
+  background-color: #F4640A;
+  box-shadow: none;
+}
+
+#confirm-closing p.actions a {
+  box-shadow: none;
+}
+
+.footer {
+  background-color: #f9f9f9 !important;
+}
+
+
+.icon-agentonline:before {
+  content: none;
+}
+
+#operator_avatar {
+    background-image: url(/content/themes/ncoa/resources/assets/images/robot.svg);
+    display: flex;
+    background-position: center 10px;
+    background-repeat: no-repeat;
+    background-size: 48px;
+    align-items: center;
+    justify-content: center;
 }

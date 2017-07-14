@@ -2755,3 +2755,13 @@ window.__lc.license = 8840876;
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
 })();
 <!-- End of LiveChat code -->
+
+
+// $(document).ready(function() {
+//   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
+//
+//   window.setInterval(function(){
+//     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
+//     console.log('fire');
+//   }, 2000);
+// });
