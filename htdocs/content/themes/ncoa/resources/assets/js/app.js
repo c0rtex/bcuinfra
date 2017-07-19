@@ -1,4 +1,4 @@
-﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar']);
+﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar', 'ngSanitize']);
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
@@ -225,7 +225,9 @@ app.directive('drugsList', ['screening', 'Drugs', '$state', function(screening, 
                 if(code.indexOf('drug_') == 0) {
                     currentDrug = code.substr(5);
 
-                    if (Drugs.isCodeBindToProgram(currentDrug,$state.params["programCode"])) {
+                    var brand = Drugs.isCodeBindToProgram(currentDrug,$state.params["programCode"]);
+
+                    if (brand) {
 
                         if (currentDrug.indexOf('dn_') == 0) {
                             scope.brandDrugsAlert = true;
@@ -233,7 +235,9 @@ app.directive('drugsList', ['screening', 'Drugs', '$state', function(screening, 
                         }
                         if ((currentDrug.indexOf('gen_') == 0)||(/g\d+/.exec(currentDrug))) {
                             scope.genericDrugsAlert = true;
-                            scope.genericDrugs[currentDrug] = Drugs.nameByCode(currentDrug);
+                            for (var i=0;i<brand.length;i++) {
+                                if (!scope.genericDrugs[brand[i].code]) scope.genericDrugs[brand[i].code] = brand[i].name;
+                            }
                         }
                     }
                 }
@@ -834,7 +838,14 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                         $selectableSearch = that.$selectableUl.prev(),
                         selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)';
 
-                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString,{
+                        'prepareQuery': function (val) {
+                            return new RegExp('^'+val,'i');
+                        },
+                        'testQuery': function (query, txt, _row) {
+                            return query.test(txt);
+                        }
+                    })
                         .on('keydown', function(e){
                             if (e.which === 40){
                                 that.$selectableUl.focus();
@@ -1769,7 +1780,21 @@ app.factory('Drugs',[function() {
     Drugs.isCodeBindToProgram = function(drugCode,programCode) {
         var drug = Drugs.drugByCode(drugCode);
         if (drug) {
-            return drug.programs.indexOf(programCode) != -1;
+            if (drug.type == "brand") {
+                return drug.programs.indexOf(programCode) != -1;
+            } else {
+                var brands = [];
+                for (var i=0; i<drug.programs.length;i++) {
+                    if (drug.programs[i].program == programCode) {
+                        brands.push({"code":drug.programs[i].brand_code,"name":drug.programs[i].brand_name});
+                    }
+                }
+                if (brands.length>0) {
+                    return brands;
+                } else {
+                    return false;
+                }
+            }
         }
         return false;
     }

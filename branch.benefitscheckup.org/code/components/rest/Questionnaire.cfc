@@ -178,7 +178,7 @@
             <cfset var option = structNew()>
             <cfset option["code"]=d.getCode()>
             <cfset option["display"]=d.getDisplay().getDisplay_text()>
-            <cfset option["type"] = "first">
+            <cfset option["type"] = "brand">
             <cfset option["programs"]=arrayNew(1)>
             <cfloop array="#d.getPrograms()#" index="p">
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
@@ -197,13 +197,17 @@
                 <cfset option["code"]=d.getRight_answerfield().getCode()>
                 <cfset option["display"]=d.getRight_answerfield().getDisplay().getDisplay_text()>
                 <cfset option["programs"]=arrayNew(1)>
-                <cfset option["type"]="second">
+                <cfset option["type"]="generic">
                 <cfset tmpStrct[i] = option>
                 <cfset i = i+1>
             </cfif>
             <cfloop array="#d.getLeft_answerfield().getPrograms()#" index="p">
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
-                    <cfset arrayAppend(option["programs"],p.getCode())>
+                    <cfset var pbD = structNew()>
+                    <cfset pbD["program"] = p.getCode()>
+                    <cfset pbD["brand_code"] = d.getLeft_answerfield().getCode()>
+                    <cfset pbD["brand_name"] = d.getLeft_answerfield().getDisplay().getDisplay_text()>
+                    <cfset arrayAppend(option["programs"],pbD)>
                 </cfif>
             </cfloop>
         </cfloop>

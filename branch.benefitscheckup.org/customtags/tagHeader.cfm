@@ -95,7 +95,6 @@
 	</cfif>
 </cfif>
 <cfoutput>#maintMsg#</cfoutput>
-
 <!--- BS 11/05/02 include color values for the page, based of partner or CSO cobranding --->
 <cfset partner_id = attributes.partner_id>
 <cfinclude template="tagCobrandValues.cfm">
