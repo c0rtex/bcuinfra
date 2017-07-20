@@ -39,6 +39,7 @@ class HomeController extends BaseController
         $benefits = Meta::get(get_the_ID(), $key = 'benefits', $single = true);
 
         return View::make('templates.homepage',[
+            'webServiceUrl' => $constants['WEB_SERVICE_URL'],
             'sponsors' 				=> SponsorsModel::all(),
             'testimonials' 			=> $testimonials,
             'betterwaysection' 		=> $betterwaysection,

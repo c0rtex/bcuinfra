@@ -7,6 +7,45 @@
         </cfif>
     </cffunction>
 
+    <cffunction name="getZipInfo" access="remote" restpath="/zipInfo/{zipCode}" returntype="String" httpMethod="POST">
+        <cfargument name="zipCode" required="true" restargsource="Path" type="string"/>
+        <cfargument name="body" type="String">
+
+        <cfquery name="create_zip_table"  datasource="dbSrc">
+            create table if not exists zip_request_log(
+                            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                            host_ip varchar(255),
+                            log_datetime varchar(255),
+                            zipcode varchar(255) ,
+                            text varchar(2000)
+                            );
+            </cfquery>
+
+        <cfset zip=entityLoadByPK("zip",zipCode)>
+
+        <cfset log = entityNew("zipRequestLog")>
+        <cfset log.setHost_ip(getLocalHostIP())>
+        <cfset log.setLog_datetime(now())>
+        <cfset log.setText(body)>
+        <cfset log.setZipcode(zipCode)>
+
+        <cftransaction>
+            <cfset entitySave(log)>
+        </cftransaction>
+
+        <cfset retVal = structNew()>
+        <cfset retVal['zip'] = zipCode>
+        <cfif isNull(zip)>
+            <cfset retVal["status"] = "ERROR">
+        <cfelse>
+            <cfset retVal["status"] = "OK">
+            <cfset retVal["county"] = zip.getCounty().getName()>
+            <cfset retVal["state_id"] = zip.getState().getId()>
+            <cfset retVal["state"] = zip.getState().getName()>
+        </cfif>
+        <cfreturn serializeJSON(retVal)>
+    </cffunction>
+
     <cffunction name="savePrescreen" access="remote" restpath="/savePrescreen" returnType="String" httpMethod="POST">
         <cfargument name="body" type="String">
 

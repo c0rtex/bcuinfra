@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('main')
+
+<script type="text/javascript">
+	window.webServiceUrl = '{{$webServiceUrl}}';
+</script>
+
 	@loop
 			<!-- Hero -->
 			<section class="hero find-my-benefits cta-hero">

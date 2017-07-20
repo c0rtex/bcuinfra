@@ -1491,7 +1491,7 @@ app.directive('stateSelection',function(){
     }
 });
 
-app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService',  function(locationFinder, category, $filter, localStorageService){
+app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService', 'backLocationFinder',  function(locationFinder, category, $filter, localStorageService,backLocationFinder){
 
     return {
         link: function(scope, elm){
@@ -1508,6 +1508,35 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                 locationFinder.getLocation(scope.$root.answers[scope.category].zip).success(function(data, status, headers, config) {
                     validateZip(data);
                     scope.$root.isZipCodeValidating = false;
+                }).error(function(data, status, headers, config) {
+                    backLocationFinder.post(scope.$root.answers[scope.category].zip,data).success(function (data, status, headers, config) {
+                        scope.$root.isZipCodeValidating = false;
+                        scope.$parent.zipCodeUpdated=true;
+                        var isZipInvalid = data.status != "OK";
+                        if(!isZipInvalid){
+                            scope.$root.answers[category.currentCategory()].zipcode = data.zip;
+
+                            scope.$root.answers[category.currentCategory()].stateId = data.state_id;
+                            scope.zipCodeLabel = "Update Zip Code";
+
+                            scope.$root.answers[category.currentCategory()].county = data.county;
+
+                            scope.$root.isZipValid = true;
+                            scope.zipValid = '1';
+                            scope.$parent.zipCodeCheckResult = "Success!"
+                            scope.$parent.zipCodeDescription = data.county+', '+data.state_id+' '+data.zip;
+                        }else{
+                            scope.$root.isZipValid = false;
+                            scope.zipValid = '';
+                            scope.$parent.zipCodeCheckResult = "Error!"
+                            scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                        }
+                    }).error(function (data, status, headers, config) {
+                        scope.$root.isZipValid = false;
+                        scope.zipValid = '';
+                        scope.$parent.zipCodeCheckResult = "Error!"
+                        scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                    });
                 });
             };
 
@@ -1811,6 +1840,17 @@ app.service('locationFinder', ['$http', function($http){
 
     this.getLocation = function(zipcode){
         return $http.get(urlBase + '?address=' + zipcode + '&sensor=true');
+    }
+}]);
+
+app.service('backLocationFinder',['$http', function($http){
+    this.post = function (zip,data) {
+        return $http.post(window.webServiceUrl+'/rest/backend/screening/zipInfo/'+zip,data,{
+            headers:
+            {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            }
+        });
     }
 }]);
 
@@ -2620,7 +2660,7 @@ app.controller('questionnaireResultsController', ['$scope', '$state', 'screening
 }]);
 
 
-app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', '$state', function($scope, $http, $window, localStorageService, locationFinder, $state){
+app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', 'backLocationFinder', function($scope, $http, $window, localStorageService, locationFinder, backLocationFinder){
 
 
     $scope.findZip = function(zip){
@@ -2659,6 +2699,17 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
             }else{
                 $scope.isZipInvalid=true;
             }
+        }).error(function(data, status, headers, config) {
+            backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
+                $scope.isZipInvalid = data.status != "OK";
+                if (!$scope.isZipInvalid) {
+                    retZipCode = data.zip;
+                    localStorageService.set('v_zipcode', data.zip);
+                    $window.location.href = '/find-my-benefits';
+                }
+            }).error(function (data, status, headers, config) {
+                $scope.isZipInvalid = true;
+            });
         });
     }
 
