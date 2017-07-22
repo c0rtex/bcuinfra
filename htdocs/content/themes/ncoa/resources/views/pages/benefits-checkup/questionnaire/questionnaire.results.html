@@ -23,10 +23,24 @@
 		</span>
 		<h3><strong>More Benefit Programs</strong></h3>-->
 		<p>Based on the information you provided, you may be eligible for these programs or may be interested in getting more information about them. Select a category to learn more:</p>
+
+    <div class="mb-30">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#print-modal" >Print Your Benefit Report</button>
+      <span class="small-text">You have the option to choose what to print in the sections below.</span>
+    </div>
+
+
 		<div class="more-benefits">
-			<span ng-repeat="found_program in found_programs">
-				<div-programs-category short="n" found_program="found_program" elegible="n"></div-programs-category>
+      <div class="program-toggle-controls">
+        <div class="program-expand-all">Expand All</div>
+        <span>|</span>
+        <div class="program-collapse-all">Collapse All</div>
+      </div>
+			<span ng-repeat="found_program in found_programs | orderBy:'sort'">
+				<div-programs-categorye short="n" found_program="found_program" elegible="n"></div-programs-categorye>
 			</span>
 		</div>
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#print-modal" >Print Your Benefit Report</button>
 	</span>
 </div>

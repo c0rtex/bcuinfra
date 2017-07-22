@@ -183,7 +183,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
             if (prescreenAnswered) {
                 scope.caption = "Continue to Full Questionnaire";
             } else {
-                scope.caption = "Start Questionnaire";
+                scope.caption = "Complete Your Benefit Report";
             }
 
             scope.completeFQ = function (url) {
@@ -716,8 +716,11 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
 
                 var s = scope.$root.answers[scope.category][scope.self_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code + code];
                 var sp = scope.$root.answers[scope.category][scope.spouse_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code + code];
+                var s_sp = scope.$root.answers[scope.category][scope.joint_code+code] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+code];
 
-                scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                if (s_sp < s + sp) {
+                    scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                }
             };
 
 
@@ -842,7 +845,8 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                         'testQuery': function (query, txt, _row) {
                             return query.test(txt);
                         }
-                    }).on('keydown', function(e){
+                    })
+                        .on('keydown', function(e){
                             if (e.which === 40){
                                 that.$selectableUl.focus();
                                 return false;
@@ -1491,7 +1495,7 @@ app.directive('stateSelection',function(){
     }
 });
 
-app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService', 'backLocationFinder',  function(locationFinder, category, $filter, localStorageService,backLocationFinder){
+app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService',  function(locationFinder, category, $filter, localStorageService){
 
     return {
         link: function(scope, elm){
@@ -1508,35 +1512,6 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                 locationFinder.getLocation(scope.$root.answers[scope.category].zip).success(function(data, status, headers, config) {
                     validateZip(data);
                     scope.$root.isZipCodeValidating = false;
-                }).error(function(data, status, headers, config) {
-                    backLocationFinder.post(scope.$root.answers[scope.category].zip,data).success(function (data, status, headers, config) {
-                        scope.$root.isZipCodeValidating = false;
-                        scope.$parent.zipCodeUpdated=true;
-                        var isZipInvalid = data.status != "OK";
-                        if(!isZipInvalid){
-                            scope.$root.answers[category.currentCategory()].zipcode = data.zip;
-
-                            scope.$root.answers[category.currentCategory()].stateId = data.state_id;
-                            scope.zipCodeLabel = "Update Zip Code";
-
-                            scope.$root.answers[category.currentCategory()].county = data.county;
-
-                            scope.$root.isZipValid = true;
-                            scope.zipValid = '1';
-                            scope.$parent.zipCodeCheckResult = "Success!"
-                            scope.$parent.zipCodeDescription = data.county+', '+data.state_id+' '+data.zip;
-                        }else{
-                            scope.$root.isZipValid = false;
-                            scope.zipValid = '';
-                            scope.$parent.zipCodeCheckResult = "Error!"
-                            scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
-                        }
-                    }).error(function (data, status, headers, config) {
-                        scope.$root.isZipValid = false;
-                        scope.zipValid = '';
-                        scope.$parent.zipCodeCheckResult = "Error!"
-                        scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
-                    });
                 });
             };
 
@@ -1843,17 +1818,6 @@ app.service('locationFinder', ['$http', function($http){
     }
 }]);
 
-app.service('backLocationFinder',['$http', function($http){
-    this.post = function (zip,data) {
-        return $http.post(window.webServiceUrl+'/rest/backend/screening/zipInfo/'+zip,data,{
-            headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
-        });
-    }
-}]);
-
 app.service('factSheet',['$http', function ($http) {
     this.get = function(slug) {
         return $http.get('/wp-json/wp/v2/fact-sheets?slug='+slug);
@@ -1894,12 +1858,8 @@ app.service('screeningQuestions',['$http', function ($http) {
     }
 }]);
 
-app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', function(localStorageService, $window, orderBy){
+app.factory('prescreen', ['localStorageService','$window', function(localStorageService, $window){
     var prescreenform = {};
-
-    var reorder = function (data) {
-        return orderBy(data, 'sort');
-    };
 
     var _data = localStorageService.get('prescreen');
 
@@ -1924,23 +1884,14 @@ app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', fun
 
     prescreenform.save = function() {
         prescreenform.data.name=$window.name;
-        if (typeof prescreenform.data.results !== 'undefined') {
-            if (typeof prescreenform.data.results.found_programs !== 'undefined') {
-                prescreenform.data.results.found_programs = reorder(prescreenform.data.results.found_programs);
-            }
-        }
         localStorageService.set('prescreen', prescreenform.data);
     };
 
     return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function(localStorageService, $window, ScreeningRoutes, orderBy) {
+app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', function(localStorageService, $window, ScreeningRoutes) {
     var screening = {};
-
-    var reorder = function (data) {
-        return orderBy(data, 'sort');
-    };
 
     var _data = localStorageService.get('screening');
 
@@ -1971,11 +1922,6 @@ app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', '
     screening.data = _data;
 
     screening.save = function() {
-        if (typeof screening.data.results !== 'undefined') {
-            if (typeof screening.data.results.found_programs !== 'undefined') {
-                screening.data.results.found_programs = reorder(screening.data.results.found_programs);
-            }
-        }
         localStorageService.set('screening', screening.data);
     };
 
@@ -2598,6 +2544,28 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', functi
     }
 }]);
 
+
+// Temporary Echo&Co duplicate for testing program category design on final restults page
+
+app.directive('divProgramsCategorye',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+    return {
+        restrict: 'E',
+        templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.categorye.html?'+(new Date()),
+        link: function(scope, element) {
+            scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
+            scope.stateId = prescreen.data.answers.stateId;
+            scope.defaultLangsPre = window.defaultLangsPre;
+            scope.defaultLangsFull = window.defaultLangsFull;
+            scope.zipcode = prescreen.data.answers.zip;
+        },
+        scope: {
+            found_program:"=foundProgram",
+            short:"@",
+            elegible:"@"
+        }
+    }
+}]);
+
 app.directive("divKeyProgram",['prescreen',function(prescreen) {
     return {
         restrict: 'E',
@@ -2660,7 +2628,7 @@ app.controller('questionnaireResultsController', ['$scope', '$state', 'screening
 }]);
 
 
-app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', 'backLocationFinder', function($scope, $http, $window, localStorageService, locationFinder, backLocationFinder){
+app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', '$state', function($scope, $http, $window, localStorageService, locationFinder, $state){
 
 
     $scope.findZip = function(zip){
@@ -2699,17 +2667,6 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
             }else{
                 $scope.isZipInvalid=true;
             }
-        }).error(function(data, status, headers, config) {
-            backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
-                $scope.isZipInvalid = data.status != "OK";
-                if (!$scope.isZipInvalid) {
-                    retZipCode = data.zip;
-                    localStorageService.set('v_zipcode', data.zip);
-                    $window.location.href = '/find-my-benefits';
-                }
-            }).error(function (data, status, headers, config) {
-                $scope.isZipInvalid = true;
-            });
         });
     }
 
@@ -2750,3 +2707,86 @@ app.filter('removeNbsp', function() {
         return input.replace(/&nbsp;/g,' ');
     }
 });
+
+
+app.directive('testimonial-carousel', [function(){
+    return {
+        link: function(scope, elm){
+
+            //Set counter for Image slider
+            $('.currItem').html("1");
+            $('.currTotal').html($('.ncoa-carousel-container .item').length);
+
+
+
+
+            $(elm).on('afterChange', function(event, slick, currentSlide, nextSlide){
+                $('.currItem').html(currentSlide + 1);
+            });
+        }
+    }
+}]);
+
+// this is here because the carousel takes a moment to load.
+$('.testimonial-carousel').on('init', function(event, slick){
+    $('.testimonial-carousel').removeClass("hide");
+});
+
+$('.testimonial-carousel').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false
+});
+
+
+$(document).on('click', '.program-expand-all', function(e) {
+  $('.program').each(function() {
+    $(this).addClass('active');
+    $(this).find('.programs-container').slideDown();
+  });
+});
+
+$(document).on('click', '.program-collapse-all', function(e) {
+  $('.program').each(function() {
+    $(this).removeClass('active');
+    $(this).find('.programs-container').slideUp();
+  });
+});
+
+$(document).on('click', '.navbar-toggle-wrap', function() {
+  $(this).find('.navbar-toggle').toggleClass('nav-open');
+});
+
+$(document).on('click', '.accordian-trigger', function(e) {
+    $(this).closest('.accordian-wrap').toggleClass('active');
+    $(this).closest('.accordian-wrap').find('.accordian-content').slideToggle();
+});
+
+$('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
+
+// Start of LiveChat (www.livechatinc.com) code
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+window.__lc = window.__lc || {};
+window.__lc.license = 8840876;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+<!-- End of LiveChat code -->
+
+
+// $(document).ready(function() {
+//   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
+//
+//   window.setInterval(function(){
+//     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
+//     console.log('fire');
+//   }, 2000);
+// });
