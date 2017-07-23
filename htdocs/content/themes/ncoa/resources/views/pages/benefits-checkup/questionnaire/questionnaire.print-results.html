@@ -21,8 +21,8 @@
         <div ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0" class="benefits-category">
           <h3>{{found_program.name}}</h3>
 
-          <div ng-repeat="program in found_program.programs" class="checkbox ng-scope">
-            <input type="checkbox" name="{{program.code}}" id="{{program.code}}">
+          <div ng-repeat="program in found_program.programs" class="checkbox">
+            <input type="checkbox" ng-checked="$root.selectedPrograms[program.code]" name="{{program.code}}" id="{{program.code}}">
             <label for="{{program.code}}">
               <span></span>
               {{program.name_display}}
@@ -48,25 +48,25 @@
             <div class="benefits-category">
               <h3>Report Sections to Include</h3>
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_8" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_8">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-cover-page" ng-model="options.adv_opt_cover_page">
+                <label for="adv-opt-cover-page">
                   <span></span>
                   Cover Page and Introduction
                 </label>
               </div><!--/.checkbox-->
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_9" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_9">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-table-contents" ng-model="options.adv_opt_table_contents">
+                <label for="adv-opt-table-contents">
                   <span></span>
                   Table of Contents (PDF version only)
                 </label>
               </div><!--/.checkbox-->
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_10" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_10">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-add-info" ng-model="options.adv_opt_add_info">
+                <label for="adv-opt-add-info">
                   <span></span>
                   Additional Information
                 </label>
@@ -76,9 +76,9 @@
             <div class="benefits-category">
               <h3>Report Formatting</h3>
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_11" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_11">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-page-break" ng-model="options.adv_opt_page_break">
+                <label for="adv-opt-page-break">
                   <span></span>
                   Insert Page Breaks Between Sections and Programs (PDF version only)
                 </label>
@@ -88,25 +88,25 @@
             <div class="benefits-category">
               <h3>Program Information to Include</h3>
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_12" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_12">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-program-desc" ng-model="options.adv_opt_program_desc">
+                <label for="adv-opt-program-desc">
                   <span></span>
                   Program Descriptions
                 </label>
               </div><!--/.checkbox-->
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_13" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_13">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-locations" ng-model="options.adv_opt_locations">
+                <label for="adv-opt-locations">
                   <span></span>
                   Local Office Locations
                 </label>
               </div><!--/.checkbox-->
 
-              <div class="checkbox ng-scope">
-                <input type="checkbox" id="example_14" class="ng-untouched ng-valid ng-valid-required ng-not-empty ng-dirty ng-valid-parse">
-                <label for="example_14">
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-materials" ng-model="options.adv_opt_materials">
+                <label for="adv-opt-materials">
                   <span></span>
                   Materials to have Available when Applying
                 </label>

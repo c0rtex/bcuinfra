@@ -2672,7 +2672,7 @@ app.directive('divProgramDesc',['factSheet',function(factSheet) {
     }
 }]);
 
-app.controller('questionnaireResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening){
+app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScope', 'screening', function($scope, $state, $rootScope, screening) {
     var el = document.querySelector('.odometer');
 
     od = new Odometer({
@@ -2692,21 +2692,61 @@ app.controller('questionnaireResultsController', ['$scope', '$state', 'screening
 
     $scope.key_programs = screening.data.results.key_programs;
     $scope.found_programs = screening.data.results.found_programs;
+    $rootScope.selectedPrograms = {};
+
+    $scope.found_programs.forEach(function(item) {
+        item.programs.forEach(function(program) {
+            $rootScope.selectedPrograms[program.code] = false;
+        });
+    });
 
     document.querySelector('.page-wrapper h1').scrollIntoView();
 
     $scope.printPage = function() {
         $state.transitionTo('print-results');
-    }
+    };
 
 }]);
 
-app.controller('questionnairePrintResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening) {
-    console.log(screening.data.results.found_programs);
+app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', function($scope, $state, $rootScope, screening) {
     $scope.found_programs = screening.data.results.found_programs;
+    $scope.options = {
+        adv_opt_cover_page: false,
+        adv_opt_table_contents: false,
+        adv_opt_add_info: false,
+        adv_opt_page_break: false,
+        adv_opt_program_desc: false,
+        adv_opt_locations: false,
+        adv_opt_materials: false
+    };
     $scope.switchPage = function() {
         $state.transitionTo('questionnaire.results');
-    }
+    };
+
+    $scope.selectAll = function() {
+        angular.forEach($rootScope.selectedPrograms, function (value, key) {
+            $rootScope.selectedPrograms[key] = true;
+        });
+    };
+
+    $scope.deselectAll = function() {
+        angular.forEach($rootScope.selectedPrograms, function (value, key) {
+            $rootScope.selectedPrograms[key] = false;
+        });
+    };
+
+    $scope.selectAllAdvanced = function() {
+        angular.forEach($scope.options, function (value, key) {
+            $scope.options[key] = true;
+        });
+    };
+
+    $scope.deselectAllAdvanced = function() {
+        angular.forEach($scope.options, function (value, key) {
+            $scope.options[key] = false;
+        });
+    };
+
 }]);
 
 
