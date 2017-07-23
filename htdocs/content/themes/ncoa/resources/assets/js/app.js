@@ -129,6 +129,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                 prev: "questionnaire.finances-assets-grid"
             }
         })
+        .state('print-results', {
+            url: "/print-results",
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/questionnaire/questionnaire.print-results.html?'+(new Date()),
+            controller: 'questionnairePrintResultsController',
+            data:{
+                next: "",
+                prev: "questionnaire.results"
+            }
+        })
         .state('questionnaire.loader', {
             url: "/loader",
             templateUrl: '/content/themes/ncoa/resources/views/pages/loader.html?'+(new Date()),
@@ -1495,7 +1504,7 @@ app.directive('stateSelection',function(){
     }
 });
 
-app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService',  function(locationFinder, category, $filter, localStorageService){
+app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService', 'backLocationFinder',  function(locationFinder, category, $filter, localStorageService,backLocationFinder){
 
     return {
         link: function(scope, elm){
@@ -1512,6 +1521,35 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                 locationFinder.getLocation(scope.$root.answers[scope.category].zip).success(function(data, status, headers, config) {
                     validateZip(data);
                     scope.$root.isZipCodeValidating = false;
+                }).error(function(data, status, headers, config) {
+                    backLocationFinder.post(scope.$root.answers[scope.category].zip,data).success(function (data, status, headers, config) {
+                        scope.$root.isZipCodeValidating = false;
+                        scope.$parent.zipCodeUpdated=true;
+                        var isZipInvalid = data.status != "OK";
+                        if(!isZipInvalid){
+                            scope.$root.answers[category.currentCategory()].zipcode = data.zip;
+
+                            scope.$root.answers[category.currentCategory()].stateId = data.state_id;
+                            scope.zipCodeLabel = "Update Zip Code";
+
+                            scope.$root.answers[category.currentCategory()].county = data.county;
+
+                            scope.$root.isZipValid = true;
+                            scope.zipValid = '1';
+                            scope.$parent.zipCodeCheckResult = "Success!"
+                            scope.$parent.zipCodeDescription = data.county+', '+data.state_id+' '+data.zip;
+                        }else{
+                            scope.$root.isZipValid = false;
+                            scope.zipValid = '';
+                            scope.$parent.zipCodeCheckResult = "Error!"
+                            scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                        }
+                    }).error(function (data, status, headers, config) {
+                        scope.$root.isZipValid = false;
+                        scope.zipValid = '';
+                        scope.$parent.zipCodeCheckResult = "Error!"
+                        scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                    });
                 });
             };
 
@@ -1818,6 +1856,17 @@ app.service('locationFinder', ['$http', function($http){
     }
 }]);
 
+app.service('backLocationFinder',['$http', function($http){
+    this.post = function (zip,data) {
+        return $http.post(window.webServiceUrl+'/rest/backend/screening/zipInfo/'+zip,data,{
+            headers:
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
+        });
+    }
+}]);
+
 app.service('factSheet',['$http', function ($http) {
     this.get = function(slug) {
         return $http.get('/wp-json/wp/v2/fact-sheets?slug='+slug);
@@ -1858,8 +1907,12 @@ app.service('screeningQuestions',['$http', function ($http) {
     }
 }]);
 
-app.factory('prescreen', ['localStorageService','$window', function(localStorageService, $window){
+app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', function(localStorageService, $window, orderBy){
     var prescreenform = {};
+
+    var reorder = function (data) {
+        return orderBy(data, 'sort');
+    };
 
     var _data = localStorageService.get('prescreen');
 
@@ -1884,14 +1937,23 @@ app.factory('prescreen', ['localStorageService','$window', function(localStorage
 
     prescreenform.save = function() {
         prescreenform.data.name=$window.name;
+        if (typeof prescreenform.data.results !== 'undefined') {
+            if (typeof prescreenform.data.results.found_programs !== 'undefined') {
+                prescreenform.data.results.found_programs = reorder(prescreenform.data.results.found_programs);
+            }
+        }
         localStorageService.set('prescreen', prescreenform.data);
     };
 
     return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', function(localStorageService, $window, ScreeningRoutes) {
+app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function(localStorageService, $window, ScreeningRoutes, orderBy) {
     var screening = {};
+
+    var reorder = function (data) {
+        return orderBy(data, 'sort');
+    };
 
     var _data = localStorageService.get('screening');
 
@@ -1922,6 +1984,11 @@ app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', f
     screening.data = _data;
 
     screening.save = function() {
+        if (typeof screening.data.results !== 'undefined') {
+            if (typeof screening.data.results.found_programs !== 'undefined') {
+                screening.data.results.found_programs = reorder(screening.data.results.found_programs);
+            }
+        }
         localStorageService.set('screening', screening.data);
     };
 
@@ -2268,7 +2335,7 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
 
     $scope.goScreening = function(){
         $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
-    }
+    };
 
     var el = document.querySelector('.odometer');
 
@@ -2525,7 +2592,7 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
 }]);
 
-app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', '$state', function(BenefitItems,prescreen, $sce, $state) {
     return {
         restrict: 'E',
         templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
@@ -2535,6 +2602,9 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', functi
             scope.defaultLangsPre = window.defaultLangsPre;
             scope.defaultLangsFull = window.defaultLangsFull;
             scope.zipcode = prescreen.data.answers.zip;
+            scope.goScreening = function(){
+                $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
+            };
         },
         scope: {
             found_program:"=foundProgram",
@@ -2625,10 +2695,22 @@ app.controller('questionnaireResultsController', ['$scope', '$state', 'screening
 
     document.querySelector('.page-wrapper h1').scrollIntoView();
 
+    $scope.printPage = function() {
+        $state.transitionTo('print-results');
+    }
+
+}]);
+
+app.controller('questionnairePrintResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening) {
+    console.log(screening.data.results.found_programs);
+    $scope.found_programs = screening.data.results.found_programs;
+    $scope.switchPage = function() {
+        $state.transitionTo('questionnaire.results');
+    }
 }]);
 
 
-app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', '$state', function($scope, $http, $window, localStorageService, locationFinder, $state){
+app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', 'backLocationFinder', function($scope, $http, $window, localStorageService, locationFinder, backLocationFinder){
 
 
     $scope.findZip = function(zip){
@@ -2667,6 +2749,17 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
             }else{
                 $scope.isZipInvalid=true;
             }
+        }).error(function(data, status, headers, config) {
+            backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
+                $scope.isZipInvalid = data.status != "OK";
+                if (!$scope.isZipInvalid) {
+                    retZipCode = data.zip;
+                    localStorageService.set('v_zipcode', data.zip);
+                    $window.location.href = '/find-my-benefits';
+                }
+            }).error(function (data, status, headers, config) {
+                $scope.isZipInvalid = true;
+            });
         });
     }
 
