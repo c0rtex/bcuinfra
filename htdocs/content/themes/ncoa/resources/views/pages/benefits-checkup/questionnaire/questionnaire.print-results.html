@@ -3,7 +3,7 @@
   <div class="card-nested">
     <button class="btn btn-link btn-back btn-no-padding" ng-click="switchPage()">Back to Your Results</button>
     <h2 class="page-header">Print Your Benefit Report</h2>
-    <button ng-click="goScreening()" class="btn btn-primary">Print Your Benefit Report</button>
+    <button ng-click="generateReport()" class="btn btn-primary">Print Your Benefit Report</button>
     <br/><br/>
 
     <h2>Benefit Program(s) Selected to Print in Your Report</h2>
@@ -22,7 +22,7 @@
           <h3>{{found_program.name}}</h3>
 
           <div ng-repeat="program in found_program.programs" class="checkbox">
-            <input type="checkbox" ng-checked="$root.selectedPrograms[program.code]" name="{{program.code}}" id="{{program.code}}">
+            <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" ng-checked="$root.selectedPrograms[program.code]" name="{{program.code}}" id="{{program.code}}">
             <label for="{{program.code}}">
               <span></span>
               {{program.name_display}}
@@ -116,7 +116,7 @@
           </div><!--/.advanced-print-options-categories-->
         </div><!--/.accordian-content-->
       </div><!--/.advanced-print-options-->
-      <button ng-click="goScreening()" class="btn btn-primary">Print Your Benefit Report</button>
+      <button ng-click="generateReport()" class="btn btn-primary">Print Your Benefit Report</button>
     </div><!--/.benefits-print-options-->
 
   </div><!--/.card-nested-->

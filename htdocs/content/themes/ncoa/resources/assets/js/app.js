@@ -1075,105 +1075,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
                 scope.programs_calculated=screening.data.results.found_programs.length>0;
             }
 
-            scope.slugs={};
-            scope.noSlugs = false;
-            scope.limitReached = false;
-
-            scope.closeErrorModal = function() {
-                $('#modalError').modal('hide');
-            };
-
-            scope.generatePrintUrl = function(checkSlugs) {
-                if (Object.keys(scope.slugs).length > 0) {
-                    var slugs = '';
-                    var firstSlug = '';
-                    var url = '';
-                    var i = 0;
-                    for (var key in scope.slugs) {
-                        if (scope.slugs[key] === true) {
-                            if (i == 0) {
-                                firstSlug = key;
-                            }
-                            else {
-                                slugs = slugs +";" + key;
-                            }
-                            i++;
-                        }
-                    }
-
-                    if (i > 0) {
-                        scope.noSlugs = false;
-
-                        if (i > 10) {
-                            scope.limitReached = true;
-                            if (checkSlugs !== true) {
-                                $('#modalError').modal('show');
-                            }
-                            return false;
-                        }
-                    }
-                    else {
-                        scope.noSlugs = true;
-                        scope.limitReached = false;
-                        if (checkSlugs !== true) {
-                            $('#modalError').modal('show');
-                        }
-                        return false;
-                    }
-
-                    if (firstSlug.length > 0) {
-                        scope.limitReached = false;
-                        scope.noSlugs = false;
-
-                        if (checkSlugs === true) {
-                            return true;
-                        }
-
-                        scope.noSlugs = false;
-                        slugs = slugs.substring(1);
-                        url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y';
-
-                        return url;
-                    }
-                }
-
-                return false;
-            };
-
-            scope.selectAllCategory = function(category_id) {
-                var checked = angular.element('#' + category_id).is(':checked');
-                $('.' + category_id + ' input[type=checkbox]').each(function(index) {
-                    checkbox_id = $(this).attr('id');
-                    scope.slugs[checkbox_id] = checked;
-                });
-            };
-
-            scope.printReport = function() {
-                url = scope.generatePrintUrl(false);
-
-                if (url !== false) {
-                    scope.noSlugs = false;
-                    window.open(url);
-                }
-            };
-
-            scope.selectAll = function() {
-                for (var key in scope.slugs) {
-                    if (scope.slugs.hasOwnProperty(key)) {
-                        scope.slugs[key] = true;
-                    }
-                }
-                $('.category-headline input[type=checkbox]').prop('checked', true);
-            };
-            scope.deselectAll = function() {
-                for (var key in scope.slugs) {
-                    if (scope.slugs.hasOwnProperty(key)) {
-                        scope.slugs[key] = false;
-                    }
-                }
-                $('.category-headline input[type=checkbox]').prop('checked', false);
-            };
-
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
                 scope.found_programs = screening.data.results.found_programs;
@@ -2708,7 +2609,7 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 
 }]);
 
-app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', function($scope, $state, $rootScope, screening) {
+app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', function($scope, $state, $rootScope, screening, prescreen) {
     $scope.found_programs = screening.data.results.found_programs;
     $scope.options = {
         adv_opt_cover_page: false,
@@ -2745,6 +2646,37 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         angular.forEach($scope.options, function (value, key) {
             $scope.options[key] = false;
         });
+    };
+
+    $scope.generateReport = function() {
+        if (Object.keys($rootScope.selectedPrograms).length > 0) {
+            var slugs = '';
+            var firstSlug = '';
+            var url = '';
+            var i = 0;
+            for (var key in $rootScope.selectedPrograms) {
+                if ($rootScope.selectedPrograms[key] === true) {
+                    if (i == 0) {
+                        firstSlug = key;
+                    }
+                    else {
+                        slugs = slugs +";" + key;
+                    }
+                    i++;
+                }
+            }
+
+            // Generate URL to print pdf.
+            if (firstSlug.length > 0) {
+                slugs = slugs.substring(1);
+                url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y';
+
+                window.open(url);
+                return true;
+            }
+        }
+
+        return false;
     };
 
 }]);
