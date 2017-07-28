@@ -1,10 +1,10 @@
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 <h3>{{ Meta::get(Loop::id(), $key = 'fact-sheet-category', $single = true) }}</h3>
 <h1>{{ Loop::title() }}</h1>
-{{ $post_content }}
+@if(!empty($opt_program_desc))
+  {{ $post_content }}
+@endif
 <br>
-
-{{-- Meta::get(Loop::id(), $key = 'requirement-info', $single = true) --}}
 
 <h3>Frequently Asked Questions</h3>
 
@@ -18,18 +18,20 @@
   @endif
   @else
   @if($value["answer"] === 'documents_needed')
-    <em>{{ $value["question"] }}</em>
-    <p>
-      <ul class="fact-sheets-list">
-        @if (empty($required_materials))
-        <li>There are no required materials needed for this program.</li>
-        @else
-        @foreach($required_materials as $ekey => $evalue)
-        <li>{{$evalue->title}}</li>
-        @endforeach
-        @endif
-      </ul>
-    </p>
+    @if(!empty($opt_materials))
+      <em>{{ $value["question"] }}</em>
+      <p>
+        <ul class="fact-sheets-list">
+          @if (empty($required_materials))
+          <li>There are no required materials needed for this program.</li>
+          @else
+          @foreach($required_materials as $ekey => $evalue)
+          <li>{{$evalue->title}}</li>
+          @endforeach
+          @endif
+        </ul>
+      </p>
+    @endif
   @else
     <em>{{ $value["question"] }}</em>
     @if ($is_feeding_america &&
@@ -45,12 +47,14 @@
   @endforeach
   @endif
   @if(!empty($entryPointValue))
+    @if(!empty($opt_locations))
     <em>{{ $entryPointValue["question"] }}</em>
       @foreach($entry_points as $ekey => $evalue)
       <p>
         {{ $evalue->print_name }}
       </p>
       @endforeach
+    @endif
   @endif
   @if(!empty($becs))
     <em>Who can help me to apply?</em>

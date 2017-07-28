@@ -3,6 +3,8 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p style="text-align: center">
   <img src="./content/themes/ncoa/resources/assets/images/ncoa-logo.jpg" />
 </p>

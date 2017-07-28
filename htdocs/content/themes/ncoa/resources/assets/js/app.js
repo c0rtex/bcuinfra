@@ -2617,13 +2617,13 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         $scope.found_programs[index].name = BenefitItem.name;
     });
     $scope.options = {
-        adv_opt_cover_page: true,
-        adv_opt_table_contents: true,
-        adv_opt_add_info: true,
-        adv_opt_page_break: true,
-        adv_opt_program_desc: true,
-        adv_opt_locations: true,
-        adv_opt_materials: true
+        cover_page: true,
+        table_contents: true,
+        add_info: true,
+        page_break: true,
+        program_desc: true,
+        locations: true,
+        materials: true
     };
     $scope.switchPage = function() {
         $state.transitionTo('questionnaire.results');
@@ -2674,7 +2674,14 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
             // Generate URL to print pdf.
             if (firstSlug.length > 0) {
                 slugs = slugs.substring(1);
-                url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y';
+                var options = '';
+                angular.forEach($scope.options, function (value, key) {
+                    if (value == true) {
+                        options += '&' + key + '=y';
+                    }
+                });
+
+                url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+options+'&pdf=y';
 
                 window.open(url);
                 return true;

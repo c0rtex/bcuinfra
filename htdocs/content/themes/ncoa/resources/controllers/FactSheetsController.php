@@ -27,15 +27,25 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
+        $options = array(
+            'cover_page' => (!empty($_REQUEST['cover_page'])) ? true : false,
+            'table_contents' => (!empty($_REQUEST['table_contents'])) ? true : false,
+            'add_info' => (!empty($_REQUEST['add_info'])) ? true : false,
+            'page_break' => (!empty($_REQUEST['page_break'])) ? true : false,
+            'program_desc' => (!empty($_REQUEST['program_desc'])) ? true : false,
+            'locations' => (!empty($_REQUEST['locations'])) ? true : false,
+            'materials' => (!empty($_REQUEST['materials'])) ? true : false,
+        );
+
         if (isset($_REQUEST['pdf'])) {
-            return $this->generate_pdf($post, $query);
+            return $this->generate_pdf($post, $query, $options);
         }
         else {
-            return $this->render_page($query->query["name"], $post);
+            return $this->render_page($query->query["name"], $post, $options);
         }
     }
 
-    public function generate_pdf($post, $query) {
+    public function generate_pdf($post, $query, $options) {
         $pdf = new BCUPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
         // set defaults
@@ -45,23 +55,26 @@ class FactSheetsController extends BaseController
         $pdf->setPrintHeader(false);
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        //$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         $pdf->SetFont('helvetica', '', 14);
 
         // cover page
-        $pdf->AddPage();
-        $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
-        $pdf->writeHTML($cover, true, false, true, false, '');
+        $toc_page_number = 1;
+        if ($options['cover_page']) {
+            $toc_page_number = 2;
+            $pdf->AddPage();
+            $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
+            $pdf->writeHTML($cover, true, false, true, false, '');
+        }
 
         // initial fact sheet
         $pdf->AddPage();
         $post_title = html_entity_decode($post->post_title);
         $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
-        $html = $this->render_page($post->post_name, $post);
+        $html = $this->render_page($post->post_name, $post, $options);
         $pdf->writeHTML($html, true, false, true, false, '');
 
         // extra slugs
@@ -73,10 +86,12 @@ class FactSheetsController extends BaseController
                 $posts = $query->get_posts();
 
                 if (!empty($posts[0])) {
-                    $pdf->AddPage();
+                    if ($options['page_break']) {
+                        $pdf->AddPage();
+                    }
                     $post_title = html_entity_decode($posts[0]->post_title);
                     $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
-                    $html = $this->render_page("factsheet_" . $slug, $post);
+                    $html = $this->render_page("factsheet_" . $slug, $post, $options);
                     $pdf->writeHTML($html, true, false, true, false, '');
                 }
                 else {
@@ -86,12 +101,14 @@ class FactSheetsController extends BaseController
         }
 
 
-        // add a new page for TOC
-        $pdf->addTOCPage();
-        $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
-        $pdf->Ln();
-        $pdf->addTOC(2, 'helvetica', '.', 'INDEX', 'B', array(128,0,0));
-        $pdf->endTOCPage();
+        // TOC page
+        if ($options['table_contents']) {
+            $pdf->addTOCPage();
+            $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
+            $pdf->Ln();
+            $pdf->addTOC($toc_page_number, 'helvetica', '.', 'INDEX', 'B', array(128,0,0));
+            $pdf->endTOCPage();
+        }
 
         $pdf->Output('BenefitsCheckUp Report.pdf', 'I');
     }
@@ -145,7 +162,7 @@ class FactSheetsController extends BaseController
         return $feed_america_response;
     }
 
-    public function render_page($fact_sheet_slug, $post) {
+    public function render_page($fact_sheet_slug, $post, $options) {
         $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $fact_sheet_slug]);
         $posts = $query->get_posts();
         $post_id = !empty($posts[0]->ID) ? $posts[0]->ID : Loop::id();
@@ -397,6 +414,9 @@ class FactSheetsController extends BaseController
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
+                'opt_program_desc' => $options['program_desc'],
+                'opt_locations' => $options['locations'],
+                'opt_materials' => $options['materials'],
             ])->render();
 
         } else {
@@ -444,6 +464,9 @@ class FactSheetsController extends BaseController
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
+                'opt_program_desc' => $options['program_desc'],
+                'opt_locations' => $options['locations'],
+                'opt_materials' => $options['materials'],
             ])->render();
         }
     }
