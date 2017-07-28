@@ -2611,6 +2611,9 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 
 app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', function($scope, $state, $rootScope, screening, prescreen) {
     $scope.found_programs = screening.data.results.found_programs;
+    $scope.found_programs.forEach(function (element, index) {
+        $scope.found_programs[index].name = BenefitItems.getByCode(element.category);
+    });
     $scope.options = {
         adv_opt_cover_page: true,
         adv_opt_table_contents: true,
