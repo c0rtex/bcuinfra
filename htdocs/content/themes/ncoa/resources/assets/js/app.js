@@ -2609,7 +2609,7 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 
 }]);
 
-app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', function($scope, $state, $rootScope, screening, prescreen) {
+app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', 'BenefitItems', function($scope, $state, $rootScope, screening, prescreen, BenefitItems) {
     $scope.found_programs = screening.data.results.found_programs;
     $scope.found_programs.forEach(function (element, index) {
         $scope.found_programs[index].name = BenefitItems.getByCode(element.category);
