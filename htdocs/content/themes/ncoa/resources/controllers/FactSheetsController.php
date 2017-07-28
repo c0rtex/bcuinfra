@@ -1,8 +1,5 @@
 <?php
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
-
 /**
  * Class BCUPDF
  *
