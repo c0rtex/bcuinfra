@@ -3,6 +3,24 @@
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+/**
+ * Class BCUPDF
+ *
+ * Custom footer.
+ */
+class BCUPDF extends TCPDF {
+    // Page footer
+    public function Footer() {
+        // Position at 15 mm from bottom
+        $this->SetY(-15);
+        // Set font
+        $this->SetFont('helvetica', 'I', 8);
+        // Page number
+        $this->Cell(0, 10, 'Your BenefitsCheckUp Report', 0, false, 'L', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
+    }
+}
+
 class FactSheetsController extends BaseController
 {
     /**
@@ -12,41 +30,73 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
-        $retVal = "";
-
         if (isset($_REQUEST['pdf'])) {
-            $retVal = View::make("templates.print-fact-sheet-cover-page", [])->render();
+            return $this->generate_pdf($post, $query);
         }
+        else {
+            return $this->render_page($query->query["name"], $post);
+        }
+    }
 
-        $retVal = $retVal.$this->render_page($query->query["name"], $post, isset($_REQUEST['pdf']));
+    public function generate_pdf($post, $query) {
+        $pdf = new BCUPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+        // set defaults
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('BenefitsCheckUp');
+        $pdf->SetTitle('BenefitsCheckUp Report');
+        $pdf->setPrintHeader(false);
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        $pdf->SetFont('helvetica', '', 14);
+
+        // cover page
+        $pdf->AddPage();
+        $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
+        $pdf->writeHTML($cover, true, false, true, false, '');
+
+        // initial fact sheet
+        $pdf->AddPage();
+        $post_title = html_entity_decode($post->post_title);
+        $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
+        $html = $this->render_page($post->post_name, $post);
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        // extra slugs
         if (array_key_exists('slugs', $_REQUEST)) {
             $slugs = explode(";",$_REQUEST['slugs']);
 
             foreach($slugs as $slug) {
-                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $slug]);
-                $retVal = $retVal.$this->render_page("factsheet_".$slug, $post,true);
+                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => "factsheet_" . $slug]);
+                $posts = $query->get_posts();
+
+                if (!empty($posts[0])) {
+                    $pdf->AddPage();
+                    $post_title = html_entity_decode($posts[0]->post_title);
+                    $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
+                    $html = $this->render_page("factsheet_" . $slug, $post);
+                    $pdf->writeHTML($html, true, false, true, false, '');
+                }
+                else {
+                    continue;
+                }
             }
         }
 
-        if (isset($_REQUEST['pdf'])) {
-            // instantiate and use the dompdf class
-            $options = new Options();
-            $options->set('isRemoteEnabled', TRUE);
-            $options->set('compress',1);
-            $options->set('isPhpEnabled', TRUE);
-            $dompdf = new Dompdf($options);
-            $dompdf->loadHtml($retVal);
-            // Render the HTML as PDF
-            $dompdf->render();
 
-            // Output the generated PDF to Browser
-            $dompdf->stream('BenefitsCheckUp Report');
-        }
-        else {
-            return $retVal;
-        }
+        // add a new page for TOC
+        $pdf->addTOCPage();
+        $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
+        $pdf->Ln();
+        $pdf->addTOC(2, 'helvetica', '.', 'INDEX', 'B', array(128,0,0));
+        $pdf->endTOCPage();
 
+        $pdf->Output('BenefitsCheckUp Report.pdf', 'I');
     }
 
     public function feed_america_soap($zipcode) {
@@ -98,7 +148,7 @@ class FactSheetsController extends BaseController
         return $feed_america_response;
     }
 
-    public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
+    public function render_page($fact_sheet_slug, $post) {
         $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $fact_sheet_slug]);
         $posts = $query->get_posts();
         $post_id = !empty($posts[0]->ID) ? $posts[0]->ID : Loop::id();
@@ -110,7 +160,7 @@ class FactSheetsController extends BaseController
             $feeding_america_office = $this->feed_america_soap($zipcode);
         }
 
-        $post_content = $post->post_content;
+        $post_content = (!empty($posts[0]->post_content)) ? $posts[0]->post_content : $post->content;
 
         // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
@@ -338,7 +388,6 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
-                'on_new_page' => $on_new_page,
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
@@ -382,7 +431,6 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
-                'on_new_page' => $on_new_page,
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,
