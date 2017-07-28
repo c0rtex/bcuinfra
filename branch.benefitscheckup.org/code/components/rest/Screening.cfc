@@ -340,7 +340,11 @@
             </cfcase>
 
             <cfcase value="21">
-                <cfset sa.setResponse(value.id)>;
+                <cfset sa.setResponse(value.id)>
+            </cfcase>
+
+            <cfcase value="1">
+                <cfset sa.setResponse(replace(replace(value,'$','','ALL'),' ','','all'))>
             </cfcase>
 
             <cfdefaultcase>
