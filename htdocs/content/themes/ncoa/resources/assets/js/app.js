@@ -2597,7 +2597,7 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 
     $scope.found_programs.forEach(function(item) {
         item.programs.forEach(function(program) {
-            $rootScope.selectedPrograms[program.code] = false;
+            $rootScope.selectedPrograms[program.code] = true;
         });
     });
 
@@ -2612,13 +2612,13 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', function($scope, $state, $rootScope, screening, prescreen) {
     $scope.found_programs = screening.data.results.found_programs;
     $scope.options = {
-        adv_opt_cover_page: false,
-        adv_opt_table_contents: false,
-        adv_opt_add_info: false,
-        adv_opt_page_break: false,
-        adv_opt_program_desc: false,
-        adv_opt_locations: false,
-        adv_opt_materials: false
+        adv_opt_cover_page: true,
+        adv_opt_table_contents: true,
+        adv_opt_add_info: true,
+        adv_opt_page_break: true,
+        adv_opt_program_desc: true,
+        adv_opt_locations: true,
+        adv_opt_materials: true
     };
     $scope.switchPage = function() {
         $state.transitionTo('questionnaire.results');
