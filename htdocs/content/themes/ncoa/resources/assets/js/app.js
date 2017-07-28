@@ -2610,9 +2610,11 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 }]);
 
 app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', 'BenefitItems', function($scope, $state, $rootScope, screening, prescreen, BenefitItems) {
+    var BenefitItem = {};
     $scope.found_programs = screening.data.results.found_programs;
     $scope.found_programs.forEach(function (element, index) {
-        $scope.found_programs[index].name = BenefitItems.getByCode(element.category);
+        BenefitItem = BenefitItems.getByCode(element.category);
+        $scope.found_programs[index].name = BenefitItem.name;
     });
     $scope.options = {
         adv_opt_cover_page: true,
