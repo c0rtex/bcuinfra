@@ -48,11 +48,9 @@
   @endif
   @if(!empty($entryPointValue))
     @if(!empty($opt_locations))
-    <em>{{ $entryPointValue["question"] }}</em>
+    <em>{{ $entryPointValue["question"] }}</em><br>
       @foreach($entry_points as $ekey => $evalue)
-      <p>
-        {{ $evalue->print_name }}
-      </p>
+        <br>{{ $evalue->print_name }}
       @endforeach
     @endif
   @endif
