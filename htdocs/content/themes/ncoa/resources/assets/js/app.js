@@ -1849,7 +1849,7 @@ app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', fun
     return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function(localStorageService, $window, ScreeningRoutes, orderBy) {
+app.factory('screening', ['$rootScope', 'localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function($rootScope, localStorageService, $window, ScreeningRoutes, orderBy) {
     var screening = {};
 
     var reorder = function (data) {
@@ -1891,6 +1891,8 @@ app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', '
             }
         }
         localStorageService.set('screening', screening.data);
+        // Clear selected programs.
+        delete $rootScope.selectedPrograms;
     };
 
     screening.clear = function() {
@@ -2415,7 +2417,7 @@ app.controller('questionnaireHouseholdController', ['$scope', 'questionnaire', f
         {id:"homeless_shelter",   name:"Homeless or Live in a Shelter"}];
 
 }]);
-app.controller('questionnaireLoaderController', ['$scope', '$state', function($scope, $state){
+app.controller('questionnaireLoaderController', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope){
     $('.btns-container').hide();
     $('.card-nested').addClass('loader');
 
@@ -2593,11 +2595,16 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
 
     $scope.key_programs = screening.data.results.key_programs;
     $scope.found_programs = screening.data.results.found_programs;
-    $rootScope.selectedPrograms = {};
+
+    if (typeof $rootScope.selectedPrograms === 'undefined') {
+        $rootScope.selectedPrograms = {};
+    }
 
     $scope.found_programs.forEach(function(item) {
-        item.programs.forEach(function(program) {
-            $rootScope.selectedPrograms[program.code] = true;
+            item.programs.forEach(function(program) {
+            if (typeof $rootScope.selectedPrograms[program.code] === 'undefined') {
+                $rootScope.selectedPrograms[program.code] = false;
+            }
         });
     });
 
