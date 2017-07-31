@@ -30,7 +30,6 @@ class FactSheetsController extends BaseController
         $options = array(
             'cover_page' => (!empty($_REQUEST['cover_page'])) ? true : false,
             'table_contents' => (!empty($_REQUEST['table_contents'])) ? true : false,
-            'add_info' => (!empty($_REQUEST['add_info'])) ? true : false,
             'page_break' => (!empty($_REQUEST['page_break'])) ? true : false,
             'program_desc' => (!empty($_REQUEST['program_desc'])) ? true : false,
             'locations' => (!empty($_REQUEST['locations'])) ? true : false,
