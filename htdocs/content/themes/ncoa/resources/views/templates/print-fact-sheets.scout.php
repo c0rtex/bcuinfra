@@ -19,9 +19,8 @@
   @else
   @if($value["answer"] === 'documents_needed')
     @if(!empty($opt_materials))
-      <em>{{ $value["question"] }}</em>
-      <p>
-        <ul class="fact-sheets-list">
+      <br><b>{{ $value["question"] }}</b>
+        <ul>
           @if (empty($required_materials))
           <li>There are no required materials needed for this program.</li>
           @else
@@ -30,17 +29,17 @@
           @endforeach
           @endif
         </ul>
-      </p>
+      <br>
     @endif
   @else
-    <em>{{ $value["question"] }}</em>
+    <br><b>{{ $value["question"] }}</b><br>
     @if ($is_feeding_america &&
     trim(strtolower($value["question"])) == 'who should i contact?')
       <p><strong>{{ $feeding_america_office["full_name"] }}</strong><br />
         {{ $feeding_america_office["address"] }}<br />
         {{ $feeding_america_office["site"] }}</p>
     @else
-      <p>{{ $value["answer"] }}</p>
+    <br>{{ $value["answer"] }}<br>
     @endif
   @endif
   @endif
@@ -48,14 +47,15 @@
   @endif
   @if(!empty($entryPointValue))
     @if(!empty($opt_locations))
-    <em>{{ $entryPointValue["question"] }}</em><br>
+    <b>{{ $entryPointValue["question"] }}</b><br>
       @foreach($entry_points as $ekey => $evalue)
         <br>{{ $evalue->print_name }}
       @endforeach
     @endif
   @endif
   @if(!empty($becs))
-    <em>Who can help me to apply?</em>
+    @if(!empty($opt_locations))
+    <b>Who can help me to apply?</b>
       <p>
         A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC or BECs are available to help you.
       </p>
@@ -64,6 +64,7 @@
         {{ $evalue->print_name }}
       </p>
       @endforeach
+    @endif
   @endif
 </div>
 @endquery
