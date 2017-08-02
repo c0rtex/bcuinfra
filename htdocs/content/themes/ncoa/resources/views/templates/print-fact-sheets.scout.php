@@ -47,23 +47,24 @@
   @endif
   @if(!empty($entryPointValue))
     @if(!empty($opt_locations))
-    <b>{{ $entryPointValue["question"] }}</b><br>
+    <br><b>{{ $entryPointValue["question"] }}</b><br>
       @foreach($entry_points as $ekey => $evalue)
         <br>{{ $evalue->print_name }}
       @endforeach
+    <br>
     @endif
   @endif
   @if(!empty($becs))
     @if(!empty($opt_locations))
-    <b>Who can help me to apply?</b>
-      <p>
+    <br><b>Who can help me to apply?</b><br>
+      <br>
         A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC or BECs are available to help you.
-      </p>
+      <ul>
       @foreach($becs as $ekey => $evalue)
-      <p>
-        {{ $evalue->print_name }}
-      </p>
+      <li>{{ $evalue->print_name }}</li>
       @endforeach
+      </ul>
+    <br>
     @endif
   @endif
 </div>
