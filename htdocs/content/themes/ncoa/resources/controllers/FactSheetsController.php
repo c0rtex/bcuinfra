@@ -54,11 +54,11 @@ class FactSheetsController extends BaseController
         $pdf->setPrintHeader(false);
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        //$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-        $pdf->SetFont('helvetica', '', 14);
+        $pdf->SetFont('helvetica', '', 13);
 
         // cover page
         $toc_page_number = 1;
@@ -102,10 +102,17 @@ class FactSheetsController extends BaseController
 
         // TOC page
         if ($options['table_contents']) {
+            // add a new page for TOC
             $pdf->addTOCPage();
             $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
             $pdf->Ln();
-            $pdf->addTOC($toc_page_number, 'helvetica', '.', 'INDEX', 'B', array(128,0,0));
+
+            $bookmark_templates = array();
+            $bookmark_templates[0] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="155mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:12pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+            $bookmark_templates[1] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="5mm">&nbsp;</td><td width="150mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:11pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+            $bookmark_templates[2] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="10mm">&nbsp;</td><td width="145mm"><span style="color:#1F3D7D;font-weight:bold;"><i>#TOC_DESCRIPTION#</i></span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:10pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+
+            $pdf->addHTMLTOC(2, 'INDEX', $bookmark_templates, true, 'B', array(128,0,0));
             $pdf->endTOCPage();
         }
 
