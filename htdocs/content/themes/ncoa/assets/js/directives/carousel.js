@@ -2,7 +2,6 @@ app.directive('ncoaCarousel', [function(){
 	return {
 		link: function(scope, elm){
 
-
 			//Set counter for Image slider
 			$('.currItem').html("1");
 			$('.currTotal').html($('.ncoa-carousel-container .item').length);

@@ -129,6 +129,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                 prev: "questionnaire.finances-assets-grid"
             }
         })
+        .state('print-results', {
+            url: "/print-results",
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/questionnaire/questionnaire.print-results.html?'+(new Date()),
+            controller: 'questionnairePrintResultsController',
+            data:{
+                next: "",
+                prev: "questionnaire.results"
+            }
+        })
         .state('questionnaire.loader', {
             url: "/loader",
             templateUrl: '/content/themes/ncoa/resources/views/pages/loader.html?'+(new Date()),
@@ -183,7 +192,7 @@ app.directive('completeQuestionnaire',['$state','$window','prescreen',function($
             if (prescreenAnswered) {
                 scope.caption = "Continue to Full Questionnaire";
             } else {
-                scope.caption = "Start Questionnaire";
+                scope.caption = "Complete Your Benefit Report";
             }
 
             scope.completeFQ = function (url) {
@@ -716,8 +725,11 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
 
                 var s = scope.$root.answers[scope.category][scope.self_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.self_code + code];
                 var sp = scope.$root.answers[scope.category][scope.spouse_code + code] == undefined ? 0 : scope.$root.answers[scope.category][scope.spouse_code + code];
+                var s_sp = scope.$root.answers[scope.category][scope.joint_code+code] == undefined ? 0 : scope.$root.answers[scope.category][scope.joint_code+code];
 
-                scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                if (s_sp < s + sp) {
+                    scope.$root.answers[scope.category][scope.joint_code + code] = s+sp;
+                }
             };
 
 
@@ -842,7 +854,8 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
                         'testQuery': function (query, txt, _row) {
                             return query.test(txt);
                         }
-                    }).on('keydown', function(e){
+                    })
+                        .on('keydown', function(e){
                             if (e.which === 40){
                                 that.$selectableUl.focus();
                                 return false;
@@ -1061,105 +1074,6 @@ app.directive('profile', ['prescreen','screening', 'BenefitItems', '$state', 'Dr
             if (screening.data.results.found_programs != undefined) {
                 scope.programs_calculated=screening.data.results.found_programs.length>0;
             }
-
-            scope.slugs={};
-            scope.noSlugs = false;
-            scope.limitReached = false;
-
-            scope.closeErrorModal = function() {
-                $('#modalError').modal('hide');
-            };
-
-            scope.generatePrintUrl = function(checkSlugs) {
-                if (Object.keys(scope.slugs).length > 0) {
-                    var slugs = '';
-                    var firstSlug = '';
-                    var url = '';
-                    var i = 0;
-                    for (var key in scope.slugs) {
-                        if (scope.slugs[key] === true) {
-                            if (i == 0) {
-                                firstSlug = key;
-                            }
-                            else {
-                                slugs = slugs +";" + key;
-                            }
-                            i++;
-                        }
-                    }
-
-                    if (i > 0) {
-                        scope.noSlugs = false;
-
-                        if (i > 10) {
-                            scope.limitReached = true;
-                            if (checkSlugs !== true) {
-                                $('#modalError').modal('show');
-                            }
-                            return false;
-                        }
-                    }
-                    else {
-                        scope.noSlugs = true;
-                        scope.limitReached = false;
-                        if (checkSlugs !== true) {
-                            $('#modalError').modal('show');
-                        }
-                        return false;
-                    }
-
-                    if (firstSlug.length > 0) {
-                        scope.limitReached = false;
-                        scope.noSlugs = false;
-
-                        if (checkSlugs === true) {
-                            return true;
-                        }
-
-                        scope.noSlugs = false;
-                        slugs = slugs.substring(1);
-                        url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+'&pdf=y';
-
-                        return url;
-                    }
-                }
-
-                return false;
-            };
-
-            scope.selectAllCategory = function(category_id) {
-                var checked = angular.element('#' + category_id).is(':checked');
-                $('.' + category_id + ' input[type=checkbox]').each(function(index) {
-                    checkbox_id = $(this).attr('id');
-                    scope.slugs[checkbox_id] = checked;
-                });
-            };
-
-            scope.printReport = function() {
-                url = scope.generatePrintUrl(false);
-
-                if (url !== false) {
-                    scope.noSlugs = false;
-                    window.open(url);
-                }
-            };
-
-            scope.selectAll = function() {
-                for (var key in scope.slugs) {
-                    if (scope.slugs.hasOwnProperty(key)) {
-                        scope.slugs[key] = true;
-                    }
-                }
-                $('.category-headline input[type=checkbox]').prop('checked', true);
-            };
-            scope.deselectAll = function() {
-                for (var key in scope.slugs) {
-                    if (scope.slugs.hasOwnProperty(key)) {
-                        scope.slugs[key] = false;
-                    }
-                }
-                $('.category-headline input[type=checkbox]').prop('checked', false);
-            };
 
             if (scope.programs_calculated) {
                 scope.programs_calculated=true;
@@ -1847,9 +1761,9 @@ app.service('backLocationFinder',['$http', function($http){
     this.post = function (zip,data) {
         return $http.post(window.webServiceUrl+'/rest/backend/screening/zipInfo/'+zip,data,{
             headers:
-            {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            }
+                {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                }
         });
     }
 }]);
@@ -1935,7 +1849,7 @@ app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', fun
     return prescreenform;
 }]);
 
-app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function(localStorageService, $window, ScreeningRoutes, orderBy) {
+app.factory('screening', ['$rootScope', 'localStorageService', '$window', 'ScreeningRoutes', 'orderByFilter', function($rootScope, localStorageService, $window, ScreeningRoutes, orderBy) {
     var screening = {};
 
     var reorder = function (data) {
@@ -1977,6 +1891,8 @@ app.factory('screening', ['localStorageService', '$window', 'ScreeningRoutes', '
             }
         }
         localStorageService.set('screening', screening.data);
+        // Clear selected programs.
+        delete $rootScope.selectedPrograms;
     };
 
     screening.clear = function() {
@@ -2322,7 +2238,7 @@ app.controller('preScreenResultsController', ['$scope', 'prescreen','$location',
 
     $scope.goScreening = function(){
         $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
-    }
+    };
 
     var el = document.querySelector('.odometer');
 
@@ -2501,7 +2417,7 @@ app.controller('questionnaireHouseholdController', ['$scope', 'questionnaire', f
         {id:"homeless_shelter",   name:"Homeless or Live in a Shelter"}];
 
 }]);
-app.controller('questionnaireLoaderController', ['$scope', '$state', function($scope, $state){
+app.controller('questionnaireLoaderController', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope){
     $('.btns-container').hide();
     $('.card-nested').addClass('loader');
 
@@ -2579,10 +2495,35 @@ app.controller('questionnairePrescreenResultsController', ['$scope', '$state', '
 
 }]);
 
-app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', '$state', function(BenefitItems,prescreen, $sce, $state) {
     return {
         restrict: 'E',
         templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.category.html?'+(new Date()),
+        link: function(scope, element) {
+            scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
+            scope.stateId = prescreen.data.answers.stateId;
+            scope.defaultLangsPre = window.defaultLangsPre;
+            scope.defaultLangsFull = window.defaultLangsFull;
+            scope.zipcode = prescreen.data.answers.zip;
+            scope.goScreening = function(){
+                $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
+            };
+        },
+        scope: {
+            found_program:"=foundProgram",
+            short:"@",
+            elegible:"@"
+        }
+    }
+}]);
+
+
+// Temporary Echo&Co duplicate for testing program category design on final restults page
+
+app.directive('divProgramsCategorye',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+    return {
+        restrict: 'E',
+        templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.categorye.html?'+(new Date()),
         link: function(scope, element) {
             scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
             scope.stateId = prescreen.data.answers.stateId;
@@ -2634,7 +2575,7 @@ app.directive('divProgramDesc',['factSheet',function(factSheet) {
     }
 }]);
 
-app.controller('questionnaireResultsController', ['$scope', '$state', 'screening', function($scope, $state, screening){
+app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScope', 'screening', function($scope, $state, $rootScope, screening) {
     var el = document.querySelector('.odometer');
 
     od = new Odometer({
@@ -2655,7 +2596,117 @@ app.controller('questionnaireResultsController', ['$scope', '$state', 'screening
     $scope.key_programs = screening.data.results.key_programs;
     $scope.found_programs = screening.data.results.found_programs;
 
+    if (typeof $rootScope.selectedPrograms === 'undefined') {
+        $rootScope.selectedPrograms = {};
+    }
+
+    $scope.found_programs.forEach(function(item) {
+            item.programs.forEach(function(program) {
+            if (typeof $rootScope.selectedPrograms[program.code] === 'undefined') {
+                $rootScope.selectedPrograms[program.code] = false;
+            }
+        });
+    });
+
     document.querySelector('.page-wrapper h1').scrollIntoView();
+
+    $scope.printPage = function() {
+        $state.transitionTo('print-results');
+    };
+
+}]);
+
+app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', 'BenefitItems', function($scope, $state, $rootScope, screening, prescreen, BenefitItems) {
+    var BenefitItem = {};
+    $scope.found_programs = screening.data.results.found_programs;
+    $scope.found_programs.forEach(function (element, index) {
+        BenefitItem = BenefitItems.getByCode(element.category);
+        $scope.found_programs[index].name = BenefitItem.name;
+    });
+    $scope.options = {
+        cover_page: true,
+        table_contents: true,
+        page_break: true,
+        program_desc: true,
+        locations: true,
+        materials: true
+    };
+
+    $scope.isProgramSelected = function() {
+        for (var i in $rootScope.selectedPrograms) {
+            if ($rootScope.selectedPrograms[i] === true) {
+                return true;
+                break;
+            }
+        }
+        return false;
+    }
+
+    $scope.switchPage = function() {
+        $state.transitionTo('questionnaire.results');
+    };
+
+    $scope.selectAll = function() {
+        angular.forEach($rootScope.selectedPrograms, function (value, key) {
+            $rootScope.selectedPrograms[key] = true;
+        });
+    };
+
+    $scope.deselectAll = function() {
+        angular.forEach($rootScope.selectedPrograms, function (value, key) {
+            $rootScope.selectedPrograms[key] = false;
+        });
+    };
+
+    $scope.selectAllAdvanced = function() {
+        angular.forEach($scope.options, function (value, key) {
+            $scope.options[key] = true;
+        });
+    };
+
+    $scope.deselectAllAdvanced = function() {
+        angular.forEach($scope.options, function (value, key) {
+            $scope.options[key] = false;
+        });
+    };
+
+    $scope.generateReport = function() {
+        if (Object.keys($rootScope.selectedPrograms).length > 0) {
+            var slugs = '';
+            var firstSlug = '';
+            var url = '';
+            var i = 0;
+            for (var key in $rootScope.selectedPrograms) {
+                if ($rootScope.selectedPrograms[key] === true) {
+                    if (i == 0) {
+                        firstSlug = key;
+                    }
+                    else {
+                        slugs = slugs +";" + key;
+                    }
+                    i++;
+                }
+            }
+
+            // Generate URL to print pdf.
+            if (firstSlug.length > 0) {
+                slugs = slugs.substring(1);
+                var options = '';
+                angular.forEach($scope.options, function (value, key) {
+                    if (value == true) {
+                        options += '&' + key + '=y';
+                    }
+                });
+
+                url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+options+'&pdf=y';
+
+                window.open(url);
+                return true;
+            }
+        }
+
+        return false;
+    };
 
 }]);
 
@@ -2750,3 +2801,86 @@ app.filter('removeNbsp', function() {
         return input.replace(/&nbsp;/g,' ');
     }
 });
+
+
+app.directive('testimonial-carousel', [function(){
+    return {
+        link: function(scope, elm){
+
+            //Set counter for Image slider
+            $('.currItem').html("1");
+            $('.currTotal').html($('.ncoa-carousel-container .item').length);
+
+
+
+
+            $(elm).on('afterChange', function(event, slick, currentSlide, nextSlide){
+                $('.currItem').html(currentSlide + 1);
+            });
+        }
+    }
+}]);
+
+// this is here because the carousel takes a moment to load.
+$('.testimonial-carousel').on('init', function(event, slick){
+    $('.testimonial-carousel').removeClass("hide");
+});
+
+$('.testimonial-carousel').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false
+});
+
+
+$(document).on('click', '.program-expand-all', function(e) {
+  $('.program').each(function() {
+    $(this).addClass('active');
+    $(this).find('.programs-container').slideDown();
+  });
+});
+
+$(document).on('click', '.program-collapse-all', function(e) {
+  $('.program').each(function() {
+    $(this).removeClass('active');
+    $(this).find('.programs-container').slideUp();
+  });
+});
+
+$(document).on('click', '.navbar-toggle-wrap', function() {
+  $(this).find('.navbar-toggle').toggleClass('nav-open');
+});
+
+$(document).on('click', '.accordian-trigger', function(e) {
+    $(this).closest('.accordian-wrap').toggleClass('active');
+    $(this).closest('.accordian-wrap').find('.accordian-content').slideToggle();
+});
+
+$('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
+
+// Start of LiveChat (www.livechatinc.com) code
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+window.__lc = window.__lc || {};
+window.__lc.license = 8840876;
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+<!-- End of LiveChat code -->
+
+
+// $(document).ready(function() {
+//   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
+//
+//   window.setInterval(function(){
+//     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
+//     console.log('fire');
+//   }, 2000);
+// });

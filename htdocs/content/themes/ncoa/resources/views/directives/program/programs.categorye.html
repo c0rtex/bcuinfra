@@ -1,0 +1,49 @@
+<!-- Temporary Echo&Co duplicate for testing program category design on final restults page -->
+
+<section class="program program-print" slide-down>
+    <div class="program-header hover-shade">
+
+        <img ng-src="{{benefitItem.image}}" width="55" height="55" alt="{{benefitItem.name}}" title="{{benefitItem.name}}" />
+        <span ng-if="found_program.count==1">{{benefitItem.name}} Benefits: {{found_program.count}} Program</span>
+        <span ng-if="found_program.count>1 || found_program.count==0">
+            {{benefitItem.name}} Benefits: {{found_program.count}} Programs
+        </span>
+
+    </div>
+    <div class="programs-container" ng-if="found_program.count>0">
+        <ul class="programs" ng-repeat="program in found_program.programs">
+            <li>
+                <h4><a ng-bind-html="program.name_display | unsafe" ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short,elegible:elegible})"></a></h4>
+
+                <div-program-desc program_code="program.code"></div-program-desc>
+            </li>
+            <li>
+                <div class="programs-checkbox-wrapper">
+                  <!-- <div class="checkbox">
+                    <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-empty" ng-value="y" name="{{receive.id}}" id="{{receive.id}}" ng-model="answer_checked">
+                    <label for="{{receive.id}}"><span></span>
+                      <ng-label text="Print in report" class="ng-isolate-scope">Print in report</span>
+
+                    </label>
+                  </div> -->
+
+                  <div class="checkbox ng-scope">
+                    <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" name="echo_checkbox" id="echo_checkbox_{{ program.id }}">
+                    <label for="echo_checkbox_{{ program.id }}">
+                        <span></span>
+                        <ng-label text="Print in Report" class="ng-isolate-scope">Print in Report</ng-label>
+                    </label>
+                  </div>
+                </div>
+
+                <button ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short,elegible:elegible})" class="btn btn-secondary btn-get-info">Learn How to Apply</button>
+            </li>
+        </ul>
+    </div>
+    <div class="programs-container" ng-if="found_program.count<1">
+        <div class="programs">
+            <p ng-if="short=='n'">{{defaultLangsFull[found_program.category]}}</p>
+            <p ng-if="short=='y'">{{defaultLangsPre[found_program.category]}}</p>
+        </div>
+    </div>
+</section>

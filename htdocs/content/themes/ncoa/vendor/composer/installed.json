@@ -21,7 +21,7 @@
         "require-dev": {
             "phpunit/phpunit": "*"
         },
-        "time": "2015-10-26 16:11:30",
+        "time": "2015-10-26T16:11:30+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -77,7 +77,7 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2016-08-13 20:53:52",
+        "time": "2016-08-13T20:53:52+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Composer\\Installers\\Plugin",
@@ -175,7 +175,7 @@
             "reference": "b419766515b3426c6da74b0e29e93d71c4f17099",
             "shasum": ""
         },
-        "time": "2015-05-06 18:49:49",
+        "time": "2015-05-06T18:49:49+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -211,7 +211,7 @@
             "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
             "shasum": ""
         },
-        "time": "2015-05-06 20:02:39",
+        "time": "2015-05-06T20:02:39+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -258,7 +258,7 @@
         "require-dev": {
             "phpunit/phpunit": "3.7.*"
         },
-        "time": "2016-05-11 00:36:29",
+        "time": "2016-05-11T00:36:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -294,5 +294,69 @@
         ],
         "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
         "homepage": "https://github.com/dompdf/dompdf"
+    },
+    {
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.13",
+        "version_normalized": "6.2.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2017-04-26T08:14:48+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "config",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPLv3"
+        ],
+        "authors": [
+            {
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "homepage": "http://nicolaasuni.tecnick.com"
+            }
+        ],
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
+        ]
     }
 ]

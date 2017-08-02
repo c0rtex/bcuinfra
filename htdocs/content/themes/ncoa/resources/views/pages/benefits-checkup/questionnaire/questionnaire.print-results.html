@@ -1,0 +1,116 @@
+<h1>Find My Benefits</h1>
+<div class="card">
+  <div class="card-nested">
+    <button class="btn btn-link btn-back btn-no-padding" ng-click="switchPage()">Back to Your Results</button>
+    <h2 class="page-header">Print Your Benefit Report</h2>
+    <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">Print Your Benefit Report</button>
+    <br/><br/>
+
+    <h2>Benefit Program(s) Selected to Print in Your Report</h2>
+
+    <div class="benefits-print-options">
+
+      <div class="print-controls">
+        <span id="print-page-select-all" class="print-control" ng-click="selectAll()">Select All</span>
+        <span>|</span>
+        <span id="print-page-deselect-all" class="print-control" ng-click="deselectAll()">Clear</span>
+      </div>
+
+      <div class="benefits-print-options-checkboxes">
+
+        <div ng-repeat="found_program in found_programs" ng-if="found_program.programs.length > 0" class="benefits-category">
+          <h3>{{found_program.name}}</h3>
+
+          <div ng-repeat="program in found_program.programs" class="checkbox">
+            <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" ng-checked="$root.selectedPrograms[program.code]" name="{{program.code}}" id="{{program.code}}">
+            <label for="{{program.code}}">
+              <span></span>
+            </label>
+            <span ng-bind-html="program.name_display | unsafe"></span>
+          </div><!--/.checkbox-->
+        </div><!--/.benefits-category-->
+
+      </div><!--/.benefits-print-options-checkboxes-->
+
+      <div class="advanced-print-options accordian-wrap">
+        <h2 class="accordian-trigger">Advanced Print Options</h2>
+        <p class="small">Additional options to further customize your report.</p>
+
+        <div class="accordian-content" style="display: none;">
+          <div class="print-controls">
+            <span id="print-page-select-all-advanced" class="print-control" ng-click="selectAllAdvanced()">Select All</span>
+            <span>|</span>
+            <span id="print-page-deselect-all-advanced" class="print-control" ng-click="deselectAllAdvanced()">Clear</span>
+          </div>
+
+          <div class="advanced-print-options-checkboxes">
+
+            <div class="benefits-category">
+              <h3>Report Sections to Include</h3>
+
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-cover-page" ng-model="options.cover_page">
+                <label for="adv-opt-cover-page">
+                  <span></span>
+                  Cover Page
+                </label>
+              </div><!--/.checkbox-->
+
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-table-contents" ng-model="options.table_contents">
+                <label for="adv-opt-table-contents">
+                  <span></span>
+                  Table of Contents
+                </label>
+              </div><!--/.checkbox-->
+
+            <div class="benefits-category">
+              <h3>Report Formatting</h3>
+
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-page-break" ng-model="options.page_break">
+                <label for="adv-opt-page-break">
+                  <span></span>
+                  Insert Page Breaks Between Programs
+                </label>
+              </div><!--/.checkbox-->
+            </div><!--/.benefits-category-->
+
+            <div class="benefits-category">
+              <h3>Program Information to Include</h3>
+
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-program-desc" ng-model="options.program_desc">
+                <label for="adv-opt-program-desc">
+                  <span></span>
+                  Program Descriptions
+                </label>
+              </div><!--/.checkbox-->
+
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-locations" ng-model="options.locations">
+                <label for="adv-opt-locations">
+                  <span></span>
+                  Local Office Locations
+                </label>
+              </div><!--/.checkbox-->
+
+              <div class="checkbox">
+                <input type="checkbox" id="adv-opt-materials" ng-model="options.materials">
+                <label for="adv-opt-materials">
+                  <span></span>
+                  Materials to have Available when Applying
+                </label>
+              </div><!--/.checkbox-->
+            </div><!--/.benefits-category-->
+
+          </div><!--/.advanced-print-options-categories-->
+        </div><!--/.accordian-content-->
+      </div><!--/.advanced-print-options-->
+      <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">Print Your Benefit Report</button>
+    </div><!--/.benefits-print-options-->
+
+  </div><!--/.card-nested-->
+</div><!--/.card-->
+
+<button class="btn btn-link btn-back btn-no-padding btn-margin-bottom" ng-click="switchPage()">Back to Your Results</button>
