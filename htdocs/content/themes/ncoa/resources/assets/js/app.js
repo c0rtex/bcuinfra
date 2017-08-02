@@ -2614,16 +2614,6 @@ app.controller('questionnaireResultsController', ['$scope', '$state', '$rootScop
         $state.transitionTo('print-results');
     };
 
-    $scope.isProgramSelected = function() {
-        for (var i in $rootScope.selectedPrograms) {
-            if ($rootScope.selectedPrograms[i] === true) {
-                return true;
-                break;
-            }
-        }
-        return false;
-    }
-
 }]);
 
 app.controller('questionnairePrintResultsController', ['$scope', '$state', '$rootScope', 'screening', 'prescreen', 'BenefitItems', function($scope, $state, $rootScope, screening, prescreen, BenefitItems) {
@@ -2641,6 +2631,17 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         locations: true,
         materials: true
     };
+
+    $scope.isProgramSelected = function() {
+        for (var i in $rootScope.selectedPrograms) {
+            if ($rootScope.selectedPrograms[i] === true) {
+                return true;
+                break;
+            }
+        }
+        return false;
+    }
+
     $scope.switchPage = function() {
         $state.transitionTo('questionnaire.results');
     };
