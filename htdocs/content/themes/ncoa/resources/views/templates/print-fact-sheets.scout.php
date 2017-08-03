@@ -57,8 +57,7 @@
   @if(!empty($becs))
     @if(!empty($opt_locations))
     <br><b>Who can help me to apply?</b><br>
-      <br>
-        A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC or BECs are available to help you.
+      <br>A Benefits Enrollment Center (BEC) can offer personal, one-on-one assistance to apply for this program. With support from NCOA, the BEC can help you apply for and enroll in all of the benefits you may be missing out on. The following BEC or BECs are available to help you.
       <ul>
       @foreach($becs as $ekey => $evalue)
       <li>{{ $evalue->print_name }}</li>
