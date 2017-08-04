@@ -116,7 +116,7 @@ class FactSheetsController extends BaseController
             $pdf->endTOCPage();
         }
 
-        $pdf->Output('BenefitsCheckUp Report.pdf', 'I');
+        $pdf->Output('BenefitsCheckUp Report.pdf', 'D');
     }
 
     public function feed_america_soap($zipcode) {
