@@ -2628,8 +2628,7 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         table_contents: true,
         page_break: true,
         program_desc: true,
-        locations: true,
-        materials: true
+        faq: true,
     };
 
     $scope.isProgramSelected = function() {

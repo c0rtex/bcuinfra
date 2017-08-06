@@ -32,8 +32,7 @@ class FactSheetsController extends BaseController
             'table_contents' => (!empty($_REQUEST['table_contents'])) ? true : false,
             'page_break' => (!empty($_REQUEST['page_break'])) ? true : false,
             'program_desc' => (!empty($_REQUEST['program_desc'])) ? true : false,
-            'locations' => (!empty($_REQUEST['locations'])) ? true : false,
-            'materials' => (!empty($_REQUEST['materials'])) ? true : false,
+            'faq' => (!empty($_REQUEST['faq'])) ? true : false,
         );
 
         if (isset($_REQUEST['pdf'])) {
@@ -112,7 +111,7 @@ class FactSheetsController extends BaseController
             $bookmark_templates[1] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="5mm">&nbsp;</td><td width="150mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:11pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
             $bookmark_templates[2] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="10mm">&nbsp;</td><td width="145mm"><span style="color:#1F3D7D;font-weight:bold;"><i>#TOC_DESCRIPTION#</i></span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:10pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
 
-            $pdf->addHTMLTOC(2, 'INDEX', $bookmark_templates, true, 'B', array(128,0,0));
+            $pdf->addHTMLTOC(2, 'Table of Contents', $bookmark_templates, true, 'B', array(128,0,0));
             $pdf->endTOCPage();
         }
 
@@ -421,8 +420,7 @@ class FactSheetsController extends BaseController
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
                 'opt_program_desc' => $options['program_desc'],
-                'opt_locations' => $options['locations'],
-                'opt_materials' => $options['materials'],
+                'opt_faq' => $options['faq'],
             ])->render();
 
         } else {
@@ -471,8 +469,7 @@ class FactSheetsController extends BaseController
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
                 'opt_program_desc' => $options['program_desc'],
-                'opt_locations' => $options['locations'],
-                'opt_materials' => $options['materials'],
+                'opt_faq' => $options['faq'],
             ])->render();
         }
     }
