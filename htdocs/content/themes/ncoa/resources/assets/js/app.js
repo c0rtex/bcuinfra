@@ -2670,42 +2670,33 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
     };
 
     $scope.generateReport = function() {
+
+    };
+
+    $("#benefits-print-report").submit(function(event) {
         if (Object.keys($rootScope.selectedPrograms).length > 0) {
-            var slugs = '';
             var firstSlug = '';
-            var url = '';
-            var i = 0;
+
             for (var key in $rootScope.selectedPrograms) {
                 if ($rootScope.selectedPrograms[key] === true) {
-                    if (i == 0) {
-                        firstSlug = key;
-                    }
-                    else {
-                        slugs = slugs +";" + key;
-                    }
-                    i++;
+                    firstSlug = key;
+                    break;
                 }
             }
 
+            var url = '';
+
             // Generate URL to print pdf.
             if (firstSlug.length > 0) {
-                slugs = slugs.substring(1);
-                var options = '';
-                angular.forEach($scope.options, function (value, key) {
-                    if (value == true) {
-                        options += '&' + key + '=y';
-                    }
-                });
+                url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&pdf=y';
 
-                url = '/fact-sheets/factsheet_' + firstSlug + "/?state=" + prescreen.data.answers.stateId + "&zipcode=" + prescreen.data.answers.zipcode+'&slugs='+slugs+options+'&pdf=y';
-
-                window.open(url);
-                return true;
+                $('#benefits-print-report').attr('action', url);
+                return;
             }
         }
 
-        return false;
-    };
+        event.preventDefault();
+    });
 
 }]);
 

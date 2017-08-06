@@ -35,7 +35,7 @@ class FactSheetsController extends BaseController
             'faq' => (!empty($_REQUEST['faq'])) ? true : false,
         );
 
-        if (isset($_REQUEST['pdf'])) {
+        if (isset($_REQUEST['pdf']) && isset($_REQUEST['programs'])) {
             return $this->generate_pdf($post, $query, $options);
         }
         else {
@@ -68,19 +68,17 @@ class FactSheetsController extends BaseController
             $pdf->writeHTML($cover, true, false, true, false, '');
         }
 
-        // initial fact sheet
-        $pdf->AddPage();
-        $post_title = html_entity_decode($post->post_title);
-        $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
-        $html = $this->render_page($post->post_name, $post, $options);
-        $pdf->writeHTML($html, true, false, true, false, '');
+//        // initial fact sheet
+//        $pdf->AddPage();
+//        $post_title = html_entity_decode($post->post_title);
+//        $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
+//        $html = $this->render_page($post->post_name, $post, $options);
+//        $pdf->writeHTML($html, true, false, true, false, '');
 
-        // extra slugs
-        if (array_key_exists('slugs', $_REQUEST)) {
-            $slugs = explode(";",$_REQUEST['slugs']);
-
-            foreach($slugs as $slug) {
-                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => "factsheet_" . $slug]);
+        // programs
+        if (!empty($_REQUEST['programs'])) {
+            foreach($_REQUEST['programs'] as $program) {
+                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => 'factsheet_' . $program]);
                 $posts = $query->get_posts();
 
                 if (!empty($posts[0])) {
@@ -89,7 +87,7 @@ class FactSheetsController extends BaseController
                     }
                     $post_title = html_entity_decode($posts[0]->post_title);
                     $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
-                    $html = $this->render_page("factsheet_" . $slug, $post, $options);
+                    $html = $this->render_page('factsheet_' . $program, $post, $options);
                     $pdf->writeHTML($html, true, false, true, false, '');
                 }
                 else {

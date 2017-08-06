@@ -1,4 +1,5 @@
 <h1>Find My Benefits</h1>
+<form id="benefits-print-report" name="benefits-print-report" method="post">
 <div class="card">
   <div class="card-nested">
     <button class="btn btn-link btn-back btn-no-padding" ng-click="switchPage()">Back to Your Results</button>
@@ -22,7 +23,7 @@
           <h3>{{found_program.name}}</h3>
 
           <div ng-repeat="program in found_program.programs" class="checkbox">
-            <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" ng-checked="$root.selectedPrograms[program.code]" name="{{program.code}}" id="{{program.code}}">
+            <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" ng-checked="$root.selectedPrograms[program.code]" name="programs[]" value="{{program.code}}" id="{{program.code}}">
             <label for="{{program.code}}">
               <span></span>
             </label>
@@ -49,7 +50,7 @@
               <h3>Report Sections to Include</h3>
 
               <div class="checkbox">
-                <input type="checkbox" id="adv-opt-cover-page" ng-model="options.cover_page">
+                <input type="checkbox" id="adv-opt-cover-page" name="cover_page" ng-model="options.cover_page">
                 <label for="adv-opt-cover-page">
                   <span></span>
                   Cover Page
@@ -57,7 +58,7 @@
               </div><!--/.checkbox-->
 
               <div class="checkbox">
-                <input type="checkbox" id="adv-opt-table-contents" ng-model="options.table_contents">
+                <input type="checkbox" id="adv-opt-table-contents" name="table_contents" ng-model="options.table_contents">
                 <label for="adv-opt-table-contents">
                   <span></span>
                   Table of Contents
@@ -68,7 +69,7 @@
               <h3>Report Formatting</h3>
 
               <div class="checkbox">
-                <input type="checkbox" id="adv-opt-page-break" ng-model="options.page_break">
+                <input type="checkbox" id="adv-opt-page-break" name="page_break" ng-model="options.page_break">
                 <label for="adv-opt-page-break">
                   <span></span>
                   Insert Page Breaks Between Programs
@@ -80,7 +81,7 @@
               <h3>Program Information to Include</h3>
 
               <div class="checkbox">
-                <input type="checkbox" id="adv-opt-program-desc" ng-model="options.program_desc">
+                <input type="checkbox" id="adv-opt-program-desc" name="program_desc" ng-model="options.program_desc">
                 <label for="adv-opt-program-desc">
                   <span></span>
                   Program Descriptions
@@ -88,7 +89,7 @@
               </div><!--/.checkbox-->
 
               <div class="checkbox">
-                <input type="checkbox" id="adv-opt-faq" ng-model="options.faq">
+                <input type="checkbox" id="adv-opt-faq" name="faq" ng-model="options.faq">
                 <label for="adv-opt-faq">
                   <span></span>
                   Frequently Asked Questions
@@ -104,5 +105,6 @@
 
   </div><!--/.card-nested-->
 </div><!--/.card-->
+</form>
 
 <button class="btn btn-link btn-back btn-no-padding btn-margin-bottom" ng-click="switchPage()">Back to Your Results</button>
