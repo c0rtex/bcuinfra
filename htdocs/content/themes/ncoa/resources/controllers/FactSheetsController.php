@@ -77,18 +77,19 @@ class FactSheetsController extends BaseController
 
         // programs
         if (!empty($_REQUEST['programs'])) {
+            $pdf->AddPage();
             foreach($_REQUEST['programs'] as $program) {
                 $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => 'factsheet_' . $program]);
                 $posts = $query->get_posts();
 
                 if (!empty($posts[0])) {
-                    if ($options['page_break']) {
-                        $pdf->AddPage();
-                    }
                     $post_title = html_entity_decode($posts[0]->post_title);
                     $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
                     $html = $this->render_page('factsheet_' . $program, $post, $options);
                     $pdf->writeHTML($html, true, false, true, false, '');
+                    if ($options['page_break']) {
+                        $pdf->AddPage();
+                    }
                 }
                 else {
                     continue;
