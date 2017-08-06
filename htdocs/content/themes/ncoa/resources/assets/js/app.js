@@ -2875,6 +2875,23 @@ window.__lc.license = 8840876;
 })();
 <!-- End of LiveChat code -->
 
+var LC_API = LC_API || {};
+var livechat_chat_started = false;
+
+LC_API.on_before_load = function() {
+    // don't hide the chat window only if visitor
+    // is currently chatting with an agent
+    if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
+        // Hide chat window on homepage
+        if (window.location.pathname == '/') {
+            LC_API.hide_chat_window();
+        }
+    }
+};
+
+LC_API.on_chat_started = function() {
+    livechat_chat_started = true;
+};
 
 // $(document).ready(function() {
 //   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
