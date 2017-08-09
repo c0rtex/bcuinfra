@@ -77,18 +77,31 @@ class FactSheetsController extends BaseController
 
         // programs
         if (!empty($_REQUEST['programs'])) {
-            $pdf->AddPage();
+            if ($options['program_desc'] || $options['faq']) {
+                $pdf->AddPage();
+            }
+
             foreach($_REQUEST['programs'] as $program) {
                 $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => 'factsheet_' . $program]);
                 $posts = $query->get_posts();
 
                 if (!empty($posts[0])) {
+                    $last = false;
+                    if ($program === end($_REQUEST['programs'])) {
+                        $last = true;
+                    }
+
                     $post_title = html_entity_decode($posts[0]->post_title);
                     $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
-                    $html = $this->render_page('factsheet_' . $program, $post, $options);
-                    $pdf->writeHTML($html, true, false, true, false, '');
-                    if ($options['page_break']) {
-                        $pdf->AddPage();
+                    $html = $this->render_page('factsheet_' . $program, $post, $options, $last);
+                    if ($options['program_desc'] || $options['faq']) {
+                        $pdf->writeHTML($html, true, false, true, false, '');
+                    }
+                    if ($program !== end($_REQUEST['programs'])) {
+                        if ($options['page_break'] && 
+                            ($options['program_desc'] || $options['faq'])) {
+                            $pdf->AddPage();
+                        }
                     }
                 }
                 else {
@@ -110,7 +123,7 @@ class FactSheetsController extends BaseController
             $bookmark_templates[1] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="5mm">&nbsp;</td><td width="150mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:11pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
             $bookmark_templates[2] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="10mm">&nbsp;</td><td width="145mm"><span style="color:#1F3D7D;font-weight:bold;"><i>#TOC_DESCRIPTION#</i></span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:10pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
 
-            $pdf->addHTMLTOC(2, 'Table of Contents', $bookmark_templates, true, 'B', array(128,0,0));
+            $pdf->addHTMLTOC($toc_page_number, 'Table of Contents', $bookmark_templates, true, 'B', array(128,0,0));
             $pdf->endTOCPage();
         }
 
@@ -166,7 +179,7 @@ class FactSheetsController extends BaseController
         return $feed_america_response;
     }
 
-    public function render_page($fact_sheet_slug, $post, $options) {
+    public function render_page($fact_sheet_slug, $post, $options, $last = false) {
         $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $fact_sheet_slug]);
         $posts = $query->get_posts();
         $post_id = !empty($posts[0]->ID) ? $posts[0]->ID : Loop::id();
@@ -179,6 +192,7 @@ class FactSheetsController extends BaseController
         }
 
         $post_content = (!empty($posts[0]->post_content)) ? $posts[0]->post_content : $post->content;
+        $post_content = str_replace('<hr', '<span', $post_content);
 
         // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
@@ -418,8 +432,10 @@ class FactSheetsController extends BaseController
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
+                'last' => $last,
                 'opt_program_desc' => $options['program_desc'],
                 'opt_faq' => $options['faq'],
+                'opt_page_break' => $options['page_break'],
             ])->render();
 
         } else {
@@ -467,8 +483,10 @@ class FactSheetsController extends BaseController
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
+                'last' => $last,
                 'opt_program_desc' => $options['program_desc'],
                 'opt_faq' => $options['faq'],
+                'opt_page_break' => $options['page_break'],
             ])->render();
         }
     }

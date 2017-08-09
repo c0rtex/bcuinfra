@@ -63,4 +63,10 @@
   @endif
 </div>
 @endif
+
+@if(!$opt_page_break && !$last)
+<hr>
+<p>&nbsp;</p>
+@endif
+
 @endquery

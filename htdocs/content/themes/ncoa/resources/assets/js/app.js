@@ -2632,6 +2632,17 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
     };
 
     $scope.isProgramSelected = function() {
+        var optionSelected = false;
+        for (var i in $scope.options) {
+            if ($scope.options[i] === true) {
+                optionSelected = true;
+            }
+        }
+
+        if (optionSelected === false) {
+            return false;
+        }
+
         for (var i in $rootScope.selectedPrograms) {
             if ($rootScope.selectedPrograms[i] === true) {
                 return true;
@@ -2667,10 +2678,6 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         angular.forEach($scope.options, function (value, key) {
             $scope.options[key] = false;
         });
-    };
-
-    $scope.generateReport = function() {
-
     };
 
     $("#benefits-print-report").submit(function(event) {
