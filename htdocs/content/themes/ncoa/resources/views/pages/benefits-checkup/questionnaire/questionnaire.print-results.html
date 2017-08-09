@@ -4,17 +4,17 @@
   <div class="card-nested">
     <button class="btn btn-link btn-back btn-no-padding" ng-click="switchPage()">Back to Your Results</button>
     <h2 class="page-header">Print Your Benefit Report</h2>
-    <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">Print Your Benefit Report</button>
+    <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">View and Print Your Benefit Report</button>
     <br/><br/>
 
-    <h2>Benefit Program(s) Selected to Print in Your Report</h2>
+    <h2>Select Programs to Print in Your Benefits Report</h2>
 
     <div class="benefits-print-options">
 
       <div class="print-controls">
         <span id="print-page-select-all" class="print-control" ng-click="selectAll()">Select All</span>
         <span>|</span>
-        <span id="print-page-deselect-all" class="print-control" ng-click="deselectAll()">Clear</span>
+        <span id="print-page-deselect-all" class="print-control" ng-click="deselectAll()">Clear All</span>
       </div>
 
       <div class="benefits-print-options-checkboxes">
@@ -41,7 +41,7 @@
           <div class="print-controls">
             <span id="print-page-select-all-advanced" class="print-control" ng-click="selectAllAdvanced()">Select All</span>
             <span>|</span>
-            <span id="print-page-deselect-all-advanced" class="print-control" ng-click="deselectAllAdvanced()">Clear</span>
+            <span id="print-page-deselect-all-advanced" class="print-control" ng-click="deselectAllAdvanced()">Clear All</span>
           </div>
 
           <div class="advanced-print-options-checkboxes">
@@ -100,7 +100,7 @@
           </div><!--/.advanced-print-options-categories-->
         </div><!--/.accordian-content-->
       </div><!--/.advanced-print-options-->
-      <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">Print Your Benefit Report</button>
+      <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">View and Print Your Benefit Report</button>
     </div><!--/.benefits-print-options-->
 
   </div><!--/.card-nested-->
