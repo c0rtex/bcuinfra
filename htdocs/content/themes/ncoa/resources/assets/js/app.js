@@ -2624,8 +2624,6 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         $scope.found_programs[index].name = BenefitItem.name;
     });
     $scope.options = {
-        cover_page: true,
-        table_contents: true,
         page_break: false,
         info_included: 'programs_contact'
     };
@@ -2653,18 +2651,6 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
     $scope.deselectAll = function() {
         angular.forEach($rootScope.selectedPrograms, function (value, key) {
             $rootScope.selectedPrograms[key] = false;
-        });
-    };
-
-    $scope.selectAllAdvanced = function() {
-        angular.forEach($scope.options, function (value, key) {
-            $scope.options[key] = true;
-        });
-    };
-
-    $scope.deselectAllAdvanced = function() {
-        angular.forEach($scope.options, function (value, key) {
-            $scope.options[key] = false;
         });
     };
 

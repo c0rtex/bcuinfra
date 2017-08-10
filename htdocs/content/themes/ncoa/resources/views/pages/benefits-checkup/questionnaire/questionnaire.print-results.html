@@ -17,7 +17,8 @@
           <span id="print-page-deselect-all" class="print-control" ng-click="deselectAll()">Clear All</span>
         </div>
 
-        <p class="print-tip">To reduce the number of pages printed, we recommend selecting not more than 10 programs at a time.</p>
+        <p class="print-tip">The PDF printed report may be quite long. To save paper, include only the programs you want to print. 
+          You can also go to “Advanced Print Options” at the bottom of the page to further customize your report.</p>
         
         <div class="benefits-print-options-checkboxes">
           
@@ -40,33 +41,8 @@
           <p class="small">Additional options to further customize your report.</p>
           
           <div class="accordian-content" style="display: none;">
-            <div class="print-controls">
-              <span id="print-page-select-all-advanced" class="print-control" ng-click="selectAllAdvanced()">Select All</span>
-              <span>|</span>
-              <span id="print-page-deselect-all-advanced" class="print-control" ng-click="deselectAllAdvanced()">Clear All</span>
-            </div>
             
             <div class="advanced-print-options-checkboxes">
-              
-              <div class="benefits-category">
-                <h3>Report Sections to Include</h3>
-                
-                <div class="checkbox">
-                  <input type="checkbox" id="adv-opt-cover-page" name="cover_page" ng-model="options.cover_page">
-                  <label for="adv-opt-cover-page">
-                    <span></span>
-                    Cover Page
-                  </label>
-                </div><!--/.checkbox-->
-                
-                <div class="checkbox">
-                  <input type="checkbox" id="adv-opt-table-contents" name="table_contents" ng-model="options.table_contents">
-                  <label for="adv-opt-table-contents">
-                    <span></span>
-                    Table of Contents
-                  </label>
-                </div><!--/.checkbox-->
-              </div><!--/.benefits-category-->
 
               <div class="benefits-category">
                 <h3>Program Information to Include</h3>
@@ -99,7 +75,7 @@
                   <input type="checkbox" id="adv-opt-page-break" name="page_break" ng-model="options.page_break">
                   <label for="adv-opt-page-break">
                     <span></span>
-                    Print Each Program on New Page
+                    Print Each Program on a New Page (this will make the report longer)
                   </label>
                 </div><!--/.checkbox-->
               </div><!--/.benefits-category-->
