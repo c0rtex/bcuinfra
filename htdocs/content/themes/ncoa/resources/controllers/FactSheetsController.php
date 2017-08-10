@@ -62,8 +62,7 @@ class FactSheetsController extends BaseController
         $toc_page_number = 1;
         if ($options['cover_page'] || 
             ($options['info_included'] == 'cover_toc') || 
-            (!$options['cover_page'] && !$options['table_contents'])
-            ) {
+            (!$options['cover_page'] && !$options['table_contents'] && $options['info_included'] == 'cover_toc')) {
             $toc_page_number = 2;
             $pdf->AddPage();
             $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
@@ -116,7 +115,7 @@ class FactSheetsController extends BaseController
         // TOC page
         if ($options['table_contents'] || 
             ($options['info_included'] == 'cover_toc') || 
-            (!$options['cover_page'] && !$options['table_contents'])) {
+            (!$options['cover_page'] && !$options['table_contents']) && $options['info_included'] == 'cover_toc') {
             // add a new page for TOC
             $pdf->addTOCPage();
             $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);

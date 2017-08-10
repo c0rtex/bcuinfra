@@ -2626,7 +2626,7 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
     $scope.options = {
         cover_page: true,
         table_contents: true,
-        page_break: true,
+        page_break: false,
         info_included: 'programs_contact'
     };
 
