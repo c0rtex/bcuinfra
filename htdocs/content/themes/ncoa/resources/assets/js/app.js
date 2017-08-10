@@ -1,4 +1,4 @@
-﻿var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar', 'ngSanitize', 'ui.utils.masks']);
+var app = angular.module('ncoa', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'ui.router', 'angular-loading-bar', 'ngSanitize', 'ui.utils.masks']);
 
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
@@ -2627,22 +2627,10 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
         cover_page: true,
         table_contents: true,
         page_break: true,
-        program_desc: true,
-        faq: true,
+        info_included: 'programs_contact'
     };
 
     $scope.isProgramSelected = function() {
-        var optionSelected = false;
-        for (var i in $scope.options) {
-            if ($scope.options[i] === true) {
-                optionSelected = true;
-            }
-        }
-
-        if (optionSelected === false) {
-            return false;
-        }
-
         for (var i in $rootScope.selectedPrograms) {
             if ($rootScope.selectedPrograms[i] === true) {
                 return true;

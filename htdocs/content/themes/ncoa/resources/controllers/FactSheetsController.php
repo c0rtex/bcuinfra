@@ -31,8 +31,7 @@ class FactSheetsController extends BaseController
             'cover_page' => (!empty($_REQUEST['cover_page'])) ? true : false,
             'table_contents' => (!empty($_REQUEST['table_contents'])) ? true : false,
             'page_break' => (!empty($_REQUEST['page_break'])) ? true : false,
-            'program_desc' => (!empty($_REQUEST['program_desc'])) ? true : false,
-            'faq' => (!empty($_REQUEST['faq'])) ? true : false,
+            'info_included' => (!empty($_REQUEST['info_included'])) ? $_REQUEST['info_included'] : 'programs_contact',
         );
 
         if (isset($_REQUEST['pdf']) && isset($_REQUEST['programs'])) {
@@ -61,7 +60,10 @@ class FactSheetsController extends BaseController
 
         // cover page
         $toc_page_number = 1;
-        if ($options['cover_page']) {
+        if ($options['cover_page'] || 
+            ($options['info_included'] == 'cover_toc') || 
+            (!$options['cover_page'] && !$options['table_contents'])
+            ) {
             $toc_page_number = 2;
             $pdf->AddPage();
             $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
@@ -77,7 +79,7 @@ class FactSheetsController extends BaseController
 
         // programs
         if (!empty($_REQUEST['programs'])) {
-            if ($options['program_desc'] || $options['faq']) {
+            if ($options['info_included'] != 'cover_toc') {
                 $pdf->AddPage();
             }
 
@@ -94,12 +96,12 @@ class FactSheetsController extends BaseController
                     $post_title = html_entity_decode($posts[0]->post_title);
                     $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
                     $html = $this->render_page('factsheet_' . $program, $post, $options, $last);
-                    if ($options['program_desc'] || $options['faq']) {
+                    if ($options['info_included'] != 'cover_toc') {
                         $pdf->writeHTML($html, true, false, true, false, '');
                     }
                     if ($program !== end($_REQUEST['programs'])) {
                         if ($options['page_break'] && 
-                            ($options['program_desc'] || $options['faq'])) {
+                            ($options['info_included'] != 'cover_toc')) {
                             $pdf->AddPage();
                         }
                     }
@@ -112,7 +114,9 @@ class FactSheetsController extends BaseController
 
 
         // TOC page
-        if ($options['table_contents']) {
+        if ($options['table_contents'] || 
+            ($options['info_included'] == 'cover_toc') || 
+            (!$options['cover_page'] && !$options['table_contents'])) {
             // add a new page for TOC
             $pdf->addTOCPage();
             $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
@@ -192,7 +196,6 @@ class FactSheetsController extends BaseController
         }
 
         $post_content = (!empty($posts[0]->post_content)) ? $posts[0]->post_content : $post->content;
-        $post_content = str_replace('<hr', '<span', $post_content);
 
         // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
@@ -411,6 +414,33 @@ class FactSheetsController extends BaseController
             $layout = "layouts.main";
         }
 
+        switch ($options['info_included']) {
+            case 'cover_toc':
+                $faq = false;
+                $program_desc = false;
+                $locations = false;
+                break;
+            case 'full': 
+                $faq = true;
+                $program_desc = true;
+                $locations = true;
+                break;
+            case 'programs_contact':
+                $faq = false;
+                $program_desc = true;
+                $locations = true;
+                break;
+            case 'programs':
+                $faq = false;
+                $program_desc = true;
+                $locations = false;
+                break;
+            default:
+                $faq = false;
+                $program_desc = true;
+                $locations = true;
+        }
+
         if (array_key_exists('short',$_REQUEST)) {
 
             $template = 'templates.short-fact-sheets';
@@ -433,8 +463,9 @@ class FactSheetsController extends BaseController
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
                 'last' => $last,
-                'opt_program_desc' => $options['program_desc'],
-                'opt_faq' => $options['faq'],
+                'opt_program_desc' => $program_desc,
+                'opt_faq' => $faq,
+                'opt_locations' => $locations,
                 'opt_page_break' => $options['page_break'],
             ])->render();
 
@@ -484,8 +515,9 @@ class FactSheetsController extends BaseController
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
                 'last' => $last,
-                'opt_program_desc' => $options['program_desc'],
-                'opt_faq' => $options['faq'],
+                'opt_program_desc' => $program_desc,
+                'opt_faq' => $faq,
+                'opt_locations' => $locations,
                 'opt_page_break' => $options['page_break'],
             ])->render();
         }

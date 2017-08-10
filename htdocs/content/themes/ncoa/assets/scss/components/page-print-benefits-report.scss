@@ -23,13 +23,17 @@
 }
 
 .print-controls {
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 
   > span {
     display: inline-block;
     vertical-align: middle;
     margin-right: 3px;
   }
+}
+
+.print-tip {
+  margin-bottom: 40px;
 }
 
 
