@@ -1558,7 +1558,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
             }
 
             function validateZip(data){
-                if (scope.$root.answers[category.currentCategory()].zip.length != 5) {
+                if ((scope.$root.answers[category.currentCategory()].zip+'').length != 5) {
                     scope.$root.isZipValid = false;
                     scope.zipValid = '';
                     scope.$parent.zipCodeCheckResult = "Error!"
@@ -1607,10 +1607,34 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                         scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
                     }
                 }else{
-                    scope.$root.isZipValid = false;
-                    scope.zipValid = '';
-                    scope.$parent.zipCodeCheckResult = "Error!"
-                    scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                    backLocationFinder.post(scope.$root.answers[scope.category].zip,data).success(function (data, status, headers, config) {
+                        scope.$root.isZipCodeValidating = false;
+                        scope.$parent.zipCodeUpdated=true;
+                        var isZipInvalid = data.status != "OK";
+                        if(!isZipInvalid){
+                            scope.$root.answers[category.currentCategory()].zipcode = data.zip;
+
+                            scope.$root.answers[category.currentCategory()].stateId = data.state_id;
+                            scope.zipCodeLabel = "Update Zip Code";
+
+                            scope.$root.answers[category.currentCategory()].county = data.county;
+
+                            scope.$root.isZipValid = true;
+                            scope.zipValid = '1';
+                            scope.$parent.zipCodeCheckResult = "Success!"
+                            scope.$parent.zipCodeDescription = data.county+', '+data.state_id+' '+data.zip;
+                        }else{
+                            scope.$root.isZipValid = false;
+                            scope.zipValid = '';
+                            scope.$parent.zipCodeCheckResult = "Error!"
+                            scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                        }
+                    }).error(function (data, status, headers, config) {
+                        scope.$root.isZipValid = false;
+                        scope.zipValid = '';
+                        scope.$parent.zipCodeCheckResult = "Error!"
+                        scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                    });
                 }
                 scope.$parent.zipCodeUpdated=true;
             }
@@ -2696,8 +2720,17 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                     localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
                     $window.location.href = '/find-my-benefits';
                 }
-            }else{
-                $scope.isZipInvalid=true;
+            } else {
+                backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
+                    $scope.isZipInvalid = data.status != "OK";
+                    if (!$scope.isZipInvalid) {
+                        retZipCode = data.zip;
+                        localStorageService.set('v_zipcode', data.zip);
+                        $window.location.href = '/find-my-benefits';
+                    }
+                }).error(function (data, status, headers, config) {
+                    $scope.isZipInvalid = true;
+                });
             }
         }).error(function(data, status, headers, config) {
             backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
