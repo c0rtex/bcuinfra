@@ -13,7 +13,7 @@
 Route::get('page', ['styleguide', 'uses' => 'StyleGuideController@index']);
 Route::get('page', ['uses' => 'GenericController@index']);
 
-Route::get('singular', ['fact-sheets', 'uses' => 'FactSheetsController@index']);
+Route::any('singular', ['fact-sheets', 'uses' => 'FactSheetsController@index']);
 
 Route::get('template', ['home-template', 'uses' => 'HomeController@index']);
 Route::get('template', ['benefitscheckup-template', 'uses' => 'BenefitsCheckUpController@index']);

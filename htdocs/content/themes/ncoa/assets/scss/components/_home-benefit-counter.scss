@@ -1,0 +1,105 @@
+.home-benefit-counter {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 30px 15px;
+  border-bottom: 2px solid $grey-accent;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    padding: 60px 15px;
+    margin-bottom: 30px;
+  }
+
+  .odometer {
+
+    &-wrapper {
+      display: block;
+      margin-top: 8px;
+      margin-bottom: 8px;
+
+      @media screen and (min-width: 768px) {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+        top: -14px;
+        margin-right: 7px;
+        margin-left: 6px;
+      }
+    }
+
+    &-puncuation {
+      font-size: 32px;
+      font-weight: 900;
+      vertical-align: top;
+      margin: 0 0 0 5px;
+      color: $brand-blue;
+      font-family: "Open Sans";
+
+      @media screen and (min-width: 768px) {
+        font-size: 48px;
+      }
+    }
+  }
+}
+
+// odometer on the homepage that does not animate.
+.odometer-static {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  background: #238ADB;
+  background-image: linear-gradient(to bottom, #4A9FE1 0%, #3191DD 50%, #238ADB 100%);
+  color: #fff;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 6px;
+  font-weight: 700;
+  line-height: 1.2;
+  top: 2px;
+  padding: 0 6px;
+  margin-right: -5px;
+  font-size: 32px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+  }
+
+  &-spacer {
+    display: block;
+    visibility: hidden;
+
+    &:before {
+      content: '8';
+      display: block;
+    }
+  }
+
+  &-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    @media screen and (min-width: 768px) {
+      margin-top: -2px;
+    }
+  }
+
+  & + .odometer-static {
+    border-left: 1px solid #1A3474;
+    border-radius: 0;
+  }
+
+  &:first-child {
+    border-radius: 6px 0 0 6px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}

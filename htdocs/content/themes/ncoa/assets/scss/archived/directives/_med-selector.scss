@@ -3,12 +3,12 @@
 	padding-top:20px;
 
 	@media (min-width: $screen-sm-min){
-		padding-top:50px;	
+		padding-top:50px;
 	}
 }
 
 .ms-selection{
-	
+
 	@media (min-width: $screen-sm-min){
 		width: 45%;
 		margin-left: 10%;
@@ -18,7 +18,7 @@
 
 	@media (min-width: 1210px){
 		.ms-list{
-			margin-top: 32px;
+			// margin-top: 32px;
 		}
 	}
 }
@@ -27,7 +27,7 @@
 	@media (min-width: $screen-sm-min){
 		&:after{
 			content: '';
-			width: 2px; 
+			width: 2px;
 			height: 98%;
 			position: absolute;
 			top: 0;
@@ -78,7 +78,7 @@
 	}
 
 	.h4{
-		font-weight: 700;		
+		font-weight: 700;
 	}
 
 
@@ -86,5 +86,5 @@
 		width: 45%;
 		height: 470px;
 	}
-	
+
 }

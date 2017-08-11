@@ -1080,6 +1080,18 @@ app.directive('slideDown',[function(){
     }
 }]);
 
+app.directive('slideDownAll',[function(){
+    return {
+        link: function(scope, elm){
+
+            $(elm).children('.program-header').click(function(){
+                $(elm).find('.programs-container').slideToggle();
+                $(elm).toggleClass('active');
+            });
+        }
+    }
+}]);
+
 app.factory('questionTemplates',[function() {
 
     var directivePath = "/content/themes/ncoa/resources/views/directives/question/";

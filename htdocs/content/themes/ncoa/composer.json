@@ -15,7 +15,8 @@
         "php": ">=5.4",
         "composer/installers" : "~1.0",
         "dompdf/dompdf": "^0.7.0",
-        "nategood/httpful": "*"
+        "nategood/httpful": "*",
+        "tecnickcom/tcpdf": "^6.2"
     },
     "require-dev":{
         "php": ">=5.4"

@@ -1,7 +1,22 @@
 <?php
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
+/**
+ * Class BCUPDF
+ *
+ * Custom footer.
+ */
+class BCUPDF extends TCPDF {
+    // Page footer
+    public function Footer() {
+        // Position at 15 mm from bottom
+        $this->SetY(-15);
+        // Set font
+        $this->SetFont('helvetica', 'I', 8);
+        // Page number
+        $this->Cell(0, 10, 'Your BenefitsCheckUp Report', 0, false, 'L', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
+    }
+}
 
 class FactSheetsController extends BaseController
 {
@@ -12,41 +27,98 @@ class FactSheetsController extends BaseController
      */
     public function index($post, $query)
     {
-        $retVal = "";
+        $options = array(
+            'page_break' => (!empty($_REQUEST['page_break'])) ? true : false,
+            'info_included' => (!empty($_REQUEST['info_included'])) ? $_REQUEST['info_included'] : 'programs_contact',
+        );
 
-        if (isset($_REQUEST['pdf'])) {
-            $retVal = View::make("templates.print-fact-sheet-cover-page", [])->render();
+        if (isset($_REQUEST['pdf']) && isset($_REQUEST['programs'])) {
+            return $this->generate_pdf($post, $query, $options);
         }
+        else {
+            return $this->render_page($query->query["name"], $post, $options);
+        }
+    }
 
-        $retVal = $retVal.$this->render_page($query->query["name"], $post, isset($_REQUEST['pdf']));
+    public function generate_pdf($post, $query, $options) {
+        $pdf = new BCUPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-        if (array_key_exists('slugs', $_REQUEST)) {
-            $slugs = explode(";",$_REQUEST['slugs']);
+        // set defaults
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('BenefitsCheckUp');
+        $pdf->SetTitle('BenefitsCheckUp Report');
+        $pdf->setPrintHeader(false);
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        $pdf->SetFont('helvetica', '', 13);
 
-            foreach($slugs as $slug) {
-                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $slug]);
-                $retVal = $retVal.$this->render_page("factsheet_".$slug, $post,true);
+        // cover page
+        $toc_page_number = 2;
+        $pdf->AddPage();
+        $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
+        $pdf->writeHTML($cover, true, false, true, false, '');
+
+//        // initial fact sheet
+//        $pdf->AddPage();
+//        $post_title = html_entity_decode($post->post_title);
+//        $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
+//        $html = $this->render_page($post->post_name, $post, $options);
+//        $pdf->writeHTML($html, true, false, true, false, '');
+
+        // programs
+        if (!empty($_REQUEST['programs'])) {
+            if ($options['info_included'] != 'cover_toc') {
+                $pdf->AddPage();
+            }
+
+            foreach($_REQUEST['programs'] as $program) {
+                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => 'factsheet_' . $program]);
+                $posts = $query->get_posts();
+
+                if (!empty($posts[0])) {
+                    $last = false;
+                    if ($program === end($_REQUEST['programs'])) {
+                        $last = true;
+                    }
+
+                    $post_title = html_entity_decode($posts[0]->post_title);
+                    $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
+                    $html = $this->render_page('factsheet_' . $program, $post, $options, $last);
+                    if ($options['info_included'] != 'cover_toc') {
+                        $pdf->writeHTML($html, true, false, true, false, '');
+                    }
+                    if ($program !== end($_REQUEST['programs'])) {
+                        if ($options['page_break'] && 
+                            ($options['info_included'] != 'cover_toc')) {
+                            $pdf->AddPage();
+                        }
+                    }
+                }
+                else {
+                    continue;
+                }
             }
         }
 
-        if (isset($_REQUEST['pdf'])) {
-            // instantiate and use the dompdf class
-            $options = new Options();
-            $options->set('isRemoteEnabled', TRUE);
-            $options->set('compress',1);
-            $options->set('isPhpEnabled', TRUE);
-            $dompdf = new Dompdf($options);
-            $dompdf->loadHtml($retVal);
-            // Render the HTML as PDF
-            $dompdf->render();
 
-            // Output the generated PDF to Browser
-            $dompdf->stream('BenefitsCheckUp Report');
-        }
-        else {
-            return $retVal;
-        }
+        // TOC page
+        $pdf->addTOCPage();
+        $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
+        $pdf->Ln();
 
+        $bookmark_templates = array();
+        $bookmark_templates[0] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="155mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:12pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+        $bookmark_templates[1] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="5mm">&nbsp;</td><td width="150mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:11pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+        $bookmark_templates[2] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="10mm">&nbsp;</td><td width="145mm"><span style="color:#1F3D7D;font-weight:bold;"><i>#TOC_DESCRIPTION#</i></span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:10pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+
+        $pdf->addHTMLTOC($toc_page_number, 'Table of Contents', $bookmark_templates, true, 'B', array(128,0,0));
+        $pdf->endTOCPage();
+
+        $pdf->Output('BenefitsCheckUp Report.pdf', 'I');
     }
 
     public function feed_america_soap($zipcode) {
@@ -98,7 +170,7 @@ class FactSheetsController extends BaseController
         return $feed_america_response;
     }
 
-    public function render_page($fact_sheet_slug, $post, $on_new_page = false) {
+    public function render_page($fact_sheet_slug, $post, $options, $last = false) {
         $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $fact_sheet_slug]);
         $posts = $query->get_posts();
         $post_id = !empty($posts[0]->ID) ? $posts[0]->ID : Loop::id();
@@ -110,7 +182,7 @@ class FactSheetsController extends BaseController
             $feeding_america_office = $this->feed_america_soap($zipcode);
         }
 
-        $post_content = $post->post_content;
+        $post_content = (!empty($posts[0]->post_content)) ? $posts[0]->post_content : $post->content;
 
         // Detect if SNAP or PAP page
         $is_snap = (strstr($_SERVER['REQUEST_URI'], '_snap_')) ? true : false;
@@ -329,6 +401,33 @@ class FactSheetsController extends BaseController
             $layout = "layouts.main";
         }
 
+        switch ($options['info_included']) {
+            case 'cover_toc':
+                $faq = false;
+                $program_desc = false;
+                $locations = false;
+                break;
+            case 'full': 
+                $faq = true;
+                $program_desc = true;
+                $locations = true;
+                break;
+            case 'programs_contact':
+                $faq = false;
+                $program_desc = true;
+                $locations = true;
+                break;
+            case 'programs':
+                $faq = false;
+                $program_desc = true;
+                $locations = false;
+                break;
+            default:
+                $faq = false;
+                $program_desc = true;
+                $locations = true;
+        }
+
         if (array_key_exists('short',$_REQUEST)) {
 
             $template = 'templates.short-fact-sheets';
@@ -338,7 +437,6 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
-                'on_new_page' => $on_new_page,
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
@@ -351,6 +449,11 @@ class FactSheetsController extends BaseController
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
+                'last' => $last,
+                'opt_program_desc' => $program_desc,
+                'opt_faq' => $faq,
+                'opt_locations' => $locations,
+                'opt_page_break' => $options['page_break'],
             ])->render();
 
         } else {
@@ -382,7 +485,6 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
-                'on_new_page' => $on_new_page,
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,
@@ -399,6 +501,11 @@ class FactSheetsController extends BaseController
                 'elegible' => $elegible,
                 'key_benefits_program' => $key_benefits_program,
                 'post_content' => $post_content,
+                'last' => $last,
+                'opt_program_desc' => $program_desc,
+                'opt_faq' => $faq,
+                'opt_locations' => $locations,
+                'opt_page_break' => $options['page_break'],
             ])->render();
         }
     }
