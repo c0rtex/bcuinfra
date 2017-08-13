@@ -4,7 +4,8 @@
     <div class="card-nested">
       <button class="btn btn-link btn-back btn-no-padding" ng-click="switchPage()">Back to Your Results</button>
       <h2 class="page-header">Print Your Benefit Report</h2>
-      <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">View and Print Your Benefit Report</button>
+      <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary hidden-md hidden-lg">View and Print Your Benefit Report</button>
+      <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary hidden-xs hidden-sm">Download Your Benefit Report</button>
       <br/><br/>
       
       <h2>Select Programs to Print in Your Benefits Report</h2>
@@ -83,7 +84,8 @@
             </div><!--/.advanced-print-options-categories-->
           </div><!--/.accordian-content-->
         </div><!--/.advanced-print-options-->
-        <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary">View and Print Your Benefit Report</button>
+        <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary hidden-xs hidden-sm">View and Print Your Benefit Report</button>
+        <button ng-disabled="!isProgramSelected()" ng-click="generateReport()" class="btn btn-primary hidden-md hidden-lg">Download Your Benefit Report</button>
       </div><!--/.benefits-print-options-->
       
     </div><!--/.card-nested-->
