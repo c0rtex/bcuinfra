@@ -93,6 +93,9 @@
                     <div class="results-options">
                         <span class="fact-sheets-side-header">Quick Links</span>
                         <br />
+                        <?php
+                          if (strpos($programUrl,'http') !== 0) $programUrl = '//'.$programUrl;
+                        ?>
                         <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                           <span style="white-space: pre-line">Program Website</span>
                         </a>
