@@ -798,13 +798,13 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
             });
 
 
-            scope.$root.answers[scope.category][scope.self_code+scope.code] = 0;
+            if (!scope.$root.answers[scope.category][scope.self_code+scope.code]) scope.$root.answers[scope.category][scope.self_code+scope.code] = 0;
 
-            scope.$root.answers[scope.category][scope.spouse_code+scope.code] = 0;
+            if (!scope.$root.answers[scope.category][scope.spouse_code+scope.code]) scope.$root.answers[scope.category][scope.spouse_code+scope.code] = 0;
 
-            scope.$root.answers[scope.category][scope.joint_code+scope.code] = 0;
+            if (!scope.$root.answers[scope.category][scope.joint_code+scope.code]) scope.$root.answers[scope.category][scope.joint_code+scope.code] = 0;
 
-            scope.$root.answers[scope.category][scope.household_code+scope.code+'_simple'] = 0;
+            if (!scope.$root.answers[scope.category][scope.household_code+scope.code+'_simple']) scope.$root.answers[scope.category][scope.household_code+scope.code+'_simple'] = 0;
 
         }
     }
@@ -833,7 +833,7 @@ app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
             var drugs = Drugs.getDrugs();
 
             for(var i=0; i<drugs.length; i++) {
-                var option = $("<option/>",{value:drugs[i].code, text:drugs[i].display});
+                var option = $("<option/>",{value:drugs[i].code, text:drugs[i].display, selected:scope.$root.answers[scope.category][drugs[i].code]});
                 option.appendTo($("#multiselect"));
             }
 
@@ -2078,9 +2078,9 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
             $scope.showLoader = false;
             localStorageService.remove("screening");
-            for (var key in $scope.$root.answers) {
-                if (key != 'prescreen') $scope.$root.answers[key] = {};
-            }
+            //for (var key in $scope.$root.answers) {
+            //    if (key != 'prescreen') $scope.$root.answers[key] = {};
+            //}
             $state.go('questionnaire.initial-results');
         });
     }
