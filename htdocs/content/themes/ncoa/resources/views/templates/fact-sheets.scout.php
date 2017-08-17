@@ -326,7 +326,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         @if (!empty($programUrl))
                         </br>
                         <?php
-                        if (strpos($programUrl,'http') !== 0) $programUrl = '//'.$programUrl;
+                        if (strpos($programUrl,'http') !== 0) $programUrl = 'http://'.$programUrl;
                         ?>
                         <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
                           <span style="white-space: pre-line">Program Website</span>
