@@ -12,124 +12,23 @@
 				<div class="container">
 					<div class="row">
 
-						<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+						<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-8 col-md-offset-2 ">
 							<h1>{{ $headline }}</h1>
 							<form ng-submit="findZip(zipcode)" ng-controller="zipCodeController">
 							<div class="zip-code form-inline">
-								<input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-								<button ng-click="findZip(zipcode)" class="btn btn-primary">Get Started</button>
+								<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+								<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
 								<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 							</div>
 							</form>
 						</div>
 
-            <div class="testimonial-carousel col-xs-12 col-sm-12 col-md-6 col-lg-6 hide" testimonial-carousel>
-              @foreach($testimonials as $key => $value)
-                <figure class="testimonial col-xs-12">
-                  {{
-                    wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
-                    array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
-                  }}
-
-                    <figcaption>
-                      @if($key == 1)
-                        <h4>Caroline, Chicago, IL</h4>
-                      @elseif($key == 2)
-                        <h4>Greg, Charleston, SC</h4>
-                      @else
-                        <h4>Sharell, Phoenix, AZ</h4>
-                      @endif
-                      <p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
-                      <span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
-                    </figcaption>
-                </figure>
-              @endforeach
-            </div>
-
-
 					</div>
 				</div>
 			</section>
 
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="home-benefit-counter col-xs-12">
-              <div class="results-tally">
-
-                <span class="ng-scope"">Join the </span>
-                <span class="odometer-wrapper">
-
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">5</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                  <span class="odometer-puncuation">,</span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">7</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">1</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">0</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                  <span class="odometer-puncuation">,</span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">5</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">7</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">8</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-
-                </span><!--/.odometer-wrapper-->
-
-                <span class="ng-scope"> people who have discovered </span>
-
-                <span class="odometer-wrapper">
-                  <span class="odometer-puncuation"><strong>$</strong></span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">1</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">9</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                  <span class="odometer-puncuation"><strong>.</strong></span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">1</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                </span><!--/.odometer-wrapper-->
-
-                <span>billion in benefits</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 			<!-- Testimonial -->
-			<!-- <section class="testimonials">
+			<section class="testimonials">
 				<div class="container container-large">
 					<div class="row">
 						@foreach($testimonials as $key => $value)
@@ -146,7 +45,7 @@
 						@endforeach
 					</div>
 				</div>
-			</section> -->
+			</section>
 
 			<!-- Benefits Slider -->
 			<section class="container">
@@ -182,16 +81,16 @@
 					</div>
 				</div>
 			</section>
-
+ 
 			<!-- Find My Benefits -->
-			<section class="cta-full blue-background">
+			<section class="cta-full blue-gradient-background">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
-							<h5>Find out what benefits may be available in your area.</h5>
+							<h5>Find My Benefits</h5>
 							<div class="zip-code form-inline" ng-controller="zipCodeController">
-								<input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-								<button ng-click="findZip(zipcode)" class="btn btn-primary">Get Started</button>
+								<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+								<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
 								<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 							</div>
 						</div>
