@@ -4,7 +4,7 @@
         <div class="checkbox-stacked">
             <div class="checkbox" ng-repeat="asset in question.answer_fields">
                 <input type="checkbox" name="{{asset.code}}" id="income-cb-{{asset.code}}" ng-model="answer_checked">
-                <label for="income-cb-{{asset.code}}"><span></span><ng-label text="{{asset.display | removeNbsp}}"></ng-label></label>
+                <label for="income-cb-{{asset.code}}"><span></span><ng-label text="{{asset.display | removeNbsp}}"></ng-label>. <b>{{total==undefined ? ' Total: $0' : ' Total: $'+total}}</b></label>
                 <grid answer-field="asset" ng-show="answer_checked" class="sales-grid" request="finances-assets-grid" code="{{asset.code}}" type="2" description="{{asset.description}}"></grid>
             </div>
         </div>
