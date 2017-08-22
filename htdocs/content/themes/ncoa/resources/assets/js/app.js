@@ -752,11 +752,6 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                         }
                     }
 
-                    var subTotal = scope.$root.answers[scope.category][scope.self_code+scope.code] + scope.$root.answers[scope.category][scope.spouse_code+scope.code] + scope.$root.answers[scope.category][scope.household_code+scope.code+'_simple'] + 0;
-
-                    scope.$parent.total = subTotal;
-                    scope.$parent.answer_checked = scope.$parent.answer_checked || subTotal>0;
-
                 }
                 scope.$root.answers[scope.category][code+"total_earned"+suffix] = scope.$root.answers[scope.category][code+"total_complete"+suffix] - scope.$root.answers[scope.category][code+"total_unearned"+suffix];
 
@@ -1012,12 +1007,6 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                     }
 
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
-
-                    for (var key in request.answers) {
-                        if (!request.answers[key]) {
-                            delete request.answers[key];
-                        }
-                    }
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
