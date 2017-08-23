@@ -7,7 +7,11 @@
   .btn {
     padding: 10px 15px;
     font-size: 16px;
-    line-height: 1px; // hack to align text - going to revisit
+    line-height: 1;
+
+    @media (max-device-width: 480px) {
+      padding: 14px !important; // fighting some specific css elsewhere
+    }
   }
 }
 
