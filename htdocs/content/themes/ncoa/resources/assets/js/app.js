@@ -1012,7 +1012,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
                     for (var key in request.answers) {
-                        if (!request.answers[key]) {
+                        if (request.answers[key] === false) {
                             delete request.answers[key];
                         }
                     }
