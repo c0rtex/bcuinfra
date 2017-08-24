@@ -373,7 +373,7 @@ function checkFields(pcounter) {
                                                 ,display_name
                                                 ,active_flag)
                                             VALUES
-                                                (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#)
+                                                (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#);
                                           	SELECT LAST_INSERT_ID() as newHDid
 
                                         </cfquery>
