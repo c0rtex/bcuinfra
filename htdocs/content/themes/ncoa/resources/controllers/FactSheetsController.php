@@ -32,15 +32,25 @@ class FactSheetsController extends BaseController
             'info_included' => (!empty($_REQUEST['info_included'])) ? $_REQUEST['info_included'] : 'programs_contact',
         );
 
-        if (isset($_REQUEST['pdf']) && isset($_REQUEST['programs'])) {
-            return $this->generate_pdf($post, $query, $options);
+        if (isset($_REQUEST['pdf'])) {
+            if (!isset($_REQUEST['programs'])) {
+                $_REQUEST['programs'] = array();
+                $_REQUEST['programs'][] = $query->query['name'];
+            }
+
+            $cover_toc = true;
+            if (isset($_REQUEST['download']) || isset($_REQUEST['print'])) {
+                $cover_toc = false;
+            }
+
+            return $this->generate_pdf($post, $query, $cover_toc, $options);
         }
         else {
             return $this->render_page($query->query["name"], $post, $options);
         }
     }
 
-    public function generate_pdf($post, $query, $options) {
+    public function generate_pdf($post, $query, $cover_toc, $options) {
         $pdf = new BCUPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
         // set defaults
@@ -57,10 +67,12 @@ class FactSheetsController extends BaseController
         $pdf->SetFont('helvetica', '', 13);
 
         // cover page
-        $toc_page_number = 2;
-        $pdf->AddPage();
-        $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
-        $pdf->writeHTML($cover, true, false, true, false, '');
+        if ($cover_toc) {
+            $toc_page_number = 2;
+            $pdf->AddPage();
+            $cover = View::make("templates.print-fact-sheet-cover-page", [])->render();
+            $pdf->writeHTML($cover, true, false, true, false, '');
+        }
 
 //        // initial fact sheet
 //        $pdf->AddPage();
@@ -71,12 +83,15 @@ class FactSheetsController extends BaseController
 
         // programs
         if (!empty($_REQUEST['programs'])) {
-            if ($options['info_included'] != 'cover_toc') {
+            if ($options['info_included'] != 'cover_toc' || $cover_toc) {
                 $pdf->AddPage();
             }
 
             foreach($_REQUEST['programs'] as $program) {
-                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => 'factsheet_' . $program]);
+                if (strpos($program, 'factsheet_') === false) {
+                    $program = 'factsheet_' . $program;
+                }
+                $query = new WP_Query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $program]);
                 $posts = $query->get_posts();
 
                 if (!empty($posts[0])) {
@@ -87,7 +102,7 @@ class FactSheetsController extends BaseController
 
                     $post_title = html_entity_decode($posts[0]->post_title);
                     $pdf->Bookmark($post_title, 0, 0, '', 'B', array(0,64,128));
-                    $html = $this->render_page('factsheet_' . $program, $post, $options, $last);
+                    $html = $this->render_page($program, $post, $options, $last);
                     if ($options['info_included'] != 'cover_toc') {
                         $pdf->writeHTML($html, true, false, true, false, '');
                     }
@@ -106,19 +121,26 @@ class FactSheetsController extends BaseController
 
 
         // TOC page
-        $pdf->addTOCPage();
-        $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
-        $pdf->Ln();
+        if ($cover_toc) {
+            $pdf->addTOCPage();
+            $pdf->writeHTMLCell(0, 0, '', '', '<h1 style="text-align: center">Table of Contents</h1>', 0, 1, 0, true, '', true);
+            $pdf->Ln();
 
-        $bookmark_templates = array();
-        $bookmark_templates[0] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="155mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:12pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
-        $bookmark_templates[1] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="5mm">&nbsp;</td><td width="150mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:11pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
-        $bookmark_templates[2] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="10mm">&nbsp;</td><td width="145mm"><span style="color:#1F3D7D;font-weight:bold;"><i>#TOC_DESCRIPTION#</i></span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:10pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+            $bookmark_templates = array();
+            $bookmark_templates[0] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="155mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:12pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+            $bookmark_templates[1] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="5mm">&nbsp;</td><td width="150mm"><span style="color:#1F3D7D;font-weight:bold;">#TOC_DESCRIPTION#</span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:11pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
+            $bookmark_templates[2] = '<table border="0" cellpadding="0" cellspacing="0"><tr><td width="10mm">&nbsp;</td><td width="145mm"><span style="color:#1F3D7D;font-weight:bold;"><i>#TOC_DESCRIPTION#</i></span></td><td width="25mm"><span style="font-family:courier;font-weight:bold;font-size:10pt;color:#1F3D7D;" align="right">#TOC_PAGE_NUMBER#</span></td></tr></table>';
 
-        $pdf->addHTMLTOC($toc_page_number, 'Table of Contents', $bookmark_templates, true, 'B', array(128,0,0));
-        $pdf->endTOCPage();
+            $pdf->addHTMLTOC($toc_page_number, 'Table of Contents', $bookmark_templates, true, 'B', array(128,0,0));
+            $pdf->endTOCPage();
+        }
 
-        $pdf->Output('BenefitsCheckUp Report.pdf', 'I');
+        if (isset($_REQUEST['download'])) {
+            $pdf->Output('BenefitsCheckUp Report.pdf', 'D');
+        }
+        else {
+            $pdf->Output('BenefitsCheckUp Report.pdf', 'I');
+        }
     }
 
     public function feed_america_soap($zipcode) {
