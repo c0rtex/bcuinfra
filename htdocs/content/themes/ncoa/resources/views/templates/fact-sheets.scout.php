@@ -48,7 +48,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&pdf=y" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&pdf=y&download=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
