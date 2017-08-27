@@ -70,7 +70,7 @@
                     <div class="visible-xs hidden-lg hidden-md hidden-sm">
 
                         <div class="col-xs-12 text-center sign-up-enews">
-                            <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
+                            <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for News</a>
                         </div>
                     </div>
                     @endif
