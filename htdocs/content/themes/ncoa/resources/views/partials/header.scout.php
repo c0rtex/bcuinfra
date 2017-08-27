@@ -24,7 +24,7 @@
 
             @if(Option::get('global-settings', 'showHeaderCTA') == '0')
             <div class="pull-right header-cta-ncoaLogo hidden-xs">
-                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
+                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for News</a>
 
                 <span><a tabindex="3" href="http://www.ncoa.org"><img width="150px" src="{{themosis_assets()}}/images/ncoa-logo.png" class="ncoaLogo" alt="National Council on Aging" title="National Council on Aging" /></a></span>
             </div>
@@ -74,7 +74,7 @@
             </div>
 
             <div class="col-xs-12 text-center sign-up-enews">
-                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
+                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for News</a>
             </div>
         </div>
         @endif
