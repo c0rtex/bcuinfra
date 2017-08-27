@@ -506,6 +506,12 @@ class FactSheetsController extends BaseController
                 $template = 'templates.print-fact-sheets';
             }
 
+            // Always include FAQ and Locations in Print version
+            if (isset($_REQUEST['print'])) {
+                $faq = true;
+                $locations = true;
+            }
+
             return View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
