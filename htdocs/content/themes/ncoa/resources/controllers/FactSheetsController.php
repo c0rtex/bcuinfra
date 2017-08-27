@@ -507,7 +507,7 @@ class FactSheetsController extends BaseController
             }
 
             // Always include FAQ and Locations in Print version
-            if (isset($_REQUEST['print'])) {
+            if (isset($_REQUEST['print']) || isset($_REQUEST['download'])) {
                 $faq = true;
                 $locations = true;
             }
