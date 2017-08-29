@@ -512,6 +512,10 @@ class FactSheetsController extends BaseController
                 $locations = true;
             }
 
+            if ($is_feeding_america && $options['info_included'] == 'programs_contact') {
+                $faq = true;
+            }
+
             return View::make($template, [
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
