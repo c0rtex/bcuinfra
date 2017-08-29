@@ -450,7 +450,7 @@ class FactSheetsController extends BaseController
                 $locations = true;
         }
 
-        if (array_key_exists('short',$_REQUEST)) {
+        if (array_key_exists('short',$_REQUEST) && !array_key_exists('download',$_REQUEST)) {
 
             $template = 'templates.short-fact-sheets';
 
@@ -514,6 +514,12 @@ class FactSheetsController extends BaseController
 
             if ($is_feeding_america && $options['info_included'] == 'programs_contact') {
                 $faq = true;
+            }
+
+            // If it is a short PDF version, remove FAQ and Locations.
+            if (array_key_exists('short',$_REQUEST) && array_key_exists('download',$_REQUEST)) {
+                $faq = false;
+                $locations = false;
             }
 
             return View::make($template, [
