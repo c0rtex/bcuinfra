@@ -9,6 +9,9 @@ class BaseController extends Controller
      */
     protected function setupLayout()
     {
+        // Ensure global assets are added.
+        $this->registerGlobalAssets();
+
         if (!is_null($this->layout))
         {
             $this->layout = Pronto::make($this->layout);
@@ -17,8 +20,6 @@ class BaseController extends Controller
         // Register a new body class.
         add_filter('body_class', array($this, 'bodyClass'));
 
-        // Ensure global assets are added.
-        $this->registerGlobalAssets();
     }
 
     /**
@@ -44,6 +45,8 @@ class BaseController extends Controller
      */
     protected function registerGlobalAssets()
     {
+        //setcookie('partner_id',0,time()+7200,'/');
+        //$_COOKIE['partner_id'] = 0;
         // Asset::add('styles', 'css/main.css', false, false, 'all');
         // Asset::add('ncoa-libs', 'js/libs.js', false, false, true);
         // Asset::add('ncoa-main', 'js/app.js', array('ncoa-libs'), false, true);

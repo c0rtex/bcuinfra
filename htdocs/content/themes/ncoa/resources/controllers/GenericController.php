@@ -9,7 +9,16 @@ class GenericController extends BaseController
    */
   public function index()
   {
-    return View::make('templates.generic'); 
+    return View::make('templates.generic',[
+        'loggedin' => true,
+        'medicarerx' => true,
+        'nutrition' => true,
+        'home' => true,
+        'partnerlogin' => true,
+        'grantees' => true,
+        'resources' => true,
+        'home6' => true
+    ]);
   }
 
 }

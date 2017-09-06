@@ -26,6 +26,253 @@
 
 <!--<span data-toggle="modal" data-target="#details-modal" class="btn-link view-details" ng-show="showOptions">View all details <strong>&gt;</strong></span>-->
 
+<div class="modal fade" id="print-modal" tabindex="-1" role="dialog" aria-labelledby="print-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title modal-h1" id="print-label">
+          Print My Results
+        </h1>
+      </div>
+      <div class="modal-body">
+        <div class="modal-tagline">
+          <p>Select up to 10 benefit program fact sheets at a time that you would like to download and print.</p>
+          <p><span id="print-modal-select-all" class="modal-inline bold" ng-click="selectAll()">Select All</span> /
+            <span id="print-modal-deselect-all" class="modal-inline bold" ng-click="deselectAll()">Deselect All</span></p>
+        </div>
+
+        <div id="modalError" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Print Report</h3>
+              </div>
+              <div class="modal-body">
+                <p ng-if="noSlugs">Please select at least one program fact sheet to print.</p>
+                <p ng-if="limitReached">Select up to 10 programs at a time to download and print.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeErrorModal()">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <section class="form-group checkbox-stacked program-list-print">
+          <div class="category" ng-repeat="found_program in found_programs | orderBy:'sort'" ng-if="found_program.programs.length > 0">
+            <h3>{{found_program.name}}</h3>
+            <div class="checkbox" ng-repeat="program in found_program.programs">
+              <input type="checkbox" ng-click="generatePrintUrl(true)" ng-model="slugs[program.code]" name="{{program.code}}" id="{{program.code}}">
+              <label for="{{program.code}}"><span></span><ng-label text="{{program.name_display}}"></ng-label></label>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link btn-underline pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" ng-click="printReport()" class="btn btn-primary pull-right">Download and Print Report</button>
+        <div class="clear-fix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="save-modal" tabindex="-1" role="dialog" aria-labelledby="save-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title modal-h1" id="save-label">
+          Save My Results
+          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </h1>
+      </div>
+      <div class="modal-body">
+        <div class="modal-tagline">
+          Select which Benefit Program Fact Sheets you would like to print. <span id="save-modal-select-all" class="modal-inline bold">Select All</span>
+        </div>
+        <section class="form-group checkbox-stacked">
+          <div class="checkbox">
+            <input type="checkbox" value="1" id="save-modal-cb-1" name="save-modal-cb-1">
+            <label for="save-modal-cb-1"><span></span>Medicare</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="2" id="save-modal-cb-2" name="save-modal-cb-2">
+            <label for="save-modal-cb-2"><span></span>Medicare Prescription Drug Plan (Part D)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="3" id="save-modal-cb-3" name="save-modal-cb-3">
+            <label for="save-modal-cb-3"><span></span>Extra Help / LIS through Medicare Prescription Drug Coverage</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="4" id="save-modal-cb-4" name="save-modal-cb-4">
+            <label for="save-modal-cb-4"><span></span>Medicaid</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="5" id="save-modal-cb-5" name="save-modal-cb-5">
+            <label for="save-modal-cb-5"><span></span>Medicare Savings Programs (QMB, SLMB, or QI)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="6" id="save-modal-cb-6" name="save-modal-cb-6">
+            <label for="save-modal-cb-6"><span></span>Supplemental Nutrition Assistance Program (SNAP)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="7" id="save-modal-cb-7" name="save-modal-cb-7">
+            <label for="save-modal-cb-7"><span></span>Supplemental Security Income (SSI)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="8" id="save-modal-cb-8" name="save-modal-cb-8">
+            <label for="save-modal-cb-8"><span></span>TRICARE</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="9" id="save-modal-cb-9" name="save-modal-cb-9">
+            <label for="save-modal-cb-9"><span></span>Veteran's Health Care Benefits</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="10" id="save-modal-cb-10" name="save-modal-cb-10">
+            <label for="save-modal-cb-10"><span></span>Low Income Home Energy Assistance Program (LIHEAP)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="11" id="save-modal-cb-11" name="save-modal-cb-11">
+            <label for="save-modal-cb-11"><span></span>Public Housing</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="12" id="save-modal-cb-12" name="save-modal-cb-12">
+            <label for="save-modal-cb-12"><span></span>Housing Choice Vouchers (Section 8)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="13" id="save-modal-cb-13" name="save-modal-cb-13">
+            <label for="save-modal-cb-13"><span></span>Senior Community Service Employment Program (SCSEP)</label>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link btn-underline pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary pull-right">Save Results</button>
+        <div class="clear-fix"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#save-modal-select-all').click(function () {
+              if ($('#save-modal-select-all').text() == 'Select All') {
+                  $('#save-modal input').each(function () {
+                      $(this).prop('checked', true);
+                  });
+                  $('#save-modal-select-all').text('Deselect All');
+              } else {
+                  $('#save-modal input').each(function () {
+                      $(this).prop('checked', false);
+                      $(this).removeProp('checked');
+                  });
+                  $('#save-modal-select-all').text('Select All');
+              }
+          });
+      });
+  </script>
+</div>
+
+<div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="email-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title modal-h1" id="email-label">
+          Email My Results
+          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </h1>
+      </div>
+      <div class="modal-body">
+        <div class="modal-tagline">
+          Select which Benefit Program Fact Sheets you would like to print. <span id="email-modal-select-all" class="modal-inline bold">Select All</span>
+        </div>
+        <section class="form-group checkbox-stacked">
+          <div class="checkbox">
+            <input type="checkbox" value="1" name="email-modal-cb-1" id="email-modal-cb-1">
+            <label for="email-modal-cb-1"><span></span>Medicare</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="2" name="email-modal-cb-2" id="email-modal-cb-2">
+            <label for="email-modal-cb-2"><span></span>Medicare Prescription Drug Plan (Part D)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="3" name="email-modal-cb-3" id="email-modal-cb-3">
+            <label for="email-modal-cb-3"><span></span>Extra Help / LIS through Medicare Prescription Drug Coverage</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="4" name="email-modal-cb-4" id="email-modal-cb-4">
+            <label for="email-modal-cb-4"><span></span>Medicaid</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="5" name="email-modal-cb-5" id="email-modal-cb-5">
+            <label for="email-modal-cb-5"><span></span>Medicare Savings Programs (QMB, SLMB, or QI)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="6" name="email-modal-cb-6" id="email-modal-cb-6">
+            <label for="email-modal-cb-6"><span></span>Supplemental Nutrition Assistance Program (SNAP)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="7" name="email-modal-cb-7" id="email-modal-cb-7">
+            <label for="email-modal-cb-7"><span></span>Supplemental Security Income (SSI)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="8" name="email-modal-cb-8" id="email-modal-cb-8">
+            <label for="email-modal-cb-8"><span></span>TRICARE</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="9" name="email-modal-cb-9" id="email-modal-cb-9">
+            <label for="email-modal-cb-9"><span></span>Veteran's Health Care Benefits</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="10" name="email-modal-cb-10" id="email-modal-cb-10">
+            <label for="email-modal-cb-10"><span></span>Low Income Home Energy Assistance Program (LIHEAP)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="11" name="email-modal-cb-11" id="email-modal-cb-11">
+            <label for="email-modal-cb-11"><span></span>Public Housing</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="12" name="email-modal-cb-12" id="email-modal-cb-12">
+            <label for="email-modal-cb-12"><span></span>Housing Choice Vouchers (Section 8)</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="13" name="email-modal-cb-13" id="email-modal-cb-13">
+            <label for="email-modal-cb-13"><span></span>Senior Community Service Employment Program (SCSEP)</label>
+          </div>
+        </section>
+        <div class="form-group">
+          <label for="email-address">Email address</label>
+          <input type="email" class="form-control" id="email-address" placeholder="example@email.com">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link btn-underline pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary pull-right">Continue</button>
+        <div class="clear-fix"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#email-modal-select-all').click(function () {
+              if ($('#email-modal-select-all').text() == 'Select All') {
+                  $('#email-modal input').each(function () {
+                      $(this).prop('checked', true);
+                  });
+                  $('#email-modal-select-all').text('Deselect All');
+              } else {
+                  $('#email-modal input').each(function () {
+                      $(this).prop('checked', false);
+                      $(this).removeProp('checked');
+                  });
+                  $('#email-modal-select-all').text('Select All');
+              }
+          });
+      });
+  </script>
+</div>
+
 <div class="modal fade" id="details-modal" tabindex="-1" role="dialog" aria-labelledby="details-label">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

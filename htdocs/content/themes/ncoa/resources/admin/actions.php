@@ -7,3 +7,5 @@
  * https://developer.wordpress.org/reference/hooks/
  *
  */
+
+Action::add('init','PrivateLabelSession');

@@ -14,7 +14,16 @@ class StyleGuideController extends BaseController
 	 */
 	public function index()
 	{
-		return View::make('pages.styleguide');
+		return View::make('pages.styleguide',[
+			'loggedin' => true,
+			'medicarerx' => true,
+			'nutrition' => true,
+			'home' => true,
+			'partnerlogin' => true,
+			'grantees' => true,
+			'resources' => true,
+			'home6' => true,
+		]);
 	}
 
 }

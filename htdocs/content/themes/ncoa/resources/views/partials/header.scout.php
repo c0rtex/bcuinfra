@@ -12,25 +12,17 @@
                         ))
                     }}
                 </a>
-                @if(Option::get('global-settings', 'whitelabel') == '0')
-                <a href="#" class="whitelabel-logo">
-                    {{
-                        wp_get_attachment_image(Option::get('global-settings', 'whitelabel-logo'), 'full', false,
-                        array('title' => get_the_title(Option::get('global-settings', 'whitelabel-logo'))))
-                    }}
-                </a>
-                @endif
-                <span class="header-logo-ncoa hidden-xs hidden-sm">
-                    <img src="/content/themes/ncoa/resources/assets/images/ncoa_logo_1x.png" srcset="/content/themes/ncoa/resources/assets/images/ncoa_logo_2x.png 2x" alt="National Council on Aging" title="National Council on Aging" >
+                <span class="header-logo-two hidden-xs hidden-sm">
+                    <span class="header-ncoa-logo">
+                        <img src="/content/themes/ncoa/resources/assets/images/ncoa_logo_1x.png" srcset="/content/themes/ncoa/resources/assets/images/ncoa_logo_2x.png 2x" alt="National Council on Aging" title="National Council on Aging" >
+                    </span>
                 </span>
 
             </span>
 
             @if(Option::get('global-settings', 'showHeaderCTA') == '0')
             <div class="pull-right header-email-cta hidden-xs">
-                <input class="form-control" type="email" name="" value="" placeholder="Email Address">
                 <button type="submit" tabindex="2" class="btn btn-purple">Sign Up for News</button>
-
             </div>
             @endif
         </div>

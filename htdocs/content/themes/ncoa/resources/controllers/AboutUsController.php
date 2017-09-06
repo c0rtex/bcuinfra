@@ -16,7 +16,15 @@ class AboutUsController extends BaseController
     
 
     return View::make('pages.aboutus',[
-    	'heroImage' => $heroImage,
+        'loggedin' => true,
+        'medicarerx' => true,
+        'nutrition' => true,
+        'home' => true,
+        'partnerlogin' => true,
+        'grantees' => true,
+        'resources' => true,
+        'home6' => true,
+        'heroImage' => $heroImage,
       'bodySection' => $bodySection,
       'worksSection' => $worksSection
 	]);

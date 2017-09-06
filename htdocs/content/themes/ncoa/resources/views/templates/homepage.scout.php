@@ -1,11 +1,6 @@
 @extends('layouts.main')
 
 @section('main')
-
-<script type="text/javascript">
-	window.webServiceUrl = '{{$webServiceUrl}}';
-</script>
-
 	@loop
 			<!-- Hero -->
 			<section class="hero find-my-benefits cta-hero">
@@ -37,7 +32,7 @@
                       @elseif($key == 2)
                         <h4>Greg, Charleston, SC</h4>
                       @else
-                        <h4>Sharell, Phoenix, AZ</h4>
+                        <h4>Sharell & Tom, Phoenix, AZ</h4>
                       @endif
                       <p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
                       <span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
@@ -55,98 +50,11 @@
         <div class="container">
           <div class="row">
             <div class="home-benefit-counter col-xs-12">
-              <div class="results-tally">
-
-                <span class="ng-scope"">Join the </span>
-                <span class="odometer-wrapper">
-
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">5</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                  <span class="odometer-puncuation">,</span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">7</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">1</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">0</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                  <span class="odometer-puncuation">,</span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">5</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">7</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">8</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-
-                </span><!--/.odometer-wrapper-->
-
-                <span class="ng-scope"> people who have discovered </span>
-
-                <span class="odometer-wrapper">
-                  <span class="odometer-puncuation"><strong>$</strong></span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">1</span>
-                    </span><!--/.odometer-static-->
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">9</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                  <span class="odometer-puncuation"><strong>.</strong></span>
-                  <span class="odometer-group">
-                    <span class="odometer-static">
-                      <span class="odometer-static-spacer"></span>
-                      <span class="odometer-static-value">1</span>
-                    </span><!--/.odometer-static-->
-                  </span>
-                </span><!--/.odometer-wrapper-->
-
-                <span>billion in benefits</span>
-              </div>
+            <p>Join the <strong>5,710,578</strong> people who have discovered <span><strong>$19.1</strong> billion in benefits</span></p>
             </div>
           </div>
         </div>
       </section>
-			<!-- Testimonial -->
-			<!-- <section class="testimonials">
-				<div class="container container-large">
-					<div class="row">
-						@foreach($testimonials as $key => $value)
-							<figure class="testimonial col-xs-12 col-sm-4">
-								{{
-									wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
-									array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
-								}}
-								<figcaption>
-									<p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
-									<span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
-								</figcaption>
-							</figure>
-						@endforeach
-					</div>
-				</div>
-			</section> -->
 
 			<!-- Benefits Slider -->
 			<section class="container">

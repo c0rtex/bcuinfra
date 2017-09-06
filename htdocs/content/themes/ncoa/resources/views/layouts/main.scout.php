@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo themosis_assets() ?>/css/main.css">
     
     <script src="<?php echo themosis_assets() ?>/js/7683b69978.js"></script>
+    <script src="<?php echo themosis_assets() ?>/js/js_libs/modernizr-custom.js"></script>
     <!-- Google Tag Manager -->
     <script>
       dataLayer = [
@@ -38,14 +39,18 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+@if($_SESSION['partner_id']==58)
+@include('partials.header-white-label')
+@else
 @include('partials.header')
+@endif
 
 <div class="page-wrapper">
     @yield('main')
 </div>
 
 <footer class="site-footer">
-    @if(Option::get('global-settings', 'whitelabel') == '0')
+    @if($_SESSION['partner_id']==58)
     @include('partials.footer-alternate')
     @else
     @include('partials.footer')
@@ -66,7 +71,6 @@
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/loading-bar.min.js"></script>
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.quicksearch.js"></script>
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.multi-select.js"></script>
-<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular-input-masks-standalone.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/app.js"></script>
 
