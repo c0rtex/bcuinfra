@@ -1936,10 +1936,20 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 }]);
 
 app.controller('becsController',['$scope','$window',function($scope,$window){
-    var becs = $window.becs;
+
+    $scope.becsStates = [];
+    $scope.orgEn = false;
+    $scope.becs = [];
+    for (var key in $window.becs) {
+        $scope.becsStates.push({"id":key,"value":key});
+    }
+
+    $scope.$watch('state', function(){
+        $scope.becs = $scope.state == '' ? [] : $window.becs[$scope.state.id];
+    });
 
     $scope.goToBeck = function() {
-      $scope.state = 'MN';
+        $window.location.href = $scope.bec['site-url'];
     };
 
 }]);

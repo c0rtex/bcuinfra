@@ -15,27 +15,25 @@
           <p class="subtitle">Select your state and Benefits Enrollment Center below to proceed.</p>
         </header>
   
-        <form class="white-label-landing__form" action="/" method="get">
+        <form class="white-label-landing__form">
           <div class="form-item">
             <label>Select Your State</label>
-            <select id="white-label-landing-select-state" class="form-control" ng-model="state">
-              <option selected="selected" value="choose">-- choose an option --</option>
-              <option value="alabama" >Alabama</option>
+            <select class="form-control" ng-model="state" ng-options="becsState.value for becsState in becsStates track by becsState.id">
+              <option selected="selected" value="">-- choose a state --</option>
             </select>
           </div>
 
           <div class="white-label-landing__form-then">then</div>
 
-          <div class="form-item form-item-white-label-organization disabled">
+          <div class="form-item">
             <label>Select Your Organization</label>
-            <select id="white-label-landing-select-organization" class="form-control" disabled>
-              <option selected="selected" value="choose">-- choose an option --</option>
-              <option>Feeding the Gulf Coast</option>
+            <select ng-disabled="!state" class="form-control" ng-model="bec" ng-options="bec.name for bec in becs">
+              <option selected="selected" value="">-- choose an option --</option>
             </select>
           </div>
 
-          <div class="form-item form-item-white-label-submit disabled">
-            <input type="submit" value="Enter" class="btn btn-primary" ng-click="goToBeck()" />
+          <div class="form-item form-item-white-label-submit">
+            <input type="submit" ng-disabled="!bec" value="Enter" class="btn btn-primary" ng-click="goToBeck()" />
           </div>
         </form>
 
