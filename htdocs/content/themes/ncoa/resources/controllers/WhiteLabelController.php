@@ -13,7 +13,7 @@ class WhiteLabelController extends BaseController
     $nutrition = false;
     $home = true;
     $partnerlogin = false;
-    $grantees = false;
+    $grantees = json_encode(GranteesModel::all());
     $resources = false;
     $home6 = false;
     return View::make('templates.white-label-landing', [

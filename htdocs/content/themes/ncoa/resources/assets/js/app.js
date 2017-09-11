@@ -1935,6 +1935,15 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
+app.controller('becsController',['$scope','$window',function($scope,$window){
+    var becs = $window.becs;
+
+    $scope.goToBeck = function() {
+      $scope.state = 'MN';
+    };
+
+}]);
+
 app.controller('questionController',['$scope', 'category', 'BenefitItems', 'AnswersByCategories', 'Months', function($scope, category, BenefitItems, AnswersByCategories, Months){
 
     $scope.category = category.currentCategory();
