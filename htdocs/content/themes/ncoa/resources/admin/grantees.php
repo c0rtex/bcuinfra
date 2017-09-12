@@ -23,6 +23,9 @@ Metabox::make('General info', 'grantees', [
     Field::text('img-url', [
         'title' => 'Image URL'
     ]),
+    Field::number('partner-id',[
+        'title' => 'Partner ID'
+    ])
 ]);
 
 /*Metabox::make('Requirements', 'fact-sheets', [
