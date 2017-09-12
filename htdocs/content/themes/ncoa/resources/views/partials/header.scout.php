@@ -34,7 +34,11 @@
             </div>
             @endif
         </div>
-
+        
+				<div class="flood-banner" style="text-align: center; color: black; font-size: 18px;">
+					<p><span style="color: red; font-weight:bold;">Hurricane Disaster Relief:</span> If you live in an area that was affected by Hurricane Harvey, Hurricane Irma, or any other disaster, you may be able to get help. <a href="https://www.benefitscheckup.org/disaster-assistance/" style="color: black;">Find help now!</a>
+					</p>
+				</div>
 
         <nav class="navbar navbar-default">
             <div>
