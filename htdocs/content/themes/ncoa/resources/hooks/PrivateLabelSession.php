@@ -19,7 +19,7 @@ class PrivateLabelSession
             $partnerId = '0';
         }
 
-        //setcookie('partner_id',$partnerId,time()-3600,'/');
+        setcookie('partner_id',$partnerId,time()+7200,'/');
         $_SESSION['partner_id'] = $partnerId;
 
     }

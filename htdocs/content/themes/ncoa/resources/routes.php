@@ -11,7 +11,7 @@
 
 //Route::get('home', 'HomeController@index');
 
-if ($_SESSION['partner_id'] == '58') {
+if ($_SESSION['partner_id'] != '0') {
   Route::get('template', ['home-template', 'uses' =>'WhiteLabelController@home6']);
 } else {
   Route::get('template', ['home-template', 'uses' =>'HomeController@index']);

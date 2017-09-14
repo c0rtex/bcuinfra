@@ -14,6 +14,7 @@
       dataLayer = [
         { 'partner_id': '0', 'partner_name': '', 'subset_id': '0', 'state': '', }
       ];
+      window.partnerId=<?echo $_SESSION['partner_id']?>;
     </script>
 
 
@@ -28,7 +29,7 @@
 <!-- End Google Tag Manager (noscript) -->
 
 
-@if($_SESSION['partner_id']==58)
+@if($_SESSION['partner_id']!=0)
 @include('partials.header-white-label')
 @else
 @include('partials.header')
@@ -40,7 +41,7 @@
 </div>
 
 <footer class="site-footer">
-    @if($_SESSION['partner_id']==58)
+    @if($_SESSION['partner_id']!=0)
     @include('partials.footer-alternate')
     @else
     @include('partials.footer')
