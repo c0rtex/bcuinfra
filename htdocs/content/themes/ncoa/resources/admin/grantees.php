@@ -4,6 +4,29 @@
 * Custom Post Type for Fact Sheets, this houses all section of the fact that can be administered though the admin panel
 */
 
+PostType::make('grantees', 'Grantees', 'Grantees')->set([
+    'public'    => true,
+    'supports'	=> ['title', 'editor']
+]);
+
+Metabox::make('General info', 'grantees', [
+    'context'   => 'normal'
+])->set([
+    Field::select('state', [json_decode(Config::get('constants')["US_STATES"],true)],
+        ['title' => 'State']),
+    Field::text('site-url', [
+        'title' => 'Site URL'
+    ]),
+    Field::text('logo-url', [
+        'title' => 'Logotype URL'
+    ]),
+    Field::text('img-url', [
+        'title' => 'Image URL'
+    ]),
+    Field::number('partner-id',[
+        'title' => 'Partner ID'
+    ])
+]);
 
 
 /*Metabox::make('Requirements', 'fact-sheets', [
