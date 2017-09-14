@@ -61,7 +61,11 @@
             <cfset screening.setStart_datetime(Now())>
             <cfset screening.setSource(this.getDefaultSource())>
             <cfset screening.setOrg_id(0)>
-            <cfset screening.setPartner_id(0)>
+            <cfif structKeyExists(prescreen,'partnerId')>
+                <cfset screening.setPartner_id(prescreen.partnerId)>
+            <cfelse>
+                <cfset screening.setPartner_id(-1)>
+            </cfif>
 
             <cfset state = entityload("state",prescreen.state_id)>
             <cfif arraylen(state) neq 0>
@@ -126,7 +130,11 @@
                 <cfset screening.setPreset_state(prescreen.getPreset_state())>
                 <cfset screening.setSource(this.getDefaultSource())>
                 <cfset screening.setOrg_id(0)>
-                <cfset screening.setPartner_id(0)>
+                <cfif structKeyExists(answers,"partnerId")>
+                    <cfset screening.setPartner_id(answers.partnerId)>
+                <cfelse>
+                    <cfset screening.setPartner_id(-1)>
+                </cfif>
 
                 <cfset subset = entityload("subset",101)>
                 <cfif arraylen(subset) neq 0>
