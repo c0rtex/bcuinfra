@@ -1,6 +1,6 @@
 <cffunction name="getLogo" access="public" returntype="Struct" output="false">
     <cfargument name="logoFilename" default="">
-    <cfquery name="getLogoInfo" datasource="#application.dbSrc#">
+    <cfquery name="getLogoInfo" datasource="dbSrc">
         SELECT i.width, i.height, dl.display_text
         FROM image i
         LEFT OUTER JOIN display_language dl ON dl.display_id = i.alt_display_id
@@ -22,7 +22,7 @@
 
 <cffunction name="getPartnerType" access="public" returntype="Struct" output="false">
     <cfargument name="partnerId" default="">
-    <cfquery name="getPartner" datasource="#application.dbSrc#">
+    <cfquery name="getPartner" datasource="dbSrc">
         select
             tp.partner_code,
             pt.`code`,
