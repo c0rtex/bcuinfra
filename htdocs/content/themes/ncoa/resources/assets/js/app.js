@@ -1824,7 +1824,7 @@ app.service('saveScreening',['$http', function($http){
 
 app.service('prescreenQuestions',['$http', function ($http) {
     this.get = function() {
-        return $http.get(window.webServiceUrl+'/rest/backend/questionnaire/prescreen');
+        return $http.get(window.webServiceUrl+'/rest/backend/questionnaire/get/'+ (window.subsetId ? window.subsetId : ""));
     }
 }]);
 
@@ -2046,7 +2046,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     $scope.$root.prescreen.showCTA = true;
     $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
-    prescreenQuestions.get().success(function(data, status, headers, config) {
+    prescreenQuestions.get().success(function(data) {
         prescreen.data.questions = data;
         $scope.questionSet = prescreen.data.questions;
     });

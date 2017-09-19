@@ -9,18 +9,21 @@ class PrivateLabelSession
             session_start();
         }
 
-        if (array_key_exists('partner_id',$_REQUEST)) {
-            $partnerId = $_REQUEST['partner_id'];
-        } elseif (strpos(array_key_exists('REDIRECT_URL',$_SERVER) ? $_SERVER['REDIRECT_URL'] : '','/becs') === 0) {
-            $partnerId = '58';
-        } elseif (array_key_exists('partner_id',$_SESSION))  {
-            $partnerId = $_SESSION['partner_id'];
+        $this->setSessionParam('partner_id', strpos(array_key_exists('REDIRECT_URL',$_SERVER) ? $_SERVER['REDIRECT_URL'] : '','/becs') === 0 ? 58 : 0, strpos(array_key_exists('REDIRECT_URL',$_SERVER) ? $_SERVER['REDIRECT_URL'] : '','/becs') === 0);
+        $this->setSessionParam('subset_id',100,false);
+    }
+
+    public function setSessionParam($param,$default,$isDefaultImportant) {
+        if (array_key_exists($param,$_REQUEST)) {
+            $paramValue = $_REQUEST[$param];
+        } elseif ($isDefaultImportant) {
+            $paramValue = $default;
+        } elseif (array_key_exists($param,$_SESSION))  {
+            $paramValue = $_SESSION[$param];
         } else {
-            $partnerId = '0';
+            $paramValue = $default;
         }
 
-        setcookie('partner_id',$partnerId,time()+7200,'/');
-        $_SESSION['partner_id'] = $partnerId;
-
+        $_SESSION[$param] = $paramValue;
     }
 }

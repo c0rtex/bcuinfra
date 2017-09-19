@@ -1,5 +1,28 @@
 <cfcomponent rest="true" restpath="/questionnaire">
+    <cffunction name="get" access="remote" restpath="/get/{subsetId:(\d)*}" returntype="String" httpMethod="GET">
+        <cfargument name="subsetId" required="false" restargsource="Path" type="string"/>
+
+        <cfswitch expression="#subsetId#">
+            <cfcase value="57">
+                <cfreturn this.prescreen(subsetId)>
+            </cfcase>
+
+            <cfcase value="100">
+                <cfreturn this.prescreen(subsetId)>
+            </cfcase>
+
+            <cfcase value="101">
+                <cfreturn this.prescreen(subsetId)>
+            </cfcase>
+
+            <cfdefaultcase>
+                <cfreturn this.prescreen(100)>
+            </cfdefaultcase>
+        </cfswitch>
+    </cffunction>
+
     <cffunction name="prescreen" access="remote" restpath="/prescreen" returnType="String" httpMethod="GET">
+        <cfargument name="subsetId">
         <!---SELECT
         subset_question.subset_id,
         question.question_id,
@@ -19,7 +42,7 @@
         INNER JOIN questioncategory ON questioncategory.questioncategory_id = subset_questioncategory.questioncategory_id
         where subset_question.subset_id = 0
         order by subset_question.sort--->
-        <cfset questions = ormExecuteQuery("select sq.question from subset_question sq where sq.subset.id=100 order by sq.sort")>
+        <cfset questions = ormExecuteQuery("select sq.question from subset_question sq where sq.subset.id=? order by sq.sort",[subsetId])>
 
         <cfset retVal = arrayNew(1)>
 

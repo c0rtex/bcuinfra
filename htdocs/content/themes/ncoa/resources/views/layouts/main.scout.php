@@ -15,6 +15,7 @@
         { 'partner_id': '0', 'partner_name': '', 'subset_id': '0', 'state': '', }
       ];
       window.partnerId=<?php echo $_SESSION['partner_id']?>;
+      window.subsetId=<?php echo $_SESSION['subset_id']?>;
     </script>
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || [];
