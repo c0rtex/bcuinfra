@@ -1,0 +1,11 @@
+.card-nested.loader .breadcrumbs, .card-nested.loader .profile-section {
+  display: none; }
+
+.card-nested.loader .row {
+  min-height: 425px; }
+  @media (min-width: 768px) {
+    .card-nested.loader .row {
+      min-height: 600px; } }
+
+.card-nested.loader .col-md-9 {
+  width: 100% !important; }

@@ -1,0 +1,69 @@
+.grid:last-child .sales-grid {
+  border: none; }
+
+.sales-grid {
+  overflow: hidden;
+  border-bottom: 1px solid #ECECEC;
+  padding-bottom: 10px;
+  margin-bottom: 20px; }
+  .sales-grid .btn-container {
+    padding-top: 30px; }
+    @media (max-width: 480px) {
+      .sales-grid .btn-container .btn {
+        width: 100%; } }
+  @media (max-width: 768px) {
+    .sales-grid .btn {
+      width: 100%; } }
+  .sales-grid .form-group {
+    margin-right: 15px;
+    padding-bottom: 0 !important; }
+    .sales-grid .form-group label {
+      font-weight: 700; }
+    .sales-grid .form-group .form-control, .sales-grid .form-group .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search .sales-grid .form-group .zipcode-formatted {
+      width: 100px;
+      vertical-align: top; }
+      .sales-grid .form-group .form-control.input-regular, .sales-grid .form-group .prescreen-questions .zip-search .input-regular.zipcode-formatted, .prescreen-questions .zip-search .sales-grid .form-group .input-regular.zipcode-formatted {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding-left: 0; }
+      .sales-grid .form-group .form-control .total, .sales-grid .form-group .prescreen-questions .zip-search .zipcode-formatted .total, .prescreen-questions .zip-search .sales-grid .form-group .zipcode-formatted .total {
+        padding-bottom: 0; }
+      @media (max-width: 768px) {
+        .sales-grid .form-group .form-control, .sales-grid .form-group .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search .sales-grid .form-group .zipcode-formatted {
+          width: 100%; } }
+  .sales-grid h3 {
+    margin-top: 0; }
+  .sales-grid label {
+    display: block; }
+  .sales-grid .action-btn {
+    margin-top: 20px; }
+  .sales-grid .header {
+    width: 80%; }
+  .sales-grid form {
+    background: #e9e9e9;
+    padding: 20px;
+    margin-bottom: 10px;
+    font-size: 1em; }
+    .sales-grid form input[type="number"], .sales-grid form .input-regular {
+      font-size: 1em;
+      background: #f9f9f9; }
+    .sales-grid form input[type=number]::-webkit-inner-spin-button,
+    .sales-grid form input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    @media (max-width: 768px) {
+      .sales-grid form {
+        overflow: hidden; } }
+  .sales-grid input.ng-hide-add,
+  .sales-grid span.ng-hide-add {
+    animation: none;
+    display: none; }
+  .sales-grid input.ng-hide-remove,
+  .sales-grid span.ng-hide-remove {
+    animation: none;
+    display: block; }
+  @media (min-width: 768px) {
+    .sales-grid {
+      min-height: 110px; } }
+

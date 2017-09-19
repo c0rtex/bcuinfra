@@ -1,0 +1,95 @@
+
+.ncoa-carousel {
+  text-align: center;
+  padding-top: 38px;
+  padding-bottom: 24px;
+}
+  .ncoa-carousel .ncoa-carousel-container {
+    padding: 20px 0;
+    position: relative; }
+  .ncoa-carousel .item {
+    background: #fff;
+    margin-right: 10px;
+    padding: 10px 0; }
+    .ncoa-carousel .item a {
+      display: block; }
+    .ncoa-carousel .item img {
+      max-height: 104px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    .ncoa-carousel .item p {
+      margin: 0; }
+    .ncoa-carousel .item:last-child {
+      margin-right: 0; }
+  @media (min-width: 992px) {
+    .ncoa-carousel .col-md-offset-2 {
+      margin-left: 12.5%;
+    }
+  }
+
+  .ncoa-carousel .fa {
+    color: #1888de;
+  }
+
+  .ncoa-carousel .fa.slick-arrow {
+    font-size: 30px;
+    display: inline-block !important; // overridding some inline styles via JS
+  }
+
+  .ncoa-carousel .fa.slick-arrow:hover {
+    cursor: pointer;
+    color: #115e99;
+  }
+
+  @media (min-width: 890px) {
+    .ncoa-carousel .fa.slick-arrow {
+      font-size: 2.222em;
+      position: absolute;
+      top: 45%;
+    }
+
+    .ncoa-carousel .fa.slick-arrow.fa-chevron-left {
+      left: -50px;
+    }
+
+    .ncoa-carousel .fa.slick-arrow.fa-chevron-right {
+      right: -40px;
+    }
+  }
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .ncoa-carousel {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1470px) {
+  .ncoa-carousel {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+.controls {
+  text-align: center;
+  padding: 15px 0;
+  font-weight: 500; }
+  .controls .fa {
+    font-size: 1.667em; }
+  .controls .count {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 18px;
+    padding: 0 18px; }
+  @media (min-width: 1024px) {
+    .controls {
+      display: none; } }
+
+.ncoa-carousel .btn-link .fa {
+  position: relative;
+  top: 1px;
+  right: -4px;
+
+}

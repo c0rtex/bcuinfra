@@ -1,0 +1,153 @@
+
+.questionnaire h2 {
+  margin-top: 0;
+  margin-bottom: 25px; }
+
+.questionnaire .cta {
+  display: block;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 15px 0 30px;
+  background-color: #F1FCF0;
+  -ms-transform: scale(0);
+      transform: scale(0);
+  animation: 500ms slide-down 1s ease forwards; }
+  .questionnaire .cta strong {
+    color: #317C60; }
+
+.questionnaire .results-tally {
+  font-size: 2.667em;
+  padding: 20px 0; }
+  .questionnaire .results-tally strong {
+    color: #F4640A; }
+
+.questionnaire p {
+  margin-top: 10px; }
+
+.questionnaire label {
+  font-weight: normal; }
+
+.questionnaire select, .questionnaire input[type="text"] {
+  width: 100%;
+  font-size: 1em !important; }
+  @media (min-width: 768px) {
+    .questionnaire select, .questionnaire input[type="text"] {
+      width: 45%; } }
+
+.questionnaire .step {
+  font-weight: 700; }
+
+.questionnaire .radio-group, .questionnaire .form-group {
+  padding-bottom: 25px; }
+
+.questionnaire .medications-selections {
+  width: 50%; }
+
+.questionnaire .mock-inputtype {
+  text-align: left;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  width: 30%;
+  display: block;
+  margin: 0 auto; }
+
+.questionnaire .checkbox-stacked {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px; }
+  .questionnaire .checkbox-stacked .checkbox {
+    margin-top: 0; }
+    .questionnaire .checkbox-stacked .checkbox:last-child {
+      margin-bottom: 0; }
+
+.questionnaire .form-stacked {
+  padding: 10px 0; }
+
+.questionnaire .program-card {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-image: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 50%);
+  border: 2px solid #CCCCCC;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  position: relative; }
+  .questionnaire .program-card:hover {
+    cursor: pointer; }
+    .questionnaire .program-card:hover a {
+      color: #1473bc;
+      text-decoration: none; }
+  .questionnaire .program-card h4, .questionnaire .program-card h3 {
+    margin: 0;
+    padding-bottom: 5px; }
+  .questionnaire .program-card .program-card-icon {
+    padding-top: 70px;
+    background-size: 60px !important;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.111em;
+    color: #323232;
+    line-height: 1.222em;
+    margin-top: 15px; }
+
+  .questionnaire .program-card .bcuqc_category_rx {
+    background: url(../images/categories/category_medicine.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_medicaid {
+    background: url(../images/categories/category_health.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_income {
+    background: url(../images/categories/category_income.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_nutrition {
+    background: url(../images/categories/category_food.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_utility {
+    background: url(../images/categories/category_housing.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_property_taxrelief {
+    background: url(../images/categories/category_taxRelief.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_veteran {
+    background: url(../images/categories/category_veteran.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_employment {
+    background: url(../images/categories/category_employment.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_transportation {
+    background: url(../images/categories/category_transportation.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_education {
+    background: url(../images/categories/category_education.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_discounts {
+    background: url(../images/categories/category_discounts.svg) no-repeat top center; }
+
+  .questionnaire .program-card .bcuqc_category_other_assistance {
+    background: url(../images/categories/category_assistance.svg) no-repeat top center; }
+
+  @media (min-width: 768px) {
+    .questionnaire .program-card {
+      width: 48%;
+      display: inline-block;
+      vertical-align: top;
+      padding: 10px;
+      margin-right: 4%;
+      height: 250px; }
+      .questionnaire .program-card:nth-child(2n + 1) {
+        margin-left: -5px;
+        margin-right: 0; } }
+
+.questionnaire .card-panel.ng-hide-add {
+  animation: none; }
+
+.questionnaire .card-panel.ng-hide-remove {
+  animation: 1s fadeIn ease; }
+
+.questionnaire .finances input[type="text"], .questionnaire .household input[type="text"] {
+  max-width: 50%; }
+
+@media (min-width: 768px) {
+  .questionnaire .finances input[type="text"], .questionnaire .household input[type="text"] {
+    max-width: 25%; } }

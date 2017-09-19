@@ -1,0 +1,127 @@
+.crumb-trails {
+  margin-bottom: 40px; }
+  .crumb-trails .btn-breadcrumb {
+    width: 100%;
+    font-size: 0.889em; 
+    white-space: nowrap;
+  }
+    .crumb-trails .btn-breadcrumb .btn {
+      border-radius: 0;
+      border-width: 2px; 
+    white-space: nowrap;
+  }
+    .crumb-trails .btn-breadcrumb > div {
+      cursor: auto; }
+    .crumb-trails .btn-breadcrumb.basics .btn:first-child {
+      background-color: #1888de;
+      color: #fff; }
+      .crumb-trails .btn-breadcrumb.basics .btn:first-child:after {
+        border-left-color: #1888de; }
+    .crumb-trails .btn-breadcrumb.health .btn:first-child {
+      background-color: #fff; }
+      .crumb-trails .btn-breadcrumb.health .btn:first-child:after {
+        border-left-color: #fff; }
+      .crumb-trails .btn-breadcrumb.health .btn:first-child i {
+        display: inline-block; }
+    .crumb-trails .btn-breadcrumb.health .btn:nth-child(2) {
+      background-color: #1888de;
+      color: #fff; }
+      .crumb-trails .btn-breadcrumb.health .btn:nth-child(2):after {
+        border-left-color: #1888de;
+        margin-left: -1px; }
+      .crumb-trails .btn-breadcrumb.health .btn:nth-child(2):before {
+        margin-left: 0; }
+    .crumb-trails .btn-breadcrumb.household .btn:first-child, .crumb-trails .btn-breadcrumb.household .btn:nth-child(2) {
+      background-color: #fff; }
+      .crumb-trails .btn-breadcrumb.household .btn:first-child:after, .crumb-trails .btn-breadcrumb.household .btn:nth-child(2):after {
+        border-left-color: #fff;
+        margin-left: -1px; }
+      .crumb-trails .btn-breadcrumb.household .btn:first-child:before, .crumb-trails .btn-breadcrumb.household .btn:nth-child(2):before {
+        margin-left: 0; }
+      .crumb-trails .btn-breadcrumb.household .btn:first-child i, .crumb-trails .btn-breadcrumb.household .btn:nth-child(2) i {
+        display: inline-block; }
+    .crumb-trails .btn-breadcrumb.household .btn:nth-child(3) {
+      background-color: #1888de;
+      color: #fff; }
+      .crumb-trails .btn-breadcrumb.household .btn:nth-child(3):after {
+        border-left-color: #1888de;
+        margin-left: -1px; }
+      .crumb-trails .btn-breadcrumb.household .btn:nth-child(3):before {
+        margin-left: 0; }
+    .crumb-trails .btn-breadcrumb.finances .btn:first-child, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(2), .crumb-trails .btn-breadcrumb.finances .btn:nth-child(3), .crumb-trails .btn-breadcrumb.finances-income .btn:first-child, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(2), .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(3), .crumb-trails .btn-breadcrumb.finances-income-grid .btn:first-child, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(2), .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(3), .crumb-trails .btn-breadcrumb.finances-assets .btn:first-child, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(2), .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(3), .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:first-child, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(2), .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(3) {
+      background-color: #fff; }
+      .crumb-trails .btn-breadcrumb.finances .btn:first-child:after, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(2):after, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(3):after, .crumb-trails .btn-breadcrumb.finances-income .btn:first-child:after, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(2):after, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(3):after, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:first-child:after, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(2):after, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(3):after, .crumb-trails .btn-breadcrumb.finances-assets .btn:first-child:after, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(2):after, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(3):after, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:first-child:after, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(2):after, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(3):after {
+        border-left-color: #fff;
+        margin-left: -1px; }
+      .crumb-trails .btn-breadcrumb.finances .btn:first-child:before, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(2):before, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(3):before, .crumb-trails .btn-breadcrumb.finances-income .btn:first-child:before, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(2):before, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(3):before, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:first-child:before, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(2):before, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(3):before, .crumb-trails .btn-breadcrumb.finances-assets .btn:first-child:before, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(2):before, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(3):before, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:first-child:before, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(2):before, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(3):before {
+        margin-left: 0; }
+      .crumb-trails .btn-breadcrumb.finances .btn:first-child i, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(2) i, .crumb-trails .btn-breadcrumb.finances .btn:nth-child(3) i, .crumb-trails .btn-breadcrumb.finances-income .btn:first-child i, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(2) i, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(3) i, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:first-child i, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(2) i, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(3) i, .crumb-trails .btn-breadcrumb.finances-assets .btn:first-child i, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(2) i, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(3) i, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:first-child i, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(2) i, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(3) i {
+        display: inline-block; }
+    .crumb-trails .btn-breadcrumb.finances .btn:nth-child(4), .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(4), .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(4), .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(4), .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(4) {
+      background-color: #1888de;
+      color: #fff; }
+      .crumb-trails .btn-breadcrumb.finances .btn:nth-child(4):after, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(4):after, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(4):after, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(4):after, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(4):after {
+        border-left-color: #1888de;
+        margin-left: -1px; }
+      .crumb-trails .btn-breadcrumb.finances .btn:nth-child(4):before, .crumb-trails .btn-breadcrumb.finances-income .btn:nth-child(4):before, .crumb-trails .btn-breadcrumb.finances-income-grid .btn:nth-child(4):before, .crumb-trails .btn-breadcrumb.finances-assets .btn:nth-child(4):before, .crumb-trails .btn-breadcrumb.finances-assets-grid .btn:nth-child(4):before {
+        margin-left: 0; }
+    @media (min-width: 992px) {
+      .crumb-trails .btn-breadcrumb {
+        font-size: 1em; } }
+  .crumb-trails .btn-breadcrumb .btn:not(:last-child):after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 27px solid transparent;
+    border-bottom: 27px solid transparent;
+    border-left: 8px solid #F3F3F3;
+    position: absolute;
+    top: 50%;
+    margin-top: -27px;
+    left: 100%;
+    z-index: 3; }
+  .crumb-trails .btn-breadcrumb .btn:not(:last-child):before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 27px solid transparent;
+    border-bottom: 27px solid transparent;
+    border-left: 10px solid #adadad;
+    position: absolute;
+    top: 50%;
+    margin-top: -27px;
+    margin-left: 1px;
+    left: 100%;
+    z-index: 3; }
+  .crumb-trails .btn-breadcrumb .btn {
+    padding: 15px 0;
+    width: calc(100% / 5);
+    box-shadow: none;
+    background-color: #F3F3F3; }
+    .crumb-trails .btn-breadcrumb .btn i {
+      font-size: 8px;
+      border-radius: 100%;
+      background-color: #389C78;
+      color: #fff;
+      padding: 3px;
+      margin: 3px 3px 0;
+      display: inline-block;
+      vertical-align: top;
+      display: none; }
+    .crumb-trails .btn-breadcrumb .btn:nth-child(2), .crumb-trails .btn-breadcrumb .btn:nth-child(3), .crumb-trails .btn-breadcrumb .btn:nth-child(4) {
+      border-right: none;
+      border-left: none; }
+    .crumb-trails .btn-breadcrumb .btn:last-child {
+      border-left: none; }
+    .crumb-trails .btn-breadcrumb .btn span {
+      margin-left: 10px; }
+      .crumb-trails .btn-breadcrumb .btn span:after {
+        content: attr(data-index); }
+        @media (min-width: 992px) {
+          .crumb-trails .btn-breadcrumb .btn span:after {
+            content: attr(data-title); } }
+
+.breadcrumbs.ng-hide-add {
+  animation: none; }

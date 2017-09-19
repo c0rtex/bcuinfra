@@ -1,0 +1,151 @@
+.program {
+  background-image: linear-gradient(0deg, #FCFCFC 0%, #FFFFFF 50%);
+  border: 2px solid #CCCCCC;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  margin-bottom: 15px; }
+  .program .program-header {
+    padding: 0 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: relative;
+  }
+    .program .program-header span {
+      font-family: "interface",sans-serif;
+      /*padding: 15px 0 10px 70px;*/
+      padding: 10px 0 10px 10px;
+      font-weight: 700;
+      display: block;
+      font-size: 1.222em;
+      color: #333333;
+      line-height: 1.3;
+      width: 90%;
+
+    }
+    .program .program-header img{
+      display:none;
+    }
+      .program .program-header span:after {
+        content: '\e080';
+        font-family: 'Glyphicons Halflings';
+        position: absolute;
+        top:50%;
+        right: 20px;
+        color: #1888de;
+        -ms-transform: translateY(-50%) rotate(90deg);
+            transform: translateY(-50%) rotate(90deg);
+        transition: transform 200ms linear;
+      }
+      @media (min-width: 480px) {
+        .program .program-header span {
+          padding: 30px 0 20px 10px;
+          line-height: 1.667em;
+          display: inline-block;
+          vertical-align: middle;
+          width:60%;
+        }
+        .program .program-header img{
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+      @media (min-width: 768px) {
+        .program .program-header span{
+          width:80%;
+        }
+      }
+    .program .program-header:hover {
+      cursor: pointer; }
+  .program.active .program-header {
+    background-color: #F9F9F9; }
+    .program.active .program-header span:after {
+      -ms-transform: translateY(-50%) rotate(-90deg);
+          transform: translateY(-50%) rotate(-90deg); }
+
+  .program.bcuqc_category_rx .program-header span {
+    background: url(../images/categories/category_medicine.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_medicaid .program-header span {
+    background: url(../images/categories/category_health.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_income .program-header span {
+    background: url(../images/categories/category_income.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_nutrition .program-header span {
+    background: url(../images/categories/category_food.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_utility .program-header span {
+    background: url(../images/categories/category_housing.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_property_taxrelief .program-header span {
+    background: url(../images/categories/category_taxRelief.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_veteran .program-header span {
+    background: url(../images/categories/category_veteran.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_employment .program-header span {
+    background: url(../images/categories/category_employment.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_transportation .program-header span {
+    background: url(../images/categories/category_transportation.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_education .program-header span {
+    background: url(../images/categories/category_education.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_discounts .program-header span {
+    background: url(../images/categories/category_discounts.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.bcuqc_category_other_assistance .program-header span {
+    background: url(../images/categories/category_assistance.svg) no-repeat left center;
+    background-size: 55px; }
+
+  .program.program-no-icon .program-header span {
+    padding: 20px 0 20px 15px; }
+    @media (min-width: 480px) {
+      .program.program-no-icon .program-header span {
+        padding: 20px 0 20px 0; } }
+
+.programs-container {
+  background: #F9F9F9;
+  display: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px; }
+  .programs-container.program-p {
+    padding: 20px 20px 20px 20px;
+    border-top: 2px solid #CCCCCC; }
+
+.programs {
+  border-top: 2px solid #ccc;
+  margin: 0;
+  padding: 10px 20px; }
+  .programs li {
+    list-style: none; }
+  .programs h4 {
+    font-family: "interface",sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    color: #323232;
+    line-height: 1.222em; }
+  @media (min-width: 1200px) {
+    .programs li {
+      display: inline-block; }
+      .programs li:first-child {
+        vertical-align: middle;
+        padding-right: 20px;
+        width: 70%; }
+      .programs li:last-child {
+        vertical-align: bottom;
+        width: 30%;
+        text-align: right;
+        margin-left: -5px; } }

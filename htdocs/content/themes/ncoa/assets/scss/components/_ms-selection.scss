@@ -1,0 +1,63 @@
+
+
+.med-selection-container {
+  border-top: 2px solid #ccc;
+  padding-top: 20px; }
+  @media (min-width: 768px) {
+    .med-selection-container {
+      padding-top: 50px; } }
+
+@media (min-width: 768px) {
+  .ms-selection {
+    width: 45%;
+    margin-left: 10%;
+    height: 290px; } }
+
+@media (min-width: 1210px) {
+  .ms-selection .ms-list {
+    margin-top: 64px; } }
+
+@media (min-width: 768px) {
+  .ms-selectable:after {
+    content: '';
+    width: 2px;
+    height: 98%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background-color: #ccc; } }
+
+.ms-selectable, .ms-selection {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px; }
+  .ms-selectable ul, .ms-selection ul {
+    border: 2px solid #ccc;
+    padding: 10px 0;
+    margin: 0;
+    height: 300px;
+    overflow: scroll; }
+    .ms-selectable ul li, .ms-selection ul li {
+      list-style: none;
+      padding: 2px 10px;
+      margin: 0;
+      cursor: pointer; }
+      .ms-selectable ul li.ms-hover, .ms-selection ul li.ms-hover {
+        background-color: #ECECEC; }
+      .ms-selectable ul li.selected, .ms-selection ul li.selected {
+        background-color: #1888de;
+        color: #fff; }
+  .ms-selectable .btn, .ms-selection .btn {
+    width: 100%;
+    margin-top: 10px; }
+  .ms-selectable .form-control, .ms-selectable .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search .ms-selectable .zipcode-formatted, .ms-selection .form-control, .ms-selection .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search .ms-selection .zipcode-formatted {
+    width: 100% !important;
+    margin-bottom: 10px; }
+  .ms-selectable .h4, .ms-selection .h4 {
+    font-weight: 700; }
+  @media (min-width: 768px) {
+    .ms-selectable, .ms-selection {
+      width: 45%;
+      height: 470px; } }

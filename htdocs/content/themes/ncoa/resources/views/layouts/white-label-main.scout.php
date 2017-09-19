@@ -66,6 +66,8 @@
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/angular-input-masks-standalone.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="<?php echo themosis_assets() ?>/js/app.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/white-label.js"></script>
+<script type="text/javascript" src="<?php echo themosis_assets() ?>/js/js_libs/jquery.matchHeight-min.js"></script>
 @yield('misc-scripts')
 
 @if($nutrition)

@@ -1,0 +1,50 @@
+
+.page-white-label-homepage .find-my-benefits-content p {
+  color: white;
+  padding-bottom: 10px; }
+
+@media (max-width: 767px) {
+  .page-white-label-homepage .white-label-container {
+    margin-top: 10px; } }
+
+.page-white-label-homepage .white-label-section {
+  margin: 20px 0 20px 0;
+  border-bottom: 2px #CCCCCC solid;
+  text-align: center; }
+  .page-white-label-homepage .white-label-section h3 {
+    color: #1888de; }
+  .page-white-label-homepage .white-label-section > div {
+    margin: 20px 0 20px 0;
+    padding: 10px 60px 10px 60px;
+    border-top: 2px solid #ccc;
+    position: relative; }
+    @media (min-width: 768px) {
+      .page-white-label-homepage .white-label-section > div:after {
+        content: '';
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        top: 20px;
+        right: 0;
+        background-color: #CCCCCC; } }
+    .page-white-label-homepage .white-label-section > div:nth-child(odd) {
+      clear: both; }
+    .page-white-label-homepage .white-label-section > div:nth-child(even):after {
+      display: none; }
+    .page-white-label-homepage .white-label-section > div:nth-child(1), .page-white-label-homepage .white-label-section > div:nth-child(2) {
+      border-top: none; }
+    .page-white-label-homepage .white-label-section > div a {
+      padding-top: 10px; }
+    @media (max-width: 767px) {
+      .page-white-label-homepage .white-label-section > div {
+        border-top: none;
+        border-bottom: 2px #CCCCCC solid;
+        padding: 10px 10px 30px 10px;
+        margin: 0; } }
+  @media (max-width: 767px) {
+    .page-white-label-homepage .white-label-section {
+      border-bottom: none;
+      margin: 0;
+      padding: 0; } }
+  .page-white-label-homepage .white-label-section:last-of-type {
+    border-bottom: none; }

@@ -33,9 +33,9 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <div class="program-highlight__icon-wrap">
+                        <a href="." class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
-                        </div>
+                        </a>
                       </div>
                       <h2 class="program-highlight__title">Medicare Rx Extra Help</h2>
                       <div class="program-highlight__excerpt">
@@ -52,9 +52,9 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <div class="program-highlight__icon-wrap">
+                        <a href="." class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_food-1.svg" class="attachment-full size-full" alt="Basket of Food" title="Basket of Food">
-                        </div>
+                        </a>
                       </div>
                       <h2 class="program-highlight__title">Food & Nutrition</h2>
                       <div class="program-highlight__excerpt">
@@ -71,9 +71,9 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <div class="program-highlight__icon-wrap">
+                        <a href="." class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_health.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
-                        </div>
+                        </a>
                       </div>
                       <h2 class="program-highlight__title">Key Benefits</h2>
                       <div class="program-highlight__excerpt">
@@ -90,9 +90,9 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <div class="program-highlight__icon-wrap">
+                        <a href="." class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_veteran.svg" class="attachment-full size-full" alt="Medal" title="Medal">
-                        </div>
+                        </a>
                       </div>
                       <h2 class="program-highlight__title">Lorem Ipsum</h2>
                       <div class="program-highlight__excerpt">
@@ -109,9 +109,9 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <div class="program-highlight__icon-wrap">
+                        <a href="." class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_employment.svg" class="attachment-full size-full" alt="Briefcase" title="Briefcase">
-                        </div>
+                        </a>
                       </div>
                       <h2 class="program-highlight__title">Lorem Ipsum</h2>
                       <div class="program-highlight__excerpt">
@@ -128,9 +128,9 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <div class="program-highlight__icon-wrap">
+                        <a href="." class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_taxRelief.svg" class="attachment-full size-full" alt="Piggy Bank" title="Piggy Bank">
-                        </div>
+                        </a>
                       </div>
                       <h2 class="program-highlight__title">Lorem Ipsum</h2>
                       <div class="program-highlight__excerpt">
@@ -160,9 +160,9 @@
                 <div class="program-highlight">
                   <div class="program-highlight__text">
                     <div class="program-highlight__icon">
-                      <div class="program-highlight__icon-wrap">
+                      <a href="." class="program-highlight__icon-wrap">
                         <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
-                      </div>
+                      </a>
                     </div>
                     <h2 class="program-highlight__title">Medicare Rx Extra Help</h2>
                     <div class="program-highlight__excerpt">
@@ -178,9 +178,9 @@
                 <div class="program-highlight">
                   <div class="program-highlight__text">
                     <div class="program-highlight__icon">
-                      <div class="program-highlight__icon-wrap">
+                      <a href="." class="program-highlight__icon-wrap">
                         <img src="../content/uploads/2016/05/category_food-1.svg" class="attachment-full size-full" alt="Basket of Food" title="Basket of Food">
-                      </div>
+                      </a>
                     </div>
                     <h2 class="program-highlight__title">Food & Nutrition</h2>
                     <div class="program-highlight__excerpt">
@@ -196,9 +196,9 @@
                 <div class="program-highlight">
                   <div class="program-highlight__text">
                     <div class="program-highlight__icon">
-                      <div class="program-highlight__icon-wrap">
+                      <a href="." class="program-highlight__icon-wrap">
                         <img src="../content/uploads/2016/05/category_health.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
-                      </div>
+                      </a>
                     </div>
                     <h2 class="program-highlight__title">Key Benefits</h2>
                     <div class="program-highlight__excerpt">

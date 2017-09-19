@@ -1,0 +1,21 @@
+
+.ncoa-pagination {
+  border: 2px solid #1888de;
+  display: inline-block;
+  margin: 40px 0 20px;
+  border-radius: 6px;
+  padding: 0; }
+  .ncoa-pagination li {
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block; }
+    .ncoa-pagination li a {
+      background-color: #1888de;
+      padding: 10px;
+      display: block;
+      color: #fff; }
+    .ncoa-pagination li.page-nums {
+      color: #444;
+      padding: 0 20px; }

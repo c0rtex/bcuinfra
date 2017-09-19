@@ -1939,6 +1939,7 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
 
 app.controller('becsController',['$scope','$window',function($scope,$window){
 
+<<<<<<< HEAD
     $scope.becsStates = [];
     $scope.orgEn = false;
     $scope.becs = [];
@@ -1952,6 +1953,10 @@ app.controller('becsController',['$scope','$window',function($scope,$window){
 
     $scope.goToBeck = function() {
         $window.location.href = '/?partner_id='+$scope.bec['partner-id'];
+=======
+    $scope.enterPressed = function() {
+        $window.location.href = '/nationalcenter';
+>>>>>>> echo
     };
 
 }]);
