@@ -46,13 +46,13 @@
                 <nav id="utility-nav" class="pull-right utility-nav hidden-xs">
                     <ul>
                         <li class="@if($partnerlogin)current-menu-item current_page_item @endif">
-                            <a href=".">Partner Login</a>
+                            <a href="/welcome-partner-login-page/">Partner Login</a>
                         </li>
                         <li class="@if($grantees)current-menu-item current_page_item @endif">
-                            <a href=".">Grantees</a>
+                            <a href="/grantees">Grantees</a>
                         </li>
                         <li class="@if($resources)current-menu-item current_page_item @endif">
-                            <a href=".">Resources & Forms</a>
+                            <a href="/forms">Resources & Forms</a>
                         </li>
                     </ul>
                 </nav>
@@ -84,13 +84,13 @@
                                         <a href="/">Home</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="/">Find Benefits</a>
+                                        <a href="/find-my-benefits/?subset_id=100">Find Benefits</a>
                                     </li>
                                     <li class="menu-item @if($medicarerx)current-menu-item current_page_item @endif">
-                                        <a href="/">Medicare Rx Extra Help</a>
+                                        <a href="/medicare-rx-extra-help-application-start/">Medicare Rx Extra Help</a>
                                     </li>
                                     <li class="menu-item @if($nutrition)current-menu-item current_page_item @endif">
-                                        <a href="/">Food & Nutrition</a>
+                                        <a href="/resources/snap/">Food & Nutrition</a>
                                     </li>
                                 </ul>
                             </div>
@@ -99,13 +99,13 @@
                                 <nav id="utility-nav" class="utility-nav">
                                     <ul>
                                         <li class="@if($partnerlogin)current-menu-item current_page_item @endif">
-                                            <a href=".">Partner Login</a>
+                                            <a href="/welcome-partner-login-page/">Partner Login</a>
                                         </li>
                                         <li class="@if($grantees)current-menu-item current_page_item @endif">
-                                            <a href=".">Grantees</a>
+                                            <a href="/grantees">Grantees</a>
                                         </li>
                                         <li class="@if($resources)current-menu-item current_page_item @endif">
-                                            <a href=".">Resources & Forms</a>
+                                            <a href="/forms">Resources & Forms</a>
                                         </li>
                                     </ul>
                                 </nav>
