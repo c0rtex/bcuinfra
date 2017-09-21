@@ -1,7 +1,10 @@
 @extends('layouts.white-label-main')
 
 @section('main')
-<div class="container resources">
+<script>
+  window.webServiceUrl = '{{$webServiceUrl}}';
+</script>
+<div class="container resources" ng-controller="resourcesFormsController">
   <h1>Resources &amp; Forms</h1>
   <div class="card">
     <div class="card-nested">
@@ -27,39 +30,30 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="programcategory">
 
-      <p>BenefitsCheckUp strives to maintain the most current database of programs  and application forms possible. Select your search options below in order to get relevant program information  about benefits that are available in your state. <strong>You must select a state AND the category you are interested in.</strong></p>
+      <p>BenefitsCheckUp strives to maintain the most current database of programs and application forms possible. Select your search options below in order to get relevant program information  about benefits that are available in your state. <strong>You must select a state AND the category you are interested in.</strong></p>
 
       <div class="white-label-resources-category-form">
         <form class="" method="POST" accept-charset="UTF-8">   
           <div class="form-group">
             <label for="state-selection">Filter By State</label>
-            <select class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="state-selection" id="white-label-resources-state">
-              <option value="choose">-- choose an option --</option>
-              <option value="/fact-sheets/factsheet_nutrition_al_snap_program/">Alabama</option>
-              <option value="/fact-sheets/factsheet_nutrition_ak_snap_program/">Alaska</option>
-              <option value="/fact-sheets/factsheet_nutrition_az_snap_program/">Arizona</option>
+            <select class="form-control" name="state-selection" ng-change="selectState()" ng-model="values.state" id="white-label-resources-state">
+              <option value="">-- choose an option --</option>
+              @foreach ($states as $state_code => $state)
+              <option value="{{ $state_code }}">{{ $state }}</option>
+              @endforeach
             </select>
           </div>
-          <div class="form-group form-item disabled">
+          <div class="form-group form-item">
             <label for="state-selection">Filter By Category</label>
-            <select class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="category-selection" id="white-label-resources-category" disabled>
-              <option value="choose">-- choose an option --</option>
-              <option value="">Medication</option>
-              <option value="">Health Care</option>
-              <option value="">Income Assistance</option>
-              <option value="">Food &amp; Nutrition</option>
-              <option value="">Housing &amp; Utilities</option>
-              <option value="">Tax Relief</option>
-              <option value="">Veterans</option>
-              <option value="">Employment</option>
-              <option value="">Transportation</option>
-              <option value="">Education</option>
-              <option value="">Discount</option>
-              <option value="">Other Assistance</option>
+            <select class="form-control" name="category-selection" id="white-label-resources-category" ng-model="values.category" ng-disabled="disallowCategory()">
+              <option value="">-- choose an option --</option>
+              @foreach ($categories as $key => $category)
+              <option value="{{ $key }}">{{ $category }}</option>
+              @endforeach
             </select>
           </div>
-          <div class="form-item disabled">
-            <button type="submit" class="btn btn-primary" id="white-label-resources-button">Search</button>
+          <div class="form-item">
+            <button type="submit" class="btn btn-primary" id="white-label-resources-button" ng-disabled="disallowSearch()" ng-click="search()">Search</button>
           </div>
         </form>
       </div><!--/.white-label-resources-category-form-->
@@ -70,65 +64,25 @@
         <div class="sort-nav">
           <div class="sort-nav__label">Sort by name:</div>
           <div class="sort-nav__options">
-            <a href="." class="is-active">A-Z</a>
-            <a href=".">Z-A</a>
+            <a href="#" class="is-active">A-Z</a>
+            <a href="#">Z-A</a>
           </div>
         </div>
 
         <ul>
-          <li>
-            <h4>Food Assistance Program</h4>
-            <p>This program helps you and your family buy food needed for good health. If you meet the program guidelines, including limited income and resources, you will get a special debit card (called an EBT Card). This debit card comes with a certain amount of money already on it to pay for food.</p>
-            <ul>
-              <li><a href=".">Online Application in English Lorem ipsum dolor sit amet, consectetur adipisicing elit (Mulit-Program)</a></li>
-              <li><a href=".">Form in Spanish (Multi-Program)</a></li>
-              <li><a href=".">Form in English (Multi-Program)</a></li>
-              <li><a href=".">View Additional Forms</a></li>
-            </ul>
-          </li>
-          <li>
-            <h4>Food Assistance Program</h4>
-            <p>This program helps you and your family buy food needed for good health. If you meet the program guidelines, including limited income and resources, you will get a special debit card (called an EBT Card). This debit card comes with a certain amount of money already on it to pay for food.</p>
-            <ul>
-              <li><a href=".">Online Application in English</a></li>
-              <li><a href=".">Form in Spanish (Multi-Program)</a></li>
-              <li><a href=".">Form in English (Multi-Program)</a></li>
-              <li><a href=".">View Additional Forms</a></li>
-            </ul>
-          </li>
-          <li>
-            <h4>Food Assistance Program</h4>
-            <p>This program helps you and your family buy food needed for good health. If you meet the program guidelines, including limited income and resources, you will get a special debit card (called an EBT Card). This debit card comes with a certain amount of money already on it to pay for food.</p>
-            <ul>
-              <li><a href=".">Online Application in English</a></li>
-              <li><a href=".">Form in Spanish (Multi-Program)</a></li>
-              <li><a href=".">Form in English (Multi-Program)</a></li>
-            </ul>
-          </li>
-          <li>
-            <h4>Food Assistance Program</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa mollitia explicabo dolorum asperiores debitis, quos velit dicta nam maiores a labore placeat, culpa provident iusto.</p>
-            <ul>
-              <li><a href=".">Online Application in English</a></li>
-              <li><a href=".">View Additional Forms</a></li>
-            </ul>
-          </li>
-          <li>
-            <h4>Food Assistance Program</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ea ipsa animi deserunt excepturi sequi ratione possimus accusamus alias necessitatibus nihil optio quam eos deleniti harum, illum quis repellendus vitae exercitationem. Velit ex necessitatibus sit magnam porro repudiandae culpa. Placeat.</p>
-          </li>
-          <li>
-            <h4>Food Assistance Program</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore commodi tempore porro esse nihil, odit laudantium perferendis. Dolores, quis, vel.</p>
+          <li ng-repeat="result in results | orderBy: 'result.tag_name'">
+            <h4>@{{result.prg_nm}}</h4>
+            <p><a href="@{{result.string}}">@{{result.tag_name}}</a></p>
           </li>
         </ul>
-        <div class="ncoa-pagination-container">
+        
+        <!--<div class="ncoa-pagination-container"> 
           <ul class="ncoa-pagination">
             <li class="page-left"><a href="#" ng-click="showPage(currentPage-1)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
             <li class="page-nums ng-binding">1 of 1</li>
             <li class="page-right"><a href="#" ng-click="showPage(currentPage+1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
           </ul>
-        </div>
+        </div>-->
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="drugname">

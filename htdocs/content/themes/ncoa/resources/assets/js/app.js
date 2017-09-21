@@ -1937,6 +1937,40 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
+app.controller('resourcesFormsController', ['$scope', '$window', '$http', function($scope, $window, $http) {
+    $scope.results = [];
+    $scope.values = {
+        state: '',
+        category: ''
+    };
+
+    $scope.disallowSearch = function() {
+        if ($scope.values.state == '' || $scope.values.category == '') {
+            return true;
+        }
+        
+        return false;
+    }
+    $scope.disallowCategory = function() {
+        if ($scope.values.state == '') {
+            $scope.values.category = '';
+            return true;
+        }
+        
+        return false;
+    }
+    $scope.search = function() {
+        $scope.results = [];
+        console.log($scope.values);
+
+        $http.get($window.webServiceUrl+'/rest/backend/forms/qryForms/'+$scope.values.category+'?stateId='+$scope.values.state)
+            .then(function(response){
+                $scope.results = response.data;
+                angular.element('.resources-results').show('slow');
+            });
+    }
+}]);
+
 app.controller('becsController', ['$scope','$window',function($scope,$window){
     
     $scope.becsStates = [];

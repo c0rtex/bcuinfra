@@ -19,21 +19,6 @@ $(document).on('change', '#white-label-landing-select-organization', function() 
   }
 });
 
-// this is temporary JS for the white label resources page
-$(document).on('change', '#white-label-resources-state', function() {
-  if ($(this).val() == 'choose') {
-    $('.resources-forms-tabs .form-item').addClass("disabled");
-    $('.resources-forms-tabs .form-item select').prop('disabled', true);
-  } else {
-    $('.resources-forms-tabs .form-item').removeClass("disabled");
-    $('.resources-forms-tabs .form-item select').removeAttr("disabled");
-  }
-});
-
-$('#white-label-resources-button').on('click', function() {
-  $('.resources-results').addClass('js-show');
-});
-
 // when the program highlights on the white label homepage is in a carousel
 // we can't use flexbox for equal heights - so this is a javascript solution
 $(function() {
