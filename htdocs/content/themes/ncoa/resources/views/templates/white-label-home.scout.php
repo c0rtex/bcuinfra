@@ -33,7 +33,7 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="." class="program-highlight__icon-wrap">
+                        <a href="/medicare-rx-extra-help-application-start/" class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                         </a>
                       </div>
@@ -43,7 +43,7 @@
                       </div>
                     </div>
                     <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href=".">Get Started</a>
+                      <a class="btn btn-secondary" href="/medicare-rx-extra-help-application-start/">Get Started</a>
                     </div>
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->
@@ -52,17 +52,17 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="." class="program-highlight__icon-wrap">
+                        <a href="/resources/snap/" class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_food-1.svg" class="attachment-full size-full" alt="Basket of Food" title="Basket of Food">
                         </a>
                       </div>
-                      <h2 class="program-highlight__title">Food & Nutrition</h2>
+                      <h2 class="program-highlight__title">Food &amp; Nutrition</h2>
                       <div class="program-highlight__excerpt">
                         <p>Need help paying for food? Find the program where you live, get an application and apply today.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href=".">Get Started</a>
+                      <a class="btn btn-secondary" href="/resources/snap/">Get Started</a>
                     </div>
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->
@@ -71,7 +71,7 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="." class="program-highlight__icon-wrap">
+                        <a href="/find-my-benefits/?subset_id=57" class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_health.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
                         </a>
                       </div>
@@ -81,7 +81,7 @@
                       </div>
                     </div>
                     <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href=".">Get Started</a>
+                      <a class="btn btn-secondary" href="/find-my-benefits/?subset_id=57">Get Started</a>
                     </div>
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->

@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 <a href="http://drone.springbox.com/springbox/ncoa"><img src="http://drone.springbox.com/api/badges/springbox/ncoa/status.svg" /></a>
 
 [![Build Status](http://drone.springbox.com/api/badges/springbox/ncoa/status.svg)](http://drone.springbox.com/springbox/ncoa)
-=======
->>>>>>> a58e8d4c1efc09d56ce7fd55ca0b5fd5e30304c9
 Themosis framework for Springbox
 =================================
 

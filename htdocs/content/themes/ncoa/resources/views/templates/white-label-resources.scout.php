@@ -2,7 +2,7 @@
 
 @section('main')
 <div class="container resources">
-  <h1>Resources & Forms</h1>
+  <h1>Resources &amp; Forms</h1>
   <div class="card">
     <div class="card-nested">
 
@@ -47,8 +47,8 @@
               <option value="">Medication</option>
               <option value="">Health Care</option>
               <option value="">Income Assistance</option>
-              <option value="">Food & Nutrition</option>
-              <option value="">Housing & Utilities</option>
+              <option value="">Food &amp; Nutrition</option>
+              <option value="">Housing &amp; Utilities</option>
               <option value="">Tax Relief</option>
               <option value="">Veterans</option>
               <option value="">Employment</option>

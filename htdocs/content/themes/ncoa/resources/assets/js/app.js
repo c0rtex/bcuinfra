@@ -1937,9 +1937,8 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
-app.controller('becsController',['$scope','$window',function($scope,$window){
-
-<<<<<<< HEAD
+app.controller('becsController', ['$scope','$window',function($scope,$window){
+    
     $scope.becsStates = [];
     $scope.orgEn = false;
     $scope.becs = [];
@@ -1953,10 +1952,10 @@ app.controller('becsController',['$scope','$window',function($scope,$window){
 
     $scope.goToBeck = function() {
         $window.location.href = '/?partner_id='+$scope.bec['partner-id'];
-=======
+    };
+
     $scope.enterPressed = function() {
         $window.location.href = '/nationalcenter';
->>>>>>> echo
     };
 
 }]);
