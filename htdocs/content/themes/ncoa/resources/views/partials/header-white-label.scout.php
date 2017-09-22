@@ -52,7 +52,7 @@
                             <a href="/grantees">Grantees</a>
                         </li>
                         <li class="@if($resources)current-menu-item current_page_item @endif">
-                            <a href="/forms">Resources & Forms</a>
+                            <a href="/resources-forms">Resources & Forms</a>
                         </li>
                     </ul>
                 </nav>

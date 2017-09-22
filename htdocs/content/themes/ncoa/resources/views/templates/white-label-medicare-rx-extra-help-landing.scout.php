@@ -16,9 +16,9 @@
         </ul>
 
         <div class="align-center">
-          <a class="btn btn-link fact-sheet-button-fwd" href=".">Learn more about the application process</a>
+          <a class="btn btn-link fact-sheet-button-fwd" href="/medicare-rx-info/">Learn more about the application process</a>
           <br/><br/>
-          <a class="btn btn-primary" href=".">Start Your Application</a>
+          <a class="btn btn-primary" href="/medicare-rx-extra-help-application-prepare/">Start Your Application</a>
         </div>
       </div>
 
