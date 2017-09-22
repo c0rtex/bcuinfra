@@ -39,7 +39,7 @@
 
         <footer class="white-label-landing__footer">
           <p>Not using a Benefits Enrollment Center?</p>
-          <p><a href="">Visit benefitscheckup.org</a></p>
+          <p><a href="https://www.benefitscheckup.org">Visit BenefitsCheckUp.org</a></p>
         </footer>
 
       </section>
