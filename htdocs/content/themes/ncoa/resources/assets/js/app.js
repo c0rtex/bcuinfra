@@ -1937,6 +1937,15 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
+app.controller('granteesController', ['$scope', function($scope) {
+    $scope.state = '';
+    $scope.stateChange = function() {
+        angular.element('html, body').animate({
+            scrollTop: $("#grantee-"+$scope.state).offset().top
+        }, 1500);
+    }
+}]);
+
 app.controller('resourcesFormsController', ['$scope', '$window', '$http', function($scope, $window, $http) {
     $scope.results = [];
     $scope.values = {

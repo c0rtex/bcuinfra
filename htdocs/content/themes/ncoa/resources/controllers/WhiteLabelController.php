@@ -243,18 +243,47 @@ class WhiteLabelController extends BaseController
     $nutrition = false;
     $home = false;
     $partnerlogin = false;
-    $grantees = true;
     $resources = false;
     $home6 = false;
+    $states = array();
+
+    $args = array(
+      'post_type' => 'grantees',
+      'posts_per_page' => -1,
+      'meta_query' => array(
+        array(
+          'key' => 'site-url',
+          'value' => '',
+          'compare' => '!=',
+        ),
+      ),
+    );
+
+    $query = new WP_Query($args);
+    $grantees = $query->get_posts();
+
+    foreach ($grantees as $grantee) {
+      $state_code = Meta::get($grantee->ID, 'state');
+      $states[$state_code] = $this->states[$state_code];
+
+      $site_url = Meta::get($grantee->ID, 'site-url');
+      $grantees[$state_code][] = array(
+        'title' => $grantee->post_title,
+        'url' => $site_url,
+      );
+    }
+    asort($states);
+
     return View::make('templates.white-label-grantees', [
       'loggedin' => $loggedin,
       'medicarerx' => $medicarerx,
       'nutrition' => $nutrition,
       'home' => $home,
       'partnerlogin' => $partnerlogin,
-      'grantees' => $grantees,
       'resources' => $resources,
       'home6' => $home6,
+      'states' => $states,
+      'grantees' => $grantees,
     ])->render(); 
   }
 
