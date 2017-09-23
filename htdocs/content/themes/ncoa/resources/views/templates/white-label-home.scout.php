@@ -86,63 +86,6 @@
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->
 
-                <div class="item">
-                  <div class="program-highlight">
-                    <div class="program-highlight__text">
-                      <div class="program-highlight__icon">
-                        <a href="." class="program-highlight__icon-wrap">
-                          <img src="../content/uploads/2016/05/category_veteran.svg" class="attachment-full size-full" alt="Medal" title="Medal">
-                        </a>
-                      </div>
-                      <h2 class="program-highlight__title">Lorem Ipsum</h2>
-                      <div class="program-highlight__excerpt">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ipsum aliquid, laudantium.</p>
-                      </div>
-                    </div>
-                    <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href=".">Get Started</a>
-                    </div>
-                  </div><!--/.program-highlight-->
-                </div><!--/.item-->
-
-                <div class="item">
-                  <div class="program-highlight">
-                    <div class="program-highlight__text">
-                      <div class="program-highlight__icon">
-                        <a href="." class="program-highlight__icon-wrap">
-                          <img src="../content/uploads/2016/05/category_employment.svg" class="attachment-full size-full" alt="Briefcase" title="Briefcase">
-                        </a>
-                      </div>
-                      <h2 class="program-highlight__title">Lorem Ipsum</h2>
-                      <div class="program-highlight__excerpt">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ipsum aliquid, laudantium.</p>
-                      </div>
-                    </div>
-                    <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href=".">Get Started</a>
-                    </div>
-                  </div><!--/.program-highlight-->
-                </div><!--/.item-->
-
-                <div class="item">
-                  <div class="program-highlight">
-                    <div class="program-highlight__text">
-                      <div class="program-highlight__icon">
-                        <a href="." class="program-highlight__icon-wrap">
-                          <img src="../content/uploads/2016/05/category_taxRelief.svg" class="attachment-full size-full" alt="Piggy Bank" title="Piggy Bank">
-                        </a>
-                      </div>
-                      <h2 class="program-highlight__title">Lorem Ipsum</h2>
-                      <div class="program-highlight__excerpt">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ipsum aliquid, laudantium.</p>
-                      </div>
-                    </div>
-                    <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href=".">Get Started</a>
-                    </div>
-                  </div><!--/.program-highlight-->
-                </div><!--/.item-->
-
               </div><!--.ncoa-carousel-container-->
               <div class="controls">
                 <div class="count">
