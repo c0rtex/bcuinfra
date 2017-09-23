@@ -1,3 +1,6 @@
+<script>
+    window.isPLPage = true;
+</script>
 <header class="container-fluid">
     <section class="container">
         <div class="clearfix">

@@ -2937,40 +2937,41 @@ $(document).on('click', '.accordian-trigger', function(e) {
 
 $('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
 
-// Start of LiveChat (www.livechatinc.com) code
-<!-- Start of LiveChat (www.livechatinc.com) code -->
-window.__lc = window.__lc || {};
-window.__lc.license = 8840876;
-(function() {
-  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-})();
-<!-- End of LiveChat code -->
+if (typeof window.isPLPage == 'undefined') {
+    // Start of LiveChat (www.livechatinc.com) code
+    window.__lc = window.__lc || {};
+    window.__lc.license = 8840876;
+    (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
 
-var LC_API = LC_API || {};
-var livechat_chat_started = false;
+    var LC_API = LC_API || {};
+    var livechat_chat_started = false;
 
-LC_API.on_before_load = function() {
-    // don't hide the chat window only if visitor
-    // is currently chatting with an agent
-    if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
-        // Hide chat window on homepage
-        if (window.location.pathname == '/') {
-            LC_API.hide_chat_window();
+    LC_API.on_before_load = function() {
+        // don't hide the chat window only if visitor
+        // is currently chatting with an agent
+        if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
+            // Hide chat window on homepage
+            if (window.location.pathname == '/') {
+                LC_API.hide_chat_window();
+            }
         }
-    }
-};
+    };
 
-LC_API.on_chat_started = function() {
-    livechat_chat_started = true;
-};
+    LC_API.on_chat_started = function() {
+        livechat_chat_started = true;
+    };
 
-// $(document).ready(function() {
-//   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
-//
-//   window.setInterval(function(){
-//     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
-//     console.log('fire');
-//   }, 2000);
-// });
+    // $(document).ready(function() {
+    //   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
+    //
+    //   window.setInterval(function(){
+    //     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
+    //     console.log('fire');
+    //   }, 2000);
+    // });
+    // End of LiveChat code
+}
