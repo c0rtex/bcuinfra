@@ -82,8 +82,8 @@
 
 
       <div class="btn-nav">
-        <a href="." class="btn-link btn-back">Back to who should enroll</a>
-        <a href="." class="btn btn-primary">Start Your Application</a>
+        <a href="/medicare-rx-extra-help-application/" class="btn-link btn-back">Back to who should enroll</a>
+        <a href="/medicare-rx-extra-help-application-prepare/" class="btn btn-primary">Start Your Application</a>
       </div>
 
     </div>

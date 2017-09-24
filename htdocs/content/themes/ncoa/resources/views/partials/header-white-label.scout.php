@@ -1,3 +1,6 @@
+<script>
+    window.isPLPage = true;
+</script>
 <header class="container-fluid">
     <section class="container">
         <div class="clearfix">
@@ -52,7 +55,7 @@
                             <a href="/grantees">Grantees</a>
                         </li>
                         <li class="@if($resources)current-menu-item current_page_item @endif">
-                            <a href="/forms">Resources & Forms</a>
+                            <a href="/resources-forms">Resources & Forms</a>
                         </li>
                     </ul>
                 </nav>
@@ -105,7 +108,7 @@
                                             <a href="/grantees">Grantees</a>
                                         </li>
                                         <li class="@if($resources)current-menu-item current_page_item @endif">
-                                            <a href="/forms">Resources & Forms</a>
+                                            <a href="/resources-forms">Resources & Forms</a>
                                         </li>
                                     </ul>
                                 </nav>
