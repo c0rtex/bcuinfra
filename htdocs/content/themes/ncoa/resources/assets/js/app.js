@@ -161,6 +161,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             url: '/screening-start',
             controller: 'screeningController'
         })
+        .state('basicsScreening',{
+            url: "/screening/basics",
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.basics.html?'+(new Date()),
+            controller: 'basicsScreeningController'
+        })
         .state('screening', {
             url: "/screening/:category/:state",
             templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.html?'+(new Date()),
@@ -995,7 +1000,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 
                     request.pgno = ScreeningRoutes[$state.params.category].pgno;
 
-                    if (prescreen.data.results != undefined) {
+                    if (prescreen.data.results.screening.id != undefined) {
                         request.prescreen = prescreen.data.results.screening;
                     }
 
@@ -1008,6 +1013,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
                     if (window.partnerId) request.partnerId=window.partnerId;
+                    request.subsetId = window.subsetId;
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
@@ -1030,7 +1036,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                             screening.data.results.screening = data;
                             screening.data.answers = scope.$root.answers;
                             screening.save();
-                            var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
+                            var stateId = ($state.params.state) ? $state.params.state : scope.$root.prescreen ?  scope.$root.prescreen.stateId : scope.$root.answers.basics.stateId;
                             $state.transitionTo("screening", {"category": stateName, "state": stateId});
                         }
                     });
@@ -1432,6 +1438,8 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                             scope.$root.answers[category.currentCategory()].zipcode = data.zip;
 
                             scope.$root.answers[category.currentCategory()].stateId = data.state_id;
+                            scope.$root.answers[category.currentCategory()].st = data.state_id;
+
                             scope.zipCodeLabel = "Update Zip Code";
 
                             scope.$root.answers[category.currentCategory()].county = data.county;
@@ -1500,6 +1508,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 
                             if (data.results[0].address_components[i].types[j] == "administrative_area_level_1") {
                                 scope.$root.answers[category.currentCategory()].stateId = data.results[0].address_components[i].short_name;
+                                scope.$root.answers[category.currentCategory()].st = data.results[0].address_components[i].short_name;
                                 scope.zipCodeLabel = "Update Zip Code";
                             }
 
@@ -1853,6 +1862,9 @@ app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', fun
 
     if (_data == undefined) {
         prescreenform.data = {};
+        prescreenform.data.results = {};
+        prescreenform.data.results.screening = {};
+
     } else {
         if (_data.name==$window.name) {
             prescreenform.data = _data;
@@ -2075,12 +2087,14 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
 
 app.controller('initialController',['$state','prescreenQuestions','prescreen','screening',function($state,prescreenQuestions,prescreen,screening) {
     prescreenQuestions.get(undefined,undefined,undefined).success(function(data, status, headers, config) {
+        prescreen.data.results.screening = {};
+        screening.data.results.screening = {};
         if (data.type=="prescreen") {
             prescreen.data.questions = data.questions;
             $state.transitionTo('prescreen');
         } else {
             screening.data.questions["basics"] = data.questions;
-            $state.transitionTo('screening',{category:"basics",state:""});
+            $state.transitionTo('basicsScreening',{category:"basics"});
         }
     });
 
@@ -2415,11 +2429,37 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 
 }]);
 
+app.controller('basicsScreeningController',['$scope','$state','screening',function($scope,$state,screening){
+    $state.params.category="basics";
+    $scope.$root.isScreening = true;
+    if ($scope.$root.questions == undefined) {
+        $scope.$root.questions = {};
+    }
+
+    if (!screening.data.questions.basics) $state.transitionTo('initial');
+
+    $scope.$root.questions.basics = screening.data.questions.basics;
+
+    $scope.zipQuestion = $scope.$root.questions.basics.filter(function(a) {
+        return a.code == 'zip';
+    })[0];
+
+    $scope.$root.questions.basics = $scope.$root.questions.basics.filter(function(a) {
+        return a.code != 'zip';
+    });
+
+    if ($scope.$root.answers == undefined) {
+        $scope.$root.answers = screening.data.answers;
+    }
+}]);
+
 app.controller('screeningController', ['$rootScope', '$scope', '$state', '$stateParams', 'prescreen', 'screening', 'prescreenQuestions', function($rootScope, $scope, $state, $stateParams, prescreen, screening, prescreenQuestions){
 
     $rootScope.showLoader = false;
 
     $rootScope.isScreening = true;
+
+    $rootScope.hasPrescreen = window.subsetId == 100;
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = screening.data.answers;

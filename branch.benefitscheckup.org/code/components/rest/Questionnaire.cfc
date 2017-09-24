@@ -299,7 +299,7 @@
     <cffunction name="fillHhMembers">
         <cfargument name="screening">
         <cfset var sa = ormExecuteQuery("select sa.option.code from screening_answerfield sa where sa.screening.id=? and sa.answer.code='marital_stat'",[screening])>
-        <cfif arraylen(sa) gte 0>
+        <cfif arraylen(sa) gt 0>
             <cfif sa[1] eq "married">
                 <cfreturn 2>
             <cfelse>
