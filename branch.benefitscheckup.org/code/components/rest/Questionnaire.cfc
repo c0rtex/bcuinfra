@@ -1,10 +1,25 @@
 <cfcomponent rest="true" restpath="/questionnaire">
     <cffunction name="get" access="remote" restpath="/get/{subsetId:(\d)*}" returntype="String" httpMethod="GET">
         <cfargument name="subsetId" required="false" restargsource="Path" type="string"/>
+        <cfargument name="superCategoryCode" required="false" restargsource="Query" type="string" default="BASICS"/>
+        <cfargument name="prevScreeningId" required="false" restargsource="Query" type="numeric" default="-1">
+        <cfargument name="stateId" required="false" restargsource="Query" type="string" default="NY"/>
+
+        <cfset var subset = entityLoadByPK("subset",subsetId)>
+
+        <cfswitch expression="#subset.getresult_page().getCode()#">
+            <cfcase value="prescreen">
+                <cfreturn '{"type":"prescreen","screening":#serializeJSON(subset.toStructure())#,"questions":#this.prescreen(subsetId)#}'>
+            </cfcase>
+
+            <cfcase value="newresults">
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId)#}'>
+            </cfcase>
+        </cfswitch>
 
         <cfswitch expression="#subsetId#">
             <cfcase value="57">
-                <cfreturn this.prescreen(subsetId)>
+                <cfreturn this.screening(subsetId)>
             </cfcase>
 
             <cfcase value="100">
