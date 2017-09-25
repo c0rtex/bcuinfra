@@ -15,20 +15,20 @@
           <label for="state-selection">Find Your State</label>
           <select class="form-control" name="state-selection" id="state-selection" ng-model="state" ng-change="stateChange()">
             <option value="">-- choose an option --</option>
-            @foreach ($states as $state_code => $state)
-            <option value="{{ $state_code }}">{{ $state }}</option>
+            @foreach ($grantees as $state => $grantees_list)
+            <option value="{{ $state }}">{{ $state }}</option>
             @endforeach
           </select>
         </div>
       </form>
 
       <ul class="grant-list">
-        @foreach ($states as $state_code => $state)
-        <li id="grantee-{{ $state_code }}">
+        @foreach ($grantees as $state => $grantees_list)
+        <li id="grantee-{{ $state }}">
           <div><strong>{{ $state }}</strong></div>
           <ul>
-            @foreach ($grantees[$state_code] as $grantee)
-            <li><a href="{{ $grantee['url'] }}">{{ $grantee['title']}}</a></li>
+            @foreach ($grantees_list as $grantee)
+            <li><a href="{{ $grantee['site-url'] }}">{{ $grantee['name']}}</a></li>
             @endforeach
           </ul>
         </li>
