@@ -28,7 +28,11 @@
           <div><strong>{{ $state }}</strong></div>
           <ul>
             @foreach ($grantees_list as $grantee)
-            <li><a href="{{ $grantee['site-url'] }}">{{ $grantee['name']}}</a></li>
+              @if (!empty($grantee['site-url']))
+              <li><a href="{{ $grantee['site-url'] }}" target="_blank">{{ $grantee['name']}}</a></li>
+              @else
+              <li>{{ $grantee['name']}}</li>
+              @endif
             @endforeach
           </ul>
         </li>
