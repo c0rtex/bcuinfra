@@ -73,7 +73,8 @@
         <cfset var rs = ormexecutequery("select
                                            ftg.name,
                                            p.name_display,
-                                           fft.string
+                                           fft.string,
+                                           p.code
                                          from
                                            form f join
                                            f.form_tag ftg join
@@ -97,6 +98,7 @@
             <cfset item["prg_nm"] = i[2].getDisplay_text()>
             <cfset item["tag_name"] = this.formatField(i,1)>
             <cfset item["string"] = this.formatField(i,3)>
+            <cfset item["code"] = this.formatField(i,4)>
             <cfset arrayAppend(retVal,item)>
         </cfloop>
 
