@@ -2720,7 +2720,7 @@ app.directive('divProgramDesc',['factSheet',function(factSheet) {
         //templateUrl:'/content/themes/ncoa/resources/views/pages/benefits-checkup/programs/programs.category.html?'+(new Date()),
         link: function(scope, element) {
             factSheet.get('factsheet_'+scope.program_code).success(function(data, status, headers, config) {
-                element.append("<p>"+data[0].program_short_summary+"</p>");
+                element.append("<p>"+(data.length>0 ? data[0].program_short_summary : "Short description is unavailable. Fact sheet for program with code " +scope.program_code+ " doesn't exists.")+"</p>");
             });
         },
         scope: {

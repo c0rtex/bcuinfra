@@ -71,8 +71,8 @@
 
         <ul>
           <li ng-repeat="result in results | orderBy: 'result.tag_name'">
-            <h4>@{{result.prg_nm}}</h4>
-            <p><a href="@{{result.string}}">@{{result.tag_name}}</a></p>
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
+            <p><div-program-desc program_code="result.code"></div-program-desc></p>
           </li>
         </ul>
         
