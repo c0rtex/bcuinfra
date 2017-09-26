@@ -85,7 +85,7 @@
                                            pc.super_category psc
                                          where
                                            fft.form_type.id<>2 and
-                                           (p.active_flag =0 or p.active_flag is null) and
+                                           p.active_flag = 1 and
                                            f.state.id=? and
                                            psc.answerfieldcode=?
                                          order by
