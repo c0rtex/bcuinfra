@@ -1988,7 +1988,7 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
         $scope.results = [];
         console.log($scope.values);
 
-        $http.get($window.webServiceUrl+'/rest/backend/forms/qryForms/'+$scope.values.category+'?stateId='+$scope.values.state)
+        $http.get($window.webServiceUrl+'/rest/backend/forms/resources/'+$scope.values.category+'/'+$scope.values.state)
             .then(function(response){
                 $scope.results = response.data;
                 angular.element('.resources-results').show('slow');
