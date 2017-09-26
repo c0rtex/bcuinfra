@@ -15,13 +15,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
-        .state('prescreen', {
+        .state('initial', {
             url: "/",
-            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/prescreen/prescreen.questions.html?'+(new Date()),
-            controller: 'preScreenController'
+            templateUrl: '',
+            controller: 'initialController'
         })
-        .state('prescreen.questions', {
-            url: "prescreen/questions",
+        .state('prescreen', {
+            url: "/prescreen",
             templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/prescreen/prescreen.questions.html?'+(new Date()),
             controller: 'preScreenController'
         })
@@ -160,6 +160,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('screening-start', {
             url: '/screening-start',
             controller: 'screeningController'
+        })
+        .state('basicsScreening',{
+            url: "/screening/basics",
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.basics.html?'+(new Date()),
+            controller: 'basicsScreeningController'
         })
         .state('screening', {
             url: "/screening/:category/:state",
@@ -999,7 +1004,6 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                         request.prescreen = prescreen.data.results.screening;
                     }
 
-
                     if (stateName == "questionnaire.loader") {
                         request.lastSet = "true";
                         $rootScope.showLoader = true;
@@ -1009,6 +1013,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
                     if (window.partnerId) request.partnerId=window.partnerId;
+                    request.subsetId = window.subsetId;
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
@@ -1031,7 +1036,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                             screening.data.results.screening = data;
                             screening.data.answers = scope.$root.answers;
                             screening.save();
-                            var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
+                            var stateId = ($state.params.state) ? $state.params.state : scope.$root.prescreen ?  scope.$root.prescreen.stateId : scope.$root.answers.basics.stateId;
                             $state.transitionTo("screening", {"category": stateName, "state": stateId});
                         }
                     });
@@ -1433,6 +1438,8 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                             scope.$root.answers[category.currentCategory()].zipcode = data.zip;
 
                             scope.$root.answers[category.currentCategory()].stateId = data.state_id;
+                            scope.$root.answers[category.currentCategory()].st = data.state_id;
+
                             scope.zipCodeLabel = "Update Zip Code";
 
                             scope.$root.answers[category.currentCategory()].county = data.county;
@@ -1501,6 +1508,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 
                             if (data.results[0].address_components[i].types[j] == "administrative_area_level_1") {
                                 scope.$root.answers[category.currentCategory()].stateId = data.results[0].address_components[i].short_name;
+                                scope.$root.answers[category.currentCategory()].st = data.results[0].address_components[i].short_name;
                                 scope.zipCodeLabel = "Update Zip Code";
                             }
 
@@ -1823,8 +1831,13 @@ app.service('saveScreening',['$http', function($http){
 }]);
 
 app.service('prescreenQuestions',['$http', function ($http) {
-    this.get = function() {
-        return $http.get(window.webServiceUrl+'/rest/backend/questionnaire/get/'+ (window.subsetId ? window.subsetId : ""));
+    this.get = function(superCategory,prevScreening,stateId) {
+        var subsetId = prevScreening ? "101" : window.subsetId ? window.subsetId : "100";
+        var url = window.webServiceUrl+'/rest/backend/questionnaire/get/'+ subsetId + "/?superCategoryCode=";
+        url = url + (superCategory ? superCategory : "basics");
+        if (prevScreening) url = url + "&prevScreeningId="+prevScreening;
+        if (stateId) url = url + "&stateId="+stateId;
+        return $http.get(url);
     }
 }]);
 
@@ -1849,6 +1862,9 @@ app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', fun
 
     if (_data == undefined) {
         prescreenform.data = {};
+        prescreenform.data.results = {};
+        prescreenform.data.results.screening = {};
+
     } else {
         if (_data.name==$window.name) {
             prescreenform.data = _data;
@@ -1937,6 +1953,15 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
+app.controller('granteesController', ['$scope', function($scope) {
+    $scope.state = '';
+    $scope.stateChange = function() {
+        angular.element('html, body').animate({
+            scrollTop: $("#grantee-"+$scope.state).offset().top
+        }, 1500);
+    }
+}]);
+
 app.controller('resourcesFormsController', ['$scope', '$window', '$http', function($scope, $window, $http) {
     $scope.results = [];
     $scope.values = {
@@ -1963,7 +1988,7 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
         $scope.results = [];
         console.log($scope.values);
 
-        $http.get($window.webServiceUrl+'/rest/backend/forms/qryForms/'+$scope.values.category+'?stateId='+$scope.values.state)
+        $http.get($window.webServiceUrl+'/rest/backend/forms/resources/'+$scope.values.category+'/'+$scope.values.state)
             .then(function(response){
                 $scope.results = response.data;
                 angular.element('.resources-results').show('slow');
@@ -2060,10 +2085,27 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 }]);
 
+app.controller('initialController',['$state','prescreenQuestions','prescreen','screening',function($state,prescreenQuestions,prescreen,screening) {
+    prescreenQuestions.get(undefined,undefined,undefined).success(function(data, status, headers, config) {
+        prescreen.data.results.screening = {};
+        screening.data.results.screening = {};
+        if (data.type=="prescreen") {
+            prescreen.data.questions = data.questions;
+            $state.transitionTo('prescreen');
+        } else {
+            screening.data.questions["basics"] = data.questions;
+            $state.transitionTo('basicsScreening',{category:"basics"});
+        }
+    });
+
+}]);
+
 app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', 'prescreenQuestions','screening', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems, prescreenQuestions,screening){
 
     $scope.category = "prescreen";
     $scope.showLoader = false;
+
+    $scope.$root.isScreening=false;
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = {};
@@ -2084,11 +2126,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     $scope.$root.prescreen.showCTA = true;
     $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
-    prescreenQuestions.get().success(function(data) {
-        prescreen.data.questions = data;
-        $scope.questionSet = prescreen.data.questions;
-    });
-
+    $scope.questionSet = prescreen.data.questions;
 
     $scope.submitPrescreen = function() {
         $scope.showLoader = true;
@@ -2299,7 +2337,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 }]);
 
-app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', 'prescreen', function($scope, $state, prescreenQuestions, prescreen){
+/*app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', 'prescreen', function($scope, $state, prescreenQuestions, prescreen){
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = {};
@@ -2308,10 +2346,10 @@ app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuest
     $scope.$root.answers.prescreen = prescreen.data.answers;
 
     prescreenQuestions.get().success(function(data, status, headers, config) {
-        prescreen.data.questions = data;
+        prescreen.data.questions = data.questions;
         if($state.current.name == "prescreen") $state.transitionTo('prescreen.questions',{category:"prescreen"});
     });
-}]);
+}]);*/
 
 app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){
 
@@ -2391,9 +2429,37 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 
 }]);
 
-app.controller('screeningController', ['$rootScope', '$scope', '$state', '$stateParams', 'prescreen', 'screening', 'screeningQuestions', function($rootScope, $scope, $state, $stateParams, prescreen, screening, screeningQuestions){
+app.controller('basicsScreeningController',['$scope','$state','screening',function($scope,$state,screening){
+    $state.params.category="basics";
+    $scope.$root.isScreening = true;
+    if ($scope.$root.questions == undefined) {
+        $scope.$root.questions = {};
+    }
+
+    if (!screening.data.questions.basics) $state.transitionTo('initial');
+
+    $scope.$root.questions.basics = screening.data.questions.basics;
+
+    $scope.zipQuestion = $scope.$root.questions.basics.filter(function(a) {
+        return a.code == 'zip';
+    })[0];
+
+    $scope.$root.questions.basics = $scope.$root.questions.basics.filter(function(a) {
+        return a.code != 'zip';
+    });
+
+    if ($scope.$root.answers == undefined) {
+        $scope.$root.answers = screening.data.answers;
+    }
+}]);
+
+app.controller('screeningController', ['$rootScope', '$scope', '$state', '$stateParams', 'prescreen', 'screening', 'prescreenQuestions', function($rootScope, $scope, $state, $stateParams, prescreen, screening, prescreenQuestions){
 
     $rootScope.showLoader = false;
+
+    $rootScope.isScreening = true;
+
+    $rootScope.hasPrescreen = window.subsetId == 100;
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = screening.data.answers;
@@ -2411,10 +2477,14 @@ app.controller('screeningController', ['$rootScope', '$scope', '$state', '$state
             $scope.$root.answers[$state.params.category] = screening.data.answers[$state.params.category];
         }
 
-        screeningQuestions.get($state.params.category,prescreen.data.results.screening.id,$state.params.state).success(function(data){
-            screening.data.questions[$state.params.category] = data;
-            $scope.$root.questions[$state.params.category] = data;
-        });
+        if (screening.data.questions[$state.params.category]) {
+            $scope.$root.questions[$state.params.category] = screening.data.questions[$state.params.category];
+        } else {
+            prescreenQuestions.get($state.params.category, (prescreen.data.results ? prescreen.data.results.screening.id : undefined), $state.params.state).success(function (data) {
+                screening.data.questions[$state.params.category] = data.questions;
+                $scope.$root.questions[$state.params.category] = data.questions;
+            });
+        }
     } else {
         $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
     }
@@ -2928,40 +2998,41 @@ $(document).on('click', '.accordian-trigger', function(e) {
 
 $('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
 
-// Start of LiveChat (www.livechatinc.com) code
-<!-- Start of LiveChat (www.livechatinc.com) code -->
-window.__lc = window.__lc || {};
-window.__lc.license = 8840876;
-(function() {
-  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-})();
-<!-- End of LiveChat code -->
+if (typeof window.isPLPage == 'undefined') {
+    // Start of LiveChat (www.livechatinc.com) code
+    window.__lc = window.__lc || {};
+    window.__lc.license = 8840876;
+    (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
 
-var LC_API = LC_API || {};
-var livechat_chat_started = false;
+    var LC_API = LC_API || {};
+    var livechat_chat_started = false;
 
-LC_API.on_before_load = function() {
-    // don't hide the chat window only if visitor
-    // is currently chatting with an agent
-    if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
-        // Hide chat window on homepage
-        if (window.location.pathname == '/') {
-            LC_API.hide_chat_window();
+    LC_API.on_before_load = function() {
+        // don't hide the chat window only if visitor
+        // is currently chatting with an agent
+        if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
+            // Hide chat window on homepage
+            if (window.location.pathname == '/') {
+                LC_API.hide_chat_window();
+            }
         }
-    }
-};
+    };
 
-LC_API.on_chat_started = function() {
-    livechat_chat_started = true;
-};
+    LC_API.on_chat_started = function() {
+        livechat_chat_started = true;
+    };
 
-// $(document).ready(function() {
-//   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
-//
-//   window.setInterval(function(){
-//     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
-//     console.log('fire');
-//   }, 2000);
-// });
+    // $(document).ready(function() {
+    //   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
+    //
+    //   window.setInterval(function(){
+    //     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
+    //     console.log('fire');
+    //   }, 2000);
+    // });
+    // End of LiveChat code
+}

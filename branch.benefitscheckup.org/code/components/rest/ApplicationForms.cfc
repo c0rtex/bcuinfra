@@ -67,6 +67,43 @@
         <cfreturn serializeJSON(retVal)>
     </cffunction>
 
+    <cffunction name="resources" access="remote" restpath="/resources/{category}/{stateId}" returntype="String" httpMethod="GET">
+        <cfargument name="category" required="true" restargsource="Path" type="string"/>
+        <cfargument name="stateId" required="true" restargsource="Path" type="string"/>
+        <cfset var rs = ormexecutequery("select
+                                           ftg.name,
+                                           p.name_display,
+                                           fft.string
+                                         from
+                                           form f join
+                                           f.form_tag ftg join
+                                           f.form_form_types fft join
+                                           f.program_forms pf join
+                                           pf.program p join
+                                           p.program_category pc join
+                                           pc.super_category psc
+                                         where
+                                           fft.form_type.id<>2 and
+                                           (p.active_flag =0 or p.active_flag is null) and
+                                           f.state.id=? and
+                                           psc.answerfieldcode=?
+                                         order by
+                                           p.sort,pf.sort",[stateId,category])>
+
+        <cfset var retVal = arrayNew(1)>
+
+        <cfloop array="#rs#" index="i">
+            <cfset item = structNew()>
+            <cfset item["prg_nm"] = i[2].getDisplay_text()>
+            <cfset item["tag_name"] = this.formatField(i,1)>
+            <cfset item["string"] = this.formatField(i,3)>
+            <cfset arrayAppend(retVal,item)>
+        </cfloop>
+
+        <cfreturn serializeJSON(retVal)>
+
+    </cffunction>
+
     <cffunction name="qryForms" access="remote" restpath="/qryForms/{category}" returntype="String" httpMethod="GET">
         <cfargument name="category" required="true" restargsource="Path" type="string"/>
         <cfargument name="stateId" required="false" restargsource="Query" default="" type="string"/>

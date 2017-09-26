@@ -13,7 +13,7 @@
 --->
 
 <cfcomponent persistent="true" entityname="subset" table="subset" extends="ToStructConverter">
-    <cfproperty name="id" fieldtype="id" column="subset_id">
+    <cfproperty name="id" fieldtype="id" tostruct="id" column="subset_id">
     <cfproperty name="type" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="subsettype_id" cfc="subset_type">
     <cfproperty name="code">
     <cfproperty name="description">
@@ -22,7 +22,7 @@
     <cfproperty name="spq_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="spq_display_id" cfc="display">
     <cfproperty name="oe_name">
     <cfproperty name="intro_display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="intro_display_id" cfc="display">
-    <cfproperty name="result_page" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="resultpage_id" cfc="result_page">
+    <cfproperty name="result_page" tostructcomponent="resultpage" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="resultpage_id" cfc="result_page">
     <cfproperty name="shadow_subset" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="shadow_subset_id" cfc="subset">
     <cfproperty name="branding_partner" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="branding_partner_id" cfc="partner">
     <cfproperty name="active_flag">

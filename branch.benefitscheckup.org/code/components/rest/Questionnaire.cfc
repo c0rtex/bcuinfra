@@ -1,22 +1,28 @@
 <cfcomponent rest="true" restpath="/questionnaire">
+
+    <cffunction name="drugListRestService" access="remote" restpath="/drugList" returntype="String" httpMethod="GET">
+        <cfreturn serializeJSON(this.getDrugList())>
+    </cffunction>
+
     <cffunction name="get" access="remote" restpath="/get/{subsetId:(\d)*}" returntype="String" httpMethod="GET">
         <cfargument name="subsetId" required="false" restargsource="Path" type="string"/>
+        <cfargument name="superCategoryCode" required="false" restargsource="Query" type="string" default="BASICS"/>
+        <cfargument name="prevScreeningId" required="false" restargsource="Query" type="numeric" default="-1">
+        <cfargument name="stateId" required="false" restargsource="Query" type="string" default="NY"/>
 
-        <cfswitch expression="#subsetId#">
-            <cfcase value="57">
-                <cfreturn this.prescreen(subsetId)>
+        <cfset var subset = entityLoadByPK("subset",subsetId)>
+
+        <cfswitch expression="#subset.getresult_page().getCode()#">
+            <cfcase value="prescreen">
+                <cfreturn '{"type":"prescreen","screening":#serializeJSON(subset.toStructure())#,"questions":#this.prescreen(subsetId)#}'>
             </cfcase>
 
-            <cfcase value="100">
-                <cfreturn this.prescreen(subsetId)>
-            </cfcase>
-
-            <cfcase value="101">
-                <cfreturn this.prescreen(subsetId)>
+            <cfcase value="newresults">
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId,subsetId)#}'>
             </cfcase>
 
             <cfdefaultcase>
-                <cfreturn this.prescreen(100)>
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId,subsetId)#}'>
             </cfdefaultcase>
         </cfswitch>
     </cffunction>
@@ -58,6 +64,7 @@
         <cfargument name="superCategoryCode" required="true" restargsource="Path" type="string"/>
         <cfargument name="prevScreeningId" required="false" restargsource="Path" type="numeric" default="-1">
         <cfargument name="stateId" required="true" restargsource="Path" type="string"/>
+        <cfargument name="subset_id" required="false" restargsource="Query" type="numeric" default="101"/>
 
         <cfset sqs = "">
         <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[prevScreeningId])>
@@ -106,11 +113,11 @@
                                               qc.super_category sc
                                               left join q.subset_question_programcategory sqp
                                             where
-                                              sqt.subset.id=101
+                                              sqt.subset.id=?
                                               and sqt.state=?
                                               and sc.code=?
                                               #sqs#
-                                            order by sqt.sort",[state,superCategoryCode])>
+                                            order by sqt.sort",[subset_id,state,superCategoryCode])>
 
 
         <cfset retVal = arrayNew(1)>
@@ -284,7 +291,7 @@
     <cffunction name="fillHhMembers">
         <cfargument name="screening">
         <cfset var sa = ormExecuteQuery("select sa.option.code from screening_answerfield sa where sa.screening.id=? and sa.answer.code='marital_stat'",[screening])>
-        <cfif arraylen(sa) gte 0>
+        <cfif arraylen(sa) gt 0>
             <cfif sa[1] eq "married">
                 <cfreturn 2>
             <cfelse>

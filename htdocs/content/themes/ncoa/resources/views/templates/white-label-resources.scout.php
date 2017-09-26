@@ -30,7 +30,7 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="programcategory">
 
-      <p>BenefitsCheckUp strives to maintain the most current database of programs and application forms possible. Select your search options below in order to get relevant program information  about benefits that are available in your state. <strong>You must select a state AND the category you are interested in.</strong></p>
+      <p>BenefitsCheckUp strives to maintain the most current database of programs and application forms possible. Select your search options below in order to get relevant program information about benefits that are available in your state. <strong>You must select a state AND the category you are interested in.</strong></p>
 
       <div class="white-label-resources-category-form">
         <form class="" method="POST" accept-charset="UTF-8">   

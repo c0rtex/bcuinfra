@@ -9,6 +9,8 @@
                     <span class="super-footer-link"><a href="/privacy-policy">Privacy Policy</a></span>
                     <span class="super-footer-spacer">|</span>
                     <span class="super-footer-link"><a href="/terms-of-use/">Terms of Use</a></span>
+                    <span class="super-footer-spacer">|</span>
+                    <span class="super-footer-link"><a href="/welcome-partner-login-page/">Partner Login</a></span>
                 </div>
             </div>
         </div>

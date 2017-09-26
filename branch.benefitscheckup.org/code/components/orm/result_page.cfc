@@ -13,9 +13,9 @@
 --->
 
 <cfcomponent persistent="true" entityname="result_page" table="resultpage" extends="ToStructConverter">
-    <cfproperty name="id" fieldtype="id" column="resultpage_id">
-    <cfproperty name="code">
-    <cfproperty name="file_name" column="filename">
+    <cfproperty name="id" fieldtype="id" tostruct="id" column="resultpage_id">
+    <cfproperty name="code" tostruct="code">
+    <cfproperty name="file_name" tostruct="filename" column="filename">
     <cfproperty name="display" fieldtype="many-to-one" missingRowIgnored="true" fkcolumn="display_id" cfc="display">
     <cfproperty name="result_page_name" column="resultpage_desc">
 </cfcomponent>

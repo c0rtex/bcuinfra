@@ -1,3 +1,6 @@
+<script>
+    window.isPLPage = true;
+</script>
 <header class="container-fluid">
     <section class="container">
         <div class="clearfix">
@@ -31,7 +34,8 @@
                             wp_get_attachment_image(Option::get('global-settings', 'whitelabel-logo'), 'full', false,
                                 array('title' => get_the_title(Option::get('global-settings', 'whitelabel-logo')),
                                 'width' => Option::get('global-settings', 'white-label-logo-width'),
-                                'height' => Option::get('global-settings', 'white-label-logo-height')
+                                'height' => Option::get('global-settings', 'white-label-logo-height'),
+                                'title' => 'Center for Benefits Access',
                             ))
                         }}
                         @if($loggedin)
@@ -52,7 +56,7 @@
                             <a href="/grantees">Grantees</a>
                         </li>
                         <li class="@if($resources)current-menu-item current_page_item @endif">
-                            <a href="/resources-forms">Resources & Forms</a>
+                            <a href="/resources-forms">Resources &amp; Forms</a>
                         </li>
                     </ul>
                 </nav>

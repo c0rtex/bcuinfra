@@ -1,4 +1,4 @@
-<div class="income question-block" ng-show="$root.answers[category].dob_month && $root.answers[category].dob_year">
+<div class="income question-block" ng-show="$root.isScreening||($root.answers[category].dob_month && $root.answers[category].dob_year)">
     <section>
         <p class="question-block-icon question-block-title"><ng-label text="{{question.display}}"></ng-label><button ng-if="question.helps.length>0" data-toggle="popover" data-trigger="click" data-html="true" data-content="{{question.helps[0].text}}" data-placement="top" class="fa fa-question-circle"><script type="text/javascript-lazy">$('.fa-question-circle').popover();</script></button></p>
         <div class="btn-group" role="group" aria-label="Montly Income?">

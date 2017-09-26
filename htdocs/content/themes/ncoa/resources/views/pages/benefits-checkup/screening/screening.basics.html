@@ -14,15 +14,14 @@
             <li>Name of prescription medications that you take (include brand name and generic drugs)</li>
         </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue.</p>
 
-                <div class="cta">
-                    <strong>Just a reminder:</strong> Answer all your questions as your {{screenData.searchingFor}}.
+                <question question="zipQuestion"></question>
+                <div ng-show="$root.isZipValid">
+                <question ng-repeat="question in $root.questions['basics']" question="question"></question>
                 </div>
-                <question ng-repeat="question in $root.questions[category]" question="question"></question>
-                <p class="error-state" ng-show="wrongLink"><strong>Error!</strong> Please add category and state to url</p>
             </div>
 
-            <!-- Profile Section-->
-            <div ng-if="$root.hasPrescreen" class="col-md-3 hidden-sm hidden-xs profile-section" profile></div>
+            <!-- Profile Section
+            <div class="col-md-3 hidden-sm hidden-xs profile-section" profile></div>-->
         </div>
     </div>
     <div class="btns-container clearfix" page-switch>
