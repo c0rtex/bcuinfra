@@ -262,7 +262,11 @@
 
         <cfset getPoverty = ormExecuteQuery("select mem#memCount# from tbl_inc where proc_id = 484")>
 
-        <cfset povertyIndex = saArray["hh_income_total_complete"]/getPoverty[1]>
+        <cfif structKeyExists(saArray,"hh_income_total_complete")>
+            <cfset povertyIndex = saArray["hh_income_total_complete"]/getPoverty[1]>
+        <cfelse>
+            <cfset povertyIndex = 0>
+        </cfif>
 
         <cfset var answerField = entityload("answer_field",{code="poverty_index"})>
 
