@@ -1065,3 +1065,21 @@ select.form-control {
     color: #555555;
   }
 }
+
+.form-item-white-label-landing-state,
+.form-item-white-label-landing-org {
+  select {
+    width: auto; 
+    margin: 0 auto;
+  }
+}
+
+.form-item-white-label-landing-state {
+  select {
+    min-width: 260px;
+  }
+}
+
+.form-item-white-label-submit {
+  margin-top: 45px;
+}
