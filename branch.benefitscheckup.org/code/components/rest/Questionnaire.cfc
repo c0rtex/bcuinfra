@@ -15,23 +15,9 @@
             <cfcase value="newresults">
                 <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId)#}'>
             </cfcase>
-        </cfswitch>
-
-        <cfswitch expression="#subsetId#">
-            <cfcase value="57">
-                <cfreturn this.screening(subsetId)>
-            </cfcase>
-
-            <cfcase value="100">
-                <cfreturn this.prescreen(subsetId)>
-            </cfcase>
-
-            <cfcase value="101">
-                <cfreturn this.prescreen(subsetId)>
-            </cfcase>
 
             <cfdefaultcase>
-                <cfreturn this.prescreen(100)>
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId)#}'>
             </cfdefaultcase>
         </cfswitch>
     </cffunction>
