@@ -18,11 +18,11 @@
             </cfcase>
 
             <cfcase value="newresults">
-                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId)#}'>
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId,subsetId)#}'>
             </cfcase>
 
             <cfdefaultcase>
-                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId)#}'>
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId,subsetId)#}'>
             </cfdefaultcase>
         </cfswitch>
     </cffunction>
@@ -64,6 +64,7 @@
         <cfargument name="superCategoryCode" required="true" restargsource="Path" type="string"/>
         <cfargument name="prevScreeningId" required="false" restargsource="Path" type="numeric" default="-1">
         <cfargument name="stateId" required="true" restargsource="Path" type="string"/>
+        <cfargument name="subset_id" required="false" restargsource="Query" type="numeric" default="101"/>
 
         <cfset sqs = "">
         <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[prevScreeningId])>
@@ -112,11 +113,11 @@
                                               qc.super_category sc
                                               left join q.subset_question_programcategory sqp
                                             where
-                                              sqt.subset.id=101
+                                              sqt.subset.id=?
                                               and sqt.state=?
                                               and sc.code=?
                                               #sqs#
-                                            order by sqt.sort",[state,superCategoryCode])>
+                                            order by sqt.sort",[subset_id,state,superCategoryCode])>
 
 
         <cfset retVal = arrayNew(1)>
