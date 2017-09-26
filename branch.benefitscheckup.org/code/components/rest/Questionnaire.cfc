@@ -1,4 +1,9 @@
 <cfcomponent rest="true" restpath="/questionnaire">
+
+    <cffunction name="drugListRestService" access="remote" restpath="/drugList" returntype="String" httpMethod="GET">
+        <cfreturn serializeJSON(this.getDrugList())>
+    </cffunction>
+
     <cffunction name="get" access="remote" restpath="/get/{subsetId:(\d)*}" returntype="String" httpMethod="GET">
         <cfargument name="subsetId" required="false" restargsource="Path" type="string"/>
         <cfargument name="superCategoryCode" required="false" restargsource="Query" type="string" default="BASICS"/>
