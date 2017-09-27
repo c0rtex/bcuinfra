@@ -97,32 +97,7 @@
       <div class="drug-name-container">
         <p>Select the name of your medication then click “Add to My List.” If you clicked on a drug name by mistake, click it again to remove the blue highlight. After you click “Add to My List” the medication will appear on the list in the box on the right. To remove a medication from that list, select the name then click “Remove from My List.”</p>
 
-        <div class="med-selector row">
-          <div class="col-xs-12 add-list">
-
-            <div class="ms-selectable">
-              <p class="bold">Available Medications</p>
-              <input type="text" class="form-control" autocomplete="off" placeholder="Search...">
-              <ul class="ms-list" tab-index="-1">
-                <li class="ms-elem-selectable" id="3242-selectable"><span>abacavir sulfate</span></li>
-                <li class="ms-elem-selectable" id="3122992-selectable"><span>abacavir sulfate/lamivudine</span></li>
-                <li class="ms-elem-selectable" id="3243-selectable"><span>abacavir sulfate/lamivudine/zidovudine</span></li>
-              </ul>
-              <button class="btn btn-secondary add">Add to My List</button>
-            </div>
-
-            <div class="ms-selection">
-              <p class="bold">My Medication List</p>
-              <ul class="ms-list" tab-index="-1">
-                <li class="ms-elem-selection" id="3242-selection" style="display: none;"><span>abacavir sulfate</span></li>
-                <li class="ms-elem-selection" id="3122992-selection" style="display: none;"><span>abacavir sulfate/lamivudine</span></li>
-                <li class="ms-elem-selection" id="3243-selection" style="display: none;"><span>abacavir sulfate/lamivudine/zidovudine</span></li>
-              </ul>
-              <button class="btn btn-secondary remove" disabled>Remove from My List</button>
-            </div>
-
-          </div>
-        </div>
+        <medication-selector-resources></medication-selector-resources>
 
         <div class="drug-name-container__btn">
           <a href="." class="btn btn-primary">Search</a>
