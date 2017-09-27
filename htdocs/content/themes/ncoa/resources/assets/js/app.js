@@ -17,7 +17,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
         .state('initial', {
             url: "/",
-            templateUrl: '',
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.initial.html?'+(new Date()),
             controller: 'initialController'
         })
         .state('prescreen', {
