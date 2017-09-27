@@ -61,20 +61,27 @@
       <div class="resources-results">
 
         <h3>Available Programs</h3>
-        <div class="sort-nav">
+        <!--<div ng-if="results.length > 0" class="sort-nav">
           <div class="sort-nav__label">Sort by name:</div>
           <div class="sort-nav__options">
             <a href="#" class="is-active">A-Z</a>
             <a href="#">Z-A</a>
           </div>
-        </div>
+        </div>-->
 
-        <ul>
-          <li ng-repeat="result in results | orderBy: 'result.tag_name'">
-            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
+        <ul ng-if="results.length > 0">
+          <li ng-repeat="result in results | orderBy:'result.name'">
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.name}}"></ng-label></a>
             <p><div-program-desc program_code="result.code"></div-program-desc></p>
+            <ul ng-if="result.tags.length > 0">
+              <li ng-repeat="tag in result.tags"><a href="@{{tag.string}}">@{{tag.tag_name}}</a></li>
+            </ul>
           </li>
         </ul>
+
+        <div ng-if="results.length == 0">
+          <p>No programs were found.</p>
+        </div>
         
         <!--<div class="ncoa-pagination-container"> 
           <ul class="ncoa-pagination">

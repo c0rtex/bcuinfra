@@ -1986,11 +1986,31 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
     }
     $scope.search = function() {
         $scope.results = [];
-        console.log($scope.values);
 
         $http.get($window.webServiceUrl+'/rest/backend/forms/resources/'+$scope.values.category+'/'+$scope.values.state)
             .then(function(response){
-                $scope.results = response.data;
+                var programs = [];
+                var results = response.data;
+
+                // Organize results
+                for (var i = 0; i < results.length; i++) {
+                    if (typeof programs[results[i].code] == 'undefined') {
+                        programs[results[i].code] = [];
+                        programs[results[i].code]['tags'] = [];
+                    }
+                    programs[results[i].code]['name'] = results[i].prg_nm;
+                    programs[results[i].code]['code'] = results[i].code;
+                    if (results[i].tag_name != 'undefined' && results[i].string != 'undefined') {
+                        programs[results[i].code]['tags'].push({
+                            tag_name: results[i].tag_name,
+                            string: results[i].string,
+                        });
+                    }
+                }
+                for (var key in programs) {
+                    $scope.results.push(programs[key]);
+                }
+
                 angular.element('.resources-results').show('slow');
             });
     }
