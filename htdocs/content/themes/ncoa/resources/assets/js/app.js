@@ -162,7 +162,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             controller: 'screeningController'
         })
         .state('basicsScreening',{
-            url: "/screening/basics",
+            url: "/screening/basicsWOPrescreen/:state",
             templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.basics.html?'+(new Date()),
             controller: 'basicsScreeningController'
         })
@@ -1040,7 +1040,7 @@ app.directive('ncoaPrograms',[function(){
 app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($rootScope, $state, prescreen, screening, saveScreening, ScreeningRoutes){
     return {
         link: function (scope, elm) {
-            if ($state.current.name == 'questionnaire.results') {
+            if (($state.current.name == 'questionnaire.results')&&$rootScope.hasPrescreen) {
                 scope.isResults = true;
             }
 
@@ -1084,7 +1084,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
                     if (window.partnerId) request.partnerId=window.partnerId;
-                    request.subsetId = window.subsetId;
+                    request.subsetId = window.subsetId == 100 ? 101 : window.subsetId;
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
@@ -1785,7 +1785,11 @@ app.factory('ScreeningRoutes',[function() {
 
     var _routes = {};
     _routes.basics = {"prev":"questionnaire.initial-results", "next":"health", pgno:1};
-    _routes.health = {"prev":"basics", "next":"household", pgno:2};
+    if (window.subsetId == 100) {
+        _routes.health = {"prev": "basics", "next": "household", pgno: 2};
+    } else {
+        _routes.health = {"prev": "basicsWOPrescreen", "next": "household", pgno: 2};
+    }
     _routes.household = {"prev":"health", "next":"finances", pgno:3};
     _routes.finances = {"prev":"household", "next":"questionnaire.loader", pgno:4};
 
