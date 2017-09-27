@@ -2,6 +2,24 @@
 
 class WhiteLabelController extends BaseController
 {
+  protected $categories;
+
+  function __construct() {
+    $this->categories = array(
+      "bcuqc_category_rx" => "Medication",
+      "bcuqc_category_medicaid" => "Health Care",
+      "bcuqc_category_income" => "Income Assistance",
+      "bcuqc_category_nutrition" => "Food &amp; Nutrition",
+      "bcuqc_category_utility" => "Housing & Utilities",
+      "bcuqc_category_property_taxrelief" => "Tax Relief",
+      "bcuqc_category_veteran" => "Veterans",
+      "bcuqc_category_employment" => "Employment",
+      "bcuqc_category_transportation" => "Transportation",
+      "bcuqc_category_education" => "Education",
+      "bcuqc_category_discounts" => "Discount",
+      "bcuqc_category_other_assistance" => "Other Assistance"
+    );
+  }
 
   /**
    * Returns the home page.
@@ -194,7 +212,7 @@ class WhiteLabelController extends BaseController
 
     $constants = Config::get('constants');
     $states = json_decode(Config::get('constants')["US_STATES"], true);
-    $categories = json_decode(Config::get('constants')["BCU_CATEGORIES"], true);
+    $categories = $this->categories;
 
     return View::make('templates.white-label-resources', [
       'loggedin' => $loggedin,
