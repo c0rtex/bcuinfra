@@ -1,4 +1,4 @@
-@extends('layouts.white-label-main')
+@extends('layouts.white-label-main-splash')
 
 @section('main')
 

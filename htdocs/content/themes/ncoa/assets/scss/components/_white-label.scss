@@ -51,6 +51,7 @@
 
   &__footer {
     margin-top: 40px;
+    margin-bottom: 40px;
 
     p {
       margin: 0 0 5px;
@@ -1082,4 +1083,20 @@ select.form-control {
 
 .form-item-white-label-submit {
   margin-top: 45px;
+}
+
+.header-logo-splash {
+  text-align: center !important; 
+  width: 100% !important;
+}
+
+.container-splash {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.logo-splash {
+  float: none !important;
+  display: inline-block !important; 
+  height: auto !important;
 }
