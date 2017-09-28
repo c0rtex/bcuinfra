@@ -1073,6 +1073,10 @@ select.form-control {
   select {
     width: auto; 
     margin: 0 auto;
+
+    @media screen and (max-width: 767px) {
+      width: 260px !important;
+    }
   }
 }
 
@@ -1084,6 +1088,10 @@ select.form-control {
 
 .form-item-white-label-submit {
   margin-top: 45px;
+  input {
+    font-size: 18px !important;
+    padding: 10px 20px !important;
+  }
 }
 
 .header-logo-splash {
