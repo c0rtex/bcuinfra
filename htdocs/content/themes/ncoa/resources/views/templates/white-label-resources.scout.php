@@ -11,7 +11,7 @@
 
       <h2 class="page-header">What can we help you find?</h2>
 
-      <p>We have program fact sheets and over 600 application forms for programs that can help you pay for prescription drugs and other health-care costs, including state pharmacy programs, patient assistance programs, and your state's Medicaid and Medicare Savings Programs.</p>
+      <p>We have program fact sheets and over 1800 application forms for programs that can help you pay for food, prescription drugs, and other health care costs including: State Pharmaceutical Assistance Programs (SPAP), Patient Assistance Programs (PAP), and your state's Medicaid and Medicare Savings Programs (MSP).</p>
 
 <div class="resources-forms-tabs">
 
@@ -30,7 +30,7 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="programcategory">
 
-      <p>BenefitsCheckUp strives to maintain the most current database of programs and application forms possible. Select your search options below in order to get relevant program information about benefits that are available in your state. <strong>You must select a state AND the category you are interested in.</strong></p>
+      <p>BenefitsCheckUp &reg; strives to maintain the most current database of programs and application forms possible. This resource gives you quick access to application forms and other helpful program information. Select your search options below to find benefits that are available in your state. <strong>You must select a state AND the category you are interested in.</strong></p>
 
       <div class="white-label-resources-category-form">
         <form class="" method="POST" accept-charset="UTF-8">   
@@ -95,7 +95,12 @@
     <div role="tabpanel" class="tab-pane" id="drugname">
 
       <div class="drug-name-container">
-        <p>Select the name of your medication then click “Add to My List.” If you clicked on a drug name by mistake, click it again to remove the blue highlight. After you click “Add to My List” the medication will appear on the list in the box on the right. To remove a medication from that list, select the name then click “Remove from My List.”</p>
+        <p>
+	Many pharmaceutical companies offer assistance programs that can help you pay for your medications. However, not all prescription medications have assistance programs. Type the name of your medication in the search box or scroll up and down to browse the list below. Both generic and brand name medications are listed. 
+	</p>
+	<p>
+	Select the name of your medication then click "Add to My List." If you clicked on a drug name by mistake, click it again to remove the blue highlight. After you click "Add to My List" the medication will appear on the list in the box on the right. To remove a medication from that list, select the name then click "Remove from My List."
+	</p>
 
         <medication-selector-resources></medication-selector-resources>
 
