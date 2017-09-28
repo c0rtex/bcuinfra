@@ -61,20 +61,27 @@
       <div class="resources-results">
 
         <h3>Available Programs</h3>
-        <div class="sort-nav">
+        <!--<div ng-if="results.length > 0" class="sort-nav">
           <div class="sort-nav__label">Sort by name:</div>
           <div class="sort-nav__options">
             <a href="#" class="is-active">A-Z</a>
             <a href="#">Z-A</a>
           </div>
-        </div>
+        </div>-->
 
-        <ul>
-          <li ng-repeat="result in results | orderBy: 'result.tag_name'">
-            <h4>@{{result.prg_nm}}</h4>
-            <p><a href="@{{result.string}}">@{{result.tag_name}}</a></p>
+        <ul ng-if="results.length > 0">
+          <li ng-repeat="result in results | orderBy:'result.name'">
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.name}}"></ng-label></a>
+            <p><div-program-desc program_code="result.code"></div-program-desc></p>
+            <ul ng-if="result.tags.length > 0">
+              <li ng-repeat="tag in result.tags"><a href="@{{tag.string}}">@{{tag.tag_name}}</a></li>
+            </ul>
           </li>
         </ul>
+
+        <div ng-if="results.length == 0">
+          <p>No programs were found.</p>
+        </div>
         
         <!--<div class="ncoa-pagination-container"> 
           <ul class="ncoa-pagination">
@@ -90,32 +97,7 @@
       <div class="drug-name-container">
         <p>Select the name of your medication then click “Add to My List.” If you clicked on a drug name by mistake, click it again to remove the blue highlight. After you click “Add to My List” the medication will appear on the list in the box on the right. To remove a medication from that list, select the name then click “Remove from My List.”</p>
 
-        <div class="med-selector row">
-          <div class="col-xs-12 add-list">
-
-            <div class="ms-selectable">
-              <p class="bold">Available Medications</p>
-              <input type="text" class="form-control" autocomplete="off" placeholder="Search...">
-              <ul class="ms-list" tab-index="-1">
-                <li class="ms-elem-selectable" id="3242-selectable"><span>abacavir sulfate</span></li>
-                <li class="ms-elem-selectable" id="3122992-selectable"><span>abacavir sulfate/lamivudine</span></li>
-                <li class="ms-elem-selectable" id="3243-selectable"><span>abacavir sulfate/lamivudine/zidovudine</span></li>
-              </ul>
-              <button class="btn btn-secondary add">Add to My List</button>
-            </div>
-
-            <div class="ms-selection">
-              <p class="bold">My Medication List</p>
-              <ul class="ms-list" tab-index="-1">
-                <li class="ms-elem-selection" id="3242-selection" style="display: none;"><span>abacavir sulfate</span></li>
-                <li class="ms-elem-selection" id="3122992-selection" style="display: none;"><span>abacavir sulfate/lamivudine</span></li>
-                <li class="ms-elem-selection" id="3243-selection" style="display: none;"><span>abacavir sulfate/lamivudine/zidovudine</span></li>
-              </ul>
-              <button class="btn btn-secondary remove" disabled>Remove from My List</button>
-            </div>
-
-          </div>
-        </div>
+        <medication-selector-resources></medication-selector-resources>
 
         <div class="drug-name-container__btn">
           <a href="." class="btn btn-primary">Search</a>

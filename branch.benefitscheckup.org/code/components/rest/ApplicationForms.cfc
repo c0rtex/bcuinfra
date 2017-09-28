@@ -73,7 +73,8 @@
         <cfset var rs = ormexecutequery("select
                                            ftg.name,
                                            p.name_display,
-                                           fft.string
+                                           fft.string,
+                                           p.code
                                          from
                                            form f join
                                            f.form_tag ftg join
@@ -84,7 +85,7 @@
                                            pc.super_category psc
                                          where
                                            fft.form_type.id<>2 and
-                                           (p.active_flag =0 or p.active_flag is null) and
+                                           p.active_flag = 1 and
                                            f.state.id=? and
                                            psc.answerfieldcode=?
                                          order by
@@ -97,6 +98,7 @@
             <cfset item["prg_nm"] = i[2].getDisplay_text()>
             <cfset item["tag_name"] = this.formatField(i,1)>
             <cfset item["string"] = this.formatField(i,3)>
+            <cfset item["code"] = this.formatField(i,4)>
             <cfset arrayAppend(retVal,item)>
         </cfloop>
 

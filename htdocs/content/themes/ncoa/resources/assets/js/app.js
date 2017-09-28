@@ -17,7 +17,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
         .state('initial', {
             url: "/",
-            templateUrl: '',
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.initial.html?'+(new Date()),
             controller: 'initialController'
         })
         .state('prescreen', {
@@ -162,7 +162,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             controller: 'screeningController'
         })
         .state('basicsScreening',{
-            url: "/screening/basics",
+            url: "/screening/basicsWOPrescreen/:state",
             templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.basics.html?'+(new Date()),
             controller: 'basicsScreeningController'
         })
@@ -824,6 +824,77 @@ app.directive('ncoaLoader', function(){
         }
     }
 });
+
+app.directive('medicationSelectorResources',['Drugs', '$state', '$http', '$window', function(Drugs, $state, $http, $window){
+    return {
+        restrict: 'E',
+        templateUrl: '/content/themes/ncoa/resources/views/directives/med-selector/medication-selector-resources.html?'+(new Date()),
+        link: function(scope, elm){
+
+            $http.get($window.webServiceUrl+'/rest/backend/questionnaire/drugList')
+            .then(function(response){
+                Drugs.setDrugs(response.data[0].options);
+
+                var drugs = Drugs.getDrugs();
+                
+                for(var i=0; i<drugs.length; i++) {
+                    var option = $("<option/>",{value:drugs[i].code, text:drugs[i].display});
+                    option.appendTo($("#multiselect"));
+                }
+                
+                $("#multiselect").multiSelect({
+                    selectableHeader: "<p class='bold'>Available Medications</p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
+                    selectionHeader: "<p class='bold'>My Medication List</p>",
+                    selectableFooter: "<button class='btn btn-secondary add' disabled>Add to My List</button>",
+                    selectionFooter: "<button class='btn btn-secondary remove' disabled>Remove from My List</button>",
+                    afterInit: function(ms){
+                        var that = this,
+                            $selectableSearch = that.$selectableUl.prev(),
+                            selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)';
+                             that.qs1 = $selectableSearch.quicksearch(selectableSearchString,{
+                            'prepareQuery': function (val) {
+                                return new RegExp('^'+val,'i');
+                            },
+                            'testQuery': function (query, txt, _row) {
+                                return query.test(txt);
+                            }
+                        })
+                            .on('keydown', function(e){
+                                if (e.which === 40){
+                                    that.$selectableUl.focus();
+                                    return false;
+                                }
+                            });
+                    },
+                    afterSelect: function(){
+                        this.qs1.cache();
+                        $('.ms-selectable .ms-list .selected').removeClass('selected');
+                        $('.ms-selectable .add').attr('disabled', true);
+                    },
+                    afterDeselect: function(values){
+                        this.qs1.cache();
+                        $('.ms-selectable .ms-list .selected').removeClass('selected');
+                        $('.ms-selection .remove').attr('disabled', true);
+                    }
+                });
+                
+                $('.ms-selectable').on('click', 'button.add', function(){
+                    var selected = $('.ms-selectable .ms-list .selected span').map(function(){
+                        return Drugs.codeByName($(this).html());
+                    }).get();
+                    $('#multiselect').multiSelect('select', selected);
+                });
+                     $('.ms-selection').on('click', 'button.remove', function(){
+                    var selected = $('.ms-selection .ms-list .selected span').map(function(){
+                        return Drugs.codeByName($(this).html());
+                    }).get();
+                    $('#multiselect').multiSelect('deselect', selected);
+                });
+            });
+        }
+    }
+}]);
+
 app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
     return {
         restrict: 'E',
@@ -969,7 +1040,7 @@ app.directive('ncoaPrograms',[function(){
 app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($rootScope, $state, prescreen, screening, saveScreening, ScreeningRoutes){
     return {
         link: function (scope, elm) {
-            if ($state.current.name == 'questionnaire.results') {
+            if (($state.current.name == 'questionnaire.results')&&$rootScope.hasPrescreen) {
                 scope.isResults = true;
             }
 
@@ -1013,7 +1084,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
                     if (window.partnerId) request.partnerId=window.partnerId;
-                    request.subsetId = window.subsetId;
+                    request.subsetId = window.subsetId == 100 ? 101 : window.subsetId;
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
@@ -1714,7 +1785,11 @@ app.factory('ScreeningRoutes',[function() {
 
     var _routes = {};
     _routes.basics = {"prev":"questionnaire.initial-results", "next":"health", pgno:1};
-    _routes.health = {"prev":"basics", "next":"household", pgno:2};
+    if (window.subsetId == 100) {
+        _routes.health = {"prev": "basics", "next": "household", pgno: 2};
+    } else {
+        _routes.health = {"prev": "basicsWOPrescreen", "next": "household", pgno: 2};
+    }
     _routes.household = {"prev":"health", "next":"finances", pgno:3};
     _routes.finances = {"prev":"household", "next":"questionnaire.loader", pgno:4};
 
@@ -1986,11 +2061,31 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
     }
     $scope.search = function() {
         $scope.results = [];
-        console.log($scope.values);
 
         $http.get($window.webServiceUrl+'/rest/backend/forms/resources/'+$scope.values.category+'/'+$scope.values.state)
             .then(function(response){
-                $scope.results = response.data;
+                var programs = [];
+                var results = response.data;
+
+                // Organize results
+                for (var i = 0; i < results.length; i++) {
+                    if (typeof programs[results[i].code] == 'undefined') {
+                        programs[results[i].code] = [];
+                        programs[results[i].code]['tags'] = [];
+                    }
+                    programs[results[i].code]['name'] = results[i].prg_nm;
+                    programs[results[i].code]['code'] = results[i].code;
+                    if (results[i].tag_name != 'undefined' && results[i].string != 'undefined') {
+                        programs[results[i].code]['tags'].push({
+                            tag_name: results[i].tag_name,
+                            string: results[i].string,
+                        });
+                    }
+                }
+                for (var key in programs) {
+                    $scope.results.push(programs[key]);
+                }
+
                 angular.element('.resources-results').show('slow');
             });
     }
@@ -2720,7 +2815,7 @@ app.directive('divProgramDesc',['factSheet',function(factSheet) {
         //templateUrl:'/content/themes/ncoa/resources/views/pages/benefits-checkup/programs/programs.category.html?'+(new Date()),
         link: function(scope, element) {
             factSheet.get('factsheet_'+scope.program_code).success(function(data, status, headers, config) {
-                element.append("<p>"+data[0].program_short_summary+"</p>");
+                element.append("<p>"+(data.length>0 ? data[0].program_short_summary : "Short description is unavailable. Fact sheet for program with code " +scope.program_code+ " doesn't exists.")+"</p>");
             });
         },
         scope: {

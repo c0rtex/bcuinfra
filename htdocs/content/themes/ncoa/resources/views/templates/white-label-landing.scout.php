@@ -1,4 +1,4 @@
-@extends('layouts.white-label-main')
+@extends('layouts.white-label-main-splash')
 
 @section('main')
 
@@ -11,7 +11,7 @@
 
       <section class="white-label-landing">
         <header class="white-label-landing__header">
-          <h1>Welcome to BenefitsCheckUp</h1>
+          <h1>Welcome to BenefitsCheckUp&reg;</h1>
           <p class="subtitle">Select your state and Benefits Enrollment Center below to proceed.</p>
         </header>
   
