@@ -50,7 +50,7 @@
                 <nav id="utility-nav" class="pull-right utility-nav hidden-xs">
                     <ul>
                         <li class="@if($partnerlogin)current-menu-item current_page_item @endif">
-                            <a href="/welcome-partner-login-page/">Partner Login</a>
+                            <a href="/partner-login/">Partner Login</a>
                         </li>
                         <li class="@if($grantees)current-menu-item current_page_item @endif">
                             <a href="/grantees">Grantees</a>
@@ -103,7 +103,7 @@
                                 <nav id="utility-nav" class="utility-nav">
                                     <ul>
                                         <li class="@if($partnerlogin)current-menu-item current_page_item @endif">
-                                            <a href="/welcome-partner-login-page/">Partner Login</a>
+                                            <a href="/partner-login//">Partner Login</a>
                                         </li>
                                         <li class="@if($grantees)current-menu-item current_page_item @endif">
                                             <a href="/grantees">Grantees</a>
