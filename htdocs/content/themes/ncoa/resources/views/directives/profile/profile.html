@@ -6,11 +6,11 @@
   </ul>
 </div>-->
 
-<section class="prescreen-profile">
+<section ng-if="$root.hasPrescreen" class="prescreen-profile">
   <img src="/content/themes/ncoa/resources/assets/images/prescreen/Prescreen_profile.svg" alt="Profile Image" class="profile-image" />
   <p>Search Details</p>
 </section>
-<section>
+<section ng-if="$root.hasPrescreen">
   <ul class="profile-list">
     <li><strong>Location: </strong>{{screenData.formatted_address}}</li>
     <li><strong>Relationship to You: </strong>{{screenData.searchingFor}}</li>

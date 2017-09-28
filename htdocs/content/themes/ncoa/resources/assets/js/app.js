@@ -1040,12 +1040,10 @@ app.directive('ncoaPrograms',[function(){
 app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($rootScope, $state, prescreen, screening, saveScreening, ScreeningRoutes){
     return {
         link: function (scope, elm) {
-            if (($state.current.name == 'questionnaire.results')&&$rootScope.hasPrescreen) {
-                scope.isResults = true;
-            }
+            scope.isResults = $state.current.name == 'questionnaire.results';
 
             if ($state.params.category == undefined) {
-                scope.prev = "prescreen";
+                scope.prev = "initial";
                 scope.next = "screening-start";
             } else {
                 if ($state.current.name=="questionnaire.results") {
@@ -1059,7 +1057,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
             }
 
             scope.switchPage = function (stateName) {
-                if ((stateName == "prescreen")||(stateName == "screening-start")||(stateName == "questionnaire.initial-results")) {
+                if ((stateName == "prescreen")||(stateName == "screening-start")||(stateName == "questionnaire.initial-results")||(stateName == "initial")) {
                     $state.transitionTo(stateName);
                 } else {
 
@@ -2180,10 +2178,12 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 }]);
 
-app.controller('initialController',['$state','prescreenQuestions','prescreen','screening',function($state,prescreenQuestions,prescreen,screening) {
+app.controller('initialController',['$scope','$state','prescreenQuestions','prescreen','screening',function($scope,$state,prescreenQuestions,prescreen,screening) {
     prescreenQuestions.get(undefined,undefined,undefined).success(function(data, status, headers, config) {
         prescreen.data.results.screening = {};
         screening.data.results.screening = {};
+        prescreen.data.questions = {};
+        screening.data.questions = {};
         if (data.type=="prescreen") {
             prescreen.data.questions = data.questions;
             $state.transitionTo('prescreen');
