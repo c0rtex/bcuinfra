@@ -6,9 +6,9 @@
   <div class="card">
     <div class="card-nested">
 
-      <h2 class="page-header">View a List of our Grantee Organizations</h2>
+      <h2 class="page-header">List of BEC Grantee Organizations</h2>
 
-      <p>The following Grantees have been selected to implement Benefits Enrollment Centers that use person-centered strategies in a coordinated, community-wide approach.</p>
+      <p>The following grantees have been selected as Benefits Enrollment Centers (BEC) which use person-centered strategies in a coordinated, community-wide approach.</p>
 
       <form class="form-center form-inline state-selection" method="POST" accept-charset="UTF-8">   
         <div class="form-group">

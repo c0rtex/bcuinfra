@@ -6,8 +6,8 @@
       <div class="container">
         <div class="row">
           <div class="hero__header">
-            <h1>Find and enroll in public and private benefits programs</h1>
-            <p>Answer a few questions to quickly find the benefits you deserve.</p>
+            <h1>Find and enroll in public and private benefit programs</h1>
+            <p>Answer a few questions to quickly find benefits in your area</p>
           </div><!--/.hero__header-->
           <div class="hero__form">
             <form ng-submit="findZip(zipcode)" ng-controller="zipCodeController" class="ng-pristine ng-scope ng-invalid ng-invalid-required ng-valid-pattern">
@@ -33,7 +33,7 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="/medicare-rx-extra-help-application-start/" class="program-highlight__icon-wrap">
+                        <a href="/medicare-rx-extra-help-application-begin/" class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                         </a>
                       </div>
@@ -107,9 +107,9 @@
                         <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                       </a>
                     </div>
-                    <h2 class="program-highlight__title">Medicare Rx Extra Help</h2>
+                    <h2 class="program-highlight__title">Medicare Rx Extra Help/LIS</h2>
                     <div class="program-highlight__excerpt">
-                      <p>If you have limited income and resources, you may be able to get help paying for your prescription drugs.</p>
+                      <p>Apply now through Social Security for help paying for prescription drugs.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
@@ -127,7 +127,7 @@
                     </div>
                     <h2 class="program-highlight__title">Food & Nutrition</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Need help paying for food? Find the program where you live, get an application and apply today.</p>
+                      <p>Find state SNAP programs, get application forms, and apply today.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
@@ -145,7 +145,7 @@
                     </div>
                     <h2 class="program-highlight__title">Key Benefits</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Screen for our core benefit programs.</p>
+                      <p>Quickly find core benefit programs that pay for medications, health care, food, and utilities.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
@@ -163,7 +163,7 @@
       <div class="container">
         <div class="row">
           <div class="reminder__text exclamation">
-            <p><strong>REMINDER:</strong> The annual open enrollment period for Medicare Part D is October 15th through December 7th.
+            <p><strong>REMINDER:</strong> The Medicare Annual Open Enrollment period is October 15th through December 7th. However, the Marketplace Open Enrollment period is November 1st through December 15th.
           </div><!--/.reminder__text-->
         </div><!--/.row-->
       </div><!--/.container-->
@@ -177,12 +177,11 @@
               <section class="shortcuts">
                 <h3>Shortcuts</h3>
                 <ul>
-                  <li><a href=".">Medicare forms</a></li>
-                  <li><a href=".">Patient Assistance forms</a></li>
-                  <li><a href=".">State Rx forms</a></li>
-                  <li><a href=".">Medicaid forms</a></li>
-                  <li><a href=".">Bayer Patient Assistance Program</a></li>
-                  <li><a href=".">Rx Outreach - English</a></li>
+                  <li><a href="https://www.ncoa.org/resources/benefits-enrollment-center-toolkit/" target="_blank">Benefits Enrollment Center (BEC) Toolkit </a></li>
+                  <li><a href="https://www.ncoa.org/map/ncoa-map/"  target="_blank">Map of BEC Grantees</a></li>
+                  <li><a href="https://www.ncoa.org/resources/bec-promising-practices-report/"  target="_blank">BEC Promising Practices Report</a></li>
+                  <li><a href="https://www.ncoa.org/?s=outreach+toolkit&es=on&les=0&post_type=ncoaresource"  target="_blank">Outreach Toolkit</a></li>
+     
                 </ul>
               </section><!--/.shortcuts-->
             </div>
