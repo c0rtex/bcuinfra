@@ -71,10 +71,10 @@
 
         <ul ng-if="results.length > 0">
           <li ng-repeat="result in results | orderBy:'result.name'">
-            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.name}}"></ng-label></a>
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline" target="_new"><ng-label text="@{{result.name}}"></ng-label></a>
             <p><div-program-desc program_code="result.code"/></p>
             <ul ng-if="result.tags.length > 0">
-              <li ng-repeat="tag in result.tags"><a href="@{{tag.string}}">@{{tag.tag_name}}</a></li>
+              <li ng-repeat="tag in result.tags"><a href="../forms/@{{tag.string}}" target="_new">@{{tag.tag_name}}</a></li>
             </ul>
           </li>
         </ul>
