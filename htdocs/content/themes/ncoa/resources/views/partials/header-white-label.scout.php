@@ -91,7 +91,7 @@
                                         <a href="/find-my-benefits/?subset_id=100">Find Benefits</a>
                                     </li>
                                     <li class="menu-item @if($medicarerx)current-menu-item current_page_item @endif">
-                                        <a href="/medicare-rx-extra-help-application-start/">Medicare Rx Extra Help</a>
+                                        <a href="/medicare-rx-extra-help-application-begin/">Medicare Rx Extra Help</a>
                                     </li>
                                     <li class="menu-item @if($nutrition)current-menu-item current_page_item @endif">
                                         <a href="/resources/snap/">Food & Nutrition</a>
