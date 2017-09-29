@@ -1,7 +1,9 @@
 <cfcomponent rest="true" restpath="/questionnaire">
 
-    <cffunction name="drugListRestService" access="remote" restpath="/drugList" returntype="String" httpMethod="GET">
-        <cfreturn serializeJSON(this.getDrugList())>
+    <cffunction name="drugListRestService" access="remote" restpath="/drugList/{drugCode:(\S)*}" returntype="String" httpMethod="GET">
+        <cfargument name="drugCode" required="false" restargsource="Path" type="string"/>
+        <cfset drugCodeArr = listToArray(drugCode,',',false,true)>
+        <cfreturn serializeJSON(this.getDrugList(drugCode))>
     </cffunction>
 
     <cffunction name="get" access="remote" restpath="/get/{subsetId:(\d)*}" returntype="String" httpMethod="GET">
@@ -200,7 +202,20 @@
     </cffunction>
 
     <cffunction name="getDrugList">
-        <cfset drg = ormExecuteQuery("select distinct af from program_answer_field paf right join paf.answer_field af join paf.program p where af.answer_field_type.id=13 and paf.answer_field is not null and p.active_flag=1")>
+        <cfargument name="drugCode" required="false" type="string" default=""/>
+        <cfset drugCodeArr = listToArray(drugCode,',',false,true)>
+
+        <cfset drqText = "select distinct af from program_answer_field paf right join paf.answer_field af join paf.program p where af.answer_field_type.id=13 and paf.answer_field is not null and p.active_flag=1">
+
+        <cfif arraylen(drugCodeArr) neq 0>
+            <cfset drqText = "#drqText# and af.code in (''">
+            <cfloop array="#drugCodeArr#" index="dri">
+                <cfset drqText = "#drqText#,'#dri#'">
+            </cfloop>
+            <cfset drqText = "#drqText#)">
+        </cfif>
+
+        <cfset drg = ormExecuteQuery(drqText)>
         <cfset var retArray = arrayNew(1)>
         <cfset var tmpStrct = structNew()>
         <cfset var i=1>
@@ -218,7 +233,20 @@
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
-        <cfset drg = ormExecuteQuery("select distinct afr from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1) order by afr.right_answerfield.code")>
+
+        <cfset drqText = "select distinct afr from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1)">
+
+        <cfif arraylen(drugCodeArr) neq 0>
+            <cfset drqText = "#drqText# and afr.right_answerfield.code in (''">
+            <cfloop array="#drugCodeArr#" index="dri">
+                <cfset drqText = "#drqText#,'#dri#'">
+            </cfloop>
+            <cfset drqText = "#drqText#)">
+        </cfif>
+
+        <cfset drqText ="#drqText# order by afr.right_answerfield.code">
+
+        <cfset drg = ormExecuteQuery(drqText)>
         <cfset var option = structNew()>
         <cfset option["code"] = "">
         <cfloop array="#drg#" index="d">
