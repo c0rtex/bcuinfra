@@ -13,9 +13,9 @@
                     }}
                 </a>
                 <span class="header-logo-two hidden-xs hidden-sm">
-                    <span class="header-ncoa-logo">
+                    <a href="https://www.ncoa.org/centerforbenefits/" target="_blank" class="header-ncoa-logo">
                         <img src="/content/themes/ncoa/resources/assets/images/ncoa_logo_1x.png" srcset="/content/themes/ncoa/resources/assets/images/ncoa_logo_2x.png 2x" alt="National Council on Aging" title="National Council on Aging" >
-                    </span>
+                    </a>
                 </span>
 
             </span>

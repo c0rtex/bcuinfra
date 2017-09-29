@@ -5,10 +5,10 @@
     <section class="container">
         <div class="clearfix">
             <span class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
-                @if($loggedin)
-                    <a tabindex="1" href="/" class="logo">
+                @if($_SESSION['partner_id']!=0)
+                <a tabindex="1" href="/becs" class="logo">
                 @else
-                    <span class="logo">
+                <a tabindex="1" href="/" class="logo">
                 @endif
                     {{
                         wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
@@ -18,18 +18,10 @@
                             'height' => Option::get('global-settings', 'main-logo-height')
                         ))
                     }}
-                @if($loggedin)
-                    </a>
-                @else
-                    </span>
-                @endif
+                </a>
                 <span class="header-logo-two">
                     @if(Option::get('global-settings', 'whitelabel') == '0')
-                        @if($loggedin)
-                            <a href="#" class="whitelabel-logo">
-                        @else
-                            <span class="whitelabel-logo">
-                        @endif
+                        <a href="https://www.ncoa.org/centerforbenefits/" target="_blank" class="whitelabel-logo">
                         {{
                             wp_get_attachment_image(Option::get('global-settings', 'whitelabel-logo'), 'full', false,
                                 array('title' => get_the_title(Option::get('global-settings', 'whitelabel-logo')),
@@ -38,11 +30,7 @@
                                 'title' => 'Center for Benefits Access',
                             ))
                         }}
-                        @if($loggedin)
-                            </a>
-                        @else
-                            </span>
-                        @endif
+                        </a>
                     @endif
                 </span>
             </span><!--/.header-logo-->
@@ -50,7 +38,7 @@
                 <nav id="utility-nav" class="pull-right utility-nav hidden-xs">
                     <ul>
                         <li class="@if($partnerlogin)current-menu-item current_page_item @endif">
-                            <a href="/partner-login/">Partner Login</a>
+                            <a href="/partner-login/">Login</a>
                         </li>
                         <li class="@if($grantees)current-menu-item current_page_item @endif">
                             <a href="/grantees">Grantees</a>
