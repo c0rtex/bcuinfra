@@ -33,17 +33,17 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="/medicare-rx-extra-help-application-begin/" class="program-highlight__icon-wrap">
+                        <a href="/medicare-rx-extra-help-application-intro-page/" class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                         </a>
                       </div>
-                      <h2 class="program-highlight__title">Medicare Rx Extra Help</h2>
+                      <h2 class="program-highlight__title">Medicare Rx Extra Help/LIS</h2>
                       <div class="program-highlight__excerpt">
-                        <p>If you have limited income and resources, you may be able to get help paying for your prescription drugs.</p>
+                        <p>Apply now through Social Security for help paying for prescription drugs.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href="/medicare-rx-extra-help-application-start/">Get Started</a>
+                      <a class="btn btn-secondary" href="/medicare-rx-extra-help-application-intro-page/">Get Started</a>
                     </div>
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->
@@ -58,7 +58,7 @@
                       </div>
                       <h2 class="program-highlight__title">Food &amp; Nutrition</h2>
                       <div class="program-highlight__excerpt">
-                        <p>Need help paying for food? Find the program where you live, get an application and apply today.</p>
+                        <p>Find state SNAP programs, get application forms, and apply today.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
@@ -103,7 +103,7 @@
                 <div class="program-highlight">
                   <div class="program-highlight__text">
                     <div class="program-highlight__icon">
-                      <a href="." class="program-highlight__icon-wrap">
+                      <a href="/medicare-rx-extra-help-application-intro-page/" class="program-highlight__icon-wrap">
                         <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                       </a>
                     </div>
@@ -113,7 +113,7 @@
                     </div>
                   </div>
                   <div class="program-highlights__btn">
-                    <a class="btn btn-secondary" href=".">Get Started</a>
+                    <a class="btn btn-secondary" href="/medicare-rx-extra-help-application-intro-page/">Get Started</a>
                   </div>
                 </div><!--/.program-highlight-->
               </li>
@@ -127,7 +127,7 @@
                     </div>
                     <h2 class="program-highlight__title">Food & Nutrition</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Find state SNAP programs, get application forms, and apply today.</p>
+                      <p>Quickly find core benefit programs that pay for medications, health care, food, and utilities.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">

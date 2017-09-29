@@ -3,6 +3,7 @@
 @section('main')
 <script>
   window.webServiceUrl = '{{$webServiceUrl}}';
+  window.drugsList = JSON.parse('{{$drugsList}}');
 </script>
 <div class="container resources" ng-controller="resourcesFormsController">
   <h1>Resources &amp; Forms</h1>
