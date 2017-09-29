@@ -1513,9 +1513,9 @@
 
         <cfloop array="#programs#" index="item">
             <cfset str = structNew()>
-            <cfset str.prg_nm=item.getName_display().getDisplay_text()>
-            <cfset str.prg_desc=item.getShort_desc()>
-            <cfset str.code=item.getCode()>
+            <cfset str["prg_nm"]=item.getName_display().getDisplay_text()>
+            <cfset str["prg_desc"]=item.getShort_desc()>
+            <cfset str["code"]=item.getCode()>
             <cfset arrayAppend(data,str)>
         </cfloop>
         <cfreturn serializeJSON(data)>
