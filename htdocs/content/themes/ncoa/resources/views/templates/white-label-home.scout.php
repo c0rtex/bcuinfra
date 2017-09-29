@@ -33,7 +33,7 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="/medicare-rx-extra-help-application-begin/" class="program-highlight__icon-wrap">
+                        <a href="/medicare-rx-extra-help-application-intro-page/" class="program-highlight__icon-wrap">
                           <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                         </a>
                       </div>
@@ -103,7 +103,7 @@
                 <div class="program-highlight">
                   <div class="program-highlight__text">
                     <div class="program-highlight__icon">
-                      <a href="." class="program-highlight__icon-wrap">
+                      <a href="/medicare-rx-extra-help-application-intro-page/" class="program-highlight__icon-wrap">
                         <img src="../content/uploads/2016/05/category_medicine.svg" class="attachment-full size-full" alt="Medicine Pills" title="Medicine Pills">
                       </a>
                     </div>
