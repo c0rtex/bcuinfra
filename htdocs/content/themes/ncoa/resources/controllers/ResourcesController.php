@@ -206,13 +206,13 @@ class ResourcesController extends BaseController
 
     return View::make('templates.program-snap',[
         'loggedin' => true,
-        'medicarerx' => true,
+        'medicarerx' => false,
         'nutrition' => true,
-        'home' => true,
-        'partnerlogin' => true,
-        'grantees' => true,
-        'resources' => true,
-        'home6' => true,
+        'home' => false,
+        'partnerlogin' => false,
+        'grantees' => false,
+        'resources' => false,
+        'home6' => false,
         'states' => $this->states_fact_sheets,
       'webServiceUrl' => $constants['WEB_SERVICE_URL']
     ]);
