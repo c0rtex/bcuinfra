@@ -2056,7 +2056,7 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
     $scope.search = function() {
         $scope.results = [];
 
-        $http.get($window.webServiceUrl+'/rest/backend/forms/resources/'+$scope.values.category+'/'+$scope.values.state)
+        $http.get($window.webServiceUrl+'/rest/backend/findPrograms/findResources?cat='+$scope.values.category+'&st='+$scope.values.state)
             .then(function(response){
                 var programs = [];
                 var results = response.data;
