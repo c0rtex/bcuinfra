@@ -1077,7 +1077,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
-                    if (window.partnerId) request.partnerId=window.partnerId;
+                    if (window.partnerId != undefined) request.partnerId=window.partnerId;
                     request.subsetId = window.subsetId == 100 ? 101 : window.subsetId;
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
@@ -2254,7 +2254,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
         request.state_id = $scope.$root.answers[$scope.category].stateId;
         request.st = $scope.$root.answers[$scope.category].stateId;
-        if (window.partnerId) request.partnerId = window.partnerId;
+        if (window.partnerId != undefined) request.partnerId = window.partnerId;
 
         savePrescreen.post(request).success(function(data, status, headers, config) {
             $scope.sibmitDisabled = false;
