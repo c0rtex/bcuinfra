@@ -9,7 +9,7 @@
     
     <script src="<?php echo themosis_assets() ?>/js/7683b69978.js"></script>
     <script src="<?php echo themosis_assets() ?>/js/js_libs/modernizr-custom.js"></script>
-    <!-- Google Tag Manager -->
+    
     <script>
       dataLayer = [
         { 'partner_id': '0', 'partner_name': '', 'subset_id': '0', 'state': '', }
@@ -17,6 +17,7 @@
       window.partnerId=<?php echo $_SESSION['partner_id']?>;
       window.subsetId=<?php echo $_SESSION['subset_id']?>;
     </script>
+    <?php /*<!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push(
@@ -29,7 +30,7 @@
           '//www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-PHJ4LQ');</script>
-    <!-- End Google Tag Manager -->
+    <!-- End Google Tag Manager --> */ ?>
 
     <?php wp_head(); ?>
 </head>
