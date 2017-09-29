@@ -830,10 +830,7 @@ app.directive('medicationSelectorResources',['Drugs', '$state', '$http', '$windo
         restrict: 'E',
         templateUrl: '/content/themes/ncoa/resources/views/directives/med-selector/medication-selector-resources.html?'+(new Date()),
         link: function(scope, elm){
-
-            $http.get($window.webServiceUrl+'/rest/backend/questionnaire/drugList')
-            .then(function(response){
-                Drugs.setDrugs(response.data[0].options);
+                Drugs.setDrugs($window.drugsList[0].options);
 
                 var drugs = Drugs.getDrugs();
                 
@@ -890,7 +887,6 @@ app.directive('medicationSelectorResources',['Drugs', '$state', '$http', '$windo
                     }).get();
                     $('#multiselect').multiSelect('deselect', selected);
                 });
-            });
         }
     }
 }]);
