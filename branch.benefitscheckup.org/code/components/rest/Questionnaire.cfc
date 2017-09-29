@@ -227,7 +227,15 @@
             <cfset option["programs"]=arrayNew(1)>
             <cfloop array="#d.getPrograms()#" index="p">
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
-                    <cfset arrayAppend(option["programs"],p.getCode())>
+                    <cfif arraylen(drugCodeArr) neq 0>
+                        <cfset var prgFull = structNew()>
+                        <cfset prgFull["prg_nm"]=p.getName_display().getDisplay_text()>
+                        <cfset prgFull["prg_desc"]=p.getShort_desc()>
+                        <cfset prgFull["code"]=p.getCode()>
+                        <cfset arrayAppend(option["programs"],prgFull)>
+                    <cfelse>
+                        <cfset arrayAppend(option["programs"],p.getCode())>
+                    </cfif>
                 </cfif>
             </cfloop>
             <cfset tmpStrct[i] = option>
@@ -263,6 +271,13 @@
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
                     <cfset var pbD = structNew()>
                     <cfset pbD["program"] = p.getCode()>
+                    <cfif arraylen(drugCodeArr) neq 0>
+                        <cfset pbD["prg_nm"]=p.getName_display().getDisplay_text()>
+                        <cfset pbD["prg_desc"]=p.getShort_desc()>
+                        <cfset pbD["code"]=p.getCode()>
+                    <cfelse>
+                        <cfset pbD["program"] = p.getCode()>
+                    </cfif>
                     <cfset pbD["brand_code"] = d.getLeft_answerfield().getCode()>
                     <cfset pbD["brand_name"] = d.getLeft_answerfield().getDisplay().getDisplay_text()>
                     <cfset arrayAppend(option["programs"],pbD)>
