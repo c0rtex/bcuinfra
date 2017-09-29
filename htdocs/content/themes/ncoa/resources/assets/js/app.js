@@ -2058,11 +2058,10 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
 
         $http.get($window.webServiceUrl+'/rest/backend/findPrograms/findResources?cat='+$scope.values.category+'&st='+$scope.values.state)
             .then(function(response){
-                var programs = [];
-                var results = response.data;
+                $scope.results = response.data;
 
                 // Organize results
-                for (var i = 0; i < results.length; i++) {
+                /*for (var i = 0; i < results.length; i++) {
                     if (typeof programs[results[i].code] == 'undefined') {
                         programs[results[i].code] = [];
                         programs[results[i].code]['tags'] = [];
@@ -2078,7 +2077,7 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
                 }
                 for (var key in programs) {
                     $scope.results.push(programs[key]);
-                }
+                }*/
 
                 angular.element('.resources-results').show('slow');
             });

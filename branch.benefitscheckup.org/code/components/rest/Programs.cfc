@@ -1511,11 +1511,39 @@
 
         <cfset data = arrayNew(1)>
 
+        <cfset state = entityLoadByPK("state",st)>
+
         <cfloop array="#programs#" index="item">
             <cfset str = structNew()>
             <cfset str["prg_nm"]=item.getName_display().getDisplay_text()>
             <cfset str["prg_desc"]=item.getShort_desc()>
             <cfset str["code"]=item.getCode()>
+
+            <cfset var forms = ormExecuteQuery("select fft.string,
+                                                   ft.name,
+                                                   f.id,
+                                                   ftp.code
+                                            from program_form pf join
+                                                 pf.form f join
+                                                 f.form_form_types fft join
+                                                 f.form_tag ft join
+                                                 fft.form_type ftp
+                                            where pf.program=?
+                                                  and ftp.id in (1,3)
+                                                  and fft.active=1 and (f.state=? or f.state is null)
+					    ORDER BY pf.sort",[item,state])>
+
+            <cfset str["forms"] = arrayNew(1)>
+
+            <cfloop array="#forms#" index="fi">
+                <cfset fItem = structNew()>
+                <cfset fItem["url"] = fi[1]>
+                <cfset fItem["caption"] = fi[2]>
+                <cfset fItem["id"] = fi[3]>
+                <cfset fItem["type"] = fi[4]>
+                <cfset arrayAppend(str["forms"],fItem)>
+            </cfloop>
+
             <cfset arrayAppend(data,str)>
         </cfloop>
         <cfreturn serializeJSON(data)>
