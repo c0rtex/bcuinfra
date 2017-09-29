@@ -232,6 +232,7 @@ class WhiteLabelController extends BaseController
       'home6' => $home6,
       'states' => $this->states,
       'categories' => $categories,
+      'appFormsUri' => $constants['APPLICATION_FORMS_URL'],
       'webServiceUrl' => $constants['WEB_SERVICE_URL'],
       'drugsList' => $drugsList,
     ])->render(); 
