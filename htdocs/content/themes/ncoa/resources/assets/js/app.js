@@ -836,10 +836,12 @@ app.directive('medicationSelectorResources',['Drugs', '$state', '$http', '$windo
                 
                 for(var i=0; i<drugs.length; i++) {
                     var option = $("<option/>",{value:drugs[i].code, text:drugs[i].display});
-                    option.appendTo($("#multiselect"));
+                    option.appendTo($("#drugs-list-resources"));
                 }
+
+                scope.$root.selectedDrugs = {};
                 
-                $("#multiselect").multiSelect({
+                $("#drugs-list-resources").multiSelect({
                     selectableHeader: "<p class='bold'>Available Medications</p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
                     selectionHeader: "<p class='bold'>My Medication List</p>",
                     selectableFooter: "<button class='btn btn-secondary add' disabled>Add to My List</button>",
@@ -879,13 +881,19 @@ app.directive('medicationSelectorResources',['Drugs', '$state', '$http', '$windo
                     var selected = $('.ms-selectable .ms-list .selected span').map(function(){
                         return Drugs.codeByName($(this).html());
                     }).get();
-                    $('#multiselect').multiSelect('select', selected);
+                    $('#drugs-list-resources').multiSelect('select', selected);
+                    for (var i=0;i<selected.length;i++) {
+                        scope.$root.selectedDrugs[selected[i]] = 'y';
+                    }
                 });
-                     $('.ms-selection').on('click', 'button.remove', function(){
+                $('.ms-selection').on('click', 'button.remove', function(){
                     var selected = $('.ms-selection .ms-list .selected span').map(function(){
                         return Drugs.codeByName($(this).html());
                     }).get();
-                    $('#multiselect').multiSelect('deselect', selected);
+                    $('#drugs-list-resources').multiSelect('deselect', selected);
+                    for (var i=0;i<selected.length;i++) {
+                        delete scope.$root.selectedDrugs[selected[i]];
+                    }
                 });
         }
     }
@@ -2033,6 +2041,7 @@ app.controller('granteesController', ['$scope', function($scope) {
 
 app.controller('resourcesFormsController', ['$scope', '$window', '$http', function($scope, $window, $http) {
     $scope.results = [];
+    $scope.drugPrograms = [];
     $scope.values = {
         state: '',
         category: ''
@@ -2047,7 +2056,7 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
     }
 
     $scope.formatUrl = function(url,type) {
-        return  type == 'pdf' ? ($window.appFormsUrl+'/'+url) : url;
+        return  type == 'pdf' ? ($window.appFormsUrl+url) : url;
     }
 
     $scope.disallowCategory = function() {
@@ -2064,29 +2073,34 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
         $http.get($window.webServiceUrl+'/rest/backend/findPrograms/findResources?cat='+$scope.values.category+'&st='+$scope.values.state)
             .then(function(response){
                 $scope.results = response.data;
-
-                // Organize results
-                /*for (var i = 0; i < results.length; i++) {
-                    if (typeof programs[results[i].code] == 'undefined') {
-                        programs[results[i].code] = [];
-                        programs[results[i].code]['tags'] = [];
-                    }
-                    programs[results[i].code]['name'] = results[i].prg_nm;
-                    programs[results[i].code]['code'] = results[i].code;
-                    if (results[i].tag_name != 'undefined' && results[i].string != 'undefined') {
-                        programs[results[i].code]['tags'].push({
-                            tag_name: results[i].tag_name,
-                            string: results[i].string,
-                        });
-                    }
-                }
-                for (var key in programs) {
-                    $scope.results.push(programs[key]);
-                }*/
-
-                angular.element('.resources-results').show('slow');
+                angular.element('#program-category-results').show('slow');
             });
     }
+
+    $scope.searchDrugs = function() {
+        var drugs = Object.keys($scope.$root.selectedDrugs);
+        if (drugs.length > 0) {
+            $http.get($window.webServiceUrl+'/rest/backend/questionnaire/drugList/'+drugs.join())
+            .then(function(response){
+                $scope.drugPrograms = [];
+                var api_response = response.data[0].options;
+                if (api_response.length > 0) {
+                    for (var i = 0; i < api_response.length; i++) {
+                        for (var j = 0; j < api_response[i]['programs'].length; j++) {
+                            $scope.drugPrograms.push(api_response[i]['programs'][j]);
+                        }
+                    }
+                }
+            });
+        }
+        else {
+            $scope.drugPrograms = [];
+        }
+
+        angular.element('#drugs-results').show('slow');
+        console.log($scope.drugPrograms);
+    }
+
 }]);
 
 app.controller('becsController', ['$scope','$window',function($scope,$window){

@@ -219,7 +219,7 @@ class WhiteLabelController extends BaseController
     $constants = Config::get('constants');
     $categories = $this->categories;
 
-    $drugsList = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/questionnaire/drugList')->send();
+    $drugsList = \Httpful\Request::get($constants['WEB_SERVICE_URL'].'/rest/backend/questionnaire/drugList/')->send();
 
     return View::make('templates.white-label-resources', [
       'loggedin' => $loggedin,
