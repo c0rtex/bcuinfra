@@ -60,7 +60,7 @@
         </form>
       </div><!--/.white-label-resources-category-form-->
 
-      <div class="resources-results">
+      <div id="program-category-results" class="resources-results">
 
         <h3>Available Programs</h3>
         <!--<div ng-if="results.length > 0" class="sort-nav">
@@ -98,18 +98,35 @@
 
       <div class="drug-name-container">
         <p>
-	Many pharmaceutical companies offer assistance programs that can help you pay for your medications. However, not all prescription medications have assistance programs. Type the name of your medication in the search box or scroll up and down to browse the list below. Both generic and brand name medications are listed. 
-	</p>
-	<p>
-	Select the name of your medication then click "Add to My List." If you clicked on a drug name by mistake, click it again to remove the blue highlight. After you click "Add to My List" the medication will appear on the list in the box on the right. To remove a medication from that list, select the name then click "Remove from My List."
-	</p>
+          Many pharmaceutical companies offer assistance programs that can help you pay for your medications. However, not all prescription medications have assistance programs. Type the name of your medication in the search box or scroll up and down to browse the list below. Both generic and brand name medications are listed. 
+        </p>
+        <p>
+          Select the name of your medication then click "Add to My List." If you clicked on a drug name by mistake, click it again to remove the blue highlight. After you click "Add to My List" the medication will appear on the list in the box on the right. To remove a medication from that list, select the name then click "Remove from My List."
+        </p>
 
         <medication-selector-resources></medication-selector-resources>
 
         <div class="drug-name-container__btn">
-          <a href="." class="btn btn-primary">Search</a>
+          <a ng-click="searchDrugs()" class="btn btn-primary">Search</a>
         </div>
       </div><!--/.drug-name-container-->
+
+      <div id="drugs-results" class="resources-results">
+
+        <h3>Available Programs</h3>
+
+        <ul ng-if="drugPrograms.length > 0">
+          <li ng-repeat="program in drugPrograms">
+            <a ng-href="/fact-sheets/factsheet_@{{program.code}}/?short=n" class="btn-link btn-underline" ><ng-label text="@{{program.prg_nm}}"></ng-label></a>
+            <p><strong>Brand Name:</strong> @{{program.brand_name}}</p>
+            <p><div-program-desc program_code="program.code"/></p>
+          </li>
+        </ul>
+
+        <div ng-if="drugPrograms.length == 0">
+          <p>No programs were found.</p>
+        </div>
+      </div>
 
     </div>
   </div>

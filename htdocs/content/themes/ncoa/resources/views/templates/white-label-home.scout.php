@@ -77,7 +77,7 @@
                       </div>
                       <h2 class="program-highlight__title">Key Benefits</h2>
                       <div class="program-highlight__excerpt">
-                        <p>Screen for our core benefit programs.</p>
+                        <p>Quickly find core benefit programs that pay for medications, health care, food, and utilities.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
