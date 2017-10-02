@@ -2568,6 +2568,8 @@ app.controller('screeningController', ['$rootScope', '$scope', '$state', '$state
 
     $rootScope.isScreening = true;
 
+    $scope.screenData = prescreen.data.screenData;
+
     $rootScope.hasPrescreen = window.subsetId == 100;
 
     if ($scope.$root.answers == undefined) {
