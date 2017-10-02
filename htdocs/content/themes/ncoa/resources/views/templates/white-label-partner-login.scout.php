@@ -2,14 +2,14 @@
 
 @section('main')
 <div class="container resources">
-  <h1>Welcome to the Partner Login Page</h1>
+  <h1>Welcome to the Login Page</h1>
   <div class="card">
     <div class="card-nested">
 
       <p>This feature is available to BenefitsCheckUp&reg; private label users and grantees of the Center for Benefits Access. Log into this page to access statistical reports about your screening and application activities. You can also access additional outreach materials.</p>
 
 
-      <form class="login-form" action="https://oe.benefitscheckup.org/oe/signin.do" method="post" name="loginForm">
+      <form class="login-form" action="https://oeqa.benefitscheckup.org/oe/signin.do" method="post" name="loginForm">
         <div class="form-group">
           <label>Username</label>
           <input class="form-control" name="userLogin" type="text" />

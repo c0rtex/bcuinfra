@@ -117,7 +117,7 @@
 
         <ul ng-if="drugPrograms.length > 0">
           <li ng-repeat="program in drugPrograms">
-            <a ng-href="/fact-sheets/factsheet_@{{program.code}}&short=n" class="btn-link btn-underline" target="_new"><ng-label text="@{{program.prg_nm}}"></ng-label></a>
+            <a ng-href="/fact-sheets/factsheet_@{{program.code}}/?short=n" class="btn-link btn-underline" ><ng-label text="@{{program.prg_nm}}"></ng-label></a>
             <p><strong>Brand Name:</strong> @{{program.brand_name}}</p>
             <p><div-program-desc program_code="program.code"/></p>
           </li>
