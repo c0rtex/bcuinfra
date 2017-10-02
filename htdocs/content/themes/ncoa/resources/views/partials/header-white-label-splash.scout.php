@@ -5,7 +5,7 @@
     <section class="container container-splash">
         <div class="clearfix">
             <span class="pull-left header-logo header-logo-splash {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
-                <a tabindex="1" href="/becs" class="logo logo-splash">
+                <a tabindex="1"  class="logo logo-splash">
                     {{
                         wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
                             array(
