@@ -374,7 +374,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                     </div>
                     @endif
 
-                    @if (!empty($snap_findstores_url) &&  @if(!empty($entryPointValue))) 
+                    @if (!empty($snap_findstores_url) &&  (!empty($entryPointValue))) 
                     <div class="results-options feedback-box">
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
                         <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
