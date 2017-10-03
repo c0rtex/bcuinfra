@@ -5,11 +5,7 @@
     <section class="container">
         <div class="clearfix">
             <span class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
-                @if($_SESSION['partner_id']!=0)
-                <a tabindex="1"  class="logo">
-                @else
-                <a tabindex="1"  class="logo">
-                @endif
+                <a tabindex="1" href="/" class="logo">
                     {{
                         wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
                             array(
