@@ -1,4 +1,4 @@
-@extends($layout)
+﻿@extends($layout)
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
@@ -113,8 +113,8 @@
                           <span style="white-space: pre-line">Find Out If You're Eligible</span>
                         </a>
                     @endif
-
-                    @if (!empty($snap_findstores_url)) 
+		   </div>
+		    @if (!empty($snap_findstores_url)) 
                     <div class="results-options feedback-box">
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
                         <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
@@ -125,7 +125,6 @@
                         </div>
                     </div>                    
                     @endif
-		   </div>
                 </div>
             </div>
         </div>
