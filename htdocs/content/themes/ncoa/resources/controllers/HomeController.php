@@ -40,13 +40,13 @@ class HomeController extends BaseController
 
         return View::make('templates.homepage',[
             'loggedin' => true,
-            'medicarerx' => true,
-            'nutrition' => true,
+            'medicarerx' => false,
+            'nutrition' => false,
             'home' => true,
-            'partnerlogin' => true,
-            'grantees' => true,
-            'resources' => true,
-            'home6' => true,
+            'partnerlogin' => false,
+            'grantees' => false,
+            'resources' => false,
+            'home6' => false,
             'sponsors' 				=> SponsorsModel::all(),
             'testimonials' 			=> $testimonials,
             'betterwaysection' 		=> $betterwaysection,
@@ -84,13 +84,13 @@ class HomeController extends BaseController
 
         return View::make('templates.white-label-homepage',[
             'loggedin' => true,
-            'medicarerx' => true,
-            'nutrition' => true,
+            'medicarerx' => false,
+            'nutrition' => false,
             'home' => true,
-            'partnerlogin' => true,
-            'grantees' => true,
-            'resources' => true,
-            'home6' => true,
+            'partnerlogin' => false,
+            'grantees' => false,
+            'resources' => false,
+            'home6' => false,
             'testimonials' 			=> $testimonials,
             'callouts'				=> $callouts
         ]);
