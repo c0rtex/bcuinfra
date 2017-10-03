@@ -113,6 +113,18 @@
                           <span style="white-space: pre-line">Find Out If You're Eligible</span>
                         </a>
                     @endif
+
+                    @if (!empty($snap_findstores_url)) 
+                    <div class="results-options feedback-box">
+                        <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
+                        <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
+                        <div class="survey-answers">
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/P7B8JRK">Very Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/P9Q2Q7W">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/P9VX39M">Not Likely</a>
+                        </div>
+                    </div>                    
+                    @endif
 		   </div>
                 </div>
             </div>
