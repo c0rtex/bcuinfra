@@ -11,13 +11,13 @@ class SponsorsController extends BaseController
 	{
 		return View::make('templates.sponsors',[
 			'loggedin' => true,
-			'medicarerx' => true,
-			'nutrition' => true,
-			'home' => true,
-			'partnerlogin' => true,
-			'grantees' => true,
-			'resources' => true,
-			'home6' => true,
+			'medicarerx' => false,
+			'nutrition' => false,
+			'home' => false,
+			'partnerlogin' => false,
+			'grantees' => false,
+			'resources' => false,
+			'home6' => false,
 			'sponsors' => SponsorsModel::queryNonFeaturedSponosrs(),
 			'featured' => SponsorsModel::queryFeaturedSponsors()
 		]);

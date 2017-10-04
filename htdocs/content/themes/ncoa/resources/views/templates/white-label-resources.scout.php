@@ -73,10 +73,10 @@
 
         <ul ng-if="results.length > 0">
           <li ng-repeat="result in results | orderBy:'result.name'">
-            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline" target="_new"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
             <p><div-program-desc program_code="result.code"/></p>
             <ul ng-if="result.forms.length > 0">
-              <li ng-repeat="form in result.forms"><a ng-href="@{{formatUrl(form.url,form.type)}}" target="_new">@{{form.caption}}</a></li>
+              <li ng-repeat="form in result.forms"><a ng-href="@{{formatUrl(form.url,form.type)}}" target="_blank">@{{form.caption}}</a></li>
             </ul>
           </li>
         </ul>
@@ -117,8 +117,8 @@
 
         <ul ng-if="drugPrograms.length > 0">
           <li ng-repeat="program in drugPrograms">
-            <a ng-href="/fact-sheets/factsheet_@{{program.code}}/?short=n" class="btn-link btn-underline" ><ng-label text="@{{program.prg_nm}}"></ng-label></a>
-            <p><strong>Brand Name:</strong> @{{program.brand_name}}</p>
+            <a ng-href="/fact-sheets/factsheet_@{{program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{program.prg_nm}}"></ng-label></a>
+            <p ng-if="program.brand_name"><strong>Brand Name:</strong> @{{program.brand_name}}</p>
             <p><div-program-desc program_code="program.code"/></p>
           </li>
         </ul>
