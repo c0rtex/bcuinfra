@@ -4,7 +4,7 @@
 
 <cfinvoke method="getSubsetContent" 
 returnvariable="responseFromService" 
-webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_4.cfc?wsdl" >
+webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
 <cfinvokeargument name="subset_id" value="#url.subset_id#">
 </cfinvoke >
 
@@ -14,7 +14,7 @@ webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_4.cfc?ws
 
 <cfinvoke method="getRecommendations" 
 returnvariable="responseFromService" 
-webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_4.cfc?wsdl" >
+webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
 <cfinvokeargument name="screening_id" value="#url.screening_id#">
 <cfinvokeargument name="subset_id" value="#url.subset_id#">
 </cfinvoke >
