@@ -30,7 +30,7 @@
     </cffunction>
 
     <cffunction name="prescreen" access="remote" restpath="/prescreen" returnType="String" httpMethod="GET">
-        <cfargument name="subsetId">
+        <cfargument name="subsetId" required="false" restargsource="Query" type="numeric" default="100">
         <!---SELECT
         subset_question.subset_id,
         question.question_id,
