@@ -38,7 +38,7 @@
 				
 				<?php if ($page_id != 13578): ?>
 					<div class="flood-banner" style="color: black; font-size: 18px;">
-						<p><span style="color: red; font-weight:bold;">Hurricane Disaster Relief:</span> If you live in an area that was affected by Hurricane Harvey, Hurricane Irma, or any other disaster, you may be able to get help. <a href="/disaster-assistance" style="color: black;">Find help now!</a>
+						<p><span style="color: red; font-weight:bold;">Hurricane Disaster Relief:</span> If you live in an area that was affected by Hurricane Harvey, Irma, Maria, or any other disaster, you may be able to get help. <a href="/disaster-assistance" style="color: black;">Find help now!</a>
 						</p>
 					</div>
 				<?php endif; ?>
