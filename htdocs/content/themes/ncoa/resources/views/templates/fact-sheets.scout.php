@@ -48,7 +48,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&pdf=y" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&pdf=y&download=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
@@ -374,16 +374,26 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                     </div>
                     @endif
 
-                    @if (!empty($snap_findstores_url)) 
+                    @if (!empty($snap_findstores_url) &&  (!empty($entryPointValue))) 
                     <div class="results-options feedback-box">
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
                         <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
                         <div class="survey-answers">
-	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/MPHD96K">Very Likely</a>
-	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/M6DLCQ3">Somewhat Likely</a>
-	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/M6WZNDX">Not Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/PS35M99">Very Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/PRKNY78">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/PR96HFK">Not Likely</a>
                         </div>
-                    </div>                    
+                    </div> 
+		    @elseif (!empty($snap_findstores_url) ) 
+                    <div class="results-options feedback-box">
+                        <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
+                        <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
+                        <div class="survey-answers">
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/PJHRX3H">Very Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/PQ36G82">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/PQYHKCL">Not Likely</a>
+                        </div>
+                    </div> 
                     @endif
 
                     @if ($key_benefits_program !== false)

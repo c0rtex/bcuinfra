@@ -1,4 +1,4 @@
-@extends($layout)
+﻿@extends($layout)
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
@@ -37,7 +37,7 @@
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&short=y&pdf=y" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&pdf=y&download=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
@@ -114,6 +114,17 @@
                         </a>
                     @endif
 		   </div>
+		    @if (!empty($snap_findstores_url)) 
+                    <div class="results-options feedback-box">
+                        <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
+                        <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
+                        <div class="survey-answers">
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/P7B8JRK">Very Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/P9Q2Q7W">Somewhat Likely</a>
+	                        <a target="_blank" class="btn btn-secondary" href="https://www.surveymonkey.com/r/P9VX39M">Not Likely</a>
+                        </div>
+                    </div>                    
+                    @endif
                 </div>
             </div>
         </div>

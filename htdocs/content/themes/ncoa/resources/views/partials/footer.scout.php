@@ -25,7 +25,7 @@
                 <a class="footer-youtube-icon" title="Youtube" href="http://www.youtube.com/ncoaging">&nbsp;</a>
             </div>
             <div class="footer-enews-tray">
-                <p>Sign Up for Enews</p>
+                <p>Sign Up for News</p>
                 <a class="footer-enews-icon" href="http://go.ncoa.org/BCUsignup"></a>
             </div>
 
