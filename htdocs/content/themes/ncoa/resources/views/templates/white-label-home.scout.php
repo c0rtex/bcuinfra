@@ -94,9 +94,9 @@
                           <img src="../content/uploads/2016/05/category_health.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
                         </a>
                       </div>
-                      <h2 class="program-highlight__title">Medicaid Locator</h2>
+                      <h2 class="program-highlight__title">Medicaid Office Locator</h2>
                       <div class="program-highlight__excerpt">
-                        <p>Quickly find your local office(s) to help you apply for Medicaid</p>
+                        <p>Quickly find local Medicaid office(s) by service area.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
