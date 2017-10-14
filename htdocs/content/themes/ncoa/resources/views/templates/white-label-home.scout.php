@@ -86,6 +86,25 @@
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->
 
+                <div class="item">
+                  <div class="program-highlight">
+                    <div class="program-highlight__text">
+                      <div class="program-highlight__icon">
+                        <a href="/find-my-benefits/?subset_id=57" class="program-highlight__icon-wrap">
+                          <img src="../content/uploads/2016/05/category_health.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
+                        </a>
+                      </div>
+                      <h2 class="program-highlight__title">Medicaid Locator</h2>
+                      <div class="program-highlight__excerpt">
+                        <p>Quickly find your local office(s) to help you apply for Medicaid</p>
+                      </div>
+                    </div>
+                    <div class="program-highlights__btn">
+                      <a class="btn btn-secondary" target="_blank" href="https://www.benefitscheckup.org/cf/medicaid_locator.cfm">Get Started</a>
+                    </div>
+                  </div><!--/.program-highlight-->
+                </div><!--/.item-->
+
               </div><!--.ncoa-carousel-container-->
               <div class="controls">
                 <div class="count">
