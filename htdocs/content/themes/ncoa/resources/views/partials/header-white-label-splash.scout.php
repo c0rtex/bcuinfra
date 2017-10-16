@@ -72,7 +72,7 @@
                                     <li class="menu-item @if($home) current-menu-item current_page_item @endif">
                                         <a href="/">Home</a>
                                     </li>
-                                    <li class="menu-item">
+                                    <li class="menu-item @if($questionnaire)current-menu-item current_page_item @endif">
                                         <a href="/find-my-benefits/?subset_id=100">Find Benefits</a>
                                     </li>
                                     <li class="menu-item @if($medicarerx)current-menu-item current_page_item @endif">

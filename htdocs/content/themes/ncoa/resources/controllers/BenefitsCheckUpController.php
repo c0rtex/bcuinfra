@@ -58,6 +58,7 @@ class BenefitsCheckUpController extends BaseController
             'medicarerx' => false,
             'nutrition' => false,
             'home' => false,
+            'questionnaire' => true,
             'partnerlogin' => false,
             'grantees' => false,
             'resources' => false,
