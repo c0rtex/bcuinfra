@@ -24,24 +24,13 @@
 
             @if(Option::get('global-settings', 'showHeaderCTA') == '0')
             <div class="pull-right header-cta-ncoaLogo hidden-xs">
-                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for News</a>
+                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
 
                 <span><a tabindex="3" href="http://www.ncoa.org"><img width="150px" src="{{themosis_assets()}}/images/ncoa-logo.png" class="ncoaLogo" alt="National Council on Aging" title="National Council on Aging" /></a></span>
             </div>
             @endif
         </div>
 
-				<?
-				$page_id = get_the_ID();
-				//13578 - disaster page id
-				?>
-				
-				<?php if ($page_id != 13578): ?>
-					<div class="flood-banner" style="color: black; font-size: 18px;">
-						<p><span style="color: red; font-weight:bold;">Hurricane Disaster Relief:</span> If you live in an area that was affected by Hurricane Harvey, Irma, Maria, or any other disaster, you may be able to get help. <a href="/disaster-assistance" style="color: black;">Find help now!</a>
-						</p>
-					</div>
-				<?php endif; ?>
 
         <nav class="navbar navbar-default">
             <div>
@@ -85,7 +74,7 @@
             </div>
 
             <div class="col-xs-12 text-center sign-up-enews">
-                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for News</a>
+                <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
             </div>
         </div>
         @endif
