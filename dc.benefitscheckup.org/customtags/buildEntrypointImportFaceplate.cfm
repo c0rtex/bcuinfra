@@ -695,7 +695,9 @@ function checkFields(pcounter) {
                                 	    	<cfset arrayIndex = arrayIndex + 1>
                                 	    	<cfset notInserted[#arrayIndex#] =  "#lineNum#">
                                 		</cfif>            
-                                        
+
+
+
                                         <!--- Update entrypoint --->
                                         <cfif updateEP eq "yes">
                                             <cfquery name="updateEP" datasource="#application.dbSrc#">
