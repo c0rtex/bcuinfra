@@ -290,7 +290,7 @@ function checkFields(pcounter) {
 										counter = counter + 1;    
 									</cfscript>
                                     <!--- To be used for last_update, create_date for new entrypoints, and modify_date --->
-                                    <cfset str_date="#DateFormat(Now())# #Timeformat(NOW(),"hh:mm:ss")#">
+                                    <cfset str_date="#DateFormat(Now(),"yyyy-mm-dd")# #Timeformat(NOW(),"hh:mm:ss")#">
                                 </cfloop>
 								<cfset numLine = numLine + 1>
 								<!--- GENERAL ERROR CHECK 
