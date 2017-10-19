@@ -726,7 +726,7 @@ function checkFields(pcounter) {
                                                   ,notes = '#str_notes#'
                                                   ,modify_user_id = '#session.user_id#'
                                                   ,modify_date = '#str_date#'
-                                             	WHERE entrypoint_id = #str_entrypoint_id#;
+                                             	WHERE entrypoint_id = #str_entrypoint_id# ;
                                                	Select ROW_COUNT() as updateEPct
                                             </cfquery>
                                             <cfif updateEPQ.updateEPct neq 1>
