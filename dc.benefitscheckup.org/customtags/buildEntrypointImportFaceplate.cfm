@@ -700,7 +700,7 @@ function checkFields(pcounter) {
 
                                         <!--- Update entrypoint --->
                                         <cfif updateEP eq "yes">
-                                            <cfquery name="updateEPQ" datasource="#application.dbSrc#">
+                                            <cfquery name="updateEPQ" datasource="#application.dbSrc#" result="updateEPct">
                                             	UPDATE entrypoint
                                                	SET `name` = '#str_name#'
                                                   ,subname = '#str_subname#'
@@ -726,10 +726,9 @@ function checkFields(pcounter) {
                                                   ,notes = '#str_notes#'
                                                   ,modify_user_id = '#session.user_id#'
                                                   ,modify_date = '#str_date#'
-                                             	WHERE entrypoint_id = #str_entrypoint_id# ;
-                                               	Select mysql_affected_rows() as updateEPct
+                                             	WHERE entrypoint_id = #str_entrypoint_id#
                                             </cfquery>
-                                            <cfif updateEPQ.updateEPct neq 1>
+                                            <cfif updateEPct.recordcount neq 1>
 												<cfset update = "no">
                                             </cfif>
                                             
