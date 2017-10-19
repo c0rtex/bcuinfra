@@ -700,7 +700,7 @@ function checkFields(pcounter) {
 
                                         <!--- Update entrypoint --->
                                         <cfif updateEP eq "yes">
-                                            <cfquery name="updateEP" datasource="#application.dbSrc#">
+                                            <cfquery name="updateEPQ" datasource="#application.dbSrc#">
                                             	UPDATE entrypoint
                                                	SET `name` = '#str_name#'
                                                   ,subname = '#str_subname#'
@@ -729,7 +729,7 @@ function checkFields(pcounter) {
                                              	WHERE entrypoint_id = #str_entrypoint_id#;
                                                	Select ROW_COUNT() as updateEPct
                                             </cfquery>
-                                            <cfif updateEP.updateEPct neq 1>
+                                            <cfif updateEPQ.updateEPct neq 1>
 												<cfset update = "no">
                                             </cfif>
                                             
