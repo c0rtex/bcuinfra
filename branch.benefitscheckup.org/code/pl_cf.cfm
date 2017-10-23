@@ -77,10 +77,10 @@
 <td class="text1" style="padding: 4px 0px 8px; font-weight:bold; border-bottom:1px solid #ccc;">Website URL</td>
 </tr>
 
-<cfif CGI.HTTPS == "off">
-	<cfset var fullUrl = "http://#CGI.HTTP_HOST#/">
+<cfif CGI.HTTPS eq "off">
+	<cfset fullUrl = "http://#CGI.HTTP_HOST#/">
 <cfelse>
-	<cfset var fullUrl = "https://#CGI.HTTP_HOST#/">
+	<cfset fullUrl = "https://#CGI.HTTP_HOST#/">
 </cfif>
 
 <cfoutput query="wrapper" group="partner_name">
