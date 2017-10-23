@@ -212,11 +212,11 @@
                     <div class="blog-teaser">
                       <a href=".">
                         <div class="blog-teaser__img">
-                          <img src="../content/themes/ncoa/resources/assets/images/blog_1.png" alt="" />
+                          <img width="240" height="120" src="https://www.ncoa.org/wp-content/uploads/elder-caucasian-male-with-grocery-receipt.jpg" alt="" />
                         </div>
                         <div class="blog-teaser__text">
-                          <h4>Straight Talk for Seniors: FY18 Budget & Funding for Senior Programs</h4>
-                          <div>7.24.2017</div>
+                          <h4>SNAP Monthly Allotment Reduced by FY18 COLAs</h4>
+                          <div>10.19.2017</div>
                         </div>
                       </a>
                     </div>
@@ -225,11 +225,11 @@
                     <div class="blog-teaser">
                       <a href=".">
                         <div class="blog-teaser__img">
-                          <img src="../content/themes/ncoa/resources/assets/images/blog_2.png" alt="" />
+                        <img width="240" height="120" src="https://www.ncoa.org/wp-content/uploads/65th-birthday-cake.jpg" alt="" />
                         </div>
                         <div class="blog-teaser__text">
-                          <h4>Thinking About When You'll Claim Social Security Benefits is Time Well Spent</h4>
-                          <div>7.20.2017</div>
+                          <h4>From Medicaid to Medicare: How States Can Help Those Facing the Cliff</h4>
+                          <div>10.12.2017</div>
                         </div>
                       </a>
                     </div>
@@ -238,11 +238,11 @@
                     <div class="blog-teaser">
                       <a href=".">
                         <div class="blog-teaser__img">
-                          <img src="../content/themes/ncoa/resources/assets/images/blog_3.png" alt="" />
+                        <img width="240" height="120" src="https://www.ncoa.org/wp-content/uploads/elder-hispanic-male-at-library-on-computer.jpg" alt="" />
                         </div>
                         <div class="blog-teaser__text">
-                          <h4>It's Time to Change the Story of Aging</h4>
-                          <div>7.6.2017</div>
+                          <h4>Tools for Elder Hispanic Economic Security</h4>
+                          <div>10.5.2017</div>
                         </div>
                       </a>
                     </div>
