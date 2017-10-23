@@ -154,6 +154,7 @@ class ResourcesController extends BaseController
         'home' => false,
         'partnerlogin' => false,
         'grantees' => false,
+        'questionnaire' => false,
         'resources' => true,
         'home6' => false,
         'states' => $this->states,
@@ -213,6 +214,7 @@ class ResourcesController extends BaseController
         'grantees' => false,
         'resources' => false,
         'home6' => false,
+        'questionnaire' => false,
         'states' => $this->states_fact_sheets,
       'webServiceUrl' => $constants['WEB_SERVICE_URL']
     ]);
