@@ -77,7 +77,7 @@
                       </div>
                       <h2 class="program-highlight__title">Key Benefits</h2>
                       <div class="program-highlight__excerpt">
-                        <p>Quickly find core benefit programs that pay for medications, health care, food, and utilities.</p>
+                        <p>Quickly find benefits that pay for medications, health care, food, and more.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
@@ -146,7 +146,7 @@
                     </div>
                     <h2 class="program-highlight__title">Food & Nutrition</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Quickly find core benefit programs that pay for medications, health care, food, and utilities.</p>
+                      <p>Quickly find benefits that pay for medications, health care, food, and more.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
@@ -164,7 +164,7 @@
                     </div>
                     <h2 class="program-highlight__title">Key Benefits</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Quickly find core benefit programs that pay for medications, health care, food, and utilities.</p>
+                      <p>Quickly find benefits that pay for medications, health care, food, and more.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
