@@ -11,7 +11,7 @@ BODY
 {
 	font: 12px / 18px arial, sans-serif;
 	color: #000;
-	background: #FFF url(images/bg/bl_grdnt_bg.gif) repeat-x center top;
+	background: #FFF url(../images/bg/bl_grdnt_bg.gif) repeat-x center top;
 	padding-top: 16px;
         margin: 0px;
 }
@@ -207,7 +207,7 @@ width: 100%;
 	width: 935px;
 	border-left: 1px solid #CCC;
 	border-top: 1px solid #CCC;
-	background: #FFF url(images/bg/border_shadow.png) repeat-y 934px 0;
+	background: #FFF url(../images/bg/border_shadow.png) repeat-y 934px 0;
 	position: relative;
 	margin: -1px auto 0;
 	clear: both;
@@ -714,30 +714,30 @@ DIV#content.homepage
 #f-stay-connected LI
 {
 	padding-left: 22px;
-	background: url(images/icons/facebook_sm.gif) no-repeat left top;
+	background: url(../images/icons/facebook_sm.gif) no-repeat left top;
 	padding-bottom: 2px;
 }
 
 #f-stay-connected LI.twitter
 {
-	background-image: url(images/icons/twitter_sm.gif);
+	background-image: url(../images/icons/twitter_sm.gif);
 }
 #f-stay-connected LI.youtube
 {
-	background-image: url(images/icons/youtube_sm.png);
+	background-image: url(../images/icons/youtube_sm.png);
 }
 
 #f-stay-connected LI.linkedin
 {
-	background-image: url(images/icons/icn-linkedin.png);
+	background-image: url(../images/icons/icn-linkedin.png);
 }
 #f-stay-connected LI.cr
 {
-	background-image: url(images/icons/community_sm.gif);
+	background-image: url(../images/icons/community_sm.gif);
 }
 #f-stay-connected LI.rss
 {
-	background-image: url(images/icons/rss_sm.gif);
+	background-image: url(../images/icons/rss_sm.gif);
 }
 #footer-primary
 {
@@ -759,7 +759,7 @@ DIV#content.homepage
 }
 .helpButton
 {
-	background: #FFF url(images/buttons/helpTip-bg.png) repeat-x 0 0;
+	background: #FFF url(../images/buttons/helpTip-bg.png) repeat-x 0 0;
 	border: 2px solid #999;
 	border-radius: 14px 14px 14px 14px;
 	color: #1F419B !important;
@@ -859,7 +859,7 @@ left: 240px;
 */
 #pageTip
 {
-	background: url(images/bg/yl_grdnt_bg.gif) repeat-x;
+	background: url(../images/bg/yl_grdnt_bg.gif) repeat-x;
 	border-radius: 10px;
 	display: block;
 	right: -7px;
@@ -1738,7 +1738,7 @@ margin-top: 20px;
 
 #successStories {
 
-background-image:url('/wp-content/themes/bcuwptheme/images/SNAPSuccessBanner.png');
+background-image:url('../images/SNAPBanner.png');
 background-repeat: no-repeat;
 padding: 0px 10px 0px 10px;
 width: 937px;
