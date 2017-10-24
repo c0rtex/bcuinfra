@@ -233,7 +233,7 @@ margin:0 auto;*/
 	width: 935px;
 	border-left: 1px solid #CCC;
 	border-top: 1px solid #CCC;
-	background: #FFF url(images/bg/border_shadow.png) repeat-y 934px 0;
+	background: #FFF url(../images/bg/border_shadow.png) repeat-y 934px 0;
 	position: relative;
 	margin: -8px auto 0;
 }
@@ -358,7 +358,7 @@ margin:0 auto;*/
 }
 #feature
 {
-	background: #FFF url(images/bg/yl_grdnt_bg.gif) repeat-x;
+	background: #FFF url(../images/bg/yl_grdnt_bg.gif) repeat-x;
 	width: 904px;
 	min-height: 200px;
 	padding: 30px 30px 0px 0px;
@@ -397,7 +397,7 @@ margin:0 auto;*/
 	width: 935px;
 	border-left: 1px solid #CCC;
 	border-top: 1px solid #CCC;
-	background: #FFF url(images/bg/border_shadow.png) repeat-y 934px 0;
+	background: #FFF url(../images/bg/border_shadow.png) repeat-y 934px 0;
 	position: relative;
 	z-index: 999;
 }
@@ -418,7 +418,7 @@ margin:0 auto;*/
 	width: 875px;
 	position: relative;
 	overflow: hidden;
-	background: url(images/statements/ineedhelpwith.png) no-repeat 160px 0;
+	background: url(../images/statements/ineedhelpwith.png) no-repeat 160px 0;
 	padding: 30px;
 }
 #content .col1
@@ -480,13 +480,13 @@ DIV#content.homepage
 }
 .row.find-help
 {
-	background: url(images/statements/ijustneedhelpwith.png) no-repeat 10px 0;
+	background: url(../images/statements/ijustneedhelpwith.png) no-repeat 10px 0;
 	padding-top: 55px;
 	margin-top: 50px;
 }
 .row.really_need_help
 {
-	background: url(images/statements/ineedhelpwith.png) no-repeat 130px 0;
+	background: url(../images/statements/ineedhelpwith.png) no-repeat 130px 0;
 	padding-top: 55px;
 }
 #content.surveypage, .row.survey
@@ -821,7 +821,7 @@ width: 32px;
 }
 .helpTip
 {
-	background: #FEF4DC url("images/buttons/helpTipClose.png") no-repeat 99% 4px;
+	background: #FEF4DC url("../images/buttons/helpTipClose.png") no-repeat 99% 4px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	border-top-right-radius: 8px;
@@ -930,7 +930,7 @@ LI.questionHighlight
 {
 	display: block;
 	float: left;
-	background: #FEE5AA url(images/buttons/helpTip-bg.png) repeat-x 0 0;
+	background: #FEE5AA url(../images/buttons/helpTip-bg.png) repeat-x 0 0;
 	border: 2px solid #999;
 	border-radius: 14px 14px 14px 14px;
 	color: #1F419B !important;
@@ -1264,7 +1264,7 @@ TABLE#medication_table TD.box_color_dark
 }
 INPUT.drug_button, INPUT.view_results
 {
-	background: #FEE5AA url(images/buttons/helpTip-bg.png) repeat-x 0 0;
+	background: #FEE5AA url(../images/buttons/helpTip-bg.png) repeat-x 0 0;
 	border: 2px solid #999999;
 	border-radius: 14px 14px 14px 14px;
 	color: #1F419B !important;
@@ -1285,7 +1285,7 @@ INPUT.view_buttons
 {
 	display: block;
 	float: left;
-	background: #FEE5AA url(images/buttons/helpTip-bg.png) repeat-x 0 0;
+	background: #FEE5AA url(../images/buttons/helpTip-bg.png) repeat-x 0 0;
 	border: 2px solid #999;
 	border-radius: 14px 14px 14px 14px;
 	color: #1F419B !important;
@@ -1617,7 +1617,7 @@ border-shadow: 20px;
 	width: 938px;
 	position: relative;
 	overflow: hidden;
-	background: url(images/statements/ineedhelpwith.png) no-repeat 160px 0;
+	background: url(../images/statements/ineedhelpwith.png) no-repeat 160px 0;
 	padding-top: 0px;
         padding-left: 0px;
         padding-right: 30px;
