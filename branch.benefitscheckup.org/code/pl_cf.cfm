@@ -78,15 +78,15 @@
 </tr>
 
 <cfif CGI.HTTPS eq "off">
-	<cfset fullUrl = "http://#CGI.HTTP_HOST#/">
+	<cfset fullUrl = "http://#CGI.HTTP_HOST#">
 <cfelse>
-	<cfset fullUrl = "https://#CGI.HTTP_HOST#/">
+	<cfset fullUrl = "https://#CGI.HTTP_HOST#">
 </cfif>
 
 <cfoutput query="wrapper" group="partner_name">
 <tr>
 <td class="text1" style="padding: 8px 16px 8px 0px; border-bottom:1px solid ##ccc;">#partner_name#</td>
-<td class="text1" style="padding: 4px 0px 8px; border-bottom:1px solid ##ccc;"><a href="#fullUrl##wrapper_code#" target="#partner_id#" style="text-decoration:none;">#fullUrl#/#wrapper_code#</a></td>
+<td class="text1" style="padding: 4px 0px 8px; border-bottom:1px solid ##ccc;"><a href="#fullUrl#/#wrapper_code#" target="#partner_id#" style="text-decoration:none;">#fullUrl#/#wrapper_code#</a></td>
 </tr>
 </cfoutput>
 </table>
