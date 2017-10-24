@@ -110,10 +110,10 @@
 		 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
 		 - Transparency is not recommended (iOS will put a black BG behind the icon) -->
 	<link rel="apple-touch-icon" href="/wp-content/themes/bcuwptheme/images/custom_icon.png"/>
-	<link rel="stylesheet" type="text/css" media="all" href="/wp-content/themes/bcuwptheme/style.css" /> 
-	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="/wp-content/themes/bcuwptheme/css/ie6.css" /><![endif]-->
-	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/wp-content/themes/bcuwptheme/css/ie7.css" /><![endif]-->
-	<!--[if IE 8]><link rel="stylesheet" type="text/css" href="/wp-content/themes/bcuwptheme/css/ie8.css" /><![endif]-->
+	<link rel="stylesheet" type="text/css" media="all" href="/cf/css/style.css" />
+	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="/cf/css/ie6.css" /><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/cf/css/ie7.css" /><![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" type="text/css" href="/cf/css/ie8.css" /><![endif]-->
 
 <script type="text/javascript">
 /*
