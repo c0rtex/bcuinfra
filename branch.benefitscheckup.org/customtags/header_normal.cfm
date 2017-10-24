@@ -1,6 +1,6 @@
 <cfif IsDefined("URL.subset_id") AND URL.subset_id NEQ ''>
-	<cfset SESSION.subset_id = URL.subset_id>
-	<cfset SESSION.current_subset_id = URL.subset_id>
+    <cfset SESSION.subset_id = URL.subset_id>
+    <cfset SESSION.current_subset_id = URL.subset_id>
 </cfif>
 
 <cfparam name="SESSION.site_url" default="#CGI.server_name#">
@@ -14,40 +14,40 @@
 
 <cftry>
 <!--- Check if SESSION.subset_id has changed.  --->
-	<cfif IsDefined('SESSION.subset_id')>
-		<cfif SESSION.subset_id NEQ SESSION.current_subset_id>
+    <cfif IsDefined('SESSION.subset_id')>
+        <cfif SESSION.subset_id NEQ SESSION.current_subset_id>
 
-			<cfif CGI.SERVER_PORT NEQ '80'>
-				<cfset REQUEST.serverPort = "https">
-			<cfelse>
-				<cfset REQUEST.serverPort = "http">
-			</cfif>
+            <cfif CGI.SERVER_PORT NEQ '80'>
+                <cfset REQUEST.serverPort = "https">
+            <cfelse>
+                <cfset REQUEST.serverPort = "http">
+            </cfif>
 
-			<cfif CGI.QUERY_STRING NEQ ''>
-				<cfset tmpQueryString = CGI.QUERY_STRING>
-				<cfset tmpQueryString = Replace(tmpQueryString,"subset_id=#SESSION.subset_id#", "subset_id=#SESSION.current_subset_id#")>
-			</cfif>
+            <cfif CGI.QUERY_STRING NEQ ''>
+                <cfset tmpQueryString = CGI.QUERY_STRING>
+                <cfset tmpQueryString = Replace(tmpQueryString,"subset_id=#SESSION.subset_id#", "subset_id=#SESSION.current_subset_id#")>
+            </cfif>
 
-			<cfset forwardURL = REQUEST.serverPort & "://" & SESSION.subdomain & ".benefitscheckup.org" & CGI.SCRIPT_NAME &"?" & tmpQueryString>
+            <cfset forwardURL = REQUEST.serverPort & "://" & SESSION.subdomain & ".benefitscheckup.org" & CGI.SCRIPT_NAME &"?" & tmpQueryString>
 
 <!--- Reset subset_id --->
-			<cfset SESSION.subset_id = Duplicate(SESSION.current_subset_id)>
-			<cfset SESSION.current_subset_id = Duplicate(SESSION.subset_id)>
+            <cfset SESSION.subset_id = Duplicate(SESSION.current_subset_id)>
+            <cfset SESSION.current_subset_id = Duplicate(SESSION.subset_id)>
 
-			<cflocation url="#forwardURL#" addtoken="true">
-			<cfabort>
-		</cfif>
-	</cfif>
-	<cfcatch type="any"></cfcatch>
+            <cflocation url="#forwardURL#" addtoken="true">
+            <cfabort>
+        </cfif>
+    </cfif>
+    <cfcatch type="any"></cfcatch>
 </cftry>
 
 <!---<cf_sessionLoadVars>
 <cfset SESSION.partner_id = 0>--->
 
 <cfif session.partner_id IS 0>
-	<cfset qpartner = 1>
+    <cfset qpartner = 1>
 <cfelse>
-	<cfset qpartner = session.partner_id>
+    <cfset qpartner = session.partner_id>
 </cfif>
 <cf_cachepartnerquery query="partnerQuery" partner_id="#qpartner#">
 
@@ -55,9 +55,9 @@
 <cfparam name="session.cellspacing" default="0">
 <!--- pass in URL variable to override SESSION --->
 <cfif IsDefined("URL.site_url")>
-	<cfset SESSION.site_url = URL.site_url>
+    <cfset SESSION.site_url = URL.site_url>
 <cfelse>
-	<cfset URL.site_url = SESSION.site_url>
+    <cfset URL.site_url = SESSION.site_url>
 </cfif>
 
 <cfset session.cellpadding="12">
@@ -110,10 +110,10 @@
      - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
      - Transparency is not recommended (iOS will put a black BG behind the icon) -->
     <link rel="apple-touch-icon" href="/wp-content/themes/bcuwptheme/images/custom_icon.png"/>
-    <link rel="stylesheet" type="text/css" media="all" href="/wp-content/themes/bcuwptheme/css/style.css" />
-    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/wp-content/themes/bcuwptheme/css/ie6.css" /><![endif]-->
-    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/wp-content/themes/bcuwptheme/css/ie7.css" /><![endif]-->
-    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/wp-content/themes/bcuwptheme/css/ie8.css" /><![endif]-->
+    <link rel="stylesheet" type="text/css" media="all" href="/cf/css/style.css" />
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/cf/css/ie6.css" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/cf/css/ie7.css" /><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/cf/css/ie8.css" /><![endif]-->
 
     <script type="text/javascript">
         /*
@@ -165,17 +165,17 @@ Breadcrumb hack for Safari
 <cfif SESSION.subset_id eq 62>
 
         <title>Find Food Assistance Programs in Your State | BenefitsCheckUp</title>
-	<cfelseif listlast(cgi.script_name,"/") EQ "extrahelp.cfm">
+    <cfelseif listlast(cgi.script_name,"/") EQ "extrahelp.cfm">
         <title>
             Get Extra Help with Your Medicare Rx Bills
         </title>
 <cfelse>
 
-	<cfif attributes.meta_title neq ''>
+    <cfif attributes.meta_title neq ''>
             <title><cfoutput>#attributes.meta_title#</cfoutput></title>
-	<cfelse>
+    <cfelse>
             <title>BenefitsCheckUp.org</title>
-	</cfif>
+    </cfif>
 
 </cfif>
     <script src="/cf/ValidationFunctions.js"></script>
@@ -212,8 +212,8 @@ Breadcrumb hack for Safari
 
 <div id="header">
 
-    <h1><a target="_blank" href="http://www.ncoa.org"><img src="/wp-content/themes/bcuwptheme/images/logos/ncoa_top.png"  title="National Council on Aging" alt="National Council on Aging" id="topbar" /></a></h1>
-<a href="/index.php" class="block"><!---<img src="/wp-content/themes/bcuwptheme/images/logos/bcu.png" title="BenefitsCheckUp" alt="BenefitsCheckUp" />---><img src="/wp-content/themes/bcuwptheme/images/logos/bcu.png" title="BenefitsCheckUp" alt="BenefitsCheckUp" /></a>
+    <h1><a target="_blank" href="http://www.ncoa.org"><img src="/cf/images/logos/ncoa_top.png"  title="National Council on Aging" alt="National Council on Aging" id="topbar" /></a></h1>
+<a href="/index.php" class="block"><!---<img src="/wp-content/themes/bcuwptheme/images/logos/bcu.png" title="BenefitsCheckUp" alt="BenefitsCheckUp" />---><img src="/cf/images/logos/bcu.png" title="BenefitsCheckUp" alt="BenefitsCheckUp" /></a>
 <p>
 <cfoutput>#getCallout.post_content#</cfoutput>
 </p>
