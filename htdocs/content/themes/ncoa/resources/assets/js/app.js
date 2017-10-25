@@ -2056,7 +2056,8 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
     }
 
     $scope.formatUrl = function(url,type) {
-        return  type == 'pdf' ? ($window.appFormsUrl+url) : url;
+        //return  type == 'pdf' ? ($window.appFormsUrl+url) : url;
+        return  type == 'pdf' ? ('/forms/'+url) : url;
     }
 
     $scope.disallowCategory = function() {

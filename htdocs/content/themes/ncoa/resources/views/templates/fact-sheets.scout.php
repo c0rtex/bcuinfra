@@ -339,7 +339,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
 
                         @if (($is_snap) && ($elegible != 'n') && !empty($snap_find_elegible))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheets-side-link">
+                        <a target="_blank" href="/find-my-benefits/" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Find Out If You're Eligible</span>
                         </a>
                         @endif
