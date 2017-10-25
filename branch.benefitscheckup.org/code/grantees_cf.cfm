@@ -490,18 +490,6 @@ Struct of structs of grantee logos
  <cfset granteeStruct.granteeStateName = "Arizona">
  <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
- <!--- Asian Pacific Community in Action --->
- <cfset granteeStruct = structNew() />
- <cfset granteeStruct.granteeLogo = "">
- <cfset granteeStruct.granteeUrl = "http://www.apcaaz.org">
- <cfset granteeStruct.granteeImg = "">
- <cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
- <cfset granteeStruct.granteeAltText = "Asian Pacific Community in Action">
- <cfset granteeStruct.granteeID = "">
- <cfset granteeStruct.granteeState = "Arizona Asian Pacific Community in Action">
- <cfset granteeStruct.granteeStateName = "Arizona">
- <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
-
 <!--- United Cambodian Community --->
  <cfset granteeStruct = structNew() />
  <cfset granteeStruct.granteeLogo = "">
@@ -573,6 +561,17 @@ Struct of structs of grantee logos
  <cfset granteeStruct.granteeState = "Nevada Catholic Charities of Northern Nevada">
  <cfset granteeStruct.granteeStateName = "Nevada">
  <cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
+
+<cfset granteeStruct = structNew() />
+<cfset granteeStruct.granteeLogo = "">
+<cfset granteeStruct.granteeUrl = "http://www.asiaohio.org/">
+<cfset granteeStruct.granteeImg = "">
+<cfset granteeLogo = getLogo(granteeStruct.granteeImg)>
+<cfset granteeStruct.granteeAltText = "Asian Services in Action, Inc.">
+<cfset granteeStruct.granteeID = "">
+<cfset granteeStruct.granteeState = "Ohio Asian Services in Action, Inc.">
+<cfset granteeStruct.granteeStateName = "Ohio">
+<cfset allGranteesStruct[granteeStruct.granteeState] = granteeStruct>
 
  <!--- Cambodian Association of Greater Philadelphia --->
  <cfset granteeStruct = structNew() />
