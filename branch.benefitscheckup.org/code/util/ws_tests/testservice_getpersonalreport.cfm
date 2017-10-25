@@ -7,7 +7,7 @@
 
 <cfinvoke method="getPersonalReport" 
 returnvariable="responseFromService" 
-webservice="https://www.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
+webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
 <cfinvokeargument name="screening_id" value="#url.screening_id#">
 <cfinvokeargument name="subset_id" value="#url.subset_id#">
 </cfinvoke >

@@ -35,7 +35,6 @@
             @endif
         </div>
 
-
         <nav class="navbar navbar-default">
             <div>
                 <!-- Brand and toggle get grouped for better mobile display -->

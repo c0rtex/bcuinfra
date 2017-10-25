@@ -1,6 +1,6 @@
 <cfinvoke method="doTriage" 
 returnvariable="responseFromService" 
-webservice="https://www.benefitscheckup.org/util/remotescreening_3_7.cfc?wsdl" >
+webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
 <cfinvokeargument name="partner_id" value="14">
 <cfinvokeargument name="partner_screening_id" value="542215bbdf4d2">
 <cfinvokeargument name="campaign_id" value="abc44">

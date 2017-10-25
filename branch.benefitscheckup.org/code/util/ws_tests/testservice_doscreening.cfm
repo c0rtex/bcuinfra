@@ -1,6 +1,6 @@
 <cfinvoke method="doScreening" 
 returnvariable="responseFromService" 
-webservice="https://www.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
+webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
 <cfinvokeargument name="partner_id" value="77">
 <cfinvokeargument name="partner_screening_id" value="11111aaa333">
 <cfinvokeargument name="campaign_id" value="">
