@@ -259,7 +259,7 @@ class WhiteLabelController extends BaseController
    */
   private function _load_rss_feed() {
     $posts = array();
-    $filename = 'ncoa-feed-' . date('mdY') . '.txt';
+    $filename = 'ncoa-bfeed-' . date('mdY') . '.txt';
     $tmp_folder = sys_get_temp_dir();
     $file = $tmp_folder . '/' . $filename;
     
@@ -270,7 +270,7 @@ class WhiteLabelController extends BaseController
       if (json_last_error() === JSON_ERROR_NONE) $posts = $json;
     }
     else {
-      $posts_limit = 5; // Limit of posts to cache
+      $posts_limit = 3; // Limit of posts to cache
       $ncoa_feed = 'https://www.ncoa.org/blog/feed/';
       $rss = @simplexml_load_file($ncoa_feed);
     
@@ -283,6 +283,7 @@ class WhiteLabelController extends BaseController
           $items[] = array(
             'title' => (string) $item->title,
             'link' => (string) $item->link,
+            'pubDate' => strtotime($item->pubDate),
           );
         }
         
