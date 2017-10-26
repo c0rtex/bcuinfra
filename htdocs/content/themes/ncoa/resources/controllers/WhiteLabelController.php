@@ -32,7 +32,7 @@ class WhiteLabelController extends BaseController
    *
    * @return Response
    */
-  public function index() { 
+  public function index() {
     $loggedin = false;
     $medicarerx = false;
     $nutrition = false;
@@ -41,6 +41,7 @@ class WhiteLabelController extends BaseController
     $grantees = json_encode(GranteesModel::all());
     $resources = false;
     $home6 = false;
+    
     return View::make('templates.white-label-landing', [
       'loggedin' => $loggedin,
       'medicarerx' => $medicarerx,
@@ -68,6 +69,8 @@ class WhiteLabelController extends BaseController
     $grantees = false;
     $resources = false;
     $home6 = false;
+    $posts = $this->_load_rss_feed();
+
     return View::make('templates.white-label-home', [
       'loggedin' => $loggedin,
       'medicarerx' => $medicarerx,
@@ -78,6 +81,7 @@ class WhiteLabelController extends BaseController
       'grantees' => $grantees,
       'resources' => $resources,
       'home6' => $home6,
+      'posts' => $posts,
     ])->render(); 
   }
 
@@ -90,6 +94,8 @@ class WhiteLabelController extends BaseController
     $grantees = false;
     $resources = false;
     $home6 = true;
+    $posts = $this->_load_rss_feed();
+    
     return View::make('templates.white-label-home', [
       'loggedin' => $loggedin,
       'medicarerx' => $medicarerx,
@@ -100,6 +106,7 @@ class WhiteLabelController extends BaseController
       'grantees' => $grantees,
       'resources' => $resources,
       'home6' => $home6,
+      'posts' => $posts,
     ])->render(); 
   }
 
@@ -245,5 +252,50 @@ class WhiteLabelController extends BaseController
       'webServiceUrl' => $constants['WEB_SERVICE_URL'],
       'drugsList' => $drugsList,
     ])->render(); 
+  }
+
+  /**
+   * Retrieve and cache latest posts from NCOA's blog feed.
+   */
+  private function _load_rss_feed() {
+    $posts = array();
+    $filename = 'ncoa-feed-' . date('mdY') . '.txt';
+    $tmp_folder = sys_get_temp_dir();
+    $file = $tmp_folder . '/' . $filename;
+    
+    if (file_exists($file)) {
+      $data = file_get_contents($file);
+      $json = json_decode($data);
+    
+      if (json_last_error() === JSON_ERROR_NONE) $posts = $json;
+    }
+    else {
+      $posts_limit = 5; // Limit of posts to cache
+      $ncoa_feed = 'https://www.ncoa.org/blog/feed/';
+      $rss = @simplexml_load_file($ncoa_feed);
+    
+      $handle = fopen($file, 'w'); // Create empty file
+      if (!empty($rss->channel->item)) {
+        $i = 0;
+        foreach ($rss->channel->item as $item) {
+          if ($i++ == $posts_limit) break;
+      
+          $items[] = array(
+            'title' => (string) $item->title,
+            'link' => (string) $item->link,
+          );
+        }
+        
+        if (!empty($items)) {
+          $data = json_encode($items);
+          fwrite($handle, $data); // Write data to file
+
+          $posts = json_decode($data);
+        }
+      }
+      fclose($handle);
+    }
+    
+    return $posts;
   }
 }

@@ -77,7 +77,7 @@
                       </div>
                       <h2 class="program-highlight__title">Key Benefits</h2>
                       <div class="program-highlight__excerpt">
-                        <p>Quickly find benefits that pay for medications, health care, food, and more.</p>
+                        <p>Quickly find core benefits that pay for medications, health care, food, and more.</p>
                       </div>
                     </div>
                     <div class="program-highlights__btn">
@@ -146,7 +146,7 @@
                     </div>
                     <h2 class="program-highlight__title">Food & Nutrition</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Quickly find benefits that pay for medications, health care, food, and more.</p>
+                      <p>Quickly find core benefits that pay for medications, health care, food, and more.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
@@ -164,7 +164,7 @@
                     </div>
                     <h2 class="program-highlight__title">Key Benefits</h2>
                     <div class="program-highlight__excerpt">
-                      <p>Quickly find benefits that pay for medications, health care, food, and more.</p>
+                      <p>Quickly find core benefits that pay for medications, health care, food, and more.</p>
                     </div>
                   </div>
                   <div class="program-highlights__btn">
@@ -204,52 +204,24 @@
                 </ul>
               </section><!--/.shortcuts-->
             </div>
+            @if (!empty($posts))
             <div class="grid-1-to-2__2">
               <div class="blog">
                 <h3>From the NCOA Blog</h3>
                 <ul>
+                  @foreach ($posts as $post)
                   <li>
                     <div class="blog-teaser">
-                      <a href=".">
-                        <div class="blog-teaser__img">
-                          <img width="240" height="120" src="https://www.ncoa.org/wp-content/uploads/elder-caucasian-male-with-grocery-receipt.jpg" alt="" />
-                        </div>
-                        <div class="blog-teaser__text">
-                          <h4>SNAP Monthly Allotment Reduced by FY18 COLAs</h4>
-                          <div>10.19.2017</div>
-                        </div>
+                      <a target="_blank" href="{{ $post->link }}">
+                      <h4>{{ $post->title }}</h4>
                       </a>
                     </div>
                   </li>
-                  <li>
-                    <div class="blog-teaser">
-                      <a href=".">
-                        <div class="blog-teaser__img">
-                        <img width="240" height="120" src="https://www.ncoa.org/wp-content/uploads/65th-birthday-cake.jpg" alt="" />
-                        </div>
-                        <div class="blog-teaser__text">
-                          <h4>From Medicaid to Medicare: How States Can Help Those Facing the Cliff</h4>
-                          <div>10.12.2017</div>
-                        </div>
-                      </a>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="blog-teaser">
-                      <a href=".">
-                        <div class="blog-teaser__img">
-                        <img width="240" height="120" src="https://www.ncoa.org/wp-content/uploads/elder-hispanic-male-at-library-on-computer.jpg" alt="" />
-                        </div>
-                        <div class="blog-teaser__text">
-                          <h4>Tools for Elder Hispanic Economic Security</h4>
-                          <div>10.5.2017</div>
-                        </div>
-                      </a>
-                    </div>
-                  </li>
+                  @endforeach
                 </ul>
               </div>
             </div>
+            @endif
           </div>
         </div>
       </div>
