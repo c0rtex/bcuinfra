@@ -215,7 +215,7 @@
                       <a target="_blank" href="{{ $post->link }}">
                       <h4>{{ $post->title }}</h4>
                       </a>
-                      <div>{{ date('d.m.Y', $post->pubDate) }}</div>
+                      <div>{{ date('m.d.Y', $post->pubDate) }}</div>
                     </div>
                   </li>
                   @endforeach
