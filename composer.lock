@@ -1,0 +1,496 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "2cb1950316651976b440ab3d39ac2a42",
+    "content-hash": "769df1c6bd08ac71c11bc4c2933e0590",
+    "packages": [
+        {
+            "name": "composer/installers",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "d792632d27e1980d921cbbba12eab7b888338d4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d792632d27e1980d921cbbba12eab7b888338d4c",
+                "reference": "d792632d27e1980d921cbbba12eab7b888338d4c",
+                "shasum": ""
+            },
+            "replace": {
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Composer\\Installers\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "TYPO3 CMS",
+                "TYPO3 Flow",
+                "TYPO3 Neos",
+                "agl",
+                "cakephp",
+                "codeigniter",
+                "concrete5",
+                "drupal",
+                "fuelphp",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "li3",
+                "lithium",
+                "mako",
+                "modulework",
+                "phpbb",
+                "ppi",
+                "silverstripe",
+                "symfony",
+                "wordpress",
+                "zend"
+            ],
+            "time": "2013-10-24 16:13:49"
+        },
+        {
+            "name": "deliciousbrains/wp-migrate-db-pro",
+            "version": "1.5.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=222428ee-f59b-45ec-9878-609d6711ec04&site_url=springbox.com",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "v1.0.7"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "deliciousbrains/wp-migrate-db-pro-cli",
+            "version": "1.2.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-cli-latest.zip?licence_key=222428ee-f59b-45ec-9878-609d6711ec04&site_url=springbox.com",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "v1.0.7"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "deliciousbrains/wp-migrate-db-pro-media-files",
+            "version": "1.4.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=222428ee-f59b-45ec-9878-609d6711ec04&site_url=springbox.com",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "v1.0.7"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "johnpbloch/wordpress",
+            "version": "4.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress.git",
+                "reference": "e992d00a34ea84d55c80023d27d5bcb839069add"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/e992d00a34ea84d55c80023d27d5bcb839069add",
+                "reference": "e992d00a34ea84d55c80023d27d5bcb839069add",
+                "shasum": ""
+            },
+            "require": {
+                "johnpbloch/wordpress-core-installer": "~0.2",
+                "php": ">=5.3.2"
+            },
+            "type": "wordpress-core",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "WordPress Community",
+                    "homepage": "http://wordpress.org/about/"
+                }
+            ],
+            "description": "WordPress is web software you can use to create a beautiful website or blog.",
+            "homepage": "http://wordpress.org/",
+            "keywords": [
+                "blog",
+                "cms"
+            ],
+            "time": "2016-05-06 18:16:20"
+        },
+        {
+            "name": "johnpbloch/wordpress-core-installer",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
+                "reference": "a04c2c383ef13aae077f36799ed2eafdebd618d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/a04c2c383ef13aae077f36799ed2eafdebd618d2",
+                "reference": "a04c2c383ef13aae077f36799ed2eafdebd618d2",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "conflict": {
+                "composer/installers": "<1.0.6"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "johnpbloch\\Composer\\WordPressCorePlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "johnpbloch\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "John P. Bloch",
+                    "email": "me@johnpbloch.com"
+                }
+            ],
+            "description": "A custom installer to handle deploying WordPress with composer",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2015-06-11 15:15:30"
+        },
+        {
+            "name": "symfony/http-foundation",
+            "version": "v2.4.2",
+            "target-dir": "Symfony/Component/HttpFoundation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-foundation.git",
+                "reference": "cdee7c84ba8b2a8aafa1c055f5cb4f640d81c129"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/cdee7c84ba8b2a8aafa1c055f5cb4f640d81c129",
+                "reference": "cdee7c84ba8b2a8aafa1c055f5cb4f640d81c129",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\HttpFoundation\\": ""
+                },
+                "classmap": [
+                    "Symfony/Component/HttpFoundation/Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony HttpFoundation Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-02-11 15:39:28"
+        },
+        {
+            "name": "themosis/framework",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/themosis/framework.git",
+                "reference": "0fadff60f5c2e7e803aa9ac042f98078079e7a7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/themosis/framework/zipball/0fadff60f5c2e7e803aa9ac042f98078079e7a7c",
+                "reference": "0fadff60f5c2e7e803aa9ac042f98078079e7a7c",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4",
+                "symfony/http-foundation": "2.4.2"
+            },
+            "require-dev": {
+                "10up/wp_mock": "dev-master",
+                "mockery/mockery": "~0.9",
+                "php": ">=5.4",
+                "phpunit/phpunit": "4.5.0",
+                "symfony/http-foundation": "2.4.2"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Themosis\\": "src/Themosis/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Lambé",
+                    "email": "julien@themosis.com",
+                    "homepage": "http://www.themosis.com/"
+                }
+            ],
+            "description": "The Themosis framework.",
+            "keywords": [
+                "framework",
+                "plugin",
+                "themosis",
+                "wordpress"
+            ],
+            "time": "2016-03-09 08:21:24"
+        },
+        {
+            "name": "themosis/theme",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/themosis/theme.git",
+                "reference": "7a0b4ca2bc113fdd0a345ced6fad4f9fd52eb78e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/themosis/theme/zipball/7a0b4ca2bc113fdd0a345ced6fad4f9fd52eb78e",
+                "reference": "7a0b4ca2bc113fdd0a345ced6fad4f9fd52eb78e",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "php": ">=5.4"
+            },
+            "type": "wordpress-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Lambé",
+                    "email": "julien@themosis.com",
+                    "homepage": "http://www.themosis.com/"
+                }
+            ],
+            "description": "The Themosis framework theme.",
+            "keywords": [
+                "framework",
+                "theme",
+                "themosis",
+                "wordpress"
+            ],
+            "time": "2016-03-11 12:46:03"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/9ca5644c536654e9509b9d257f53c58630eb2a6a",
+                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dotenv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause-Attribution"
+            ],
+            "authors": [
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "http://www.vancelucas.com"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2016-06-14 14:14:52"
+        },
+        {
+            "name": "wpackagist-plugin/members",
+            "version": "1.1.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/members/",
+                "reference": "tags/1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/members.1.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/members/"
+        },
+        {
+            "name": "wpackagist-plugin/oasis-workflow",
+            "version": "2.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/oasis-workflow/",
+                "reference": "tags/2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/oasis-workflow.2.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/oasis-workflow/"
+        },
+        {
+            "name": "wpackagist-plugin/svg-support",
+            "version": "2.2.3.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/svg-support/",
+                "reference": "tags/2.2.3.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/svg-support.2.2.3.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/svg-support/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "3.2.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/3.2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.2.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}
