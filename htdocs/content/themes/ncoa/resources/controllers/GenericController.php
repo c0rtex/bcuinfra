@@ -13,6 +13,7 @@ class GenericController extends BaseController
         'loggedin' => true,
         'medicarerx' => false,
         'nutrition' => false,
+        'questionnaire' => false,
         'home' => false,
         'partnerlogin' => false,
         'grantees' => false,
