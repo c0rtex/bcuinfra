@@ -11,7 +11,7 @@ class GenericController extends BaseController
   {
     return View::make('templates.generic',[
         'loggedin' => true,
-        'medicarerx' => false,
+        'medicarerx' => true,
         'nutrition' => false,
         'questionnaire' => false,
         'home' => false,
