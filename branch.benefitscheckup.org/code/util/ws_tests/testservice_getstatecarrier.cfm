@@ -4,7 +4,7 @@
 <cfparam name="url.partner_id" type="numeric" default="0">
 <cfinvoke method="getStateCarrier" 
 returnvariable="responseFromService" 
-webservice="https://redesign.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
+webservice="https://wwww.benefitscheckup.org/util/remotescreening_3_8.cfc?wsdl" >
 <cfinvokeargument name="screening_id" value="#url.screening_id#">
 <cfinvokeargument name="star_rating" value="#url.star_rating#">
 <cfinvokeargument name="state_zip" value="#url.state_zip#">
