@@ -10,9 +10,9 @@
             <p>Answer a few questions to quickly find benefits in your area</p>
           </div><!--/.hero__header-->
           <div class="hero__form">
-            <form ng-submit="findZip(zipcode)" ng-controller="zipCodeController" class="ng-pristine ng-scope ng-invalid ng-invalid-required ng-valid-pattern">
+            <form ng-submit="findZip(zipcode)" ng-controller="zipCodeController">
               <div class="zip-code form-inline">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" required="required">
+                <input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" required="required">
                 <button ng-click="findZip(zipcode)" class="btn btn-primary">Get Started</button>
                 <p class="error-state ng-hide" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
               </div>
