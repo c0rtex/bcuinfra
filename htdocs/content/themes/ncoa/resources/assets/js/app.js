@@ -3128,7 +3128,7 @@ $('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
         // is currently chatting with an agent
         if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
             // Hide chat window on homepage
-            if (window.location.pathname == '/') {
+            if (window.location.pathname == '/' || window.location.pathname == '/welcome/') {
                 LC_API.hide_chat_window();
             }
         }
