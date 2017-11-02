@@ -3110,7 +3110,7 @@ $(document).on('click', '.accordian-trigger', function(e) {
 
 $('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
 
-if (typeof window.isPLPage == 'undefined') {
+//if (typeof window.isPLPage == 'undefined') {
     // Start of LiveChat (www.livechatinc.com) code
     window.__lc = window.__lc || {};
     window.__lc.license = 8840876;
@@ -3128,7 +3128,7 @@ if (typeof window.isPLPage == 'undefined') {
         // is currently chatting with an agent
         if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
             // Hide chat window on homepage
-            if (window.location.pathname == '/') {
+            if (window.location.pathname == '/' || window.location.pathname == '/welcome/') {
                 LC_API.hide_chat_window();
             }
         }
@@ -3140,11 +3140,11 @@ if (typeof window.isPLPage == 'undefined') {
 
     // $(document).ready(function() {
     //   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
-    //
+    
     //   window.setInterval(function(){
     //     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
     //     console.log('fire');
     //   }, 2000);
     // });
     // End of LiveChat code
-}
+//}
