@@ -259,7 +259,7 @@ class WhiteLabelController extends BaseController
    */
   private function _load_rss_feed() {
     $posts = array();
-    $filename = 'ncoa-bfeed-' . date('mdY') . '.txt';
+    $filename = 'ncoafeed-' . date('mdY') . '.txt';
     $tmp_folder = sys_get_temp_dir();
     $file = $tmp_folder . '/' . $filename;
     
@@ -279,14 +279,21 @@ class WhiteLabelController extends BaseController
         $i = 0;
         foreach ($rss->channel->item as $item) {
           if ($i++ == $posts_limit) break;
+
+          // Extract featured image from description
+          $findings = array();
+          $description = (string) $item->description;
+          preg_match('/src="([^"]*)"/i', $description, $findings);
+          $image = !empty($findings[1]) ? $findings[1] : '';
       
           $items[] = array(
             'title' => (string) $item->title,
             'link' => (string) $item->link,
             'pubDate' => strtotime($item->pubDate),
+            'image' => $image,
           );
         }
-        
+
         if (!empty($items)) {
           $data = json_encode($items);
           fwrite($handle, $data); // Write data to file

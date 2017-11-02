@@ -212,10 +212,22 @@
                   @foreach ($posts as $post)
                   <li>
                     <div class="blog-teaser">
-                      <a target="_blank" href="{{ $post->link }}">
-                      <h4>{{ $post->title }}</h4>
-                      </a>
-                      <div>{{ date('m.d.Y', $post->pubDate) }}</div>
+                      @if (!empty($post->image))
+                        <a target="_blank" href="{{ $post->link }}">
+                          <div class="blog-teaser__img">
+                            <img width="240" height="120" src="{{ $post->image }}" alt="" />
+                          </div>
+                          <div class="blog-teaser__text">
+                            <h4>{{ $post->title }}</h4>
+                            <div>{{ date('m.d.Y', $post->pubDate) }}</div>
+                          </div>
+                        </a>
+                      @else
+                        <a target="_blank" href="{{ $post->link }}">
+                          <h4>{{ $post->title }}</h4>
+                        </a>
+                        <div>{{ date('m.d.Y', $post->pubDate) }}</div>
+                      @endif
                     </div>
                   </li>
                   @endforeach
