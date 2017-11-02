@@ -212,12 +212,12 @@ class FactSheetsController extends BaseController
 
         if ($is_pap) {
             // Insert <drugs-list /> into the post content
-            $hr_pos = strpos($post->post_content, '<hr');
+            $hr_pos = strpos($post_content, '<hr');
             if ($hr_pos !== false) {
-                $post_content = substr_replace($post->post_content, '<drugs-list></drugs-list>', $hr_pos, 0);
+                $post_content = substr_replace($post_content, '<drugs-list></drugs-list>', $hr_pos, 0);
             }
             else {
-                $post_content = $post->post_content . '<drugs-list></drugs-list>';
+                $post_content = $post_content . '<drugs-list></drugs-list>';
             }
         }
 
