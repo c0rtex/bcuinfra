@@ -72,7 +72,7 @@
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
                         <a href="/find-my-benefits/?subset_id=57" class="program-highlight__icon-wrap">
-                          <img src="../content/themes/ncoa/resources/assets/images/category_keyBenefits.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
+                          <img src="../content/themes/ncoa/resources/assets/images/category_keyBenefits.svg" class="attachment-full size-full" alt="Key Benefits" title="Key Benefits">
                         </a>
                       </div>
                       <h2 class="program-highlight__title">Key Benefits</h2>
@@ -159,7 +159,7 @@
                   <div class="program-highlight__text">
                     <div class="program-highlight__icon">
                       <a href="." class="program-highlight__icon-wrap">
-                        <img src="../content/themes/ncoa/resources/assets/images/category_keyBenefits.svg" class="attachment-full size-full" alt="Doctor Symbol" title="Doctor Symbol">
+                        <img src="../content/themes/ncoa/resources/assets/images/category_keyBenefits.svg" class="attachment-full size-full" alt="Key Benefits" title="Key Benefits">
                       </a>
                     </div>
                     <h2 class="program-highlight__title">Key Benefits</h2>
