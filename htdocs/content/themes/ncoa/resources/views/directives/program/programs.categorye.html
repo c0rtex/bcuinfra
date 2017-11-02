@@ -28,10 +28,10 @@
                   </div> -->
 
                   <div class="checkbox ng-scope">
-                    <input type="checkbox" ng-click="generatePrintUrl(true)" ng-model="slugs[program.code]" name="echo_checkbox" id="echo_checkbox_{{ program.id }}" class="ng-pristine ng-untouched ng-valid ng-empty">
+                    <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" name="echo_checkbox" id="echo_checkbox_{{ program.id }}">
                     <label for="echo_checkbox_{{ program.id }}">
                         <span></span>
-                        <ng-label text="Print in Report" class="ng-isolate-scope">Print in Report</ng-label>
+                        <ng-label text="Print in Report">Print in Report</ng-label>
                     </label>
                   </div>
                 </div>
