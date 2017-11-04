@@ -115,15 +115,18 @@
 
         <h3>Available Programs</h3>
 
-        <ul ng-if="drugPrograms.length > 0">
-          <li ng-repeat="program in drugPrograms">
-            <a ng-href="/fact-sheets/factsheet_@{{program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{program.prg_nm}}"></ng-label></a>
-            <p ng-if="program.brand_name"><strong>Brand Name:</strong> @{{program.brand_name}}</p>
-            <p><div-program-desc program_code="program.code"/></p>
+        <ul ng-if="drugPrograms">
+          <li ng-repeat="(key, value) in drugPrograms">
+            <a ng-href="/fact-sheets/factsheet_@{{value.program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{value.program.prg_nm}}"></ng-label></a>
+            <p>@{{value.program.prg_desc}}</p>
+            <h4>Associated Medication</h4>
+            <ul class="associated-meds">
+              <li ng-repeat="drug in value.drugs">@{{drug.display}} <em>(@{{drug.type}})</em></p>
+            </ul>
           </li>
         </ul>
 
-        <div ng-if="drugPrograms.length == 0">
+        <div ng-if="!drugPrograms">
           <p>No programs were found.</p>
         </div>
       </div>

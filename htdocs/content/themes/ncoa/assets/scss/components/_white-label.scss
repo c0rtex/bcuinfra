@@ -1118,3 +1118,12 @@ select.form-control {
 .accordian-wrap {
   margin: 20px 0;
 }
+
+#drugs-results {
+  ul.associated-meds {
+    list-style: disc inside none;
+    li {
+      display: list-item;
+    }
+  }
+}

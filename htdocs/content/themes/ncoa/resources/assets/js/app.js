@@ -2075,31 +2075,48 @@ app.controller('resourcesFormsController', ['$scope', '$window', '$http', functi
             .then(function(response){
                 $scope.results = response.data;
                 angular.element('#program-category-results').show('slow');
+                angular.element('html, body').animate({
+                    scrollTop: angular.element('#program-category-results').offset().top
+                }, 2000);
             });
     }
 
     $scope.searchDrugs = function() {
+        $scope.drugPrograms = null;
+
         var drugs = Object.keys($scope.$root.selectedDrugs);
         if (drugs.length > 0) {
             $http.get($window.webServiceUrl+'/rest/backend/questionnaire/drugList/'+drugs.join())
             .then(function(response){
-                $scope.drugPrograms = [];
                 var api_response = response.data[0].options;
                 if (api_response.length > 0) {
+                    $scope.drugPrograms = {};
                     for (var i = 0; i < api_response.length; i++) {
                         for (var j = 0; j < api_response[i]['programs'].length; j++) {
-                            $scope.drugPrograms.push(api_response[i]['programs'][j]);
+                            var currentDrug = {
+                                code: api_response[i]['code'],
+                                display: api_response[i]['display'],
+                                type: api_response[i]['type']
+                            };
+                            if (typeof $scope.drugPrograms[api_response[i]['programs'][j]['code']] == 'undefined') {
+                                $scope.drugPrograms[api_response[i]['programs'][j]['code']] = {
+                                    program: api_response[i]['programs'][j],
+                                    drugs: [currentDrug]
+                                };
+                            }
+                            else {
+                                $scope.drugPrograms[api_response[i]['programs'][j]['code']]['drugs'].push(currentDrug);
+                            }
                         }
                     }
                 }
             });
         }
-        else {
-            $scope.drugPrograms = [];
-        }
 
         angular.element('#drugs-results').show('slow');
-        console.log($scope.drugPrograms);
+        angular.element('html, body').animate({
+            scrollTop: angular.element('#drugs-results').offset().top
+        }, 2000);
     }
 
 }]);
