@@ -1,5 +1,5 @@
 <?php
-$bcu_url = $_SERVER['SERVER_NAME'] == 'www.benefitscheckup.org' ? 'https://www.benefitscheckup.org/' : 'https://qa.benefitscheckup.org/';
+$bcu_url = $_SERVER['SERVER_NAME'] == 'becs.benefitscheckup.org' ? 'https://qa.benefitscheckup.org/' : 'https://www.benefitscheckup.org/';
 ?>
 @extends('layouts.white-label-main-splash')
 
