@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="btns-container clearfix" page-switch>
-        <button class="btn btn-primary pull-right" ng-hide="isResults" ng-click="switchPage(next)">Continue</button>
+        <button class="btn btn-primary pull-right" ng-show="!isResults && !hideNext" ng-click="switchPage(next)">Continue</button>
     </div>
 </div>
 <div class="card questionnaire" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">
