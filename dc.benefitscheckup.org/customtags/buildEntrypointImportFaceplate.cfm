@@ -290,7 +290,7 @@ function checkFields(pcounter) {
 										counter = counter + 1;    
 									</cfscript>
                                     <!--- To be used for last_update, create_date for new entrypoints, and modify_date --->
-                                    <cfset str_date="#DateFormat(Now())# #Timeformat(NOW(),"hh:mm:ss")#">
+                                    <cfset str_date="#DateFormat(Now(),"yyyy-mm-dd")# #Timeformat(NOW(),"hh:mm:ss")#">
                                 </cfloop>
 								<cfset numLine = numLine + 1>
 								<!--- GENERAL ERROR CHECK 
@@ -373,7 +373,7 @@ function checkFields(pcounter) {
                                                 ,display_name
                                                 ,active_flag)
                                             VALUES
-                                                (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#)
+                                                (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#);
                                           	SELECT LAST_INSERT_ID() as newHDid
 
                                         </cfquery>
@@ -695,10 +695,12 @@ function checkFields(pcounter) {
                                 	    	<cfset arrayIndex = arrayIndex + 1>
                                 	    	<cfset notInserted[#arrayIndex#] =  "#lineNum#">
                                 		</cfif>            
-                                        
+
+
+
                                         <!--- Update entrypoint --->
                                         <cfif updateEP eq "yes">
-                                            <cfquery name="updateEP" datasource="#application.dbSrc#">
+                                            <cfquery name="updateEPQ" datasource="#application.dbSrc#" result="updateEPct">
                                             	UPDATE entrypoint
                                                	SET `name` = '#str_name#'
                                                   ,subname = '#str_subname#'
@@ -724,10 +726,9 @@ function checkFields(pcounter) {
                                                   ,notes = '#str_notes#'
                                                   ,modify_user_id = '#session.user_id#'
                                                   ,modify_date = '#str_date#'
-                                             	WHERE entrypoint_id = #str_entrypoint_id#;
-                                               	Select ROW_COUNT() as updateEPct
+                                             	WHERE entrypoint_id = #str_entrypoint_id#
                                             </cfquery>
-                                            <cfif updateEP.updateEPct neq 1>
+                                            <cfif updateEPct.recordcount neq 1>
 												<cfset update = "no">
                                             </cfif>
                                             
@@ -765,28 +766,26 @@ function checkFields(pcounter) {
                                             
                                             <cfif update neq "no">
                                             	<!--- Update info_display text--->
-                                            	<cfquery name="updateInfoText" datasource="#application.dbSrc#">
+                                            	<cfquery name="updateInfoText" datasource="#application.dbSrc#" result="updateInfoTextct">
                                                     UPDATE display_language
                                                    	SET display_text = '#str_info#'
                                                       	, update_flag = 1
-                                                 	WHERE display_id = #str_info_display_id# and language_id = 'EN';
-                                                    Select ROW_COUNT() as updateInfoTextct
+                                                 	WHERE display_id = #str_info_display_id# and language_id = 'EN'
                                                 </cfquery>
-                                                <cfif updateInfoText.updateInfoTextct neq 1>
+                                                <cfif updateInfoTextct.recordcount neq 1>
                                                 	<cfset update = "no">
                                                 </cfif>
                                             </cfif>
                                             
                                             <cfif update neq "no">
                                             	<!--- Update hours_display text--->
-                                            	<cfquery name="updateHoursText" datasource="#application.dbSrc#">
+                                            	<cfquery name="updateHoursText" datasource="#application.dbSrc#" result="updateHoursTextct">
                                                     UPDATE display_language
                                                    	SET display_text = '#str_hours#'
                                                       	,update_flag = 1
-                                                 	WHERE display_id = #str_hours_display_id# and language_id = 'EN';
-                                                    Select ROW_COUNT() as updateHoursTextct
+                                                 	WHERE display_id = #str_hours_display_id# and language_id = 'EN'
                                                 </cfquery>
-                                                <cfif updateHoursText.updateHoursTextct neq 1>
+                                                <cfif updateHoursTextct.recordcount neq 1>
                                                 	<cfset update = "no">
                                                 </cfif>
                                             </cfif>
@@ -804,14 +803,13 @@ function checkFields(pcounter) {
                                                     		where entrypoint_id = #str_entrypoint_id# and phonetype_id = 1
                                                 		</cfquery>  
                                                 	<cfelse>
-                                                    	<cfquery name="updatePhone_Type1" datasource="#application.dbSrc#">	
+                                                    	<cfquery name="updatePhone_Type1" datasource="#application.dbSrc#" result="updatePhone1ct">
                                                             UPDATE `phone`
                                                           	SET `number` = '#str_voice#'
                                                             	, `sort` = 2
-                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 1;
-                                                            Select ROW_COUNT() as updatePhone1ct
+                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 1
                                                        	</cfquery>
-                                                        <cfif updatePhone_Type1.updatePhone1ct neq 1>
+                                                        <cfif updatePhone1ct.recordcount neq 1>
                                                 			<cfset update = "no">
                                                 		</cfif>                                                 
                                                     </cfif>
@@ -846,14 +844,13 @@ function checkFields(pcounter) {
                                                     		where entrypoint_id = #str_entrypoint_id# and phonetype_id = 2
                                                 		</cfquery>  
                                                 	<cfelse>
-                                                    	<cfquery name="updatePhone_Type2" datasource="#application.dbSrc#">	
+                                                    	<cfquery name="updatePhone_Type2" datasource="#application.dbSrc#" result="updatePhone2ct">
                                                             UPDATE `phone`
                                                           	SET `number` = '#str_fax#'
                                                             	, `sort` = 6
-                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 2;
-                                                            Select ROW_COUNT() as updatePhone2ct
+                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 2
                                                        	</cfquery>
-                                                        <cfif updatePhone_Type2.updatePhone2ct neq 1>
+                                                        <cfif updatePhone2ct.recordcount neq 1>
                                                 			<cfset update = "no">
                                                 		</cfif>                                                 
                                                     </cfif>
@@ -888,15 +885,14 @@ function checkFields(pcounter) {
                                                     		where entrypoint_id = #str_entrypoint_id# and phonetype_id = 3
                                                 		</cfquery>  
                                                 	<cfelse>
-                                                    	<cfquery name="updatePhone_Type3" datasource="#application.dbSrc#">	
+                                                    	<cfquery name="updatePhone_Type3" datasource="#application.dbSrc#" result="updatePhone3ct">
 
                                                             UPDATE `phone`
                                                           	SET `number` = '#str_tty#'
                                                             	, `sort` = 3
-                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 3;
-                                                            Select ROW_COUNT() as updatePhone3ct
+                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 3
                                                        	</cfquery>
-                                                        <cfif updatePhone_Type3.updatePhone3ct neq 1>
+                                                        <cfif updatePhone3ct.recordcount neq 1>
                                                 			<cfset update = "no">
                                                 		</cfif>                                                 
                                                     </cfif>
@@ -933,16 +929,14 @@ function checkFields(pcounter) {
                                                     		where entrypoint_id = #str_entrypoint_id# and phonetype_id = 4
                                                 		</cfquery>  
                                                 	<cfelse>
-                                                    	<cfquery name="updatePhone_Type4" datasource="#application.dbSrc#">	
+                                                    	<cfquery name="updatePhone_Type4" datasource="#application.dbSrc#" result="updatePhone4ct">
 
                                                             UPDATE `phone`
                                                           	SET `number` = '#str_toll_free#'
                                                             	, `sort` = 1
-                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 4;
-                                                            Select ROW_COUNT() as updatePhone4ct
-
+                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 4
                                                        	</cfquery>
-                                                        <cfif updatePhone_Type4.updatePhone4ct neq 1>
+                                                        <cfif updatePhone4ct.recordcount neq 1>
                                                 			<cfset update = "no">
                                                 		</cfif>                                                 
                                                     </cfif>
@@ -978,16 +972,14 @@ function checkFields(pcounter) {
                                                     		where entrypoint_id = #str_entrypoint_id# and phonetype_id = 5
                                                 		</cfquery>  
                                                 	<cfelse>
-                                                    	<cfquery name="updatePhone_Type5" datasource="#application.dbSrc#">	
+                                                    	<cfquery name="updatePhone_Type5" datasource="#application.dbSrc#" result="updatePhone5ct">
 
                                                             UPDATE `phone`
                                                           	SET `number` = '#str_translation#'
                                                             	, `sort` = 5
-                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 5;
-                                                            Select ROW_COUNT() as updatePhone5ct
-
+                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 5
                                                        	</cfquery>
-                                                        <cfif updatePhone_Type5.updatePhone5ct neq 1>
+                                                        <cfif updatePhone5ct.recordcount neq 1>
                                                 			<cfset update = "no">
                                                 		</cfif>                                                 
                                                     </cfif>
@@ -1024,16 +1016,14 @@ function checkFields(pcounter) {
                                                     		where entrypoint_id = #str_entrypoint_id# and phonetype_id = 6
                                                 		</cfquery>  
                                                 	<cfelse>
-                                                    	<cfquery name="updatePhone_Type6" datasource="#application.dbSrc#">	
+                                                    	<cfquery name="updatePhone_Type6" datasource="#application.dbSrc#" result="updatePhone6ct">
 
                                                             UPDATE `phone`
                                                           	SET `number` = '#str_spanish#'
                                                             	, `sort` = 4
-                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 6;
-                                                            Select ROW_COUNT() as updatePhone6ct
-
+                                                          	WHERE entrypoint_id = #str_entrypoint_id# and phonetype_id = 6
                                                        	</cfquery>
-                                                        <cfif updatePhone_Type6.updatePhone6ct neq 1>
+                                                        <cfif updatePhone6ct.recordcount neq 1>
                                                 			<cfset update = "no">
                                                 		</cfif>                                                 
                                                     </cfif>
