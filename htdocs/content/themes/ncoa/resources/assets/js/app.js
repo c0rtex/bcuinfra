@@ -1485,7 +1485,7 @@ app.directive('stateSelection',function(){
     }
 });
 
-app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService', 'backLocationFinder',  function(locationFinder, category, $filter, localStorageService,backLocationFinder){
+app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageService', 'backLocationFinder', '$state', function(locationFinder, category, $filter, localStorageService,backLocationFinder, $state){
 
     return {
         link: function(scope, elm){
@@ -1521,17 +1521,21 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                             scope.zipValid = '1';
                             scope.$parent.zipCodeCheckResult = "Success!"
                             scope.$parent.zipCodeDescription = data.county+', '+data.state_id+' '+data.zip;
+                            
+                            showPageSwitcher();
                         }else{
                             scope.$root.isZipValid = false;
                             scope.zipValid = '';
                             scope.$parent.zipCodeCheckResult = "Error!"
                             scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                            hidePageSwitcher();
                         }
                     }).error(function (data, status, headers, config) {
                         scope.$root.isZipValid = false;
                         scope.zipValid = '';
                         scope.$parent.zipCodeCheckResult = "Error!"
                         scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                        hidePageSwitcher();
                     });
                 });
             };
@@ -1544,9 +1548,11 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                 scope.updateZip();
             } else {
                 scope.zipCodeLabel = "Let's Get Started";
+                // Different zip code label for "basicsWOPrescreen" page
+                if ($state.params.category == 'basics') {
+                    scope.zipCodeLabel = "Continue";
+                }
             }
-
-
 
             scope.resetZip = function(){
                 scope.$root.isZipEdit = true;
@@ -1560,6 +1566,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                     scope.$parent.zipCodeCheckResult = "Error!"
                     scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
                     scope.$parent.zipCodeUpdated=true;
+                    hidePageSwitcher();
                     return;
                 }
                 if(data.status == "OK"){
@@ -1597,11 +1604,13 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                         scope.zipValid = '1';
                         scope.$parent.zipCodeCheckResult = "Success!"
                         scope.$parent.zipCodeDescription = scope.$root.answers[category.currentCategory()].zipcode_formatted;
+                        showPageSwitcher();
                     }else{
                         scope.$root.isZipValid = false;
                         scope.zipValid = '';
                         scope.$parent.zipCodeCheckResult = "Error!"
                         scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                        hidePageSwitcher();
                     }
                 }else{
                     backLocationFinder.post(scope.$root.answers[scope.category].zip,data).success(function (data, status, headers, config) {
@@ -1620,20 +1629,37 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                             scope.zipValid = '1';
                             scope.$parent.zipCodeCheckResult = "Success!"
                             scope.$parent.zipCodeDescription = data.county+', '+data.state_id+' '+data.zip;
+                            showPageSwitcher();
                         }else{
                             scope.$root.isZipValid = false;
                             scope.zipValid = '';
                             scope.$parent.zipCodeCheckResult = "Error!"
                             scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                            hidePageSwitcher();
                         }
                     }).error(function (data, status, headers, config) {
                         scope.$root.isZipValid = false;
                         scope.zipValid = '';
                         scope.$parent.zipCodeCheckResult = "Error!"
                         scope.$parent.zipCodeDescription = "Please enter a valid zip code in the United States.";
+                        hidePageSwitcher();
                     });
                 }
                 scope.$parent.zipCodeUpdated=true;
+            }
+
+            // Show 'Continue' button (page switcher)
+            function showPageSwitcher() {
+                if ($state.params.category == 'basics') {
+                    scope.$root.hideNext = false;
+                }
+            }
+
+            // Hide 'Continue' button (page switcher)
+            function hidePageSwitcher() {
+                if ($state.params.category == 'basics') {
+                    scope.$root.hideNext = true;
+                }
             }
 
             if (scope.$root.answers != undefined) {
@@ -2578,6 +2604,9 @@ app.controller('basicsScreeningController',['$scope','$state','screening',functi
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = screening.data.answers;
     }
+
+    // Hide 'Continue' button (page switcher)
+    $scope.$root.hideNext = true;
 }]);
 
 app.controller('screeningController', ['$rootScope', '$scope', '$state', '$stateParams', 'prescreen', 'screening', 'prescreenQuestions', function($rootScope, $scope, $state, $stateParams, prescreen, screening, prescreenQuestions){

@@ -1,3 +1,6 @@
+<?php
+$bcu_url = $_SERVER['SERVER_NAME'] == 'becs.benefitscheckup.org' ? 'https://qa.benefitscheckup.org/' : 'https://www.benefitscheckup.org/';
+?>
 @extends('layouts.white-label-main-splash')
 
 @section('main')
@@ -39,7 +42,7 @@
 
         <footer class="white-label-landing__footer">
           <p>Not using a Benefits Enrollment Center?</p>
-          <p><a href="<?php print get_home_url(); ?>">Visit BenefitsCheckUp.org</a></p>
+          <p><a href="{{ $bcu_url }}">Visit BenefitsCheckUp.org</a></p>
         </footer>
 
       </section>
