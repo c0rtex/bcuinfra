@@ -61,7 +61,11 @@
             <cfset screening.setStart_datetime(Now())>
             <cfset screening.setSource(this.getDefaultSource())>
             <cfset screening.setOrg_id(0)>
-            <cfset screening.setPartner_id(0)>
+            <cfif structKeyExists(prescreen,'partnerId')>
+                <cfset screening.setPartner_id(prescreen.partnerId)>
+            <cfelse>
+                <cfset screening.setPartner_id(-1)>
+            </cfif>
 
             <cfset state = entityload("state",prescreen.state_id)>
             <cfif arraylen(state) neq 0>
@@ -112,43 +116,70 @@
             </cftransaction>
         <cfelse>
             <cftransaction>
-                <cfset prescreen = entityLoadByPK("screening", answers.prescreen.id)>
+                <cfif structKeyExists(answers,'prescreen')>
+                    <cfset prescreen = entityLoadByPK("screening", answers.prescreen.id)>
+                </cfif>
 
                 <cfset screening = entityNew("screening")>
 
                 <cfset screening.setCfid(session.cfid)>
                 <cfset screening.setCftoken(session.cftoken)>
-                <cfset screening.setLanguage(prescreen.getLanguage())>
+
+                <cfif not isNull(prescreen)>
+                    <cfset screening.setLanguage(prescreen.getLanguage())>
+                <cfelse>
+                    <cfset screening.setLanguage(createObject("component","bcu.orm.language").getCurrentLanguage())>
+                </cfif>
+
                 <cfset screening.setStart_datetime(Now())>
 
-                <cfset screening.setPrev_screening(prescreen)>
+                <cfif not isNull(prescreen)>
+                    <cfset screening.setPrev_screening(prescreen)>
+                </cfif>
 
-                <cfset screening.setPreset_state(prescreen.getPreset_state())>
+
+                <cfif not isNull(prescreen)>
+                    <cfset screening.setPreset_state(prescreen.getPreset_state())>
+                <cfelse>
+                    <cfset state = entityload("state",answers.answers.stateId)>
+                    <cfif arraylen(state) neq 0>
+                        <cfset screening.setPreset_state(state[1])>
+                    </cfif>
+                </cfif>
+
                 <cfset screening.setSource(this.getDefaultSource())>
-                <cfset screening.setOrg_id(0)>
-                <cfset screening.setPartner_id(0)>
 
-                <cfset subset = entityload("subset",101)>
+                <cfset screening.setOrg_id(0)>
+
+                <cfif structKeyExists(answers,"partnerId")>
+                    <cfset screening.setPartner_id(answers.partnerId)>
+                <cfelse>
+                    <cfset screening.setPartner_id(-1)>
+                </cfif>
+
+                <cfset subset = entityload("subset",answers.subsetId)>
                 <cfif arraylen(subset) neq 0>
                     <cfset screening.setSubset(subset[1])>
                 </cfif>
 
                 <cfset entitySave(screening)>
 
-                <cfset saArray = ormExecuteQuery("from screening_answerfield where screening=?",[prescreen])>
+                <cfif not isNull(prescreen)>
+                    <cfset saArray = ormExecuteQuery("from screening_answerfield where screening=?",[prescreen])>
 
-                <cfloop array="#saArray#" index="sa">
-                    <cfset saNew = entityNew("screening_answerfield")>
+                    <cfloop array="#saArray#" index="sa">
+                        <cfset saNew = entityNew("screening_answerfield")>
 
-                    <cfset saNew.setScreening(screening)>
-                    <cfset saNew.setAnswer(sa.getAnswer())>
-                    <cfset saNew.setResponse_type(sa.getResponse_type())>
-                    <cfset saNew.setPage_num(sa.getPage_num())>
-                    <cfset saNew.setSubmit_datetime(Now())>
-                    <cfset saNew.setOption(sa.getOption())>
-                    <cfset saNew.setResponse(sa.getResponse())>
-                    <cfset entitySave(saNew)>
-                </cfloop>
+                        <cfset saNew.setScreening(screening)>
+                        <cfset saNew.setAnswer(sa.getAnswer())>
+                        <cfset saNew.setResponse_type(sa.getResponse_type())>
+                        <cfset saNew.setPage_num(sa.getPage_num())>
+                        <cfset saNew.setSubmit_datetime(Now())>
+                        <cfset saNew.setOption(sa.getOption())>
+                        <cfset saNew.setResponse(sa.getResponse())>
+                        <cfset entitySave(saNew)>
+                    </cfloop>
+                </cfif>
             </cftransaction>
         </cfif>
 
@@ -231,7 +262,11 @@
 
         <cfset getPoverty = ormExecuteQuery("select mem#memCount# from tbl_inc where proc_id = 484")>
 
-        <cfset povertyIndex = saArray["hh_income_total_complete"]/getPoverty[1]>
+        <cfif structKeyExists(saArray,"hh_income_total_complete")>
+            <cfset povertyIndex = saArray["hh_income_total_complete"]/getPoverty[1]>
+        <cfelse>
+            <cfset povertyIndex = 0>
+        </cfif>
 
         <cfset var answerField = entityload("answer_field",{code="poverty_index"})>
 

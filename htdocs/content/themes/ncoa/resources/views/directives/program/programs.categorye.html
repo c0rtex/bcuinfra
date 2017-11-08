@@ -15,7 +15,7 @@
             <li>
                 <h4><a ng-bind-html="program.name_display | unsafe" ui-sref="fact-sheets({programCode:program.code,stateId:stateId,zipcode:zipcode,short:short,elegible:elegible})"></a></h4>
 
-                <div-program-desc program_code="program.code"></div-program-desc>
+                <div-program-desc program_code="program.code"/>
             </li>
             <li>
                 <div class="programs-checkbox-wrapper">
@@ -31,7 +31,7 @@
                     <input type="checkbox" ng-model="$root.selectedPrograms[program.code]" name="echo_checkbox" id="echo_checkbox_{{ program.id }}">
                     <label for="echo_checkbox_{{ program.id }}">
                         <span></span>
-                        <ng-label text="Print in Report" class="ng-isolate-scope">Print in Report</ng-label>
+                        <ng-label text="Print in Report">Print in Report</ng-label>
                     </label>
                   </div>
                 </div>

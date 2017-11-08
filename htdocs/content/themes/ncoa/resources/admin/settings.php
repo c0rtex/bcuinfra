@@ -16,7 +16,9 @@ $settings["whitelable-setting"] = [
 	Field::text('main-logo-height'),
 	Field::radio('whitelabel', ['yes','no']),
 	Field::radio('showHeaderCTA', ['yes','no']),
-	Field::media('whitelabel-logo')
+	Field::media('whitelabel-logo'),
+  Field::text('white-label-logo-width'),
+  Field::text('white-label-logo-height'),
 ];
 
 $page->addSections($sections);

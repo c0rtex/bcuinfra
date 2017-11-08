@@ -1,0 +1,22 @@
+.results-options {
+  background: #F9F9F9;
+  border: 2px solid #CCCCCC;
+  padding: 15px;
+  margin-bottom: 40px;
+  }
+  .results-options .result-options-list {
+    color: #1888de; }
+    .results-options .result-options-list li {
+      padding-bottom: 15px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+      .results-options .result-options-list li:last-child {
+        padding: 0; }
+      .results-options .result-options-list li:hover {
+        cursor: pointer; }
+    .results-options .result-options-list .fa {
+      padding-right: 10px; }
+  .results-options.ng-hide-add {
+    animation: none; }
+  .results-options.ng-hide-remove {
+    animation: none; }

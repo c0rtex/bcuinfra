@@ -1,51 +1,60 @@
 @extends('layouts.main')
 
 @section('main')
-
-<script type="text/javascript">
-	window.webServiceUrl = '{{$webServiceUrl}}';
-</script>
-
 	@loop
 			<!-- Hero -->
 			<section class="hero find-my-benefits cta-hero">
 				<div class="container">
 					<div class="row">
 
-						<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-8 col-md-offset-2 ">
+						<div class="find-my-benefits-content col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
 							<h1>{{ $headline }}</h1>
 							<form ng-submit="findZip(zipcode)" ng-controller="zipCodeController">
 							<div class="zip-code form-inline">
-								<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-								<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
+								<input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+								<button ng-click="findZip(zipcode)" class="btn btn-primary">Get Started</button>
 								<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 							</div>
 							</form>
 						</div>
 
+            <div class="testimonial-carousel col-xs-12 col-sm-12 col-md-6 col-lg-6 hide" testimonial-carousel>
+              @foreach($testimonials as $key => $value)
+                <figure class="testimonial col-xs-12">
+                  {{
+                    wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
+                    array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
+                  }}
+
+                    <figcaption>
+                      @if($key == 1)
+                        <h4>Caroline, Chicago, IL</h4>
+                      @elseif($key == 2)
+                        <h4>Greg, Charleston, SC</h4>
+                      @else
+                        <h4>Sharell & Tom, Phoenix, AZ</h4>
+                      @endif
+                      <p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
+                      <span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
+                    </figcaption>
+                </figure>
+              @endforeach
+            </div>
+
+
 					</div>
 				</div>
 			</section>
 
-			<!-- Testimonial -->
-			<section class="testimonials">
-				<div class="container container-large">
-					<div class="row">
-						@foreach($testimonials as $key => $value)
-							<figure class="testimonial col-xs-12 col-sm-4">
-								{{
-									wp_get_attachment_image($testimonials[$key]["testimonial-image"], 'full', false,
-									array('title' => get_the_title($testimonials[$key]["testimonial-image"])))
-								}}
-								<figcaption>
-									<p>{{ $testimonials[$key]["testimonial-quote"] }}</p>
-									<span class="name-age">{{ $testimonials[$key]["testimonial-info"] }}</span>
-								</figcaption>
-							</figure>
-						@endforeach
-					</div>
-				</div>
-			</section>
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="home-benefit-counter col-xs-12">
+            <p>Join the <strong>5,710,578</strong> people who have discovered <span><strong>$19.1</strong> billion in benefits</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 			<!-- Benefits Slider -->
 			<section class="container">
@@ -81,16 +90,16 @@
 					</div>
 				</div>
 			</section>
- 
+
 			<!-- Find My Benefits -->
-			<section class="cta-full blue-gradient-background">
+			<section class="cta-full blue-background">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
-							<h5>Find My Benefits</h5>
+							<h5>Find out what benefits may be available in your area.</h5>
 							<div class="zip-code form-inline" ng-controller="zipCodeController">
-								<input type="text" class="form-control" placeholder="Enter Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
-								<button ng-click="findZip(zipcode)" class="btn btn-primary">Find My Benefits</button>
+								<input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" ng-pattern="regPattern" />
+								<button ng-click="findZip(zipcode)" class="btn btn-primary">Get Started</button>
 								<p class="error-state" ng-cloak ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
 							</div>
 						</div>
@@ -143,7 +152,7 @@
 							<div class="stay-connected col-xs-12 col-sm-6 col-md-6">
 								<h3>Stay Connected</h3>
 								<p>Receive emails about how to stay healthy, secure, and independent</p>
-								<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Sign Up for News</a>
+								<a href="http://go.ncoa.org/BCUsignup" class="btn btn-tertiary">Sign Up for Enews</a>
 							</div>
 							<div class="spread-the-word col-xs-12 col-sm-6 col-md-6">
 								<h3>Spread the Word</h3>

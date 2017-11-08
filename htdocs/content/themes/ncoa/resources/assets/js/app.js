@@ -15,13 +15,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
-        .state('prescreen', {
+        .state('initial', {
             url: "/",
-            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/prescreen/prescreen.questions.html?'+(new Date()),
-            controller: 'preScreenController'
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.initial.html?'+(new Date()),
+            controller: 'initialController'
         })
-        .state('prescreen.questions', {
-            url: "prescreen/questions",
+        .state('prescreen', {
+            url: "/prescreen",
             templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/prescreen/prescreen.questions.html?'+(new Date()),
             controller: 'preScreenController'
         })
@@ -160,6 +160,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('screening-start', {
             url: '/screening-start',
             controller: 'screeningController'
+        })
+        .state('basicsScreening',{
+            url: "/screening/basicsWOPrescreen/:state",
+            templateUrl: '/content/themes/ncoa/resources/views/pages/benefits-checkup/screening/screening.basics.html?'+(new Date()),
+            controller: 'basicsScreeningController'
         })
         .state('screening', {
             url: "/screening/:category/:state",
@@ -752,9 +757,6 @@ app.directive('grid', ['$state', 'AnswersByCategories',function ($state, Answers
                         }
                     }
 
-                    var subTotal = scope.$root.answers[scope.category][scope.self_code+scope.code] + scope.$root.answers[scope.category][scope.spouse_code+scope.code] + scope.$root.answers[scope.category][scope.household_code+scope.code+'_simple'] + 0;
-                    scope.$parent.answer_checked = scope.$parent.answer_checked || subTotal>0;
-
                 }
                 scope.$root.answers[scope.category][code+"total_earned"+suffix] = scope.$root.answers[scope.category][code+"total_complete"+suffix] - scope.$root.answers[scope.category][code+"total_unearned"+suffix];
 
@@ -822,6 +824,81 @@ app.directive('ncoaLoader', function(){
         }
     }
 });
+
+app.directive('medicationSelectorResources',['Drugs', '$state', '$http', '$window', function(Drugs, $state, $http, $window){
+    return {
+        restrict: 'E',
+        templateUrl: '/content/themes/ncoa/resources/views/directives/med-selector/medication-selector-resources.html?'+(new Date()),
+        link: function(scope, elm){
+                Drugs.setDrugs($window.drugsList[0].options);
+
+                var drugs = Drugs.getDrugs();
+                
+                for(var i=0; i<drugs.length; i++) {
+                    var option = $("<option/>",{value:drugs[i].code, text:drugs[i].display});
+                    option.appendTo($("#drugs-list-resources"));
+                }
+
+                scope.$root.selectedDrugs = {};
+                
+                $("#drugs-list-resources").multiSelect({
+                    selectableHeader: "<p class='bold'>Available Medications</p><input type='text' class='form-control' autocomplete='off' placeholder='Search...'>",
+                    selectionHeader: "<p class='bold'>My Medication List</p>",
+                    selectableFooter: "<button class='btn btn-secondary add' disabled>Add to My List</button>",
+                    selectionFooter: "<button class='btn btn-secondary remove' disabled>Remove from My List</button>",
+                    afterInit: function(ms){
+                        var that = this,
+                            $selectableSearch = that.$selectableUl.prev(),
+                            selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)';
+                             that.qs1 = $selectableSearch.quicksearch(selectableSearchString,{
+                            'prepareQuery': function (val) {
+                                return new RegExp('^'+val,'i');
+                            },
+                            'testQuery': function (query, txt, _row) {
+                                return query.test(txt);
+                            }
+                        })
+                            .on('keydown', function(e){
+                                if (e.which === 40){
+                                    that.$selectableUl.focus();
+                                    return false;
+                                }
+                            });
+                    },
+                    afterSelect: function(){
+                        this.qs1.cache();
+                        $('.ms-selectable .ms-list .selected').removeClass('selected');
+                        $('.ms-selectable .add').attr('disabled', true);
+                    },
+                    afterDeselect: function(values){
+                        this.qs1.cache();
+                        $('.ms-selectable .ms-list .selected').removeClass('selected');
+                        $('.ms-selection .remove').attr('disabled', true);
+                    }
+                });
+                
+                $('.ms-selectable').on('click', 'button.add', function(){
+                    var selected = $('.ms-selectable .ms-list .selected span').map(function(){
+                        return Drugs.codeByName($(this).html());
+                    }).get();
+                    $('#drugs-list-resources').multiSelect('select', selected);
+                    for (var i=0;i<selected.length;i++) {
+                        scope.$root.selectedDrugs[selected[i]] = 'y';
+                    }
+                });
+                $('.ms-selection').on('click', 'button.remove', function(){
+                    var selected = $('.ms-selection .ms-list .selected span').map(function(){
+                        return Drugs.codeByName($(this).html());
+                    }).get();
+                    $('#drugs-list-resources').multiSelect('deselect', selected);
+                    for (var i=0;i<selected.length;i++) {
+                        delete scope.$root.selectedDrugs[selected[i]];
+                    }
+                });
+        }
+    }
+}]);
+
 app.directive('medicationSelector',['Drugs', '$state', function(Drugs, $state){
     return {
         restrict: 'E',
@@ -967,12 +1044,10 @@ app.directive('ncoaPrograms',[function(){
 app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 'saveScreening', 'ScreeningRoutes', function($rootScope, $state, prescreen, screening, saveScreening, ScreeningRoutes){
     return {
         link: function (scope, elm) {
-            if ($state.current.name == 'questionnaire.results') {
-                scope.isResults = true;
-            }
+            scope.isResults = $state.current.name == 'questionnaire.results';
 
             if ($state.params.category == undefined) {
-                scope.prev = "prescreen";
+                scope.prev = "initial";
                 scope.next = "screening-start";
             } else {
                 if ($state.current.name=="questionnaire.results") {
@@ -986,7 +1061,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
             }
 
             scope.switchPage = function (stateName) {
-                if ((stateName == "prescreen")||(stateName == "screening-start")||(stateName == "questionnaire.initial-results")) {
+                if ((stateName == "prescreen")||(stateName == "screening-start")||(stateName == "questionnaire.initial-results")||(stateName == "initial")) {
                     $state.transitionTo(stateName);
                 } else {
 
@@ -1002,7 +1077,6 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                         request.prescreen = prescreen.data.results.screening;
                     }
 
-
                     if (stateName == "questionnaire.loader") {
                         request.lastSet = "true";
                         $rootScope.showLoader = true;
@@ -1011,11 +1085,8 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
 
                     request.answers = scope.$root.answers[$state.params.category] == undefined ? {} : scope.$root.answers[$state.params.category];
 
-                    for (var key in request.answers) {
-                        if (request.answers[key] === false) {
-                            delete request.answers[key];
-                        }
-                    }
+                    if (window.partnerId != undefined) request.partnerId=window.partnerId;
+                    request.subsetId = window.subsetId == 100 ? 101 : window.subsetId;
 
                     saveScreening.post(request).success(function (data, status, headers, config) {
                         if (stateName == "questionnaire.loader") {
@@ -1038,7 +1109,7 @@ app.directive('pageSwitch',['$rootScope', '$state', 'prescreen', 'screening', 's
                             screening.data.results.screening = data;
                             screening.data.answers = scope.$root.answers;
                             screening.save();
-                            var stateId = ($state.params.state == undefined) ? scope.$root.prescreen.stateId : $state.params.state;
+                            var stateId = ($state.params.state) ? $state.params.state : scope.$root.prescreen ?  scope.$root.prescreen.stateId : scope.$root.answers.basics.stateId;
                             $state.transitionTo("screening", {"category": stateName, "state": stateId});
                         }
                     });
@@ -1440,6 +1511,8 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
                             scope.$root.answers[category.currentCategory()].zipcode = data.zip;
 
                             scope.$root.answers[category.currentCategory()].stateId = data.state_id;
+                            scope.$root.answers[category.currentCategory()].st = data.state_id;
+
                             scope.zipCodeLabel = "Update Zip Code";
 
                             scope.$root.answers[category.currentCategory()].county = data.county;
@@ -1508,6 +1581,7 @@ app.directive('zipcode',['locationFinder', 'category', '$filter', 'localStorageS
 
                             if (data.results[0].address_components[i].types[j] == "administrative_area_level_1") {
                                 scope.$root.answers[category.currentCategory()].stateId = data.results[0].address_components[i].short_name;
+                                scope.$root.answers[category.currentCategory()].st = data.results[0].address_components[i].short_name;
                                 scope.zipCodeLabel = "Update Zip Code";
                             }
 
@@ -1713,7 +1787,11 @@ app.factory('ScreeningRoutes',[function() {
 
     var _routes = {};
     _routes.basics = {"prev":"questionnaire.initial-results", "next":"health", pgno:1};
-    _routes.health = {"prev":"basics", "next":"household", pgno:2};
+    if (window.subsetId == 100) {
+        _routes.health = {"prev": "basics", "next": "household", pgno: 2};
+    } else {
+        _routes.health = {"prev": "basicsWOPrescreen", "next": "household", pgno: 2};
+    }
     _routes.household = {"prev":"health", "next":"finances", pgno:3};
     _routes.finances = {"prev":"household", "next":"questionnaire.loader", pgno:4};
 
@@ -1830,8 +1908,13 @@ app.service('saveScreening',['$http', function($http){
 }]);
 
 app.service('prescreenQuestions',['$http', function ($http) {
-    this.get = function() {
-        return $http.get(window.webServiceUrl+'/rest/backend/questionnaire/prescreen');
+    this.get = function(superCategory,prevScreening,stateId) {
+        var subsetId = prevScreening ? "101" : window.subsetId ? window.subsetId : "100";
+        var url = window.webServiceUrl+'/rest/backend/questionnaire/get/'+ subsetId + "/?superCategoryCode=";
+        url = url + (superCategory ? superCategory : "basics");
+        if (prevScreening) url = url + "&prevScreeningId="+prevScreening;
+        if (stateId) url = url + "&stateId="+stateId;
+        return $http.get(url);
     }
 }]);
 
@@ -1856,6 +1939,9 @@ app.factory('prescreen', ['localStorageService', '$window', 'orderByFilter', fun
 
     if (_data == undefined) {
         prescreenform.data = {};
+        prescreenform.data.results = {};
+        prescreenform.data.results.screening = {};
+
     } else {
         if (_data.name==$window.name) {
             prescreenform.data = _data;
@@ -1944,6 +2030,120 @@ app.factory('questionnaire', ['Income', 'Asset', function(Income, Asset){
     return questionnaire;
 }]);
 
+app.controller('granteesController', ['$scope', function($scope) {
+    $scope.state = '';
+    $scope.stateChange = function() {
+        angular.element('html, body').animate({
+            scrollTop: $("#grantee-"+$scope.state).offset().top
+        }, 1500);
+    }
+}]);
+
+app.controller('resourcesFormsController', ['$scope', '$window', '$http', function($scope, $window, $http) {
+    $scope.results = [];
+    $scope.drugPrograms = [];
+    $scope.values = {
+        state: '',
+        category: ''
+    };
+
+    $scope.disallowSearch = function() {
+        if ($scope.values.state == '' || $scope.values.category == '') {
+            return true;
+        }
+        
+        return false;
+    }
+
+    $scope.formatUrl = function(url,type) {
+        //return  type == 'pdf' ? ($window.appFormsUrl+url) : url;
+        return  type == 'pdf' ? ('/forms/'+url) : url;
+    }
+
+    $scope.disallowCategory = function() {
+        if ($scope.values.state == '') {
+            $scope.values.category = '';
+            return true;
+        }
+        
+        return false;
+    }
+    $scope.search = function() {
+        $scope.results = [];
+
+        $http.get($window.webServiceUrl+'/rest/backend/findPrograms/findResources?cat='+$scope.values.category+'&st='+$scope.values.state)
+            .then(function(response){
+                $scope.results = response.data;
+                angular.element('#program-category-results').show('slow');
+                angular.element('html, body').animate({
+                    scrollTop: angular.element('#program-category-results').offset().top
+                }, 2000);
+            });
+    }
+
+    $scope.searchDrugs = function() {
+        $scope.drugPrograms = null;
+
+        var drugs = Object.keys($scope.$root.selectedDrugs);
+        if (drugs.length > 0) {
+            $http.get($window.webServiceUrl+'/rest/backend/questionnaire/drugList/'+drugs.join())
+            .then(function(response){
+                var api_response = response.data[0].options;
+                if (api_response.length > 0) {
+                    $scope.drugPrograms = {};
+                    for (var i = 0; i < api_response.length; i++) {
+                        for (var j = 0; j < api_response[i]['programs'].length; j++) {
+                            var currentDrug = {
+                                code: api_response[i]['code'],
+                                display: api_response[i]['display'],
+                                type: api_response[i]['type']
+                            };
+                            if (typeof $scope.drugPrograms[api_response[i]['programs'][j]['code']] == 'undefined') {
+                                $scope.drugPrograms[api_response[i]['programs'][j]['code']] = {
+                                    program: api_response[i]['programs'][j],
+                                    drugs: [currentDrug]
+                                };
+                            }
+                            else {
+                                $scope.drugPrograms[api_response[i]['programs'][j]['code']]['drugs'].push(currentDrug);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        angular.element('#drugs-results').show('slow');
+        angular.element('html, body').animate({
+            scrollTop: angular.element('#drugs-results').offset().top
+        }, 2000);
+    }
+
+}]);
+
+app.controller('becsController', ['$scope','$window',function($scope,$window){
+    
+    $scope.becsStates = [];
+    $scope.orgEn = false;
+    $scope.becs = [];
+    for (var key in $window.becs) {
+        $scope.becsStates.push({"id":key,"value":key});
+    }
+
+    $scope.$watch('state', function(){
+        $scope.becs = $scope.state == '' ? [] : $window.becs[$scope.state.id];
+    });
+
+    $scope.goToBeck = function() {
+        $window.location.href = '/?partner_id='+$scope.bec['partner-id'];
+    };
+
+    $scope.enterPressed = function() {
+        $window.location.href = '/nationalcenter';
+    };
+
+}]);
+
 app.controller('questionController',['$scope', 'category', 'BenefitItems', 'AnswersByCategories', 'Months', function($scope, category, BenefitItems, AnswersByCategories, Months){
 
     $scope.category = category.currentCategory();
@@ -2010,10 +2210,29 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
     }
 }]);
 
+app.controller('initialController',['$scope','$state','prescreenQuestions','prescreen','screening',function($scope,$state,prescreenQuestions,prescreen,screening) {
+    prescreenQuestions.get(undefined,undefined,undefined).success(function(data, status, headers, config) {
+        prescreen.data.results.screening = {};
+        screening.data.results.screening = {};
+        prescreen.data.questions = {};
+        screening.data.questions = {};
+        if (data.type=="prescreen") {
+            prescreen.data.questions = data.questions;
+            $state.transitionTo('prescreen');
+        } else {
+            screening.data.questions["basics"] = data.questions;
+            $state.transitionTo('basicsScreening',{category:"basics"});
+        }
+    });
+
+}]);
+
 app.controller('preScreenController', ['$scope', 'localStorageService', 'prescreen', 'locationFinder', 'savePrescreen', '$timeout', '$state', 'BenefitItems', 'prescreenQuestions','screening', function($scope, localStorageService, prescreen, locationFinder, savePrescreen, $timeout, $state, BenefitItems, prescreenQuestions,screening){
 
     $scope.category = "prescreen";
     $scope.showLoader = false;
+
+    $scope.$root.isScreening=false;
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = {};
@@ -2034,11 +2253,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
     $scope.$root.prescreen.showCTA = true;
     $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers.prescreen) == 0 ? undefined : '1';
 
-    prescreenQuestions.get().success(function(data, status, headers, config) {
-        prescreen.data.questions = data;
-        $scope.questionSet = prescreen.data.questions;
-    });
-
+    $scope.questionSet = prescreen.data.questions;
 
     $scope.submitPrescreen = function() {
         $scope.showLoader = true;
@@ -2075,6 +2290,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
         request.state_id = $scope.$root.answers[$scope.category].stateId;
         request.st = $scope.$root.answers[$scope.category].stateId;
+        if (window.partnerId != undefined) request.partnerId = window.partnerId;
 
         savePrescreen.post(request).success(function(data, status, headers, config) {
             $scope.sibmitDisabled = false;
@@ -2248,7 +2464,7 @@ app.controller('preScreenController', ['$scope', 'localStorageService', 'prescre
 
 }]);
 
-app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', 'prescreen', function($scope, $state, prescreenQuestions, prescreen){
+/*app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuestions', 'prescreen', function($scope, $state, prescreenQuestions, prescreen){
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = {};
@@ -2257,10 +2473,10 @@ app.controller('preScreenInitalController', ['$scope', '$state', 'prescreenQuest
     $scope.$root.answers.prescreen = prescreen.data.answers;
 
     prescreenQuestions.get().success(function(data, status, headers, config) {
-        prescreen.data.questions = data;
+        prescreen.data.questions = data.questions;
         if($state.current.name == "prescreen") $state.transitionTo('prescreen.questions',{category:"prescreen"});
     });
-}]);
+}]);*/
 
 app.controller('preScreenResultsController', ['$scope', 'prescreen','$location','$state', function($scope, prescreen, $location, $state){
 
@@ -2340,9 +2556,39 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 
 }]);
 
-app.controller('screeningController', ['$rootScope', '$scope', '$state', '$stateParams', 'prescreen', 'screening', 'screeningQuestions', function($rootScope, $scope, $state, $stateParams, prescreen, screening, screeningQuestions){
+app.controller('basicsScreeningController',['$scope','$state','screening',function($scope,$state,screening){
+    $state.params.category="basics";
+    $scope.$root.isScreening = true;
+    if ($scope.$root.questions == undefined) {
+        $scope.$root.questions = {};
+    }
+
+    if (!screening.data.questions.basics) $state.transitionTo('initial');
+
+    $scope.$root.questions.basics = screening.data.questions.basics;
+
+    $scope.zipQuestion = $scope.$root.questions.basics.filter(function(a) {
+        return a.code == 'zip';
+    })[0];
+
+    $scope.$root.questions.basics = $scope.$root.questions.basics.filter(function(a) {
+        return a.code != 'zip';
+    });
+
+    if ($scope.$root.answers == undefined) {
+        $scope.$root.answers = screening.data.answers;
+    }
+}]);
+
+app.controller('screeningController', ['$rootScope', '$scope', '$state', '$stateParams', 'prescreen', 'screening', 'prescreenQuestions', function($rootScope, $scope, $state, $stateParams, prescreen, screening, prescreenQuestions){
 
     $rootScope.showLoader = false;
+
+    $rootScope.isScreening = true;
+
+    $scope.screenData = prescreen.data.screenData;
+
+    $rootScope.hasPrescreen = window.subsetId == 100;
 
     if ($scope.$root.answers == undefined) {
         $scope.$root.answers = screening.data.answers;
@@ -2360,10 +2606,14 @@ app.controller('screeningController', ['$rootScope', '$scope', '$state', '$state
             $scope.$root.answers[$state.params.category] = screening.data.answers[$state.params.category];
         }
 
-        screeningQuestions.get($state.params.category,prescreen.data.results.screening.id,$state.params.state).success(function(data){
-            screening.data.questions[$state.params.category] = data;
-            $scope.$root.questions[$state.params.category] = data;
-        });
+        if (screening.data.questions[$state.params.category]) {
+            $scope.$root.questions[$state.params.category] = screening.data.questions[$state.params.category];
+        } else {
+            prescreenQuestions.get($state.params.category, (prescreen.data.results ? prescreen.data.results.screening.id : undefined), $state.params.state).success(function (data) {
+                screening.data.questions[$state.params.category] = data.questions;
+                $scope.$root.questions[$state.params.category] = data.questions;
+            });
+        }
     } else {
         $state.transitionTo('screening',{category:"basics",state:prescreen.data.answers.stateId});
     }
@@ -2599,7 +2849,7 @@ app.directive('divProgramDesc',['factSheet',function(factSheet) {
         //templateUrl:'/content/themes/ncoa/resources/views/pages/benefits-checkup/programs/programs.category.html?'+(new Date()),
         link: function(scope, element) {
             factSheet.get('factsheet_'+scope.program_code).success(function(data, status, headers, config) {
-                element.append("<p>"+data[0].program_short_summary+"</p>");
+                element.append("<p>"+(data.length>0 ? data[0].program_short_summary : "Short description is unavailable. Fact sheet for program with code " +scope.program_code+ " doesn't exists.")+"</p>");
             });
         },
         scope: {
@@ -2877,40 +3127,41 @@ $(document).on('click', '.accordian-trigger', function(e) {
 
 $('#menu-primarynav li.current-menu-item a').wrapInner('<span></span>');
 
-// Start of LiveChat (www.livechatinc.com) code
-<!-- Start of LiveChat (www.livechatinc.com) code -->
-window.__lc = window.__lc || {};
-window.__lc.license = 8840876;
-(function() {
-  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-})();
-<!-- End of LiveChat code -->
+//if (typeof window.isPLPage == 'undefined') {
+    // Start of LiveChat (www.livechatinc.com) code
+    window.__lc = window.__lc || {};
+    window.__lc.license = 8840876;
+    (function() {
+    var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+    lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+    })();
 
-var LC_API = LC_API || {};
-var livechat_chat_started = false;
+    var LC_API = LC_API || {};
+    var livechat_chat_started = false;
 
-LC_API.on_before_load = function() {
-    // don't hide the chat window only if visitor
-    // is currently chatting with an agent
-    if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
-        // Hide chat window on homepage
-        if (window.location.pathname == '/') {
-            LC_API.hide_chat_window();
+    LC_API.on_before_load = function() {
+        // don't hide the chat window only if visitor
+        // is currently chatting with an agent
+        if (LC_API.visitor_engaged() === false && livechat_chat_started === false) {
+            // Hide chat window on homepage
+            if (window.location.pathname == '/' || window.location.pathname == '/welcome/') {
+                LC_API.hide_chat_window();
+            }
         }
-    }
-};
+    };
 
-LC_API.on_chat_started = function() {
-    livechat_chat_started = true;
-};
+    LC_API.on_chat_started = function() {
+        livechat_chat_started = true;
+    };
 
-// $(document).ready(function() {
-//   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
-//
-//   window.setInterval(function(){
-//     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
-//     console.log('fire');
-//   }, 2000);
-// });
+    // $(document).ready(function() {
+    //   $('iframe#livechat-compact-view').find('.icon-agentonline:before').css('content', "'../images/robot.svg' !imporant");
+    
+    //   window.setInterval(function(){
+    //     $('iframe#livechat-compact-view').find('.avatar-loaded #operator_avatar img').attr('src', '../images/robot.svg');
+    //     console.log('fire');
+    //   }, 2000);
+    // });
+    // End of LiveChat code
+//}

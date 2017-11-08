@@ -1,0 +1,131 @@
+body {
+  line-height: 1.3;
+  background-color: #f6f6f6;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #444; }
+  body a {
+    color: #1888de;
+    text-decoration: underline; }
+    body a:hover {
+      color: #1888de; }
+  body h1, body h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  body h1 {
+    color: #1888de;
+    font-weight: 700;
+    padding: 20px 0; }
+  body h2 {
+    color: #555555;
+    font-weight: 400;
+    line-height: 1.4; }
+  body h3 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  body input[type='text'], body select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em; }
+  body input[type='text'] {
+    box-shadow: none !important; }
+  body .checkbox {
+    margin-bottom: 20px; }
+  body input[type=checkbox] {
+    display: none; }
+  body input[type=checkbox] + label {
+    padding: 0; }
+    body input[type=checkbox] + label span {
+      background: url("../images/blank-check-box-2.svg");
+      background-repeat: no-repeat;
+      background-size: 27px 25px;
+      height: 34px;
+      width: 36px;
+      display: inline-block;
+      padding: 0 0 0 0px;
+      margin-right: 5px;
+      position: relative;
+      top: 16px; }
+  body input[type=checkbox]:checked + label {
+    padding: 0; }
+    body input[type=checkbox]:checked + label span {
+      background: url("../images/bcu-checkbox.svg");
+      background-repeat: no-repeat;
+      // background-size: 36px 34px;
+      background-size: 33px 34px;
+      height: 34px;
+      width: 36px;
+      display: inline-block;
+      padding: 0 0 0 0px;
+      margin-right: 5px;
+      position: relative;
+      // top: 7px;
+      // left: -2px;
+      top: 10px;
+      left: 0;
+}
+  body input[type=radio] {
+    display: none; }
+  body input[type=radio] + label {
+    padding: 0; }
+    body input[type=radio] + label span {
+      background: url("../images/radio-button.svg");
+      background-size: 26px;
+      height: 26px;
+      width: 26px;
+      display: inline-block;
+      padding: 0 0 0 0px;
+      margin-right: 5px;
+      position: relative;
+      top: 7px; }
+  body input[type=radio]:checked + label {
+    padding: 0; }
+    body input[type=radio]:checked + label span {
+      background: url("../images/radio-on-button.svg");
+      background-size: 26px;
+      height: 26px;
+      width: 26px;
+      display: inline-block;
+      padding: 0 0 0 0px;
+      margin-right: 5px;
+      position: relative;
+      top: 7px; }
+  body .form-control, body .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search body .zipcode-formatted {
+    font-size: 18px; }
+  body .form-control::-webkit-input-placeholder, body .prescreen-questions .zip-search .zipcode-formatted::-webkit-input-placeholder, .prescreen-questions .zip-search body .zipcode-formatted::-webkit-input-placeholder {
+    color: #8f8f8f;
+    font-weight: normal; }
+  body .form-control:-moz-placeholder, body .prescreen-questions .zip-search .zipcode-formatted:-moz-placeholder, .prescreen-questions .zip-search body .zipcode-formatted:-moz-placeholder {
+    color: #8f8f8f;
+    font-weight: normal; }
+  body .form-control::-moz-placeholder, body .prescreen-questions .zip-search .zipcode-formatted::-moz-placeholder, .prescreen-questions .zip-search body .zipcode-formatted::-moz-placeholder {
+    color: #8f8f8f;
+    font-weight: normal; }
+  body .form-control:-ms-input-placeholder, body .prescreen-questions .zip-search .zipcode-formatted:-ms-input-placeholder, .prescreen-questions .zip-search body .zipcode-formatted:-ms-input-placeholder {
+    color: #8f8f8f;
+    font-weight: normal; }
+  body .page-header {
+    margin: 0 0 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc; }
+  body .page-top-headline {
+    padding-top: 25px; }
+    body .page-top-headline h1 {
+      padding-top: 0;
+      margin-top: 0; }
+    body .page-top-headline .btn-link {
+      display: inline-block;
+      padding-bottom: 5px; }
+      body .page-top-headline .btn-link i {
+        padding-right: 5px; }
+
+.bold, body .form-control, body .prescreen-questions .zip-search .zipcode-formatted, .prescreen-questions .zip-search body .zipcode-formatted, .bold-h3, .modal-close span, #details-modal h2, .benefits-slider-circle-nav > div span, .benefits-slider-carousel .row h3, .fact-sheets-side-header, .about-section h2, .about-how-works h2, .about-how-works h3, .page-white-label-homepage .white-label-section h3 {
+  font-weight: 700; }
+
+  .normal-bold{
+    font-weight: 700;
+    color: #444;
+  }

@@ -39,7 +39,14 @@ class HomeController extends BaseController
         $benefits = Meta::get(get_the_ID(), $key = 'benefits', $single = true);
 
         return View::make('templates.homepage',[
-            'webServiceUrl' => $constants['WEB_SERVICE_URL'],
+            'loggedin' => true,
+            'medicarerx' => false,
+            'nutrition' => false,
+            'home' => true,
+            'partnerlogin' => false,
+            'grantees' => false,
+            'resources' => false,
+            'home6' => false,
             'sponsors' 				=> SponsorsModel::all(),
             'testimonials' 			=> $testimonials,
             'betterwaysection' 		=> $betterwaysection,
@@ -76,6 +83,14 @@ class HomeController extends BaseController
         $callouts = Meta::get(get_the_ID(), $key = 'callout-item', $single = true);
 
         return View::make('templates.white-label-homepage',[
+            'loggedin' => true,
+            'medicarerx' => false,
+            'nutrition' => false,
+            'home' => true,
+            'partnerlogin' => false,
+            'grantees' => false,
+            'resources' => false,
+            'home6' => false,
             'testimonials' 			=> $testimonials,
             'callouts'				=> $callouts
         ]);

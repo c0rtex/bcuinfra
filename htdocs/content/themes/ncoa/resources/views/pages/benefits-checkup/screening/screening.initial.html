@@ -1,0 +1,15 @@
+<h1>Loading questionnaire...</h1>
+<div class="card questionnaire" ng-show="showLoader!=true">
+</div>
+<div class="card questionnaire" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">
+    <div class="card-nested" style="padding: 0;">
+        <ncoa-loader></ncoa-loader>
+    </div>
+</div>
+
+<script type="text/javascript-lazy">
+    $('.ready-list').popover();
+    $( ".ready-list" ).click(function( event ) {
+        event.preventDefault();
+    });
+</script>

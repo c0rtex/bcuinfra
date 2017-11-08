@@ -1,0 +1,72 @@
+
+@media print {
+  .page-find-my-benefits > header, .fact-sheets-top, .fact-sheets-top + h1 {
+    display: none; }
+  .page-find-my-benefits .clearfix + hr {
+    border-top: none; }
+  .page-find-my-benefits .card-nested {
+    padding: 0px; }
+  .page-find-my-benefits .icon-block-healthcare, .page-find-my-benefits .fact-sheets-icon-block, .page-find-my-benefits .fact-sheets-main-apply, .page-find-my-benefits .fact-sheet-button-fwd,
+  .page-find-my-benefits .fact-sheets-bar, .page-find-my-benefits .fact-sheets-link, .page-find-my-benefits .site-footer, .page-find-my-benefits .fact-sheets-bottom, .page-find-my-benefits .results-options:nth-of-type(2) {
+    display: none; }
+  .page-find-my-benefits .programs-container {
+    display: block;
+    border: none;
+    margin: 0 !important;
+    padding: 0 !important; }
+  .page-find-my-benefits .program-header span {
+    padding: 0; }
+  .page-find-my-benefits .program .program-header span:after {
+    display: none; }
+  .page-find-my-benefits .program {
+    border: none; } }
+
+@media print {
+  .page-find-my-benefits h1 {
+    display: none; }
+  .page-find-my-benefits .results-tally {
+    font-size: 30px;
+    font-weight: normal; }
+    .page-find-my-benefits .results-tally + p {
+      display: none; }
+  .page-find-my-benefits .program-card {
+    display: block;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+    text-align: left;
+    height: auto;
+    width: auto; }
+    .page-find-my-benefits .program-card h3 {
+      padding: 0 !important;
+      margin: 20px 0 0 0 !important; }
+    .page-find-my-benefits .program-card p {
+      margin: 0 !important;
+      padding: 0 !important; }
+    .page-find-my-benefits .program-card > a {
+      display: none; }
+  .page-find-my-benefits .results-options {
+    display: none; }
+  .page-find-my-benefits .profile-section {
+    margin-top: 200px; }
+  .page-find-my-benefits .prescreen-profile > img, .page-find-my-benefits .btn-link.view-details {
+    display: none; }
+  .page-find-my-benefits .program-card + h3 {
+    margin-top: 60px; }
+  .page-find-my-benefits .more-benefits {
+    margin-top: 40px; }
+  .page-find-my-benefits .program-header {
+    padding: 0 !important; }
+  .page-find-my-benefits ul.programs {
+    padding: 0 !important;
+    border: none; }
+    .page-find-my-benefits ul.programs:nth-of-type(1) {
+      border-top: 2px solid #ccc; }
+  .page-find-my-benefits .btns-container {
+    display: none; }
+  .page-find-my-benefits .programs-container .programs li:nth-of-type(2) {
+    display: none; }
+  .page-find-my-benefits .odometer-digit {
+    padding: 0 !important; }
+  .page-find-my-benefits .odometer.odometer-auto-theme .odometer-digit {
+    border-left: none; } }

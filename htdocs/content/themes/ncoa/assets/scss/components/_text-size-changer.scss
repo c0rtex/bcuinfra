@@ -1,0 +1,19 @@
+
+.text-size-changer {
+  padding-top: 5px;
+  line-height: 1; }
+  .text-size-changer a {
+    font-family: 'Open Sans', sans-serif;
+    color: #1F3D7D;
+    padding-left: 5px;
+    font-weight: 700;
+    text-decoration: none; }
+    .text-size-changer a:hover {
+      color: #1888de;
+      text-decoration: underline;
+      cursor: pointer; }
+  .text-size-changer .selected {
+    text-decoration: underline; }
+  @media (min-width: 768px) {
+    .text-size-changer {
+      padding-top: 0; } }

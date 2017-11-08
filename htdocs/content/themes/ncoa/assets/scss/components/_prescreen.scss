@@ -1,0 +1,225 @@
+
+.prescreen-questions {
+  /**Benefits Selectors**/ }
+  .prescreen-questions .cta {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 15px 0 0;
+    font-size: 0.889em;
+    background-color: #F1FCF0; }
+    .prescreen-questions .cta strong {
+      color: #317C60; }
+  .prescreen-questions input[type="text"], .prescreen-questions select {
+    margin: 0 auto;
+    transition: width 500ms ease; }
+    @media (min-width: 992px) {
+      .prescreen-questions input[type="text"], .prescreen-questions select {
+        width: 45%; } }
+  .prescreen-questions .question-block {
+    text-align: center;
+    margin-bottom: 50px; }
+    .prescreen-questions .question-block .question-block-icon {
+      padding-top: 55px;
+      margin-bottom: 15px;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: 45px 45px; }
+    .prescreen-questions .question-block .question-block-title {
+      margin-bottom: 15px;
+      font-size: 21px; }
+  @media (max-width: 991px) {
+    .prescreen-questions .btn-group .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+      border-top-right-radius: 6px;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 0px; }
+    .prescreen-questions .btn-group .btn:last-child {
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 6px; }
+    .prescreen-questions .btn-group button {
+      float: none; } }
+  .prescreen-questions .zip-search .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_location.svg); }
+  .prescreen-questions .zip-search .zipcode-formatted {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    border: none;
+    background-color: #f6f6f6;
+    box-shadow: none;
+    text-align: left;
+    height: 45px;
+    padding: 14px;
+    margin: 0 auto;
+    position: relative;
+    transition: width 500ms ease;
+    font-size: 1em;
+    line-height: 1; }
+    .prescreen-questions .zip-search .zipcode-formatted a {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+      color: #1888de; }
+      .prescreen-questions .zip-search .zipcode-formatted a:hover {
+        cursor: pointer; }
+    @media (min-width: 992px) {
+      .prescreen-questions .zip-search .zipcode-formatted {
+        width: 45%; } }
+  .prescreen-questions .search-type .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_profile.svg); }
+  .prescreen-questions .search-type input {
+    margin-top: 10px; }
+  .prescreen-questions .dob .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_birthday.svg); }
+  .prescreen-questions .dob select {
+    margin-bottom: 15px; }
+    @media (min-width: 992px) {
+      .prescreen-questions .dob select {
+        width: 30%; } }
+  .prescreen-questions .income .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_income.svg); }
+  .prescreen-questions .marital-status .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_maritalStatus.svg); }
+  .prescreen-questions .veteran-status .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_veteran.svg); }
+  .prescreen-questions .benefits .question-block-icon {
+    background-image: url(../images/prescreen/Prescreen_categories.svg); }
+  .prescreen-questions .benefits .btn-link {
+    text-transform: capitalize;
+    font-size: 0.889em;
+    text-decoration: underline; }
+  .prescreen-questions .veteran-status .btn, .prescreen-questions .partner-veteran-status .btn {
+    width: 80px; }
+  .prescreen-questions .benefits-selector-container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 640px;
+    -ms-flex-pack: center;
+        justify-content: center; }
+    @media (min-width: 360px) {
+      .prescreen-questions .benefits-selector-container {
+        -ms-flex-pack: justify;
+            justify-content: space-between; } }
+  .prescreen-questions .benefits-selector-checkbox {
+    height: 125px;
+    width: 140px;
+    text-align: center;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 6px; }
+    .prescreen-questions .benefits-selector-checkbox:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* width: 100%; */
+      /* height: 100%; */
+      background-color: #000;
+      opacity: 0;
+      transition: opacity 500ms ease; }
+    .prescreen-questions .benefits-selector-checkbox:hover:after {
+      opacity: .15; }
+  .prescreen-questions .benefits-selector-checkbox-content {
+    padding: 15px 10px 10px;
+    transition: 300ms linear background-color;
+    border: 1px solid #ECECEC;
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    border-radius: 6px;
+    color: #515356; }
+    .prescreen-questions .benefits-selector-checkbox-content .icon-wrapper {
+      font-size: 40px; }
+      .prescreen-questions .benefits-selector-checkbox-content .icon-wrapper img {
+        width: 50px; }
+    .prescreen-questions .benefits-selector-checkbox-content .benefits-selector-label {
+      display: table;
+      width: 100%; }
+      .prescreen-questions .benefits-selector-checkbox-content .benefits-selector-label .label-inner {
+        display: table-cell;
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.889em;
+        font-family: "interface",sans-serif;
+        font-weight: 700;
+        line-height: 1;
+        padding-top: 10px; }
+  .prescreen-questions .checked .benefits-selector-checkbox-content {
+    background: #1888de;
+    color: #fff; }
+  .prescreen-questions .checked .icon-wrapper:before {
+    font-family: 'Glyphicons Halflings';
+    content: '\e013';
+    background-color: #fff;
+    border-radius: 100%;
+    padding: 10px 14px;
+    color: #1888de;
+    font-size: 20px; }
+  .prescreen-questions .checked .icon-wrapper img {
+    display: none; }
+
+.prescreen-results h2 {
+  margin-top: 0; }
+
+.prescreen-results .panel {
+  padding: 40px 40px 0; }
+
+.prescreen-results .results-tally {
+  font-size: 2.667em;
+  padding: 20px 0; }
+  .prescreen-results .results-tally strong {
+    color: #F4640A; }
+
+.prescreen-results .accuracy {
+  line-height: 1.4;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal; }
+  .prescreen-results .accuracy h3 {
+    display: inline-block;
+    padding-right: 10px;
+    font-weight: 700; }
+  .prescreen-results .accuracy .bar-container {
+    height: 30px;
+    width: 40px;
+    position: relative;
+    display: inline-block; }
+    .prescreen-results .accuracy .bar-container span {
+      width: 10px;
+      bottom: 0;
+      display: inline-block;
+      background-color: #ECECEC;
+      height: 0; }
+    .prescreen-results .accuracy .bar-container .bar1 {
+      animation: animate-bar-1 .3s  ease forwards; }
+    .prescreen-results .accuracy .bar-container .bar2 {
+      animation: animate-bar-2 .3s ease .3s forwards; }
+    .prescreen-results .accuracy .bar-container .bar3 {
+      animation: animate-bar-3 .3s ease .5s forwards; }
+  .prescreen-results .accuracy .accuracy-progress {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    opacity: 0;
+    animation: animate-low-in .3s ease .8s forwards; }
+
+.prescreen-results .ready-list {
+  padding-top: 20px; }
+  .prescreen-results .ready-list p {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 700; }
+
+.prescreen-results .btns-container .btn-underline {
+  padding-top: 10px; }
+
+.results.card-panel p {
+  margin: 25px 0;
+}

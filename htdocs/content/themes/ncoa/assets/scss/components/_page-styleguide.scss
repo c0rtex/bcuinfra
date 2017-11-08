@@ -1,0 +1,102 @@
+
+.page-styleguide header {
+  padding-bottom: 30px;
+  box-shadow: none; }
+
+.page-styleguide .brand-blue {
+  background-color: #1F3D7D; }
+  .colors .page-styleguide .brand-blue:after {
+    content: "#1F3D7D"; }
+
+.page-styleguide .brand-yellow {
+  background-color: #FFB902; }
+  .colors .page-styleguide .brand-yellow:after {
+    content: "#FFB902"; }
+
+.page-styleguide .brand-light-blue {
+  background-color: #1888de; }
+  .colors .page-styleguide .brand-light-blue:after {
+    content: "#1888de"; }
+
+.page-styleguide .brand-orange {
+  background-color: #F4640A; }
+  .colors .page-styleguide .brand-orange:after {
+    content: "#F4640A"; }
+
+.page-styleguide .brand-red {
+  background-color: #E54243; }
+  .colors .page-styleguide .brand-red:after {
+    content: "#E54243"; }
+
+.page-styleguide .brand-light-green {
+  background-color: #77C339; }
+  .colors .page-styleguide .brand-light-green:after {
+    content: "#77C339"; }
+
+.page-styleguide .brand-dark-green {
+  background-color: #389C78; }
+  .colors .page-styleguide .brand-dark-green:after {
+    content: "#389C78"; }
+
+.page-styleguide .brand-purple {
+  background-color: #74489D; }
+  .colors .page-styleguide .brand-purple:after {
+    content: "#74489D"; }
+
+.page-styleguide .brand-charcoal {
+  background-color: #323232; }
+  .colors .page-styleguide .brand-charcoal:after {
+    content: "#323232"; }
+
+.page-styleguide .brand-light-grey {
+  background-color: #ECECEC; }
+  .colors .page-styleguide .brand-light-grey:after {
+    content: "#ECECEC"; }
+
+.page-styleguide .colors span {
+  height: 100px;
+  position: relative; }
+  .page-styleguide .colors span:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    text-align: center; }
+
+.page-styleguide .buttons span {
+  display: block;
+  font-size: 0.889em;
+  color: #ccc;
+  font-weight: 700; }
+
+.page-styleguide .buttons .hover .btn-primary {
+  background-color: #cf5508 !important; }
+
+.page-styleguide .buttons .hover .btn-secondary {
+  background-color: #1473bc; }
+
+.page-styleguide .buttons .hover .btn-tertiary {
+  background-color: #d9d9d9;
+  border: 2px solid #1888de; }
+
+.page-styleguide .btn-group {
+  padding: 40px 0 0; }
+  .page-styleguide .btn-group .hover {
+    background-color: #e6e6e6 !important; }
+
+.page-styleguide .program-slide-down {
+  margin-bottom: 40px; }
+
+.page-styleguide .grouped-fields {
+  padding: 20px 0 40px; }
+
+.page-styleguide .group-box {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px; }
+
+.page-styleguide .states {
+  margin-top: 30px; }
+  .page-styleguide .states div {
+    margin-bottom: 15px; }

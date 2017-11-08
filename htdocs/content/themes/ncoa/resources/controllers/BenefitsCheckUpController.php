@@ -54,7 +54,16 @@ class BenefitsCheckUpController extends BaseController
         $programs_default_langs_full = json_encode($programs_default_langs_full);
 
         return View::make('templates.benefitscheckup', [
-            'webServiceUrl' => $constants['WEB_SERVICE_URL'],
+            'loggedin' => true,
+            'medicarerx' => false,
+            'nutrition' => false,
+            'home' => false,
+            'questionnaire' => true,
+            'partnerlogin' => false,
+            'grantees' => false,
+            'resources' => false,
+            'home6' => false,
+           'webServiceUrl' => $constants['WEB_SERVICE_URL'],
             'defaultLangsFull' => $programs_default_langs_full,
             'defaultLangsPre' => $programs_default_langs_pre
         ]);

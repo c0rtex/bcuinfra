@@ -1,5 +1,36 @@
 <cfcomponent rest="true" restpath="/questionnaire">
+
+    <cffunction name="drugListRestService" access="remote" restpath="/drugList/{drugCode:(\S)*}" returntype="String" httpMethod="GET">
+        <cfargument name="drugCode" required="false" restargsource="Path" type="string"/>
+        <cfset drugCodeArr = listToArray(drugCode,',',false,true)>
+        <cfreturn serializeJSON(this.getDrugList(drugCode))>
+    </cffunction>
+
+    <cffunction name="get" access="remote" restpath="/get/{subsetId:(\d)*}" returntype="String" httpMethod="GET">
+        <cfargument name="subsetId" required="false" restargsource="Path" type="string"/>
+        <cfargument name="superCategoryCode" required="false" restargsource="Query" type="string" default="BASICS"/>
+        <cfargument name="prevScreeningId" required="false" restargsource="Query" type="numeric" default="-1">
+        <cfargument name="stateId" required="false" restargsource="Query" type="string" default="NY"/>
+
+        <cfset var subset = entityLoadByPK("subset",subsetId)>
+
+        <cfswitch expression="#subset.getresult_page().getCode()#">
+            <cfcase value="prescreen">
+                <cfreturn '{"type":"prescreen","screening":#serializeJSON(subset.toStructure())#,"questions":#this.prescreen(subsetId)#}'>
+            </cfcase>
+
+            <cfcase value="newresults">
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId,subsetId)#}'>
+            </cfcase>
+
+            <cfdefaultcase>
+                <cfreturn '{"type":"screening","screening":#serializeJSON(subset.toStructure())#,"questions":#this.screening(superCategoryCode,prevScreeningId,stateId,subsetId)#}'>
+            </cfdefaultcase>
+        </cfswitch>
+    </cffunction>
+
     <cffunction name="prescreen" access="remote" restpath="/prescreen" returnType="String" httpMethod="GET">
+        <cfargument name="subsetId" required="false" restargsource="Query" type="numeric" default="100">
         <!---SELECT
         subset_question.subset_id,
         question.question_id,
@@ -19,7 +50,7 @@
         INNER JOIN questioncategory ON questioncategory.questioncategory_id = subset_questioncategory.questioncategory_id
         where subset_question.subset_id = 0
         order by subset_question.sort--->
-        <cfset questions = ormExecuteQuery("select sq.question from subset_question sq where sq.subset.id=100 order by sq.sort")>
+        <cfset questions = ormExecuteQuery("select sq.question from subset_question sq where sq.subset.id=? order by sq.sort",[subsetId])>
 
         <cfset retVal = arrayNew(1)>
 
@@ -35,6 +66,7 @@
         <cfargument name="superCategoryCode" required="true" restargsource="Path" type="string"/>
         <cfargument name="prevScreeningId" required="false" restargsource="Path" type="numeric" default="-1">
         <cfargument name="stateId" required="true" restargsource="Path" type="string"/>
+        <cfargument name="subset_id" required="false" restargsource="Query" type="numeric" default="101"/>
 
         <cfset sqs = "">
         <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[prevScreeningId])>
@@ -83,11 +115,11 @@
                                               qc.super_category sc
                                               left join q.subset_question_programcategory sqp
                                             where
-                                              sqt.subset.id=101
+                                              sqt.subset.id=?
                                               and sqt.state=?
                                               and sc.code=?
                                               #sqs#
-                                            order by sqt.sort",[state,superCategoryCode])>
+                                            order by sqt.sort",[subset_id,state,superCategoryCode])>
 
 
         <cfset retVal = arrayNew(1)>
@@ -170,7 +202,20 @@
     </cffunction>
 
     <cffunction name="getDrugList">
-        <cfset drg = ormExecuteQuery("select distinct af from program_answer_field paf right join paf.answer_field af join paf.program p where af.answer_field_type.id=13 and paf.answer_field is not null and p.active_flag=1")>
+        <cfargument name="drugCode" required="false" type="string" default=""/>
+        <cfset drugCodeArr = listToArray(drugCode,',',false,true)>
+
+        <cfset drqText = "select distinct af from program_answer_field paf right join paf.answer_field af join paf.program p where af.answer_field_type.id=13 and paf.answer_field is not null and p.active_flag=1">
+
+        <cfif arraylen(drugCodeArr) neq 0>
+            <cfset drqText = "#drqText# and af.code in (''">
+            <cfloop array="#drugCodeArr#" index="dri">
+                <cfset drqText = "#drqText#,'#dri#'">
+            </cfloop>
+            <cfset drqText = "#drqText#)">
+        </cfif>
+
+        <cfset drg = ormExecuteQuery(drqText)>
         <cfset var retArray = arrayNew(1)>
         <cfset var tmpStrct = structNew()>
         <cfset var i=1>
@@ -182,13 +227,34 @@
             <cfset option["programs"]=arrayNew(1)>
             <cfloop array="#d.getPrograms()#" index="p">
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
-                    <cfset arrayAppend(option["programs"],p.getCode())>
+                    <cfif arraylen(drugCodeArr) neq 0>
+                        <cfset var prgFull = structNew()>
+                        <cfset prgFull["prg_nm"]=p.getName_display().getDisplay_text()>
+                        <cfset prgFull["prg_desc"]=p.getShort_desc()>
+                        <cfset prgFull["code"]=p.getCode()>
+                        <cfset arrayAppend(option["programs"],prgFull)>
+                    <cfelse>
+                        <cfset arrayAppend(option["programs"],p.getCode())>
+                    </cfif>
                 </cfif>
             </cfloop>
             <cfset tmpStrct[i] = option>
             <cfset i = i+1>
         </cfloop>
-        <cfset drg = ormExecuteQuery("select distinct afr from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1) order by afr.right_answerfield.code")>
+
+        <cfset drqText = "select distinct afr from answer_field_relationship afr where afr.right_answerfield.answer_field_type.id=14 and afr.left_answerfield in (select paf.answer_field from program_answer_field paf where paf.answer_field.answer_field_type.id=13 and paf.program.active_flag=1)">
+
+        <cfif arraylen(drugCodeArr) neq 0>
+            <cfset drqText = "#drqText# and afr.right_answerfield.code in (''">
+            <cfloop array="#drugCodeArr#" index="dri">
+                <cfset drqText = "#drqText#,'#dri#'">
+            </cfloop>
+            <cfset drqText = "#drqText#)">
+        </cfif>
+
+        <cfset drqText ="#drqText# order by afr.right_answerfield.code">
+
+        <cfset drg = ormExecuteQuery(drqText)>
         <cfset var option = structNew()>
         <cfset option["code"] = "">
         <cfloop array="#drg#" index="d">
@@ -205,6 +271,13 @@
                 <cfif (p.getActive_flag() eq 1)and(p.getExclude_flag() eq 0)>
                     <cfset var pbD = structNew()>
                     <cfset pbD["program"] = p.getCode()>
+                    <cfif arraylen(drugCodeArr) neq 0>
+                        <cfset pbD["prg_nm"]=p.getName_display().getDisplay_text()>
+                        <cfset pbD["prg_desc"]=p.getShort_desc()>
+                        <cfset pbD["code"]=p.getCode()>
+                    <cfelse>
+                        <cfset pbD["program"] = p.getCode()>
+                    </cfif>
                     <cfset pbD["brand_code"] = d.getLeft_answerfield().getCode()>
                     <cfset pbD["brand_name"] = d.getLeft_answerfield().getDisplay().getDisplay_text()>
                     <cfset arrayAppend(option["programs"],pbD)>
@@ -261,7 +334,7 @@
     <cffunction name="fillHhMembers">
         <cfargument name="screening">
         <cfset var sa = ormExecuteQuery("select sa.option.code from screening_answerfield sa where sa.screening.id=? and sa.answer.code='marital_stat'",[screening])>
-        <cfif arraylen(sa) gte 0>
+        <cfif arraylen(sa) gt 0>
             <cfif sa[1] eq "married">
                 <cfreturn 2>
             <cfelse>

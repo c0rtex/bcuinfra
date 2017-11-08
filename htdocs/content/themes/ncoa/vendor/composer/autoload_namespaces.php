@@ -6,7 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src'),
     'Httpful' => array($vendorDir . '/nategood/httpful/src'),
-    'FontLib\\' => array($vendorDir . '/phenx/php-font-lib/src'),
 );

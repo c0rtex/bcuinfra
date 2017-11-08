@@ -1,0 +1,28 @@
+
+.page-snap .fact-sheet-icon-hdr {
+  overflow: hidden;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 40px; }
+
+.page-snap .state-selection {
+  border-top: 2px solid #ccc;
+  padding-top: 30px;
+  margin-top: 30px; }
+  .page-snap .state-selection .form-group {
+    width: 100%; }
+    @media (min-width: 992px) {
+      .page-snap .state-selection .form-group {
+        width: 40%;
+        display: inline-block;
+        vertical-align: top; } }
+  .page-snap .state-selection select {
+    width: 100%;
+    margin-bottom: 15px; }
+  .page-snap .state-selection button {
+    width: 100%; }
+    @media (min-width: 992px) {
+      .page-snap .state-selection button {
+        width: auto;
+        display: inline-block;
+        vertical-align: top; } }

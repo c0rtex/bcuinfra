@@ -1,6 +1,6 @@
 <cfinvoke method="logAffinityClick" 
 returnvariable="responseFromService" 
-webservice="https://www.benefitscheckup.org/util/affinity.cfc?wsdl" >
+webservice="https://redesign.benefitscheckup.org/util/affinity.cfc?wsdl" >
 <cfinvokeargument name="internal_flag" value="1">
 <cfinvokeargument name="partner_id" value="14">
 <cfinvokeargument name="partner_session_id" value="123456-121212-121212">
@@ -12,5 +12,5 @@ webservice="https://www.benefitscheckup.org/util/affinity.cfc?wsdl" >
 </cfinvoke>
 
 
-
+<h2>New Result:</h2>
 <cfdump var="#responsefromservice#">

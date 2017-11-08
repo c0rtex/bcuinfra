@@ -1,0 +1,42 @@
+<h1>Find My Benefits</h1>
+<div class="card questionnaire" ng-show="showLoader!=true">
+    <div class="card-nested">
+        <div breadcrumb class="breadcrumbs" ng-hide="hideBreadCrumbs"></div>
+        <div class="row">
+            <div class="col-xs-12 col-md-9">
+                <h2>Answer these questions to get more accurate results.</h2>
+
+                <p ng-show="isBasicTab"><a data-toggle="popover" data-trigger="click" data-html="true" data-content="<ul>
+            <li>Current income for self, spouse and others in household</li>
+            <li>Value of assets for self, spouse and others in household</li>
+            <li>Estimated household expenses such as: mortgage or rent, utility costs, and dependent care</li>
+            <li>Out-of-pocket medical expenses that is not paid for by your insurance</li>
+            <li>Name of prescription medications that you take (include brand name and generic drugs)</li>
+        </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue.</p>
+
+                <question question="zipQuestion"></question>
+                <div ng-show="$root.isZipValid">
+                <question ng-repeat="question in $root.questions['basics']" question="question"></question>
+                </div>
+            </div>
+
+            <!-- Profile Section
+            <div class="col-md-3 hidden-sm hidden-xs profile-section" profile></div>-->
+        </div>
+    </div>
+    <div class="btns-container clearfix" page-switch>
+        <button class="btn btn-primary pull-right" ng-hide="isResults" ng-click="switchPage(next)">Continue</button>
+    </div>
+</div>
+<div class="card questionnaire" ng-if="showLoader==true" style="min-height: 600px; padding: 0;">
+    <div class="card-nested" style="padding: 0;">
+        <ncoa-loader></ncoa-loader>
+    </div>
+</div>
+
+<script type="text/javascript-lazy">
+    $('.ready-list').popover();
+    $( ".ready-list" ).click(function( event ) {
+        event.preventDefault();
+    });
+</script>

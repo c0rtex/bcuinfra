@@ -37,7 +37,7 @@
                                 Print
                             </a>
                             <span class="fact-sheets-spacer"></span>
-                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&pdf=y&download=y" class="fact-sheet-header-icon">
+                            <a href="{{ Loop::link() }}?{{ @$_SERVER['QUERY_STRING'] }}&short=y&download=y&pdf=y" class="fact-sheet-header-icon">
                                 <span class="fa fa-download"></span>
                                 Save
                             </a>
@@ -93,28 +93,25 @@
                     <div class="results-options">
                         <span class="fact-sheets-side-header">Quick Links</span>
                         <br />
-                        <?php
-                          if (strpos($programUrl,'http') !== 0) $programUrl = 'http://'.$programUrl;
-                        ?>
-                        <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a target="_blank" href="{{ $programUrl }}" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Program Website</span>
                         </a>
 
                     @endif
 		    @if (!empty($snap_findstores_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Find Stores to Use Debit Card</span>
                         </a>
                     @endif
 		    @if (!empty($snap_bcu_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_bcu_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a target="_blank" href="<?php echo $snap_bcu_url; ?>" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Find Out If You're Eligible</span>
                         </a>
                     @endif
-		   </div>
-		    @if (!empty($snap_findstores_url)) 
+
+                    @if (!empty($snap_findstores_url)) 
                     <div class="results-options feedback-box">
                         <span class="fact-sheets-side-header">Please Give Us Some Feedback</span>
                         <div class="fact-sheets-side-subheader">How likely are you to apply for this program?</div>
@@ -125,6 +122,7 @@
                         </div>
                     </div>                    
                     @endif
+		   </div>
                 </div>
             </div>
         </div>

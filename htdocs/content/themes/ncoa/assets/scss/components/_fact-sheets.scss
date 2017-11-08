@@ -1,0 +1,152 @@
+
+.fact-sheets-top-header {
+  font-weight: bold;
+  font-size: 18px; }
+
+.fact-sheets-header {
+  padding: 0px;
+  margin: 0px; }
+  .icon-block {
+    margin-right: 10px;
+  }
+  .icon-block img{
+    width: 60px;
+    height: 60px;
+  }
+
+.fact-sheets-bottom-header {
+  font-size: 36px; }
+
+.fact-sheet-header-icon {
+  display: table-cell;
+  vertical-align: bottom;
+  font-weight: bold;
+  color: #1888de;
+  text-decoration: none;
+  padding-bottom: 0px !important; }
+.fact-sheets-bottom-header h1 {
+  font-size: 30px;
+  color: #555555;
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 0;
+  margin: 0;
+  }
+
+  @media (min-width: 992px) {
+    .fact-sheet-header-icon {
+      height: 65px; } }
+  @media (max-width: 991px) {
+    .fact-sheet-header-icon {
+      height: 65px; } }
+  .fact-sheet-header-icon:hover {
+    color: #1888de; }
+
+.fact-sheets-icon-block {
+  margin-left: 10px;
+  clear: both; }
+
+.fact-sheets-spacer {
+  width: 20px;
+  height: 60px;
+  display: table-cell; }
+  @media (max-width: 991px) {
+    .fact-sheets-spacer {
+      height: 20px; } }
+
+.fact-sheets-hr {
+  border: 0;
+  height: 0;
+  border-top: 2px solid #CCCCCC; }
+  @media (max-width: 991px) {
+    .fact-sheets-hr {
+      margin: 10px 5px; } }
+
+.fact-sheets-emphasis {
+  font-weight: bold;
+  font-size: 22px;
+  color: #F4640A; }
+
+.fact-sheets-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+
+.fact-sheets-list .popover-title {
+border-bottom: none;
+}
+
+.fact-sheets-main-apply {
+  margin: 5px 0px 20px 0px; }
+
+.fact-sheets-side-apply {
+  width: 100%;
+  margin: 10px 0px 20px 0px; }
+
+.fact-sheets-link {
+  padding: 0 !important; }
+
+.fact-sheets-icon {
+  font-size: 15px; }
+
+.fact-sheets-bar {
+  color: #1888de;
+  margin: 0px 7px 0px 7px;
+  text-decoration: none;
+  position: relative;
+  top: -10px; }
+  .fact-sheets-bar:hover {
+    text-decoration: none; }
+  @media (max-width: 991px) {
+    .fact-sheets-bar {
+      top: -9px; } }
+
+.fact-sheets-side-link {
+  text-align: left !important;
+  margin-bottom: 5px;
+  padding: 0px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.fact-sheets-side-lower {
+  margin-left: 19px; }
+
+.fact-sheet-button-fwd {
+  white-space: pre-wrap;
+}
+
+.fact-sheet-button-fwd:after {
+  content: '\e080';
+  top: 2px; }
+
+.fact-sheets-top {
+  margin-top: 50px; }
+  .fact-sheets-top a {
+    min-height: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0; }
+
+.fact-sheets-bottom {
+  margin-top: 15px;
+  margin-bottom: 80px; }
+  @media (max-width: 991px) {
+    .fact-sheets-bottom {
+      margin-bottom: 40px; } }
+
+.fact-sheets-know {
+  margin: 7px 0; }
+
+.fact-sheets-side-header {
+  font-family: 'Open Sans', sans-serif; }
+
+@media (max-width: 991px) {
+  .fact-sheet-options {
+    margin: 10px 0px; } }
+
+.fact-sheets-main-mobile {
+  width: 100%; }
+
+.fact-sheet-alt .results-options {
+  margin-top: 40px;
+  margin-bottom: 0px; }

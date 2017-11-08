@@ -148,7 +148,16 @@ class ResourcesController extends BaseController
     $keycategories = Meta::get(Loop::id(), $key = 'KeyCategories', $single = true);
 
     return View::make('templates.resources', [
-      'states' => $this->states,
+        'loggedin' => true,
+        'medicarerx' => false,
+        'nutrition' => false,
+        'home' => false,
+        'partnerlogin' => false,
+        'grantees' => false,
+        'questionnaire' => false,
+        'resources' => true,
+        'home6' => false,
+        'states' => $this->states,
       'categories' => $this->categories,
       'programs' => $keyprograms,
       'keycategories' => $keycategories
@@ -169,7 +178,15 @@ class ResourcesController extends BaseController
     }
 
     return View::make('templates.resources-results', [
-      'state' => $_REQUEST['state'],
+        'loggedin' => true,
+        'medicarerx' => false,
+        'nutrition' => false,
+        'home' => false,
+        'partnerlogin' => false,
+        'grantees' => false,
+        'resources' => true,
+        'home6' => false,
+        'state' => $_REQUEST['state'],
       'category' => $_REQUEST['category'],
       'states' => $this->states,
       'categories' => $this->categories,
@@ -189,7 +206,16 @@ class ResourcesController extends BaseController
     $constants = Config::get('constants');
 
     return View::make('templates.program-snap',[
-      'states' => $this->states_fact_sheets,
+        'loggedin' => true,
+        'medicarerx' => false,
+        'nutrition' => true,
+        'home' => false,
+        'partnerlogin' => false,
+        'grantees' => false,
+        'resources' => false,
+        'home6' => false,
+        'questionnaire' => false,
+        'states' => $this->states_fact_sheets,
       'webServiceUrl' => $constants['WEB_SERVICE_URL']
     ]);
   }

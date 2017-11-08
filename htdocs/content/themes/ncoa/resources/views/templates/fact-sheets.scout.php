@@ -192,7 +192,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
 
                         foreach($app_forms as $ekey => $evalue){
                             if($evalue->type=='online'){
-                                echo '<a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
+                                echo '<a href="/cf/form_redirect.cfm?id='.$evalue->id.'&tgtPartner=0&tgtorg_id=0&tgt='.$evalue->url.'" class="btn btn-primary fact-sheets-side-apply" target="_new">Apply Online</a>';
 
                                 break;
                             }
@@ -222,7 +222,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         @if(($evalue->type!='online')&&($pos<2))
                         <?php $pos++ ?>
                         <?php $isAdded = true ?>
-                        <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
+                        <a target="_blank" href="/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{$app_forms_uri.$evalue->url}}" class="btn btn-link fact-sheets-side-link">
                             <span class="fa fa-file fact-sheets-icon"></span>
                             <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                         </a>
@@ -244,12 +244,12 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                                         <?php $isAdded = true ?>
                                         @if(strpos($evalue->url, 'http')===0)
 
-                                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheets-side-link">
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
-                                        <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                        <a target="_blank" href="/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
 
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
@@ -271,16 +271,16 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                                         @if(!$printed_prev)
                                             @foreach($prev_vals as $prev_ekey => $prev_evalue)
                                             @if($prev_evalue->type=='online')
-                                                <a href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{ $prev_evalue->id }}&tgtPartner=0&tgtorg_id=0&tgt={{ $prev_evalue->url }}" class="btn btn-link fact-sheets-side-link" target="_new">
+                                                <a href="/cf/form_redirect.cfm?id={{ $prev_evalue->id }}&tgtPartner=0&tgtorg_id=0&tgt={{ $prev_evalue->url }}" class="btn btn-link fact-sheets-side-link" target="_new">
                                                     <span class="fa fa-file fact-sheets-icon"></span>
                                                     <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
                                                 </a><br />
                                             @elseif(strpos($prev_evalue->url, 'http')===0)
-                                            <a href="{{$prev_evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                            <a href="{{$prev_evalue->url }}" target="_blank" class="btn btn-link fact-sheets-side-link">
                                                 <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
                                             </a><br />
                                             @else
-                                            <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$prev_evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$prev_evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                            <a target="_blank" href="/cf/form_redirect.cfm?id={{$prev_evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$prev_evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                                 <span class="fa fa-file fact-sheets-icon"></span>
                                                 <span style="white-space: pre-line">{{ $prev_evalue->caption }}</span> <?php ($prev_evalue->type == 'fillable') ? print $fillable : ''; ?>
                                             </a><br />
@@ -291,12 +291,12 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
 
                                         @if(strpos($evalue->url, 'http')===0)
 
-                                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                                        <a href="{{$evalue->url }}" target="_blank" class="btn btn-link fact-sheets-side-link">
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
                                         <?php $modalNotEmpty = true; ?>
                                         @else
-                                        <a target="_blank" href="https://www.benefitscheckup.org/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
+                                        <a target="_blank" href="/cf/form_redirect.cfm?id={{$evalue->id}}&tgtPartner=0&tgtorg_id=0&tgt={{ $app_forms_uri.$evalue->url }}" class="btn btn-link fact-sheets-side-link">
                                             <span class="fa fa-file fact-sheets-icon"></span>
                                             <span style="white-space: pre-line">{{ $evalue->caption }}</span> <?php ($evalue->type == 'fillable') ? print $fillable : ''; ?>
                                         </a><br />
@@ -316,7 +316,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
                         </div>
 
                         @if ($modalNotEmpty == true)
-                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">See More</span>
                         </a>
                         @endif
@@ -325,24 +325,21 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
 
                         @if (!empty($programUrl))
                         </br>
-                        <?php
-                        if (strpos($programUrl,'http') !== 0) $programUrl = 'http://'.$programUrl;
-                        ?>
-                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Program Website</span>
                         </a>
                         @endif
 
 			            @if (!empty($snap_findstores_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Find Stores to Use Debit Card</span>
                         </a>
                         @endif
 
                         @if (($is_snap) && ($elegible != 'n') && !empty($snap_find_elegible))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_find_elegible; ?>" class="btn btn-link fact-sheet-button-fwd fact-sheets-side-link">
+                        <a href="/find-my-benefits/" class="btn btn-link fact-sheets-side-link">
                           <span style="white-space: pre-line">Find Out If You're Eligible</span>
                         </a>
                         @endif

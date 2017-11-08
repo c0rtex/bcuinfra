@@ -1,0 +1,40 @@
+.loader {
+  position: relative; }
+  .loader .loader-container {
+    text-align: center;
+    width: 100%; }
+    @media (min-width: 768px) {
+      .loader .loader-container {
+        position: absolute;
+        top: calc(50% + 100px);
+        left: calc(50% - 200px);
+        min-height: 600px;
+        width: 400px; } }
+    .loader .loader-container h3 {
+      color: #1888de;
+      font-size: 28px;
+      margin: 10px; }
+    .loader .loader-container p {
+      margin: 10px 0;
+      font-size: 18px; }
+    .loader .loader-container h3, .loader .loader-container p {
+      opacity: 0;
+      animation: fadeIn 500ms linear 1s forwards; }
+  .loader img {
+    width: 200px;
+    -ms-transform: scale(0);
+        transform: scale(0);
+    animation: scaleIn 500ms linear 1s forwards; }
+  .loader .progress {
+    border: 1px solid #eee;
+    height: 30px;
+    background: #ECECEC;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 500ms linear 1s forwards; }
+    .loader .progress .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #1888de;
+      display: block;
+      animation: animate-progress-bar 5s linear 2s forwards; }

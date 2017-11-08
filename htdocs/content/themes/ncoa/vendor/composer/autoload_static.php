@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInited12ae33f6c6e7718f0a89dd2ba11ee9
 {
     public static $prefixLengthsPsr4 = array (
-        'D' => 
-        array (
-            'Dompdf\\' => 7,
-        ),
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
@@ -18,10 +14,6 @@ class ComposerStaticInited12ae33f6c6e7718f0a89dd2ba11ee9
     );
 
     public static $prefixDirsPsr4 = array (
-        'Dompdf\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
-        ),
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
@@ -29,13 +21,6 @@ class ComposerStaticInited12ae33f6c6e7718f0a89dd2ba11ee9
     );
 
     public static $prefixesPsr0 = array (
-        'S' => 
-        array (
-            'Svg\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
-            ),
-        ),
         'H' => 
         array (
             'Httpful' => 
@@ -43,23 +28,10 @@ class ComposerStaticInited12ae33f6c6e7718f0a89dd2ba11ee9
                 0 => __DIR__ . '/..' . '/nategood/httpful/src',
             ),
         ),
-        'F' => 
-        array (
-            'FontLib\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phenx/php-font-lib/src',
-            ),
-        ),
     );
 
     public static $classMap = array (
-        'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
-        'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
-        'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
-        'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
-        'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
-        'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',

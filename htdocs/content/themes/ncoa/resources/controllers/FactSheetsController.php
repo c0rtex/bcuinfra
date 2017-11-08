@@ -459,6 +459,15 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
+                'loggedin' => true,
+                'medicarerx' => false,
+                'nutrition' => false,
+                'home' => false,
+                'partnerlogin' => false,
+                'grantees' => false,
+                'resources' => false,
+                'home6' => false,
+                'questionnaire' => false,
                 'page_slug' => $fact_sheet_slug,
                 'app_forms_uri' => $constants['APPLICATION_FORMS_URL'],
                 'layout' => $layout,
@@ -523,6 +532,15 @@ class FactSheetsController extends BaseController
             }
 
             return View::make($template, [
+                'loggedin' => true,
+                'medicarerx' => false,
+                'nutrition' => false,
+                'home' => false,
+                'partnerlogin' => false,
+                'grantees' => false,
+                'resources' => false,
+                'home6' => false,
+                'questionnaire' => false,
                 'page_slug' => $fact_sheet_slug,
                 'entry_points' => $entryPoints,
                 'layout' => $layout,

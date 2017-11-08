@@ -1,0 +1,357 @@
+
+
+.orange-bold {
+  font-weight: 700;
+  color: #F4640A; }
+
+.underline {
+  text-decoration: underline; }
+
+.grey-background {
+  background: #ECECEC; }
+
+.light-grey-background-rounded, .zip-code-container {
+  background-color: #F9F9F9;
+  border-radius: 8px; }
+
+.zip-code-container {
+  padding: 20px; }
+  .zip-code-container h3 {
+    font-size: 18px; }
+  .zip-code-container input[type=text] {
+    width: 300px; }
+  @media (max-width: 767px) {
+    .zip-code-container input[type=text] {
+      width: 100%; } }
+
+.blue-gradient-background {
+  background-image: linear-gradient(-180deg, #4675CB 0%, #1A3A74 96%); }
+
+.blue-background {
+  background-color: #1F3D7D; }
+
+.card {
+  background-color: #fff;
+  border-radius: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px; }
+  .card .card-nested {
+    padding: 20px; }
+    @media (min-width: 768px) {
+      .card .card-nested {
+        padding: 40px; } }
+
+.fa-question-circle {
+  color: #1888de; }
+
+.btn-selector {
+  display: inline-block;
+  margin: 5px;
+  padding: 15px 20px 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ECECEC;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  transition: 100ms linear background-color;
+  width: 120px;
+  height: 100px;
+  vertical-align: top;
+  position: relative; }
+  .btn-selector:hover {
+    cursor: pointer;
+    background-color: #ECECEC; }
+  .btn-selector figcaption {
+    margin-top: 10px;
+    font-size: 0.875em; }
+
+.btns-container {
+  border-top: 2px solid #ECECEC;
+  overflow: hidden;
+  background-color: #fbfbfb;
+  padding: 20px; }
+
+/**Validation**/
+input.ng-invalid-required:not(.ng-untouched) {
+  border: 1px solid red; }
+
+select.ng-invalid:not(.ng-untouched) {
+  border: 1px solid red; }
+
+/** Forms **/
+select.form-control, .prescreen-questions .zip-search select.zipcode-formatted {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #FFFFFF url(../images/arrowdown.gif) no-repeat 98% center;
+  height: 45px; }
+  select.form-control:hover, .prescreen-questions .zip-search select.zipcode-formatted:hover {
+    background-color: #d9d9d9; }
+
+input[type="text"].form-control, .prescreen-questions .zip-search input[type="text"].zipcode-formatted, select.form-control, .prescreen-questions .zip-search select.zipcode-formatted {
+  height: 45px; }
+
+/**Helpers**/
+.inline {
+  display: inline-block; }
+
+/**Tooltip Popover**/
+.popover {
+  background-color: #f7f7f7; }
+
+/**Odometer**/
+.odometer {
+  display: inline-block;
+  vertical-align: top;
+  background: #f6833b;
+  background-image: linear-gradient(to bottom, #f6833b 0%, #f6833b 50%, #f4640a 51%, #f4640a 100%);
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 700; }
+  .odometer.odometer-auto-theme .odometer-digit {
+    font-family: 'Open Sans', sans-serif;
+    vertical-align: top;
+    border-left: 1px solid #B14407;
+    padding: 0 5px;
+    text-align: center; }
+    .odometer.odometer-auto-theme .odometer-digit:first-child {
+      border: 0; }
+
+.bold-h3 {
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/**Animations for show/hide**/
+.ng-hide-add {
+  animation: 0.5s slide-up ease; }
+
+.ng-hide-remove {
+  animation: 0.5s slide-down ease; }
+
+/**Animations for view switching**/
+.ng-enter {
+  animation: fadeIn 700ms both ease-in;
+  z-index: 8888; }
+
+.ng-leave {
+  animation: fadeOut 700ms both ease-in;
+  z-index: 9999; }
+
+.title-icon {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100px;
+  padding-top: 120px; }
+
+.icon-bullseye {
+  background-image: url(../images/home/icon_home-bullseye.svg); }
+
+.icon-lock {
+  background-image: url(../images/home/icon_home-lock.svg); }
+
+.icon-clipboard {
+  background-image: url(../images/home/icon_home-clipboard.svg); }
+
+.icon-med {
+  background: url(../images/categories/category_medicine.svg) no-repeat center left; }
+
+.results h2 {
+  margin-top: 0;
+  padding-bottom: 15px;
+  border-bottom-color: #ccc; }
+
+.results .cta-yellow {
+  margin-bottom: 30px; }
+
+.card-header {
+  padding-top: 40px; }
+  .card-header a {
+    display: inline-block;
+    padding-bottom: 5px; }
+  .card-header h1 {
+    margin-top: 0;
+    padding-top: 0; }
+
+.mobile-padding {
+  padding: 0 7px !important; }
+
+.icon-block-healthcare {
+  background: url(../images/categories/category_health.svg) no-repeat top center;
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px; }
+  @media (max-width: 991px) {
+    .icon-block-healthcare {
+      margin-left: 5px; } }
+
+.icon-block-food {
+  background: url(../images/categories/category_food.svg) no-repeat top center;
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px; }
+@media (max-width: 991px) {
+  .icon-block-food {
+    margin-left: 5px; } }
+
+.panels {
+  padding: 40px 0; }
+  .panels section {
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 15px; }
+    .panels section:last-child {
+      transform: translate3d(150px, 30px, 0); }
+
+.icon-panel {
+  background-color: #fff;
+  height: 125px;
+  width: 140px;
+  text-align: center;
+  position: relative;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 6px; }
+  .icon-panel:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 500ms ease; }
+  .icon-panel:hover:after {
+    opacity: .15; }
+
+.icon-panel-content {
+  padding: 15px 10px 10px;
+  transition: 300ms linear background-color;
+  border: 1px solid #ECECEC;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  border-radius: 6px;
+  color: #515356; }
+  .icon-panel-content .icon-wrapper {
+    font-size: 40px; }
+    .icon-panel-content .icon-wrapper img {
+      width: 50px; }
+  .icon-panel-content .icon-panel-selector-label {
+    display: table;
+    width: 100%; }
+    .icon-panel-content .icon-panel-selector-label .label-inner {
+      display: table-cell;
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.889em;
+      font-family: "interface",sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      padding-top: 10px; }
+
+.checked .icon-panel-content {
+  background: #1888de;
+  color: #fff; }
+
+.checked .icon-wrapper:before {
+  font-family: 'Glyphicons Halflings';
+  content: '\e013';
+  background-color: #fff;
+  border-radius: 100%;
+  padding: 10px 14px;
+  color: #1888de;
+  font-size: 20px; }
+
+.checked .icon-wrapper img {
+  display: none; }
+
+
+/*remove the arrows from the income and asset grid input boxes*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.header-cta-ncoaLogo{
+margin-top: 20px;
+}
+
+#selected-programs{
+display: block;
+}
+
+.survey-answers a {
+  margin: 8px 0;
+}
+
+@media (max-width: 400px) {
+  .fact-sheets-side-link {
+    font-size: 16px;
+  }
+}
+
+/*hide the input placeholders upon input focus*/
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+
+.program-list-print {
+  margin-top: 0 !important;
+}
+.program-list-print .category {
+  padding-bottom: 20px;
+}
+.program-list-print .category h3 {
+  font-weight: bold;
+}
+.program-list-print .category label {
+  font-weight: normal !important;
+}
+
+#print-modal .modal-header .close {
+  margin-top: -2px !important; }
+
+.partner-veteran-status {
+  margin-bottom: 45px;
+}
+
+.brand-drug-alert p,
+.generic-drug-alert p {
+  margin: 1em 0;
+}
+
+/* Force break on long URLs */
+.fact-sheet a,
+.short-fact-sheet a,
+.print-short-fact-sheet a,
+.print-fact-sheet a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.text-light-blue {
+  color: $brand-light-blue;
+}

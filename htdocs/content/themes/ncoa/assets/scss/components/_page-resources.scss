@@ -1,0 +1,163 @@
+
+.page-resources .resources .btn-link, .page-results .resources .btn-link {
+  vertical-align: top;
+  display: inline-block;
+  padding-bottom: 5px; }
+  .page-resources .resources .btn-link i, .page-results .resources .btn-link i {
+    padding-right: 5px; }
+
+.page-resources .error-state-form, .page-results .error-state-form {
+  margin-top: 15px; }
+
+.page-resources .back-chev i, .page-results .back-chev i {
+  padding-right: 5px;
+  padding-top: 20px; }
+
+.page-resources .card-nested .card-row, .page-results .card-nested .card-row {
+  overflow: hidden;
+  padding: 0 10px 10px;
+  margin-bottom: 30px; }
+  @media (min-width: 992px) {
+    .page-resources .card-nested .card-row, .page-results .card-nested .card-row {
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 40px;
+      padding-top: 10px; } }
+
+.page-resources .card-nested .form-inline h3, .page-results .card-nested .form-inline h3 {
+  margin-top: 10px;
+  font-weight: 700; }
+
+.page-resources .card-nested .form-inline label, .page-results .card-nested .form-inline label {
+  display: block; }
+
+.page-resources .card-nested .form-inline input, .page-resources .card-nested .form-inline select, .page-results .card-nested .form-inline input, .page-results .card-nested .form-inline select {
+  width: 100%; }
+
+.page-resources .card-nested .form-inline button, .page-results .card-nested .form-inline button {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .page-resources .card-nested .form-inline button, .page-results .card-nested .form-inline button {
+      margin-top: 26px; } }
+
+.page-resources .card-nested .bene-container, .page-results .card-nested .bene-container {
+  padding-top: 20px; }
+  @media (min-width: 992px) {
+    .page-resources .card-nested .bene-container > div:first-child, .page-results .card-nested .bene-container > div:first-child {
+      padding-left: 0; } }
+  @media (max-width: 992px) {
+    .page-resources .card-nested .bene-container, .page-results .card-nested .bene-container {
+      text-align: center; } }
+
+.page-resources .card-nested .bene-panel, .page-results .card-nested .bene-panel {
+  text-align: center;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 10px;
+  margin-bottom: 15px;
+  width: 200px;
+  min-height: 210px;
+  display: inline-block;
+  border: 1px solid #ECECEC;
+  box-shadow: 0 0 2px #ccc;
+  position: relative;
+  transition: background-color 500ms ease; }
+  .page-resources .card-nested .bene-panel .icon-wrapper, .page-results .card-nested .bene-panel .icon-wrapper {
+    padding-top: 10px; }
+    .page-resources .card-nested .bene-panel .icon-wrapper img, .page-results .card-nested .bene-panel .icon-wrapper img {
+      width: 50px; }
+  .page-resources .card-nested .bene-panel .btn-link, .page-results .card-nested .bene-panel .btn-link {
+    display: block;
+    text-decoration: none;
+    margin-top: 5px; }
+  .page-resources .card-nested .bene-panel .label-inner, .page-results .card-nested .bene-panel .label-inner {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 0.889em; }
+  .page-resources .card-nested .bene-panel:hover, .page-results .card-nested .bene-panel:hover {
+    background-color: rgba(0, 0, 0, 0.15); }
+
+.page-resources .card-nested .bene-container, .page-results .card-nested .bene-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: center;
+      justify-content: center; }
+  @media (min-width: 662px) {
+    .page-resources .card-nested .bene-container, .page-results .card-nested .bene-container {
+      -ms-flex-pack: justify;
+          justify-content: space-between; } }
+
+.page-resources .card-nested .benefits-selector-checkbox, .page-results .card-nested .benefits-selector-checkbox {
+  height: 125px;
+  width: 170px;
+  text-align: center;
+  position: relative;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: background-color 500ms ease; }
+  @media (min-width: 436px) {
+    .page-resources .card-nested .benefits-selector-checkbox, .page-results .card-nested .benefits-selector-checkbox {
+      margin-right: 10px;
+      margin-left: 10px; } }
+  @media (min-width: 992px) {
+    .page-resources .card-nested .benefits-selector-checkbox, .page-results .card-nested .benefits-selector-checkbox {
+      margin-right: 0;
+      margin-left: 0; } }
+  .page-resources .card-nested .benefits-selector-checkbox:hover, .page-results .card-nested .benefits-selector-checkbox:hover {
+    background-color: rgba(0, 0, 0, 0.15); }
+
+.page-resources .card-nested .benefits-selector-checkbox-content, .page-results .card-nested .benefits-selector-checkbox-content {
+  padding: 15px 10px 10px;
+  transition: 300ms linear background-color;
+  border: 1px solid #ECECEC;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  border-radius: 6px;
+  color: #515356; }
+  .page-resources .card-nested .benefits-selector-checkbox-content .icon-wrapper img, .page-results .card-nested .benefits-selector-checkbox-content .icon-wrapper img {
+    width: 50px; }
+  .page-resources .card-nested .benefits-selector-checkbox-content .benefits-selector-label, .page-results .card-nested .benefits-selector-checkbox-content .benefits-selector-label {
+    display: table;
+    width: 100%; }
+    .page-resources .card-nested .benefits-selector-checkbox-content .benefits-selector-label .label-inner, .page-results .card-nested .benefits-selector-checkbox-content .benefits-selector-label .label-inner {
+      display: table-cell;
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.889em;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      padding-top: 10px; }
+
+.page-resources .card-nested .ncoa-pagination-container, 
+.page-results .card-nested .ncoa-pagination-container {
+  text-align: center; }
+
+.page-results .search-results ul {
+  padding: 0 20px;
+  margin: 0;
+  border-bottom: 1px solid #ccc; }
+  .page-results .search-results ul li {
+    list-style: none;
+    margin: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc; }
+    .page-results .search-results ul li:last-child {
+      border-bottom: none; }
+
+.resource-results-container {
+  padding-top: 40px; }
+  .resource-results-container h1 {
+    margin-top: 0px;
+    padding-top: 10px; }
+  .resource-results-container .card {
+    margin-bottom: 80px; }

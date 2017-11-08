@@ -14,7 +14,7 @@
             <li>Name of prescription medications that you take (include brand name and generic drugs)</li>
         </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue.</p>
 
-                <div class="cta">
+                <div ng-show="$root.hasPrescreen" class="cta">
                     <strong>Just a reminder:</strong> Answer all your questions as your {{screenData.searchingFor}}.
                 </div>
                 <question ng-repeat="question in $root.questions[category]" question="question"></question>
@@ -22,7 +22,7 @@
             </div>
 
             <!-- Profile Section-->
-            <div class="col-md-3 hidden-sm hidden-xs profile-section" profile></div>
+            <div ng-if="$root.hasPrescreen" class="col-md-3 hidden-sm hidden-xs profile-section" profile></div>
         </div>
     </div>
     <div class="btns-container clearfix" page-switch>
