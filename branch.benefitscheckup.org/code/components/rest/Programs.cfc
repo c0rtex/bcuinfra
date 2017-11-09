@@ -262,6 +262,55 @@
     </cffunction>
     --->
 
+    <cffunction name="getProgramForms">
+        <cfargument name="programId" required="true" default="0">
+        <cfargument name="stateId" required="false" default="">
+
+        <cfif stateId eq "">
+            <cfset var forms = ormExecuteQuery("select fft.string,
+                                                   ft.name,
+                                                   f.id,
+                                                   ftp.code
+                                            from program_form pf join
+                                                 pf.form f join
+                                                 f.form_form_types fft join
+                                                 f.form_tag ft join
+                                                 fft.form_type ftp
+                                            where pf.program.id=?
+                                                  and ftp.id in (1,3)
+                                                  and fft.active=1
+					    ORDER BY pf.sort",[programId])>
+        <cfelse>
+            <cfset var forms = ormExecuteQuery("select fft.string,
+                                                   ft.name,
+                                                   f.id,
+                                                   ftp.code
+                                            from program_form pf join
+                                                 pf.form f join
+                                                 f.form_form_types fft join
+                                                 f.form_tag ft join
+                                                 fft.form_type ftp
+                                            where pf.program.id=?
+                                                  and ftp.id in (1,3)
+                                                  and fft.active=1 and (f.state.id=? or f.state is null)
+					    ORDER BY pf.sort",[programId,stateId])>
+        </cfif>
+
+        <cfset var retVal = arrayNew(1)>
+
+        <cfloop array="#forms#" index="fi">
+            <cfset fItem = structNew()>
+            <cfset fItem["url"] = fi[1]>
+            <cfset fItem["caption"] = fi[2]>
+            <cfset fItem["id"] = fi[3]>
+            <cfset fItem["type"] = fi[4]>
+            <cfset arrayAppend(retVal,fItem)>
+        </cfloop>
+
+        <cfreturn retVal>
+    </cffunction>
+
+
     <cffunction name="getIncomeTables">
 
         <cfif Not structKeyExists(sa,'no_hh_members') or sa.no_hh_members eq 0>

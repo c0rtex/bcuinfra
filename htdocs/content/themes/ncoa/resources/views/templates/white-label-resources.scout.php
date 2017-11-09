@@ -121,7 +121,10 @@
             <p>@{{value.program.prg_desc}}</p>
             <h4>Associated Medication</h4>
             <ul class="associated-meds">
-              <li ng-repeat="drug in value.drugs">@{{drug.display}} <em>(@{{drug.type}})</em></p>
+              <li ng-repeat="drug in value.drugs">@{{drug.display}} <em>(@{{drug.type}})</em></li>
+            </ul>
+            <ul ng-if="value.program.forms.length > 0">
+              <li ng-repeat="form in value.program.forms"><a ng-href="@{{formatUrl(form.url,form.type)}}" target="_blank">@{{form.caption}}</a></li>
             </ul>
           </li>
         </ul>

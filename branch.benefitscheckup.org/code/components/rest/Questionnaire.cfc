@@ -232,6 +232,12 @@
                         <cfset prgFull["prg_nm"]=p.getName_display().getDisplay_text()>
                         <cfset prgFull["prg_desc"]=p.getShort_desc()>
                         <cfset prgFull["code"]=p.getCode()>
+                            <cfinvoke  component="Programs"
+                                    method = "getProgramForms"
+                                    programId = "#p.getId()#"
+                                    returnVariable = "forms">
+                        <cfset prgFull["id"]=p.getId()>
+                        <cfset prgFull["forms"] = forms>
                         <cfset arrayAppend(option["programs"],prgFull)>
                     <cfelse>
                         <cfset arrayAppend(option["programs"],p.getCode())>
@@ -275,6 +281,11 @@
                         <cfset pbD["prg_nm"]=p.getName_display().getDisplay_text()>
                         <cfset pbD["prg_desc"]=p.getShort_desc()>
                         <cfset pbD["code"]=p.getCode()>
+                        <cfinvoke  component="Programs"
+                                    method = "getProgramForms"
+                                    programId = "#p.getId()#"
+                                    returnVariable = "forms">
+                        <cfset pbD["forms"] = forms>
                     <cfelse>
                         <cfset pbD["program"] = p.getCode()>
                     </cfif>
