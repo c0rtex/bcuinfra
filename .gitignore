@@ -16,6 +16,7 @@ vendor/
 
 ### IDE
 .idea/
+*.iml
 
 ### Wordpress
 /htdocs/cms/*
