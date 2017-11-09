@@ -230,6 +230,7 @@
                       @endif
                     </div>
                   </li>
+                  <div style="clear:both;"></div>
                   @endforeach
                 </ul>
               </div>
