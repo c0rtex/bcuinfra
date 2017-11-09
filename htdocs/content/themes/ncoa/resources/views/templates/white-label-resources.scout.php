@@ -73,7 +73,7 @@
 
         <ul ng-if="results.length > 0">
           <li ng-repeat="result in results | orderBy:'result.name'">
-            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" target="_blank" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
             <p><div-program-desc program_code="result.code"/></p>
             <ul ng-if="result.forms.length > 0">
               <li ng-repeat="form in result.forms"><a ng-href="@{{formatUrl(form.url,form.type)}}" target="_blank">@{{form.caption}}</a></li>
@@ -117,7 +117,7 @@
 
         <ul ng-if="drugPrograms">
           <li ng-repeat="(key, value) in drugPrograms">
-            <a ng-href="/fact-sheets/factsheet_@{{value.program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{value.program.prg_nm}}"></ng-label></a>
+            <a target="_blank" ng-href="/fact-sheets/factsheet_@{{value.program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{value.program.prg_nm}}"></ng-label></a>
             <p>@{{value.program.prg_desc}}</p>
             <h4>Associated Medication</h4>
             <ul class="associated-meds">
