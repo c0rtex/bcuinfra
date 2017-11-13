@@ -35,6 +35,7 @@
 	<cfproperty name="legacy_pri_sec">
 	<cfproperty name="key_program" tostruct="key_program" column="keyprogram_flag">
 	<cfproperty name="short_desc" tostruct="short_desc">
+	<cfproperty name="subsets" fieldtype="many-to-many" cfc="subset" linktable="subset_program_sum" inversejoincolumn="subset_id" fkcolumn="program_id">
 
 	<cffunction name="getlegacy">
 		<cfif this.getlegacy_prg_id() eq ''>
