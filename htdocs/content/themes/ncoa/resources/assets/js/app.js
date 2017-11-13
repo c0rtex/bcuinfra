@@ -3085,6 +3085,15 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
     });
 }]);
 
+app.controller('shortFactSheetsController',['$scope',function($scope){
+	$scope.showBack = function(){
+		if(window.history.length <= 2){
+			return false;
+		}else{
+			return true;
+		}
+	}
+}]);
 
 app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 
