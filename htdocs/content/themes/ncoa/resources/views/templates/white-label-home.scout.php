@@ -178,15 +178,21 @@
       </div><!--/.container-->
     </section><!--/.program-highlights-->
 
+    <?php $show_reminder = Option::get('global-settings', 'show-white-label-orange-banner'); ?>
+    @if (!empty($show_reminder))
     <section class="reminder">
       <div class="container">
         <div class="row">
           <div class="reminder__text exclamation">
-            <p><strong>REMINDER:</strong> The Medicare Annual Open Enrollment period is October 15th through December 7th. However, the Marketplace Open Enrollment period is November 1st through December 15th.
+            <?php $reminder = Option::get('global-settings', 'white-label-orange-banner'); ?>
+            @if (!empty($reminder))
+            {{Option::get('global-settings', 'white-label-orange-banner')}}
+            @endif
           </div><!--/.reminder__text-->
         </div><!--/.row-->
       </div><!--/.container-->
     </section><!--/.reminder-->
+    @endif
 
     <div class="white-bg">
       <div class="container">
