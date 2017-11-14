@@ -15,7 +15,7 @@
         </ul>" data-placement="top" class="ready-list" href="#">Click here</a> for some information you may want to have ready before you continue.</p>
 
                 <question question="zipQuestion"></question>
-                <div ng-show="$root.isZipValid">
+                <div ng-show="showOtherQuestions">
                 <question ng-repeat="question in $root.questions['basics']" question="question"></question>
                 </div>
             </div>
