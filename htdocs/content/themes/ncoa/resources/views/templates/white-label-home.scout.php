@@ -194,10 +194,13 @@
     </section><!--/.reminder-->
     @endif
 
+    <?php $show_shortcuts = Option::get('global-settings', 'show-white-label-shortcuts'); ?>
+    @if (!empty($show_shortcuts) || !empty($posts))
     <div class="white-bg">
       <div class="container">
         <div class="row">
           <div class="grid-1-to-2">
+            @if (!empty($show_shortcuts))
             <div class="grid-1-to-2__1">
               <section class="shortcuts">
                 <h3>Shortcuts</h3>
@@ -210,6 +213,7 @@
                 </ul>
               </section><!--/.shortcuts-->
             </div>
+            @endif
             @if (!empty($posts))
             <div class="grid-1-to-2__2">
               <div class="blog">
@@ -246,6 +250,7 @@
         </div>
       </div>
     </div>
+    @endif
 
   @endloop
 @stop
