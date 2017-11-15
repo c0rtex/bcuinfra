@@ -1,72 +1,96 @@
-<a href="http://drone.springbox.com/springbox/ncoa"><img src="http://drone.springbox.com/api/badges/springbox/ncoa/status.svg" /></a>
+# Linux / Mac Dev Setup
 
-[![Build Status](http://drone.springbox.com/api/badges/springbox/ncoa/status.svg)](http://drone.springbox.com/springbox/ncoa)
-Themosis framework for Springbox
-=================================
+This document describes how I set up my developer environment on Linux. The steps outlined in this document should work on Mac OS X as well.
 
-The Themosis framework is a tool aimed to WordPress developers of any levels. But the better WordPress and PHP knowledge you have the easier it is to work with.
+## Prerequisites
 
-Themosis framework is a tool to help you develop websites and web applications faster using [WordPress](https://wordpress.org). Using an elegant and simple code syntax, Themosis framework helps you structure and organize your code and allows you to better manage and scale your WordPress websites and applications.
+The following files must be provided by Leviathan Technology before proceeding with the installation:
 
-Development team
-----------------
+* **db.sql.gz**: Database backup.
+* **uploads.tar.gz**: "uploads" folder. Contains all assets uploaded by content editors. 
 
+## Installation
 
-docker login
-git clone git@gitlab.springbox.com:springbox/themosis-base.git
-docker-compose up
+* Clone repository   
+```
+$ git clone git@git.assembla.com:bcuinfra.2.git
+$ cd bcuinfra.2
+```
 
-Hi, welcome to Themosis-base. This is literally a git clone git@github.com:themosis/themosis.git
+* Switch to the "develop" branch   
+```
+$ git checkout develop
+```
 
+* **TEMPORARY**: Revert /htdocs/cms/ folder   
+_Composer overwrites our version of Themosis framework and therefore the cms folder needs to be reverted. This step won't be needed anymore once we upgrade the framework._
+```
+git checkout -- htdocs/cms/
+```
 
+* Unzip database backup and import sql file into MySQL    
+```
+$ gunzip db.sql.gz
+$ mysql -uUSER -pPASS DB_NAME < db.sql
+```
 
-The only changes that exist to this repo is the apach2.conf, themosis.dev.conf, and the .env.local.php. If you wish to use this repo, remember to set these variables accordingly when you migrate to a new project.
+* Install dependencies   
+```
+$ composer install
+```
 
+* Update .env file with your local settings (credentials)
+```
+$ vim .env
 
-Important
+DB_NAME=ncoa
+DB_USER=root
+DB_PASSWORD=root
+DB_HOST=127.0.0.1
+WP_HOME=http://localhost:8000
+WP_SITEURL=http://localhost:8000/cms
+```
 
-You must edit the docker-compose.yml and the Dockerfile.local when you change this repo into a new project.
+* Find your hostname   
+```
+$ hostname
+medusa
+```
 
-Edit docker-compose.yml
+* Register your hostname as a local environment
+```
+$ vim config/environment.php
 
-hostname: local
-VIRTUALHOST: newproject.dev
-VIRTUAL_HOST: newproject.dev
-links
-  -db:mysql.newproject.dev
+<?php
 
+/*----------------------------------------------------*/
+// Define your environments
+/*----------------------------------------------------*/
+return [
 
+    'local'         =>  ['local','Rustams-MacBook-Pro.local','ncoa.dev','medusa'],
+    'production'    => 'ncoa.dev'
 
+];
+```
 
-On the database,
+* Create storage/views folders   
+```
+$ mkdir -p storage/views
+$ chmod -R 777 storage
+```
 
-db:
-  ...
-  ...
-  environment:
-  - VIRTUAL_HOST=mysql.newproject.dev
+* Extract the "uploads" folder provided
+```
+$ tar xvzf uploads.tar.gz -C htdocs/content/
+$ chmod -R 777 htdocs/content/uploads
+```
 
+* Start PHP server
+```
+$ php -S localhost:8000 -t htdocs
+```
 
+Visit website! http://localhost:8000/ (it might take a few seconds to load the first time)
 
-
-What does this do?
-
-Docker sometimes has probably when you're trading between virtual machines. The reason is that virtual machines run at different authorities on different OSs. This image was made on Ubuntu but can still translate over to any OS.
-The import point is that the jwilder/proxy will reverse all these changes to the containers, in real time, to a port that is more easy to locate with your browser. Also, Themosis requires that there be a hostname as well.
-
-Lastly
-
-If you have a problem with a stream or folder not allowed permissions, you have two options based on this docker-compose.yml 
-
-You could chown -R 644 . && chmod -R 644 . on your own bash 
-
-Or
-
-You run docker-compose run themosis bash. When you're bashed into the container, run cd .. && chown -R 644 . && chmod -R 644 .
-
-Then you may refresh the website.
-
-
-Login is springbox
-Password is springbox
-
+**Congratulations! You now have your dev environment set up.**
