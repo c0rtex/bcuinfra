@@ -22,12 +22,6 @@ $ cd bcuinfra.2
 $ git checkout develop
 ```
 
-* **TEMPORARY**: Revert /htdocs/cms/ folder   
-_Composer overwrites our version of Themosis framework and therefore the cms folder needs to be reverted. This step won't be needed anymore once we upgrade the framework._
-```
-git checkout -- htdocs/cms/
-```
-
 * Unzip database backup and import sql file into MySQL    
 ```
 $ gunzip db.sql.gz
@@ -37,6 +31,12 @@ $ mysql -uUSER -pPASS DB_NAME < db.sql
 * Install dependencies   
 ```
 $ composer install
+```
+
+* **TEMPORARY**: Revert /htdocs/cms/ folder   
+_Composer overwrites our version of Themosis framework and therefore the cms folder needs to be reverted. This step won't be needed anymore once we upgrade the framework._
+```
+git checkout -- htdocs/cms/
 ```
 
 * Update .env file with your local settings (credentials)
