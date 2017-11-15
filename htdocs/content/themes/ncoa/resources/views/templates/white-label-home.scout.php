@@ -200,16 +200,14 @@
       <div class="container">
         <div class="row">
           <div class="grid-1-to-2">
-            @if (!empty($show_shortcuts))
+            @if (!empty($show_shortcuts) && !empty($shortcuts_menu))
             <div class="grid-1-to-2__1">
               <section class="shortcuts">
                 <h3>Shortcuts</h3>
                 <ul>
-                  <li><a href="https://www.ncoa.org/resources/benefits-enrollment-center-toolkit/" target="_blank">Benefits Enrollment Center (BEC) Toolkit </a></li>
-                  <li><a href="https://www.ncoa.org/map/ncoa-map/"  target="_blank">Map of BEC Grantees</a></li>
-                  <li><a href="https://www.ncoa.org/resources/bec-promising-practices-report/"  target="_blank">BEC Promising Practices Report</a></li>
-                  <li><a href="https://www.ncoa.org/centerforbenefits/outreach-toolkit/"  target="_blank">Outreach Toolkit</a></li>
-     
+                  @foreach ($shortcuts_menu as $link)
+                  <li><a href="{{$link->url}}" target="_blank">{{$link->title}}</a></li>
+                  @endforeach
                 </ul>
               </section><!--/.shortcuts-->
             </div>
