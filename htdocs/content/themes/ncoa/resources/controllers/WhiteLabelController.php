@@ -71,6 +71,9 @@ class WhiteLabelController extends BaseController
     $home6 = false;
     $posts = $this->_load_rss_feed();
 
+    $menu_name = 'Shortcuts Menu';
+    $shortcuts_menu = wp_get_nav_menu_items($menu_name);
+
     return View::make('templates.white-label-home', [
       'loggedin' => $loggedin,
       'medicarerx' => $medicarerx,
@@ -82,6 +85,7 @@ class WhiteLabelController extends BaseController
       'resources' => $resources,
       'home6' => $home6,
       'posts' => $posts,
+      'shortcuts_menu' => $shortcuts_menu,
     ])->render(); 
   }
 
@@ -95,6 +99,9 @@ class WhiteLabelController extends BaseController
     $resources = false;
     $home6 = true;
     $posts = $this->_load_rss_feed();
+
+    $menu_name = 'Shortcuts Menu';
+    $shortcuts_menu = wp_get_nav_menu_items($menu_name);
     
     return View::make('templates.white-label-home', [
       'loggedin' => $loggedin,
@@ -107,6 +114,7 @@ class WhiteLabelController extends BaseController
       'resources' => $resources,
       'home6' => $home6,
       'posts' => $posts,
+      'shortcuts_menu' => $shortcuts_menu,
     ])->render(); 
   }
 
