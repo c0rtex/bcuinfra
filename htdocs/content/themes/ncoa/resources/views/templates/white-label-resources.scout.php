@@ -73,11 +73,39 @@
 
         <ul ng-if="results.length > 0">
           <li ng-repeat="result in results | orderBy:'result.name'">
-            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
-            <p><div-program-desc program_code="result.code"/></p>
+            <a ng-href="/fact-sheets/factsheet_@{{result.code}}?state=@{{values.state}}&short=n" target="_blank" class="btn-link btn-underline"><ng-label text="@{{result.prg_nm}}"></ng-label></a>
+            <p>@{{result.prg_desc}}</p>
             <ul ng-if="result.forms.length > 0">
-              <li ng-repeat="form in result.forms"><a ng-href="@{{formatUrl(form.url,form.type)}}" target="_blank">@{{form.caption}}</a></li>
+              <li ng-repeat="form in result.forms | limitTo:4">
+                <a ng-if="result.forms.length <= 3 || !$last" ng-href="@{{formatUrl(form.url,form.type)}}" target="_blank">@{{form.caption}}</a>
+                <a ng-if="result.forms.length > 3 && $last" data-toggle="modal" data-target="#applications-@{{result.code}}" href="">View Additional Applications</a>
+              </li>
             </ul>
+
+            <div ng-if="result.forms.length > 3" id="applications-@{{result.code}}" class="modal fade" role="dialog">
+              <!-- View more dialog: @{{result.prg_nm}} -->
+              <div class="modal-dialog">
+
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Application Forms for @{{result.prg_nm}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div ng-repeat="form in result.forms">
+                      <a href="@{{formatUrl(form.url,form.type)}}" target="_blank" class="btn btn-link fact-sheets-side-link">
+                        <span style="white-space: pre-line">@{{form.caption}}</span>
+                      </a><br />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+              <!-- End view more dialog -->
+            </div>
+
           </li>
         </ul>
 
@@ -117,11 +145,42 @@
 
         <ul ng-if="drugPrograms">
           <li ng-repeat="(key, value) in drugPrograms">
-            <a ng-href="/fact-sheets/factsheet_@{{value.program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{value.program.prg_nm}}"></ng-label></a>
+            <a target="_blank" ng-href="/fact-sheets/factsheet_@{{value.program.code}}/?short=n" class="btn-link btn-underline"><ng-label text="@{{value.program.prg_nm}}"></ng-label></a>
             <p>@{{value.program.prg_desc}}</p>
+            <ul ng-if="value.program.forms.length > 0">
+              <li ng-repeat="form in value.program.forms | limitTo:4">
+                <a ng-if="value.program.forms.length <= 3 || !$last" ng-href="@{{formatUrl(form.url,form.type)}}" target="_blank">@{{form.caption}}</a>
+                <a ng-if="value.program.forms.length > 3 && $last" data-toggle="modal" data-target="#drug-applications-@{{result.code}}" href="">View Additional Applications</a>
+              </li>
+
+              <div ng-if="value.program.forms.length > 3" id="drug-applications-@{{result.code}}" class="modal fade" role="dialog">
+                <!-- View more dialog: @{{value.program.prg_nm}} -->
+                <div class="modal-dialog">
+
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Application Forms for @{{value.program.prg_nm}}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div ng-repeat="form in value.program.forms">
+                        <a href="@{{formatUrl(form.url,form.type)}}" target="_blank" class="btn btn-link fact-sheets-side-link">
+                          <span style="white-space: pre-line">@{{form.caption}}</span>
+                        </a><br />
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- End view more dialog -->
+              </div>
+
+            </ul>
             <h4>Associated Medication</h4>
             <ul class="associated-meds">
-              <li ng-repeat="drug in value.drugs">@{{drug.display}} <em>(@{{drug.type}})</em></p>
+              <li ng-repeat="drug in value.drugs">@{{drug.display}} <em>(@{{drug.type}})</em></li>
             </ul>
           </li>
         </ul>

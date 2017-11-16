@@ -2582,7 +2582,7 @@ app.controller('questionnaireController', ['$scope','$state', 'questionnaire', f
 
 }]);
 
-app.controller('basicsScreeningController',['$scope','$state','screening',function($scope,$state,screening){
+app.controller('basicsScreeningController',['$scope','$state','screening','$rootScope','prescreenQuestions','prescreen',function($scope,$state,screening,$rootScope,prescreenQuestions,prescreen){
     $state.params.category="basics";
     $scope.$root.isScreening = true;
     if ($scope.$root.questions == undefined) {
@@ -2597,8 +2597,20 @@ app.controller('basicsScreeningController',['$scope','$state','screening',functi
         return a.code == 'zip';
     })[0];
 
-    $scope.$root.questions.basics = $scope.$root.questions.basics.filter(function(a) {
-        return a.code != 'zip';
+
+
+    $scope.$root.isZipValid = $scope.$root.isZipValid ? $scope.$root.isZipValid : undefined;
+
+    $rootScope.$watch('answers.basics.st', function() {
+        $scope.showOtherQuestions = false;
+        if ($rootScope.isZipValid) {
+            prescreenQuestions.get("basics", (prescreen.data.results ? prescreen.data.results.screening.id : undefined), $rootScope.answers.basics.st).success(function (data) {
+                $scope.$root.questions.basics = data.questions.filter(function(a) {
+                    return a.code != 'zip';
+                });
+                $scope.showOtherQuestions = true;
+            });
+        }
     });
 
     if ($scope.$root.answers == undefined) {
@@ -3085,6 +3097,15 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
     });
 }]);
 
+app.controller('shortFactSheetsController',['$scope',function($scope){
+	$scope.showBack = function(){
+		if(window.history.length <= 2){
+			return false;
+		}else{
+			return true;
+		}
+	}
+}]);
 
 app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 

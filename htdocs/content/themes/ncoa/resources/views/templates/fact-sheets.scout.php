@@ -13,7 +13,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
 @section('main')
 @query(['post_type' => 'fact-sheets', 'posts_per_page' => 3, 'name' => $page_slug])
 
-<div class="container fact-sheet">
+<div class="container fact-sheet" ng-controller="shortFactSheetsController">
     <header class="visible-print-block print-header">
         <img src="/content/themes/ncoa/resources/assets/images/BCU-logo.svg" alt="National Council on Aging: Benefits Checkup" class="pull-left print-logo">
         <div class="pull-right"><span>www.benefitscheckup.org</span></div>
@@ -22,7 +22,7 @@ $snap_findstores_url = trim(Meta::get(Loop::id(), $key = 'find_stores_to_use_deb
     </header>
 
     <div class="card-header">
-        <a href="javascript:history.back()" class="btn-link btn-back">Back</a>
+        <a ng-show="showBack()" href="javascript:history.back()" class="btn-link btn-back">Back</a>
     </div>
 
     <div class="card">

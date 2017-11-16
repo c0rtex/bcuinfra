@@ -111,6 +111,9 @@
                                             from
                                               subset_question_tmp sqt join
                                               sqt.question q join
+                                              q.answer_fields af join
+                                              af.answer a join
+                                              a.programs p join
                                               q.question_category qc join
                                               qc.super_category sc
                                               left join q.subset_question_programcategory sqp
@@ -118,8 +121,10 @@
                                               sqt.subset.id=?
                                               and sqt.state=?
                                               and sc.code=?
+                                              and p.active_flag=1
+                                              and (p.state = ? or p.state is null)
                                               #sqs#
-                                            order by sqt.sort",[subset_id,state,superCategoryCode])>
+                                            order by sqt.sort",[subset_id,state,superCategoryCode,state])>
 
 
         <cfset retVal = arrayNew(1)>
@@ -144,7 +149,7 @@
                 </cfcase>
 
                 <cfdefaultcase>
-                    <cfset strct["answer_fields"] = this.getAnswersFilteredByState(i,state,prevScreeningId)>
+                    <cfset strct["answer_fields"] = this.getAnswersFilteredByState(i,state,subset_id,prevScreeningId)>
                 </cfdefaultcase>
 
             </cfswitch>
@@ -232,6 +237,12 @@
                         <cfset prgFull["prg_nm"]=p.getName_display().getDisplay_text()>
                         <cfset prgFull["prg_desc"]=p.getShort_desc()>
                         <cfset prgFull["code"]=p.getCode()>
+                            <cfinvoke  component="Programs"
+                                    method = "getProgramForms"
+                                    programId = "#p.getId()#"
+                                    returnVariable = "forms">
+                        <cfset prgFull["id"]=p.getId()>
+                        <cfset prgFull["forms"] = forms>
                         <cfset arrayAppend(option["programs"],prgFull)>
                     <cfelse>
                         <cfset arrayAppend(option["programs"],p.getCode())>
@@ -275,6 +286,11 @@
                         <cfset pbD["prg_nm"]=p.getName_display().getDisplay_text()>
                         <cfset pbD["prg_desc"]=p.getShort_desc()>
                         <cfset pbD["code"]=p.getCode()>
+                        <cfinvoke  component="Programs"
+                                    method = "getProgramForms"
+                                    programId = "#p.getId()#"
+                                    returnVariable = "forms">
+                        <cfset pbD["forms"] = forms>
                     <cfelse>
                         <cfset pbD["program"] = p.getCode()>
                     </cfif>
@@ -300,9 +316,10 @@
     <cffunction name="getAnswersFilteredByState">
         <cfargument name="question">
         <cfargument name="state" default="">
+        <cfargument name="subsetId">
         <cfargument name="screening">
 
-        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and (p.state=? or p.state is null) and p.active_flag=1 and p.exclude_flag=0) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0) or p.id is null))) order by qa.sort",[question,state,state,state])>
+        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p join p.subsets s where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and (p.state=? or p.state is null) and p.active_flag=1 and p.exclude_flag=0) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0) or p.id is null))) and s.id=? order by qa.sort",[question,state,state,state,subsetId])>
         <cfset var retArray = arrayNew(1)>
         <cfloop array="#answers#" index="i">
             <cfset var afStrct = i.toStructure()>
