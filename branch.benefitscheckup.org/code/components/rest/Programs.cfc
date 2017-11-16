@@ -179,6 +179,12 @@
         </cfloop>
 
         <cfloop array="#programs#" index="i">
+            <cfif not structKeyExists(programsByCategories,i[2])>
+                <cfset programsByCategories[i[2]] = structNew()>
+                <cfset programsByCategories[i[2]]["sort"] = i[3]>
+                <cfset programsByCategories[i[2]]["count"] = 0>
+                <cfset programsByCategories[i[2]]["programs"] = arrayNew(1)>
+            </cfif>
             <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
             <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
         </cfloop>
