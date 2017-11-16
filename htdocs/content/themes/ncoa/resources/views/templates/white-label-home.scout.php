@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <div class="hero__header">
-            <h1>Find and enroll in public and private benefit programs</h1>
+            <h1>Screen for public and private benefit programs</h1>
             <p>Answer a few questions to quickly find benefits in your area</p>
           </div><!--/.hero__header-->
           <div class="hero__form">
