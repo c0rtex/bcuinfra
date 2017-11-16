@@ -41,7 +41,7 @@ $bcu_url = $_SERVER['SERVER_NAME'] == 'becs.benefitscheckup.org' ? 'https://qa.b
         </form>
 
         <footer class="white-label-landing__footer">
-          <p>Not using a Benefits Enrollment Center?</p>
+          <p>Not a Benefits Enrollment Center?</p>
           <p><a href="{{ $bcu_url }}">Visit BenefitsCheckUp.org</a></p>
         </footer>
 

@@ -38,7 +38,7 @@
                             <a href="/welcome-partner-login-page/">Login</a>
                         </li>
                         <li class="@if($grantees)current-menu-item current_page_item @endif">
-                            <a href="/grantees">Grantees</a>
+                            <a href="/grantees">Grantees List</a>
                         </li>
                         <li class="@if($resources)current-menu-item current_page_item @endif">
                             <a href="/resources-forms">Resources &amp; Forms</a>
