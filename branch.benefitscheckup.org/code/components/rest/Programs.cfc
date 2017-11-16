@@ -165,25 +165,9 @@
 
         <cfset screening = entityLoadByPK("screening",screeningId)>
 
-        <cfset sqs = "1=1">
-        <!--- temporally disabled super category filter --->
-        <!---<cfif not isnull(screening.getPrev_screening())>
-            <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening.id=?)",[screening.getPrev_screening().getId()])>
-            <cfif arraylen(ps) neq 0>
-                <cfset sqs = "0">
-            </cfif>
-            <cfloop array="#ps#" index="psi">
-                <cfset sqs = "#sqs#,#psi.getId()#">
-            </cfloop>
-            <cfif arraylen(ps) neq 0>
-                <cfset sqs = " sc.id in (#sqs#)">
-            </cfif>
-        </cfif>--->
+        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by sc.sort, p.key_program, p.sort",[screening])>
 
-
-        <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? and #sqs# order by sc.sort, p.key_program, p.sort",[screening])>
-
-        <cfset superCategories = ormExecuteQuery("select sc.answerfieldcode,sc.sort from program_supercategory sc where #sqs# order by sc.sort")>
+        <cfset supercategories = ormExecuteQuery("select distinct sc.answerfieldcode,sc.sort from program p join p.program_category pc join pc.super_category sc join p.subsets s where s.id=? order by sc.sort",[screening.getSubset().getId()])>
 
         <cfset programsByCategories = structNew()>
 
@@ -212,55 +196,6 @@
 
         <cfreturn serializeJSON(retVal)>
     </cffunction>
-
-    <!--- TODO remove unused method --->
-    <!---
-
-    <cffunction name="programsForPrescreen" access="remote" restpath="/forPrescreen/{screeningId}" returnType="String" httpMethod="GET">
-        <cfargument name="screeningId" required="true" restargsource="Path" type="numeric"/>
-
-        <cfset screening = entityLoadByPK("screening",screeningId)>
-
-        <cfset programsByCategories = structNew()>
-
-        <cfset filter = "''">
-        <cfset groupBy = "">
-        <cfset groupByCount = 0>
-
-        <cfloop collection="#categories#" item="answerCode">
-            <cfif structKeyExists(categories,answerCode)>
-                <cfset programsByCategories[answerCode] = structNew()>
-                <cfset programsByCategories[answerCode]["count"] = 0>
-                <cfset programsByCategories[answerCode]["programs"] = arrayNew(1)>
-                <cfloop array="#categories[answerCode]#" index="category">
-                    <cfset filter="#filter#,'#category#'">
-                </cfloop>
-            </cfif>
-        </cfloop>
-
-        <cfset filter = "(#filter#)">
-
-        <cfset groupedByCategories = ormExecuteQuery("select p, #this.categoriesToGroups()# as category from program p join p.program_category pc where pc.code in #filter# and (p.state=? or p.state is null) and p.active_flag=1 order by 2,p.sort",[sa.st])>
-
-        <cfloop array="#groupedByCategories#" index="i">
-            <cfset programsByCategories[i[2]].count = programsByCategories[i[2]].count + 1>
-            <cfset arrayAppend(programsByCategories[i[2]].programs,i[1].toStructure())>
-        </cfloop>
-
-        <cfset retVal = arrayNew(1)>
-
-        <cfloop collection="#programsByCategories#" item="category">
-            <cfset categoryItem = structNew()>
-            <cfset categoryItem['category'] = category>
-            <cfset categoryItem['count'] = programsByCategories[category].count>
-            <cfset categoryItem['programs'] = programsByCategories[category].programs>
-            <cfset arrayAppend(retVal,categoryItem)>
-        </cfloop>
-
-        <cfreturn serializeJSON(retval)>
-
-    </cffunction>
-    --->
 
     <cffunction name="getProgramForms">
         <cfargument name="programId" required="true" default="0">
@@ -1490,6 +1425,10 @@
 
         <cfif not structKeyExists(sa,'st')>
             <cfset sa.st=screening.getPreset_state().getId()>
+        </cfif>
+
+        <cfif not structKeyExists(sa,'marital_stat')>
+            <cfset sa.marital_stat = 'single'>
         </cfif>
 
 <!---
