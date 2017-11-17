@@ -32,6 +32,7 @@ Route::any('template', ['program-details-template', 'uses' => 'ResourcesControll
 Route::get('template', ['sponsors-template', 'uses' => 'SponsorsController@index']);
 Route::get('template', ['AboutUsTemplate', 'uses' => 'AboutUsController@index']);
 Route::get('template', ['program-snap-template', 'uses' => 'ResourcesController@snap']);
+
 Route::get('template', ['white-label-homepage-template', 'uses' => 'HomeController@whiteLabelIndex']);
 Route::get('template', ['fact-sheets-template', 'uses' => 'FactSheetsController@index']);
 
@@ -48,3 +49,7 @@ Route::get('template', ['white-label-snap-template', 'uses' => 'WhiteLabelContro
 Route::get('template', ['white-label-partner-login-template', 'uses' => 'WhiteLabelController@partner_login']);
 Route::get('template', ['white-label-grantees-template', 'uses' => 'WhiteLabelController@grantees']);
 Route::get('template', ['white-label-resources-template', 'uses' => 'WhiteLabelController@resources']);
+
+
+//Counties map
+Route::get('template', ['resources-medicaid-locator-template', 'uses' => 'ResourcesController@medicaidLocator']);
