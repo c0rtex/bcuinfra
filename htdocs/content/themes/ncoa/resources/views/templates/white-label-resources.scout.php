@@ -178,7 +178,7 @@
               </div>
 
             </ul>
-            <h4>Associated Medication</h4>
+            <h4>Associated Medication(s)</h4>
             <ul class="associated-meds">
               <li ng-repeat="drug in value.drugs">@{{drug.display}} <em>(@{{drug.type}})</em></li>
             </ul>
