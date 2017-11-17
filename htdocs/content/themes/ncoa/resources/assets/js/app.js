@@ -2844,16 +2844,16 @@ app.directive('divProgramsCategory',['BenefitItems', 'prescreen', '$sce', '$stat
 
 // Temporary Echo&Co duplicate for testing program category design on final restults page
 
-app.directive('divProgramsCategorye',['BenefitItems', 'prescreen', '$sce', function(BenefitItems,prescreen, $sce) {
+app.directive('divProgramsCategorye',['BenefitItems', 'prescreen', 'screening', '$sce', function(BenefitItems, prescreen, screening, $sce) {
     return {
         restrict: 'E',
         templateUrl:'/content/themes/ncoa/resources/views/directives/program/programs.categorye.html?'+(new Date()),
         link: function(scope, element) {
             scope.benefitItem = BenefitItems.getByCode(scope.found_program.category);
-            scope.stateId = prescreen.data.answers.stateId;
+            scope.stateId = prescreen.data.answers.stateId || screening.data.answers.basics.zip;
             scope.defaultLangsPre = window.defaultLangsPre;
             scope.defaultLangsFull = window.defaultLangsFull;
-            scope.zipcode = prescreen.data.answers.zip;
+            scope.zipcode = prescreen.data.answers.zip || screening.data.answers.basics.zip;
         },
         scope: {
             found_program:"=foundProgram",
