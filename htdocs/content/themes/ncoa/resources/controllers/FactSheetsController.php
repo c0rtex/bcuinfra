@@ -503,9 +503,12 @@ class FactSheetsController extends BaseController
 
             $appForms = json_decode($appForms->body);
 
-            $becs = \Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/entryPoints/becs/'.$zipcode)->send();
-
-            $becs = json_decode($becs->body);
+            // Hide 'Who can help me to apply?' section on BECS site
+            $becs = '';
+            if ($_SESSION['partner_id'] == 0) {
+                $becs = \Httpful\Request::get($constants['WEB_SERVICE_URL'] . '/rest/backend/entryPoints/becs/'.$zipcode)->send();
+                $becs = json_decode($becs->body);
+            }
 
             $faqsList = Meta::get($post_id, $key = 'faqs-list', $single = true);
 
