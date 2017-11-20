@@ -220,4 +220,24 @@ class ResourcesController extends BaseController
     ]);
   }
 
+
+  public function medicaidLocator(){
+
+    $constants = Config::get('constants');
+
+    return View::make('templates.resources-medicaid-locator',[
+        'loggedin' => true,
+        'medicarerx' => false,
+        'nutrition' => true,
+        'home' => false,
+        'partnerlogin' => false,
+        'grantees' => false,
+        'resources' => false,
+        'home6' => false,
+        'questionnaire' => false,
+        'states' => $this->states_fact_sheets,
+      'webServiceUrl' => $constants['WEB_SERVICE_URL']
+    ]);
+  }
+
 }
