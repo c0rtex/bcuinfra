@@ -3009,7 +3009,8 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
 app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', 'backLocationFinder', function($scope, $http, $window, localStorageService, locationFinder, backLocationFinder){
 
 
-    $scope.findZip = function(zip){
+    $scope.findZip = function(zip, isHome = false){
+        var urlRedirect = isHome ? '/find-my-benefits?subset_id=100' : '/find-my-benefits';
 
         if (zip.length != 5) {
             $scope.isZipInvalid=true;
@@ -3040,7 +3041,7 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
                 if(!$scope.isZipInvalid){
                     localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
-                    $window.location.href = '/find-my-benefits';
+                    $window.location.href = urlRedirect;
                 }
             } else {
                 backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
@@ -3048,7 +3049,7 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                     if (!$scope.isZipInvalid) {
                         retZipCode = data.zip;
                         localStorageService.set('v_zipcode', data.zip);
-                        $window.location.href = '/find-my-benefits';
+                        $window.location.href = urlRedirect;
                     }
                 }).error(function (data, status, headers, config) {
                     $scope.isZipInvalid = true;
@@ -3060,7 +3061,7 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                 if (!$scope.isZipInvalid) {
                     retZipCode = data.zip;
                     localStorageService.set('v_zipcode', data.zip);
-                    $window.location.href = '/find-my-benefits';
+                    $window.location.href = urlRedirect;
                 }
             }).error(function (data, status, headers, config) {
                 $scope.isZipInvalid = true;
