@@ -41,6 +41,7 @@ git checkout -- htdocs/cms/
 
 * Update .env file with your local settings (credentials)
 ```
+$ cp .env.example .env
 $ vim .env
 
 DB_NAME=ncoa
@@ -59,6 +60,7 @@ medusa
 
 * Register your hostname as a local environment
 ```
+$ cp config/environment.php.example config/environment.php
 $ vim config/environment.php
 
 <?php
