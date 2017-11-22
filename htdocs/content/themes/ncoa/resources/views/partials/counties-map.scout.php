@@ -7,22 +7,45 @@
 <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <style>
-	g.highcharts-label text{
-		color: #fff !important;
-		fill: #fff !important;
-		stroke:none;
-	}
-	g.highcharts-label tspan{
-		stroke:none;
-	}
+g.highcharts-label text{
+	color: #fff !important;
+	fill: #fff !important;
+	stroke:none;
+}
+g.highcharts-label tspan{
+	stroke:none;
+}
 </style>
-<div id="container" style="height:900px"></div>
+<div id="highmap-container" style="height:900px;float:left;width:100%"></div>
+<div id="map-locator" style="float:right;width:22%; padding:1.5%;display: none">
+	
+	<h3>Medicaid Office(s):</h3>
 
+
+	<p>For further information about this program: <br/>
+
+		Department of Workforce Services<br/>
+		5735 South Redwood Road<br/>
+		Taylorsville, UT 84123<br/>
+		Toll-Free: (866) 435-7414<br/>
+		View Google Map<br/>
+	</p>
+
+	<p>Department of Workforce Services<br/>
+		7292 South State Street<br/>
+		Midvale, UT 84047<br/>
+		Toll-Free: (800) 662-9651<br/>
+		Phone: (801) 562-0950<br/>
+		Fax: (801) 255-0480<br/>
+		View Google Map<br/>
+	</p>
+
+</div>
 
 <script>
 	var data = Highcharts.geojson(Highcharts.maps['countries/us/us-all']),
     // Some responsiveness
-    small = $('#container').width() < 400;
+    small = $('#highmap-container').width() < 400;
 
 // Set drilldown pointers
 $.each(data, function (i) {
@@ -31,7 +54,7 @@ $.each(data, function (i) {
 });
 
 // Instanciate the map
-Highcharts.mapChart('container', {
+Highcharts.mapChart('highmap-container', {
 	chart: {
 		events: {
 			drilldown: function (e) {
@@ -78,11 +101,18 @@ Highcharts.mapChart('container', {
                         		activeDataLabelStyle: {
                         			color: '#FFFFFF',
                         			textDecoration: 'none',
-                        			fontSize: '16px',
+                        			fontSize: '20px',
                         			textOutline: '1px #000',
                         			borderColor: '#fff'
                         		}
+                        	},
+                        	point : {
+                        		events :{
+                        			click : plotElements
+                        		}
                         	}
+
+                        	
                         });
                     });
                 }
@@ -170,4 +200,11 @@ Highcharts.mapChart('container', {
     	enabled: false
     }
 });
+
+function plotElements(){
+	console.log("alejo")
+	$('#highmap-container').css('width','70%');
+	$('.highcharts-container, .highcharts-container svg').css('width','100%');
+	$('#map-locator').fadeIn();
+}
 </script>

@@ -34,3 +34,7 @@ vendor/
 !.env.local.php
 /logs/
 /storage/
+
+#Vim autocompletion
+.phpcomplete_extended/
+
