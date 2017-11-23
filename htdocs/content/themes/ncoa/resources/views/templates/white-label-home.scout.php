@@ -14,7 +14,7 @@
               <div class="zip-code form-inline">
                 <input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" required="required">
                 <button ng-click="findZip(zipcode, true)" class="btn btn-primary">Get Started</button>
-                <p class="error-state ng-hide" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
+                <p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
               </div>
             </form>
           </div><!--/.hero__form-->
