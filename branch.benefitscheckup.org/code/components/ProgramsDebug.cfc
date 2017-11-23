@@ -936,7 +936,10 @@
         <cfparam name="session.int_vol" default="">
         <cfparam name="session.int_hiv_aids" default="">
         <cfloop COLLECTION="#sa#"  item="x">
-            <cfset 'session.#x#' = evaluate('sa.#x#')>
+            <cfoutput>#x#</cfoutput>
+            <cfif isDefined('sa.#x#')>
+                <cfset 'session.#x#' = evaluate('sa.#x#')>
+            </cfif>
         </cfloop>
         <cfparam name="session.partner_id" default= 0>
         <cfparam name="session.org_id" default = 0>
@@ -1377,6 +1380,13 @@ session.county IN 'countyA, countyB, countyC').  --->
             <cfset sa.st=screening.getPreset_state().getId()>
         </cfif>
 
+        <cfif not structKeyExists(sa,'dob')>
+            <cfset sa.dob = year(now())-1951>
+        </cfif>
+
+        <cfif not structKeyExists(sa,'marital_stat')>
+            <cfset sa.marital_stat = 'single'>
+        </cfif>
 <!---
  init undefined answers
 --->
