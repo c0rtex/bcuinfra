@@ -71,7 +71,7 @@
                   <div class="program-highlight">
                     <div class="program-highlight__text">
                       <div class="program-highlight__icon">
-                        <a href="/find-my-benefits/?subset_id=57" class="program-highlight__icon-wrap">
+                        <a href="/find-my-benefits/?subset_id=57&partner_id={{ $_SESSION['partner_id'] }}" class="program-highlight__icon-wrap">
                           <img src="../content/themes/ncoa/resources/assets/images/category_keyBenefits.svg" class="attachment-full size-full" alt="Key Benefits" title="Key Benefits">
                         </a>
                       </div>
@@ -81,7 +81,7 @@
                       </div>
                     </div>
                     <div class="program-highlights__btn">
-                      <a class="btn btn-secondary" href="/find-my-benefits/?subset_id=57">Get Started</a>
+                      <a class="btn btn-secondary" href="/find-my-benefits/?subset_id=57&partner_id={{ $_SESSION['partner_id'] }}">Get Started</a>
                     </div>
                   </div><!--/.program-highlight-->
                 </div><!--/.item-->

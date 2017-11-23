@@ -5,7 +5,7 @@
     <section class="container">
         <div class="clearfix">
             <span class="pull-left header-logo {{{ (Option::get('global-settings', 'whitelabel') == '0') ? 'white-label' : '' }}}">
-                <a tabindex="1" href="/" class="logo">
+                <a tabindex="1" href="/?partner_id={{ $_SESSION['partner_id'] }}" class="logo">
                     {{
                         wp_get_attachment_image(Option::get('global-settings', 'main-logo'), 'full', false,
                             array(
@@ -72,7 +72,7 @@
                                         <a href="/">Home</a>
                                     </li>
                                     <li class="menu-item @if($questionnaire)current-menu-item current_page_item @endif">
-                                        <a href="/find-my-benefits/?subset_id=100">Find Benefits</a>
+                                        <a href="/find-my-benefits/?subset_id=100&partner_id={{ $_SESSION['partner_id'] }}">Find Benefits</a>
                                     </li>
                                     <li class="menu-item @if($medicarerx)current-menu-item current_page_item @endif">
                                         <a href="/medicare-rx-extra-help-application-intro-page/">Medicare Rx Extra Help</a>
