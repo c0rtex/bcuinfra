@@ -3008,29 +3008,30 @@ app.controller('questionnairePrintResultsController', ['$scope', '$state', '$roo
 
 app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorageService', 'locationFinder', 'backLocationFinder', function($scope, $http, $window, localStorageService, locationFinder, backLocationFinder){
 
+    $scope.isZipInvalid = false;
 
     $scope.findZip = function(zip, isHome = false){
         var urlRedirect = isHome ? '/find-my-benefits?subset_id=100' : '/find-my-benefits';
 
         if (zip.length != 5) {
-            $scope.isZipInvalid=true;
+            $scope.isZipInvalid = true;
             return;
         } else {
-            $scope.isZipInvalid=false;
+            $scope.isZipInvalid = false;
         }
 
         locationFinder.getLocation(zip).success(function(data, status, headers, config) {
 
             var retZipCode = "";
+            var zipInvalid = true;
 
             if(data.status == "OK"){
-                $scope.isZipInvalid=true;
                 for (var i=0;i<data.results[0].address_components.length;i++) {
                     for(var j=0;j<data.results[0].address_components[i].types.length;j++) {
                         if (((data.results[0].address_components[i].types[j] == "country")||
                             (data.results[0].address_components[i].types[j] == "political"))&&
                             (data.results[0].address_components[i].short_name == "US")) {
-                            $scope.isZipInvalid=false;
+                            zipInvalid = false;
                         }
 
                         if (data.results[0].address_components[i].types[j] == "postal_code") {
@@ -3038,6 +3039,8 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                         }
                     }
                 }
+
+                $scope.isZipInvalid = zipInvalid;
 
                 if(!$scope.isZipInvalid){
                     localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
