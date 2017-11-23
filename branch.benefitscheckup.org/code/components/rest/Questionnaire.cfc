@@ -105,15 +105,11 @@
 
        <cfset state = entityLoadByPK("state",stateId)>
 
-
         <cfset questions = ormexecutequery("select
                                               distinct q
                                             from
                                               subset_question_tmp sqt join
                                               sqt.question q join
-                                              q.answer_fields af join
-                                              af.answer a join
-                                              a.programs p join
                                               q.question_category qc join
                                               qc.super_category sc
                                               left join q.subset_question_programcategory sqp
@@ -121,11 +117,8 @@
                                               sqt.subset.id=?
                                               and sqt.state=?
                                               and sc.code=?
-                                              and p.active_flag=1
-                                              and (p.state = ? or p.state is null)
                                               #sqs#
-                                            order by sqt.sort",[subset_id,state,superCategoryCode,state])>
-
+                                            order by sqt.sort",[subset_id,state,superCategoryCode])>
 
         <cfset retVal = arrayNew(1)>
         <cfset display = createObject("component","bcu.orm.display")>
