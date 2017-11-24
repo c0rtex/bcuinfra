@@ -77,48 +77,31 @@
             <cfset sqs = "#sqs#,#psi.getId()#">
         </cfloop>
         <cfif arraylen(ps) neq 0>
-            <cfset sqs = "and (sqp.supercategory_id in (#sqs#) or sqp.supercategory_id is null)">
+            <cfset sqs = "and (psc.id in (#sqs#) or psc.id is null)">
         </cfif>
-
-        <!---SELECT
-        subset_question_tmp.subset_id,
-        question.question_id,
-        question.question_code,
-        subset_question_tmp.sort,
-        subset_question_tmp.page_id,
-        subset_question_tmp.options_flag,
-        subset_question_tmp.exclude_flag,
-        subset_question_tmp.required_flag,
-        question_supercategory.supercategory_id,
-        question_supercategory.supercategory_code,
-        questioncategory.questioncategory_code
-        FROM
-        question
-        INNER JOIN subset_question_tmp ON subset_question_tmp.question_id = question.question_id
-        INNER JOIN questioncategory ON questioncategory.questioncategory_id = question.questioncategory_id
-        INNER JOIN question_supercategory ON question_supercategory.supercategory_id = questioncategory.supercategory_id
-        where subset_question_tmp.subset_id = 101
-        and question_supercategory.supercategory_code in ('finances')
-
-        and subset_question_tmp.state_id = 'MN'
-        order by subset_question_tmp.sort--->
 
        <cfset state = entityLoadByPK("state",stateId)>
 
         <cfset questions = ormexecutequery("select
-                                              distinct q
-                                            from
-                                              subset_question_tmp sqt join
-                                              sqt.question q join
-                                              q.question_category qc join
-                                              qc.super_category sc
-                                              left join q.subset_question_programcategory sqp
-                                            where
-                                              sqt.subset.id=?
-                                              and sqt.state=?
-                                              and sc.code=?
-                                              #sqs#
-                                            order by sqt.sort",[subset_id,state,superCategoryCode])>
+                                      distinct q
+                                    from
+                                      subset_question_tmp sqt join
+                                      sqt.question q join
+                                      q.question_category qc join
+                                      qc.super_category qsc left join
+                                      q.answer_fields qa left join
+                                      qa.answer a left join
+                                      a.programs p left join
+                                      p.program_category pc left join
+                                      pc.super_category psc
+                                    where
+                                      sqt.subset.id=?
+                                      and sqt.state=?
+                                      and qsc.code=?
+                                      and (p.state=? or p.state is null)
+                                      and ((p.active_flag=1 and p.exclude_flag=0) or (p.id is null))
+                                      #sqs#
+                                    order by sqt.sort",[57,state,superCategoryCode,state])>
 
         <cfset retVal = arrayNew(1)>
         <cfset display = createObject("component","bcu.orm.display")>
