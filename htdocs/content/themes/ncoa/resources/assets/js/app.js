@@ -3010,7 +3010,8 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
     $scope.isZipInvalid = false;
 
-    $scope.findZip = function(zip, isHome = false){
+    $scope.findZip = function(zip, isHome){
+        isHome = isHome || false; // set default value
         var urlRedirect = isHome ? '/find-my-benefits?subset_id=100' : '/find-my-benefits';
 
         if (zip.length != 5) {
