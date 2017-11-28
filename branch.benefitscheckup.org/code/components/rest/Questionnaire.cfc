@@ -101,7 +101,7 @@
                                       and (p.state=? or p.state is null)
                                       and ((p.active_flag=1 and p.exclude_flag=0) or (p.id is null))
                                       #sqs#
-                                    order by sqt.sort",[57,state,superCategoryCode,state])>
+                                    order by sqt.sort",[subset_id,state,superCategoryCode,state])>
 
         <cfset retVal = arrayNew(1)>
         <cfset display = createObject("component","bcu.orm.display")>
@@ -295,7 +295,7 @@
         <cfargument name="subsetId">
         <cfargument name="screening">
 
-        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p join p.subsets s where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and (p.state=? or p.state is null) and p.active_flag=1 and p.exclude_flag=0) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0) or p.id is null))) and s.id=? order by qa.sort",[question,state,state,state,subsetId])>
+        <cfset answers = ormExecuteQuery("select distinct a from question_answer_field qa join qa.answer a left join a.programs p left join p.subsets s where qa.question=? and (a.state is null or a.state=?) and ((a.answer_field_type.id=18 and (p.state=? or p.state is null) and p.active_flag=1 and p.exclude_flag=0 and s.id=?) or (a.answer_field_type.id<>18 and (p.state=? or p.state is null) and ((p.active_flag=1 and p.exclude_flag=0 and s.id=?) or (p.id is null and s.id is null)))) order by qa.sort",[question,state,state,subsetId,state,subsetId])>
         <cfset var retArray = arrayNew(1)>
         <cfloop array="#answers#" index="i">
             <cfset var afStrct = i.toStructure()>
