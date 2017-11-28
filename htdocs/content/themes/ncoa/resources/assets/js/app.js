@@ -3016,9 +3016,11 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
         if (zip.length != 5) {
             $scope.isZipInvalid = true;
+            angular.element('#zip-invalid').show();
             return;
         } else {
             $scope.isZipInvalid = false;
+            angular.element('#zip-invalid').hide();
         }
 
         locationFinder.getLocation(zip).success(function(data, status, headers, config) {
@@ -3046,6 +3048,10 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                 if(!$scope.isZipInvalid){
                     localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
                     $window.location.href = urlRedirect;
+                    angular.element('#zip-invalid').hide();
+                }
+                else {
+                    angular.element('#zip-invalid').show();
                 }
             } else {
                 backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
@@ -3054,8 +3060,13 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                         retZipCode = data.zip;
                         localStorageService.set('v_zipcode', data.zip);
                         $window.location.href = urlRedirect;
+                        angular.element('#zip-invalid').hide();
+                    }
+                    else {
+                        angular.element('#zip-invalid').show();
                     }
                 }).error(function (data, status, headers, config) {
+                    angular.element('#zip-invalid').show();
                     $scope.isZipInvalid = true;
                 });
             }
@@ -3063,11 +3074,13 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
             backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
                 $scope.isZipInvalid = data.status != "OK";
                 if (!$scope.isZipInvalid) {
+                    angular.element('#zip-invalid').hide();
                     retZipCode = data.zip;
                     localStorageService.set('v_zipcode', data.zip);
                     $window.location.href = urlRedirect;
                 }
             }).error(function (data, status, headers, config) {
+                angular.element('#zip-invalid').show();
                 $scope.isZipInvalid = true;
             });
         });
