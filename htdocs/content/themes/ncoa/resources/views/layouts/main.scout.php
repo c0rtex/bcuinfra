@@ -17,7 +17,7 @@
       window.partnerId=<?php echo $_SESSION['partner_id']?>;
       window.subsetId=<?php echo $_SESSION['subset_id']?>;
     </script>
-    <?php /*<!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push(
@@ -30,7 +30,7 @@
           '//www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-PHJ4LQ');</script>
-    <!-- End Google Tag Manager --> */ ?>
+    <!-- End Google Tag Manager -->
 
     <?php wp_head(); ?>
 </head>
