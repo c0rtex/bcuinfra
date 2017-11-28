@@ -69,7 +69,7 @@
                             <div class="menu-primarynav-container">
                                 <ul id="menu-primarynav" class="nav navbar-nav">
                                     <li class="menu-item @if($home) current-menu-item current_page_item @endif">
-                                        <a href="/">Home</a>
+                                        <a href="/?partner_id={{ $_SESSION['partner_id'] }}">Home</a>
                                     </li>
                                     <li class="menu-item @if($questionnaire)current-menu-item current_page_item @endif">
                                         <a href="/find-my-benefits/?subset_id=100&partner_id={{ $_SESSION['partner_id'] }}">Find Benefits</a>
@@ -78,7 +78,7 @@
                                         <a href="/medicare-rx-extra-help-application-intro-page/">Medicare Rx Extra Help</a>
                                     </li>
                                     <li class="menu-item @if($nutrition)current-menu-item current_page_item @endif">
-                                        <a href="/resources/snap/">Food & Nutrition</a>
+                                        <a href="/resources/snap/">Food &amp; Nutrition</a>
                                     </li>
                                 </ul>
                             </div>

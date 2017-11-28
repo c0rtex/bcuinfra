@@ -118,6 +118,30 @@ class WhiteLabelController extends BaseController
     ])->render(); 
   }
 
+  public function medicare_rx_extra_help_intro($post, $page) {
+    $loggedin = true;
+    $medicarerx = true;
+    $nutrition = false;
+    $home = false;
+    $partnerlogin = false;
+    $grantees = false;
+    $resources = false;
+    $home6 = false;
+    
+    return View::make('templates.white-label-medicare-rx-extra-help-intro', [
+      'loggedin' => $loggedin,
+      'medicarerx' => $medicarerx,
+      'questionnaire' => false,
+      'nutrition' => $nutrition,
+      'home' => $home,
+      'partnerlogin' => $partnerlogin,
+      'grantees' => $grantees,
+      'resources' => $resources,
+      'home6' => $home6,
+      'post' => $post,
+    ])->render(); 
+  }
+
   public function medicare_rx_extra_help_landing() { 
     $loggedin = true;
     $medicarerx = true;
