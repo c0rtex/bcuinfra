@@ -102,7 +102,7 @@
                                       and sqt.state=?
                                       and qsc.code=?
                                       and (p.state=? or p.state is null)
-                                      and ((p.active_flag=1 and p.exclude_flag=0) or (a.id is null) or a.required_flag=1)
+                                      and ((p.active_flag=1 and p.exclude_flag=0) or (a.id is null) or a.required_flag=1 or (sqt.required_flag=1 and sqt.exclude_flag=0))
                                       #sqs#
                                     order by sqt.sort",[subset_id,state,superCategoryCode,state])>
 
