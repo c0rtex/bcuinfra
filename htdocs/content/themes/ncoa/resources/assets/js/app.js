@@ -1280,6 +1280,9 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
                                         case 'yn':
                                             val = '\'' + scope.$root.answers[cat.category][ans] + '\'';
                                             break;
+                                        case 'checkbox':
+                                            val = scope.$root.answers[cat.category][ans] ? '\'y\'' : '\'n\'';
+                                            break;
                                         default:
                                             val = scope.$root.answers[cat.category][ans];
                                             break;
