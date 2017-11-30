@@ -3118,6 +3118,7 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
     });
 }]);
 
+//Alejos integations
 app.controller('shortFactSheetsController',['$scope',function($scope){
 	$scope.showBack = function(){
 		if(window.history.length <= 2){
@@ -3127,6 +3128,31 @@ app.controller('shortFactSheetsController',['$scope',function($scope){
 		}
 	}
 }]);
+
+app.controller('mapZipLocator',['$scope','$http','$window',function($scope,$http,$window){
+	var locatorUrl = $window.webServiceUrl + "/rest/backend/entryPoints/forProgram/medicaid_ny_medicaid?zipcode=";
+	$scope.submit = function(){
+
+		if($scope.zipformlocator.zipcodelocator.$valid && $scope.zip !== '' ){
+			$http.get(locatorUrl+$scope.zip).then(function(response){
+				offices = response.data;
+				var index = getStateOnSeriesData(offices[0].state);
+				mapChart.series[0].data[index].firePointEvent('click', event);
+				plotElements();
+			});
+		}else{
+			$('#error-zip').fadeIn();
+			$('#error-zip').removeClass('hide');
+			$window.setTimeout(function(){
+				$('#error-zip').fadeOut();
+				$('#error-zip').addClass('hide');
+			},1000)
+			$scope.errorZip = 'Invalid zip code';
+		}
+		
+	}
+}]);
+
 
 app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 
