@@ -26,9 +26,10 @@ g.highcharts-label tspan{
 	</div>
 </div>
 
-<script>
-	
+<script type="text/javascript">
+	var selected_zip, selected_state, clicked_state_name, offices;
 	var data = Highcharts.geojson(Highcharts.maps['countries/us/us-all']),
+	states_array = Highcharts.geojson(Highcharts.maps['countries/us/us-all']),
     // Some responsiveness
     small = $('#highmap-container').width() < 400;
 
@@ -104,7 +105,26 @@ mapChart = Highcharts.mapChart('highmap-container', {
     		enabled: true,
     		format: '{point.properties.postal-code}'
     	},
-    	borderColor : '#fff'
+    	borderColor : '#fff',
+    	point : {
+	    	events : {
+	    		click : function(e){
+	    			
+	    			cleanInfoBox();
+	    			if(typeof(event.point) !== 'undefined')
+	    				clicked_state_name = e.point.name;
+	    			
+	    			getSelectedState(clicked_state_name);
+	    			
+	    			setTimeout(function(){
+	    				
+	    				
+	    				
+	    			},800);
+	    			
+	    		}
+	    	}
+	    }
     }],
 
     drilldown: {
@@ -131,27 +151,29 @@ mapChart = Highcharts.mapChart('highmap-container', {
 function plotElements(){
 	$('body #highmap-container').css('width','70%');
 	$('body .highcharts-container, body .highcharts-container svg').css('width','100%');
-	$('body #map-locator').fadeIn();
 	drawOffices();
 }
 function drawOffices(){
-	$('.offices-info').empty();
+	cleanInfoBox();
 	var html = '';
 	if(typeof(offices) !== 'undefined'){
 		for(i = 0; i < offices.length; i++){
 			html += offices[i].print_name + '<br/><br/>';	
 		}
 		
-	}else{
-		html = 'Department of Workforce Services<br/>5735 South Redwood Road<br/>Taylorsville, UT 84123<br/>Toll-Free: (866) 435-7414<br/>View Google Map<br/>';
-	}
+	}	
+	$('body #map-locator').fadeIn();
 	$('.offices-info').html(html);
 
+}
+function cleanInfoBox(){
+	$('body #map-locator').fadeOut();
+	$('.offices-info').empty();
 }
 function removePlottedElements(){
 	$('body #highmap-container').css('width','100%');
 	$('body .highcharts-container, body .highcharts-container svg').css('width','100%');
-	$('nody #map-locator').fadeOut();
+	$('body #map-locator').fadeOut();
 }
 
 function drillDownPlot(e){
@@ -204,7 +226,11 @@ function drillDownPlot(e){
                         	},
                         	point : {
                         		events :{
-                        			click : plotElements
+                        			click : function(e){
+                        				cleanInfoBox();
+                        				clicked_county = e.point.name;
+	    								getSelectedCounty(clicked_state_name, clicked_county);
+                        			}
                         		}
                         	}
 
@@ -214,16 +240,53 @@ function drillDownPlot(e){
                 }
             }
 
-function getStateOnSeriesData( code ){
-	var data_array = mapChart.series[0].data;
-	var index = 0;
-	for(i = 0; i < data_array.length; i++){
-		if(data_array[i].properties['hc-a2'] == code.toUpperCase() ){
-			console.log("alejo",data_array[i].name);
-			index = i;
-			break;
-		}
-	}
-	return index;
-}
+            function getStateOnSeriesData( code ){
+            	// var data_array = mapChart.series[0].data;
+            	var index = 0;
+            	
+
+            	for(i = 0; i < states_array.length; i++){
+            		if(states_array[i].properties['hc-a2'] == code.toUpperCase() ){
+            			
+            			index = i;
+            			break;
+            		}
+            	}
+            	return index;
+            }
+
+            function getSelectedState(state){
+            	$.get('http://maps.googleapis.com/maps/api/geocode/json?address='+state+'&sensor=true',function(response){
+            		selected_state = response.results;
+            		getSelectedStateZip(selected_state[0].geometry.location.lat,selected_state[0].geometry.location.lng);
+            	},'json');
+            }
+            function getSelectedCounty(state,county){
+            	$.get('http://maps.googleapis.com/maps/api/geocode/json?address='+state+'+'+county+'&sensor=true',function(response){
+            		selected_state = response.results;
+            		getSelectedStateZip(selected_state[0].geometry.location.lat,selected_state[0].geometry.location.lng);
+            	},'json');
+            }
+            function getSelectedStateZip(lat,long){
+				 $.get('http://maps.googleapis.com/maps/api/geocode/json?sensor=false&latlng='+lat+','+long,function(response){
+					var address_array = response.results[0].address_components;
+					for( i = 0; i < address_array.length; i++ ){
+						if(address_array[i].types[0] == 'postal_code'){
+							selected_zip = address_array[i].long_name;
+							
+							break;
+						}
+					}
+					drawOfficesByZip(selected_zip);
+				},'json');
+				
+            }
+
+            function drawOfficesByZip(zipcode){
+
+            	$.get('http://leviathantech.com:8500/rest/backend/entryPoints/forProgram/medicaid_ny_medicaid?zipcode='+zipcode,function(response){
+            		offices = response;
+            		plotElements();
+            	},'json');
+            }
         </script>
