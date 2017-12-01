@@ -3139,8 +3139,6 @@ app.controller('mapZipLocator',['$scope','$http','$window',function($scope,$http
 				clicked_state_name = offices[0].state;
 				var index = getStateOnSeriesData(offices[0].state);
 				if($scope.state_index != index){
-					console.log("index",index);
-					console.log("scope.index",$scope.state_index);
 					$scope.state_index = index;	
 					$('.highcharts-drillup-button').click();
 					mapChart.series[0].data[index].firePointEvent('click', event);

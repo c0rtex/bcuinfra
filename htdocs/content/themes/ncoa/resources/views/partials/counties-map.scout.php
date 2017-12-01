@@ -284,7 +284,7 @@ function drillDownPlot(e){
 
             function drawOfficesByZip(zipcode){
 
-            	$.get('http://leviathantech.com:8500/rest/backend/entryPoints/forProgram/medicaid_ny_medicaid?zipcode='+zipcode,function(response){
+            	$.get(window.webServiceUrl + '/rest/backend/entryPoints/forProgram/medicaid_ny_medicaid?zipcode='+zipcode,function(response){
             		offices = response;
             		plotElements();
             	},'json');
