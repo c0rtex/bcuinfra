@@ -156,12 +156,14 @@ function plotElements(){
 function drawOffices(){
 	cleanInfoBox();
 	var html = '';
-	if(typeof(offices) !== 'undefined'){
+	if(typeof(offices) !== 'undefined' && offices.length > 0){
 		for(i = 0; i < offices.length; i++){
 			html += offices[i].print_name + '<br/><br/>';	
 		}
 		
-	}	
+	}else{
+		html = 'No offices were found in your chosen county or zipcode';
+	}
 	$('body #map-locator').fadeIn();
 	$('.offices-info').html(html);
 
