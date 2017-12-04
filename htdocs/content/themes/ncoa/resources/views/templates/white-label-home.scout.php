@@ -223,7 +223,7 @@
                       @if (!empty($post->image))
                         <a target="_blank" href="{{ $post->link }}">
                           <div class="blog-teaser__img">
-                            <img width="240" height="120" src="{{ $post->image }}" alt="" />
+                            <img src="{{ $post->image }}" alt="" />
                           </div>
                           <div class="blog-teaser__text">
                             <h4>{{ $post->title }}</h4>
