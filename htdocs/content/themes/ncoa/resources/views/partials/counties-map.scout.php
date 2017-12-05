@@ -258,19 +258,19 @@ function drillDownPlot(e){
             }
 
             function getSelectedState(state){
-            	$.get('http://maps.googleapis.com/maps/api/geocode/json?address='+state+'&sensor=true',function(response){
+            	$.get('https://maps.googleapis.com/maps/api/geocode/json?address='+state+'&sensor=true',function(response){
             		selected_state = response.results;
             		getSelectedStateZip(selected_state[0].geometry.location.lat,selected_state[0].geometry.location.lng);
             	},'json');
             }
             function getSelectedCounty(state,county){
-            	$.get('http://maps.googleapis.com/maps/api/geocode/json?address='+state+'+'+county+'&sensor=true',function(response){
+            	$.get('https://maps.googleapis.com/maps/api/geocode/json?address='+state+'+'+county+'&sensor=true',function(response){
             		selected_state = response.results;
             		getSelectedStateZip(selected_state[0].geometry.location.lat,selected_state[0].geometry.location.lng);
             	},'json');
             }
             function getSelectedStateZip(lat,long){
-				 $.get('http://maps.googleapis.com/maps/api/geocode/json?sensor=false&latlng='+lat+','+long,function(response){
+				 $.get('https://maps.googleapis.com/maps/api/geocode/json?sensor=false&latlng='+lat+','+long,function(response){
 					var address_array = response.results[0].address_components;
 					for( i = 0; i < address_array.length; i++ ){
 						if(address_array[i].types[0] == 'postal_code'){
