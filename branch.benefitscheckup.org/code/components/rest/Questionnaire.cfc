@@ -80,9 +80,12 @@
             <cfset sqs = "and (psc.id in (#sqs#) or psc.id is null)">
         </cfif>
 
+        <!---TODO remove cfset below. It's BCURD-175 fix.--->
+        <cfset sqs = "">
+
        <cfset state = entityLoadByPK("state",stateId)>
 
-        <cfset questions = ormexecutequery("select
+       <cfset questions = ormexecutequery("select
                                       distinct q
                                     from
                                       subset_question_tmp sqt join
@@ -99,7 +102,7 @@
                                       and sqt.state=?
                                       and qsc.code=?
                                       and (p.state=? or p.state is null)
-                                      and ((p.active_flag=1 and p.exclude_flag=0) or (p.id is null))
+                                      and ((p.active_flag=1 and p.exclude_flag=0) or (a.id is null) or a.required_flag=1 or (sqt.required_flag=1 and sqt.exclude_flag=0))
                                       #sqs#
                                     order by sqt.sort",[subset_id,state,superCategoryCode,state])>
 

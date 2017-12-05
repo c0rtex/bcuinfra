@@ -1280,6 +1280,9 @@ app.directive('question',['questionTemplates', 'AnswersByCategories', 'category'
                                         case 'yn':
                                             val = '\'' + scope.$root.answers[cat.category][ans] + '\'';
                                             break;
+                                        case 'checkbox':
+                                            val = scope.$root.answers[cat.category][ans] ? '\'y\'' : '\'n\'';
+                                            break;
                                         default:
                                             val = scope.$root.answers[cat.category][ans];
                                             break;
@@ -3016,9 +3019,11 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
 
         if (zip.length != 5) {
             $scope.isZipInvalid = true;
+            angular.element('#zip-invalid').show();
             return;
         } else {
             $scope.isZipInvalid = false;
+            angular.element('#zip-invalid').hide();
         }
 
         locationFinder.getLocation(zip).success(function(data, status, headers, config) {
@@ -3046,6 +3051,10 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                 if(!$scope.isZipInvalid){
                     localStorageService.set('v_zipcode', data.results[0].address_components[0].long_name);
                     $window.location.href = urlRedirect;
+                    angular.element('#zip-invalid').hide();
+                }
+                else {
+                    angular.element('#zip-invalid').show();
                 }
             } else {
                 backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
@@ -3054,8 +3063,13 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
                         retZipCode = data.zip;
                         localStorageService.set('v_zipcode', data.zip);
                         $window.location.href = urlRedirect;
+                        angular.element('#zip-invalid').hide();
+                    }
+                    else {
+                        angular.element('#zip-invalid').show();
                     }
                 }).error(function (data, status, headers, config) {
+                    angular.element('#zip-invalid').show();
                     $scope.isZipInvalid = true;
                 });
             }
@@ -3063,11 +3077,13 @@ app.controller('zipCodeController', ['$scope', '$http', '$window', 'localStorage
             backLocationFinder.post(zip,data).success(function (data, status, headers, config) {
                 $scope.isZipInvalid = data.status != "OK";
                 if (!$scope.isZipInvalid) {
+                    angular.element('#zip-invalid').hide();
                     retZipCode = data.zip;
                     localStorageService.set('v_zipcode', data.zip);
                     $window.location.href = urlRedirect;
                 }
             }).error(function (data, status, headers, config) {
+                angular.element('#zip-invalid').show();
                 $scope.isZipInvalid = true;
             });
         });
@@ -3102,6 +3118,7 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
     });
 }]);
 
+//Alejos integations
 app.controller('shortFactSheetsController',['$scope',function($scope){
 	$scope.showBack = function(){
 		if(window.history.length <= 2){
@@ -3111,6 +3128,36 @@ app.controller('shortFactSheetsController',['$scope',function($scope){
 		}
 	}
 }]);
+
+app.controller('mapZipLocator',['$scope','$http','$window',function($scope,$http,$window){
+	var locatorUrl = $window.webServiceUrl + "/rest/backend/entryPoints/forProgram/medicaid_ny_medicaid?zipcode=";
+	$scope.submit = function(){
+
+		if($scope.zipformlocator.zipcodelocator.$valid && $scope.zip !== '' ){
+			$http.get(locatorUrl+$scope.zip).then(function(response){
+				offices = response.data;
+				clicked_state_name = offices[0].state;
+				var index = getStateOnSeriesData(offices[0].state);
+				if($scope.state_index != index){
+					$scope.state_index = index;	
+					$('.highcharts-drillup-button').click();
+					mapChart.series[0].data[index].firePointEvent('click', event);
+				}
+				plotElements();
+			});
+		}else{
+			$('#error-zip').fadeIn();
+			$('#error-zip').removeClass('hide');
+			$window.setTimeout(function(){
+				$('#error-zip').fadeOut();
+				$('#error-zip').addClass('hide');
+			},1000)
+			$scope.errorZip = 'Invalid zip code';
+		}
+		
+	}
+}]);
+
 
 app.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 

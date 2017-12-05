@@ -14,7 +14,7 @@
               <div class="zip-code form-inline">
                 <input type="text" class="form-control" placeholder="Enter Your Zip Code" aria-label="Zipcode" ng-model="zipcode" ng-required="true" required="required">
                 <button ng-click="findZip(zipcode, true)" class="btn btn-primary">Get Started</button>
-                <p class="error-state" ng-show="isZipInvalid"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
+                <p id="zip-invalid" class="error-state" style="display: none; margin-left: 10px;"><strong>Error!</strong> Please enter a valid zip code in the United States.</p>
               </div>
             </form>
           </div><!--/.hero__form-->
@@ -223,7 +223,7 @@
                       @if (!empty($post->image))
                         <a target="_blank" href="{{ $post->link }}">
                           <div class="blog-teaser__img">
-                            <img width="240" height="120" src="{{ $post->image }}" alt="" />
+                            <img src="{{ $post->image }}" alt="" />
                           </div>
                           <div class="blog-teaser__text">
                             <h4>{{ $post->title }}</h4>

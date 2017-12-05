@@ -44,6 +44,7 @@ Route::get('template', ['white-label-home-template', 'uses' => 'WhiteLabelContro
 Route::get('template', ['white-label-home6-template', 'uses' => 'WhiteLabelController@home6']);
 
 Route::get('template', ['white-label-medicare-rx-extra-help-landing-template', 'uses' => 'WhiteLabelController@medicare_rx_extra_help_landing']);
+Route::get('template', ['white-label-medicare-rx-intro-template', 'uses' => 'WhiteLabelController@medicare_rx_extra_help_intro']);
 Route::get('template', ['white-label-medicare-rx-extra-help-template', 'uses' => 'WhiteLabelController@medicare_rx_extra_help']);
 Route::get('template', ['white-label-snap-template', 'uses' => 'WhiteLabelController@snap']);
 Route::get('template', ['white-label-partner-login-template', 'uses' => 'WhiteLabelController@partner_login']);

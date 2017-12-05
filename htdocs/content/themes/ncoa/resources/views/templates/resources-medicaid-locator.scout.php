@@ -20,20 +20,30 @@
         <div class="fact-sheet-icon-hdr">
         	<span class="icon-block-food pull-left"></span>
           <div class="pull-left">
-            <div class="fact-sheets-header fact-sheets-top-header">Food &amp; Nutrition</div>
+            <div class="fact-sheets-header fact-sheets-top-header"><h2>Food &amp; Nutrition</h2></div>
             <div class="fact-sheets-header fact-sheets-bottom-header"></div>
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <p class="bold">Select your state from the map or list to find out more</p>
+        <h3 class="bold">Please type your zip code to determine your closest office</h3>
+        <div ng-controller="mapZipLocator">
+        	<form name="zipformlocator" ng-submit="submit()">
+        		<p><input type="text" placeholder="Zip Code" name="zipcodelocator" ng-model="zip" ng-pattern='/^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/'/>
+        		<small id="error-zip"  ng-model="errorZip" class="hide alert-danger">@{{ errorZip }}</small></p>
+        		<button ng-click="submit()" type="button" id="zipbuton" class="btn btn-default">Search</button>
+
+        	</form>
+        </div>
       </div>
       <div class="col-md-3 col-sm-12">
         <div class="results-options">
           <span class="fact-sheets-know">Did You Know?</span>
           <span class="fact-sheets-emphasis">Millions of people</span> in the United States are receiving benefits from SNAP today!
         </div>
+
+        
       </div>
 
       <div class="col-xs-12">
