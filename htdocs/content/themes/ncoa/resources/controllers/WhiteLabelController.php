@@ -291,7 +291,7 @@ class WhiteLabelController extends BaseController
    */
   private function _load_rss_feed() {
     $posts = array();
-    $filename = 'ncoafeed-' . date('mdY') . '.txt';
+    $filename = 'ncoa-feed-' . date('mdY') . '.txt';
     $tmp_folder = sys_get_temp_dir();
     $file = $tmp_folder . '/' . $filename;
     
@@ -317,12 +317,15 @@ class WhiteLabelController extends BaseController
           $description = (string) $item->description;
           preg_match('/src="([^"]*)"/i', $description, $findings);
           $image = !empty($findings[1]) ? $findings[1] : '';
+          preg_match('/alt="([^"]*)"/i', $description, $findings);
+          $alt_image = !empty($findings[1]) ? $findings[1] : '';
       
           $items[] = array(
             'title' => (string) $item->title,
             'link' => (string) $item->link,
             'pubDate' => strtotime($item->pubDate),
             'image' => $image,
+            'alt_image' => !empty($alt_image) ? $alt_image : $item->title,
           );
         }
 
