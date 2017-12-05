@@ -854,6 +854,7 @@ function checkFields(pcounter) {
                                                              VALUES
                                                                (#str_entrypoint_id#, 2, '#str_fax#', 6)
                                                         </cfquery>
+														<cfdump var="#newPhone2id#">
                                                         <cfif newPhone2id.GENERATEDKEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
