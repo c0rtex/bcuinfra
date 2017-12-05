@@ -375,7 +375,7 @@ function checkFields(pcounter) {
                                             VALUES
                                                 (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#)
                                         </cfquery>
-                                        <cfif newHDid.GENERATEDKEY neq "">
+                                        <cfif newHDid.GENERATED_KEY neq "">
                                         	<cfoutput><cfset str_hours_display_id="#insertNewHoursDisplay.newHDid#"></cfoutput>
                                         <cfelse>
                                         	<cfset update="no">
@@ -418,7 +418,7 @@ function checkFields(pcounter) {
                                                 VALUES
                                                     (46, 'epinfo_#newcode#', 'Entry Point Other Info Text: #newcode#', #str_active_flag#)
                                             </cfquery>
-                                            <cfif newIDid.GENERATEDKEY neq "">
+                                            <cfif newIDid.GENERATED_KEY neq "">
                                             	<cfoutput><cfset str_info_display_id="#insertNewInfoDisplay.newIDid#"></cfoutput>
                                             <cfelse>
                                             	<cfset update="no">
@@ -511,7 +511,7 @@ function checkFields(pcounter) {
                                                    ,#session.user_id#
                                                    ,'#str_date#')
                                             </cfquery>
-                                           <cfif newEPid.GENERATEDKEY neq "">
+                                           <cfif newEPid.GENERATED_KEY neq "">
                                             	<cfoutput><cfset str_entrypoint_id="#insertNewEntrypoint.newEPid#"></cfoutput>
                                             <cfelse>
                                             	<cfset update="no">
@@ -552,7 +552,7 @@ function checkFields(pcounter) {
                                                      VALUES
                                                        (#str_entrypoint_id#, 1, '#str_voice#', 2)
                                                 </cfquery>
-                                                <cfif newPHid_1.GENERATEDKEY eq "">
+                                                <cfif newPHid_1.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -569,7 +569,7 @@ function checkFields(pcounter) {
                                                      VALUES
                                                        (#str_entrypoint_id#, 2, '#str_fax#', 6)
                                                 </cfquery>
-                                                <cfif newPHid_2.GENERATEDKEY eq "">
+                                                <cfif newPHid_2.GENERATED_KEY eq "">
                                                 	<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -586,7 +586,7 @@ function checkFields(pcounter) {
                                                      VALUES
                                                        (#str_entrypoint_id#, 3, '#str_tty#', 3)
                                                 </cfquery>
-                                                <cfif newPHid_3.GENERATEDKEY eq "">
+                                                <cfif newPHid_3.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -603,7 +603,7 @@ function checkFields(pcounter) {
                                                      VALUES
                                                        (#str_entrypoint_id#, 4, '#str_toll_free#', 1)
                                                 </cfquery>
-                                                <cfif newPHid_4.GENERATEDKEY eq "">
+                                                <cfif newPHid_4.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -619,7 +619,7 @@ function checkFields(pcounter) {
                                                     VALUES
                                                        (#str_entrypoint_id#, 5, '#str_translation#', 5)
                                                 </cfquery>
-                                                <cfif newPHid_5.GENERATEDKEY eq "">
+                                                <cfif newPHid_5.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -635,7 +635,7 @@ function checkFields(pcounter) {
                                                      VALUES
                                                        (#str_entrypoint_id#, 6, '#str_spanish#', 4)
                                                 </cfquery>
-                                                <cfif newPHid_6.GENERATEDKEY eq "">
+                                                <cfif newPHid_6.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -814,7 +814,7 @@ function checkFields(pcounter) {
                                                              VALUES
                                                                (#str_entrypoint_id#, 1, '#str_voice#', 2)
                                                         </cfquery>
-                                                        <cfif newPhone1id.GENERATEDKEY eq "">
+                                                        <cfif newPhone1id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -896,7 +896,7 @@ function checkFields(pcounter) {
                                                              VALUES
                                                                (#str_entrypoint_id#, 3, '#str_tty#', 3)
                                                         </cfquery>
-                                                        <cfif newPhone3id.GENERATEDKEY eq "">
+                                                        <cfif newPhone3id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -938,7 +938,7 @@ function checkFields(pcounter) {
                                                              VALUES
                                                                (#str_entrypoint_id#, 4, '#str_toll_free#', 1)
                                                         </cfquery>
-                                                        <cfif newPhone4id.GENERATEDKEY eq "">
+                                                        <cfif newPhone4id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -980,7 +980,7 @@ function checkFields(pcounter) {
                                                              VALUES
                                                                (#str_entrypoint_id#, 5, '#str_translation#', 5)
                                                         </cfquery>
-                                                        <cfif newPhone5id.GENERATEDKEY eq "">
+                                                        <cfif newPhone5id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -1022,7 +1022,7 @@ function checkFields(pcounter) {
                                                              VALUES
                                                                (#str_entrypoint_id#, 6, '#str_spanish#', 4)
                                                         </cfquery>
-                                                        <cfif newPhone6id.GENERATEDKEY eq "">
+                                                        <cfif newPhone6id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
