@@ -18,7 +18,8 @@
     <li><strong>Marital status: </strong>{{screenData.marital_status}}</li>
     <li><strong>Veteran: </strong>{{screenData.veteran}}</li>
     <li class="categoreis"><strong>Benefits Categories: </strong>
-      <span class="ng-binding ng-scope">Medication</span>
+      <span ng-repeat="category in screenData.benefits_categories | orderBy:'sort'">{{category.name}}</span>
+      <!--<span class="ng-binding ng-scope">Medication</span>
       <span class="ng-binding ng-scope">Health Care</span>
       <span class="ng-binding ng-scope">Income Assistance</span>
       <span class="ng-binding ng-scope">Food &amp; Nutrition</span>
@@ -29,7 +30,7 @@
       <span class="ng-binding ng-scope">Transportation</span>
       <span class="ng-binding ng-scope">Education</span>
       <span class="ng-binding ng-scope">Discount</span>
-      <span class="ng-binding ng-scope">Other Assistance</span>
+      <span class="ng-binding ng-scope">Other Assistance</span>-->
     </li>
   </ul>
 </section>
