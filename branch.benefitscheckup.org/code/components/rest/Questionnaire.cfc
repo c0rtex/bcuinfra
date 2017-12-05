@@ -80,9 +80,6 @@
             <cfset sqs = "and (psc.id in (#sqs#) or psc.id is null)">
         </cfif>
 
-        <!---TODO remove cfset below. It's BCURD-175 fix.--->
-        <cfset sqs = "">
-
        <cfset state = entityLoadByPK("state",stateId)>
 
        <cfset questions = ormexecutequery("select
