@@ -167,7 +167,21 @@
 
         <cfset programs = ormExecuteQuery("select p,sc.answerfieldcode,sc.sort from screening_program sp join sp.program p join p.program_category pc join pc.super_category sc where sp.screening=? order by sc.sort, p.key_program, p.sort",[screening])>
 
-        <cfset supercategories = ormExecuteQuery("select distinct sc.answerfieldcode,sc.sort from program p join p.program_category pc join pc.super_category sc join p.subsets s where s.id=? order by sc.sort",[screening.getSubset().getId()])>
+        <cfset sqs = "">
+        <cfif not isNull(screening.getPrev_screening())>
+            <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening=?)",[screening.getPrev_screening()])>
+            <cfif arraylen(ps) neq 0>
+                <cfset sqs = "0">
+            </cfif>
+            <cfloop array="#ps#" index="psi">
+                <cfset sqs = "#sqs#,#psi.getId()#">
+            </cfloop>
+            <cfif arraylen(ps) neq 0>
+                <cfset sqs = "and (sc.id in (#sqs#))">
+            </cfif>
+        </cfif>
+
+        <cfset supercategories = ormExecuteQuery("select distinct sc.answerfieldcode,sc.sort from program p join p.program_category pc join pc.super_category sc join p.subsets s where s.id=? #sqs# order by sc.sort",[screening.getSubset().getId()])>
 
         <cfset programsByCategories = structNew()>
 
@@ -990,11 +1004,27 @@
         	    <cfparam name="session.org_id" default = 0>
         	    <cfparam name="session.subset_id" default = 0>
 
+        <cfset sqs = "">
+        <cfif not isNull(screening.getPrev_screening())>
+            <cfset ps = ormExecuteQuery("from program_supercategory ps where ps.answerfieldcode in (select sa.answer.code from screening_answerfield sa where sa.screening=?)",[screening.getPrev_screening()])>
+            <cfif arraylen(ps) neq 0>
+                <cfset sqs = "0">
+            </cfif>
+            <cfloop array="#ps#" index="psi">
+                <cfset sqs = "#sqs#,#psi.getId()#">
+            </cfloop>
+            <cfif arraylen(ps) neq 0>
+                <cfset sqs = "and (psc.id in (#sqs#))">
+            </cfif>
+        </cfif>
+
         <cfset querySubsetProgram = ormexecutequery("select
                                                        p
                                                      from
-                                                       subset_program_sum sp
-                                                       join sp.program p
+                                                       subset_program_sum sp join
+                                                       sp.program p join
+                                                       p.program_category pc join
+                                                       pc.super_category psc
                                                      where
                                                        sp.subset=? and
                                                        p.active_flag=? and
@@ -1004,6 +1034,7 @@
                                                                       'health_md_kp_med_assistance','health_ga_kp_med_assistance',
                                                                       'health_ca_kp_med_assistance','health_co_kphelps',
                                                                       'health_or_kp_med_assistance','health_wa_kp_med_assistance')
+                                                       #sqs#
                                                      order by p.sort",[screening.getSubset(),1,sa.st])>
 
         <cfloop array="#querySubsetProgram#" index="i">
