@@ -2,14 +2,14 @@
 <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 <script src="https://code.highcharts.com/maps/modules/data.js"></script>
 <script src="https://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/us/custom/us-small.js"></script>
 
 <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <style>
 g.highcharts-label text{
-	color: #fff !important;
-	fill: #fff !important;
+	/*color: #fff !important;
+	fill: #fff !important;*/
 	stroke:none;
 }
 g.highcharts-label tspan{
@@ -19,7 +19,7 @@ g.highcharts-label tspan{
 <div id="highmap-container" style="height:900px;float:left;width:100%"></div>
 <div id="map-locator" style="float:right;width:22%; padding:1.5%;display: none">
 	
-	<h3>Medicaid Office(s):</h3>
+	<h3>Medicaid Office(s) for <span id="clicked_county_zipcode"></span> : </h3>
 
 	<div class="offices-info">
 		
@@ -28,8 +28,8 @@ g.highcharts-label tspan{
 
 <script type="text/javascript">
 	var selected_zip, selected_state, clicked_state_name, offices;
-	var data = Highcharts.geojson(Highcharts.maps['countries/us/us-all']),
-	states_array = Highcharts.geojson(Highcharts.maps['countries/us/us-all']),
+	var data = Highcharts.geojson(Highcharts.maps['countries/us/custom/us-small']),
+	states_array = Highcharts.geojson(Highcharts.maps['countries/us/custom/us-small']),
     // Some responsiveness
     small = $('#highmap-container').width() < 400;
 
@@ -55,7 +55,7 @@ mapChart = Highcharts.mapChart('highmap-container', {
 	},
 
 	title: {
-		text: ' '
+		text: ''
 	},
 
 	subtitle: {
@@ -71,12 +71,6 @@ mapChart = Highcharts.mapChart('highmap-container', {
     legend: {
     	enabled: false
     },
-    // colorAxis: {
-    // 	min: 0,
-    // 	minColor: '#ff0000',
-    // 	maxColor: '#ff0000'
-    // },
-
     mapNavigation: {
     	enabled: false,
     	buttonOptions: {
@@ -103,25 +97,16 @@ mapChart = Highcharts.mapChart('highmap-container', {
     	name: 'Usa',
     	dataLabels: {
     		enabled: true,
-    		format: '{point.properties.postal-code}'
+    		format: ''
     	},
     	borderColor : '#fff',
     	point : {
 	    	events : {
 	    		click : function(e){
-	    			
 	    			cleanInfoBox();
 	    			if(typeof(event.point) !== 'undefined')
 	    				clicked_state_name = e.point.name;
-	    			
-	    			getSelectedState(clicked_state_name);
-	    			
-	    			setTimeout(function(){
-	    				
-	    				
-	    				
-	    			},800);
-	    			
+	    			// getSelectedState(clicked_state_name);
 	    		}
 	    	}
 	    }
@@ -144,7 +129,11 @@ mapChart = Highcharts.mapChart('highmap-container', {
     	}
     },
     tooltip:{
-    	enabled: false
+    	enabled: true,
+    	pointFormat : '<span style="color:{point.color}">\u25CF</span> {point.name}<br/>',
+    	style :{
+    		color: '#000'
+    	}
     }
 });
 
@@ -166,7 +155,7 @@ function drawOffices(){
 	}
 	$('body #map-locator').fadeIn();
 	$('.offices-info').html(html);
-
+	$('#clicked_county_zipcode').html(clicked_county_zipcode)
 }
 function cleanInfoBox(){
 	$('body #map-locator').fadeOut();
@@ -213,7 +202,7 @@ function drillDownPlot(e){
                         	name: e.point.name,
                         	data: data,
                         	dataLabels: {
-                        		enabled: true,
+                        		enabled: false,
                         		format: '{point.name}'
                         	},
                         	borderColor : '#fff',
@@ -231,10 +220,12 @@ function drillDownPlot(e){
                         			click : function(e){
                         				cleanInfoBox();
                         				clicked_county = e.point.name;
+                        				clicked_county_zipcode = e.point.name;
 	    								getSelectedCounty(clicked_state_name, clicked_county);
                         			}
                         		}
-                        	}
+                        	},
+
 
                         	
                         });
@@ -258,19 +249,19 @@ function drillDownPlot(e){
             }
 
             function getSelectedState(state){
-            	$.get('https://maps.googleapis.com/maps/api/geocode/json?address='+state+'&sensor=true',function(response){
+            	$.get('https://maps.googleapis.com/maps/api/geocode/json?address='+state+'&sensor=true&key=AIzaSyBbl7Z7PDkRB3vrLPaJYRaZJwvRiO6EpgA',function(response){
             		selected_state = response.results;
             		getSelectedStateZip(selected_state[0].geometry.location.lat,selected_state[0].geometry.location.lng);
             	},'json');
             }
             function getSelectedCounty(state,county){
-            	$.get('https://maps.googleapis.com/maps/api/geocode/json?address='+state+'+'+county+'&sensor=true',function(response){
+            	$.get('https://maps.googleapis.com/maps/api/geocode/json?address='+state+'+'+county+'&sensor=true&key=AIzaSyBbl7Z7PDkRB3vrLPaJYRaZJwvRiO6EpgA',function(response){
             		selected_state = response.results;
             		getSelectedStateZip(selected_state[0].geometry.location.lat,selected_state[0].geometry.location.lng);
             	},'json');
             }
             function getSelectedStateZip(lat,long){
-				 $.get('https://maps.googleapis.com/maps/api/geocode/json?sensor=false&latlng='+lat+','+long,function(response){
+				 $.get('https://maps.googleapis.com/maps/api/geocode/json?sensor=false&key=AIzaSyBbl7Z7PDkRB3vrLPaJYRaZJwvRiO6EpgA&latlng='+lat+','+long,function(response){
 					var address_array = response.results[0].address_components;
 					for( i = 0; i < address_array.length; i++ ){
 						if(address_array[i].types[0] == 'postal_code'){
