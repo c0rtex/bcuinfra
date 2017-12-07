@@ -18,6 +18,7 @@
                     <strong>Just a reminder:</strong> Answer all your questions as your {{screenData.searchingFor}}.
                 </div>
                 <question ng-repeat="question in $root.questions[category]" question="question"></question>
+                <p ng-if="$root.questions[category].length==0">There are no questions to answer in this section. Please press the Continue button to complete your Benefit Report.</p>
                 <p class="error-state" ng-show="wrongLink"><strong>Error!</strong> Please add category and state to url</p>
             </div>
 
