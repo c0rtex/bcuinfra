@@ -366,7 +366,7 @@ function checkFields(pcounter) {
                                             <cfset newcode = newcode & Mid(randomSrc, randomPos, 1)>
                                         </cfloop>
                                         <!--- Insert new hours_display_id--->
-                                        <cfquery name="insertNewHoursDisplay" datasource="#application.dbSrc#">
+                                        <cfquery name="insertNewHoursDisplay" datasource="#application.dbSrc#" result="newHDid">
 
                                             INSERT INTO display
                                                 (displaygroup_id
@@ -374,11 +374,9 @@ function checkFields(pcounter) {
                                                 ,display_name
                                                 ,active_flag)
                                             VALUES
-                                                (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#);
-                                          	SELECT LAST_INSERT_ID() as newHDid
-
+                                                (46, 'ephours_#newcode#', 'Entry Point Hours Text: #newcode#', #str_active_flag#)
                                         </cfquery>
-                                        <cfif insertNewHoursDisplay.newHDid neq "">
+                                        <cfif newHDid.GENERATED_KEY neq "">
                                         	<cfoutput><cfset str_hours_display_id="#insertNewHoursDisplay.newHDid#"></cfoutput>
                                         <cfelse>
                                         	<cfset update="no">
@@ -412,17 +410,16 @@ function checkFields(pcounter) {
                                         </cfif>
                                         <cfif update neq "no">                                    
 											<!--- Insert new info_display_id --->
-                                            <cfquery name="insertNewInfoDisplay" datasource="#application.dbSrc#">
+                                            <cfquery name="insertNewInfoDisplay" datasource="#application.dbSrc#" result="newIDid">
                                                 INSERT INTO display
                                                     (displaygroup_id
                                                     ,display_code
                                                     ,display_name
                                                     ,active_flag)
                                                 VALUES
-                                                    (46, 'epinfo_#newcode#', 'Entry Point Other Info Text: #newcode#', #str_active_flag#);
-                                               	SELECT LAST_INSERT_ID() as newIDid
+                                                    (46, 'epinfo_#newcode#', 'Entry Point Other Info Text: #newcode#', #str_active_flag#)
                                             </cfquery>
-                                            <cfif insertNewInfoDisplay.newIDid neq "">
+                                            <cfif newIDid.GENERATED_KEY neq "">
                                             	<cfoutput><cfset str_info_display_id="#insertNewInfoDisplay.newIDid#"></cfoutput>
                                             <cfelse>
                                             	<cfset update="no">
@@ -457,7 +454,7 @@ function checkFields(pcounter) {
 										</cfif>             
                                         <cfif update neq "no">                           
 											<!--- Insert New entrypoint --->
-                                            <cfquery name="insertNewEntrypoint" datasource="#application.dbSrc#">
+                                            <cfquery name="insertNewEntrypoint" datasource="#application.dbSrc#" result="newEPid">
                                                 INSERT INTO entrypoint
                                                    (code
                                                    ,name
@@ -513,10 +510,9 @@ function checkFields(pcounter) {
                                                    ,#session.user_id#
                                                    ,'#str_date#'
                                                    ,#session.user_id#
-                                                   ,'#str_date#');
-                                            	SELECT LAST_INSERT_ID() as newEPid
+                                                   ,'#str_date#')
                                             </cfquery>
-                                           <cfif insertNewEntrypoint.newEPid neq "">
+                                           <cfif newEPid.GENERATED_KEY neq "">
                                             	<cfoutput><cfset str_entrypoint_id="#insertNewEntrypoint.newEPid#"></cfoutput>
                                             <cfelse>
                                             	<cfset update="no">
@@ -548,17 +544,16 @@ function checkFields(pcounter) {
                                         <cfif update neq "no">
 											<!--- Insert New Phone Data --->
                                             <cfif str_voice neq ''>
-                                                <cfquery name="insertNewPhone_Type1" datasource="#application.dbSrc#">
+                                                <cfquery name="insertNewPhone_Type1" datasource="#application.dbSrc#" result="newPHid_1">
                                                     INSERT INTO `phone`
                                                        (entrypoint_id
                                                        ,phonetype_id
                                                        ,number
                                                        ,`sort`)
                                                      VALUES
-                                                       (#str_entrypoint_id#, 1, '#str_voice#', 2);
-                                                    SELECT LAST_INSERT_ID() as newPHid_1;
+                                                       (#str_entrypoint_id#, 1, '#str_voice#', 2)
                                                 </cfquery>
-                                                <cfif insertNewPhone_Type1.newPHid_1 eq "">
+                                                <cfif newPHid_1.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -566,17 +561,16 @@ function checkFields(pcounter) {
                                         
                                         <cfif update neq "no">
 											<cfif str_fax neq ''>
-                                                <cfquery name="insertNewPhone_Type2" datasource="#application.dbSrc#">
+                                                <cfquery name="insertNewPhone_Type2" datasource="#application.dbSrc#" result="newPHid_2">
                                                     INSERT INTO `phone`
                                                        (entrypoint_id
                                                        ,phonetype_id
                                                        ,number
                                                        ,`sort`)
                                                      VALUES
-                                                       (#str_entrypoint_id#, 2, '#str_fax#', 6);
-                                               		SELECT LAST_INSERT_ID() as newPHid_2
+                                                       (#str_entrypoint_id#, 2, '#str_fax#', 6)
                                                 </cfquery>
-                                                <cfif insertNewPhone_Type2.newPHid_2 eq "">
+                                                <cfif newPHid_2.GENERATED_KEY eq "">
                                                 	<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -584,17 +578,16 @@ function checkFields(pcounter) {
                                         
                                         <cfif update neq "no">
 											<cfif str_tty neq ''>
-                                                <cfquery name="insertNewPhone_Type3" datasource="#application.dbSrc#">
+                                                <cfquery name="insertNewPhone_Type3" datasource="#application.dbSrc#" result="newPHid_3">
                                                     INSERT INTO `phone`
                                                        (entrypoint_id
                                                        ,phonetype_id
                                                        ,number
                                                        ,`sort`)
                                                      VALUES
-                                                       (#str_entrypoint_id#, 3, '#str_tty#', 3);
-                                                  	SELECT LAST_INSERT_ID() as newPHid_3
+                                                       (#str_entrypoint_id#, 3, '#str_tty#', 3)
                                                 </cfquery>
-                                                <cfif insertNewPhone_Type3.newPHid_3 eq "">
+                                                <cfif newPHid_3.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -602,51 +595,48 @@ function checkFields(pcounter) {
                                         
                                         <cfif update neq "no">
 											<cfif str_toll_free neq ''>
-                                                <cfquery name="insertNewPhone_Type4" datasource="#application.dbSrc#">
+                                                <cfquery name="insertNewPhone_Type4" datasource="#application.dbSrc#" result="newPHid_4">
                                                     INSERT INTO `phone`
                                                        (entrypoint_id
                                                        ,phonetype_id
                                                        ,number
                                                        ,`sort`)
                                                      VALUES
-                                                       (#str_entrypoint_id#, 4, '#str_toll_free#', 1);
-                                                	SELECT LAST_INSERT_ID() as newPHid_4
+                                                       (#str_entrypoint_id#, 4, '#str_toll_free#', 1)
                                                 </cfquery>
-                                                <cfif insertNewPhone_Type4.newPHid_4 eq "">
+                                                <cfif newPHid_4.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
 										</cfif>
                                         <cfif update neq "no">
 											<cfif str_translation neq ''>
-                                                <cfquery name="insertNewPhone_Type5" datasource="#application.dbSrc#">
+                                                <cfquery name="insertNewPhone_Type5" datasource="#application.dbSrc#" result="newPHid_5">
                                                     INSERT INTO `phone`
                                                        (entrypoint_id
                                                        ,phonetype_id
                                                        ,number
                                                        ,`sort`)
                                                     VALUES
-                                                       (#str_entrypoint_id#, 5, '#str_translation#', 5);
-                                                    SELECT LAST_INSERT_ID() as newPHid_5
+                                                       (#str_entrypoint_id#, 5, '#str_translation#', 5)
                                                 </cfquery>
-                                                <cfif insertNewPhone_Type5.newPHid_5 eq "">
+                                                <cfif newPHid_5.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
                                      	</cfif>
                                         <cfif update neq "no">
                                             <cfif str_spanish neq ''>
-                                                <cfquery name="insertNewPhone_Type6" datasource="#application.dbSrc#">
+                                                <cfquery name="insertNewPhone_Type6" datasource="#application.dbSrc#" result="newPHid_6">
                                                     INSERT INTO `phone`
                                                        (entrypoint_id
                                                        ,phonetype_id
                                                        ,number
                                                        ,`sort`)
                                                      VALUES
-                                                       (#str_entrypoint_id#, 6, '#str_spanish#', 4);
-                                                     SELECT LAST_INSERT_ID() as newPHid_6
+                                                       (#str_entrypoint_id#, 6, '#str_spanish#', 4)
                                                 </cfquery>
-                                                <cfif insertNewPhone_Type6.newPHid_6 eq "">
+                                                <cfif newPHid_6.GENERATED_KEY eq "">
                                                		<cfset update="no">
                                             	</cfif>
                                             </cfif>
@@ -816,17 +806,16 @@ function checkFields(pcounter) {
                                                     </cfif>
                                                 <cfelseif chkPhone_type1.RecordCount eq 0>
                                                 	<cfif str_voice neq ''>
-                                                        <cfquery name="insertPhone_Type1" datasource="#application.dbSrc#">
+                                                        <cfquery name="insertPhone_Type1" datasource="#application.dbSrc#" result="newPhone1id">
                                                             INSERT INTO `phone`
                                                                (entrypoint_id
                                                                ,phonetype_id
                                                                ,number
                                                                ,`sort`)
                                                              VALUES
-                                                               (#str_entrypoint_id#, 1, '#str_voice#', 2);
-                                                             SELECT LAST_INSERT_ID() as newPhone1id;
+                                                               (#str_entrypoint_id#, 1, '#str_voice#', 2)
                                                         </cfquery>
-                                                        <cfif insertPhone_Type1.newPhone1id eq "">
+                                                        <cfif newPhone1id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -857,17 +846,16 @@ function checkFields(pcounter) {
                                                     </cfif>
                                                 <cfelseif chkPhone_type2.RecordCount eq 0>
                                                 	<cfif str_fax neq ''>
-                                                        <cfquery name="insertPhone_Type2" datasource="#application.dbSrc#">
+                                                        <cfquery name="insertPhone_Type2" datasource="#application.dbSrc#" result="newPhone2id">
                                                             INSERT INTO `phone`
                                                                (entrypoint_id
                                                                ,phonetype_id
                                                                ,`number`
                                                                ,`sort`)
                                                              VALUES
-                                                               (#str_entrypoint_id#, 2, '#str_fax#', 6);
-                                                             SELECT LAST_INSERT_ID() as newPhone2id
+                                                               (#str_entrypoint_id#, 2, '#str_fax#', 6)
                                                         </cfquery>
-                                                        <cfif insertPhone_Type2.newPhone2id eq "">
+                                                        <cfif newPhone2id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -899,7 +887,7 @@ function checkFields(pcounter) {
                                                     </cfif>
                                                 <cfelseif chkPhone_type3.RecordCount eq 0>
                                                 	<cfif str_tty neq ''>
-                                                        <cfquery name="insertPhone_Type3" datasource="#application.dbSrc#">
+                                                        <cfquery name="insertPhone_Type3" datasource="#application.dbSrc#" result="newPhone3id">
 
                                                             INSERT INTO `phone`
                                                                (entrypoint_id
@@ -907,11 +895,9 @@ function checkFields(pcounter) {
                                                                ,`number`
                                                                ,`sort`)
                                                              VALUES
-                                                               (#str_entrypoint_id#, 3, '#str_tty#', 3);
-                                                             SELECT LAST_INSERT_ID() as newPhone3id
-
+                                                               (#str_entrypoint_id#, 3, '#str_tty#', 3)
                                                         </cfquery>
-                                                        <cfif insertPhone_Type3.newPhone3id eq "">
+                                                        <cfif newPhone3id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -943,7 +929,7 @@ function checkFields(pcounter) {
                                                     </cfif>
                                                 <cfelseif chkPhone_type4.RecordCount eq 0>
                                                 	<cfif str_toll_free neq ''>
-                                                        <cfquery name="insertPhone_Type4" datasource="#application.dbSrc#">
+                                                        <cfquery name="insertPhone_Type4" datasource="#application.dbSrc#" result="newPhone4id">
 
                                                             INSERT INTO `phone`
                                                                (entrypoint_id
@@ -951,10 +937,9 @@ function checkFields(pcounter) {
                                                                ,`number`
                                                                ,`sort`)
                                                              VALUES
-                                                               (#str_entrypoint_id#, 4, '#str_toll_free#', 1);
-                                                             SELECT LAST_INSERT_ID() as newPhone4id
+                                                               (#str_entrypoint_id#, 4, '#str_toll_free#', 1)
                                                         </cfquery>
-                                                        <cfif insertPhone_Type4.newPhone4id eq "">
+                                                        <cfif newPhone4id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -986,7 +971,7 @@ function checkFields(pcounter) {
                                                     </cfif>
                                                 <cfelseif chkPhone_type5.RecordCount eq 0>
                                                 	<cfif str_translation neq ''>
-                                                        <cfquery name="insertPhone_Type5" datasource="#application.dbSrc#">
+                                                        <cfquery name="insertPhone_Type5" datasource="#application.dbSrc#" result="newPhone5id">
 
                                                             INSERT INTO `phone`
                                                                (entrypoint_id
@@ -994,11 +979,9 @@ function checkFields(pcounter) {
                                                                ,`number`
                                                                ,`sort`)
                                                              VALUES
-                                                               (#str_entrypoint_id#, 5, '#str_translation#', 5);
-                                                             SELECT LAST_INSERT_ID() as newPhone5id
-
+                                                               (#str_entrypoint_id#, 5, '#str_translation#', 5)
                                                         </cfquery>
-                                                        <cfif insertPhone_Type5.newPhone5id eq "">
+                                                        <cfif newPhone5id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
@@ -1030,7 +1013,7 @@ function checkFields(pcounter) {
                                                     </cfif>
                                                 <cfelseif chkPhone_type6.RecordCount eq 0>
                                                 	<cfif str_spanish neq ''>
-                                                        <cfquery name="insertPhone_Type6" datasource="#application.dbSrc#">
+                                                        <cfquery name="insertPhone_Type6" datasource="#application.dbSrc#" result="newPhone6id">
 
                                                             INSERT INTO `phone`
                                                                (entrypoint_id
@@ -1038,11 +1021,9 @@ function checkFields(pcounter) {
                                                                ,`number`
                                                                ,`sort`)
                                                              VALUES
-                                                               (#str_entrypoint_id#, 6, '#str_spanish#', 4);
-                                                             SELECT LAST_INSERT_ID() as newPhone6id
-
+                                                               (#str_entrypoint_id#, 6, '#str_spanish#', 4)
                                                         </cfquery>
-                                                        <cfif insertPhone_Type6.newPhone6id eq "">
+                                                        <cfif newPhone6id.GENERATED_KEY eq "">
                                                				<cfset update="no">
                                             			</cfif>
                                                     </cfif>
