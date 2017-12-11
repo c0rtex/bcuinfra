@@ -77,6 +77,7 @@ function checkFields(pcounter) {
 
 	
 <cfoutput>
+	<cfsetting requesttimeout="70000">
 	<table border="0" cellpadding="3" cellspacing="3">
 		<cfif attributes.title neq ''>
 			<tr bgcolor="#localdark#">
