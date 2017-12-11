@@ -5,8 +5,8 @@
             <div class="benefits-selector-repeater" ng-class="{checked: programAdded(program.code)}" ng-repeat="program in programs | orderBy:'sort'" ng-click="addProgram(program)" selector>
                 <div class="benefits-selector-checkbox">
                     <div class="benefits-selector-checkbox-content">
-                        <div class="icon-wrapper">
-                            <img width="50" height="50" ng-src="{{program.image}}" alt="{{ program.alt }}" title="{{ program.title }}" />
+                        <div class="icon-wrapper" >
+                            <a href="#" data-toggle="tooltip" title='{{ program.tooltip }}'><img width="50" height="50" ng-src="{{program.image}}" alt="{{ program.alt }}" title="{{ program.title }}" /></a>
                         </div>
                         <div class="benefits-selector-label">
                             <div class="label-inner">{{program.name}}</div>
@@ -18,3 +18,8 @@
     </section>
     <input type="text" ng-model="$root.areProgramsAdded" required ng-show="false">
 </div>
+<!-- <script>
+	$(document).ready(function(){
+    	$('[data-toggle="tooltip"]').tooltip(); 
+	});
+</script> -->

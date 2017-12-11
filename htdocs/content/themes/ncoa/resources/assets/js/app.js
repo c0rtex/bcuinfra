@@ -1687,7 +1687,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_medicine.svg',
             alt: 'Medicine Pills',
             title: 'Medicine Pills',
-            sort: 1
+            sort: 1,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Health Care',
@@ -1695,7 +1697,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_health.svg',
             alt: 'Doctor Symbols',
             title: 'Doctor Symbol',
-            sort: 2
+            sort: 2,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Income Assistance',
@@ -1703,7 +1707,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_income.svg',
             alt: 'Money',
             title: 'Money',
-            sort: 3
+            sort: 3,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Food & Nutrition',
@@ -1711,7 +1717,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_food.svg',
             alt: 'Basket of Food',
             title: 'Basket of Food',
-            sort: 4
+            sort: 4,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Housing & Utilities',
@@ -1719,7 +1727,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_housing.svg',
             alt: 'House',
             title: 'House',
-            sort: 5
+            sort: 5,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Tax Relief',
@@ -1727,7 +1737,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_taxRelief.svg',
             alt: 'Piggy Bank',
             title: 'Piggy Bank',
-            sort: 6
+            sort: 6,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Veterans',
@@ -1735,7 +1747,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_veteran.svg',
             alt: 'Medal',
             title: 'Medal',
-            sort: 7
+            sort: 7,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Employment',
@@ -1743,7 +1757,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_employment.svg',
             alt: 'Briefcase',
             title: 'Briefcase',
-            sort: 8
+            sort: 8,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Transportation',
@@ -1751,7 +1767,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_transportation.svg',
             alt: 'Automobile',
             title: 'Automobile',
-            sort: 9
+            sort: 9,
+            tooltip : 'tooltip info'
+,
         },
         {
             name: 'Education',
@@ -1759,7 +1777,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_education.svg',
             alt: 'Apple on Book',
             title: 'Apple on Book',
-            sort: 10
+            sort: 10,
+            tooltip : 'tooltip info'
+
         },
         {
             name: 'Discount',
@@ -1767,7 +1787,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_discounts.svg',
             alt: 'Percent Off',
             title: 'Percent Off',
-            sort: 11
+            sort: 11,
+            tooltip : 'tooltip info'
+
         },
         {
             name: 'Other Assistance',
@@ -1775,7 +1797,9 @@ app.factory('BenefitItems', [function(){
             image: '/content/themes/ncoa/resources/assets/images/categories/category_assistance.svg',
             alt: 'Information',
             title: 'Information',
-            sort: 12
+            sort: 12,
+            tooltip : 'tooltip info'
+
         }
     ];
 
@@ -2237,6 +2261,7 @@ app.controller('questionController',['$scope', 'category', 'BenefitItems', 'Answ
         }
         $scope.$root.areProgramsAdded = BenefitItems.programsInStructure($scope.$root.answers[category.currentCategory()]) == 0 ? undefined : '1';
     }
+    
 }]);
 
 app.controller('initialController',['$scope','$state','prescreenQuestions','prescreen','screening',function($scope,$state,prescreenQuestions,prescreen,screening) {
@@ -3116,6 +3141,7 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
     $scope.$watch(monthWatch, function() {
         $scope.calcDob();
     });
+    
 }]);
 
 //Alejos integations

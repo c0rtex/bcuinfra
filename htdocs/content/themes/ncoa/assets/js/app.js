@@ -2481,6 +2481,7 @@ app.controller('dobController', ['$scope', 'category', 'AnswersByCategories', fu
     $scope.$watch(monthWatch, function() {
         $scope.calcDob();
     });
+    
 }]);
 
 
