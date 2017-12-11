@@ -318,7 +318,7 @@ $tgt_partner_id = !empty($_SESSION['partner_id']) ? $_SESSION['partner_id'] : 0;
                         </div>
 
                         @if ($modalNotEmpty == true)
-                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheets-side-link">
+                        <a href data-toggle="modal" data-target="#myModal" class="btn btn-link fact-sheets-side-link fact-sheet-button-fwd">
                           <span style="white-space: pre-line">See More</span>
                         </a>
                         @endif
@@ -327,21 +327,21 @@ $tgt_partner_id = !empty($_SESSION['partner_id']) ? $_SESSION['partner_id'] : 0;
 
                         @if (!empty($programUrl))
                         </br>
-                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheets-side-link">
+                        <a target="_blank" href="<?php echo $programUrl; ?>" class="btn btn-link fact-sheets-side-link fact-sheet-button-fwd">
                           <span style="white-space: pre-line">Program Website</span>
                         </a>
                         @endif
 
 			            @if (!empty($snap_findstores_url))
                         </br>
-                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheets-side-link">
+                        <a target="_blank" href="<?php echo $snap_findstores_url; ?>" class="btn btn-link fact-sheets-side-link fact-sheet-button-fwd">
                           <span style="white-space: pre-line">Find Stores to Use Debit Card</span>
                         </a>
                         @endif
 
                         @if (($is_snap) && ($elegible != 'n') && !empty($snap_find_elegible))
                         </br>
-                        <a href="/find-my-benefits/" class="btn btn-link fact-sheets-side-link">
+                        <a href="/find-my-benefits/" class="btn btn-link fact-sheets-side-link fact-sheet-button-fwd">
                           <span style="white-space: pre-line">Find Out If You're Eligible</span>
                         </a>
                         @endif
