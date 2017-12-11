@@ -1,7 +1,7 @@
 <?php
 
 /*
-* Custom Post Type for Fact Sheets, this houses all section of the fact that can be administered though the admin panel
+* Custom Post Type for Grantees, this houses all section of the fact that can be administered though the admin panel
 */
 
 PostType::make('grantees', 'Grantees', 'Grantees')->set([
