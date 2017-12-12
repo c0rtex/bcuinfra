@@ -22,7 +22,7 @@
 
             @if(Option::get('global-settings', 'showHeaderCTA') == '0')
             <div class="pull-right header-email-cta hidden-xs">
-                <button type="submit" tabindex="2" class="btn btn-purple">Sign Up for News</button>
+                <a href="http://go.ncoa.org/BCUsignup" tabindex="2" class="btn btn-purple">Sign Up for News</a>
             </div>
             @endif
         </div>
@@ -62,7 +62,7 @@
                     <div class="visible-xs hidden-lg hidden-md hidden-sm">
 
                         <div class="col-xs-12 text-center sign-up-enews">
-                            <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for Enews</a>
+                            <a tabindex="2" href="http://go.ncoa.org/BCUsignup" class="btn btn-purple">Sign Up for News</a>
                         </div>
                     </div>
                     @endif
